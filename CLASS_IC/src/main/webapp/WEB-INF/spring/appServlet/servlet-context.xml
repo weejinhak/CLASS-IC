@@ -47,5 +47,17 @@
 	  <beans:constructor-arg index="0" ref="sqlSessionFactoryBean"/>
 	 </beans:bean>
 	
+	<!-- file 업로드와 파일업로드를 위한 resolver -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
+
+  <beans:bean id="uploadPath" class="java.lang.String">
+    <beans:constructor-arg value="C:\\zzz\\upload">
+    </beans:constructor-arg>
+  </beans:bean>
+	
+	
 	
 </beans:beans>
