@@ -34,22 +34,22 @@ public class MainController_Student {
 		@RequestMapping("test4.htm")
 		public String studentTest4(){
 			System.out.println("student main 컨트롤 탐, test.htm ");
-			return "student.board_details_view";
+			return "student.board_detailList_view";
 		}
 		@RequestMapping("test5.htm")
 		public String studentTest5(){
 			System.out.println("student main 컨트롤 탐, test.htm ");
-			return "student.board_details";
+			return "student.board_detailList";
 		}
 		@RequestMapping("test6.htm")
 		public String studentTest6(){
 			System.out.println("student main 컨트롤 탐, test.htm ");
-			return "student.board_homework_content";
+			return "student.board_homework_write";
 		}
 		@RequestMapping("test7.htm")
 		public String studentTest7(){
 			System.out.println("student main 컨트롤 탐, test.htm ");
-			return "student.board";
+			return "student.boardList";
 		}
 		@RequestMapping("test8.htm")
 		public String studentTest8(){

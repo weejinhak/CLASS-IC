@@ -43,27 +43,27 @@ public class MainController_Teacher {
 		@RequestMapping("test4.htm")
 		public String studentTest4(){
 			System.out.println("teacher main controller 탐, test.htm ");
-			return "teacher.board_content";
+			return "teacher.board_detailList_view";
 		}
 		@RequestMapping("test5.htm")
 		public String studentTest5(){
 			System.out.println("teacher main controller 탐, test.htm ");
-			return "teacher.board_details_view";
+			return "teacher.board_detailList";
 		}
 		@RequestMapping("test6.htm")
 		public String studentTest6(){
 			System.out.println("teacher main controller 탐, test.htm ");
-			return "teacher.board_details";
+			return "teacher.board_homework_content";
 		}
 		@RequestMapping("test7.htm")
 		public String studentTest7(){
 			System.out.println("teacher main controller 탐, test.htm ");
-			return "teacher.board_homework_content";
+			return "teacher.board_write";
 		}
 		@RequestMapping("test8.htm")
 		public String studentTest8(){
 			System.out.println("teacher main controller 탐, test.htm ");
-			return "teacher.board";
+			return "teacher.boardList";
 		}
 		@RequestMapping("test9.htm")
 		public String studentTest9(){
