@@ -6,7 +6,9 @@
  	<definition name="*.*" template="/WEB-INF/views/{1}/inc/layout.jsp">
     	<put-attribute name="navi"  value="/WEB-INF/views/{1}/inc/navi.jsp" />
     	<put-attribute name="header"  value="/WEB-INF/views/{1}/inc/header.jsp" />   	
+    	<put-attribute name="pop" value="/WEB-INF/views/{1}/inc/pop.jsp" />
     	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+ 
     </definition> 
 
 </tiles-definitions>  
