@@ -1,0 +1,353 @@
+
+/* this declares a better box model */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+
+
+.memo .list-wrap label {
+  float:left;
+  color:#00BDE8;
+}
+
+.list-form label {
+  float:left;
+  color:#00BDE8;
+}
+
+.memo .search-box {
+  float:left;
+  clear:left;
+  width:70%;
+  padding:0.4em;
+  font-size:1em;
+  color:#555;
+}
+
+.memo .list-count {
+  float:left;
+  text-align:center;
+  width:30%;
+  padding:0.5em;
+  color:#ddd;
+}
+
+
+
+.memo li {
+  transition-property: margin, background-color, border-color;
+  transition-duration: .4s, .2s, .2s;
+  transition-timing-function: ease-in-out, ease, ease;
+}
+
+.memo .empty-item {
+  transition-property: opacity;
+  transition-duration: 0s;
+  transition-delay: 0s;
+  transition-timing-function: ease;
+}
+
+.memo .empty .empty-item {
+  transition-property: opacity;
+  transition-duration: .2s;
+  transition-delay: .3s;
+  transition-timing-function: ease;
+}
+
+.memo .hiding {
+  margin-left:-100%;
+  opacity:0.5;
+}
+
+.memo .hidden {
+  display:none;
+}
+
+.memo ul {
+  float:left;
+  width:100%;
+  margin:2em 0;
+  padding:0;
+  position:relative;
+}
+
+.memo ul:before {
+  content:'memo';
+  position:absolute;
+  left:-2.8em;
+  font-size:3em;
+  text-align:right;
+  top:1.5em;
+  color:#ededed;
+  font-weight:bold;
+  font-family: 'Maven Pro', sans-serif;
+  transform:rotate(-90deg);
+}
+
+.memo li {
+  float:left;
+  clear:left;
+  width:100%;
+  margin:0.2em 0;
+  padding:0.5em 0.8em;
+  list-style:none;
+  background-color:#f2f2f2;
+  border-left:5px solid #003842;
+  cursor:pointer;
+  color:#333;
+  position:relative;
+  z-index:2;
+}
+
+.memo li:hover {
+  background-color:#f9f9f9;
+  border-color:#00BDE8;
+}
+
+.memo .empty-item {
+  background:#fff;
+  color:#ddd;
+  margin:0.2em 0;
+  padding:0.5em 0.8em;
+  font-style:italic;
+  border:none;
+  text-align:center;
+  visibility:hidden;
+  opacity:0;
+  float:left;
+  clear:left;
+  width:100%;
+}
+
+.memo .empty .empty-item {
+  opacity:1;
+  visibility:visible;
+}
+
+
+
+
+
+
+
+/*
+The following are styles purely for the surroundings
+*/
+
+
+
+.memo body {
+  background-color:#fff;
+  font-family:'Open Sans', sans-serif;
+  margin:0;
+  padding:0;
+  font-size:1em;
+}
+
+.memo a {color:#00BDE8;}
+
+.memo h1 {
+  font-size:2.6em;
+  margin:0;
+  padding-top:1.5em;
+  text-align:center;
+  font-family: 'Maven Pro', sans-serif;
+}
+.memo h3 {
+  margin:0 0 2em;
+  text-align:center;
+font-weight:normal;
+font-family: georgia, times;
+font-style:italic;
+  color:#777;
+  font-size:1em;
+}
+
+.memo .info {
+  float:left;
+  width:60%;
+  margin:2em 20%;
+  padding:2em 0;
+  background:#f9f9f9;
+  border-left:5px solid #003842;
+  padding:10px 20px;
+}
+
+.memo .list-wrap {
+  float:left;
+  width:40%;
+  margin-left :60px;
+  padding:2em 0;
+}
+
+.list-form {
+
+  padding:2em 0;
+  margin-left :800px;
+ 
+}
+.list-title {
+
+  padding:2em 0;
+  margin-left :-75px;
+  margin-top: -23px;
+ 
+}
+
+.memo p {
+  text-align:left;
+  font-size:1em;
+}
+
+.memo .cta {
+  float:left;
+  width:100%;
+  text-align:center;
+  color:#999;
+  font-family:georgia, times;
+  font-style:italic;
+  margin:2em 0;
+}
+
+.memo .cta a {
+  font-size:1.5em;
+  font-style:normal;
+  font-family: 'Maven Pro', sans-serif;
+  text-decoration:none;
+  line-height:1.5em;
+}
+
+.memo .topdeco {
+  float:left;
+  width:100%;
+  height:10px;
+  position:fixed;
+  z-index:10;
+}
+
+.memo .topdeco span {
+  float:left;
+  width:25%;
+  height:100%;
+}
+
+.memo .deco span:nth-child(1) {
+  background:#FF8220;
+}
+.memo .deco span:nth-child(2) {
+  background:#000;
+}
+.memo .deco span:nth-child(3) {
+  background:#FFA00A;
+}
+.memo .deco span:nth-child(4) {
+  background:#00BDE8;
+}
+.write-form {
+    width: 600px;
+    padding: 30px 80px;
+    padding-bottom: 51px;
+    position: absolute;
+    box-shadow: 0 20px 40px rgba(0, 1, 1, 0.25);
+    font-size: 0;
+    margin: 50px;
+    margin-left: -75px;
+}
+
+.memo .close-form-button {
+    width: 1px;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    margin-left: 497px;
+    
+}
+
+.memo .close-btn-icon {
+    width: 1px;
+    height: 1px;
+    border: 20px solid #fb565a;
+    border-radius: 50%;
+    position: relative;
+    margin-top: -25px;
+}
+
+.memo .close-btn-line-1 {
+    width: 25px;
+    height: 5px;
+    background-color: #ffffff;
+    transform:rotate(45deg);
+    position: absolute;
+    left: -12px;
+    top: -2px;
+}
+
+.memo .close-btn-line-2 {
+    width: 25px;
+    height: 5px;
+    background-color: #ffffff;
+    transform:rotate(90deg);
+}
+
+.write-form label{
+    font-size: 16px;
+}
+
+.btn-form {
+    padding: 8px 195px;
+    margin-top: 36px;
+    border-radius: 5px/2px;
+    border: none;
+    background-color: #fb565a;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.input-field-wrapper {
+    width: 220px;
+    display: inline-block;
+    margin-bottom: 22px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.login-wrapper {
+    margin-right: 20px;
+}
+
+.input-field {
+    border: 2px solid #d7dcde;
+    border-radius: 3px;
+    width: 204px;
+    padding: 6px 0;
+    padding-left: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: black;
+}
+
+.letter-textarea {
+    width: 442px;
+    height: 104px;
+    resize: none;
+    border: 2px solid #d7dcde;
+    border-radius: 3px;
+    padding-left: 12px;
+    padding-top: 6px;
+    padding-bottom : 300px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: black;
+}
+
+.input-field:hover, .letter-textarea:hover {
+    border: 2px solid #a2a9ac;
+}
+
+.input-field:focus, .letter-textarea:focus {
+    border: 2px solid #56bffb;
+}
+
+.btn-form:focus,.btn-form:active {
+    outline: none;
+}
