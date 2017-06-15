@@ -20,11 +20,13 @@ public class BoardDAOImpl implements BoardDAO {
   @Inject
   private SqlSession session;
 
-  private static String namespace = "org.zerock.mapper.BoardMapper";
+  private static String namespace = "com.handsomeware.mappers.boardMapper";
 
   @Override
   public void create(BoardVO vo) throws Exception {
+	System.out.println("♣DAO create 접속");
     session.insert(namespace + ".create", vo);
+    
   }
 
   @Override

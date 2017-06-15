@@ -5,71 +5,71 @@ import java.util.Date;
 
 public class BoardVO {
 	
-	private Integer bno;
-	private String title;
-	private String content;
-	private String writer;
-	private Date regdate;
-	private int viewcnt;
-	private int replycnt;
+	private Integer lectureNo;
+	private String classCode;
+	private String cateCode;
+	private String subcateCode;
+	private String lectureTitle;
+	private String lectureContent;
+	private Date lectureDate;
 	
 	private String[] files;
 	
-		
+	
 	public String[] getFiles() {
 		return files;
 	}
 	public void setFiles(String[] files) {
 		this.files = files;
 	}
-	public int getReplycnt() {
-		return replycnt;
+	public Integer getLectureNo() {
+		return lectureNo;
 	}
-	public void setReplycnt(int replycnt) {
-		this.replycnt = replycnt;
+	public void setLectureNo(Integer lectureNo) {
+		this.lectureNo = lectureNo;
 	}
-	public Integer getBno() {
-		return bno;
+	public String getClassCode() {
+		return classCode;
 	}
-	public void setBno(Integer bno) {
-		this.bno = bno;
+	public void setClassCode(String classCode) {
+		this.classCode = classCode;
 	}
-	public String getTitle() {
-		return title;
+	public String getCateCode() {
+		return cateCode;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setCateCode(String cateCode) {
+		this.cateCode = cateCode;
 	}
-	public String getContent() {
-		return content;
+	public String getSubcateCode() {
+		return subcateCode;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setSubcateCode(String subcateCode) {
+		this.subcateCode = subcateCode;
 	}
-	public String getWriter() {
-		return writer;
+	public String getLectureTitle() {
+		return lectureTitle;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setLectureTitle(String lectureTitle) {
+		this.lectureTitle = lectureTitle;
 	}
-	public Date getRegdate() {
-		return regdate;
+	public String getLectureContent() {
+		return lectureContent;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setLectureContent(String lectureContent) {
+		this.lectureContent = lectureContent;
 	}
-	public int getViewcnt() {
-		return viewcnt;
+	public Date getLectureDate() {
+		return lectureDate;
 	}
-	public void setViewcnt(int viewcnt) {
-		this.viewcnt = viewcnt;
+	public void setLectureDate(Date lectureDate) {
+		this.lectureDate = lectureDate;
 	}
+	
 	@Override
 	public String toString() {
-		return "BoardVO [bno=" + bno + ", title=" + title + ", content="
-				+ content + ", writer=" + writer + ", regdate=" + regdate
-				+ ", viewcnt=" + viewcnt + ", replycnt=" + replycnt
-				+ ", files=" + Arrays.toString(files) + "]";
+		return "BoardVO [lectureNo=" + lectureNo + ", classCode=" + classCode + ", cateCode=" + cateCode
+				+ ", subcateCode=" + subcateCode + ", lectureTitle=" + lectureTitle + ", lectureContent="
+				+ lectureContent + ", lectureDate=" + lectureDate + ", files=" + Arrays.toString(files) + "]";
 	}
-
+	
 }

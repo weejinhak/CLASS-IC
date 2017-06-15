@@ -18,116 +18,91 @@ import com.class_ic.vo.BoardVO;
 @Service
 public class BoardServiceImpl implements BoardService {
 
-  @Autowired
+  @Inject
   private BoardDAO dao;
 
   
   @Transactional
   @Override
   public void regist(BoardVO board) throws Exception {
-  
-    dao.create(board);
+	System.out.println("♥regist 서비스 접속");
     
+	dao.create(board);
+	System.out.println("♥regist 서비스 접속2");
     String[] files = board.getFiles();
     
-    if(files == null) { return; } 
+    if(files == null) { 
+    					return; 
+    				  } 
     
     for (String fileName : files) {
       dao.addAttach(fileName);
     }   
   }
-  
-  //
-//  @Override
-//  public void regist(BoardVO board) throws Exception {
-//    dao.create(board);
-//  }
-
-//  @Override
-//  public BoardVO read(Integer bno) throws Exception {
-//    return dao.read(bno);
-//  }
 
 
-  @Transactional(isolation=Isolation.READ_COMMITTED)
-  @Override
-  public BoardVO read(Integer bno) throws Exception {
-    dao.updateViewCnt(bno);
-    return dao.read(bno);
-  }
+@Override
+public BoardVO read(Integer bno) throws Exception {
+	// TODO Auto-generated method stub
+	return null;
+}
 
-  
-//  @Override
-//  public void modify(BoardVO board) throws Exception {
-//    dao.update(board);
-//  }
-  
-  @Transactional
-  @Override
-  public void modify(BoardVO board) throws Exception {
-    dao.update(board);
-    
-    Integer bno = board.getBno();
-    
-    dao.deleteAttach(bno);
-    
-    String[] files = board.getFiles();
-    
-    if(files == null) { return; } 
-    
-    for (String fileName : files) {
-      dao.replaceAttach(fileName, bno);
-    }
-  }
-  
 
-//  @Override
-//  public void remove(Integer bno) throws Exception {
-//    dao.delete(bno);
-//  }
-  
-  
-  @Transactional
-  @Override
-  public void remove(Integer bno) throws Exception {
-    dao.deleteAttach(bno);
-    dao.delete(bno);
-  } 
+@Override
+public void modify(BoardVO board) throws Exception {
+	// TODO Auto-generated method stub
+	
+}
 
-  @Override
-  public List<BoardVO> listAll() throws Exception {
-    return dao.listAll();
-  }
 
-  @Override
-  public List<BoardVO> listCriteria(Criteria cri) throws Exception {
+@Override
+public void remove(Integer bno) throws Exception {
+	// TODO Auto-generated method stub
+	
+}
 
-    return dao.listCriteria(cri);
-  }
 
-  @Override
-  public int listCountCriteria(Criteria cri) throws Exception {
+@Override
+public List<BoardVO> listAll() throws Exception {
+	// TODO Auto-generated method stub
+	return null;
+}
 
-    return dao.countPaging(cri);
-  }
 
-  @Override
-  public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+@Override
+public List<BoardVO> listCriteria(Criteria cri) throws Exception {
+	// TODO Auto-generated method stub
+	return null;
+}
 
-    return dao.listSearch(cri);
-  }
 
-  @Override
-  public int listSearchCount(SearchCriteria cri) throws Exception {
+@Override
+public int listCountCriteria(Criteria cri) throws Exception {
+	// TODO Auto-generated method stub
+	return 0;
+}
 
-    return dao.listSearchCount(cri);
-  }
-  
 
-  @Override
-  public List<String> getAttach(Integer bno) throws Exception {
-    
-    return dao.getAttach(bno);
-  }   
+@Override
+public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
+@Override
+public int listSearchCount(SearchCriteria cri) throws Exception {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+
+@Override
+public List<String> getAttach(Integer bno) throws Exception {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
 
 }
