@@ -60,7 +60,7 @@
    <a href="student/test13.htm"> memo_content</a> <br/>
    <a href="student/test14.htm"> student_main</a> <br/>
    <a href="student/test15.htm"> student_memo</a> <br/>
-   
+   <a href="student/test16.htm"> student_message</a> <br/>
   	main와 student은 test용으로 내가 별도로 만든거니 체크 안해도 됨<br/>
    
    
