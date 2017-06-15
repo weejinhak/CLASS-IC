@@ -5,14 +5,12 @@
 
 <mapper namespace="com.class_ic.app.dao.memberdao">
 
-
-	<insert id="attendanceMember" parameterType="com.class_ic.app.dto.memberdto">
-		insert into socialapp.attendance values(#{m_qr})
-	</insert>
+	<update id="attendanceMember" parameterType="com.class_ic.app.dto.memberdto">
+		 UPDATE attendance #{attendState}= NULL WHERE #{attendState}=#{time} and email=#{email}
+	</update>
 
 	<select id="login" resultType="Integer">
-		select count(*) from
-		socialapp.member2 where m_email=#{id} and m_pw=#{pw}
+		select count(*) from member where email=#{id} and pass=#{pw}
 	</select>
 
 </mapper>

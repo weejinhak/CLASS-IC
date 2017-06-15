@@ -19,7 +19,7 @@ public class memberController {
 	@Autowired
 	private SqlSession sqlSession;
 
-	@RequestMapping("/login")
+	@RequestMapping("/applogin")
 	@ResponseBody
 	public logindto LogIn(HttpServletRequest request, memberdto memberDto, HttpSession session) {
 		memberdao memberDao = sqlSession.getMapper(memberdao.class);
@@ -29,6 +29,7 @@ public class memberController {
 		System.out.println(memberDao.login(id, password)+"로그인성공");
 		logindto ld = new logindto();
 		ld.setCount(memberDao.login(id, password));
+		System.out.println(ld);
 		return ld;
 	}
 
@@ -36,13 +37,24 @@ public class memberController {
 	@ResponseBody
 	public void memberAttendance(HttpServletRequest request, memberdto memdto) throws Exception {
 		memberdao memberdao = sqlSession.getMapper(memberdao.class);
-		memdto.setM_qr(request.getParameter("qr"));
-		System.out.println("기수"+request.getParameter("qr")+"기");
-		System.out.println("Email(id):"+request.getParameter("email"));
-		System.out.println(request.getParameter("hour")+"시");
-		System.out.println(request.getParameter("minute")+"분");
-		System.out.println(request.getParameter("state")+":하셨습니다.");
-		memberdao.attendanceMember(memdto);
+		System.out.println(request.getParameter("time"));
+		System.out.println(request.getParameter("state"));
+		
+		String state=request.getParameter("state");
+		
+		if(state.equals("입실")){			
+			System.out.println("여기까지 들어오지롱~");
+			memdto.setEmail(request.getParameter("email"));
+			memdto.setTime(request.getParameter("time"));
+			memdto.setAttendState(request.getParameter("state"));
+			memberdao.attendanceMember(memdto);
+		}else{
+			memdto.setEmail(request.getParameter("email"));
+			memdto.setTime(request.getParameter("time"));
+			memdto.setAttendState(request.getParameter("state"));
+			memberdao.attendanceMember(memdto);
+		}	
+		
 	}
 
 }
