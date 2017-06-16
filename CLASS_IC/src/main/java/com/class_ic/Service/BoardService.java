@@ -11,7 +11,14 @@ import com.class_ic.vo.BoardVO;
 public interface BoardService {
 
   public void regist(BoardVO board) throws Exception;
+  
+  public void addCategory(String cateTilte) throws Exception;
+  
+  public void addSubCategory(String subcateTitle) throws Exception;
+  
 
+  
+  ////////////////////
   public BoardVO read(Integer bno) throws Exception;
 
   public void modify(BoardVO board) throws Exception;

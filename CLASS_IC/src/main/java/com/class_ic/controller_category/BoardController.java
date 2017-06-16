@@ -82,10 +82,18 @@ public class BoardController {
   }
   
   //카테고리 추가
-  @RequestMapping(value = "boardlist.htm", method = RequestMethod.POST)
+  @RequestMapping(value = "makeCategory.htm", method = RequestMethod.POST)
   public String AddCategory(String cateTitle) throws Exception {
+	  System.out.println("★서블렛 접속 : makeCategory.htm");
 	  service.addCategory(cateTitle);
 
+    
+    return "리스트로 가는 주소!";
+  }
+  //SUB카테고리 추가
+  @RequestMapping(value = "sss", method = RequestMethod.POST)
+  public String AddSubCategory(String subcateTitle) throws Exception {
+	  service.addCategory(subcateTitle);
     
     return "board.boardlist.htm";
   }

@@ -40,6 +40,22 @@ public class BoardServiceImpl implements BoardService {
     }   
   }
 
+  @Override
+  public void addCategory(String cateTilte) throws Exception {
+	dao.categoryCreate(cateTilte);
+	
+  }
+
+  @Override
+  public void addSubCategory(String subcateTitle) throws Exception {
+	dao.subCategoryCreate(subcateTitle);
+	
+  }
+  
+  ////
+  
+  
+  
 
 @Override
 public BoardVO read(Integer bno) throws Exception {

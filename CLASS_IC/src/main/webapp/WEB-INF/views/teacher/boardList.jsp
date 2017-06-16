@@ -249,11 +249,13 @@
 							</button>
 							<h5 class="modal-title" id="myModalLabel">카테고리 추가</h5>
 						</div>
+						
+						<form action="makeCategory.htm" method="post">
 						<div class="modal-body">
 							<div class="instruction">
 								<div class="row">
 									<div class="col-md-12"> 
-								<form method="post">	
+									
 									<input name ="cateTitle" type="text" class="form-control" placeholder="카테고리 이름">
 									</div>
 								 
@@ -268,8 +270,10 @@
 							<button type="button" class="btn btn-simple" data-dismiss="modal">Never
 								mind</button>
 							<button type="submit" class="btn btn-success btn-simple">Yes</button>
+							
 						</div>
-						</form>	
+						</form>
+						
 					</div>
 				</div>
 			</div>
