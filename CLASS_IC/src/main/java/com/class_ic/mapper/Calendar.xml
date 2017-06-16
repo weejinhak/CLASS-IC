@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.class_ic.dao.CalendarDao">
+   
+<!-- 일정 입력 -->   
+<insert id="CalendarWrite" parameterType="com.class_ic.vo.CalendarDto">  
+insert into Calendar(calendar_id,calendar_content,calendar_start,calendar_end) values(Calendar_Calendar_id.NEXTVAL,#{calendar_content},#{calendar_start},#{calendar_end})
+</insert>
+   
+<!-- 일정 리스트 출력-->
+<select id="CalendarList" resultType="com.class_ic.vo.CalendarDto" >
+select calendar_id, calendar_content, calendar_start, calendar_end+1 from Calendar
+</select>
+
+   
+<!-- 일정 삭제  -->
+<delete id="CalendarDelete" >
+delete from Calendar where calendar_id=#{calendar_id}
+</delete>   
+    
+
+</mapper>

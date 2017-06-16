@@ -130,6 +130,7 @@
 <script src="${pageContext.request.contextPath}/resources/assets/js/material-dashboard.js"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/demo.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/cal.js"></script>
 <script type="text/javascript">
     $().ready(function() {
         demo.checkFullPageBackgroundImage();

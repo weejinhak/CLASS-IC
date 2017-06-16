@@ -40,7 +40,7 @@ demo = {
          });
 
          $('.datepicker').datetimepicker({
-            format: 'MM/DD/YYYY',
+            format: 'YYYY/MM/DD',
             icons: {
                 time: "fa fa-clock-o",
                 date: "fa fa-calendar",
@@ -809,8 +809,11 @@ demo = {
 
 
     },
-
+    
+// 캘린더 시작 
     initFullCalendar: function(){
+    	  
+    	    
         $calendar = $('#fullCalendar');
 
         today = new Date();
@@ -835,24 +838,24 @@ demo = {
 			selectHelper: true,
             views: {
                 month: { // name of view
-                    titleFormat: 'MMMM YYYY'
+                    titleFormat: 'YYYY MMMM'
                     // other view-specific options here
                 },
                 week: {
-                    titleFormat: " MMMM D YYYY"
+                    titleFormat: " YYYY MMM D "
                 },
                 day: {
-                    titleFormat: 'D MMM, YYYY'
+                    titleFormat: 'YYYY MMMM D'
                 }
             },
 
-			select: function(start, end) {
+			select: function(start, end, event, jsEvent, view) {
 
                 // on select we show the Sweet Alert modal with an input
 				swal({
-    				title: 'Create an Event',
+    				title: '수업내용',
     				html: '<div class="form-group">' +
-                            '<input class="form-control" placeholder="Event Title" id="input-field">' +
+                          /*  '<input class="form-control" placeholder="일정을 등록하세요" id="input-field">' +*/
                         '</div>',
     				showCancelButton: true,
                     confirmButtonClass: 'btn btn-success',
@@ -860,7 +863,7 @@ demo = {
                     buttonsStyling: false
                 }).then(function(result) {
 
-                    var eventData;
+    /*                var eventData;
                     event_title = $('#input-field').val();
 
                     if (event_title) {
@@ -870,7 +873,7 @@ demo = {
     						end: end
     					};
     					$calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
-    				}
+    				}*/
 
     				$calendar.fullCalendar('unselect');
 
@@ -881,67 +884,17 @@ demo = {
 
 
             // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
-            events: [
+            events: 
 				{
-					title: 'All Day Event',
-					start: new Date(y, m, 1),
-                    className: 'event-default'
+					url:'CalendarList.htm'
+						
 				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d-4, 6, 0),
-					allDay: false,
-					className: 'event-rose'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d+3, 6, 0),
-					allDay: false,
-					className: 'event-rose'
-				},
-				{
-					title: 'Meeting',
-					start: new Date(y, m, d-1, 10, 30),
-					allDay: false,
-					className: 'event-green'
-				},
-				{
-					title: 'Lunch',
-					start: new Date(y, m, d+7, 12, 0),
-					end: new Date(y, m, d+7, 14, 0),
-					allDay: false,
-					className: 'event-red'
-				},
-				{
-					title: 'Md-pro Launch',
-					start: new Date(y, m, d-2, 12, 0),
-					allDay: true,
-					className: 'event-azure'
-				},
-				{
-					title: 'Birthday Party',
-					start: new Date(y, m, d+1, 19, 0),
-					end: new Date(y, m, d+1, 22, 30),
-					allDay: false,
-                    className: 'event-azure'
-				},
-				{
-					title: 'Click for Creative Tim',
-					start: new Date(y, m, 21),
-					end: new Date(y, m, 22),
-					url: 'http://www.creative-tim.com/',
-					className: 'event-orange'
-				},
-				{
-					title: 'Click for Google',
-					start: new Date(y, m, 21),
-					end: new Date(y, m, 22),
-					url: 'http://www.creative-tim.com/',
-					className: 'event-orange'
-				}
-			]
+				
+			eventClick: function(calEvent, jsEvent, view){
+				$("#myModalDelete").dialog('open')
+					$('del').val(calEvent.idx)
+			}
+			
 		});
     },
 
