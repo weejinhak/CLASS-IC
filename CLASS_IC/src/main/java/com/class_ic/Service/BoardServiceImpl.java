@@ -52,6 +52,12 @@ public class BoardServiceImpl implements BoardService {
 	
   }
   
+  @Override
+  public List<String> showCategoryList() throws Exception {
+  	
+  	return dao.showCateList();
+  }
+  
   ////
   
   
@@ -81,7 +87,7 @@ public void remove(Integer bno) throws Exception {
 @Override
 public List<BoardVO> listAll() throws Exception {
 	// TODO Auto-generated method stub
-	return null;
+	return dao.listAll();
 }
 
 
@@ -118,6 +124,8 @@ public List<String> getAttach(Integer bno) throws Exception {
 	// TODO Auto-generated method stub
 	return null;
 }
+
+
 
 
 

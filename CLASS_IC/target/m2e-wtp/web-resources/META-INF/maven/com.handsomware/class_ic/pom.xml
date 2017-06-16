@@ -103,6 +103,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
+			
 		</dependency>
 		<!-- log 작업 -->
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->

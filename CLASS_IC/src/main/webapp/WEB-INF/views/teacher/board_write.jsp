@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 .fileDrop {
   width: 25%;
@@ -18,11 +19,37 @@
       	 <!-- 내용물  contents  -->
       	 <div class="col-md-12">
                             <div class="card">
-                                <form method="post" action="boardWriteOk.htm" class="form-horizontal">
-                                    <div class="card-header card-header-text" data-background-color="rose">
-                                        <h4 class="card-title">글 입력하기</h4>
-                                    </div>
+                         <br><br>
+                         
+                                <div class="card-header card-header-text" data-background-color="rose">
+                                 <h4 class="card-title">글 입력하기</h4>
+                                  </div>
+                                  
+                           <form method="post" action="boardWriteOk.htm" class="form-horizontal">
+                           <br><br>
+                           
+                         <div style="display:inline-block;">
+			                            카테고리<select name="cateCode" onchange ="checkSel(this)">
+			                
+			                <c:forEach items="${list}" var="list">
+							<option value="${list}">${list}</option>
+							</c:forEach>
+							</select>
+						 </div>
+						 
+						 <div style="display:inline-block;">
+			                            서브카테고리<select name="subcateCode" onchange ="checkSel(this)">
+							<option value="사과">사과</option>
+							<option value="감">감</option>
+							<option value="배">배</option>
+							</select>
+						 </div>
+
+                            
+                                
+
                                     <div class="card-content">
+                                    
                                         <div class="row">
                                             <label class="col-sm-2 label-on-left">제목 : </label>
                                             <div class="col-sm-10">

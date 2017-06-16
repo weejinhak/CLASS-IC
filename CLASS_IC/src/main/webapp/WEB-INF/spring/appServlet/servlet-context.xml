@@ -47,6 +47,7 @@
 	  <beans:constructor-arg index="0" ref="sqlSessionFactoryBean"/>
 	 </beans:bean>
 	
+	
 	<!-- file 업로드와 파일업로드를 위한 resolver -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

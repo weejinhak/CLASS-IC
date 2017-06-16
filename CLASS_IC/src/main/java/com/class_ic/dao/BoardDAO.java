@@ -22,7 +22,7 @@ public interface BoardDAO {
   
   public void subCategoryCreate(String subcateTitle) throws Exception;
   
-  
+  public List<String> showCateList() throws Exception;
   
   /////////////////////////////////////////////////////////////////////
   

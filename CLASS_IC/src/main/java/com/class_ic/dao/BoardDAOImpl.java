@@ -20,7 +20,7 @@ public class BoardDAOImpl implements BoardDAO {
   @Inject
   private SqlSession session;
 
-  private static String namespace = "com.handsomeware.mappers.boardMapper";
+  private static String namespace = "com.class_ic.dao.BoardDAOImpl";
 
   @Override
   public void create(BoardVO vo) throws Exception {
@@ -46,8 +46,12 @@ public class BoardDAOImpl implements BoardDAO {
 	  session.insert(namespace + ".subCategoryCreate", subcateTitle);
   	
   }
-
   
+  @Override
+  public List<String> showCateList() throws Exception {
+  		
+  	return session.selectList(namespace + ".showCategoryList");
+  }
   
   ///////////////////////////////////////////////////////////////////////
  //아직 작성하지 않은 DAO
@@ -145,6 +149,8 @@ public class BoardDAOImpl implements BoardDAO {
     session.insert(namespace+".replaceAttach", paramMap);
     
   }
+
+
 
 
 

@@ -41,23 +41,26 @@ public class BoardController {
 	  
 	    logger.info(cri.toString());
 
-	    // model.addAttribute("list", service.listCriteria(cri));
-	    model.addAttribute("list", service.listSearchCriteria(cri));
+	    //모든 게시물들 리스트
+	    model.addAttribute("boardList",service.listAll());
+	    //카테고리 리스트
+	    model.addAttribute("cateList", service.showCategoryList());
 	    
+		System.out.println("카테고리 리스트: "+service.showCategoryList());
 
 
-	    
-    
-
-    
     return "teacher.boardList";
   }
   
+  
   @RequestMapping(value = "board_write.htm", method = RequestMethod.GET)
-  public String boardWrite() throws Exception {
+  public String boardWrite(Model model) throws Exception {
+	  
 	  System.out.println("★서블렛 접속 : boardWrite.htm");
-
-    
+	  
+	  model.addAttribute("list", service.showCategoryList());
+	  System.out.println("카테고리 리스트: "+service.showCategoryList());
+	  
     return "teacher.board_write";
   }
   

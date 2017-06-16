@@ -16,7 +16,7 @@ public interface BoardService {
   
   public void addSubCategory(String subcateTitle) throws Exception;
   
-
+  public List<String> showCategoryList() throws Exception;
   
   ////////////////////
   public BoardVO read(Integer bno) throws Exception;
