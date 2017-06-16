@@ -1,6 +1,6 @@
 package com.class_ic.app.dto;
 
-public class logindto {
+public class LoginDTO {
 
 	int count;
 
