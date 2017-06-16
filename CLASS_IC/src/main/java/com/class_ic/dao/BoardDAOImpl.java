@@ -35,17 +35,24 @@ public class BoardDAOImpl implements BoardDAO {
 	  return session.selectOne(namespace + ".read", bno);
     
   }
-
+  
   @Override
-  public void update(BoardVO vo) throws Exception {
-    session.update(namespace + ".update", vo);
+  public void categoryCreate(String cateTitle) throws Exception {
+  	session.insert(namespace + ".categoryCreate", cateTitle);	
   }
 
   @Override
-  public void delete(Integer bno) throws Exception {
-    session.delete(namespace + ".delete", bno);
+  public void subCategoryCreate(String subcateTitle) throws Exception {
+	  session.insert(namespace + ".subCategoryCreate", subcateTitle);
+  	
   }
 
+  
+  
+  ///////////////////////////////////////////////////////////////////////
+ //아직 작성하지 않은 DAO
+  
+  
   @Override
   public List<BoardVO> listAll() throws Exception {
     return session.selectList(namespace + ".listAll");
@@ -138,5 +145,7 @@ public class BoardDAOImpl implements BoardDAO {
     session.insert(namespace+".replaceAttach", paramMap);
     
   }
+
+
 
 }

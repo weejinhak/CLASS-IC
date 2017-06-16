@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.ServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,17 +44,13 @@ public class BoardController {
 	    // model.addAttribute("list", service.listCriteria(cri));
 	    model.addAttribute("list", service.listSearchCriteria(cri));
 	    
-	    PageMaker pageMaker = new PageMaker();
-	    pageMaker.setCri(cri);
 
-	    // pageMaker.setTotalCount(service.listCountCriteria(cri));
-	    pageMaker.setTotalCount(service.listSearchCount(cri));
 
-	    model.addAttribute("pageMaker", pageMaker);
+	    
     
 
     
-    return "student.boardList";
+    return "teacher.boardList";
   }
   
   @RequestMapping(value = "board_write.htm", method = RequestMethod.GET)
@@ -82,6 +79,15 @@ public class BoardController {
 
     return "teacher.boardList";
     
+  }
+  
+  //카테고리 추가
+  @RequestMapping(value = "boardlist.htm", method = RequestMethod.POST)
+  public String AddCategory(String cateTitle) throws Exception {
+	  service.addCategory(cateTitle);
+
+    
+    return "board.boardlist.htm";
   }
 
 }

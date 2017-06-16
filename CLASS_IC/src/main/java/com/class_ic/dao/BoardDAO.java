@@ -10,16 +10,22 @@ import com.class_ic.vo.BoardVO;
 
 public interface BoardDAO {
 
+  
+	
   public void create(BoardVO vo) throws Exception;
-
+  
   public BoardVO read(Integer bno) throws Exception;
-
-  public void update(BoardVO vo) throws Exception;
-
-  public void delete(Integer bno) throws Exception;
 
   public List<BoardVO> listAll() throws Exception;
 
+  public void categoryCreate(String cateTitle) throws Exception;
+  
+  public void subCategoryCreate(String subcateTitle) throws Exception;
+  
+  
+  
+  /////////////////////////////////////////////////////////////////////
+  
   public List<BoardVO> listPage(int page) throws Exception;
 
   public List<BoardVO> listCriteria(Criteria cri) throws Exception;

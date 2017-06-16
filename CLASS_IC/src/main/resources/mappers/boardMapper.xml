@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 
-
+	
   	<select id="read" resultType="com.class_ic.vo.BoardVO">
 		select
 		classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
@@ -32,5 +32,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  order by lectureNo desc, lectureDate desc
  ]]>
 	</select>
+	
+	<insert id="categoryCreate">
+		insert into category (cateCode, cateTitle)
+		values(#{cateCode} , #{cateTitle} );
+	</insert>
+	
+	<insert id="subCategoryCreate">
+		insert into subcategory (subcateCode, cateCode, subcateTitle)
+		values(#{subcateCode} , #{cateCode}, #{subcateTitle});
+	</insert>
  
 </mapper>

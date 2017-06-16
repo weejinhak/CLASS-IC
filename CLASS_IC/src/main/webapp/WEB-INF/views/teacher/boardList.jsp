@@ -225,12 +225,54 @@
                                         </div>
                                         <h3 class="card-title">board number : 4</h3>
                                         <p class="card-description">
-                                           새로운 게시판을 생성하려면 이곳을 눌러 생성 하십시오!
+                                           새로운 게시판을 생성하려면 이곳을 눌러 생성 하십시오!!!
                                         </p>
-                                        <a href="#pablo" class="btn btn-rose btn-round">add board<div class="ripple-container"></div></a>
+                                        
+                                  		<button class="btn btn-rose btn-round"
+										data-toggle="modal" data-target="#noticeModal">+
+										</button>
+                                  		
                                     </div>
                                 </div>
                             </div>  
                     </div>
       	 </div>
+      	 			<!-- notice modal -->
+			<div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-notice">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">
+								<i class="material-icons">clear</i>
+							</button>
+							<h5 class="modal-title" id="myModalLabel">카테고리 추가</h5>
+						</div>
+						<div class="modal-body">
+							<div class="instruction">
+								<div class="row">
+									<div class="col-md-12"> 
+								<form method="post">	
+									<input name ="cateTitle" type="text" class="form-control" placeholder="카테고리 이름">
+									</div>
+								 
+								</div>
+								
+							
+							</div>
+							 
+							 
+						</div>
+						<div class="modal-footer text-center">
+							<button type="button" class="btn btn-simple" data-dismiss="modal">Never
+								mind</button>
+							<button type="submit" class="btn btn-success btn-simple">Yes</button>
+						</div>
+						</form>	
+					</div>
+				</div>
+			</div>
+			<!-- end notice modal -->
       	 </div>
+      	 
