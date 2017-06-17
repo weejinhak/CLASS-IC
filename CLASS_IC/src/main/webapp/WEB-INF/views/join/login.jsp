@@ -26,7 +26,9 @@
    
    [css 테스트 목록]<br/>
    [공톷페이지] <br/><!-- 기수선택 추가 6/17 -->
-    <a href="common/select.htm">theSelect</a> <br/>
+    <a href="common/select.htm">thsSelect</a> <br/>
+    <a href="common/select_teacher.htm">thsSelect_teacher</a> <br/>
+     <a href="common/select_student.htm">thsSelect_student</a> <br/>
    [선생 페이지]<br/>
    <a href="teacher/test1.htm"> attandance_edit</a> <br/>
    <a href="teacher/test2.htm"> attandance</a> <br/>
