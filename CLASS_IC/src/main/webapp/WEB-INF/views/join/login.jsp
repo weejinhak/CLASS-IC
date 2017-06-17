@@ -87,7 +87,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form action="login.htm" method="POST">
+                        
+                		 <form action="login.htm" method="POST">
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="rose">
                                                      <h3 class="card-title">Login</h3>
@@ -97,8 +98,10 @@
                                         Class intelligent Command 
                                         
                                     </p>
+                                    
                                     <div class="card-content">
                              <br>
+                            
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">email</i>
@@ -122,9 +125,10 @@
                                     <div class="footer text-center">
                                        <button class="btn btn-rose" type="submit">Login </button>
                                     </div>
-                                </div>
-                            </form>
+                                </div> 
+                                 </form>                
                         </div>
+                       
                     </div>
                 </div>
             </div>
