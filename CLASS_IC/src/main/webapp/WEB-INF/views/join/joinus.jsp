@@ -9,7 +9,7 @@
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'>
 <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 
-      <link rel="stylesheet" href="../../assets/css/style.css">
+      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/style.css">
 
   
   
@@ -87,7 +87,7 @@
  </div>
 </div>
   
-    <script src="../../assets/js/index.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/index.js"></script>
 
 </body>
 <!--   Core JS Files   -->
