@@ -18,7 +18,7 @@ import com.class_ic.vo.CalendarDTO;
 
 
 @Controller
-@RequestMapping("teacher")
+@RequestMapping("teacher1")
 public class CalendarController {
 	
 	@Autowired
