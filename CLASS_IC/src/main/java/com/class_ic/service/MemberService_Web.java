@@ -40,6 +40,7 @@ public class MemberService_Web {
 
 		mv.addObject("member", member);
 		session.setAttribute("email", member.getEmail());
+		session.setAttribute("name", member.getName());
 		
 		if(result){
 			if(memberAuthority.equals("ROLE_TEACHER")){

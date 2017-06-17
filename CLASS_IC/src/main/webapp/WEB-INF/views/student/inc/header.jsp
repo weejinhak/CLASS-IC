@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 		<nav class="navbar navbar-transparent navbar-absolute">
 			<div class="container-fluid">
 
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-
-
+						<li>[ ${sessionScope.name } ]님 강의실 입장 </li>
 						<!-- QR  -->
 						<li>
 						<a href="#pablo" class="dropdown-toggle"

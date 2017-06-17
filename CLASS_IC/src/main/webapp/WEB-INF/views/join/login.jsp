@@ -133,7 +133,8 @@
                                        <button class="btn btn-rose" type="submit">Login </button>
                                     </div>
                                 </div> 
-                                 </form>                
+                                 </form>     
+                                	<a href="join.htm">회원가입 링크</a>           
                         </div>
                        
                     </div>
