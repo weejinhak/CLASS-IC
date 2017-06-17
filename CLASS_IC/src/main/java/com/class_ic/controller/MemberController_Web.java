@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.class_ic.service.MemberService;
+import com.class_ic.service.MemberService_Web;
 
 @Controller
-public class MemberController {
+public class MemberController_Web {
 	
 	@Autowired
-	private MemberService memberservice;
+	private MemberService_Web memberservice;
 
 	//로그인 폼
 	@RequestMapping(value="login.htm", method=RequestMethod.GET)

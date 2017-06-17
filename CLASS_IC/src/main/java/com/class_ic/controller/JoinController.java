@@ -22,13 +22,13 @@ public class JoinController {
 		return "join/join";
 	}
 	
-	//회원가입(학생)
+	//회원가입
 	@RequestMapping(value="join.htm", method=RequestMethod.POST)
-	public String joinStudent(MemberDTO member){
+	public String join(MemberDTO member){
 		
 		String viewpage = "";
 		try{
-			viewpage = joinservice.joinService(member);
+			viewpage = joinservice.join(member);
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}

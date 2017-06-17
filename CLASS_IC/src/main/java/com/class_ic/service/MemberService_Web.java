@@ -15,7 +15,7 @@ import com.class_ic.dao.MemberDAO;
 import com.class_ic.vo.MemberDTO;
 
 @Service
-public class MemberService {
+public class MemberService_Web {
 	
 	@Autowired
 	private SqlSession sqlsession;

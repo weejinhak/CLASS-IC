@@ -26,7 +26,7 @@ public class JoinService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	//회원가입
-	public String joinService(MemberDTO member) throws Exception{
+	public String join(MemberDTO member) throws Exception{
 		
 		member.setPwd(this.bCryptPasswordEncoder.encode(member.getPwd()));
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
