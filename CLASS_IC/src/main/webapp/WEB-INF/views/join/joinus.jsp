@@ -57,12 +57,12 @@
 <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
    <h2>Sign up as a Student</h2>
  <form action="join.htm" method="POST">
- <input type="text" id="email" placeholder="Email" />
-<input type="text" placeholder="User" />
-<input type="password" placeholder="Password" />
-<input type="password" placeholder="Confirm Password" />
-<input type="text" placeholder="PhoneNumber" />
-<input type="text" placeholder="imgSrc" />
+ <input type="text" id="email" name="email" placeholder="Email" />
+<input type="text" id="name" name="name" placeholder="User" />
+<input type="password" id="pwd" name="pwd" placeholder="Password" />
+<input type="password" id="pwd" name="pwd" placeholder="Confirm Password" />
+<input type="text" id="phone" name="phone" placeholder="PhoneNumber" />
+<input type="text" id="photoSrc" name="photoSrc" placeholder="imgSrc" />
 <input type="hidden" id="authority" name="authority" value="ROLE_STUDENT"/>
 <button class="btn_login" onclick="cambiar_login()">let's go</button>
 </form>
@@ -74,16 +74,16 @@
    <br>
 <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
      <h2>Sign up as a Teacher</h2>
-<form action="join.htm" method="POST">
-<input type="text" placeholder="Email" />
-<input type="text" placeholder="User" />
-<input type="password" placeholder="Password" />
-<input type="password" placeholder="Confirm Password" />
-<input type="text" placeholder="PhoneNumber" />
-<input type="text" placeholder="imgSrc" />
+
+ <input type="text" id="email" name="email" placeholder="Email" />
+<input type="text" id="name" name="name" placeholder="User" />
+<input type="password" id="pwd" name="pwd" placeholder="Password" />
+<input type="password" id="pwd" name="pwd" placeholder="Confirm Password" />
+<input type="text" id="phone" name="phone" placeholder="PhoneNumber" />
+<input type="text" id="photoSrc" name="photoSrc" placeholder="imgSrc" />
 <input type="hidden" id="authority" name="authority" value="ROLE_TEACHER"/>
 <button class="btn_sign_up" onclick="cambiar_sign_up()">Let's go</button>
-</form>
+
   </div>
 
     </div>
@@ -92,7 +92,7 @@
  </div>
 </div>
   
-    <script src="${pageContext.request.contextPath}/resources/assets/js/index.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/join.js"></script>
 
 </body>
 <!--   Core JS Files   -->
