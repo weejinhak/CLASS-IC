@@ -29,7 +29,7 @@ public class MemberController_Web {
 	
 	//로그인 (선생/학생) //@RequestParam("password") String rawPassword, Principal principal, parameter 추가 예정
 	@RequestMapping(value="login.htm", method=RequestMethod.POST)
-public ModelAndView login(HttpSession session,  @RequestParam("password") String rawPassword, Principal principal,ModelAndView mv){
+public ModelAndView login(HttpSession session,  @RequestParam("pwd") String rawPassword, Principal principal,ModelAndView mv){
 		System.out.println("로그인 POST는 탔음");
 		ModelAndView MnV = memberservice.loginService(session, rawPassword, principal, mv);
 		

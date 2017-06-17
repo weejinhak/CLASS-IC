@@ -24,7 +24,7 @@ public class MemberService_Web {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	//@RequestParam("password") String rawPassword, Principal principal (넘기는 parameter security 적용 후 변경
-	public ModelAndView loginService(HttpSession session, @RequestParam("password") String rawPassword, Principal principal, ModelAndView mv){
+	public ModelAndView loginService(HttpSession session, @RequestParam("pwd") String rawPassword, Principal principal, ModelAndView mv){
 		
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		MemberDTO member = member_dao.login(principal.getName());

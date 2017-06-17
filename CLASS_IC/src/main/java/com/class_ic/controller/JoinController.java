@@ -25,7 +25,7 @@ public class JoinController {
 	//회원가입
 	@RequestMapping(value="join.htm", method=RequestMethod.POST)
 	public String join(MemberDTO member){
-		
+		System.out.println("회원가입 POST controller");
 		String viewpage = "";
 		try{
 			viewpage = joinservice.join(member);

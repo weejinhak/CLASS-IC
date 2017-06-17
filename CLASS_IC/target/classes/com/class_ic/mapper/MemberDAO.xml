@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.class_ic.dao.MemberDAO">
 
 <insert id="join" parameterType="com.class_ic.vo.MemberDTO">
-	insert into member (email,name,pass,phone,photoSrc) values (#{email}, #{name}, #{pass}, #{phone}, #{photoSrc})
+	insert into member (email,name,pwd,phone,photoSrc) values (#{email}, #{name}, #{pwd}, #{phone}, #{photoSrc})
 </insert>
 
 <insert id="insertAuthority" parameterType="com.class_ic.vo.MemberDTO">

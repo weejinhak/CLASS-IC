@@ -60,7 +60,6 @@
  <input type="text" id="email" name="email" placeholder="Email" />
 <input type="text" id="name" name="name" placeholder="User" />
 <input type="password" id="pwd" name="pwd" placeholder="Password" />
-<input type="password" id="pwd" name="pwd" placeholder="Confirm Password" />
 <input type="text" id="phone" name="phone" placeholder="PhoneNumber" />
 <input type="text" id="photoSrc" name="photoSrc" placeholder="imgSrc" />
 <input type="hidden" id="authority" name="authority" value="ROLE_STUDENT"/>
@@ -78,7 +77,7 @@
  <input type="text" id="email" name="email" placeholder="Email" />
 <input type="text" id="name" name="name" placeholder="User" />
 <input type="password" id="pwd" name="pwd" placeholder="Password" />
-<input type="password" id="pwd" name="pwd" placeholder="Confirm Password" />
+<input type="password" id="pwdconfirm" name="pwdconfirm" placeholder="Confirm Password" />
 <input type="text" id="phone" name="phone" placeholder="PhoneNumber" />
 <input type="text" id="photoSrc" name="photoSrc" placeholder="imgSrc" />
 <input type="hidden" id="authority" name="authority" value="ROLE_TEACHER"/>
