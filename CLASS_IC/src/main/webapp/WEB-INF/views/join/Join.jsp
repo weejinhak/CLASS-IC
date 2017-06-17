@@ -1,16 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE>
-<html>
-<head>
+<!DOCTYPE html>
+<html >
 <head>
   <meta charset="UTF-8">
-  <title>CLASS-IC JOIN</title>
-  
-<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'>
-<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-
-      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/style.css">
+  <title>Login & Sign Up Form Concept</title>
+ 
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'>
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/style.css">
 
   
   
@@ -57,16 +55,13 @@
  <div class="cont_form_login">
 <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
    <h2>Sign up as a Student</h2>
- <form action="join.htm" method="POST">
  <input type="text" placeholder="Email" />
 <input type="text" placeholder="User" />
 <input type="password" placeholder="Password" />
 <input type="password" placeholder="Confirm Password" />
 <input type="text" placeholder="PhoneNumber" />
-<input type="text" placeholder="photoSrc" />
-<input type="hidden" id="authority" name="authority" value="ROLE_STUDENT" />
+<input type="text" placeholder="imgSrc" />
 <button class="btn_login" onclick="cambiar_login()">let's go</button>
-</form>
   </div>
   
    <div class="cont_form_sign_up">
@@ -75,16 +70,14 @@
    <br>
 <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
      <h2>Sign up as a Teacher</h2>
-<form action="join.htm" method="POST">
 <input type="text" placeholder="Email" />
 <input type="text" placeholder="User" />
 <input type="password" placeholder="Password" />
 <input type="password" placeholder="Confirm Password" />
 <input type="text" placeholder="PhoneNumber" />
-<input type="text" placeholder="photoSrc" />
-<input type="hidden" id="authority" name="authority" value="ROLE_TEACHER" />
+<input type="text" placeholder="imgSrc" />
 <button class="btn_sign_up" onclick="cambiar_sign_up()">Let's go</button>
-</form>
+
   </div>
 
     </div>
