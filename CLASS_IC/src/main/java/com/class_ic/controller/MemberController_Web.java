@@ -1,3 +1,10 @@
+/*
+* @FileName	:	MemberController_Web.java
+*
+* @Project		:	CLASS-IC
+* @Date			:	2017.06.15
+* @Author		:	이현정
+*/
 package com.class_ic.controller;
 
 import java.security.Principal;
@@ -22,8 +29,7 @@ public class MemberController_Web {
 	//로그인 폼
 	@RequestMapping("login.htm")
 	public String login(){
-		System.out.println("로그인 view form만 탔어");
-		
+
 		return "join/login";
 	}
 	
@@ -31,8 +37,6 @@ public class MemberController_Web {
 	@RequestMapping("loginOk.htm")
 	public ModelAndView login(HttpSession session,  String email, @RequestParam("pwd") String rawPassword, Principal principal,ModelAndView mv){
 		
-		System.out.println("로그인 POST는 탔음");
-		System.out.println("값 넘겼나" +email +"/" + rawPassword);
 		ModelAndView MnV = memberservice.loginService(session, email, rawPassword, mv);
 		
 		return MnV;

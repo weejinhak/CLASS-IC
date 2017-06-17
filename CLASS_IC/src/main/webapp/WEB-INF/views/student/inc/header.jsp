@@ -179,12 +179,12 @@
 										</div>
 									<li><br>
 										<button class="btn">
-											ë´ íìì ë³´ ìì 
+											내 회원정보 수정
 											<div class="ripple-container"></div>
 										</button></li>
 									<li><br>
 										<button class="btn">
-											ë¡ê·¸ìì
+											로그아웃
 											<div class="ripple-container"></div>
 										</button></li>
 					 

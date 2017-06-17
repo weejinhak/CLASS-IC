@@ -1,3 +1,10 @@
+/*
+* @FileName	:	JoinController.java
+*
+* @Project		:	CLASS-IC
+* @Date			:	2017.06.15
+* @Author		:	이현정
+*/
 package com.class_ic.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +25,14 @@ public class JoinController {
 	//회원가입 폼
 	@RequestMapping(value="join.htm", method=RequestMethod.GET)
 	public String join(){
-		System.out.println("join view 페이지 요청 controller");
+		
 		return "join/joinus";
 	}
 	
 	//회원가입
 	@RequestMapping(value="join.htm", method=RequestMethod.POST)
 	public String join(MemberDTO member){
-		System.out.println("회원가입 POST controller");
+
 		String viewpage = "";
 		try{
 			viewpage = joinservice.join(member);
@@ -33,9 +40,7 @@ public class JoinController {
 			System.out.println(e.getMessage());
 		}
 		return viewpage; 
-
 	}
-	
 	
 
 }

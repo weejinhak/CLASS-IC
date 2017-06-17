@@ -1,6 +1,11 @@
+/*
+* @FileName	:	MemberService_Web.java
+*
+* @Project		:	CLASS-IC
+* @Date			:	2017.06.17
+* @Author		:	이현정
+*/
 package com.class_ic.service;
-
-import java.security.Principal;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,7 +31,6 @@ public class MemberService_Web {
 	//@RequestParam("password") String rawPassword, Principal principal (넘기는 parameter security 적용 후 변경
 	public ModelAndView loginService(HttpSession session,String email, @RequestParam("pwd") String rawPassword, ModelAndView mv){
 		
-		System.out.println("서비스에 넘겼다");
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		MemberDTO member = member_dao.login(email);
 		String encodedPassword = member.getPwd();
@@ -39,10 +43,11 @@ public class MemberService_Web {
 		
 		if(result){
 			if(memberAuthority.equals("ROLE_TEACHER")){
-				//role confirm dao 타서 role_name을 갖고 와서 그거에 따라서 mv setviewname 보내본다
 				mv.setViewName("teacher.main");
+				System.out.println("강사 로그인 성공");
 			}else{
 				mv.setViewName("student.main");
+				System.out.println("학생 로그인 성공");
 			}
 			System.out.println("비밀번호 일치");
 		}else{
