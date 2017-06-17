@@ -25,7 +25,7 @@ public class IndexController {
 		//return "redirect:index";
 		//return "redirect:join/login";
 		
-		return "join/join";
+		return "join/welcom";
 	}
 	
 	@RequestMapping("main.htm")
