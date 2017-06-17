@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:security="http://www.springframework.org/schema/security"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                     http://www.springframework.org/schema/beans/spring-beans.xsd
+  					 http://www.springframework.org/schema/security 
+  					 http://www.springframework.org/schema/security/spring-security.xsd">
+
+  		
+<!--로그인  -->	
+<security:http use-expressions="true">
+<security:csrf disabled="true"/>
+<security:form-login 
+	login-processing-url="/login.htm"
+	username-parameter="email"
+	password-parameter="pwd"
+	authentication-failure-url="/login.htm"/>
+	
+<!-- 접근 권한 처리 -->
+<security:logout logout-success-url="/logout.htm"/>
+<security:logout/>
+<!-- 접권권한처리 할때, 학생과 선생 권한 처리 부분 (나중에 주석 풀기)
+<security:intercept-url pattern="/teacher*.htm" access="hasRole('ROLE_TEACHER')"/>
+<security:intercept-url pattern="/student*.htm" access="hasRole('ROLE_STUDENT')"/> 
+-->
+</security:http>
+
+
+<security:authentication-manager>
+
+<security:authentication-provider>
+	<security:password-encoder ref="bCryptPasswordEncoder" />
+	<security:jdbc-user-service data-source-ref="dataSource"
+		users-by-username-query="select member_email AS USERID, member_password AS PASSWORD, 1 enabled from member where member_email=?"
+		authorities-by-username-query="SELECT m.email as username, a.authority as ROLE_NAME FROM member m JOIN classicauthority a ON m.email = a.email WHERE m.email=?" />
+		
+</security:authentication-provider>
+</security:authentication-manager>
+</beans>

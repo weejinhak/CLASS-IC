@@ -8,7 +8,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into member (email,name,pass,phone,photoSrc) values (#{email}, #{name}, #{pass}, #{phone}, #{photoSrc})
 </insert>
 
+<insert id="insertAuthority" parameterType="com.class_ic.vo.MemberDTO">
+	insert into classicauthority (email, authority) values(#{email}, #{authority})
+</insert>
+
 <select id="login" resultType="com.class_ic.vo.MemberDTO">
 	select * from member where email=#{email} and pwd=#{pwd}
+</select>
+
+<select id="confirmAuthority" resultType="String">
+SELECT m.email as email, a.authority as authority 
+FROM member m JOIN classicauthority a 
+ON m.email = a.email 
+WHERE m.email=#{email}
 </select>
 </mapper>

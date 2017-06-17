@@ -14,7 +14,7 @@ import com.class_ic.vo.MemberDTO;
 
 public interface MemberDAO {
 	
-	public void join(MemberDTO member);
+	public int join(MemberDTO member);
 	
 	public int modify(MemberDTO member);
 	
@@ -24,12 +24,12 @@ public interface MemberDAO {
 	
 	public List<MemberDTO> selectAll(MemberDTO member);
 	
-	public MemberDTO login(MemberDTO member);	
+	public MemberDTO login(String email);	
 	
 	public int insertAuthority(MemberDTO member);
 	
-	public MemberDTO confirmAuthority(MemberDTO member);
-	
+	public String confirmAuthority(String email);
+
 	
 
 }
