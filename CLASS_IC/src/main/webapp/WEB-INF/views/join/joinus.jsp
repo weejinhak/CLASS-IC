@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html >
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Login & Sign Up Form Concept</title>
- 
+  
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'>
-  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/style.css">
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+      <link rel="stylesheet" href="../../assets/css/style.css">
 
   
   
@@ -55,7 +56,7 @@
  <div class="cont_form_login">
 <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
    <h2>Sign up as a Student</h2>
- <input type="text" placeholder="Email" />
+ <input type="text" id="email" placeholder="Email" />
 <input type="text" placeholder="User" />
 <input type="password" placeholder="Password" />
 <input type="password" placeholder="Confirm Password" />
@@ -86,7 +87,7 @@
  </div>
 </div>
   
-    <script src="${pageContext.request.contextPath}/resources/assets/js/index.js"></script>
+    <script src="../../assets/js/index.js"></script>
 
 </body>
 <!--   Core JS Files   -->
