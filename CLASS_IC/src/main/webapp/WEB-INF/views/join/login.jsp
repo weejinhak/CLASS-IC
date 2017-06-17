@@ -87,7 +87,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="#" action="#">
+                            <form action="${pageContext.request.contextPath}/login.htm" method="POST">
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="rose">
                                                      <h3 class="card-title">Login</h3>

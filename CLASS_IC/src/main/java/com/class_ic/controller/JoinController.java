@@ -18,7 +18,7 @@ public class JoinController {
 	//회원가입 폼
 	@RequestMapping(value="join.htm", method=RequestMethod.GET)
 	public String join(){
-		
+		System.out.println("join view 페이지 요청 controller");
 		return "join/join";
 	}
 	
