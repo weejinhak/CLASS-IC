@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service.JoinService;
@@ -31,7 +32,7 @@ public class JoinController {
 	
 	//회원가입
 	@RequestMapping(value="join.htm", method=RequestMethod.POST)
-	public String join(MemberDTO member){
+	public @ResponseBody String join(MemberDTO member){
 
 		String viewpage = "";
 		try{
