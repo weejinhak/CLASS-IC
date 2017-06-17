@@ -14,7 +14,6 @@ public class MainController_Student {
 		return "student.main";
 	}
 	
-	/////////////////////////////////////////////////////////////////////////////
 	//student page test용
 		@RequestMapping("test1.htm")
 		public String studentTest1(){
