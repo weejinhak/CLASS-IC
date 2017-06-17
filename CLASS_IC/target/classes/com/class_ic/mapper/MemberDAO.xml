@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </insert>
 
 <select id="login" resultType="com.class_ic.vo.MemberDTO">
-	select * from member where email=#{email} and pwd=#{pwd}
+	select * from member where email=#{email}
 </select>
 
 <select id="confirmAuthority" resultType="String">

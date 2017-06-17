@@ -29,11 +29,11 @@ public class MemberController_Web {
 	
 	//로그인 처리
 	@RequestMapping("loginOk.htm")
-	public ModelAndView login(HttpSession session,  @RequestParam("pwd") String rawPassword, Principal principal,ModelAndView mv){
+	public ModelAndView login(HttpSession session,  String email, @RequestParam("pwd") String rawPassword, Principal principal,ModelAndView mv){
 		
 		System.out.println("로그인 POST는 탔음");
-		
-		ModelAndView MnV = memberservice.loginService(session, rawPassword, principal, mv);
+		System.out.println("값 넘겼나" +email +"/" + rawPassword);
+		ModelAndView MnV = memberservice.loginService(session, email, rawPassword, mv);
 		
 		return MnV;
 	}

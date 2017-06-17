@@ -24,16 +24,18 @@ public class MemberService_Web {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	//@RequestParam("password") String rawPassword, Principal principal (넘기는 parameter security 적용 후 변경
-	public ModelAndView loginService(HttpSession session, @RequestParam("pwd") String rawPassword, Principal principal, ModelAndView mv){
+	public ModelAndView loginService(HttpSession session,String email, @RequestParam("pwd") String rawPassword, ModelAndView mv){
 		
+		System.out.println("서비스에 넘겼다");
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
-		MemberDTO member = member_dao.login(principal.getName());
+		MemberDTO member = member_dao.login(email);
 		String encodedPassword = member.getPwd();
-		String memberAuthority = member_dao.confirmAuthority(principal.getName());
+		String memberAuthority = member_dao.confirmAuthority(email);
 		
+		boolean result = bCryptPasswordEncoder.matches(rawPassword, encodedPassword);
+
 		mv.addObject("member", member);
 		session.setAttribute("email", member.getEmail());
-		boolean result = bCryptPasswordEncoder.matches(rawPassword, encodedPassword);
 		
 		if(result){
 			if(memberAuthority.equals("ROLE_TEACHER")){
