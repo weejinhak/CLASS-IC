@@ -144,20 +144,56 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>4.0.4.RELEASE</version>
 		</dependency>
-		<!-- validation -->
+		 <!-- validation -->
+      <dependency>
+      	<groupId>javax.validation</groupId>
+      	<artifactId>validation-api</artifactId>
+      	<version>1.1.0.Final</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.hibernate</groupId>
+      	<artifactId>hibernate-validator</artifactId>
+      	<version>5.1.1.Final</version>
+      </dependency>
+      <!--  이메일 -->
+     <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.2.5.RELEASE</version>
+		</dependency>
+	<!-- schedule -->
 		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.1.0.Final</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.0.4.RELEASE</version>
+		</dependency>
+      <dependency>
+      	<groupId>javax.mail</groupId>
+      	<artifactId>mail</artifactId>
+      	<version>1.4.7</version>
+      </dependency>
+		<!-- jackson -->
+    	<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-core</artifactId>
+    		<version>2.7.3</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.1.1.Final</version>
+    		<groupId>org.codehaus.jackson</groupId>
+    		<artifactId>jackson-core-asl</artifactId>
+    		<version>1.9.13</version>
 		</dependency>
-
+		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-databind</artifactId>
+    		<version>2.7.3</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.codehaus.jackson</groupId>
+    		<artifactId>jackson-mapper-asl</artifactId>
+    		<version>1.9.13</version>
+    		</dependency>
 		<!-- Json dependency -->
-
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -173,10 +209,6 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.4.1</version>
 		</dependency>
-
-		<!-- Json dependency -->
-
-
 	</dependencies>
 	<build>
 		<plugins>
