@@ -17,7 +17,7 @@
 	password-parameter="pwd"
 	authentication-failure-url="/login.htm"/>	
 
-<security:logout logout-success-url="/logout.htm"/>
+<security:logout logout-url="/logout.htm"  logout-success-url="/index.htm" invalidate-session="true" />
 
 </security:http>
 

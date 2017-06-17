@@ -181,10 +181,13 @@
 											<div class="ripple-container"></div>
 										</button></li>
 									<li><br>
+										<a href="logout.htm">
 										<button class="btn">
 											로그아웃
 											<div class="ripple-container"></div>
-										</button></li>
+										</button>
+										</a>
+										</li>
 					 
 										
 							</ul></li>
