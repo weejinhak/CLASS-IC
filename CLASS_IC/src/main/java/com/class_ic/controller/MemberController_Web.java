@@ -20,7 +20,7 @@ public class MemberController_Web {
 	private MemberService_Web memberservice;
 
 	//로그인 폼
-	@RequestMapping(value="login.htm", method=RequestMethod.GET)
+	@RequestMapping("login.htm")
 	public String login(){
 		System.out.println("로그인 view form만 탔어");
 		
@@ -28,7 +28,7 @@ public class MemberController_Web {
 	}
 	
 	//로그인 처리
-	@RequestMapping(value="login.htm", method=RequestMethod.POST)
+	@RequestMapping("loginOk.htm")
 	public ModelAndView login(HttpSession session,  @RequestParam("pwd") String rawPassword, Principal principal,ModelAndView mv){
 		
 		System.out.println("로그인 POST는 탔음");
