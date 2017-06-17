@@ -1,3 +1,11 @@
+<%--
+@Project : CLASS-IC
+@File name : student_memo.jsp
+@Author : 최은혜
+@Data : 2017.06.15
+@Desc : 
+--%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link
@@ -34,20 +42,11 @@
 
 								<ul id="list">
 									<li class="in">Apple pie</li>
-									<li class="in">Pumpkin pie</li>
-									<li class="in">Banana-creme pie</li>
-									<li class="in">Peach-blackberry cobbler</li>
-									<li class="in">Chocolate-strawberry torte</li>
-									<li class="in">Chocolate-zucchini cake</li>
-									<li class="in">Anything involving chocolate and mint</li>
-									<li class="in">Red-velvet cake</li>
-									<li class="in">Anything involving fruits that aren't
-										cherries</li>
+									
 									<span class="empty-item">no results</span>
 								</ul>
 							</section>
 						</div>
-
 
 						<div>
 							<section class="list-form">
