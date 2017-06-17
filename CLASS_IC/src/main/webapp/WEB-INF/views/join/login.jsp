@@ -105,7 +105,7 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email address</label>
-                                                <input type="email" class="form-control">
+                                                <input type="email" class="form-control"  id="email" name="email">
                                             </div>
                                         </div>
                                         <div class="input-group">
@@ -114,7 +114,7 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Password</label>
-                                                <input type="password" class="form-control">
+                                                <input type="password" class="form-control" id="pwd" name="pwd">
                                             </div>
                                         </div>
                                         <br>

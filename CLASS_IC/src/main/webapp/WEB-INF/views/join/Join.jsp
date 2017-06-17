@@ -56,13 +56,16 @@
  <div class="cont_form_login">
 <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
    <h2>Sign up as a Student</h2>
+  <form action="" method="POST">
  <input type="text" placeholder="Email" />
 <input type="text" placeholder="User" />
 <input type="password" placeholder="Password" />
 <input type="password" placeholder="Confirm Password" />
 <input type="text" placeholder="PhoneNumber" />
 <input type="text" placeholder="imgSrc" />
+<input type="hidden" id="authority" name="authority" value="ROLE_STUDENT" />
 <button class="btn_login" onclick="cambiar_login()">let's go</button>
+</form>
   </div>
   
    <div class="cont_form_sign_up">
@@ -71,14 +74,16 @@
    <br>
 <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
      <h2>Sign up as a Teacher</h2>
+<form action="" method="POST">
 <input type="text" placeholder="Email" />
 <input type="text" placeholder="User" />
 <input type="password" placeholder="Password" />
 <input type="password" placeholder="Confirm Password" />
 <input type="text" placeholder="PhoneNumber" />
 <input type="text" placeholder="imgSrc" />
+<input type="hidden" id="authority" name="authority" value="ROLE_TEACHER" />
 <button class="btn_sign_up" onclick="cambiar_sign_up()">Let's go</button>
-
+</form>
   </div>
 
     </div>
