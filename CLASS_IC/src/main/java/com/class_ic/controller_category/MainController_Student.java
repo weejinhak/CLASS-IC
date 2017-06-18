@@ -14,7 +14,6 @@ public class MainController_Student {
 		return "student.main";
 	}
 	
-	/////////////////////////////////////////////////////////////////////////////
 	//student page test용
 		@RequestMapping("test1.htm")
 		public String studentTest1(){
@@ -89,7 +88,7 @@ public class MainController_Student {
 		@RequestMapping("test15.htm")
 		public String studentTest15(){
 			System.out.println("student main 컨트롤 탐, test.htm ");
-			return "student.student_memo";
+			return "memo.memo"; //2017.06.16  최은혜
 		}
 		@RequestMapping("test16.htm")
 		public String studentTest16(){
