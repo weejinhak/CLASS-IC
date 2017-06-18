@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class CalendarDTO {
 	private int calNo;
-	private int classCode;
+	private String classCode;
 	private Date calStart;
 	private Date calEnd;
 	private String calTitle;
@@ -23,11 +23,11 @@ public class CalendarDTO {
 		this.calNo = calNo;
 	}
 
-	public int getClassCode() {
+	public String getClassCode() {
 		return classCode;
 	}
 
-	public void setClassCode(int classCode) {
+	public void setClassCode(String classCode) {
 		this.classCode = classCode;
 	}
 

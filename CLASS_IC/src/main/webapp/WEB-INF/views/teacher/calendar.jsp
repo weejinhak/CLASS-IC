@@ -89,6 +89,15 @@
 								 
 								</div>
 								
+										<div class="row">
+									<div class="col-md-12">
+									 
+										
+									 <input type="hidden" class="form-control" placeholder="교실코드" id="classCode" name="classCode" value="1" >
+									</div>
+								 
+								</div>
+								
 							</div>
 							 
 							 

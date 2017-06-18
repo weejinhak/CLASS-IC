@@ -3,7 +3,6 @@ package com.class_ic.controller_category;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,14 +10,16 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.class_ic.dao.CalendarDAO;
 import com.class_ic.vo.CalendarDTO;
+import com.class_ic.vo.CalendarDTO2;
 
 
 @Controller
-@RequestMapping("teacher1")
+@RequestMapping(value="teacher", method=RequestMethod.POST)
 public class CalendarController {
 	
 	@Autowired
@@ -40,9 +41,9 @@ public class CalendarController {
 		System.out.println(calStart);
 		System.out.println(calEnd);
 		
-		String calTitle = request.getParameter("calTilte");
+		String calTitle = request.getParameter("calTitle");
 		String calContent = request.getParameter("calContent");
-
+		String classCode = request.getParameter("classCode");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
 
 		java.util.Date startdate;
@@ -58,6 +59,7 @@ public class CalendarController {
 			calendarDto.setCalEnd(end);
 			calendarDto.setCalTitle(calTitle);
 			calendarDto.setCalContent(calContent);
+			calendarDto.setClassCode(classCode);
 
 			System.out.println("캘린더 컨트롤러 일정입력 get ");
 
@@ -73,19 +75,29 @@ public class CalendarController {
 	/*
 	@description : DB에 저장된 일정들을 캘린더에 출력
 	*/
-	@RequestMapping("CalendarList.htm")
+	
+	@RequestMapping(value="CalendarList.htm", method=RequestMethod.GET)
 	@ResponseBody
-	public String CalendarIList(HttpServletRequest request){
+	public CalendarDTO2 CalendarIList(HttpServletRequest request){
+	  
+		System.out.println("여기까지들어옴?");
+		
 		CalendarDAO dao = sqlSession.getMapper(CalendarDAO.class);
-		CalendarDTO dto = new CalendarDTO();
 		
-		ArrayList<CalendarDTO> calendarList= null;
-		
-		for(int i=0; i<CalendarList.size(); i++){
-			dto = CalendarList.get(i);
-		}
-		
-		return"";
+	    
+	    CalendarDTO dto = new CalendarDTO();
+	    
+	    dto.setCalNo(1);
+	    
+	    CalendarDTO dto1= dao.CalendarList();
+	    
+	    CalendarDTO2 dto2 = new CalendarDTO2();
+	    
+	    dto2.setTitle(dto1.getCalTitle());// 문제
+	    dto2.setStart(dto1.getCalStart());
+	    dto2.setEnd(dto1.getCalEnd());
+	    
+		return dto2;
 	}
 	
 }

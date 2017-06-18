@@ -885,16 +885,24 @@ demo = {
 
             // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
             events: 
-				{
-					url:'CalendarList.htm'
-						
-				},
+            	{
+                url : 'CalendarList.htm',
+                type : "POST",
+                dataType : "json", 
+                success : function(data) {
+                    title = data.title;
+                    start = data.start;
+                    end = data.end;
+                   
+                         
+                }
+                }
 				
-			eventClick: function(calEvent, jsEvent, view){
+		/*	eventClick: function(calEvent, jsEvent, view){
 				$("#myModalDelete").dialog('open')
 					$('del').val(calEvent.idx)
 			}
-			
+			*/
 		});
     },
 
