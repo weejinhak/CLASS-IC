@@ -37,7 +37,7 @@
 				<div class="modal-dialog modal-notice">
 				
 				
-			<form action="CalendarInsertOk.htm" method="post">			
+			<form action="CalendarInsertOk.htm" method="POST">			
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">

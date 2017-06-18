@@ -863,6 +863,18 @@ demo = {
                     buttonsStyling: false
                 }).then(function(result) {
 
+    /*                var eventData;
+                    event_title = $('#input-field').val();
+
+                    if (event_title) {
+    					eventData = {
+    						title: event_title,
+    						start: start,
+    						end: end
+    					};
+    					$calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
+    				}*/
+
     				$calendar.fullCalendar('unselect');
 
                 });
@@ -872,29 +884,29 @@ demo = {
 
 
             // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
-            events: function(){
-              $.ajax({
-            	
+            events: 
+            
+            	{
                 url : 'CalendarList.htm',
                 type : "POST",
                 datatype:"json",
                 success : function(data) {
-                	var events=[];
-                    if(data !='empty'){
-                     $.each(data, function(key, val) {
-                    	 
-                           title = val.title,
-                           start = val.start,
-                           end = val.end,
-                           idx = val.idx
-                           
-                        });
-                    }
- 
-                }
-            	
-              });
-            }
+                    title = [];
+                    start = [];
+                    end =[];
+                    idx = [];
+                     $.each(data, function(index, jsonobj) {
+                           title = jsonobj.title;
+                           start = jsonobj.start;
+                           end = jsonobj.end;
+                           idx=jsonobj.idx;  
+                         });
+                     
+                   console.log(idx);
+                   console.log(title);
+                   console.log(start);
+                         
+                }}
 		});
     },
 
@@ -918,4 +930,3 @@ demo = {
 	}
 
 }
-
