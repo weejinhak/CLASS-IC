@@ -19,7 +19,13 @@
 	
 	<context:component-scan base-package="com.class_ic.controller, com.class_ic.controller_category" />
 	<context:component-scan base-package="com.class_ic.app.controller"/>
+<<<<<<< HEAD
 	<context:component-scan base-package="com.class_ic.service, com.class_ic.service_category"/>
+=======
+
+	
+	
+>>>>>>> refs/heads/sohyeon
 	<!--  Tiles 설정하기 -->
 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 	 <beans:property name="definitions">
@@ -51,9 +57,13 @@
 	  <beans:constructor-arg index="0" ref="sqlSessionFactoryBean"/>
 	 </beans:bean>
 	
+<<<<<<< HEAD
 	
    <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
     <beans:property name="order" value="0"/>
    </beans:bean>
 	  
+=======
+
+>>>>>>> refs/heads/sohyeon
 </beans:beans>
