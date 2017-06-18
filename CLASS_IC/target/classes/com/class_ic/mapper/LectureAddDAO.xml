@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<select id="getlecture" resultType="com.class_ic.vo.LectureDTO">
-		SELECT * FROM MEMBER WHERE userid=#{userid}
+		SELECT * FROM class WHERE email=#{email}
 	</select>
 
 

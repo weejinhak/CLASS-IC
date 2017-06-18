@@ -7,6 +7,8 @@
 */
 package com.class_ic.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,5 +67,20 @@ public class LectureCodeAddService {
 		}
 		return viewpage;
 	}
+	
+	
+	/*
+	@description : email 맞는 기수 Select 하는 service
+	*/
+	public List<LectureDTO> lecturelistselect(String email) throws Exception {
+			
+		LectureAddDAO lectureDao = sqlsession.getMapper(LectureAddDAO.class);
+		List<LectureDTO> lecturelist= lectureDao.getlecture(email);
+		
+		return lecturelist;
+		
+	}
 
+		
+		
 }

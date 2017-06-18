@@ -15,22 +15,30 @@
 
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
+	/* 페이지 로드시 QR 코드 가져옴. */
 	$(document).ready(function() {
-   			console.log("페이지가 시작");
-   			   			 
-   			 var url ="createCode.htm";
-/* 			 var content = '151';
- */			 
-			$("#img").attr("src", url + "?content=" + 151); 
-		
+   			console.log("페이지가 시작1");
+   			var url ="createCode.htm";			 
+			$("#img").attr("src", url + "?content=" + 151); 	
 	});
 	
+	/* 페이지 로드시 Session- email에 맞는 기수를 가져오고 그 수만큼 반복.   */
+	$(document).ready(function() {
+		  console.log("페이지가 시작2");
+
+			$.ajax({
+				  type : 'POST',
+				  url : 'lecturecodeSelect.htm',
+				  dataType : 'html',
+				  data: {
+				      email : '111'
+				  },
+				  success : function(data){
+						$('#lecturelist').html(data);
+				  }
+			});
+	});
 </script>
-
-
-
-
-
 
 </head>
 
@@ -76,44 +84,7 @@
 									</div>
 								</div>
 								
-								<div class="col-md-4">
-									<div class="card card-chart" data-count="3">
-										<div class="card-header" data-background-color="blue"
-											data-header-animation="true" >
-											<div align="center">
-											<h3 class="card-title" >
-												<br>KOSTA 151 기
-											</h3></div>
-										</div>
-										<div class="card-content">
-											<div class="card-actions">
-												<button type="button"
-													class="btn btn-danger btn-simple fix-broken-card">
-													<i class="material-icons">build</i> Fix Header!
-												</button>
-												<button type="button" class="btn btn-info btn-simple"
-													rel="tooltip" data-placement="bottom" title=""
-													data-original-title="go!" >
-													<i class="material-icons">input</i>
-												</button>
-											
-											</div>											
-											<br>
-											<p class="category">
-												환영 합니다.
-											</p>
-										</div>
-										<div class="card-footer">
-											<div class="stats">
-												<i class="material-icons">access_time</i> campaign sent 2 days
-												ago
-												<img id="img" style="display: none" onload="this.style.display='block'" />
-											</div>
-										</div>
-									</div>
-								</div>
-					
-								
+								<div id="lecturelist"></div>
 								
 								
 							</div>
