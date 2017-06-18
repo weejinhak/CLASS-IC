@@ -3,6 +3,7 @@ package com.class_ic.controller_category;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.class_ic.dao.CalendarDAO;
 import com.class_ic.vo.CalendarDTO;
 import com.class_ic.vo.CalendarDTO2;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 
 @Controller
@@ -44,6 +48,7 @@ public class CalendarController {
 		String calTitle = request.getParameter("calTitle");
 		String calContent = request.getParameter("calContent");
 		String classCode = request.getParameter("classCode");
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
 
 		java.util.Date startdate;
@@ -64,6 +69,7 @@ public class CalendarController {
 			System.out.println("캘린더 컨트롤러 일정입력 get ");
 
 			calendarDao.CalendarWriteOk(calendarDto);
+			
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -77,10 +83,36 @@ public class CalendarController {
 	*/
 	
 	@RequestMapping(value="CalendarList.htm", method=RequestMethod.GET)
-	@ResponseBody
-	public CalendarDTO2 CalendarIList(HttpServletRequest request){
-	  
-		System.out.println("여기까지들어옴?");
+	public String CalendarIList(HttpServletRequest request){
+	    System.out.println("calendarlist 컨트롤 노크노크 ㅅㅂ ");
+		
+		CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);
+		CalendarDTO calendardto = new CalendarDTO();
+		
+		ArrayList<CalendarDTO> calendarlist = null;
+		JSONArray jsonarray = new JSONArray();
+		
+		 System.out.println("calendarlist 컨트롤 노크노크 ㅅㅂ2 ");
+		 
+		try{
+			calendardto = new CalendarDTO();
+			calendarlist = calendardao.CalendarList();
+			 System.out.println("calendarlist 컨트롤 노크노크 ㅅㅂ 3");
+			 
+		for(int i=0; i<calendarlist.size(); i++){
+			calendardto = calendarlist.get(i);
+			JSONObject jsonobj = new JSONObject();
+			
+			jsonobj.put("idx", calendardto.getCalNo());
+			jsonobj.put("title", calendardto.getCalTitle());
+			jsonobj.put("start", calendardto.getCalStart());
+			jsonobj.put("end", calendardto.getCalEnd());
+			jsonarray.add(jsonobj);
+			 System.out.println("calendarlist 컨트롤 노크노크 ㅅㅂ 4");
+		}
+		
+		
+/*		System.out.println("여기까지들어옴?");
 		
 		CalendarDAO dao = sqlSession.getMapper(CalendarDAO.class);
 		
@@ -97,7 +129,17 @@ public class CalendarController {
 	    dto2.setStart(dto1.getCalStart());
 	    dto2.setEnd(dto1.getCalEnd());
 	    
-		return dto2;
+		return dto2;*/
+		
+		
+		return null;
+		
+		
+		}catch(Exception e){
+			 System.out.println("calendarlist 컨트롤 노크노크 ㅅㅂ5 ");
+		}
+		 System.out.println("calendarlist 컨트롤 노크노크 ㅅㅂ6 ");
+		return "teacher.calendar";
 	}
 	
 }

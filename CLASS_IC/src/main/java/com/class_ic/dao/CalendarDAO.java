@@ -9,8 +9,8 @@ public interface CalendarDAO {
       //일정 등록  완료
       public int CalendarWriteOk(CalendarDTO dto);
       
-      //일정 보기
-      public CalendarDTO CalendarList();
+      //일정 보기s
+      public ArrayList<CalendarDTO> CalendarList();
       
       //일정 수정
       public void CalendarEdit(CalendarDTO dto);

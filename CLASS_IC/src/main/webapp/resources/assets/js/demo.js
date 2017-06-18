@@ -887,16 +887,11 @@ demo = {
             events: 
             	{
                 url : 'CalendarList.htm',
-                type : "POST",
-                dataType : "json", 
-                success : function(data) {
-                    title = data.title;
-                    start = data.start;
-                    end = data.end;
-                   
-                         
+                type : "GET"
+         
                 }
-                }
+     
+                
 				
 		/*	eventClick: function(calEvent, jsEvent, view){
 				$("#myModalDelete").dialog('open')
