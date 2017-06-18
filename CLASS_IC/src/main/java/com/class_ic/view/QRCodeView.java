@@ -1,3 +1,10 @@
+/*
+* @FileName		:	QRCodeView.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.18
+* @Author		:	위진학
+*/
 package com.class_ic.view;
 
 import java.io.OutputStream;
@@ -11,6 +18,12 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
+/*
+* @Class: QRCodeView
+* @Date: 2017.06. 18.
+* @Author: 위진학
+* @Desc: 기수별 QR코드 생성을 위해 img src 에 뿌려지는 QRCode 
+*/
 public class QRCodeView extends AbstractView {
 	public QRCodeView() {
 		// 뷰의 컨텐츠 타입 설정
@@ -19,10 +32,13 @@ public class QRCodeView extends AbstractView {
 		System.out.println("QRCodeView");
 	}
 
+	/*
+	@description : QR생성에서 중요한 부분 가져온 Parameter를 QR로 변경되는 부분
+	*/
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
-		System.out.println("QR 드루와");
+		System.out.println("QR 생성시점");
 		res.setContentType(getContentType());
 		String userAgent = req.getHeader("User-Agent");
 		boolean ie = userAgent.indexOf("MSIE") > -1;

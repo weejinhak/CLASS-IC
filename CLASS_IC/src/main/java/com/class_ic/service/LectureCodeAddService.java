@@ -1,5 +1,11 @@
+/*
+* @FileName		:	LectureCodeAddService.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.16
+* @Author		:	위진학
+*/
 package com.class_ic.service;
-
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +13,13 @@ import org.springframework.stereotype.Service;
 
 import com.class_ic.dao.LectureAddDAO;
 import com.class_ic.vo.LectureDTO;
+
+/*
+* @Class: LectureCodeAddService
+* @Date: 2017.06. 16.
+* @Author: 위진학
+* @Desc: Controller에서 받은 parameter를 실질적으로 Mapper에 넘겨주는 service
+*/
 @Service
 public class LectureCodeAddService {
 
@@ -14,7 +27,9 @@ public class LectureCodeAddService {
 	@Autowired
 	private SqlSession sqlsession;
 
-	// 회원가입
+	/*
+	@description : 기수추가 insert하는 service
+	*/
 	public String addclasscode(LectureDTO lecture) throws Exception {
 		System.out.println("기수추가 서비스 in!");
 		
