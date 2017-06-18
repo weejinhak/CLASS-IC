@@ -9,8 +9,8 @@
 	2017.06.16 최은혜
 	 -->
 	<definition name="memo.*" template="/WEB-INF/views/student/{1}/inc/layout.jsp">
-    	<put-attribute name="navi"  value="/WEB-INF/views//student/{1}/inc/navi.jsp" />
-    	<put-attribute name="header"  value="/WEB-INF/views//student/{1}/inc/header.jsp" />   	
+    	<put-attribute name="navi"  value="/WEB-INF/views/student/{1}/inc/navi.jsp" />
+    	<put-attribute name="header"  value="/WEB-INF/views/student/{1}/inc/header.jsp" />   	
     	<put-attribute name="content" value="/WEB-INF/views/student/memo/{1}.jsp" />
     </definition> 
 

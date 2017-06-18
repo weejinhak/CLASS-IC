@@ -40,8 +40,7 @@
 			<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-   
-   <!-- mybatis START -->
+    <!-- mybatis START -->
 	 <beans:bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 	  <beans:property name="dataSource" ref="dataSource"></beans:property>
 	  <beans:property name="mapperLocations" value="classpath*:com/class_ic/mapper/*xml" />
@@ -51,9 +50,13 @@
 	  <beans:constructor-arg index="0" ref="sqlSessionFactoryBean"/>
 	 </beans:bean>
 	
+<<<<<<< HEAD
 	
    <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
     <beans:property name="order" value="0"/>
    </beans:bean>
+=======
+   
+>>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC.git
 	  
 </beans:beans>
