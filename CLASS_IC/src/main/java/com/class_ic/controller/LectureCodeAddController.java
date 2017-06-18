@@ -1,3 +1,10 @@
+/*
+* @FileName		:	LectureCodeAddController.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.18
+* @Author		:	위진학
+*/
 package com.class_ic.controller;
 
 import java.sql.Date;
@@ -10,10 +17,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service.LectureCodeAddService;
 import com.class_ic.vo.LectureDTO;
 
+
+/*
+* @Class: LectureCodeAddController
+* @Date: 2017.06. 18.
+* @Author: 위진학
+* @Desc: 강사가 기수 추가시 동작하는 Controller
+*/
 @Controller
 @RequestMapping("common")
 public class LectureCodeAddController {
@@ -21,6 +37,10 @@ public class LectureCodeAddController {
 	@Autowired
 	private LectureCodeAddService lecturecodeaddservice;
 
+	
+	/*
+	@description : 강사가 입력하는 input을 parameter로 받아 service로 넘김.
+	*/
 	@RequestMapping(value = "lecturecodeadd.htm", method = RequestMethod.POST)
 	public String lectureinsert(HttpServletRequest request){
 		
@@ -70,4 +90,16 @@ public class LectureCodeAddController {
 		
 		return viewpage; 		
 	}
+	
+	/*
+	@description : 페이지 로드시 QR코드를 불러내기 위한 URL
+	*/
+	@RequestMapping("/createCode.htm")
+    public ModelAndView createCode(@RequestParam String content){
+		//ModelAndView 바로 리턴 
+		System.out.println("찍히고 있니??");
+		System.out.println("찍힘");
+		return new ModelAndView("qrcodeview", "content", content);
+	}
+	
 }

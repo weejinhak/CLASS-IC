@@ -12,6 +12,26 @@
 <meta name="viewport" content="width=device-width" />
 <!-- common header -->
 <jsp:include page="inc/common_header.jsp"></jsp:include>
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+   			console.log("페이지가 시작");
+   			   			 
+   			 var url ="createCode.htm";
+/* 			 var content = '151';
+ */			 
+			$("#img").attr("src", url + "?content=" + 151); 
+		
+	});
+	
+</script>
+
+
+
+
+
+
 </head>
 
 <body>
@@ -55,9 +75,8 @@
 										</div>
 									</div>
 								</div>
-							</div>
-							
-							<div class="col-md-4">
+								
+								<div class="col-md-4">
 									<div class="card card-chart" data-count="3">
 										<div class="card-header" data-background-color="blue"
 											data-header-animation="true" >
@@ -88,11 +107,18 @@
 											<div class="stats">
 												<i class="material-icons">access_time</i> campaign sent 2 days
 												ago
+												<img id="img" style="display: none" onload="this.style.display='block'" />
 											</div>
 										</div>
 									</div>
 								</div>
 					
+								
+								
+								
+							</div>
+							
+							
 					
 					
 						</div>
