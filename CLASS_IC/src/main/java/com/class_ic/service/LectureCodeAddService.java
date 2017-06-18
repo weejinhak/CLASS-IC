@@ -17,6 +17,7 @@ public class LectureCodeAddService {
 	// 회원가입
 	public String addclasscode(LectureDTO lecture) throws Exception {
 		System.out.println("기수추가 서비스 in!");
+		
 		lecture.setClasscode(lecture.getClasscode());
 
 		lecture.setClasstitle(lecture.getClasstitle());
@@ -34,13 +35,12 @@ public class LectureCodeAddService {
 		try {
 			int result = lectureDao.insert(lecture);
 			if (result > 0) {
-				System.out.println("가입 성공");
-				System.out.println("가입이 성공했으니 theselect.htm으로 보내야되지만");
+				System.out.println("insert 성공");
+				System.out.println("성공했으니 theselect.htm으로 보내야되지만");
 				System.out.println("비동기처리를 위해 값을 select 해와서 새로운 htm 에 뿌린다.");
-				viewpage = "redirect:/index.htm";
+				viewpage = "redirect:/common/select.htm";
 			} else {
-				System.out.println("권한부여 실패");
-				viewpage = "joinus.join";
+				System.out.println("insert 실패");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

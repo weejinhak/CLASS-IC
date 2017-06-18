@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.class_ic.dao.LectureAddDAO">
 
 	<insert id="insert" parameterType="com.class_ic.vo.LectureDTO">
-		INSERT INTO class (classCode,classTitle,classStart,classOpenTime,classEnd,classCloseTime,classInviteCode,email)
-			 values (#{classcode},#{classtitle},#{classstart},#{classopentime},#{classend},#{classclosetime},#{classinvitecode},#{email})
+		INSERT INTO class (classCode,email,classTitle,classStart,classOpenTime,classEnd,classCloseTime,classInviteCode)
+			 values (#{classcode},#{email},#{classtitle},#{classstart},#{classopentime},#{classend},#{classclosetime},#{classinvitecode})
 	</insert>
 
 	<select id="getlecture" resultType="com.class_ic.vo.LectureDTO">

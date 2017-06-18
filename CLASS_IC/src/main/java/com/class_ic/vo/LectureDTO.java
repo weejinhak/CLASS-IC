@@ -8,8 +8,8 @@ public class LectureDTO {
 	String classtitle; 
 	Date classstart; 
  	Date classend; 
-	String classopentime;
-	String classclosetime;
+	String classopentime=null;
+	String classclosetime=null;
 	String classinvitecode;
 	String email;
 

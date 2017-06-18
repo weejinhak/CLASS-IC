@@ -25,7 +25,39 @@
 						         <span class="btn-label"><i class="material-icons">check</i>새로운 기수 만들기
 	                          </button>
 							<div class="row">					
+
 								<div class="col-md-4">
+									<div class="card card-chart" data-count="4">
+										<div class="card-header" data-background-color="red" data-header-animation="true">
+											<div align="center">
+											<h3 class="card-title" >
+												<br>통합 관리
+												<br>페이지
+											</h3></div>
+										</div>
+										<div class="card-content">
+											<div class="card-actions">
+												<button type="button" class="btn btn-danger btn-simple fix-broken-card">
+													<i class="material-icons">build</i> Fix Header!
+												</button>
+												
+												<button type="button" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="go!">
+													<i class="material-icons">input</i>
+												</button>
+											</div>					
+								            <br>					
+											<p class="category">통합 관리 페이지로 이동.</p>
+										</div>
+										<div class="card-footer">
+											<div class="stats">
+												<i class="material-icons">access_time</i> campaign sent 2 days ago
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-4">
 									<div class="card card-chart" data-count="3">
 										<div class="card-header" data-background-color="blue"
 											data-header-animation="true" >
@@ -61,36 +93,6 @@
 									</div>
 								</div>
 					
-								<div class="col-md-4">
-									<div class="card card-chart" data-count="4">
-										<div class="card-header" data-background-color="red" data-header-animation="true">
-											<div align="center">
-											<h3 class="card-title" >
-												<br>통합 관리
-												<br>페이지
-											</h3></div>
-										</div>
-										<div class="card-content">
-											<div class="card-actions">
-												<button type="button" class="btn btn-danger btn-simple fix-broken-card">
-													<i class="material-icons">build</i> Fix Header!
-												</button>
-												
-												<button type="button" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="go!">
-													<i class="material-icons">input</i>
-												</button>
-											</div>					
-								            <br>					
-											<p class="category">통합 관리 페이지로 이동.</p>
-										</div>
-										<div class="card-footer">
-											<div class="stats">
-												<i class="material-icons">access_time</i> campaign sent 2 days ago
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
 					
 					
 						</div>
