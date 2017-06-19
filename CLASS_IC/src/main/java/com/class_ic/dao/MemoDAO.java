@@ -16,8 +16,8 @@ public interface MemoDAO {
 	public int insertMemo(MemoVO vo);
 	
 	//메모 조회
-	public List<MemoVO> selectMemo(MemoVO vo);
+	public List<MemoVO> selectMemo(String email);
 	
 	//메모 삭제
-	public void deleteMemo(MemoVO vo);
+	public int deleteMemo(MemoVO vo);
 }

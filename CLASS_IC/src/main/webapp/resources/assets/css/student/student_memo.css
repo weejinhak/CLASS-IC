@@ -9,99 +9,48 @@
 
 @CHARSET "UTF-8";
 
-@import "https://fonts.googleapis.com/css?family=Roboto:400,700,500";
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);
 
-#container{
-    width: 100%;
-    margin: 100px auto;
-    background: #f7f7f7;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+* { box-sizing:border-box; }
+
+#content{
+	margin: 100px;
 }
 
-.li.completed{
-    color: #808080;
-    text-decoration: line-through;
+#create, textarea  { 
+  float:left; 
+  padding:25px 25px 40px;
+  margin:0 20px 20px 0;
+  width:250px;
+  height:250px; 
 }
 
-.fa{
-    cursor: pointer;
-    margin-top: 12px;
-   
-    
+#create {
+  user-select:none;
+  padding:20px; 
+  border-radius:20px;
+  text-align:center; 
+  border:15px solid rgba(0,0,0,0.1); 
+  cursor:pointer;
+  color:rgba(0,0,0,0.1);
+  font:220px "Helvetica", sans-serif;
+  line-height:185px;
 }
 
-.onOff{
-    float: right;
-    color: #FFFFFF;
-}
+#create:hover { border-color:rgba(0,0,0,0.2); color:rgba(0,0,0,0.2); }
 
-body{
-    font-family: Roboto;
+textarea {
+  font:20px 'Roboto'; 
+  line-height:1.5;
+  border:0;
+  border-radius:3px;
+  background: linear-gradient(#F9EFAF, #F7E98D);
+  box-shadow:0 4px 6px rgba(0,0,0,0.1);
+  overflow:hidden;
+  transition:box-shadow 0.5s ease;
+  font-smoothing:subpixel-antialiased;
+  max-width:520px;
+  max-height:250px;
 }
-
-h2{
-    
-    background: linear-gradient(60deg, #26c6da, #00acc1);
-    color: #FFFFFF;
-    margin: 0;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    font-size: 24px;
-    font-weight: normal;
-}
-
-.in{
-    
-    color: #2980b9; 
-    font-size: 20px;
-    background-color: #f7f7f7;
-    width: 100%;
-    padding: 13px 13px 13px 20px;
-    box-sizing: border-box;
-    border: 3px solid rgba(0, 0, 0, 0);
-    display: none;
-}
-
-.in:focus{
-    background: #ffffff;
-    border: 5px solid #39d6c9;
-    outline: none;
-}
-
-.ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.span{
-    background: #e74c3c;
-    height: 50px;
-    margin-right: 20px;
-    text-align: center;
-    color: #ffffff;
-    width: 0px;
-    display: inline-block;
-    transition: 0.2s linear;
-    opacity: 0;
-    float: left;
-    
-}
-
-.li{
-    background: #ffffff;
-    height: 50px;
-    line-height: 50px;
-    color: #E55D87;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-.li:nth-child(2n){
-    background: #f7f7f7;
-}
-
-.li:hover .span{
-    width: 40px;
-    opacity: 1.0;
-}
+textarea:hover { box-shadow:0 5px 8px rgba(0,0,0,0.15); }
+textarea:focus { box-shadow:0 5px 12px rgba(0,0,0,0.2); outline:none; }

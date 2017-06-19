@@ -78,5 +78,6 @@
 <script src="${pageContext.request.contextPath}/resources/assets/js/material-dashboard.js"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/demo.js"></script>
-
+<!-- jquery -->
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </html>
