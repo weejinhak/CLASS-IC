@@ -46,8 +46,7 @@
 			<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-   
-   <!-- mybatis START -->
+    <!-- mybatis START -->
 	 <beans:bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 	  <beans:property name="dataSource" ref="dataSource"></beans:property>
 	  <beans:property name="mapperLocations" value="classpath*:com/class_ic/mapper/*xml" />
@@ -65,5 +64,6 @@
 	<!--스케줄링-->
  	<task:annotation-driven scheduler="scheduler"/>
 	<task:scheduler id="scheduler" pool-size="10"/>
+   
 	  
 </beans:beans>

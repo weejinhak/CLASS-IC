@@ -19,6 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+<<<<<<< HEAD
+=======
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
+>>>>>>> refs/remotes/origin/eh
 
 import com.class_ic.dao.MemoDAO;
 import com.class_ic.vo.MemoVO;
@@ -30,9 +35,14 @@ public class MemoController {
 @Autowired
 private SqlSession sqlsession;
 	
+<<<<<<< HEAD
 //insert
 	@RequestMapping(value="insertMemo.htm", method=RequestMethod.POST)
 	public @ResponseBody void insertMemo(@RequestParam(value="memo") String memo) {
+=======
+	@RequestMapping(value="insertMemo.htm", method=RequestMethod.POST)
+	public @ResponseBody String insert(@RequestParam(value="memo") String memo , HttpServletResponse response) {
+>>>>>>> refs/remotes/origin/eh
 		
 		MemoVO vo = new MemoVO();
 		vo.setEmail("a@gmail.com");
@@ -42,6 +52,15 @@ private SqlSession sqlsession;
 		int result = dao.insertMemo(vo);
 		System.out.println("result: " +result);
 		
+<<<<<<< HEAD
+=======
+		List<MemoVO> memoList = dao.selectMemo(vo);
+		for(int i=0;i<memoList.size();i++){
+			memoList.get(i);
+		}
+		
+		return "memo";
+>>>>>>> refs/remotes/origin/eh
 	}
 	
 	//select
@@ -81,3 +100,16 @@ private SqlSession sqlsession;
 	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
