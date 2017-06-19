@@ -42,9 +42,9 @@
    <a href="teacher/test10.htm"> class_condition</a> <br/>
    <a href="teacher/test11.htm">History</a> <br/>
    <a href="teacher/test12.htm"> homework_board</a> <br/>
-
    <a href="teacher/test13.htm"> message</a> <br/>
    <a href="teacher/test14.htm"> teacher_main</a> <br/>
+   <a href="teacher/test15.htm"> fileManager</a> <br/>
    
    write와 main은 test용으로 내가 별도로 만든거니 체크 안해도 됨<br/>
    
