@@ -16,16 +16,19 @@
 	<div class="product">
 	<img src="${pageContext.request.contextPath}/resources/assets/img/st_006.jpg" class="photo_img"/>
 	 	<span>name</span>
+	 	<input type="hidden" name="email" value="" />
 	</div>
 
 	<div class="product">
 	<img src="${pageContext.request.contextPath}/resources/assets/img/st_005.jpg" class="photo_img"/>	
 		<span>name</span>
+		<input type="hidden" name="email" value="" />
 	</div>
 
 	<div class="product">
 	<img src="${pageContext.request.contextPath}/resources/assets/img/st_004.jpg" class="photo_img"/>		
 		<span>name</span>
+		<input type="hidden" name="email" value="" />
 	</div>
 
 	<div class="favourites">

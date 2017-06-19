@@ -33,7 +33,7 @@ public class MainController_Teacher {
 		@RequestMapping("test2.htm")
 		public String studentTest2(){
 			System.out.println("teacher main controller 탐, test.htm ");
-			return "teacher.attendance";
+			return "teacher.student_table";
 		}
 		@RequestMapping("test3.htm")
 		public String studentTest3(){
