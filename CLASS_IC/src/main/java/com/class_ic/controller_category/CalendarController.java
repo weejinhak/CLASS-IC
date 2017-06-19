@@ -112,10 +112,12 @@ public class CalendarController {
          array.add(obj);
          System.out.println("2");
       }
+      
       try {
 		response.getWriter().print(array);
+		
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}
       System.out.println("3");

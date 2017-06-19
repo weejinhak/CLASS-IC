@@ -871,19 +871,7 @@ demo = {
 			eventLimit: true, // allow "more" link when too many events
 			
             // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
-            events: function(){
-              $.ajax({
-            	url : 'CalendarList.htm',
-                datatype:"JSON",
-                success : function(data) {
-               
-                	
-                	alert(data);
-	                	 
-                }
-            	
-              });
-            }
+            events: {url : 'CalendarList.htm' }
 		});
     },
 
