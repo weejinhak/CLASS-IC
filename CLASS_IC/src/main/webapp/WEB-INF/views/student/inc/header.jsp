@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 		<nav class="navbar navbar-transparent navbar-absolute">
 			<div class="container-fluid">
 
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-
-
+						<li>[ ${sessionScope.name } ]님 강의실 입장 </li>
 						<!-- QR  -->
 						<li>
 						<a href="#pablo" class="dropdown-toggle"
@@ -179,14 +177,17 @@
 										</div>
 									<li><br>
 										<button class="btn">
-											ë´ íìì ë³´ ìì 
+											내 회원정보 수정
 											<div class="ripple-container"></div>
 										</button></li>
 									<li><br>
+										<a href="logout.htm">
 										<button class="btn">
-											ë¡ê·¸ìì
+											로그아웃
 											<div class="ripple-container"></div>
-										</button></li>
+										</button>
+										</a>
+										</li>
 					 
 										
 							</ul></li>
