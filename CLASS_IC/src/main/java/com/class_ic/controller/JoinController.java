@@ -33,7 +33,7 @@ public class JoinController {
 	//회원가입 학생
 	@RequestMapping("join_st.htm")
 	public @ResponseBody String joinStudent(MemberDTO member){
-
+		System.out.println("학생가입 데이터 넘겨받음 이메일: " + member.getEmail());
 		String viewpage = "";
 		try{
 			viewpage = joinservice.join(member);

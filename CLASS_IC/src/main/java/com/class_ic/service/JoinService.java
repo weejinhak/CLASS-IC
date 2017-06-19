@@ -37,10 +37,10 @@ public class JoinService {
 			if(result>0){
 				member_dao.insertAuthority(member);
 				System.out.println("가입 성공");	
-				viewpage="join/login";
+				viewpage="redirect:join/login";
 								}else{
 									System.out.println("권한부여 실패");
-									viewpage="join/join";
+									viewpage="redirect:join/join";
 								}			
 				}catch(Exception e){
 					e.printStackTrace();

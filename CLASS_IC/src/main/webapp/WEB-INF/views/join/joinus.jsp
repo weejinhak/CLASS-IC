@@ -21,33 +21,6 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/assets/css/style.css">
 
-<script type="text/javascript">
-$(function(){
-	var teacher_data = {"email": $('#email_te').val, "pwd": $('#pwd_te').val, "name": $('#name_te').val, "phone": $('#phone_te').val,"photoSrc": $('#photoSrc_te').val, }
-	var student_data = {"email": $('#email_st').val, "pwd": $('#pwd_st').val, "name": $('#name_st').val, "phone": $('#phone_st').val,"photoSrc": $('#photoSrc_st').val, }	
-	$('#btn_submit').click(function(){
-		$ajax({
-			url: "join_st.htm",
-			type: "post",
-			data : student_data,
-			success : function(data){
-				alert('학생 회원가입 성공');
-			}
-		});
-	});
-	$('#btn_submit').click(function(){
-		$ajax({
-			url: "join_te.htm",
-			type: "post",
-			data : teacher_data,
-			success : function(data){
-				alert('선생 회원가입 성공');
-			}
-		});
-	});
-});
-</script>
-
 </head>
 
 <body>
@@ -98,32 +71,24 @@ $(function(){
 						<a href="#" onclick="ocultar_login_sign_up()"><i
 							class="material-icons">&#xE5C4;</i></a>
 						<h2>Sign up as a Student</h2>
-					<!-- 	<form action="join.htm" method="POST"> -->
+					
 							<input type="text" id="email_st" name="email" placeholder="Email" />
 							<input type="text" id="name_st" name="name" placeholder="User" /> 
-							<input
-								type="password" id="pwd_st" name="pwd" placeholder="Password" />
-								 <input
-								type="text" id="phone_st" name="phone" placeholder="PhoneNumber" />
-							<input type="text" id="photoSrc_st" name="photoSrc"
-								placeholder="imgSrc" /> 
-							<input type="hidden" id="authority_st"
-								name="authority" value="ROLE_STUDENT" />
-							<button class="btn_signup_st" id="btn_submit_st">let's
-								go</button>
-					<!-- 	</form> -->
+							<input type="password" id="pwd_st" name="pwd" placeholder="Password" /> 
+							<input type="password" id="pwdconfirm_st" name="pwdconfirm" placeholder="Confirm Password" />
+							<input type="text" id="phone_st" name="phone" placeholder="PhoneNumber" />
+							<input type="text" id="photoSrc_st" name="photoSrc" aceholder="imgSrc" /> 
+							<input type="hidden" id="authority_st" name="authority" value="ROLE_STUDENT" />
+							<button class="btn_login" id="btn_submit_st">let's go</button>
 					</div>
 
 					<div class="cont_form_sign_up">
 						<br> <br> <br> <a href="#"
 							onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
 						<h2>Sign up as a Teacher</h2>
-
 						<input type="text" id="email_te" name="email" placeholder="Email" />
-						<input type="text" id="name_te" name="name" placeholder="User" /> 
-						<input
-							type="password" id="pwd_te" name="pwd" placeholder="Password" /> 
-							<input
+						<input type="text" id="name_te" name="name" placeholder="User" /> <input
+							type="password" id="pwd_te" name="pwd" placeholder="Password" /> <input
 							type="password" id="pwdconfirm_te" name="pwdconfirm"
 							placeholder="Confirm Password" /> 
 							<input type="text" id="phone_te"
@@ -131,9 +96,11 @@ $(function(){
 							id="photoSrc_te" name="photoSrc" placeholder="imgSrc" /> <input
 							type="hidden" id="authority_te" name="authority"
 							value="ROLE_TEACHER" />
-						<button class="btn_signup_te" id="btn_submit_te">Let's
+						<!-- <button class="btn_sign_up" id="btn_submit_te">Let's
+							go</button> -->
+							<button class="btn_sign_up" tyep="submit">Let's
 							go</button>
-
+						</form>
 					</div>
 
 				</div>
@@ -159,6 +126,7 @@ $(function(){
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/material.min.js"
 	type="text/javascript"></script>
+
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.jquery.min.js"
 	type="text/javascript"></script>
@@ -212,6 +180,10 @@ $(function(){
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/demo.js"></script>
+	<!-- 회원가입 ajax  -->
+<script
+	src="${pageContext.request.contextPath}/resources/assets/js/join_ajax.js"></script> 
+
 <script type="text/javascript">
     $().ready(function() {
         demo.checkFullPageBackgroundImage();
