@@ -24,14 +24,14 @@ public class JoinController {
 	private JoinService joinservice;
 	
 	//회원가입 폼
-	@RequestMapping("join_st.htm")
+	@RequestMapping("join.htm")
 	public String join(){
 		
 		return "join/joinus";
 	}
 	
 	//회원가입 학생
-	@RequestMapping("join_te.htm")
+	@RequestMapping("join_st.htm")
 	public @ResponseBody String joinStudent(MemberDTO member){
 
 		String viewpage = "";
@@ -44,7 +44,7 @@ public class JoinController {
 	}
 	
 	//회원가입 선생
-		@RequestMapping(value="join.htm", method=RequestMethod.POST)
+		@RequestMapping("join_te.htm")
 		public @ResponseBody String joinTeacher(MemberDTO member){
 
 			String viewpage = "";
