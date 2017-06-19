@@ -1,5 +1,11 @@
 package com.class_ic.controller_category;
-
+/*
+* @FileName		:	BoardController.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.19
+* @Author		:	최석환
+*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

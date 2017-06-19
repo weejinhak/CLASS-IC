@@ -3,6 +3,14 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!-- 
+* @FileName		:	BoardDAO.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.19
+* @Author		:	최석환
+ -->
+
 <mapper namespace="com.class_ic.dao.BoardDAO">
 
 

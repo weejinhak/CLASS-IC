@@ -9,7 +9,13 @@ import org.springframework.stereotype.Service;
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.vo.BoardVO;
 
-
+/*
+* @FileName		:	BoardService.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.19
+* @Author		:	최석환
+*/
 @Service
 public class BoardService {
 
