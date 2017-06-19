@@ -18,17 +18,12 @@ public class AttendanceService {
 
 	@Autowired
 	private SqlSession sqlsession;
-	
-/*	
-    @Autowired
-	private AttendanceService service;
-*/
+
 	/*
 	@description : attendance 테이블에 insert 해주는 기능.
 	*/
 
-	public void insertS() throws Exception {
-		
+	public void insertAttendance(){
 		
 		AttandanceDTO dto=new AttandanceDTO();
 
@@ -55,9 +50,6 @@ public class AttendanceService {
 		
 			attendanceDao.insert(dto);
 			System.out.println("insert"+i);
-			
-		
-			
 			
 		
 		}

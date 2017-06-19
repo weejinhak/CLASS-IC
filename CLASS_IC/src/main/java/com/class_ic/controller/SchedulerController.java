@@ -31,10 +31,12 @@ import com.class_ic.vo.MemberDTO;
 @Controller
 public class SchedulerController {
 
-
 	@Autowired
 	private SqlSession sqlsession;
 	
+/*	
+	@Autowired
+	private AttendanceService attendanceservice;*/
 
 
 /*
@@ -75,12 +77,11 @@ public class SchedulerController {
 		
 			attendanceDao.insert(dto);
 			System.out.println("insert"+i);
-			
-		
 		
 
 		
 	}
 
 
-	}}
+	}
+}
