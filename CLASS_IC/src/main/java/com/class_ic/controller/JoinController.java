@@ -24,15 +24,15 @@ public class JoinController {
 	private JoinService joinservice;
 	
 	//회원가입 폼
-	@RequestMapping(value="join.htm", method=RequestMethod.GET)
+	@RequestMapping("join_st.htm")
 	public String join(){
 		
 		return "join/joinus";
 	}
 	
-	//회원가입
-	@RequestMapping(value="join.htm", method=RequestMethod.POST)
-	public @ResponseBody String join(MemberDTO member){
+	//회원가입 학생
+	@RequestMapping("join_te.htm")
+	public @ResponseBody String joinStudent(MemberDTO member){
 
 		String viewpage = "";
 		try{
@@ -42,6 +42,19 @@ public class JoinController {
 		}
 		return viewpage; 
 	}
+	
+	//회원가입 선생
+		@RequestMapping(value="join.htm", method=RequestMethod.POST)
+		public @ResponseBody String joinTeacher(MemberDTO member){
+
+			String viewpage = "";
+			try{
+				viewpage = joinservice.join(member);
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			return viewpage; 
+		}
 	
 
 }

@@ -23,14 +23,25 @@
 
 <script type="text/javascript">
 $(function(){
-	var joindata = {"email": $('#email').val, "pwd": $('#pwd').val, "name": $('#name').val, "phone": $('#phone').val,"photoSrc": $('#photoSrc').val, }
+	var teacher_data = {"email": $('#email_te').val, "pwd": $('#pwd_te').val, "name": $('#name_te').val, "phone": $('#phone_te').val,"photoSrc": $('#photoSrc_te').val, }
+	var student_data = {"email": $('#email_st').val, "pwd": $('#pwd_st').val, "name": $('#name_st').val, "phone": $('#phone_st').val,"photoSrc": $('#photoSrc_st').val, }	
 	$('#btn_submit').click(function(){
 		$ajax({
-			url: "join.htm",
+			url: "join_st.htm",
 			type: "post",
-			data : joindata,
+			data : student_data,
 			success : function(data){
-				alert('로그인시키키 성공');
+				alert('학생 회원가입 성공');
+			}
+		});
+	});
+	$('#btn_submit').click(function(){
+		$ajax({
+			url: "join_te.htm",
+			type: "post",
+			data : teacher_data,
+			success : function(data){
+				alert('선생 회원가입 성공');
 			}
 		});
 	});
@@ -87,17 +98,20 @@ $(function(){
 						<a href="#" onclick="ocultar_login_sign_up()"><i
 							class="material-icons">&#xE5C4;</i></a>
 						<h2>Sign up as a Student</h2>
-						<form action="join.htm" method="POST">
-							<input type="text" id="email" name="email" placeholder="Email" />
-							<input type="text" id="name" name="name" placeholder="User" /> <input
-								type="password" id="pwd" name="pwd" placeholder="Password" /> <input
-								type="text" id="phone" name="phone" placeholder="PhoneNumber" />
-							<input type="text" id="photoSrc" name="photoSrc"
-								placeholder="imgSrc" /> <input type="hidden" id="authority"
+					<!-- 	<form action="join.htm" method="POST"> -->
+							<input type="text" id="email_st" name="email" placeholder="Email" />
+							<input type="text" id="name_st" name="name" placeholder="User" /> 
+							<input
+								type="password" id="pwd_st" name="pwd" placeholder="Password" />
+								 <input
+								type="text" id="phone_st" name="phone" placeholder="PhoneNumber" />
+							<input type="text" id="photoSrc_st" name="photoSrc"
+								placeholder="imgSrc" /> 
+							<input type="hidden" id="authority_st"
 								name="authority" value="ROLE_STUDENT" />
-							<button class="btn_login" onclick="cambiar_login()">let's
+							<button class="btn_signup_st" id="btn_submit_st">let's
 								go</button>
-						</form>
+					<!-- 	</form> -->
 					</div>
 
 					<div class="cont_form_sign_up">
@@ -105,16 +119,19 @@ $(function(){
 							onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
 						<h2>Sign up as a Teacher</h2>
 
-						<input type="text" id="email" name="email" placeholder="Email" />
-						<input type="text" id="name" name="name" placeholder="User" /> <input
-							type="password" id="pwd" name="pwd" placeholder="Password" /> <input
-							type="password" id="pwdconfirm" name="pwdconfirm"
-							placeholder="Confirm Password" /> <input type="text" id="phone"
+						<input type="text" id="email_te" name="email" placeholder="Email" />
+						<input type="text" id="name_te" name="name" placeholder="User" /> 
+						<input
+							type="password" id="pwd_te" name="pwd" placeholder="Password" /> 
+							<input
+							type="password" id="pwdconfirm_te" name="pwdconfirm"
+							placeholder="Confirm Password" /> 
+							<input type="text" id="phone_te"
 							name="phone" placeholder="PhoneNumber" /> <input type="text"
-							id="photoSrc" name="photoSrc" placeholder="imgSrc" /> <input
-							type="hidden" id="authority" name="authority"
+							id="photoSrc_te" name="photoSrc" placeholder="imgSrc" /> <input
+							type="hidden" id="authority_te" name="authority"
 							value="ROLE_TEACHER" />
-						<button class="btn_sign_up" id="btn_submit">Let's
+						<button class="btn_signup_te" id="btn_submit_te">Let's
 							go</button>
 
 					</div>
