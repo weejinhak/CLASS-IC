@@ -19,16 +19,37 @@ $(document).ready(function() {
   });
 
   $(".in").keypress(function(event) {
-    if (event.which === 13) {
-      var todoText = $(this).val();
-      if(todoText != ""){
-    	  $(this).val("");
-      $(".ul").append("<li class='li'><span class='span'><i class='fa fa-trash'></i></span> " + todoText + "</li>");
-      	}else{
-      		alert("다시 입력해 주세요.");
-      	}
-      }
-  });
+	    if (event.which === 13) {
+	      
+	   var memo = $(".in").val(); 	
+	    	
+	      if(memo != ""){
+	    	 
+	    	  $.ajax({
+	  		  	url : "insertMemo.htm",
+	  		  	type : "post",
+	  			data : { "memo" : memo },
+	  			
+	  			success : function(data) {
+	  				alert('성공')
+	  				$(this).val("");
+	  				
+	  				console.log(data)
+	  				console.log("등록 성공!!")
+	  				
+	  			},
+	  			error : function(request, status, error){
+	  				alert('에러탐 : '+ error +"\n"+ "message: " + request.responseText +"\n"+ "code" + request.status);
+	  			}
+	  	  });
+	    	  
+	      }else{
+	    		alert("다시 입력해 주세요.");
+	    	}
+	    }
+	 });
+
+
 
   $(".fa-plus").click(function() {
     $(".fa-plus").toggleClass("fa-minus");

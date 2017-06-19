@@ -18,7 +18,7 @@ public class SchedulerController {
  * @Scheduled(fixedRate=5000) -> 5초마다 실행 해주기
  * */
 	
-	@Scheduled(fixedRate=5000)
+	@Scheduled(cron="0 42 17 * * *")
 	public void insert() {
 		System.out.println("스케줄링 구동...");
 		
