@@ -1,18 +1,17 @@
 package com.class_ic.service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.class_ic.dao.AttendanceDAO;
-import com.class_ic.dao.LectureAddDAO;
-import com.class_ic.dao.MemberDAO;
 import com.class_ic.vo.AttandanceDTO;
-import com.class_ic.vo.LectureDTO;
 import com.class_ic.vo.MemberDTO;
 
+
+@Service
 public class AttendanceService {
 	
 
@@ -39,10 +38,8 @@ public class AttendanceService {
 
 			//dto.setAttendDate(new Date(2017-12-12)); //sysdate
 			dto.setAttendState("결석"); 
-			System.out.println("aa");
 			email=memberList.get(i).getEmail();
 			System.out.println(email);
-			System.out.println(attendanceDao.selectClassNumber(email));
 			dto.setClassCode(attendanceDao.selectClassNumber(email)); 
 			dto.setEmail(email); 
 			dto.setInClass(null);

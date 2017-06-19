@@ -31,12 +31,12 @@ import com.class_ic.vo.MemberDTO;
 @Controller
 public class SchedulerController {
 
-	@Autowired
-	private SqlSession sqlsession;
+/*	@Autowired
+	private SqlSession sqlsession;*/
 	
-/*	
+
 	@Autowired
-	private AttendanceService attendanceservice;*/
+	private AttendanceService attendanceservice;
 
 
 /*
@@ -50,38 +50,11 @@ public class SchedulerController {
 	
 	@Scheduled(cron="0 0 1 * * *")
 	public void insert() {
-		System.out.println("스케줄링 구동...");
-		
-		AttandanceDTO dto=new AttandanceDTO();
-
-		AttendanceDAO attendanceDao=sqlsession.getMapper(AttendanceDAO.class);
-		
-
-		ArrayList<MemberDTO> memberList=attendanceDao.memberSelectAll();
-		
-		String email="";
-		
-		for(int i=0;i<memberList.size();i++){
-			
-
-			//dto.setAttendDate(new Date(2017-12-12)); //sysdate
-			dto.setAttendState("결석"); 
-			System.out.println("aa");
-			email=memberList.get(i).getEmail();
-			System.out.println(email);
-			System.out.println(attendanceDao.selectClassNumber(email));
-			dto.setClassCode(attendanceDao.selectClassNumber(email)); 
-			dto.setEmail(email); 
-			dto.setInClass(null);
-			dto.setOutClass(null);
-		
-			attendanceDao.insert(dto);
-			System.out.println("insert"+i);
-		
-
+		System.out.println("아침입니다 출석됭 테이블을 insert 하겠습니다.");
+		attendanceservice.insertAttendance();
+		System.out.println("attandence 테이블 isnert 완료 되었습니다.");
 		
 	}
 
 
 	}
-}
