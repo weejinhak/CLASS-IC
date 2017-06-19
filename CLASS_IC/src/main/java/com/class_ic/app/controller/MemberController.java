@@ -20,7 +20,6 @@ import com.class_ic.app.dao.AttendDAO;
 import com.class_ic.app.dto.LoginDTO;
 import com.class_ic.app.dto.MemberDTO;
 
-
 /*
 * @Class: MemberController
 * @Date: 2017.06. 16.

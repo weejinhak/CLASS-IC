@@ -3,8 +3,12 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xmlns:beans="http://www.springframework.org/schema/beans"
    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+   xmlns:tx="http://www.springframework.org/schema/tx"
+   xmlns:task="http://www.springframework.org/schema/task"
    xmlns:context="http://www.springframework.org/schema/context"
    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+      http://www.springframework.org/schema/task 
+	  http://www.springframework.org/schema/task/spring-task-3.1.xsd
       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
@@ -15,10 +19,13 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
+    <beans:bean  id="qrcodeview" class="com.class_ic.view.QRCodeView" />		
 	
 	<context:component-scan base-package="com.class_ic.controller, com.class_ic.controller_category" />
 	<context:component-scan base-package="com.class_ic.app.controller"/>
+	<context:component-scan base-package="com.class_ic.service, com.class_ic.service_category"/>
 	
+
 	<!--  Tiles 설정하기 -->
 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 	 <beans:property name="definitions">
@@ -30,11 +37,11 @@
 	
 	<beans:bean id="urlBasedViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 	 <beans:property name="viewClass"  value="org.springframework.web.servlet.view.tiles2.TilesView" />
-	 <beans:property name="order" value="0" />
+	 <beans:property name="order" value="1" />
 	</beans:bean> 
 	
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	<beans:property name="order" value="1" />
+	<beans:property name="order" value="2" />
 			<beans:property name="prefix" value="/WEB-INF/views/" />
 			<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
@@ -50,5 +57,14 @@
 	  <beans:constructor-arg index="0" ref="sqlSessionFactoryBean"/>
 	 </beans:bean>
 	
+	
+   <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+    <beans:property name="order" value="0"/>
+   </beans:bean>
+
+	<!--스케줄링-->
+ 	<task:annotation-driven scheduler="scheduler"/>
+	<task:scheduler id="scheduler" pool-size="10"/>
+
 	  
 </beans:beans>
