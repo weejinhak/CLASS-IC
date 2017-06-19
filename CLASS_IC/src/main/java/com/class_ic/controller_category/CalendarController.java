@@ -1,24 +1,23 @@
 package com.class_ic.controller_category;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.class_ic.dao.CalendarDAO;
 import com.class_ic.vo.CalendarDTO;
-import com.class_ic.vo.CalendarDTO2;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -84,36 +83,43 @@ public class CalendarController {
    @description : DB에 저장된 일정들을 캘린더에 출력
    */
    
-   @RequestMapping(value="CalendarList.htm", method=RequestMethod.POST)
-   public String CalendarIList(HttpServletRequest request, ModelMap modelMap,@ModelAttribute CalendarDTO dto2){
+   @RequestMapping(value="CalendarList.htm", method=RequestMethod.GET)
+   public void CalendarIList(HttpServletRequest request, HttpServletResponse response,@ModelAttribute CalendarDTO dto2){
       System.out.println("1");
       
-      CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);
-   
+      CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);   
+
       ArrayList<CalendarDTO> calendarlist = calendardao.CalendarList();
       
-      JSONObject jsonobj = new JSONObject();
-      JSONArray array = new JSONArray();
-      CalendarDTO dto = new CalendarDTO();
+      System.out.println(calendarlist);
       
+      JSONArray array = new JSONArray();
+      
+      SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
       for(int i=0; i<calendarlist.size(); i++){
-         dto =calendarlist.get(i);
-         
+    	  
          JSONObject obj = new JSONObject();
-         obj.put("start", dto.getCalStart());
-         obj.put("end", dto.getCalEnd());
-         obj.put("title", dto.getCalTitle());
-         obj.put("idx", dto.getCalNo());
+         
+         obj.put("title", calendarlist.get(i).getCalTitle());
+         
+         String start = transFormat.format(calendarlist.get(i).getCalStart());
+         obj.put("start", start);
+         String end= transFormat.format(calendarlist.get(i).getCalEnd());
+         obj.put("end", end);
+         
+         
          
          array.add(obj);
          System.out.println("2");
-          jsonobj.put("data", array);
       }
+      try {
+		response.getWriter().print(array);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
       System.out.println("3");
        
-       
-       
-      return "teacher.calendar";
    }
    
 }

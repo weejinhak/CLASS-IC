@@ -11,8 +11,8 @@ insert into Calendar(calNo,classCode,calStart,calEnd,calTitle,calContent) values
 </insert>
    
 <!-- 일정 보기 -->
-<select id="CalendarList"  parameterType="com.class_ic.vo.CalendarDTO" resultType="com.class_ic.vo.CalendarDTO">
-select calStart, calEnd, calTitle from Calendar where calNo=#{calNo}
+<select id="CalendarList"  resultType="com.class_ic.vo.CalendarDTO">
+select calStart, calEnd, calTitle from Calendar
 </select>
    
 <!-- 일정 수정-->

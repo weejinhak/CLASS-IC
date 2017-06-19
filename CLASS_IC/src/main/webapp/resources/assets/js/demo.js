@@ -853,7 +853,7 @@ demo = {
 
                 // on select we show the Sweet Alert modal with an input
 				swal({
-    				title: '수업내용',
+    				title: 'ㅋㅋㅋㅋ',
     				html: '<div class="form-group">' +
                           /*  '<input class="form-control" placeholder="일정을 등록하세요" id="input-field">' +*/
                         '</div>',
@@ -869,28 +869,17 @@ demo = {
 			},
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
-
-
+			
             // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
             events: function(){
               $.ajax({
-            	
-                url : 'CalendarList.htm',
-                type : "POST",
-                datatype:"json",
+            	url : 'CalendarList.htm',
+                datatype:"JSON",
                 success : function(data) {
-                	var events=[];
-                    if(data !='empty'){
-                     $.each(data, function(key, val) {
-                    	 
-                           title = val.title,
-                           start = val.start,
-                           end = val.end,
-                           idx = val.idx
-                           
-                        });
-                    }
- 
+               
+                	
+                	alert(data);
+	                	 
                 }
             	
               });
@@ -918,4 +907,5 @@ demo = {
 	}
 
 }
+
 
