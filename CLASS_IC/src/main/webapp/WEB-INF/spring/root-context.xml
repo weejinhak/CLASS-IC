@@ -10,5 +10,12 @@
         <property name="username" value="kosta"/>
         <property name="password" value="1004"/>
     </bean>
+<<<<<<< HEAD
 
+=======
+    
+    
+   
+  
+>>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 </beans>

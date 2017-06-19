@@ -56,14 +56,21 @@
 	  <beans:constructor-arg index="0" ref="sqlSessionFactoryBean"/>
 	 </beans:bean>
 	
+<<<<<<< HEAD
 	
    <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
     <beans:property name="order" value="0"/>
    </beans:bean>
+<<<<<<< HEAD
 
 	<!--스케줄링-->
  	<task:annotation-driven scheduler="scheduler"/>
 	<task:scheduler id="scheduler" pool-size="10"/>
    
+=======
+=======
+   
+>>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC.git
+>>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 	  
 </beans:beans>

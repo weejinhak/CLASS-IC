@@ -20,10 +20,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 >>>>>>> refs/remotes/origin/eh
+=======
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
+>>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 
 import com.class_ic.dao.MemoDAO;
 import com.class_ic.vo.MemoVO;
@@ -36,6 +41,7 @@ public class MemoController {
 private SqlSession sqlsession;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 //insert
 	@RequestMapping(value="insertMemo.htm", method=RequestMethod.POST)
 	public @ResponseBody void insertMemo(@RequestParam(value="memo") String memo) {
@@ -43,6 +49,10 @@ private SqlSession sqlsession;
 	@RequestMapping(value="insertMemo.htm", method=RequestMethod.POST)
 	public @ResponseBody String insert(@RequestParam(value="memo") String memo , HttpServletResponse response) {
 >>>>>>> refs/remotes/origin/eh
+=======
+	@RequestMapping(value="insertMemo.htm", method=RequestMethod.POST)
+	public @ResponseBody String insert(@RequestParam(value="memo") String memo , HttpServletResponse response) {
+>>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 		
 		MemoVO vo = new MemoVO();
 		vo.setEmail("a@gmail.com");
@@ -53,6 +63,7 @@ private SqlSession sqlsession;
 		System.out.println("result: " +result);
 		
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 		List<MemoVO> memoList = dao.selectMemo(vo);
 		for(int i=0;i<memoList.size();i++){
@@ -61,6 +72,14 @@ private SqlSession sqlsession;
 		
 		return "memo";
 >>>>>>> refs/remotes/origin/eh
+=======
+		List<MemoVO> memoList = dao.selectMemo(vo);
+		for(int i=0;i<memoList.size();i++){
+			memoList.get(i);
+		}
+		
+		return "memo";
+>>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 	}
 	
 	//select

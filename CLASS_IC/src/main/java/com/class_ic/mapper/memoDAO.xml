@@ -11,13 +11,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  -->
  <mapper namespace="com.class_ic.dao.MemoDAO">
  
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
  <!-- memo 등록  2017.06.16 최은혜 -->
 <insert id="insertMemo" parameterType="com.class_ic.vo.MemoVO" >
  	insert into memo(email,memoText,memoDate) values(#{email},#{memoText},now())
 </insert>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 <!-- memo 삭제  2017.06.16 최은혜  -->
 <delete id="deleteMemo" parameterType="com.class_ic.vo.MemoVO">
 	delete from memo where email=#{email} and memoNo=#{memoNo}
