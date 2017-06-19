@@ -23,10 +23,10 @@ $(function() {
 	
 	$(".save").click(function() {
 		$('.product').each(function(index) {
-			var id = $(this).text(),
-				order = index;
+			var email = $(this).text(),
+				position = index;
 			
-			console.log("ID: " + id + " | " + "Order: " + order);
+			console.log("ID: " + email + " | " + "position: " + position);
 		});
 	});
 });
