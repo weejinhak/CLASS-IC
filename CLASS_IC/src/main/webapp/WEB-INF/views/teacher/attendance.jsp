@@ -14,7 +14,7 @@
 
 <div class="container">
 	<div class="product">
-	<img src="${pageContext.request.contextPath}/resources/assets/img/st_006.jpg" class="img-circle img-responsive"/>
+	<img src="${pageContext.request.contextPath}/resources/assets/img/st_006.jpg" class="photo_img"/>
 	 	<span>name</span>
 	</div>
 
