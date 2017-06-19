@@ -17,36 +17,36 @@ public class BoardController {
   @Autowired
   private BoardService service;
   
-  //boardlist로 가는 controller
+  //board 리스트 보여주기
   @RequestMapping(value = "boardList.htm", method = RequestMethod.GET)
   public String listPage(Model model) throws Exception {
 	  
-	    
+	    System.out.println("★서블렛 접속 : boardList.htm");
 
 	    //모든 게시물들 리스트
-	    model.addAttribute("boardList",service.listAll());
+	    model.addAttribute("boardList", service.listAll());
 	    //카테고리 리스트
-	    model.addAttribute("cateList", service.showCategoryList());
+	    model.addAttribute("cateList", service.showCateList());
 	    
-		System.out.println("카테고리 리스트: "+service.showCategoryList());
+		System.out.println("카테고리 리스트: "+service.showCateList());
 
 
-    return "teacher.boardList";
+    return "teacher.board";
   }
   
-  
+  //글쓰기 view +카테고리와 서브카테고리 ㄱㄱ
   @RequestMapping(value = "board_write.htm", method = RequestMethod.GET)
   public String boardWrite(Model model) throws Exception {
 	  
 	  System.out.println("★서블렛 접속 : boardWrite.htm");
 	  
-	  model.addAttribute("list", service.showCategoryList());
-	  System.out.println("카테고리 리스트: "+service.showCategoryList());
+	  model.addAttribute("list", service.showCateList());
+	  System.out.println("카테고리 리스트: "+service.showCateList());
 	  
-    return "teacher.board_write";
+    return "teacher.board_content";
   }
   
-
+  //글쓰기 OK
   @RequestMapping(value = "boardWriteOk.htm", method = RequestMethod.POST)
   public String registPOST(BoardVO board) throws Exception {
 	  
@@ -62,7 +62,7 @@ public class BoardController {
 
 	  System.out.println("서비스는 잘 들어갔니?");
 
-    return "teacher.boardList";
+    return "teacher.board";
     
   }
   

@@ -23,19 +23,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="listAll" resultType="com.class_ic.vo.BoardVO">
- <![CDATA[
+ 
  select 
    lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
  from 
    LectureBoard 
- where bno > 0 
+ where lectureNo > 0 
  order by lectureNo desc, lectureDate desc
- ]]>
+
 	</select>
 	
 	<insert id="categoryCreate">
 		insert into category (cateCode, cateTitle)
-		values(#{cateCode} , #{cateTitle} );
+		values(#{cateCode} , #{cateTitle} )
 	</insert>
 	
 	<insert id="subCategoryCreate">
@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	
-	<select id="showCategoryList" resultType="String">
+	<select id="showCateList" resultType="String">
 		select cateCode
 		from
 		Category

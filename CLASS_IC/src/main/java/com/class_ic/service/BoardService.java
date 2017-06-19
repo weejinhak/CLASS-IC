@@ -37,6 +37,11 @@ public class BoardService {
     	boarddao.addAttach(fileName);
     }   */
   }
+  public List<BoardVO> listAll() throws Exception {
+		// TODO Auto-generated method stub
+		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+		return boarddao.listAll();
+	}
 
   
   public void addCategory(String cateTilte) throws Exception {
@@ -53,7 +58,7 @@ public class BoardService {
   }
   
  
-  public List<String> showCategoryList() throws Exception {
+  public List<String> showCateList() throws Exception {
 	  BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
   	
   	return boarddao.showCateList();
@@ -86,11 +91,7 @@ public void remove(Integer bno) throws Exception {
 
 
  
-public List<BoardVO> listAll() throws Exception {
-	// TODO Auto-generated method stub
-	BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
-	return boarddao.listAll();
-}
+
 
 
  
