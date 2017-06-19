@@ -2,12 +2,6 @@
 	<wb-module deploy-name="class_ic-1.0.0-BUILD-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
 		<wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-<<<<<<< HEAD
-=======
-		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 		<property name="java-output-path" value="target/classes"/>
         <property name="context-root" value="class_ic"/>
 	</wb-module>
