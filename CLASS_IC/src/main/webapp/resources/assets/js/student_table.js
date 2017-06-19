@@ -1,7 +1,7 @@
 
 $(function() {
     $('.product').draggable();
-    $('.favourites').droppable({
+/*    $('.favourites').droppable({
     	activeClass: "highlight",
     	appendTo: "body",
       	drop: function(event, ui) {
@@ -14,7 +14,7 @@ $(function() {
 		$(miniFav).appendTo('.favourites-container');
 		ui.draggable.fadeOut();
   		}
-	});
+	});*/
 });
 
 $(function() {
@@ -28,5 +28,20 @@ $(function() {
 			
 			console.log("ID: " + email + " | " + "position: " + position);
 		});
+		//ajax
+		$.ajax({
+			url: "stable.htm",
+			type: "post",
+			data : teacher_data,
+			success : function(data){
+				//console.log(teacher_data);
+				alert('선생 회원가입 성공');
+			},
+			error:function(request, status, error){
+				//console.log(error);
+				alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
+			}
+		});
+		
 	});
 });

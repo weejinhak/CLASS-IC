@@ -15,29 +15,20 @@
 <div class="container">
 	<div class="product">
 	<img src="${pageContext.request.contextPath}/resources/assets/img/st_006.jpg" class="photo_img"/>
-	 	<span>name</span>
+	 	<span>박소현</span>
 	 	<input type="hidden" name="email" value="" />
 	</div>
 
 	<div class="product">
-	<img src="${pageContext.request.contextPath}/resources/assets/img/st_005.jpg" class="photo_img"/>	
-		<span>name</span>
+	<img src="${pageContext.request.contextPath}/resources/assets/img/st_003.jpg" class="photo_img"/>	
+		<span>최석환</span>
 		<input type="hidden" name="email" value="" />
 	</div>
 
 	<div class="product">
 	<img src="${pageContext.request.contextPath}/resources/assets/img/st_004.jpg" class="photo_img"/>		
-		<span>name</span>
+		<span>위진학</span>
 		<input type="hidden" name="email" value="" />
-	</div>
-
-	<div class="favourites">
-		<span>&#9733;</span>
-		<span>&#x271a;</span>
-	</div>
-
-	<div class="favourites-container">
-
 	</div>
 </div>	
 			<!-- 원모양 end  -->

@@ -3,8 +3,9 @@ package com.class_ic.controller_category;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.class_ic.vo.StudentTable;
+import com.class_ic.vo.StudentTableDTO;
 
 @Controller
 public class StudentManagementController {
@@ -16,10 +17,10 @@ public class StudentManagementController {
 		return null;
 	}
 	@RequestMapping(value="stable.htm", method=RequestMethod.POST)
-	public String studentTable(StudentTable sTable){
+	public @ResponseBody String studentTable(StudentTableDTO sTable){
 		
 		
-		return null;
+		return "";
 	}
 
 }
