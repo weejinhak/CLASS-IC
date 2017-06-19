@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <link href="${pageContext.request.contextPath}/resources/assets/css/attendance.css" rel="stylesheet" />
+ <link href="${pageContext.request.contextPath}/resources/assets/css/student_table.css" rel="stylesheet" />
    
  <div class="content">
        <div class="container-fluid">
@@ -44,4 +44,4 @@
       	 </div>
 
  <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
- <script src="${pageContext.request.contextPath}/resources/assets/js/attendance.js"></script>
+ <script src="${pageContext.request.contextPath}/resources/assets/js/student_table.js"></script>

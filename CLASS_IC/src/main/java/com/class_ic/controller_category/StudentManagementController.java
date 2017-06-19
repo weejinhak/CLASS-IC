@@ -15,7 +15,7 @@ public class StudentManagementController {
 		
 		return null;
 	}
-	@RequestMapping(value="stable.htm", method=RequestMethod.GET)
+	@RequestMapping(value="stable.htm", method=RequestMethod.POST)
 	public String studentTable(StudentTable sTable){
 		
 		
