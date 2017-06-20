@@ -50,16 +50,17 @@ public class BoardService {
 	}
 
   
-  public void addCategory(String cateTilte) throws Exception {
+  public void addCategory(String cateCode) throws Exception {
 	  BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
-	  boarddao.categoryCreate(cateTilte);
+	  boarddao.categoryCreate(cateCode);
 	
   }
 
   
-  public void addSubCategory(String subcateTitle) throws Exception {
+  public void addSubCategory(String subcateCode, String cateCode) throws Exception {
 	  BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
-	  boarddao.subCategoryCreate(subcateTitle);
+	  boarddao.subCategoryCreate(cateCode,subcateCode);
+	  
 	
   }
   
@@ -70,16 +71,36 @@ public class BoardService {
   	return boarddao.showCateList();
   }
   
+  public List<String> showSubCateList(String cateCode) throws Exception {
+	  BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+  	
+  	return boarddao.showSubCateList(cateCode);
+  }
+  
   ////
   
   
   
 
  
-public BoardVO read(Integer bno) throws Exception {
-	// TODO Auto-generated method stub
-	return null;
+public BoardVO read(Integer lectureNo) throws Exception {
+	BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+	
+	return boarddao.read(lectureNo);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  
@@ -90,21 +111,13 @@ public void modify(BoardVO board) throws Exception {
 
 
  
-public void remove(Integer bno) throws Exception {
+public void remove(Integer lectureNo) throws Exception {
 	// TODO Auto-generated method stub
 	
 }
 
 
- 
-
-
-
- 
-
-
- 
-public List<String> getAttach(Integer bno) throws Exception {
+public List<String> getAttach(Integer lectureNo) throws Exception {
 	// TODO Auto-generated method stub
 	return null;
 }

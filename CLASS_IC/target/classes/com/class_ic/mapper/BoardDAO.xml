@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
   	<select id="read" resultType="com.class_ic.vo.BoardVO">
 		select
-		classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
+		lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
 		from
 		LectureBoard
 		where lectureNo = #{lectureNo}
@@ -43,12 +43,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="categoryCreate">
 		insert into category (cateCode, cateTitle)
-		values(#{cateCode} , #{cateTitle} )
+		values(#{cateCode} , 0 )
 	</insert>
 	
 	<insert id="subCategoryCreate">
-		insert into subcategory (subcateCode, cateCode, subcateTitle)
-		values(#{subcateCode} , #{cateCode}, #{subcateTitle});
+		insert into SubCategory (subcateCode, cateCode, subcateTitle)
+		values(#{param1} , #{param2}, 0)
 	</insert>
 	
 	
@@ -57,5 +57,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from
 		Category
 	</select>
+	
+	<select id="showSubCateList" resultType="String">
+		select subcateCode
+		from
+		SubCategory
+		where cateCode= #{cateCode}
+		
+	</select>
+	
  
 </mapper>

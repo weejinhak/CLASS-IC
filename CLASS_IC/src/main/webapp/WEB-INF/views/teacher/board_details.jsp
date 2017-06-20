@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
  <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
       	 <div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<h2 class="title text-center"><b>Spring</b></h2>
+			<h2 class="title text-center"><b>${cateCode}</b></h2>
 			<br>
 	 
                                 
@@ -17,20 +19,22 @@
 					<!--
                         color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                     -->
+                    <!--------------------------foreach  -->
+                    <c:forEach items="${subCateList}" var="subCateList">
+                    
 					<li class="active"><a href="#description-1" role="tab"
 						data-toggle="tab" aria-expanded="false"> 
-						<i class="material-icons">reorder</i> Spring_FrameWork
+						<i class="material-icons">reorder</i> ${subCateList}
 					</a></li>
-					<li class=""><a href="#description-1" role="tab"
-						data-toggle="tab" aria-expanded="false"> 
-							<i class="material-icons">reorder</i> MyBatis(ibatis)
-					</a></li>
-			 
-					<li class=""><a href="#description-2" role="tab"
+					
+					</c:forEach>
+					<!-- end -->
+					
+					<li class=""><a href="" role="tab"
 						data-toggle="tab" aria-expanded="false"> <!--                                            <i class="material-icons">exposure_plus_1</i> -->
 							<button class="btn btn-raised btn-round btn-white"
 								data-toggle="modal" data-target="#noticeModal">+</button>
-					  <i]></i><br> ADD
+					  <i></i><br> ADD
 					</a>
 		       
 					</li>
@@ -159,12 +163,14 @@
 							</button>
 							<h5 class="modal-title" id="myModalLabel">수업보드 세부 카테고리 추가</h5>
 						</div>
+						
+						<form action="makeSubCategory.htm" method="post">
 						<div class="modal-body">
 							<div class="instruction">
 								<div class="row">
 									<div class="col-md-12"> 
-										
-									<input type="text" class="form-control" placeholder="카테고리 이름">
+									<input name= "cateCode" type="hidden" value="${cateCode}" >
+									<input name="subcateCode" type="text" class="form-control" placeholder="세부 카테고리 이름">
 									</div>
 								 
 								</div>
@@ -177,8 +183,9 @@
 						<div class="modal-footer text-center">
 							<button type="button" class="btn btn-simple" data-dismiss="modal">Never
 								mind</button>
-							<button type="button" class="btn btn-success btn-simple">Yes</button>
+							<button type="submit" class="btn btn-success btn-simple">Yes</button>
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>

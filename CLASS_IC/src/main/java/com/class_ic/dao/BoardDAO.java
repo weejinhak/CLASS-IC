@@ -18,16 +18,16 @@ public interface BoardDAO {
 	
   public void create(BoardVO vo) throws ClassNotFoundException, SQLException;
   
-  public BoardVO read(Integer bno) throws ClassNotFoundException, SQLException;
+  public BoardVO read(Integer lectureNo) throws ClassNotFoundException, SQLException;
 
   public List<BoardVO> listAll() throws ClassNotFoundException, SQLException;
 
-  public void categoryCreate(String cateTitle) throws ClassNotFoundException, SQLException;
+  public void categoryCreate(String cateCode) throws ClassNotFoundException, SQLException;
   
-  public void subCategoryCreate(String subcateTitle) throws ClassNotFoundException, SQLException;
+  public void subCategoryCreate(String cateCode, String subcateCode) throws ClassNotFoundException, SQLException;
   
   public List<String> showCateList() throws ClassNotFoundException, SQLException;
-  
+  public List<String> showSubCateList(String cateCode) throws ClassNotFoundException, SQLException;
   /////////////////////////////////////////////////////////////////////
 
 }

@@ -17,7 +17,7 @@ import com.class_ic.vo.BoardVO;
 
 @Controller
 @RequestMapping("board")
-public class BoardController {
+public class T_BoardController {
 	
  
   @Autowired
@@ -74,19 +74,61 @@ public class BoardController {
   
   //카테고리 추가
   @RequestMapping(value = "makeCategory.htm", method = RequestMethod.POST)
-  public String AddCategory(String cateTitle) throws Exception {
+  public String AddCategory(String cateCode) throws Exception {
 	  System.out.println("★서블렛 접속 : makeCategory.htm");
-	  service.addCategory(cateTitle);
+	  service.addCategory(cateCode);
 
     
     return "리스트로 가는 주소!";
   }
+  
   //SUB카테고리 추가
-  @RequestMapping(value = "sss", method = RequestMethod.POST)
-  public String AddSubCategory(String subcateTitle) throws Exception {
-	  service.addCategory(subcateTitle);
+  @RequestMapping(value = "makeSubCategory.htm", method = RequestMethod.POST)
+  public String AddSubCategory(String cateCode, String subcateCode) throws Exception {
+	 
+	  System.out.println("★서블렛 접속 : makeSubCategory.htm");
+	  System.out.println("catecode & subcatecode"+cateCode+subcateCode);
+	  
+	  service.addSubCategory(cateCode,subcateCode);
+	  
     
-    return "board.boardlist.htm";
+    return "디테일 리스트로 가는 주소!";
   }
+  
+  //그 게시판 하나의 상세내용
+  @RequestMapping(value = "read.htm", method = RequestMethod.GET)
+  public String read(Model model, Integer lectureNo) throws Exception {
+	  System.out.println("★서블렛 접속 : read.htm");
+	  service.read(lectureNo);
+	  
+	  
+	  model.addAttribute("boardVO", service.read(lectureNo));
+	  System.out.println("read의 값"+service.read(lectureNo).toString());
+    return "teacher.board_details_view";
+  }
+  
+//디테일한 board 리스트
+  @RequestMapping(value = "detailList.htm", method = RequestMethod.GET)
+  public String detail_listPage(Model model,String cateCode) throws Exception {
+	    System.out.println("★서블렛 접속 : boardList.htm");
+
+	    //모든 게시물들 리스트
+	    model.addAttribute("boardList", service.listAll());
+	    
+	    //선택한 카테고리 리스트
+	    model.addAttribute("cateCode", cateCode);
+	    //세부카테고리 리스트
+	    model.addAttribute("subCateList", service.showSubCateList(cateCode));
+	   
+	    
+	    
+	    
+		System.out.println("카테고리 리스트: "+service.showCateList());
+		System.out.println("세부 카테고리 리스트: "+service.showSubCateList(cateCode));
+		
+		
+    return "teacher.board_details";
+  }
+  
 
 }

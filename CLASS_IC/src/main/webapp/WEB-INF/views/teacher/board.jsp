@@ -25,8 +25,8 @@
                         <div class="col-lg-6 col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-text" data-background-color="orange">
-                                    <h4 class="card-title">${cateList}</h4>
-                          			 <p class="category">New employees on 15th September, 2016</p> 
+                                    <h2 class="card-title">${cateList}</h2>
+                          			 <p class="category">최신글 목록을 보여줍니다.</p> 
                                 </div>
                                 
                                 <div class="card-content table-responsive">
@@ -47,14 +47,21 @@
                                    								<c:if test="${cateList == boardList.cateCode}" >
 						                                        <c:set var="num" value="${num+1}"/>
 						                                      	
-						                                        ${num}
+						                                        
+						                                        <a href="www.naver.com"></a>
+						                                        
 						                                        <tbody>
+						                                       	
 						                                            <tr>
+						                                            
 						                                                <td>${boardList.lectureNo}</td>
-						                                                <td>${boardList.lectureTitle}</td>  
+						                                                <td><a href="read.htm?lectureNo=${boardList.lectureNo}">${boardList.lectureTitle}</a></td>  
 						                                                <td>500</td>
+						                                           	
 						                                            </tr>
+						                                        
 						                                        </tbody>
+						                                        
 						                                        </c:if>
                                    			
                                    				
@@ -71,9 +78,13 @@
                                   </div>
                                   
                                       					<div align="center">
-                                         				 <button type="button" class="btn btn-round btn-warning dropdown-toggle" data-toggle="dropdown">
+                                      					<form action="detailList.htm">
+                                         				 <input type="hidden" name= "cateCode" value="${cateList}">
+                                         				 <button type="submit" class="btn btn-round btn-warning dropdown-toggle">
+                                                            
                                                             Details
                                                         </button>
+                                                        </form>
                                                         </div>
                                                          
                                   
@@ -130,7 +141,7 @@
 								<div class="row">
 									<div class="col-md-12"> 
 									
-									<input name ="cateTitle" type="text" class="form-control" placeholder="카테고리 이름">
+									<input name ="cateCode" type="text" class="form-control" placeholder="카테고리 이름">
 									</div>
 								 
 								</div>
