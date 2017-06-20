@@ -1,7 +1,14 @@
 
 	/* VARIABLES YOU COULD MODIFY */
-	var boxSizeArray = [4,4,4,3,7];	// Array indicating how many items there is rooom for in the right column ULs
 
+	//var boxSizeArray = [4,4,4,3,7];	// Array indicating how many items there is rooom for in the right column ULs
+	//5개 테이블에 1번째 4개, 2번째 4개, 3번째 4개, 4번째 3개, 5번째 7개 
+	var boxSizeArray = new Array();
+	boxSizeArray[0] = 4;
+	boxSizeArray[1] = 4;
+	boxSizeArray[2] = 4;
+	boxSizeArray[3] = 3;
+	boxSizeArray[4] = 7;
 
 	var verticalSpaceBetweenListItems = 3;	// Pixels space between one <li> and next
 											// Same value or higher as margin bottom in CSS for #dhtmlgoodies_dragDropContainer ul li,#dragContent li

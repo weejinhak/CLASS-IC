@@ -78,12 +78,7 @@
 				<li id="node21">Student U</li>
 			</ul>
 		</div>
-		<div>
-			<p>Team F</p>
-			<ul id="box6">
-
-			</ul>
-		</div>
+		
 	</div>
 </div>
 <div id="footer">
