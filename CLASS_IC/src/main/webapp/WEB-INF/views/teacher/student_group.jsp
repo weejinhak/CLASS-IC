@@ -26,7 +26,7 @@
       	 </c:forEach>
       	 </select>
       	 <!-- 조이름: <input type="text" id="gropuName" name="groupName" /> -->
-      	 <input type="button" id="group_submit_btn"  value="그룹 생성"/>
+      	 <input type="button" id="group_submit_btn"  value="그룹 나누기"/>
 		
       	 <!--drag & drop start  -->
 
@@ -35,24 +35,12 @@
 	</div>
 	<div id="dhtmlgoodies_listOfItems">
 		<div>
-			<p>Available students</p>
+			<p>학생 리스트</p>
+			<c:forEach var="slist" items="member">
 		<ul id="allItems">
-			<li id="node1">Student A</li>
-<!-- 			<li id="node2">Student B</li>
-			<li id="node3">Student C</li>
-			<li id="node4">Student D</li>
-			<li id="node5">Student E</li>
-			<li id="node6">Student F</li>
-			<li id="node7">Student G</li>
-			<li id="node8">Student H</li>
-			<li id="node9">Student I</li>
-			<li id="node10">Student J</li>
-			<li id="node11">Student K</li>
-			<li id="node12">Student L</li>
-			<li id="node13">Student M</li>
-			<li id="node14">Student N</li>
-			<li id="node15">Student O</li> -->
+			<li id="node__${var.index}">${slist.name }</li>
 		</ul>
+			</c:forEach>
 		</div>
 	</div>
 	<div id="dhtmlgoodies_mainContainer">
