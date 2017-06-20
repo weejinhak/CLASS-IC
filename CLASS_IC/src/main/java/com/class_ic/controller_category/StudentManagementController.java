@@ -12,7 +12,9 @@ public class StudentManagementController {
 	
 	@RequestMapping(value="stable.htm", method=RequestMethod.GET)
 	public String studentTable(){
-		
+		//get 호출이여도 기본으로
+		//1. member total count
+		//GroupCategory의 bindnum null/값이 있을 대로 나눠서 처리 > nvl() 으로 null 을 0으로 할 것인가
 		
 		return "teacher.student_group";
 	}
