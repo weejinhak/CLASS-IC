@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.class_ic.vo.StudentTableDTO;
 
-public interface StudetMangementDAO {
+public interface StudentManagemenDAO {
 	
 	public String studentTableSetting(StudentTableDTO stable);
 	
