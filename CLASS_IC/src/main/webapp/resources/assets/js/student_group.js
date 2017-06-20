@@ -9,6 +9,9 @@
 	boxSizeArray[2] = 4;
 	boxSizeArray[3] = 3;
 	boxSizeArray[4] = 7;
+	//총 인원수/ codeName의 총 select value로 나눠서 배열 갯 수 생성하고 
+	//boxSizeArray[i] for문 돌리고
+	//boxSizeArray[i]=select value 를 값으로 갖는다
 
 	var verticalSpaceBetweenListItems = 3;	// Pixels space between one <li> and next
 											// Same value or higher as margin bottom in CSS for #dhtmlgoodies_dragDropContainer ul li,#dragContent li

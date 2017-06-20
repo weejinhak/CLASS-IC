@@ -12,12 +12,20 @@
       	 <!-- 조편성하기 -->
       	 조편성
       	 회 차: 
-      	 <select>
+      	 <select id="groupCode">
       	 <c:forEach var="i" begin="1" end="10">
       	 <option value="${i }">${i }회차</option>
       	 </c:forEach>
       	 </select>
-      	 조이름: <input type="text" id="gropuName" name="groupName" />
+      	 <!-- 몇 명으로 나눌 것인가, 이것은 member 총 인원수 / 1부터 총인원수 나눈 수를 select 값으로 뿌린다  -->
+      	 <select id="groupName">
+      	 <%-- <c:set var="memberCount" value=""/> --%>
+      	 <%-- <c:forEach var="i" begin="1" end="memberCount" > --%>
+      	 <c:forEach var="i" begin="1" end="10" >
+      	 <option value="${i }">${i }명씩</option>
+      	 </c:forEach>
+      	 </select>
+      	 <!-- 조이름: <input type="text" id="gropuName" name="groupName" /> -->
       	 <input type="button" id="group_submit_btn"  value="그룹 생성"/>
 		
       	 <!--drag & drop start  -->
@@ -30,7 +38,7 @@
 			<p>Available students</p>
 		<ul id="allItems">
 			<li id="node1">Student A</li>
-			<li id="node2">Student B</li>
+<!-- 			<li id="node2">Student B</li>
 			<li id="node3">Student C</li>
 			<li id="node4">Student D</li>
 			<li id="node5">Student E</li>
@@ -43,7 +51,7 @@
 			<li id="node12">Student L</li>
 			<li id="node13">Student M</li>
 			<li id="node14">Student N</li>
-			<li id="node15">Student O</li>
+			<li id="node15">Student O</li> -->
 		</ul>
 		</div>
 	</div>
@@ -52,7 +60,7 @@
 		<div>
 			<p>Team a</p>
 			<ul id="box1">
-				<li id="node16">Student P</li>
+				
 			</ul>
 		</div>
 		<div>
@@ -62,8 +70,7 @@
 		<div>
 			<p>Team C</p>
 			<ul id="box3">
-				<li id="node17">Student Q</li>
-				<li id="node18">Student R</li>
+
 			</ul>
 		</div>
 		<div>
@@ -73,9 +80,8 @@
 		<div>
 			<p>Team E</p>
 			<ul id="box5">
-				<li id="node19">Student S</li>
-				<li id="node20">Student T</li>
-				<li id="node21">Student U</li>
+
+
 			</ul>
 		</div>
 		
