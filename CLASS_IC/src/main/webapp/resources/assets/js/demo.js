@@ -40,7 +40,7 @@ demo = {
          });
 
          $('.datepicker').datetimepicker({
-            format: 'YYYY/MM/DD',
+            format: 'YYYY-MM-DD',
             icons: {
                 time: "fa fa-clock-o",
                 date: "fa fa-calendar",
@@ -818,7 +818,7 @@ demo = {
 
         today = new Date();
         y = today.getFullYear();
-        m = today.getMonth();
+        m = today.getMonth()+1;
         d = today.getDate();
 
         $calendar.fullCalendar({
@@ -871,7 +871,28 @@ demo = {
 			eventLimit: true, // allow "more" link when too many events
 			
             // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
-            events: {url : 'CalendarList.htm' }
+            events: {url : 'CalendarList.htm' },
+            eventClick: function(calEvent, jsEvent, view,start) {
+            	var test="테스트";
+            	
+       
+              $.ajax({
+                     
+                    type : "GET",
+                    url : "CalendarEditDelete.htm",
+                    dataType : "json",
+                    error : function(){
+                        alert('통신실패!!');
+                    },
+                    success : function(){
+                        alert("통신데이터 값 : " + data) ;
+                      
+                    }
+                     
+                });
+            	swal(test)
+              }
+            
 		});
     },
 

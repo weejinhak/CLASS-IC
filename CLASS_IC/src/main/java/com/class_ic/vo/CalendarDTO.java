@@ -1,12 +1,12 @@
 package com.class_ic.vo;
 
-import java.sql.Date;
+
 
 public class CalendarDTO {
 	private int calNo;
 	private String classCode;
-	private Date calStart;
-	private Date calEnd;
+	private String calStart;
+	private String calEnd;
 	private String calTitle;
 	private String calContent;
 	
@@ -31,19 +31,19 @@ public class CalendarDTO {
 		this.classCode = classCode;
 	}
 
-	public Date getCalStart() {
+	public String getCalStart() {
 		return calStart;
 	}
 
-	public void setCalStart(Date calStart) {
+	public void setCalStart(String calStart) {
 		this.calStart = calStart;
 	}
 
-	public Date getCalEnd() {
+	public String getCalEnd() {
 		return calEnd;
 	}
 
-	public void setCalEnd(Date calEnd) {
+	public void setCalEnd(String calEnd) {
 		this.calEnd = calEnd;
 	}
 

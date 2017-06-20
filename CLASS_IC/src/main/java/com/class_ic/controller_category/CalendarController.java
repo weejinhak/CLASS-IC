@@ -1,10 +1,10 @@
 package com.class_ic.controller_category;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,41 +40,40 @@ public class CalendarController {
       CalendarDAO calendarDao = sqlSession.getMapper(CalendarDAO.class);
       CalendarDTO calendarDto = new CalendarDTO(); 
 
-      String calStart = request.getParameter("calStart");
+      //일정 시작 날짜 가져오기
+      String calStart = request.getParameter("calStart");     
+      //일정 마친 날짜 가져오기
       String calEnd = request.getParameter("calEnd");
       
       System.out.println(calStart);
       System.out.println(calEnd);
       
+      //제목
       String calTitle = request.getParameter("calTitle");
+     //내용
       String calContent = request.getParameter("calContent");
+      //코드
       String classCode = request.getParameter("classCode");
+      //class code가 1로 들어옴.
       
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
-
-      java.util.Date startdate;
-      java.util.Date enddate;
-   
-      try {
-         startdate = sdf.parse(calStart);
-         enddate=sdf.parse(calEnd);
-         Date start = new Date(startdate.getTime());
-         Date end = new Date(enddate.getTime());
-
-         calendarDto.setCalStart(start);
-         calendarDto.setCalEnd(end);
+      
+      System.out.println(calTitle);
+      System.out.println(calContent);
+      System.out.println(classCode);
+      
+    
+      
+         calendarDto.setCalStart(calStart);
+         calendarDto.setCalEnd(calEnd);
          calendarDto.setCalTitle(calTitle);
          calendarDto.setCalContent(calContent);
-         calendarDto.setClassCode(classCode);
+         calendarDto.setClassCode("151");
 
          System.out.println("캘린더 컨트롤러 일정입력 get ");
 
          calendarDao.CalendarWriteOk(calendarDto);
          
-      } catch (ParseException e) {
-         e.printStackTrace();
-      }
-
+   
 
       return "teacher.calendar";
    }
@@ -84,7 +83,7 @@ public class CalendarController {
    */
    
    @RequestMapping(value="CalendarList.htm", method=RequestMethod.GET)
-   public void CalendarIList(HttpServletRequest request, HttpServletResponse response,@ModelAttribute CalendarDTO dto2){
+   public void CalendarIList(HttpServletRequest request, HttpServletResponse response,@ModelAttribute CalendarDTO dto2) throws ParseException{
       System.out.println("1");
       
       CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);   
@@ -95,16 +94,32 @@ public class CalendarController {
       
       JSONArray array = new JSONArray();
       
-      SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
       for(int i=0; i<calendarlist.size(); i++){
     	  
          JSONObject obj = new JSONObject();
          
          obj.put("title", calendarlist.get(i).getCalTitle());
          
-         String start = transFormat.format(calendarlist.get(i).getCalStart());
+         String start = calendarlist.get(i).getCalStart();
          obj.put("start", start);
-         String end= transFormat.format(calendarlist.get(i).getCalEnd());
+         String end= calendarlist.get(i).getCalEnd();
+         SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd"); 
+
+         Calendar cal = Calendar.getInstance();
+         
+          java.util.Date date=sdformat.parse(end);
+          System.out.println(date);
+          
+          cal.setTime(date);
+          cal.add(Calendar.DATE, +1);
+          
+          System.out.println("before"+end);
+          end = sdformat.format(cal.getTime());  
+        
+          
+          System.out.println("afeter"+end);
+
+         
          obj.put("end", end);
          
          
@@ -122,6 +137,17 @@ public class CalendarController {
 	}
       System.out.println("3");
        
+   }
+   
+   
+   @RequestMapping(value="CalendarEditDelete.htm", method=RequestMethod.GET)
+   public void calendarEditDelete(HttpServletRequest request, HttpServletResponse response) throws IOException{
+	   System.out.println("하잇");
+
+	      JSONArray array = new JSONArray();
+	      response.getWriter().print(array);
+	      
+	      
    }
    
 }
