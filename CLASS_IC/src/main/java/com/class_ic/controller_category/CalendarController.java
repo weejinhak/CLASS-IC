@@ -97,7 +97,7 @@ public class CalendarController {
       for(int i=0; i<calendarlist.size(); i++){
     	  
          JSONObject obj = new JSONObject();
-         
+         obj.put("id", calendarlist.get(i).getCalNo());
          obj.put("title", calendarlist.get(i).getCalTitle());
          
          String start = calendarlist.get(i).getCalStart();
@@ -143,9 +143,13 @@ public class CalendarController {
    @RequestMapping(value="CalendarEditDelete.htm", method=RequestMethod.GET)
    public void calendarEditDelete(HttpServletRequest request, HttpServletResponse response) throws IOException{
 	   System.out.println("하잇");
+	   int id=Integer.parseInt(request.getParameter("id"));
+	   System.out.println(id);
+	   
+	   CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);   
+	   calendardao.CalendarDelete(id);
 
-	      JSONArray array = new JSONArray();
-	      response.getWriter().print(array);
+	
 	      
 	      
    }

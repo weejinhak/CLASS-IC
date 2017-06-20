@@ -12,7 +12,7 @@ insert into Calendar(calNo,classCode,calStart,calEnd,calTitle,calContent) values
    
 <!-- 일정 보기 -->
 <select id="CalendarList"  resultType="com.class_ic.vo.CalendarDTO">
-select calStart, calEnd, calTitle from Calendar
+select  calNo,calStart, calEnd, calTitle from Calendar
 </select>
    
 <!-- 일정 수정-->

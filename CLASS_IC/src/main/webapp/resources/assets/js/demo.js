@@ -645,8 +645,7 @@ demo = {
                     })
                   }
                 })
-
-    	}else if(type == 'custom-html'){
+	}else if(type == 'custom-html'){
         	swal({
                 title: 'HTML example',
                 buttonsStyling: false,
@@ -872,25 +871,71 @@ demo = {
 			
             // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
             events: {url : 'CalendarList.htm' },
-            eventClick: function(calEvent, jsEvent, view,start) {
+            eventClick: function(calEvent, jsEvent, view) {
             	var test="테스트";
-            	
-       
-              $.ajax({
-                     
-                    type : "GET",
-                    url : "CalendarEditDelete.htm",
-                    dataType : "json",
-                    error : function(){
-                        alert('통신실패!!');
-                    },
-                    success : function(){
-                        alert("통신데이터 값 : " + data) ;
-                      
-                    }
-                     
-                });
-            	swal(test)
+            	var id=calEvent.id;
+            	console.log(calEvent.id); //아이디 값
+            	console.log(jsEvent);
+            	console.log(view);
+            	 swal({
+                     title: 'Are you sure?',
+                     text: 'You will not be able to recover this calendar!',
+                     type: 'warning',
+                     showCancelButton: true,
+                     confirmButtonText: '일정 삭제하기',
+                     cancelButtonText: '일정 유지하기',
+                     confirmButtonClass: "btn btn-success",
+                     cancelButtonClass: "btn btn-danger",
+                     buttonsStyling: false
+                 }).then(function() {
+                	 
+                	   $.ajax({
+                           
+                           type : "GET",
+                           url : "CalendarEditDelete.htm",
+                           data: {id: id},
+                           dataType : "text",
+                           error : function(){
+                        	   swal({
+                                   title: 'Cancelled ',
+                                   text: '일정 삭제를 실패 하셨습니다. 관리자에게 문의하세요.',
+                                   type: 'error',
+                                   confirmButtonClass: "btn btn-info",
+                                   buttonsStyling: false
+                                 })
+                            
+                           },
+                           success : function(data){
+              
+                               
+                               swal({
+                                   title: 'Deleted!',
+                                   text: '삭제가 완료 되었습니다.',
+                                   type: 'success',
+                                   confirmButtonClass: "btn btn-success",
+                                   buttonsStyling: false
+                                   }).then(function() {
+									
+                                   location.href="test9.htm";
+								})
+                                   
+                           }
+                            
+                       });
+                  
+                 }, function(dismiss) {
+                   // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+                   if (dismiss === 'cancel') {
+                     swal({
+                       title: 'Cancelled',
+                       text: '삭제를 취소 하셨습니다.',
+                       type: 'error',
+                       confirmButtonClass: "btn btn-info",
+                       buttonsStyling: false
+                     })
+                   }
+                 })
+           
               }
             
 		});
