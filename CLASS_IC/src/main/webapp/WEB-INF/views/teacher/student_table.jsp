@@ -9,9 +9,13 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<button class="save btn btn-primary">Save Order</button>
-			<!--원모양 start -->
+	<!--  회원 리스트 -->
+	<div class="memberlist" id="studentlist">
+		<img src="${pageContext.request.contextPath}/resources/assets/img/st_006.jpg" class="photo_img"/>
+		<span>노지영</span>
+	</div>		
 
-
+<!--원모양 start -->
 <div class="container">
 	<div class="product">
 	<img src="${pageContext.request.contextPath}/resources/assets/img/st_006.jpg" class="photo_img"/>

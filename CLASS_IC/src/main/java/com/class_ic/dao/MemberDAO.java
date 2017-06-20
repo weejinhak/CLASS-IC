@@ -18,11 +18,11 @@ public interface MemberDAO {
 	
 	public int modify(MemberDTO member);
 	
-	public int delete(MemberDTO member);
+	public int delete(String email);
 	
 	public MemberDTO selectOne(MemberDTO member);
 	
-	public List<MemberDTO> selectAll(MemberDTO member);
+	public List<MemberDTO> selectAll();
 	
 	public MemberDTO login(String email);	
 	

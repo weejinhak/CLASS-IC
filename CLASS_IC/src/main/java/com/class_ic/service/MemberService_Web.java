@@ -7,6 +7,8 @@
 */
 package com.class_ic.service;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -28,7 +30,7 @@ public class MemberService_Web {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	//@RequestParam("password") String rawPassword, Principal principal (넘기는 parameter security 적용 후 변경
+	//login
 	public ModelAndView loginService(HttpSession session,String email, @RequestParam("pwd") String rawPassword, ModelAndView mv){
 		
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
@@ -55,6 +57,32 @@ public class MemberService_Web {
 			mv.setViewName("join/login");
 			System.out.println("비밀번호 확인 실패");
 		}
+		return mv;
+	}
+	
+	//update
+	public ModelAndView update(MemberDTO member, ModelAndView mv){
+		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+		MemberDTO getMember = member_dao.selectOne(member);
+		
+		
+		return mv;
+	}
+	
+	//delete
+	public int delete(String email){
+		
+		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+		int result = member_dao.delete(email);
+		
+		return result ;
+	}
+	
+	//memberList
+	public ModelAndView getMember(ModelAndView mv){
+		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+		ArrayList<MemberDTO> memberList = (ArrayList<MemberDTO>) member_dao.selectAll();
+		
 		return mv;
 	}
 

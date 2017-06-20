@@ -1,6 +1,8 @@
 
 $(function() {
     $('.product').draggable();
+    $('#studentlist').draggable();
+    $('.product').droppable();
 /*    $('.favourites').droppable({
     	activeClass: "highlight",
     	appendTo: "body",
@@ -32,10 +34,10 @@ $(function() {
 		$.ajax({
 			url: "stable.htm",
 			type: "post",
-			data : teacher_data,
+			data : {"email":email, "position":position},
 			success : function(data){
-				//console.log(teacher_data);
-				alert('선생 회원가입 성공');
+				//console.log(data);
+				alert('자리값 넘김 성공');
 			},
 			error:function(request, status, error){
 				//console.log(error);

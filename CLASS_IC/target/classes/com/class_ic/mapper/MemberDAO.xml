@@ -22,4 +22,25 @@ FROM member m JOIN classicauthority a
 ON m.email = a.email 
 WHERE m.email=#{email}
 </select>
+
+
+<update id="modify" parameterType="com.class_ic.vo.MemberDTO" >
+	update member set 
+		name=#{name}, pwd=#{pwd}, phone=#{phone}, photoSrc=#{photoSrc}
+	where email=#{email}
+</update>
+
+<delete id="delete">
+	delete from member where email=#{email}
+</delete>
+
+<select id="selectOne" resultType="com.class_ic.vo.MemberDTO">
+select * from member where email=#{email}
+</select>
+
+<select id="selectAll" resultType="com.class_ic.vo.MemberDTO">
+select * from member
+</select>
+
+
 </mapper>
