@@ -12,12 +12,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into classicauthority (email, authority) values(#{email}, #{authority})
 </insert>
 
-<insert id="inputMyClassCode">
-	INSERT INTO classmember (classCode)
-	SELECT #{classCode} FROM DUAL
-	WHERE NOT EXISTS (SELECT * FROM classmember WHERE classCode=#{classCode} AND email=#{email}
-</insert>
-
 
 <update id="modify" parameterType="com.class_ic.vo.MemberDTO" >
 	update member set 
@@ -34,10 +28,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <select id="confirmAuthority" resultType="String">
-SELECT m.email as email, a.authority as authority 
-FROM member m JOIN classicauthority a 
-ON m.email = a.email 
-WHERE m.email=#{email}
+	SELECT m.email as email, a.authority as authority 
+	FROM member m JOIN classicauthority a 
+	ON m.email = a.email 
+	WHERE m.email=#{email}
 </select>
 
 
@@ -49,19 +43,22 @@ select * from member where email=#{email}
 <select id="selectAll" resultType="com.class_ic.vo.MemberDTO">
 select * from member
 </select>
+<select id="selectAllCount" resultType="Integer">
+select count(email) from member
+</select>
 
 <select id="selectAllStudent"  resultType="com.class_ic.vo.MemberDTO">
-SELECT m.email as email, m.name as name
-FROM member m JOIN classicauthority a 
-ON m.email = a.email 
-WHERE a.authority='ROLE_STUDENT'
+	SELECT m.email as email, m.name as name
+	FROM member m JOIN classicauthority a 
+	ON m.email = a.email
+	WHERE a.authority=${@com.class_ic.vo.MemberDTO@STUDENT_AUTHORITY}
 </select>
 
 <select id="selectAllStudentCount">
-SELECT count()m.email)
-FROM member m JOIN classicauthority a 
-ON m.email = a.email 
-WHERE a.authority='ROLE_STUDENT'
+	SELECT count()m.email)
+	FROM member m JOIN classicauthority a 
+	ON m.email = a.email 
+	WHERE a.authority=${@com.class_ic.vo.MemberDTO@STUDENT_AUTHORITY}
 </select>
 
 </mapper>

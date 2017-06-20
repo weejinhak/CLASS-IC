@@ -8,14 +8,15 @@
 package com.class_ic.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,6 +31,7 @@ public class MemberService_Web {
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 	
 	//login
 	public ModelAndView loginService(HttpSession session,String email, @RequestParam("pwd") String rawPassword, ModelAndView mv){
@@ -83,8 +85,25 @@ public class MemberService_Web {
 	public ModelAndView getMember(ModelAndView mv){
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		ArrayList<MemberDTO> memberList = (ArrayList<MemberDTO>) member_dao.selectAll();
+		int member_count = member_dao.selectAllCount();
+		System.out.println("인간 수" + member_count);
 		mv.addObject("member_list", memberList);
+		mv.addObject("member_count", member_count);
+		mv.setViewName("teacher.student_group");
 		return mv ;
+	}
+	
+	//학생 전체 select
+	public ModelAndView getStudentAll(ModelAndView mv){
+		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+		
+		List<MemberDTO> student_list = member_dao.selectAllStudent();
+		int student_count = member_dao.selectAllStudentCount();
+		System.out.println("학생 수: " +student_count );
+		mv.addObject("student_list", student_list);
+		mv.addObject("student_count", student_count);
+		mv.setViewName("teacher.student_group");
+		return mv;
 	}
 
 }

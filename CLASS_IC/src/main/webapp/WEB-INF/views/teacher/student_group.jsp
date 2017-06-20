@@ -19,8 +19,8 @@
       	 </select>
       	 <!-- 몇 명으로 나눌 것인가, 이것은 member 총 인원수 / 1부터 총인원수 나눈 수를 select 값으로 뿌린다  -->
       	 <select id="groupName">
-      	 <%-- <c:set var="memberCount" value="${memberlist}"/> --%>
-      	 <%-- <c:forEach var="i" begin="1" end="memberCount" > --%>
+    <%--    <c:set var="memberCount" value="${member_count}"/>
+      	<c:forEach var="i" begin="1" end="memberCount" > --%> 
       	 <c:forEach var="i" begin="1" end="10" >
       	 <option value="${i }">${i }명씩</option>
       	 </c:forEach>
@@ -36,11 +36,11 @@
 	<div id="dhtmlgoodies_listOfItems">
 		<div>
 			<p>학생 리스트</p>
-			<c:forEach var="slist" items="member">
+			<%-- <c:forEach var="slist" items="member"> --%>
 		<ul id="allItems">
-			<li id="node__${var.index}">${slist.name }</li>
+			<%-- <li id="node__${var.index}">${slist.name }</li> --%>
 		</ul>
-			</c:forEach>
+			<%-- </c:forEach> --%>
 		</div>
 	</div>
 	<div id="dhtmlgoodies_mainContainer">

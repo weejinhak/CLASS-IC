@@ -24,7 +24,8 @@ public interface MemberDAO {
 	public MemberDTO selectOne(MemberDTO member);
 	//회원 전체 목록 select
 	public List<MemberDTO> selectAll();
-	
+	//회원 전체 수
+	public int selectAllCount();
 	//로그인
 	public MemberDTO login(String email);	
 	//권한주기
