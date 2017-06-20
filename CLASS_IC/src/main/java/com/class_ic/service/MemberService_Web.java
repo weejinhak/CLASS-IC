@@ -94,16 +94,28 @@ public class MemberService_Web {
 	}
 	
 	//학생 전체 select
-	public ModelAndView getStudentAll(ModelAndView mv, String authority){
+	public ModelAndView getStudentAll(ModelAndView mv, MemberDTO member){
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		
-		List<MemberDTO> student_list = member_dao.selectAllStudent(authority);
-		int student_count = member_dao.selectAllStudentCount(authority);
+		List<MemberDTO> student_list = member_dao.selectAllStudent(member);
+		int student_count = member_dao.selectAllStudentCount(member);
 		System.out.println("학생 수: " +student_count );
 		mv.addObject("student_list", student_list);
 		mv.addObject("student_count", student_count);
 		mv.setViewName("teacher.student_group");
 		return mv;
+	}
+	
+	//test
+	public ModelAndView getMemberGp(ModelAndView mv){
+		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+		ArrayList<MemberDTO> memberList = (ArrayList<MemberDTO>) member_dao.selectAll();
+		int member_count = member_dao.selectAllCount();
+		System.out.println("인간 수" + member_count);
+		mv.addObject("member_list2", memberList);
+		mv.addObject("member_count2", member_count);
+		mv.setViewName("teacher.student_groupping");
+		return mv ;
 	}
 
 }

@@ -47,14 +47,14 @@ select * from member
 select count(email) from member
 </select>
 
-<select id="selectAllStudent"  resultType="com.class_ic.vo.MemberDTO">
+<select id="selectAllStudent" parameterType="com.class_ic.vo.MemberDTO" resultType="com.class_ic.vo.MemberDTO">
 	SELECT m.email as email, m.name as name
 	FROM member m JOIN classicauthority a 
 	ON m.email = a.email
 	WHERE a.authority=${authority}
 </select>
 
-<select id="selectAllStudentCount">
+<select id="selectAllStudentCount" parameterType="com.class_ic.vo.MemberDTO">
 	SELECT count()m.email)
 	FROM member m JOIN classicauthority a 
 	ON m.email = a.email 

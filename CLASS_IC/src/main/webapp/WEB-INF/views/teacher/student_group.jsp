@@ -26,8 +26,13 @@
       	 </c:forEach>
       	 </select>
       	 <!-- 조이름: <input type="text" id="gropuName" name="groupName" /> -->
-      	 <input type="button" id="group_submit_btn"  value="그룹 나누기"/>
-		
+      	 <input type="button" id="group_submit_btn"  value="그룹 나누기" class="btn btn-rose"/>
+		<!-- 저장 button -->
+		<div>
+			<form action="aPage.html" method="post">
+			<input type="button" onclick="saveDragDropNodes()" value="Save" class="btn btn-primary">
+			</form>
+		</div>
       	 <!--drag & drop start  -->
 
 <div id="dhtmlgoodies_dragDropContainer">
@@ -39,7 +44,9 @@
 			
 		<ul id="allItems">
 			<c:forEach var="slist" items="${member_list}">
-				<li id="node__${var.index}">${slist.name }</li>
+				<li id="node__${var.index}">
+				<img src="${pageContext.request.contextPath}/resources/assets/img/${slist.photoSrc}.jpg" class="photo_img"/><br/>
+				${slist.name }</li><br/>
 			</c:forEach>
 		</ul>
 			
@@ -77,9 +84,7 @@
 		
 	</div>
 </div>
-<div id="footer">
-	<form action="aPage.html" method="post"><input type="button" onclick="saveDragDropNodes()" value="Save"></form>
-</div>
+
 <ul id="dragContent"></ul>
 <div id="dragDropIndicator"><img src="https://www.apollowebstudio.com/screenshots/2015/insert.gif"></div>
 <div id="saveContent"><!-- THIS ID IS ONLY NEEDED FOR THE DEMO --></div>
