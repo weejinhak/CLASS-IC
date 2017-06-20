@@ -34,8 +34,8 @@ public interface MemberDAO {
 	public String confirmAuthority(String email);
 
 	//학생인 회원 전체 목록
-		public List<MemberDTO> selectAllStudent();
+		public List<MemberDTO> selectAllStudent(String authority);
 	//학원 회원 전체 수 확인
-		public int selectAllStudentCount();
+		public int selectAllStudentCount(String authority);
 
 }

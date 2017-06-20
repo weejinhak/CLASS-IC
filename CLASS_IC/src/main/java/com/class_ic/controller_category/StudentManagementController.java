@@ -1,6 +1,7 @@
 package com.class_ic.controller_category;
 
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -23,13 +24,13 @@ public class StudentManagementController {
 	MemberService_Web memberservice;
 	
 	@RequestMapping(value="stable.htm", method=RequestMethod.GET)
-	public ModelAndView studentTable(ModelAndView mv){
+	public ModelAndView studentTable(ModelAndView mv, String authority){
 		//get 호출이여도 기본으로
 		//1. member total count
 		//GroupCategory의 bindnum null/값이 있을 대로 나눠서 처리 > nvl() 으로 null 을 0으로 할 것인가
 
 		ModelAndView MnV = memberservice.getMember(mv);
-		//ModelAndView MnV = memberservice.getStudentAll(mv);
+		//ModelAndView MnV = memberservice.getStudentAll(mv, authority);
 			
 		return mv;
 	}

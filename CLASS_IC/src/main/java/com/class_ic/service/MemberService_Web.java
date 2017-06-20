@@ -12,7 +12,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,6 +27,7 @@ public class MemberService_Web {
 	
 	@Autowired
 	private SqlSession sqlsession;
+	
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -94,11 +94,11 @@ public class MemberService_Web {
 	}
 	
 	//학생 전체 select
-	public ModelAndView getStudentAll(ModelAndView mv){
+	public ModelAndView getStudentAll(ModelAndView mv, String authority){
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		
-		List<MemberDTO> student_list = member_dao.selectAllStudent();
-		int student_count = member_dao.selectAllStudentCount();
+		List<MemberDTO> student_list = member_dao.selectAllStudent(authority);
+		int student_count = member_dao.selectAllStudentCount(authority);
 		System.out.println("학생 수: " +student_count );
 		mv.addObject("student_list", student_list);
 		mv.addObject("student_count", student_count);

@@ -51,14 +51,14 @@ select count(email) from member
 	SELECT m.email as email, m.name as name
 	FROM member m JOIN classicauthority a 
 	ON m.email = a.email
-	WHERE a.authority=${@com.class_ic.vo.MemberDTO@STUDENT_AUTHORITY}
+	WHERE a.authority=${authority}
 </select>
 
 <select id="selectAllStudentCount">
 	SELECT count()m.email)
 	FROM member m JOIN classicauthority a 
 	ON m.email = a.email 
-	WHERE a.authority=${@com.class_ic.vo.MemberDTO@STUDENT_AUTHORITY}
+	WHERE a.authority=${authority}
 </select>
 
 </mapper>
