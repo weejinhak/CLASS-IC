@@ -8,6 +8,7 @@ public class MemberDTO {
 	private String phone;
 	private String photoSrc;
 	private String authority;	//security 권한
+	private String classCode; 	//기수
 	
 	public MemberDTO(){};
 	

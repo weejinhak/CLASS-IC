@@ -14,5 +14,8 @@ public interface LectureAddDAO {
 	public List<LectureDTO> getlecture(@Param("email")String email) throws ClassNotFoundException, SQLException;
 	//강의 추가
 	public int insert(LectureDTO lecture) throws ClassNotFoundException, SQLException;
+	
+	//학생 강의 최초 등록
+	public int inputMyClassCode(String email, String classCode);
 
 }

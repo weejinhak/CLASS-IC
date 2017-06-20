@@ -1,14 +1,23 @@
 package com.class_ic.controller_category;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.class_ic.service.MemberService_Web;
+import com.class_ic.service_category.StudentManagementService;
 import com.class_ic.vo.StudentTableDTO;
 
 @Controller
 public class StudentManagementController {
+	
+	@Autowired
+	StudentManagementService studentmanagerservice;
+	
+	@Autowired
+	MemberService_Web memberservice;
 	
 	@RequestMapping(value="stable.htm", method=RequestMethod.GET)
 	public String studentTable(){

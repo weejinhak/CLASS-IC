@@ -14,5 +14,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM class WHERE email=#{email}
 	</select>
 
+	<insert id="inputMyClassCode">
+	   INSERT INTO classmember (classCode)
+	   SELECT #{classCode} FROM DUAL
+	   WHERE NOT EXISTS (SELECT * FROM classmember WHERE classCode=#{classCode} AND email=#{email}
+	</insert>
 
 </mapper>

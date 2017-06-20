@@ -30,6 +30,5 @@ public interface MemberDAO {
 	
 	public String confirmAuthority(String email);
 
-	
 
 }

@@ -12,16 +12,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into classicauthority (email, authority) values(#{email}, #{authority})
 </insert>
 
-<select id="login" resultType="com.class_ic.vo.MemberDTO">
-	select * from member where email=#{email}
-</select>
-
-<select id="confirmAuthority" resultType="String">
-SELECT m.email as email, a.authority as authority 
-FROM member m JOIN classicauthority a 
-ON m.email = a.email 
-WHERE m.email=#{email}
-</select>
+<insert id="inputMyClassCode">
+	INSERT INTO classmember (classCode)
+	SELECT #{classCode} FROM DUAL
+	WHERE NOT EXISTS (SELECT * FROM classmember WHERE classCode=#{classCode} AND email=#{email}
+</insert>
 
 
 <update id="modify" parameterType="com.class_ic.vo.MemberDTO" >
@@ -34,6 +29,19 @@ WHERE m.email=#{email}
 	delete from member where email=#{email}
 </delete>
 
+<select id="login" resultType="com.class_ic.vo.MemberDTO">
+	select * from member where email=#{email}
+</select>
+
+<select id="confirmAuthority" resultType="String">
+SELECT m.email as email, a.authority as authority 
+FROM member m JOIN classicauthority a 
+ON m.email = a.email 
+WHERE m.email=#{email}
+</select>
+
+
+
 <select id="selectOne" resultType="com.class_ic.vo.MemberDTO">
 select * from member where email=#{email}
 </select>
@@ -41,6 +49,7 @@ select * from member where email=#{email}
 <select id="selectAll" resultType="com.class_ic.vo.MemberDTO">
 select * from member
 </select>
+
 
 
 </mapper>

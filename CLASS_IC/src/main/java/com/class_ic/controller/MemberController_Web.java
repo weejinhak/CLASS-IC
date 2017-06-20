@@ -51,8 +51,8 @@ public class MemberController_Web {
 	}
 	
 	//회원 수정 view  값 넘기기
-		@RequestMapping(value="editMember.htm", method=RequestMethod.POST)
-		public ModelAndView editMyProfile(MemberDTO member, ModelAndView mv){
+	@RequestMapping(value="editMember.htm", method=RequestMethod.POST)
+	public ModelAndView editMyProfile(MemberDTO member, ModelAndView mv){
 			
 		return mv;
 		}
