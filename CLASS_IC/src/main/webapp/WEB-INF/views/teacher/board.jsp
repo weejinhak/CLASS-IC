@@ -28,7 +28,7 @@
                                     <h4 class="card-title">${cateList}</h4>
                           			 <p class="category">New employees on 15th September, 2016</p> 
                                 </div>
-                                >
+                                
                                 <div class="card-content table-responsive">
                                     <table class="table table-hover">
                                         <thead class="text-warning">
@@ -38,28 +38,35 @@
                                             
                                         </tr></thead>
                                         
-                                        <!-- if -->
-                                        <c:if test="${boardList.cateCode==cateList.catecode}">
                                         
-                                           <c:set value="dinfree" var="msg"/>
-										   msg : ${msg} <br>
-										   <c:if test="${msg == 'dinfree'}" var="result">
-										   test result = ${result } <br>
-										   </c:if>
+                      			     <c:set var="num" value= '0'/>
+                      			     
+                                     	<c:forEach items="${boardList}" var="boardList">
+                                   		
+                                 			<c:if test="${num <5}">
+                                   								<c:if test="${cateList == boardList.cateCode}" >
+						                                        <c:set var="num" value="${num+1}"/>
+						                                      	
+						                                        ${num}
+						                                        <tbody>
+						                                            <tr>
+						                                                <td>${boardList.lectureNo}</td>
+						                                                <td>${boardList.lectureTitle}</td>  
+						                                                <td>500</td>
+						                                            </tr>
+						                                        </tbody>
+						                                        </c:if>
+                                   			
+                                   				
+                                 			
+                                 			
+                                   				
+                                      		</c:if>
+                                      		
+                                        
+                                        </c:forEach>                                        
                                         
                                         
-                                        
-                                     <c:forEach items="${boardList}" var="boardList" begin="1" end="5">
-                                        <tbody>
-                                            <tr>
-                                                <td>${boardList.lectureNo}</td>
-                                                <td>${boardList.lectureTitle}</td>
-                                                <td>500</td>
-                                            </tr>
-                                           
-                                        </tbody>
-                                        </c:forEach>
-                                        </c:if>
                                     </table>
                                   </div>
                                   
