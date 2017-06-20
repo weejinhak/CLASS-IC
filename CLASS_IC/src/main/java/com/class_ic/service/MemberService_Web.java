@@ -15,6 +15,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -82,8 +83,8 @@ public class MemberService_Web {
 	public ModelAndView getMember(ModelAndView mv){
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		ArrayList<MemberDTO> memberList = (ArrayList<MemberDTO>) member_dao.selectAll();
-		
-		return mv;
+		mv.addObject("member_list", memberList);
+		return mv ;
 	}
 
 }
