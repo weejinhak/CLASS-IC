@@ -848,9 +848,10 @@ demo = {
                 }
             },
 
-            select: function(start, end, event, jsEvent, view, calEvent) {
+            select: function(start, end, event, jsEvent, view, calEvent,today ) {
                 
-                console.log(calEvent);
+                console.log(today);
+             
 
                     // on select we show the Sweet Alert modal with an input
                 swal({
@@ -893,7 +894,7 @@ demo = {
             // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
             events: {url : 'CalendarList.htm' },
             eventClick: function(calEvent, jsEvent, view) {
-            	var test="테스트";
+            	var test="테스트"; 
             	var id=calEvent.id;
             	console.log(calEvent.id); //아이디 값
             	console.log(jsEvent);
