@@ -19,7 +19,7 @@
 		}
 	}*/
 
-	var verticalSpaceBetweenListItems = 3;	// Pixels space between one <li> and next
+	var verticalSpaceBetweenListItems = 1;	// Pixels space between one <li> and next
 											// Same value or higher as margin bottom in CSS for #dhtmlgoodies_dragDropContainer ul li,#dragContent li
 
 

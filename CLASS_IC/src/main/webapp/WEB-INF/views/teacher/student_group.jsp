@@ -36,11 +36,13 @@
 	<div id="dhtmlgoodies_listOfItems">
 		<div>
 			<p>학생 리스트</p>
-			<%-- <c:forEach var="slist" items="member"> --%>
+			
 		<ul id="allItems">
-			<%-- <li id="node__${var.index}">${slist.name }</li> --%>
+			<c:forEach var="slist" items="${member_list}">
+				<li id="node__${var.index}">${slist.name }</li>
+			</c:forEach>
 		</ul>
-			<%-- </c:forEach> --%>
+			
 		</div>
 	</div>
 	<div id="dhtmlgoodies_mainContainer">

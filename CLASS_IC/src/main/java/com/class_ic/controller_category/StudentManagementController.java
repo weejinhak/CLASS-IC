@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service.MemberService_Web;
 import com.class_ic.service_category.StudentManagementService;
@@ -23,14 +23,15 @@ public class StudentManagementController {
 	MemberService_Web memberservice;
 	
 	@RequestMapping(value="stable.htm", method=RequestMethod.GET)
-	public String studentTable(){
+	public ModelAndView studentTable(ModelAndView mv){
 		//get 호출이여도 기본으로
 		//1. member total count
 		//GroupCategory의 bindnum null/값이 있을 대로 나눠서 처리 > nvl() 으로 null 을 0으로 할 것인가
 
-		
+		ModelAndView MnV = memberservice.getMember(mv);
+		//ModelAndView MnV = memberservice.getStudentAll(mv);
 			
-		return "teacher.student_group";
+		return mv;
 	}
 	@RequestMapping(value="stable.htm", method=RequestMethod.POST)
 	public @ResponseBody String studentTable(StudentTableDTO sTable){
