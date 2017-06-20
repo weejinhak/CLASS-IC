@@ -12,12 +12,12 @@ insert into Calendar(calNo,classCode,calStart,calEnd,calTitle,calContent) values
    
 <!-- 일정 보기 -->
 <select id="CalendarList"  resultType="com.class_ic.vo.CalendarDTO">
-select  calNo,calStart, calEnd, calTitle from Calendar
+select calStart, calEnd, calTitle from Calendar
 </select>
    
 <!-- 일정 수정-->
 <update id="CalendarEdit" >
-update Calendar set calStart=#{calStart}, calEnd=#{calEnd}, calTitle=#{calTitle}, calContent=#{calContent} where calNo=#{calNO}
+update Calendar set calStart=#{calStart}, calEnd=#{calEnd}, calTitle=#{calTitle}, calContent=#{calContent} where calNo=#{calNo}
 </update>
 
    
@@ -26,5 +26,9 @@ update Calendar set calStart=#{calStart}, calEnd=#{calEnd}, calTitle=#{calTitle}
 delete from Calendar where calNo=#{calNo}
 </delete>   
     
+<!-- 그날의 강의  -->
+<select id="CalendarTodayClass" resultType="com.class_ic.vo.TodayClassDTO" >
+SELECT b.lectureTitle, b.lectureContent FROM TodayLecture t JOIN LectureBoard b ON t.lectureNo = b.lectureNo WHERE calNo=#{calNo};
+</select>
 
 </mapper>

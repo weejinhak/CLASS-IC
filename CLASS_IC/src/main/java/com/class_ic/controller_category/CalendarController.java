@@ -154,4 +154,12 @@ public class CalendarController {
 	      
    }
    
+   
+   @RequestMapping(value="todayclass.htm", method=RequestMethod.POST)
+   public void CalendarTodayClass(){
+
+         }
+      
+   
+   
 }

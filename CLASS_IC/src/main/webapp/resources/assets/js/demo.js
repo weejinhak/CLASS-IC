@@ -848,24 +848,45 @@ demo = {
                 }
             },
 
-			select: function(start, end, event, jsEvent, view) {
+            select: function(start, end, event, jsEvent, view, calEvent) {
+                
+                console.log(calEvent);
 
-                // on select we show the Sweet Alert modal with an input
-				swal({
-    				title: 'ㅋㅋㅋㅋ',
-    				html: '<div class="form-group">' +
-                          /*  '<input class="form-control" placeholder="일정을 등록하세요" id="input-field">' +*/
-                        '</div>',
-    				showCancelButton: true,
-                    confirmButtonClass: 'btn btn-success',
-                    cancelButtonClass: 'btn btn-danger',
-                    buttonsStyling: false
-                }).then(function(result) {
+                    // on select we show the Sweet Alert modal with an input
+                swal({
+                    title: '오늘의 수업',
+                    /*html: '<div class="form-group">' +
+                               '<input class="form-control" placeholder="일정을 등록하세요" id="input-field">' +
+                            '</div>',*/
+                    showCancelButton: true,
+                        /*confirmButtonClass: 'btn btn-success',*/
+                        cancelButtonClass: 'btn btn-danger',
+                        buttonsStyling: false
+                    },function(){
+                       $ajax({
+                          url:"todayclass.htm",
+                           type:"POST",
+                           success:function(data){
+                              lectureTitle =[];
+                              lectureContent =[];
+                              $.each(data, function(index,obj){
+                                 lectureTitle =   obj.lectureTitle
+                                 lectureContent = obj.lectureContent
+                              }); //each 끝
+                              //타이틀, 내용넘어오나 확인
+                               console.log(lectureTitle);
+                               console.log(lectureContent);
+                           }
+                       }); //ajax 끝
+                       
+                    }) //swal 끝
+                
+                /*.then(function(result) {
 
-    				$calendar.fullCalendar('unselect');
+                    $calendar.fullCalendar('unselect');
 
-                });
-			},
+                    });*/
+             },
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			
