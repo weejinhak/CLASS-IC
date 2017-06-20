@@ -14,18 +14,60 @@
 	rel="stylesheet" /> <!-- 2017.06.15 최은혜 -->
 	
 <div id="content">
-     <div id="container">
-    <h2>Memo <i class="onOff fa fa-plus" aria-hidden="true"></i></h2>
-    <input type="text" placeholder="새로운 글을 입력하세요" class="in">
-
-    <ul class="ul">
-      <!--  New To-Do items will go here     -->
-      
-    </ul>
-
-  </div>
+    <textarea placeholder="메모를 작성하세요" class="textarea">
+    	
+    </textarea><button class="btn">삭제</button>
+	<div id="create">+</div> 
 </div>
   <!-- 2017.06.15 최은혜 -->
+<script type="text/javascript">
+
+	var email = "b@gmail.com";
+
+	$.ajax({
+		
+	 	type : "get",
+		url : "selectMemo.htm",
+		data : { "email" : email },
+		datatype:"Json",
+		success : function(data) {
+			
+			alert(JSON.stringify(data));
+			
+			var str=JSON.stringify(data);
+			var newstr=JSON.parse(str);
+			
+			console.log("성공")
+			
+			var html = "";
+			 memotext=[];
+						 
+			while (newstr.length >0)
+				{
+					
+				 console.log(newstr.memoText)
+				
+				}
+
+			
+			
+		/* 	$(data).each(data, function(index,event) {
+				html += '<textarea class="textarea">'+data.memoText+'</textarea>';
+			});
+				
+				$(".textarea").append(html);
+			 */
+				
+				
+			console.log("조회 성공!!")
+			
+			
+		}
+		
+		
+	});
+	
+</script>
   <script
 	src="${pageContext.request.contextPath}/resources/assets/js/student/student_memo.js"></script>
 </html>

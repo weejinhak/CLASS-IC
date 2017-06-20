@@ -7,31 +7,47 @@
 @Desc :
 */
 $(document).ready(function() {
-  $(".ul").on("click", ".li", function() {
-    $(this).toggleClass("completed");
+  $("#create").on("click", function(e){
+	  $(this).before("<textarea placeholder='메모를 작성하세요' class='textarea'></textarea>");
   });
+  
+  $(".textarea").on("focusout",function(e){
+	  e.stopPropagation(); //이벤트 버블링 방지
+	  
+	  var text = $(this).val();
+	  
+	  if( text != ''){
+		  
+	  insertMemo();
+	  
+	  }else{
+		  alert("메모를 등록해주세요");
+	  }
+  });
+  
+  function insertMemo() {
+	
+	  var memo = $(".textarea").val();
+	  
+	  console.log(memo)
+	
+	  $.ajax({
+		  
+		    cache: false,
+		    url : "insertMemo.htm",
+		  	type : "post",
+			data : { "memo" : memo },
+			success : function(data) {
+				
+				console.log("등록 성공!!")
+				
+			},
+			error : function(request, status, error){
+				alert('에러탐 : '+ error +"\n"+ "message: " + request.responseText +"\n"+ "code" + request.status);
+			}
+	  });
+	}
+	  
 
-  $(".ul").on("click", ".span", function() {
-    $(this).parent().fadeOut(500, function() {
-      $(this).remove();
-    });
-    event.stopPropagation();
-  });
-
-  $(".in").keypress(function(event) {
-    if (event.which === 13) {
-      var todoText = $(this).val();
-      if(todoText != ""){
-    	  $(this).val("");
-      $(".ul").append("<li class='li'><span class='span'><i class='fa fa-trash'></i></span> " + todoText + "</li>");
-      	}else{
-      		alert("다시 입력해 주세요.");
-      	}
-      }
-  });
-
-  $(".fa-plus").click(function() {
-    $(".fa-plus").toggleClass("fa-minus");
-    $(".in").slideToggle(350, "linear");
-  });
+  
 });

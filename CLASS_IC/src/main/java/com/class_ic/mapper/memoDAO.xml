@@ -12,14 +12,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <mapper namespace="com.class_ic.dao.MemoDAO">
  
 <insert id="insertMemo" parameterType="com.class_ic.vo.MemoVO" >
- 	insert into memo(memoNO,email,memoText,memoDate) values(#{memoNO},#{email},#{memoText},now())
+ 	insert into memo(email,memoText,memoDate) values(#{email},#{memoText},now())
 </insert>
 
 <delete id="deleteMemo" parameterType="com.class_ic.vo.MemoVO">
 	delete from memo where email=#{email} and memoNo=#{memoNo}
 </delete>
 
-<select id="selectMemo" parameterType="hashMap" resultType="com.class_ic.vo.MemoVO">
+<select id="selectMemo" parameterType="String" resultType="com.class_ic.vo.MemoVO">
 	select memoText from memo where email=#{email}
 </select>
 

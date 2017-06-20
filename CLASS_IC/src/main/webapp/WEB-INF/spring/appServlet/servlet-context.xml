@@ -65,5 +65,7 @@
 	<!--스케줄링-->
  	<task:annotation-driven scheduler="scheduler"/>
 	<task:scheduler id="scheduler" pool-size="10"/>
+	
+	
 
 </beans:beans>
