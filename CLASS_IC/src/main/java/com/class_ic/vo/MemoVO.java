@@ -9,8 +9,8 @@ import java.sql.Date;
 
 public class MemoVO {
 
-	private int memoNo=0; //메모 글번호
-	private String email=""; //이메일
+	private int memoNo; //메모 글번호
+	private String email; //이메일
 	private String memoText; //내용
 	private Date memoDate; //등록일
 	

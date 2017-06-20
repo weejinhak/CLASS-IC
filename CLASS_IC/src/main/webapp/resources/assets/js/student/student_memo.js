@@ -8,6 +8,7 @@
 */
 $(document).ready(function() {
   $("#create").on("click", function(e){
+	  
 	  $(this).before("<textarea placeholder='메모를 작성하세요' class='textarea'></textarea>");
   });
   

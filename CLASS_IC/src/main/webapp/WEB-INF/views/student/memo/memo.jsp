@@ -14,9 +14,12 @@
 	rel="stylesheet" /> <!-- 2017.06.15 최은혜 -->
 	
 <div id="content">
+	<div class="memoArea">
+	<button value="X"></button>
     <textarea placeholder="메모를 작성하세요" class="textarea">
-    	
-    </textarea><button class="btn">삭제</button>
+ 
+    </textarea>
+    </div>
 	<div id="create">+</div> 
 </div>
   <!-- 2017.06.15 최은혜 -->
@@ -32,35 +35,24 @@
 		datatype:"Json",
 		success : function(data) {
 			
-			alert(JSON.stringify(data));
-			
-			var str=JSON.stringify(data);
-			var newstr=JSON.parse(str);
+			//alert(JSON.stringify(data));
+			alert(data);
+			//var str=JSON.stringify(data);
+			//var newstr=JSON.parse(str);
 			
 			console.log("성공")
 			
 			var html = "";
-			 memotext=[];
+			 //memotext=[];
 						 
-			while (newstr.length >0)
-				{
-					
-				 console.log(newstr.memoText)
-				
-				}
-
-			
-			
-		/* 	$(data).each(data, function(index,event) {
-				html += '<textarea class="textarea">'+data.memoText+'</textarea>';
+		 	$(data).each(data, function(index,event) {
+				html += '<textarea>'+data.memoText+'</textarea>';
 			});
 				
-				$(".textarea").append(html);
-			 */
+				$("textarea").append(html);
 				
 				
 			console.log("조회 성공!!")
-			
 			
 		}
 		
