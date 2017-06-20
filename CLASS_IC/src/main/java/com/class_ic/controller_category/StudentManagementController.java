@@ -14,7 +14,7 @@ public class StudentManagementController {
 	public String studentTable(){
 		
 		
-		return null;
+		return "teacher.student_group";
 	}
 	@RequestMapping(value="stable.htm", method=RequestMethod.POST)
 	public @ResponseBody String studentTable(StudentTableDTO sTable){
