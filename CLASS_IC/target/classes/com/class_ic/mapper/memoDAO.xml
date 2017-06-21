@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 단일 글 출력 : 2017.06.21 최은혜  -->
 <select id="oneText" parameterType="com.class_ic.vo.MemoVO" resultType="com.class_ic.vo.MemoVO">
-	select memoText from memo where email=#{email} and memoNo=#{memoNo}
+	select memoNo , memoText from memo where email=#{email} and memoNo=#{memoNo}
 </select>
 
 </mapper>

@@ -11,6 +11,11 @@
 
 @import "https://fonts.googleapis.com/css?family=Roboto:400,700,500";
 
+.memoNo{
+	width: 30px;
+	background-color: black;
+	font: #fff;
+}
 
 .todo {
   width: 100%;

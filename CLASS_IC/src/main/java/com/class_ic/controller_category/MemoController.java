@@ -37,6 +37,7 @@ public class MemoController {
 private SqlSession sqlsession;
 	
 	
+	
 	//글 등록 : 2017.06.21 최은혜
 	@RequestMapping(value="insertMemo.htm", method=RequestMethod.POST)
 	public @ResponseBody void insert(@RequestParam("memo") String memo) {

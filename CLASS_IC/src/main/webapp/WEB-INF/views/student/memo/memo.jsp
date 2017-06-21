@@ -43,8 +43,9 @@
 		      success : function(data) {
 		    	  
 		         $.each(data, function(index,item) {
-		        	 $('.list').append('<div class="item">'+ item.memotext +
-		        			 '<input type="hidden" class="memoNo" value="'+ item.memono +'" name="memoNo" /></div>')
+
+		        	 $('.list').append('<div class="item"> <input type="text" class="memoNo" value="'+item.memono+ '" name="memoNo" />'
+		        			 +item.memotext +'</div>')
 		         
 		         		 console.log("memoNO: "+item.memono)
 		         }); 
