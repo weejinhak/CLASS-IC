@@ -62,6 +62,7 @@ public class MemberController {
 		ld.setCount(attendDao.login(email));
 		System.out.println(ld);
 		
+		//처리
 		if(result){
 			return ld;
 		}else{
