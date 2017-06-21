@@ -6,8 +6,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.vo.BoardVO;
+import com.class_ic.vo.Criteria;
+import com.class_ic.vo.SearchCriteria;
 
 /*
 * @FileName		:	BoardService.java
@@ -48,6 +51,11 @@ public class BoardService {
 		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
 		return boarddao.listAll();
 	}
+  public List<BoardVO> listWhereCate(String cateCode, String subcateCode) throws Exception {
+		// TODO Auto-generated method stub
+		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+		return boarddao.listWhereCate(cateCode,subcateCode);
+	}
 
   
   public void addCategory(String cateCode) throws Exception {
@@ -63,8 +71,40 @@ public class BoardService {
 	  
 	
   }
+  /////////////////////criteria 들어가는거 다//////////////////////
   
+  public List<BoardVO> listCriteria(SearchCriteria cri,String cateCode, String subcateCode) throws Exception {
+	  BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+	  
+	  int page=cri.getPage();
+	  int perPageNum = cri.getPerPageNum();
+	  
+	  
+    return boarddao.listCriteria(page,perPageNum,cateCode,subcateCode);
+  }
+
+  
+  public int listCountCriteria(SearchCriteria cri,String cateCode, String subcateCode) throws Exception {
+	  BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+	  
+    return boarddao.countPaging(cateCode,subcateCode);
+  }
+
+  public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+	  BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+    return boarddao.listSearch(cri);
+  }
+
  
+  public int listSearchCount(SearchCriteria cri) throws Exception {
+	  BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+    return boarddao.listSearchCount(cri);
+  }
+  
+  /////////////////////end criteria////////////////
+  
+  
+ /////////////////////////////////////////////////////
   public List<String> showCateList() throws Exception {
 	  BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
   	
@@ -77,7 +117,7 @@ public class BoardService {
   	return boarddao.showSubCateList(cateCode);
   }
   
-  ////
+  ////////////////////////////////////////
   
   
   
@@ -91,28 +131,16 @@ public BoardVO read(Integer lectureNo) throws Exception {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
- 
 public void modify(BoardVO board) throws Exception {
-	// TODO Auto-generated method stub
+	//아직 구현 안함
 	
 }
 
 
  
-public void remove(Integer lectureNo) throws Exception {
-	// TODO Auto-generated method stub
+public void delete(Integer lectureNo) throws Exception {
+	BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+	boarddao.delete(lectureNo);
 	
 }
 

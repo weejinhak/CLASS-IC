@@ -70,8 +70,8 @@
 
  <div class="box-footer">
    <button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
-   <button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
-   <button type="submit" class="btn btn-primary" id="goListBtn">GO LIST </button>
+   <button type="submit" class="btn btn-danger" id="removeBtn" onclick="location.href='delete.htm?lectureNo=${boardVO.lectureNo}' ">REMOVE</button>
+   <button type="submit" class="btn btn-primary" id="goListBtn" onclick="location.href='boardList.htm'">GO LIST </button>
  </div>
 
 

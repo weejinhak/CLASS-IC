@@ -10,7 +10,6 @@
       	 <div class="col-lg-12 col-md-12" style="height: 100px"></div>
       	 
       	 
-      	 
 <div class="row" style="padding-left: 150px ; padding-right: 150px">
                     
                     
@@ -33,8 +32,8 @@
                                     <table class="table table-hover">
                                         <thead class="text-warning">
                                             <tr><th>NO.</th>
-                                            <th>머임</th>
-                                            <th>머임</th>
+                                            <th>글제목</th>
+                                            <th>글쓴시간</th>
                                             
                                         </tr></thead>
                                         
@@ -48,7 +47,7 @@
 						                                        <c:set var="num" value="${num+1}"/>
 						                                      	
 						                                        
-						                                        <a href="www.naver.com"></a>
+						                                        
 						                                        
 						                                        <tbody>
 						                                       	

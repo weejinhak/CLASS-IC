@@ -29,7 +29,7 @@
                            <br><br>
                            
                          <div style="display:inline-block;">
-			                            카테고리<select name="cateCode" onchange ="checkSel(this)">
+			                            카테고리<select name="cateCode" onchange ="">
 			                
 			                <c:forEach items="${list}" var="list">
 							<option value="${list}">${list}</option>
