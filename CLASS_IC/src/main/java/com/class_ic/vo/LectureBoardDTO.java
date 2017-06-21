@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class LectureBoardDTO {
  
+
 	private int lectureNo;
 	private String classCode;
 	private String cateCode;
@@ -66,3 +67,4 @@ public class LectureBoardDTO {
 	
 	
 }
+

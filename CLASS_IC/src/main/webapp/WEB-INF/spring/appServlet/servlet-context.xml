@@ -23,7 +23,11 @@
 	
 	<context:component-scan base-package="com.class_ic.controller, com.class_ic.controller_category" />
 	<context:component-scan base-package="com.class_ic.app.controller"/>
+
 	<context:component-scan base-package="com.class_ic.service, com.class_ic.service_category"/>
+
+
+	
 
 
 	<!--  Tiles 설정하기 -->
@@ -57,6 +61,7 @@
 	  <beans:constructor-arg index="0" ref="sqlSessionFactoryBean"/>
 	 </beans:bean>
 	
+
 	
    <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
     <beans:property name="order" value="0"/>
@@ -65,5 +70,6 @@
 	<!--스케줄링-->
  	<task:annotation-driven scheduler="scheduler"/>
 	<task:scheduler id="scheduler" pool-size="10"/>
+
 
 </beans:beans>
