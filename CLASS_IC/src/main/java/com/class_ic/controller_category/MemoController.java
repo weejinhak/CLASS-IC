@@ -26,6 +26,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.class_ic.dao.MemoDAO;
 import com.class_ic.vo.MemoVO;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 @Controller
 @RequestMapping("student")
 public class MemoController {
@@ -33,6 +36,8 @@ public class MemoController {
 @Autowired
 private SqlSession sqlsession;
 	
+	
+	//글 등록 : 2017.06.21 최은혜
 	@RequestMapping(value="insertMemo.htm", method=RequestMethod.POST)
 	public @ResponseBody void insert(@RequestParam("memo") String memo) {
 		
@@ -42,24 +47,74 @@ private SqlSession sqlsession;
 		
 		MemoDAO dao = sqlsession.getMapper(MemoDAO.class);
 		int result = dao.insertMemo(vo);
-		System.out.println("result: " +result);
+		System.out.println("insert result: " +result);
 		
 	}
 	
-	@RequestMapping(value="selectMemo.htm", method= RequestMethod.GET)
-	public @ResponseBody void select(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		System.out.println(request.getParameter("email"));
-		
-		String email= request.getParameter("email");
+	//memo.jsp 글 출력 : 2017.06.21 최은혜
+	@RequestMapping(value="selectMemo.htm", method= RequestMethod.POST)
+	   public void select(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	      
+	      String email= request.getParameter("email");
+	      System.out.println("controller :" +email);
+	      
+	      MemoVO vo = new MemoVO();
+	      vo.setEmail(email);
+	      
+	      MemoDAO dao = sqlsession.getMapper(MemoDAO.class);
+	      List<MemoVO> memoList = dao.selectMemo(vo);
+	   
+	       JSONArray array = new JSONArray();
+
+	       for(int i=0;i<memoList.size();i++){
+	          JSONObject obj= new JSONObject();
+	          obj.put("memotext",memoList.get(i).getMemoText());
+	          obj.put("memono", memoList.get(i).getMemoNo());
+	          array.add(obj);
+	       }
+	      response.getWriter().println(array);      
+	   }
+	
+	//단일 글 출력
+	@RequestMapping(value="oneText.htm", method= RequestMethod.POST)
+	   public void oneText(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	      
+	      String email= request.getParameter("email");
+	      String memo = request.getParameter("memoNo");
+	      int memoNo = Integer.parseInt(memo);
+	      
+	      System.out.println("단일 select controller :" +email);
+	      
+	      MemoVO vo = new MemoVO();
+	      vo.setEmail(email);
+	      vo.setMemoNo(memoNo);
+	      
+	      MemoDAO dao = sqlsession.getMapper(MemoDAO.class);
+	      MemoVO oneMemo = dao.oneText(vo);
+	       
+	          JSONObject obj= new JSONObject();
+	          obj.put("memotext",oneMemo.getMemoText());
+	          obj.put("memono", oneMemo.getMemoNo());
+	          
+	      response.getWriter().println(obj);      
+	   }
+	
+	
+	//글 삭제 : 2017.06.21 최은혜
+	@RequestMapping(value="deleteMemo.htm", method=RequestMethod.POST)
+	public @ResponseBody void delete(@RequestParam(value="email") String email, @RequestParam(value="memoNo") int memoNo) {
+	
+		System.out.println("delete email: "+email);
+		System.out.println("delete memoNo: "+memoNo);
 		
 		MemoVO vo = new MemoVO();
 		vo.setEmail(email);
+		vo.setMemoNo(memoNo);
 		
 		MemoDAO dao = sqlsession.getMapper(MemoDAO.class);
-		List<MemoVO> memoList = dao.selectMemo(vo);
+		int result = dao.deleteMemo(vo);
+		System.out.println("delete result: " +result);
 		
-			response.getWriter().print(memoList);
 		
 	}
 

@@ -1,56 +1,104 @@
-
-/*
-@Project : CLASS-IC
-@File name : student_memo.js
-@Author : 최은혜
-@Data : 2017.06.15
-@Desc :
-*/
-$(document).ready(function() {
-  $("#create").on("click", function(e){
-	  
-	  $(this).before("<textarea placeholder='메모를 작성하세요' class='textarea'></textarea>");
-  });
-  
-  $(".textarea").on("focusout",function(e){
-	  e.stopPropagation(); //이벤트 버블링 방지
-	  
-	  var text = $(this).val();
-	  
-	  if( text != ''){
-		  
-	  insertMemo();
-	  
-	  }else{
-		  alert("메모를 등록해주세요");
-	  }
-  });
-  
-  function insertMemo() {
-	  
-	  var memo = $(".textarea").val();
-	  
-	  console.log(memo)
+$(document).ready(function(){
 	
-	  $.ajax({
-		  
-		    cache: false,
-		    url : "insertMemo.htm",
-		  	type : "post",
-			data : { "memo" : memo },
-			success : function(data) {
-				
-				memo.html(''); //textarea 공백으로 초기화
-				
-				console.log("등록 성공!!")
-				
-			},
-			error : function(request, status, error){
-				alert('에러탐 : '+ error +"\n"+ "message: " + request.responseText +"\n"+ "code" + request.status);
-			}
-	  });
+	//#btn 클릭 시 글 등록 된다. 2017.06.21 최은혜
+    $('#btn').click(function(){
+        var toAdd = $('input[name=checkListItem]').val();
+     if(toAdd === "") {
+    	 alert("다시 입력해주세요");
+       /* $('.list').append('<div class="item"> Empty </div>');*/
+     }else{
+    	 $.ajaxSetup({cache:false}); 
+    	 $.ajax({
+   		  	cashe:false,
+ 		    url : "insertMemo.htm",
+ 		  	type : "post",
+ 			data : { "memo" : toAdd },
+ 			success : function(data) {
+ 				
+ 				$(".checkListItem").val(""); //input 공백으로 초기화
+ 				$('.list').append('<div class="item">'+ toAdd +'</div>') //등록된 글 추가
+ 				console.log("등록 성공!!")
+ 				
+ 			},
+ 			error : function(request, status, error){
+ 				alert('에러탐 : '+ error +"\n"+ "message: " + request.responseText +"\n"+ "code" + request.status);
+ 			}
+ 	  });
+    	 
+    	 
+       
+     }
+    });
+    
+    //단일 출력
+    function oneSelect() {
+    	
+    	var email = $('#email').val();
+    	var memoNo = $('.memoNo').val();
+    	var allData = {"email":email, "memoNo":memoNo}
+    	
+    	$.ajax({
+   		  	cashe:false,
+ 		    url : "oneText.htm",
+ 		  	type : "post",
+ 			data : allData,
+ 			dataType:'json',
+ 			success : function(data) {
+ 				
+ 				$('.list').append('<div class="item">'+ data.memotext +'</div>') //등록된 글 추가
+ 				console.log("등록 성공!!")
+ 				console.log("단일 memoText: "+data.memotext)
+ 				console.log("단일 memoNo: "+data.memono)
+ 				
+ 				
+ 				
+ 			},
+ 			error : function(request, status, error){
+ 				alert('에러탐 : '+ error +"\n"+ "message: " + request.responseText +"\n"+ "code" + request.status);
+ 			}
+ 	  });
 	}
-	  
-
+    
+    //글 삭제(화면) : 2017.06.21 최은혜
+    $(document).on('click', '.item', function(){
+    	
+    	deleteMemo();
+        $(this).remove();
+        
+    });
+    
+    //글 삭제 : 2017.06.21 최은혜
+    function deleteMemo() {
+    	
+    	var email = $('#email').val();
+    	console.log(email)
+    	
+    	var memoNo = $('.memoNo').val();
+    	console.log(memoNo)
+    	
+    	var allData = {"email":email, "memoNo":memoNo}
+    	$.ajaxSetup({cache:false}); 
+    	 $.ajax({
+    		
+    		cashe:false,
+    		async: false,
+  		    url : "deleteMemo.htm",
+  		  	type : "post",
+  			data : allData,
+  			success : function(data) {
+  				
+  				console.log("삭제 성공!!")
+  				
+  			},
+  			error : function(request, status, error){
+  				alert('에러탐 : '+ error +"\n"+ "message: " + request.responseText +"\n"+ "code" + request.status);
+  			}
+  	  });
+	}
   
+    //input창에 focus됬을때 색 변화 :2017.06.21 최은혜
+    $('input').focus(function() {
+        $(this).css('outline-color', '#CB5C51');
+    });
 });
+
