@@ -166,8 +166,10 @@ public class CalendarController {
    @RequestMapping(value="todayclass.htm", method=RequestMethod.POST)
    public void CalendarTodayClass(HttpServletRequest request, 
 		   HttpServletResponse response
-		   ){
-	   
+		   ) throws IOException{
+	  
+	   JSONArray todatlist = new JSONArray();
+	   CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);   
 	   String cdate=request.getParameter("clickdate");
 	   System.out.println(cdate);
 	   
@@ -179,8 +181,9 @@ public class CalendarController {
 	   String clickdate="";
 	   String[] monthlist={"Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 	   for(int i=0;i<monthlist.length;i++){
+		
 		   if(cmonth.equals(monthlist[i])){
-			   cmonth=String.valueOf(i+1);
+		   	   cmonth=String.valueOf(i+1);
 			   System.out.println(i+1);
 			   
 		   }
@@ -192,9 +195,19 @@ public class CalendarController {
 	 clickdate = cyear + "-" + cmonth+"-" + cday;
 			   
 	 System.out.println(clickdate);
-	   
+	 
+	 ArrayList<String> todaylist=calendardao.CalendarTodayClass(clickdate);
+	 for(String value: todaylist){
+		 JSONObject obj = new JSONObject();
+		 System.out.println(value);
+	       obj.put("todayTitle", value);
+	       todatlist.add(obj);
+	 }
+
 
 	   System.out.println("todayclass.htm 경로");
+	   
+	   response.getWriter().print(todatlist);
 	   
          }
       

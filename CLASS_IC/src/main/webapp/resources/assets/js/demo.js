@@ -858,8 +858,9 @@ demo = {
                      url:"todayclass.htm",
                       type:"POST",
                       data:{clickdate: clickdate},
+                      dataType:'json',
                       success:function(data){
-                     
+                        alert(data);
                       }
                   }); //ajax 끝
              
@@ -870,7 +871,7 @@ demo = {
                     /*html: '<div class="form-group">' +
                                '<input class="form-control" placeholder="일정을 등록하세요" id="input-field">' +
                             '</div>',*/
-                    showCancelButton: true,
+                        showCancelButton: true,
                         confirmButtonClass: 'btn btn-success',
                         cancelButtonClass: 'btn btn-danger',
                         buttonsStyling: false
