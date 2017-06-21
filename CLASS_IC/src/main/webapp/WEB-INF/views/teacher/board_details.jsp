@@ -12,6 +12,7 @@
       	 
 		<div class="col-md-8 col-md-offset-2">
 			<h2 class="title text-center"><b>${cateCode}</b></h2>
+			<button type="submit" class="btn btn-primary" id="goListBtn" onclick="location.href='boardList.htm'">▲상위목록 </button>
 			<br>
 	 
                                 
