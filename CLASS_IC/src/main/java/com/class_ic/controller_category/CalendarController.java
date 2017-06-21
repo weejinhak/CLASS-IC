@@ -144,7 +144,7 @@ public class CalendarController {
    public void calendarEditDelete(HttpServletRequest request, HttpServletResponse response) throws IOException{
 	   System.out.println("하잇");
 	   int id=Integer.parseInt(request.getParameter("id"));
-	   System.out.println(id);
+	   System.out.println("id"+id);
 	   
 	   CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);   
 	   calendardao.CalendarDelete(id);

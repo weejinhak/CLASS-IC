@@ -896,7 +896,7 @@ demo = {
             eventClick: function(calEvent, jsEvent, view) {
             	var test="테스트"; 
             	var id=calEvent.id;
-            	console.log(calEvent.id); //아이디 값
+            	console.log(calEvent); //아이디 값
             	console.log(jsEvent);
             	console.log(view);
             	 swal({
