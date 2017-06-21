@@ -891,7 +891,7 @@ demo = {
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			
-            // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
+         /*   color classes: [ event-blue | event-azure | event-green | event-orange | event-red ],*/
             events: {url : 'CalendarList.htm' },
             eventClick: function(calEvent, jsEvent, view) {
             	var test="테스트"; 

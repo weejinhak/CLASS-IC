@@ -53,10 +53,13 @@ public class CalendarController {
      //내용
       String calContent = request.getParameter("calContent");
       //코드
-      String classCode = request.getParameter("classCode");
+/*      String classCode = request.getParameter("classCode");*/
+      String classCode = "151";
       //class code가 1로 들어옴.
-      
-      
+      String[] colorlist= {"event-blue" , "event-azure" , "event-green" , "event-orange" , "event-red" };
+      int random=(int) (Math.random() * 5) ; 
+
+
       System.out.println(calTitle);
       System.out.println(calContent);
       System.out.println(classCode);
@@ -67,7 +70,8 @@ public class CalendarController {
          calendarDto.setCalEnd(calEnd);
          calendarDto.setCalTitle(calTitle);
          calendarDto.setCalContent(calContent);
-         calendarDto.setClassCode("151");
+         calendarDto.setClassCode(classCode);
+         calendarDto.setColor(colorlist[random]);
 
          System.out.println("캘린더 컨트롤러 일정입력 get ");
 
@@ -90,6 +94,7 @@ public class CalendarController {
 
       ArrayList<CalendarDTO> calendarlist = calendardao.CalendarList();
       
+
       System.out.println(calendarlist);
       
       JSONArray array = new JSONArray();
@@ -121,8 +126,11 @@ public class CalendarController {
 
          
          obj.put("end", end);
+     
+         System.out.println(calendarlist.get(i).getColor());
+         obj.put("className",calendarlist.get(i).getColor());
          
-         
+     
          
          array.add(obj);
          System.out.println("2");

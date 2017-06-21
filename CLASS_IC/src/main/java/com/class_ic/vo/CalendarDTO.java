@@ -9,6 +9,7 @@ public class CalendarDTO {
 	private String calEnd;
 	private String calTitle;
 	private String calContent;
+	private String color;
 	
 	public CalendarDTO() {
 		
@@ -63,11 +64,26 @@ public class CalendarDTO {
 		this.calContent = calContent;
 	}
 
-	@Override
-	public String toString() {
-		return "CalendarDto [calNo=" + calNo + ", classCode=" + classCode + ", calStart=" + calStart + ", calEnd="
-				+ calEnd + ", calTitle=" + calTitle + ", calContent=" + calContent + "]";
+	public String getColor() {
+		return color;
 	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public CalendarDTO(int calNo, String classCode, String calStart, String calEnd, String calTitle, String calContent,
+			String color) {
+		super();
+		this.calNo = calNo;
+		this.classCode = classCode;
+		this.calStart = calStart;
+		this.calEnd = calEnd;
+		this.calTitle = calTitle;
+		this.calContent = calContent;
+		this.color = color;
+	}
+
 
 	
 	
