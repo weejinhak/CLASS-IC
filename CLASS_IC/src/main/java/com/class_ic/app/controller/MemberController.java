@@ -7,18 +7,25 @@
 */
 package com.class_ic.app.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.class_ic.app.dao.AttendDAO;
 import com.class_ic.app.dto.LoginDTO;
-import com.class_ic.app.dto.MemberDTO;
+import com.class_ic.dao.MemberDAO;
+import com.class_ic.vo.MemberDTO;
+
+
 
 /*
 * @Class: MemberController
@@ -30,24 +37,37 @@ import com.class_ic.app.dto.MemberDTO;
 public class MemberController {
 
 	@Autowired
-	private SqlSession sqlSession;
+	private SqlSession sqlsession;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 
 	/*
 	@description : app에서 ID와 비번 일치여부를 검사시켜 json형태로 Return.
 	*/
 	@RequestMapping("/applogin")
 	@ResponseBody
-	public LoginDTO LogIn(HttpServletRequest request, HttpSession session) {
+	public LoginDTO LogIn(@RequestParam("id") String email, @RequestParam("pw") String rawPassword, Principal principal, HttpSession session) {
 		
-		AttendDAO memberDao = sqlSession.getMapper(AttendDAO.class);
-		String id = request.getParameter("id");
-		String password = request.getParameter("pw");
-		System.out.println("id : " + id + " // " + "password : " + password + "//");
-		System.out.println(memberDao.login(id, password)+"로그인성공");
+		System.out.println(email+"//"+rawPassword);
+		System.out.println("로그인까지는 들어옴");
+		
+		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+		MemberDTO member = member_dao.login(email);
+		String encodedPassword = member.getPwd();
+		boolean result = bCryptPasswordEncoder.matches(rawPassword, encodedPassword);
 		LoginDTO ld = new LoginDTO();
-		ld.setCount(memberDao.login(id, password));
+		AttendDAO attendDao= sqlsession.getMapper(AttendDAO.class);
+		ld.setCount(attendDao.login(email));
 		System.out.println(ld);
-		return ld;
+		
+		if(result){
+			return ld;
+		}else{
+			return ld;
+		}		
+	
 	}
 
 	/*
@@ -57,7 +77,7 @@ public class MemberController {
 	@ResponseBody
 	public void memberAttendance(HttpServletRequest request) throws Exception {
 		
-		AttendDAO memberDao = sqlSession.getMapper(AttendDAO.class);
+		AttendDAO memberDao = sqlsession.getMapper(AttendDAO.class);
 		System.out.println(request.getParameter("email"));
 		System.out.println(request.getParameter("time"));
 		System.out.println(request.getParameter("state"));
