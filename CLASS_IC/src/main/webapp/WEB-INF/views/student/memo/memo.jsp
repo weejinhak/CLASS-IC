@@ -15,10 +15,7 @@
 	
 <div id="content">
 	<div class="memoArea">
-	<button value="X"></button>
-    <textarea placeholder="메모를 작성하세요" class="textarea">
- 
-    </textarea>
+    <textarea placeholder="메모를 작성하세요" class="textarea"></textarea>
     </div>
 	<div id="create">+</div> 
 </div>
@@ -26,13 +23,13 @@
 <script type="text/javascript">
 
 	var email = "b@gmail.com";
+	
 
 	$.ajax({
 		
 	 	type : "get",
 		url : "selectMemo.htm",
 		data : { "email" : email },
-		datatype:"Json",
 		success : function(data) {
 			
 			//alert(JSON.stringify(data));
@@ -45,12 +42,13 @@
 			var html = "";
 			 //memotext=[];
 						 
-		 	$(data).each(data, function(index,event) {
-				html += '<textarea>'+data.memoText+'</textarea>';
+		 	 $.each(data, function(index,item) {
+				//html += '<textarea>'+data.memoText+'</textarea>';
+				console.log($(item).text(index))
 			});
 				
-				$("textarea").append(html);
-				
+				//$("textarea").append(html);
+				 
 				
 			console.log("조회 성공!!")
 			

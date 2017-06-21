@@ -39,10 +39,12 @@ public class MemoVO {
 	public void setMemoDate(Date memoDate) {
 		this.memoDate = memoDate;
 	}
+	
 	@Override
 	public String toString() {
-		return "MemoVO [  memoText=" + memoText + "]";
+		return memoText;
 	}
+	
 	
 	
 	

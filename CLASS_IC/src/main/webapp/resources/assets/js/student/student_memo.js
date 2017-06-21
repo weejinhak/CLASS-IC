@@ -27,7 +27,7 @@ $(document).ready(function() {
   });
   
   function insertMemo() {
-	
+	  
 	  var memo = $(".textarea").val();
 	  
 	  console.log(memo)
@@ -39,6 +39,8 @@ $(document).ready(function() {
 		  	type : "post",
 			data : { "memo" : memo },
 			success : function(data) {
+				
+				memo.html(''); //textarea 공백으로 초기화
 				
 				console.log("등록 성공!!")
 				

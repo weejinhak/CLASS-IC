@@ -8,7 +8,9 @@ package com.class_ic.controller_category;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,10 +58,10 @@ private SqlSession sqlsession;
 		
 		MemoDAO dao = sqlsession.getMapper(MemoDAO.class);
 		List<MemoVO> memoList = dao.selectMemo(vo);
-	
 		
-		response.getWriter().println(memoList);
+			response.getWriter().print(memoList);
 		
 	}
+
 
 }
