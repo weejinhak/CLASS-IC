@@ -6,7 +6,7 @@
 	var msg
 	function connect() {
 		/* alert("소켓연결!"); */
-		wsocket = new WebSocket("ws://192.168.0.10:8090/Emp/chat-ws.htm");
+		wsocket = new WebSocket("ws://192.168.0.135:8090/class_ic/chat-ws.htm");
 		appendMessage("웹 소켓연결되었습니다.");
 		wsocket.onopen = onOpen;
 		wsocket.onmessage = onMessage;
