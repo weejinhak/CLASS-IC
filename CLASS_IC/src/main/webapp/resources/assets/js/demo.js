@@ -850,7 +850,8 @@ demo = {
 
             select: function(start, end, event, jsEvent, view, calEvent,today ) {
                 
-
+                 var todaylist=new Array();
+                 var html="";
                  var clickdate=start._d;
                  console.log(clickdate)
                  
@@ -860,22 +861,31 @@ demo = {
                       data:{clickdate: clickdate},
                       dataType:'json',
                       success:function(data){
-                        alert(data);
+                 
+                        var html='';
+                        $.each(data, function(index,item) {
+                        	html+='<a href="">'+item.todayTitle+'</a><br>'
+                        	
+                        }); 
+                   
+                            
+                            // on select we show the Sweet Alert modal with an input
+                            swal({
+                                title: '오늘의 수업',
+                                html: html,
+                                    showCancelButton: true,
+                                    confirmButtonClass: 'btn btn-success',
+                                    cancelButtonClass: 'btn btn-danger',
+                                    buttonsStyling: false
+                                }) //swal 끝
+                        
+                        
                       }
                   }); //ajax 끝
              
 
-                    // on select we show the Sweet Alert modal with an input
-                swal({
-                    title: '오늘의 수업',
-                    /*html: '<div class="form-group">' +
-                               '<input class="form-control" placeholder="일정을 등록하세요" id="input-field">' +
-                            '</div>',*/
-                        showCancelButton: true,
-                        confirmButtonClass: 'btn btn-success',
-                        cancelButtonClass: 'btn btn-danger',
-                        buttonsStyling: false
-                    }) //swal 끝
+     
+              
                 
           
              },
