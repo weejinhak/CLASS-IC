@@ -850,7 +850,18 @@ demo = {
 
             select: function(start, end, event, jsEvent, view, calEvent,today ) {
                 
-                console.log(today);
+
+                 var clickdate=start._d;
+                 console.log(clickdate)
+                 
+                 $.ajax({
+                     url:"todayclass.htm",
+                      type:"POST",
+                      data:{clickdate: clickdate},
+                      success:function(data){
+                     
+                      }
+                  }); //ajax 끝
              
 
                     // on select we show the Sweet Alert modal with an input
@@ -860,33 +871,12 @@ demo = {
                                '<input class="form-control" placeholder="일정을 등록하세요" id="input-field">' +
                             '</div>',*/
                     showCancelButton: true,
-                        /*confirmButtonClass: 'btn btn-success',*/
+                        confirmButtonClass: 'btn btn-success',
                         cancelButtonClass: 'btn btn-danger',
                         buttonsStyling: false
-                    },function(){
-                       $ajax({
-                          url:"todayclass.htm",
-                           type:"POST",
-                           success:function(data){
-                              lectureTitle =[];
-                              lectureContent =[];
-                              $.each(data, function(index,obj){
-                                 lectureTitle =   obj.lectureTitle
-                                 lectureContent = obj.lectureContent
-                              }); //each 끝
-                              //타이틀, 내용넘어오나 확인
-                               console.log(lectureTitle);
-                               console.log(lectureContent);
-                           }
-                       }); //ajax 끝
-                       
                     }) //swal 끝
                 
-                /*.then(function(result) {
-
-                    $calendar.fullCalendar('unselect');
-
-                    });*/
+          
              },
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events

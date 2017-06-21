@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.class_ic.vo.CalendarDTO;
 import com.class_ic.vo.TodayClassDTO;
-
 public interface CalendarDAO {
 
       //일정 등록  완료
@@ -21,5 +20,8 @@ public interface CalendarDAO {
       
       //오늘의 수업 보기
       public ArrayList<TodayClassDTO> CalendarTodayClass();
+      
+      //히스토리
+      public ArrayList<CalendarDTO> HistoryList();
 
    }   

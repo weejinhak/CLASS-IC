@@ -10,11 +10,13 @@ package com.class_ic.controller;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -102,4 +104,19 @@ public class LectureCodeAddController {
 		return new ModelAndView("qrcodeview", "content", content);
 	}
 	
+	
+	/*
+	@description : 페이지 로드시 email에 맞는 기수를 가져오기 위한 함수
+	*/
+	@RequestMapping(value = "lecturecodeSelect.htm", method = RequestMethod.POST)
+	public String lectureSelect(@RequestParam String email,Model model){
+		try {
+			List<LectureDTO> lecturelist=lecturecodeaddservice.lecturelistselect(email);	
+			model.addAttribute("lecturelist", lecturelist); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return "common/lectureList";
+	}
+
 }
