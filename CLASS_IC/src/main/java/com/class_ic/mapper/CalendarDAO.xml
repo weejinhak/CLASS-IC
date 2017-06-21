@@ -31,4 +31,9 @@ delete from Calendar where calNo=#{calNo}
 SELECT b.lectureTitle, b.lectureContent FROM TodayLecture t JOIN LectureBoard b ON t.lectureNo = b.lectureNo WHERE calNo=#{calNo};
 </select>
 
+<!-- 히스토리 -->
+<select id="HistoryList" resultType="com.class_ic.vo.CalendarDTO">
+select * from calendar order by calStart 
+</select>
+
 </mapper>

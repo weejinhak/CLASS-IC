@@ -15,13 +15,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.CalendarDAO;
 import com.class_ic.vo.CalendarDTO;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
 
 @Controller
 @RequestMapping(value="teacher", method=RequestMethod.POST)
@@ -198,6 +198,30 @@ public class CalendarController {
 	   
          }
       
+   /*
+   @description : DB에 저장된 일정들을 히스토리에 출력
+   */
+   @RequestMapping(value="historylist.htm", method=RequestMethod.GET)
+
+   public ModelAndView HistoryList(HttpServletRequest request,HttpServletResponse response){
+         System.out.println("history 컨트롤러 탄다.");
+         
+         CalendarDAO calendartdao = sqlSession.getMapper(CalendarDAO.class);
+         
+         
+         
+         ArrayList<CalendarDTO> historylist = calendartdao.HistoryList();
+      
+         System.out.println("히스토리 리스트 : " + historylist.size());
+         ModelAndView model = new ModelAndView();
+        
+         
+         model.addObject("list", historylist);
+         model.setViewName("teacher.history");
+         
+         return model;
+      
    
+   }
    
 }
