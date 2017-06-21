@@ -5,6 +5,7 @@
 
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
+					<li>[ ${sessionScope.name } ]님 강의실 입장 </li>
 						<!--  선생님 통합 관리 -->
 						<li><a href="#pablo" class="dropdown-toggle"
 							data-toggle="dropdown"> <i class="material-icons">note_add</i>
@@ -66,10 +67,13 @@
 											<div class="ripple-container"></div>
 										</button></li>
 									<li><br>
+									<a href="logout.htm">
 										<button class="btn">
 											로그아웃
 											<div class="ripple-container"></div>
-										</button></li>
+										</button>
+										</a>
+										</li>
 							</ul></li>
 
 

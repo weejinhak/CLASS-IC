@@ -22,103 +22,92 @@ import com.class_ic.vo.Test;
 public class MainController_Teacher {
 
 	@Autowired
-	SqlSession sqlsession;
+	private SqlSession sqlsession;
 
-	// teacher main
-	@RequestMapping("main.htm")
-	public String teacer() {
-		System.out.println("teacher common 컨트롤 탐");
-		return "teacher.main";
-	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////
-	// student page test용
-	@RequestMapping("test1.htm")
-	public String studentTest1() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.attendance_edit";
-	}
-
-	@RequestMapping("test2.htm")
-	public String studentTest2() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.attendance";
-	}
-
-	@RequestMapping("test3.htm")
-	public String studentTest3() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.attendancelist_edit";
-	}
-
-	@RequestMapping("test4.htm")
-	public String studentTest4() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.board_content";
-	}
-
-	@RequestMapping("test5.htm")
-	public String studentTest5() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.board_details_view";
-	}
-
-	@RequestMapping("test6.htm")
-	public String studentTest6() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.board_details";
-	}
-
-	@RequestMapping("test7.htm")
-	public String studentTest7() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.board_homework_content";
-	}
-
-	@RequestMapping("test8.htm")
-	public String studentTest8() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.board";
-	}
-
-	@RequestMapping("test9.htm")
-	public String studentTest9() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.calendar";
-	}
-
-	@RequestMapping("test10.htm")
-	public String studentTest10() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.class_condition";
-	}
-
-	@RequestMapping("test11.htm")
-	public String studentTest11() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.history";
-	}
-
-	@RequestMapping("test12.htm")
-	public String studentTest12() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.homework_board";
-	}
-
-	@RequestMapping("test13.htm")
-	public String studentTest13() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.message";
-	}
-
-	@RequestMapping("test14.htm")
-	public String studentTest14() {
-		System.out.println("teacher main controller 탐, test.htm ");
-		return "teacher.teacher_main";
-	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////
-
+	//teacher main
+		@RequestMapping("main.htm")
+		public String teacer(){
+			System.out.println("teacher common 컨트롤 탐");
+			return "teacher.main";
+		}
+	////////////////////////////////////////////////////////////////////////////////////////////	
+	//student page test용
+		@RequestMapping("test1.htm")
+		public String studentTest1(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.attendance_edit";
+		}
+		@RequestMapping("test2.htm")
+		public String studentTest2(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.attendance";
+		}
+		@RequestMapping("test3.htm")
+		public String studentTest3(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.attendancelist_edit";
+		}
+		@RequestMapping("test4.htm")
+		public String studentTest4(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.board_content";
+		}
+		@RequestMapping("test5.htm")
+		public String studentTest5(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.board_details_view";
+		}
+		@RequestMapping("test6.htm")
+		public String studentTest6(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.board_details";
+		}
+		@RequestMapping("test7.htm")
+		public String studentTest7(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.board_homework_content";
+		}
+		@RequestMapping("test8.htm")
+		public String studentTest8(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.board";
+		}
+		@RequestMapping("test9.htm")
+		public String studentTest9(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.calendar";
+		}
+		@RequestMapping("test10.htm")
+		public String studentTest10(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.class_condition";
+		}
+		@RequestMapping("test11.htm")
+		public String studentTest11(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.history";
+		}
+		@RequestMapping("test12.htm")
+		public String studentTest12(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.homework_board";
+		}
+		@RequestMapping("test13.htm")
+		public String studentTest13(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.message";
+		}
+		@RequestMapping("test14.htm")
+		public String studentTest14(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.teacher_main";
+		}
+		@RequestMapping("test15.htm")
+		public String studentTest15(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.fileMannager";
+		}
+		
 
 	// teacher board
 	@RequestMapping("board.htm")
