@@ -1,7 +1,14 @@
+<!--
+	@Project : CLASS-IC
+	@File Name : login.jsp
+	@Author : 이현정
+	@Date : 2017.06.15
+-->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<!DOCTYPE>
+<html>
 
 <head>
     <meta charset="utf-8" />
@@ -87,7 +94,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="#" action="#">
+                        
+                		 <form action="loginOk.htm" method="POST">
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="rose">
                                                      <h3 class="card-title">Login</h3>
@@ -97,15 +105,17 @@
                                         Class intelligent Command 
                                         
                                     </p>
+                                    
                                     <div class="card-content">
                              <br>
+                            
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">email</i>
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email address</label>
-                                                <input type="email" class="form-control">
+                                                <input type="email" class="form-control"  id="email" name="email">
                                             </div>
                                         </div>
                                         <div class="input-group">
@@ -114,7 +124,7 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Password</label>
-                                                <input type="password" class="form-control">
+                                                <input type="password" class="form-control" id="pwd" name="pwd">
                                             </div>
                                         </div>
                                         <br>
@@ -122,9 +132,11 @@
                                     <div class="footer text-center">
                                        <button class="btn btn-rose" type="submit">Login </button>
                                     </div>
-                                </div>
-                            </form>
+                                </div> 
+                                 </form>     
+                                	<a href="join.htm">회원가입 링크</a>           
                         </div>
+                       
                     </div>
                 </div>
             </div>
