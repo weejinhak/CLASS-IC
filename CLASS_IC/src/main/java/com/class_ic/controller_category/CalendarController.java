@@ -60,7 +60,10 @@ public class CalendarController {
       int random=(int) (Math.random() * 5) ; 
 
 
-
+      System.out.println(calTitle);
+      System.out.println(calContent);
+      System.out.println(classCode);
+      
     
       
          calendarDto.setCalStart(calStart);
@@ -97,7 +100,7 @@ public class CalendarController {
       JSONArray array = new JSONArray();
       
       for(int i=0; i<calendarlist.size(); i++){
-    	  
+         
          JSONObject obj = new JSONObject();
          obj.put("id", calendarlist.get(i).getCalNo());
          obj.put("title", calendarlist.get(i).getCalTitle());
@@ -110,47 +113,53 @@ public class CalendarController {
          Calendar cal = Calendar.getInstance();
          
           java.util.Date date=sdformat.parse(end);
-
+          System.out.println(date);
           
           cal.setTime(date);
           cal.add(Calendar.DATE, +1);
           
-       
-          end = sdformat.format(cal.getTime()); 
-         obj.put("end", end);
+          System.out.println("before"+end);
+          end = sdformat.format(cal.getTime());  
+        
+          
+          System.out.println("afeter"+end);
+
          
+         obj.put("end", end);
+     
+         System.out.println(calendarlist.get(i).getColor());
          obj.put("className",calendarlist.get(i).getColor());
          
      
          
          array.add(obj);
-   
+         System.out.println("2");
       }
       
       try {
-		response.getWriter().print(array);
-		
-	} catch (IOException e) {
-		
-		e.printStackTrace();
-	}
-
+      response.getWriter().print(array);
+      
+   } catch (IOException e) {
+      
+      e.printStackTrace();
+   }
+      System.out.println("3");
        
    }
    
    
-   
-   /*
-   @description : 선택된 일정을 삭제 해주는 기능 -> demo.js 에서 ajax를 타고옴
-   */
    @RequestMapping(value="CalendarEditDelete.htm", method=RequestMethod.GET)
    public void calendarEditDelete(HttpServletRequest request, HttpServletResponse response) throws IOException{
+      System.out.println("하잇");
+      int id=Integer.parseInt(request.getParameter("id"));
+      System.out.println("id"+id);
+      
+      CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);   
+      calendardao.CalendarDelete(id);
 
-	   int id=Integer.parseInt(request.getParameter("id"));
-	   CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);   
-	   calendardao.CalendarDelete(id);
-	      
-	      
+   
+         
+         
    }
    
    
