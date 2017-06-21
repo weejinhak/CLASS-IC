@@ -22,23 +22,23 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
     <!--   Core JS Files   -->
-	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery-ui.min.js" type="text/javascript"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/material.min.js" type="text/javascript"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/jquery-ui.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/material.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
 </head>
 
 <body>
     <div class="wrapper">
        
-      	 <!-- side navi 메뉴 영역-->
-     	 	 <tiles:insertAttribute name="navi" />  
-        	<div class="main-panel">
+          <!-- side navi 메뉴 영역-->
+             <tiles:insertAttribute name="navi" />  
+           <div class="main-panel">
           <!--  header 영역 -->
              <tiles:insertAttribute name="header" />
            <!--  contents 영역 -->
-          	  <tiles:insertAttribute name="content" />
+               <tiles:insertAttribute name="content" />
            
         </div>
     </div>
@@ -68,7 +68,7 @@
 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.datatables.js"></script>
 <!-- Sweet Alert 2 plugin -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.js"></script>
-<!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<!--   Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap.min.js"></script>
 <!--  Full Calendar Plugin    -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/fullcalendar.min.js"></script>
