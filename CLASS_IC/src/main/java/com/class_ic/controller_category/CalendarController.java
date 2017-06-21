@@ -156,8 +156,7 @@ public class CalendarController {
       
       CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);   
       calendardao.CalendarDelete(id);
-
-   
+  
          
          
    }
