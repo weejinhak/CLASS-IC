@@ -10,7 +10,7 @@
 	</update>
 
 	<select id="login" resultType="Integer">
-		select count(*) from member where email=#{id} and pass=#{pw}
+		select count(*) from member where email=#{email}
 	</select>
 
 </mapper>
