@@ -31,8 +31,8 @@ import com.class_ic.vo.MemberDTO;
 @Controller
 public class SchedulerController {
 
-/*	@Autowired
-	private SqlSession sqlsession;*/
+	@Autowired
+	private SqlSession sqlsession;
 	
 
 	@Autowired
@@ -53,6 +53,23 @@ public class SchedulerController {
 		System.out.println("아침입니다 출석됭 테이블을 insert 하겠습니다.");
 		attendanceservice.insertAttendance();
 		System.out.println("attandence 테이블 isnert 완료 되었습니다.");
+		
+	}
+	
+
+	@Scheduled(cron="0 0 23 * * *")
+	public void updateState() {
+
+		AttendanceDAO attendanceDao=sqlsession.getMapper(AttendanceDAO.class);
+		System.out.println("저녁입니다 출석됭 테이블의 결석여부를 판단하겠습니다.");
+
+		ArrayList<AttandanceDTO> todaylist=attendanceDao.todayAttendaceData();
+		System.out.println("attandence 테이블 isnert 완료 되었습니다.");
+		for(AttandanceDTO list:todaylist){
+			
+			
+			
+		}
 		
 	}
 
