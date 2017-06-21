@@ -1,5 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<script>
+	var wsocket;
+	var msg
+	function connect() {
+		/* alert("소켓연결!"); */
+		wsocket = new WebSocket("ws://192.168.0.10:8090/Emp/chat-ws.htm");
+		appendMessage("웹 소켓연결되었습니다.");
+		wsocket.onopen = onOpen;
+		wsocket.onmessage = onMessage;
+		wsocket.onclose = onClose;
+
+	}
+	function disconnect() {
+		wsocket.close();
+	}
+	function onOpen(evt) {
+		appendMessage("연결되었습니다.");
+	}
+	function sendMessage(){
+	
+		var sendmessage=$("#message").val(); 
+		$.ajax({
+
+			type : "post",
+			dataType : "html",
+			url : "sendMessage.htm",
+			data : {
+				"sendmessage" : sendmessage
+			},
+			success : function(data) {
+				console.log("성공!!")
+			}
+		});
+		
+		wsocket.send("b");
+
+	}
+	
+	function onMessage(evt) {
+		
+		console.log("받은 메세지 내용은??" + evt.data);
+
+		$.ajax({
+
+			type : "post",
+			dataType : "html",
+			url : "newAlarm.htm",
+			data : {
+				"newAlarm" : evt.data
+			},
+			success : function(data) {
+
+				console.log("헤더 업데이트 성공");
+				console.log(data);
+				$('#alarm').empty();
+				$('#alarm').html(data);
+
+			}
+		});
+
+	}
+	function onClose(evt) {
+		appendMessage("연결을 끊었습니다.");
+	}
+
+	function appendMessage(msg) {
+		console.log(msg);
+
+	}
+
+	$(document).ready(function() {
+		appendMessage("소켓이 준비되었습니다.");
+		connect();
+		$('#sendBtn').click(function(){
+
+			sendMessage();
+			
+		});
+	
+	});
+</script>    
+    
+	
 		<nav class="navbar navbar-transparent navbar-absolute">
 			<div class="container-fluid">
 
@@ -24,7 +108,8 @@
    	<li class="dropdown">
         <div class="dropdown dropdown-accordion" data-accordion="#accordion">
   <a  class="dropdown-toggle" href="#" data-toggle="dropdown">
- <i class="material-icons" style="padding-top: 10px; color:#555555" >notifications</i> <span class="notification">5</span>
+ <i class="material-icons" style="padding-top: 10px; color:#555555" >notifications</i> <span class="notification">${sessionScope.totalCount}
+</span>
 <p class="hidden-lg hidden-md"> Notifications <b class="caret"></b> </p>
  </a>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -65,7 +150,7 @@
     </li>
       </ul>
   
-  <input type="text" placeholder="메시지를 입력하세요" /><button>전송</button>
+  <input type="text" id="message" placeholder="메시지를 입력하세요" /><button>전송</button>
 
 
 </div>
@@ -215,3 +300,4 @@
 				</div>
 			</div>
 		</nav>
+		
