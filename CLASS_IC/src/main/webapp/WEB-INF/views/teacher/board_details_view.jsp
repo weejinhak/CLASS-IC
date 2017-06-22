@@ -1,10 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@ page import="com.class_ic.vo.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<!-- 
+@Project : CLASS-IC
+@File name : board_details_
+@Author : 김은영
+@Data : 2017.06.21
+@Desc :
+ -->
  <div class="content">
        <div class="container-fluid">
+       
+       
       	 <!-- 내용물  contents  -->
-      	 <div class="row">
+      
+	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<h2 class="title text-center"><b>Spring</b></h2>
 			<br>
@@ -14,20 +25,26 @@
 			<div class="nav-left">
 				<ul class="nav nav-pills nav-pills-warning nav-pills-icons"
 					role="tablist">
+					
 					<!--
                         color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                     -->
+                    
+                    
+                    <!-- 여기두 섭카테에 따라서.. 바뀌게..포문  -->
 					<li class="active"><a href="#description-1" role="tab"
 						data-toggle="tab" aria-expanded="false"> 
-						<i class="material-icons">reorder</i> Spring_FrameWork
+						<i class="material-icons">reorder</i> 
+						자바
 					</a></li>
-					<li class=""><a href="#description-1" role="tab"
+	<!-- 				<li class=""><a href="#description-1" role="tab"
 						data-toggle="tab" aria-expanded="false"> 
 							<i class="material-icons">reorder</i> MyBatis(ibatis)
-					</a></li>
+					</a></li> -->
 			 
 					<li class=""><a href="#description-2" role="tab"
-						data-toggle="tab" aria-expanded="false"> <!--                                            <i class="material-icons">exposure_plus_1</i> -->
+						data-toggle="tab" aria-expanded="false">
+						 <!--  <i class="material-icons">exposure_plus_1</i> -->
 							<button class="btn btn-raised btn-round btn-white"
 								data-toggle="modal" data-target="#noticeModal">+</button>
 					  <i]></i><br> ADD
@@ -39,75 +56,88 @@
 
 			<!-- tab-content -->
 			<div class="tab-content">
-				<div class="tab-pane" id="description-1">
+				<div class="tab-pane active" id="description-1">
 					<div class="card">
 						<!--  표-->
 						<div class="card-content table-responsive">
+						
+						<form id="frm" action="multi_storage.htm" method="post">
 							 <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
+                                                 
+                                                    <th>글 번호 </th>
                                                     <th>글 제목 </th>
-                                                    <th>글 쓴이</th>
+                                                    
                                                     <th>작성날짜</th>
                                                     <th class="text-center">Actions</th>
+                                                    <th>오늘 수업 담기</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            
+                                            <!-- 여기부터 포문  -->
+                                            			<c:forEach var="TodayLectureVO" items="${bvo}">
+                                            
                                                 <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td>박소현 사람 만들기</td>
-                                                    <td>박소현 어머니</td>
-                                                    <td>2017/06/09</td>
-                                                                <td class="td-actions text-center">
+                                              
+                                                    <td>${TodayLectureVO.lectureNo}a</td>
+                                                    <td>${TodayLectureVO.lectureTitle}a</td>
+                                                    
+                                                    <td>${TodayLectureVO.lectureDate}a</td>
+                                                    <td class="td-actions text-center">
                                                   
-                                                               <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
-                                                        <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2</td>
-                                                    <td>이은영 다이어트</td>
-                                                    <td>트레이너</td>
-                                                    <td>2017/06/15</td>
-                                                      <td class="td-actions text-center">
-                                                      
-                                                             <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
-                                                        <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">3</td>
-                                                    <td>노지영 체력 키우기</td>
-                                                    <td>관장님</td>
-                                                    <td>2017/06/30</td>
-                                                 <td class="td-actions text-center">
                                                         <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
                                                         <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
                                                     </td>
+                                                    <td>
+                                                    
+                                                   
+                                                         <div class="checkbox" id="">
+		                                                    <label>
+<!-- 		                                                    optionsCheckboxes -->
+		                                                    <input type="checkbox" name="multy[]" value ="${TodayLectureVO.lectureNo}">
+		                                                    <span class="checkbox-material">
+		                                                    </span>  
+		                                                    </label>
+		                                                    
+                                               			
+						 
+	
+				<a href='teacher/one_storage.htm?lectureNo=${TodayLectureVO.lectureNo}' style='text-decoration:none'>
+			 
+                   
+                                               			</div>
+                                               			
+                                               			
+                                               			
+                                               			
+                                               			
+                                               			
+                                               			</td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="text-center">4</td>
-                                                    <td>Mike Monday</td>
-                                                    <td>Marketing</td>
-                                                    <td>2013</td>
-                                                 <td class="td-actions text-center">
-                                                 <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
-                                                        <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">5</td>
-                                                    <td>Paul Dickens</td>
-                                                    <td>Communication</td>
-                                                    <td>2015</td>  
-                                                    <td class="td-actions text-center">
-                                                      <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
-                                                        <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
-                                                    </td>
-                                                </tr>
+                                                
+                                               </c:forEach>
+                                                 <tr>
+										         <td colspan="5">
+										         <!-- 표끝 -->
+							<button type="button" class="btn btn-info btn-round" style="margin-left:200px">write</button>
+							                     			
+							<button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px" onclick="multi_storage()">수업 담기</button>
+					                  			
+					                  			<a href="todayLectureList.htm">
+							<button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px">담은 수업 보기</button>
+												</a>
+                                           
+										         
+										      
+										         </td>
+										   		  </tr>
+                                               
                                             </tbody>
                                         </table>
+                          </form>
+                                        
 						</div>
 
 						<center>
@@ -121,9 +151,11 @@
 								<li><a href="javascript:void(0);">next </a></li>
 							</ul>
 						</center>
-						<!-- 표끝 -->
-							<button type="button" class="btn btn-info btn-round" style="margin-left:850px">write</button>
-					</div>
+					
+					
+					
+					
+						</div>
 				</div>
 
 				<!-- 탭2 -->
@@ -187,5 +219,91 @@
 
 		</div>
 	</div>
-      	 </div>
+	</div>
+
  </div>
+ 
+ <script type="text/javascript"> 
+ 
+
+
+
+ // 멀티컨텐츠 선택받기
+ function multi_storage()
+ {
+
+ 	var cnt2 = $("input[name='multy[]']:checked").length;
+
+ 	if(cnt2 < 1){
+ 		alert(" 게시물을 선택하여 주세요");
+ 		return;
+ 	}
+ 	
+ 	var chk = document.getElementsByName("multy[]");
+ 	var len = chk.length;    //체크박스의 전체 개수 
+//  	var checkRow = '';      //체크된 체크박스의 value를 담기위한 변수 
+ 	var checkCnt = 0;        //체크된 체크박스의 개수 
+ 	var checkLast = '';      //체크된 체크박스 중 마지막 체크박스의 인덱스를 담기위한 변수  
+ 	var cnt = 0;    
+ 	var rowid = new Array();   //체크된 체크박스의 모든 value 값을 담는다 
+
+ 	for(var i=0; i<len; i++){
+
+ 		if(chk[i].checked == true){ 
+ 		checkCnt++;        //체크된 체크박스의 개수 
+ 		checkLast = i;     //체크된 체크박스의 인덱스 
+ 		} 
+ 		}  
+ 	  
+    var count=0;
+	for(var i=0; i<len; i++){ 
+	if(chk[i].checked == true){  //체크가 되어있는 값 구분  
+    rowid.push(chk[i].value); 
+	count++;
+	}
+
+	}
+	
+	var data="";
+  	for(var i=0;i<count;i++){
+  		if(i==count-1){
+	     data+= rowid[i];
+	    
+  		}else{
+  			
+  		   data+= rowid[i]+",";
+  	  
+  		}	
+  		
+  		
+  	
+  	}
+    alert(data);
+
+
+ 		alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
+ 		//ajax 로  보낼데이터를 배열형태로 허용해준당 
+ 		jQuery.ajaxSettings.traditional = true;
+
+ 		 $.ajax({
+ 	        type: 'POST',
+ 	        url: 'multi_storage.htm',
+ 	        data: { data: data } ,
+ 	        dataType: 'text',
+      
+ 	        success: alert('good'),
+ 	        error: alert('not good')
+ 	    });
+ 
+ 
+ 
+
+ }
+ 
+ 
+</script>
+ 
+ 
+ 
+ 
+ 

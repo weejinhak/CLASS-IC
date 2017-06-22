@@ -9,6 +9,7 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
 	<mvc:annotation-driven />
 
 
@@ -18,6 +19,9 @@
 	
 	<context:component-scan base-package="com.class_ic.controller, com.class_ic.controller_category" />
 	<context:component-scan base-package="com.class_ic.app.controller"/>
+	
+	
+	
 	
 	<!--  Tiles 설정하기 -->
 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">

@@ -17,6 +17,10 @@ public class MainController_Teacher {
 	@Autowired
 		SqlSession sqlsession;
 	
+/*	@Autowired
+	private TodayLectureDAO  bdao;
+	*/
+	
 	//teacher main
 		@RequestMapping("main.htm")
 		public String teacer(){
@@ -45,11 +49,15 @@ public class MainController_Teacher {
 			System.out.println("teacher main controller 탐, test.htm ");
 			return "teacher.board_content";
 		}
-		@RequestMapping("test5.htm")
+	/*	@RequestMapping("test5.htm")
 		public String studentTest5(){
 			System.out.println("teacher main controller 탐, test.htm ");
 			return "teacher.board_details_view";
-		}
+		}*/
+		
+		
+		
+		
 		@RequestMapping("test6.htm")
 		public String studentTest6(){
 			System.out.println("teacher main controller 탐, test.htm ");
