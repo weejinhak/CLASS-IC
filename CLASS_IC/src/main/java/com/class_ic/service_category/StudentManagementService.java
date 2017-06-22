@@ -50,7 +50,7 @@ public class StudentManagementService {
 		}
 	
 	//조 나눈거 정보 저장 (ajax post)
-	public void studentGroup(String[] emailArr, String[] positionArr, String[] tableArr){
+	public void studentGroup(String[] emailArr, String[] positionArr, String[] tableArr, String classCode){
 		StudentManagementDAO student_dao = sqlsession.getMapper(StudentManagementDAO.class);
 		/*
 		 * String[] emailArr= email.split(",");	
@@ -65,10 +65,13 @@ public class StudentManagementService {
 		for(int i=0;i<emailArr.length;i++){
 			sgroup.setEmail(emailArr[i]);
 			sgroup.setPosition(positionArr[i]);
-			sgroup.setGroupTable(tableArr[i]);		
+			sgroup.setGroupTable(tableArr[i]);	
+			sgroup.setClassCode(classCode);
 			student_dao.studentGroupping(sgroup);
 		}
 	
 	}
+	
+	
 
 }

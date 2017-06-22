@@ -10,12 +10,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </insert>	
 
 <insert id="studentGroupping" parameterType="com.class_ic.vo.StudentGroupDTO">
-	INSERT INTO StudentGroup (email, groupCode, groupName, position, groupLeaderState, groupTable)
-	VALUES (#{email}, #{groupCode}, #{groupName}, #{position}, #{groupLeaderState}, #{groupTable})
+	INSERT INTO StudentGroup (email, groupCode, groupName, position, groupLeaderState, groupTable, classCode)
+	VALUES (#{email}, #{groupCode}, #{groupName}, #{position}, #{groupLeaderState}, #{groupTable}, #{classCode})
 </insert>
 
 <select id="getStudentGroupSetting" resultType="com.class_ic.vo.StudentTableDTO">
-	SELECT * FROM groupcategory
+	SELECT * FROM groupcategory 
 </select>
+
+<select id="getStudentGroup" resultType="com.class_ic.vo.StudentGroupDTO">
+	SELECT * FROM StudentGroup WHERE classCode=#{classCode}
+</select>
+
+
 
 </mapper>

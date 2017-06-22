@@ -55,44 +55,51 @@ $(function() {
 				name += name+',';
 				position += order +',';
 				groupTable += groupTableName +',';
-				/*
-					email
-					groupCode
-					groupName
-					order
-					groupLeaderState
-					groupTable
-				 */
-			
-				//array 값 저장
+
 			});
-			//ajax
+			//ajaxEvent();
+			//head div에 값이 없을 때  sava ajax 태우기
+			/*if($('div[class="alternative"]:empty')){
+				alert('조편성을 완료한 후에 sava 해주세요!');
+			}else{
+				
+				 ajaxEvent();
+			}*/
+			if($.trim($('div[class="head"]').html())==''){
+				ajaxEvent();
+			}else{
+				alert('조편성을 완료한 후에 sava 해주세요!');
+			}
+		});
+		//ajax 함수
+		function ajaxEvent(){
+
 			$.ajax({
 				url: "sgroup.htm",
 				type: "post",
-				data : {"email":email, "position":position, "groupTable":groupTable },
+				data : {"email":email, "position":position, "groupTable":groupTable, "classCode": '151기' },
 				dataType : 'html',
 				success : function(data){
 					//console.log(data);
 					alert('select ajax 태웁니다');
 					//저장된 위치값 다시 뿌려봅시다
 					//ajax in ajax start
-					/*$.ajax({
+					$.ajax({
 						url: "callgroup.htm",
 						type: "POST",
 						data : {"classCode": '151'},
 						dataType : 'html',
 						success : function(data){
 							//console.log(data);
-							alert('select ajax 태웁니다');
+							alert('2번째 ajax 태웠네요');
 							console.log(data);
-							
+							$('#groupMap').html(data);
 						},
 						error:function(request, status, error){
 							//console.log(error);
 							alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
 						}
-					});*/
+					});
 					//ajax in ajax end
 				},
 				
@@ -101,9 +108,6 @@ $(function() {
 					alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
 				}
 			});
-			
-		});
-		
-		
+			}//fucntion end
 		
 	});

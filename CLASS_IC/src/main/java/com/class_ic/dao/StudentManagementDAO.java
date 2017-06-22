@@ -16,7 +16,7 @@ public interface StudentManagementDAO {
 	//조나눈거 저장
 	public void studentGroupping(StudentGroupDTO sgroup);
 	
-	//조나눈거 가져오기
+	//조나눈거 불러오기 
 	public List<StudentGroupDTO> getStudentGroup(String classCode);
 	
 	//학적부 get

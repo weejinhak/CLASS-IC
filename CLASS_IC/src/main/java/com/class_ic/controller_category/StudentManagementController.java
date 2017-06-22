@@ -68,18 +68,18 @@ public class StudentManagementController {
 	public String studentGroup(HttpServletRequest request, StudentGroupDTO sgroup){
 		// data : {"email":email, "order":order, "groupTable":groupTable },
 				String email=request.getParameter("email");
-				System.out.println("가져오니" + email);
 				String position=request.getParameter("position");
 				String groupTable = request.getParameter("groupTable");
 				String[] emailArr= email.split(",");	
-				System.out.println(emailArr.length);
-				for(String value:emailArr){
-					System.out.println(value);
-				}
 				String[] positionArr = position.split(",");
 				String[] tableArr = groupTable.split(",");
+				String classCode = request.getParameter("classCode");
+				System.out.println(classCode);
+/*				for(String value:emailArr){
+					System.out.println(value);
+				}*/
 				
-				studentmanagerservice.studentGroup(emailArr, positionArr, tableArr);
+				studentmanagerservice.studentGroup(emailArr, positionArr, tableArr, classCode);
 			return "teacher.student_groupping";	
 	}
 	

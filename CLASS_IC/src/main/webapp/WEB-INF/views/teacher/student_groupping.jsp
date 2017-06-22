@@ -26,8 +26,10 @@
 	<!--조 나누기  -->
 <div class="canvas">
 	<!-- 학생 리스트가 있는 칸 -->
-	<div class="head" style="overflow:auto; "><p>학생리스트</p>
 	<!-- 학생 리스트  -->
+	<p>학생리스트</p>
+	<div class="head" style="overflow:auto; ">
+
 	<c:forEach var="slist" items="${member_list2}">
 		
 		<div class="alternative" id="student_${var.index}">
@@ -35,7 +37,6 @@
 		 ${slist.name }
 		 <input type="hidden" name="email" id="email_${var.index}" value="${slist.email }"/>
 		</div>
-		
 		
 		
 		</c:forEach>
@@ -49,11 +50,12 @@
 
 	
 	<!-- 조 선택  -->
+	<div id="groupMap">
 	<c:forEach var="i" begin="0" end="${member_count2}">
-	<div class="tier tier${i}"><p>${i }조</p></div>
+	<div class="tier tier${i} ui-sortable"><p>${i }조</p></div>
 	</c:forEach>
 	</div>
-	
+	</div>
 	
 	
 	 
