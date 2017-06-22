@@ -33,4 +33,9 @@ FROM todayslecture t JOIN LectureBoard b ON t.lectureNo = b.lectureNo
 WHERE t.lectureBM=#{clickdate}
 </select>
 
+<!-- 히스토리 -->
+<select id="HistoryList" resultType="com.class_ic.vo.CalendarDTO">
+select * from calendar order by calStart 
+</select>
+
 </mapper>
