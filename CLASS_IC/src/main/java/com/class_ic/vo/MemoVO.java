@@ -1,7 +1,7 @@
 /*@Project : CLASS-IC
-@File name : memo.xml
+@File name : MemoVO.java
 @Author : 최은혜
-@Data : 2017.06.15
+@Data : 2017.06.16
 @Desc :*/
 package com.class_ic.vo;
 
@@ -12,7 +12,7 @@ public class MemoVO {
 	private int memoNo; //메모 글번호
 	private String email; //이메일
 	private String memoText; //내용
-	private Date memoDate; //등록일
+	private Date memoDate; //등록일  default = sysdate
 	
 	
 	public int getMemoNo() {
