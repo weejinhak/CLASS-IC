@@ -19,6 +19,7 @@ import com.class_ic.dao.AttendanceDAO;
 import com.class_ic.dao.MemberDAO;
 import com.class_ic.service.AttendanceService;
 import com.class_ic.vo.AttandanceDTO;
+import com.class_ic.vo.LectureDTO;
 import com.class_ic.vo.MemberDTO;
 
 /*
@@ -57,18 +58,58 @@ public class SchedulerController {
 	}
 	
 
-	@Scheduled(cron="0 0 23 * * *")
+	@Scheduled(cron="0 0 1 * * *")
 	public void updateState() {
 
 		AttendanceDAO attendanceDao=sqlsession.getMapper(AttendanceDAO.class);
 		System.out.println("저녁입니다 출석됭 테이블의 결석여부를 판단하겠습니다.");
 
 		ArrayList<AttandanceDTO> todaylist=attendanceDao.todayAttendaceData();
-		System.out.println("attandence 테이블 isnert 완료 되었습니다.");
+		LectureDTO classdto= new LectureDTO();
+		
+
+		//내가 찍은 입실 시간 인덱스 1이 시간 2가 분이다.
+		String[] inclassArr;
+		//내가 찍은 퇴실 시간 인덱스 1이 시간 2가 분이다.
+		String[] outclassArr;
+		//지정된 입실 시간 인덱스 0이 시간 1이 분이다.
+		String[] opentimeArr;
+		//지정된 퇴실 시간 인덱스 0이 시간 1이 분이다.
+		String[] closetimeArr;
+	
+	
 		for(AttandanceDTO list:todaylist){
 			
+			classdto=attendanceDao.selectStartEndTime(list.getClassCode());
+			inclassArr=list.getInClass().split(":");
+			outclassArr=list.getOutClass().split(":");
+			opentimeArr=classdto.getClassopentime().split(":");
+			closetimeArr=classdto.getClassclosetime().split(":");
 			
+			for(String value:inclassArr){
+				System.out.println(value);
+			}
 			
+			for(String value:outclassArr){
+				System.out.println(value);
+			}
+			
+			for(String value:opentimeArr){
+				System.out.println(value);
+			}
+			
+			for(String value:closetimeArr){
+				System.out.println(value);
+			}
+		
+			
+			//둘다 널이 아니면
+			if((list.getInClass()!=null)&&(list.getOutClass()!=null)){
+				
+				
+			//	if(inclassArr[1])
+				
+			}
 		}
 		
 	}

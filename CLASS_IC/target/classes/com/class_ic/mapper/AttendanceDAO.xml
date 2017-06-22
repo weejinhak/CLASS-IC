@@ -28,6 +28,11 @@
 
 
 	<select id="todayAttendaceData" resultType="com.class_ic.vo.AttandanceDTO">
-	select attendNo,inClass,outClass from attendance where attendDate=CURDATE();
+	select attendNo,inClass,outClass,classCode from attendance where attendDate=CURDATE();
+	</select>
+	
+	<select id="selectStartEndTime" resultType="com.class_ic.vo.LectureDTO">
+	
+      select * from class where classCode=#{classCode}
 	</select>
 </mapper>

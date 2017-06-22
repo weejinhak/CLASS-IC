@@ -3,9 +3,12 @@ package com.class_ic.dao;
 import java.util.ArrayList;
 
 import com.class_ic.vo.AttandanceDTO;
+import com.class_ic.vo.LectureDTO;
 import com.class_ic.vo.MemberDTO;
 
 public interface AttendanceDAO {
+	
+	
 	
 	//attendance 테이블에  insert
 	public void insert(AttandanceDTO dto);
@@ -16,7 +19,10 @@ public interface AttendanceDAO {
 	//이메일에 알맞는 classcode를 select 해옴
 	public String selectClassNumber(String email);
 	
-
+    //오늘 날짜에 맞는 출석 테이블을 select 해서 모두가져온다.
 	public ArrayList<AttandanceDTO> todayAttendaceData();
+	
+	//기수에 알맞는 시작, 종료 시간을 가지고 온다
+	public 	LectureDTO selectStartEndTime(String classCode); 
 	
 }
