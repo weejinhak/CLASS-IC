@@ -4,16 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
-<head>
-<style type="text/css">
-.historydate{
-margin-left: 40px; 
-margin-top: -15px; */
-}
-
-</style>
-
-</head>
 <div class="content">
 	<div class="container-fluid">
 		<!-- 내용물  contents  -->
