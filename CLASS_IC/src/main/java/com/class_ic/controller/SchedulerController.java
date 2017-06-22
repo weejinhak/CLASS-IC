@@ -48,11 +48,8 @@ public class SchedulerController {
  * @Scheduled(fixedRate=5000) -> 5초마다 실행 해주기
  * */
 	
-<<<<<<< HEAD
-	@Scheduled(cron="0 0 1 * * *")
-=======
+
 	@Scheduled(cron="0 42 17 * * *")
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 	public void insert() {
 		System.out.println("아침입니다 출석됭 테이블을 insert 하겠습니다.");
 		attendanceservice.insertAttendance();

@@ -16,15 +16,12 @@ public interface MemoDAO {
 	public int insertMemo(MemoVO vo);
 	
 	//메모 조회
-	public List<MemoVO> selectMemo(String email);
+	public List<MemoVO> selectMemo(MemoVO vo);
 	
 	//메모 조회(단일출력)
 	public MemoVO oneText(MemoVO vo);
 	
 	//메모 삭제
 	public int deleteMemo(MemoVO vo);
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 }

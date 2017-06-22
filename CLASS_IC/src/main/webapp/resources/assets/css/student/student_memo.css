@@ -9,37 +9,20 @@
 
 @CHARSET "UTF-8";
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);
+@import "https://fonts.googleapis.com/css?family=Roboto:400,700,500";
 
-<<<<<<< HEAD
 .memoNo{
 	width: 30px;
 	background-color: black;
 	font: #fff;
-=======
-* { box-sizing:border-box; }
-
-#content{
-	margin: 100px;
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 }
 
-<<<<<<< HEAD
 .todo {
   width: 100%;
   background-color: #fff;
   margin: 100px auto;
-=======
-#create, textarea  { 
-  float:left; 
-  padding:25px 25px 40px;
-  margin:0 20px 20px 0;
-  width:250px;
-  height:250px; 
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 }
 
-<<<<<<< HEAD
 .todo:after {
   content: "memo";
   position: absolute;
@@ -49,21 +32,8 @@
   color: #fff;
   padding-top: 10px;
   padding-left: 10px;
-=======
-#create {
-  user-select:none;
-  padding:20px; 
-  border-radius:20px;
-  text-align:center; 
-  border:15px solid rgba(0,0,0,0.1); 
-  cursor:pointer;
-  color:rgba(0,0,0,0.1);
-  font:220px "Helvetica", sans-serif;
-  line-height:185px;
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 }
 
-<<<<<<< HEAD
 
 .checkListItem, #btn {
   position: absolute;
@@ -71,30 +41,11 @@
   margin-top: 100px;
   margin-left: 30px;
 }
-=======
-#create:hover { border-color:rgba(0,0,0,0.2); color:rgba(0,0,0,0.2); }
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 
-<<<<<<< HEAD
 h1 {
   text-align: center;
   color: #fff;
-=======
-textarea {
-  font:20px 'Roboto'; 
-  line-height:1.5;
-  border:0;
-  border-radius:3px;
-  background: linear-gradient(#F9EFAF, #F7E98D);
-  box-shadow:0 4px 6px rgba(0,0,0,0.1);
-  overflow:hidden;
-  transition:box-shadow 0.5s ease;
-  font-smoothing:subpixel-antialiased;
-  max-width:520px;
-  max-height:250px;
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 }
-<<<<<<< HEAD
 
 .checkListItem {
   width: 50%;
@@ -164,7 +115,3 @@ textarea {
   border-bottom: 4px solid #CB5C51;
   cursor: pointer;
 }
-=======
-textarea:hover { box-shadow:0 5px 8px rgba(0,0,0,0.15); }
-textarea:focus { box-shadow:0 5px 12px rgba(0,0,0,0.2); outline:none; }
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC

@@ -4,34 +4,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 
 @Project : CLASS-IC
-@File name : memoDAO.xml
+@File name : memo.xml
 @Author : 최은혜
-@Data : 2017.06.16
+@Data : 2017.06.15
 @Desc :
  -->
  <mapper namespace="com.class_ic.dao.MemoDAO">
  
-<<<<<<< HEAD
  <!-- 글등록 : 2017.06.21 최은혜 -->
-=======
-
- <!-- memo 등록  2017.06.16 최은혜 -->
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 <insert id="insertMemo" parameterType="com.class_ic.vo.MemoVO" >
  	insert into memo(email,memoText,memoDate) values(#{email},#{memoText},now())
 </insert>
 
-<<<<<<< HEAD
  <!-- 글삭제 : 2017.06.21 최은혜 -->
-=======
-<!-- memo 삭제  2017.06.16 최은혜  -->
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 <delete id="deleteMemo" parameterType="com.class_ic.vo.MemoVO">
 	delete from memo where email=#{email} and memoNo=#{memoNo}
 	<!-- delete from memo where email=#{email} -->
 </delete>
 
-<<<<<<< HEAD
  <!-- 글출력 : 2017.06.21 최은혜 -->
 <select id="selectMemo" parameterType="String" resultType="com.class_ic.vo.MemoVO">
 	select memoNo, memoText from memo where email=#{email}
@@ -40,12 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 단일 글 출력 : 2017.06.21 최은혜  -->
 <select id="oneText" parameterType="com.class_ic.vo.MemoVO" resultType="com.class_ic.vo.MemoVO">
 	select memoNo , memoText from memo where email=#{email} and memoNo=#{memoNo}
-=======
-<!-- memo 출력  2017.06.16 최은혜  -->
-<select id="selectMemo" parameterType="hashMap" resultType="com.class_ic.vo.MemoVO">
-	select memoText from memo where email=#{email}
->>>>>>> branch 'eh' of https://github.com/johntei/CLASS-IC
 </select>
 
-</mapper>  
+</mapper>
 
