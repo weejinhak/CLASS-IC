@@ -43,43 +43,6 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-<<<<<<< HEAD
-	
-	<beans:bean id="urlBasedViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-	 <beans:property name="viewClass"  value="org.springframework.web.servlet.view.tiles2.TilesView" />
-	 <beans:property name="order" value="1" />
-	</beans:bean> 
-	
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	<beans:property name="order" value="2" />
-			<beans:property name="prefix" value="/WEB-INF/views/" />
-			<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
-	
-    <!-- mybatis START -->
-	 <beans:bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
-	  <beans:property name="dataSource" ref="dataSource"></beans:property>
-	  <beans:property name="mapperLocations" value="classpath*:com/class_ic/mapper/*xml" />
-	 </beans:bean>	
-	  
-	 <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-	  <beans:constructor-arg index="0" ref="sqlSessionFactoryBean"/>
-	 </beans:bean>
-	
-	
-   <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
-    <beans:property name="order" value="0"/>
-   </beans:bean>
-=======
->>>>>>> refs/remotes/origin/master
-
-<<<<<<< HEAD
-	<!--스케줄링-->
- 	<task:annotation-driven scheduler="scheduler"/>
-	<task:scheduler id="scheduler" pool-size="10"/>
-	
-	
-=======
 	<beans:bean id="urlBasedViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass"
@@ -129,6 +92,5 @@
 
 	<mvc:default-servlet-handler />
 
->>>>>>> refs/remotes/origin/master
 
 </beans:beans>

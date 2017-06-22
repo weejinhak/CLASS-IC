@@ -167,7 +167,6 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>4.0.4.RELEASE</version>
 		</dependency>
-<<<<<<< HEAD
       <dependency>
       	<groupId>javax.mail</groupId>
       	<artifactId>mail</artifactId>
@@ -179,18 +178,6 @@
     		<groupId>com.fasterxml.jackson.core</groupId>
     		<artifactId>jackson-core</artifactId>
     		<version>2.7.3</version>
-=======
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
-		</dependency>
-		<!-- jackson -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>2.7.3</version>
->>>>>>> refs/remotes/origin/master
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -203,7 +190,6 @@
 			<version>2.7.3</version>
 		</dependency>
 		<dependency>
-<<<<<<< HEAD
     		<groupId>org.codehaus.jackson</groupId>
     		<artifactId>jackson-mapper-asl</artifactId>
     		<version>1.9.13</version>
@@ -218,14 +204,9 @@
           <artifactId>ezmorph</artifactId>
           <version>1.0.6</version>
       </dependency> 
-=======
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
-		</dependency>
+
 
 		<!-- Json dependency (소현 추가) -->
->>>>>>> refs/remotes/origin/master
 
       <dependency>
           <groupId>net.sf.json-lib</groupId>
