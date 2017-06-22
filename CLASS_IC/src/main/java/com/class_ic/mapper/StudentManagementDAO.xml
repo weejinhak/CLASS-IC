@@ -4,4 +4,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.class_ic.dao.StudentManagementDAO">
 
+<insert id="studentGroupSetting" parameterType="com.class_ic.vo.StudentTableDTO">
+	INSERT INTO GroupCategory (groupCode, groupName, bindNum, classCode, groupNum ) 
+	VALUES (#{groupCode}, #{groupName}, #{bindNum}, #{classCode}, #{groupNum}); 
+</insert>	
+
+<insert id="studentGroupping" parameterType="com.class_ic.vo.StudentGroupDTO">
+	INSERT INTO StudentGroup (email, groupCode, groupName, position, groupLeaderState, groupTable)
+	VALUES (#{email}, #{groupCode}, #{groupName}, #{position}, #{groupLeaderState}, #{groupTable})
+</insert>
+
+<select id="getStudentGroupSetting" resultType="com.class_ic.vo.StudentTableDTO">
+	SELECT * FROM groupcategory
+</select>
+
 </mapper>

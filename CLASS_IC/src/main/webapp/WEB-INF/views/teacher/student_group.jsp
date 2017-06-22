@@ -45,8 +45,9 @@
 		<ul id="allItems">
 			<c:forEach var="slist" items="${member_list}">
 				<li id="node__${var.index}">
-				<img src="${pageContext.request.contextPath}/resources/assets/img/${slist.photoSrc}.jpg" class="photo_img"/><br/>
-				${slist.name }</li><br/>
+				<%-- <img src="${pageContext.request.contextPath}/resources/assets/img/${slist.photoSrc}.jpg" class="photo_img"/><br/>
+				 --%>
+				 ${slist.name }</li><br/>
 			</c:forEach>
 		</ul>
 			

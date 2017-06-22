@@ -40,8 +40,8 @@
    <a href="teacher/test1.htm"> attandance_edit</a> <br/>
    <a href="teacher/test2.htm"> student</a> <br/>
    <a href="stable.htm?authority="+"ROLE_STUDENT"> student group 아 쫌</a> <br/>
-    <a href="stable.htm"> student group</a> <br/>
-    <a href="sgroup.htm"> student group</a>개피곤 <br/>
+    <a href="teacher/stable.htm"> student group</a> <br/>
+    <a href="teacher/sgroup.htm"> student group</a>개피곤 <br/>
    <a href="teacher/test4.htm"> board_content</a> <br/>
    <a href="teacher/test5.htm"> board_details_view</a> <br/>
    <a href="teacher/test6.htm"> board_details</a> <br/>
