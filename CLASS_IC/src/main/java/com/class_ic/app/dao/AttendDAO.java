@@ -20,7 +20,7 @@ import com.class_ic.app.dto.MemberDTO;
 public interface AttendDAO {
 
 	//로그인 확인
-	public int login(@Param("id")String id, @Param("pw")String pw);
+	public int login(@Param("email")String email);
 	
 	//출석 insert
 	public void attendanceMember(@Param("email")String email,
