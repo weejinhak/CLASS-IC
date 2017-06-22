@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link href="${pageContext.request.contextPath}/resources/assets/css/teachermain_memo.css" rel="stylesheet" />
+
+<link
+	href="${pageContext.request.contextPath}/resources/assets/css/teacher/teacher_memo.css"
+	rel="stylesheet" /> <!-- 2017.06.22 최은혜 -->
+	
 <div class="content">
 	<div class="container-fluid">
 		<!-- 내용물  contents  -->
@@ -140,18 +145,96 @@
 				</div>
 			</div>
 			
+			<div class="col-md-6 col-md-offset-3">
+			<!-- 메모 : 2017.06.22 최은혜 -->
 			<div class="memosize">
-			<textarea>Hello~ My name is so hyeon! </textarea>
-			<div id="create">+</div>
+			<input type="hidden" value="b@gmail.com" id="email" name="email">
+				  
+				  <div class="list">
+				     <!-- 여기에 리스트가 들어온다 -->
+				  </div>
+				  
+				  <input type="text" name="checkListItem" class="checkListItem"  id="checkListItem" />
+				  <button id="btn">+</button>
+				 
 			</div>
+		</div>			
 		</div>
-	</div>
-</div>
-<!-- <script
+
+			<div class="card">
+				<div class="card-header card-header-icon"
+					data-background-color="rose">
+					<i class="material-icons">library_add</i>
+				</div>
+				<div class="card-content">
+					<h4 class="card-title">MEMO</h4>
+					
+					<div class="form-footer text-right">
+					 <div class="col-md-10">
+					<input type="text" class="form-control" placeholder="메모를 입력해 주세요">
+					</div>
+					<button class="btn btn-primary btn-round">
+                         <i class="material-icons">check</i>
+                         	등록
+                    </button>
+                    </div>
+                    
+					<div class="row">
+						<div class="col-md-5">
+							<div class="table-responsive table-sales"></div>
+
+
+						</div>
+					</div>
+				</div>
+
+				<!-- 메모 리스트 ajax   -->
+				<script type="text/javascript">
+					$(function() {
+
+						//글 출력 : 2017.06.21 최은혜
+						var email = $('#email').val();
+
+						$.ajaxSetup({
+							cache : false
+						});
+						$
+								.ajax({
+									cashe : false,
+									type : "post",
+									url : "selectMemo.htm",
+									data : {
+										"email" : email
+									},
+									dataType : 'json',
+									async : false,
+									success : function(data) {
+
+										$
+												.each(
+														data,
+														function(index, item) {
+
+															$('.list').append(
+																			'<div class="alert alert-primary col-xs-4" id="'+item.memono+'"> <input type="hidden" class="memoNo" value="'+item.memono+ '" name="memoNo" />'
+																					+ item.memotext
+																					+ '<button class="deletebutton" value="'+item.memono+'">x</button></div>')
+
+															console.log("memoNO: "+ item.memono)
+														});
+
+									}
+
+								});
+					});
+				</script>
+
+				<!-- <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
- --><script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
-<script type="text/javascript">
+ -->
+				<script
+					src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+				<script type="text/javascript">
     $(document).ready(function() {
 
         // Javascript method's body can be found in assets/js/demos.js
@@ -164,4 +247,5 @@
     	  $(this).before("<textarea></textarea>");
     	});
 </script>
-
+				<script
+					src="${pageContext.request.contextPath}/resources/assets/js/teacher/teacher_memo.js"></script>

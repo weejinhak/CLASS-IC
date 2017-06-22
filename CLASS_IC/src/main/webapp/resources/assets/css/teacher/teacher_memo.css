@@ -17,23 +17,11 @@
 	font: #fff;
 }
 
-.todo {
-  width: 100%;
-  background-color: #fff;
-  margin: 100px auto;
-}
-
-.todo:after {
-  content: "memo";
+.list {
   position: absolute;
-  width: 100%;
-  height: 50px;
-  background-color: #E1675A;
-  color: #fff;
-  padding-top: 10px;
-  padding-left: 10px;
+	font-family:Roboto;
+	color:#cc0000;
 }
-
 
 .checkListItem, #btn {
   position: absolute;
@@ -78,13 +66,6 @@ h1 {
   box-shadow: 1px 1px 1px 0px #22272D;
 }
 
-.list {
-  position: absolute;
-  padding-top: 150px;
-  padding-left: 10px;
-	font-family:Roboto;
-	color:#cc0000;
-}
 
 .item {
   background-color: #22272D;

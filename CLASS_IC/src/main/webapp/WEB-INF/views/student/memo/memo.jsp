@@ -14,18 +14,56 @@
 	rel="stylesheet" /> <!-- 2017.06.15 최은혜 -->
 	
 <div id="content">
-     <div id="container">
-    <h2>Memo <i class="onOff fa fa-plus" aria-hidden="true"></i></h2>
-    <input type="text" placeholder="새로운 글을 입력하세요" class="in">
+<input type="hidden" value="b@gmail.com" id="email" name="email">
 
-    <ul class="ul">
-      <!--  New To-Do items will go here     -->
-      
-    </ul>
-
+<div class="todo card-content">
+  
+  <div class="list">
+     <!-- 여기에 리스트가 들어온다 -->
   </div>
+  
+  <input type="text" name="checkListItem" class="checkListItem"  id="checkListItem" />
+  <button id="btn">+</button>
+ 
 </div>
-  <!-- 2017.06.15 최은혜 -->
+</div>
+
+ <!-- 2017.06.15 최은혜 -->
+<script type="text/javascript">
+	$(function() {
+		
+		//글 검색 : 2017.06.21 최은혜
+		var email = $('#email').val();
+		
+		$.ajaxSetup({cache:false}); 
+		$.ajax({
+			  cashe:false,
+		      type : "post",
+		      url : "selectMemo.htm",
+		      data : { "email" : email },
+		      dataType:'json',
+		      async: false,
+		      success : function(data) {
+		    	  
+		         $.each(data, function(index,item) {
+
+		        	 $('.list').append('<div class="item col-xs-4" id="'+item.memono+'"> <input type="hidden" class="memoNo" value="'+item.memono+ '" name="memoNo" />'
+		        			 +item.memotext+'<button class="deletebutton" value="'+item.memono+'">x</button></div>')
+		         
+		         		 console.log("memoNO: "+item.memono)
+		         }); 
+		         
+		      }
+		      
+		   });
+	});
+</script>
+ 
+
+
   <script
 	src="${pageContext.request.contextPath}/resources/assets/js/student/student_memo.js"></script>
+
+
+
 </html>
