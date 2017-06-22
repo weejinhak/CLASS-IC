@@ -23,4 +23,5 @@ public interface MemoDAO {
 	
 	//메모 삭제
 	public int deleteMemo(MemoVO vo);
+
 }

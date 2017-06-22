@@ -19,7 +19,6 @@
 
 .todo {
   width: 100%;
-  height: 450px;
   background-color: #fff;
   margin: 100px auto;
 }
@@ -39,7 +38,7 @@
 .checkListItem, #btn {
   position: absolute;
   z-index: 999;
-  margin-top: 400px;
+  margin-top: 100px;
   margin-left: 30px;
 }
 
@@ -49,19 +48,20 @@ h1 {
 }
 
 .checkListItem {
-  width: 200px;
+  width: 50%;
   padding: 4px;
   border-radius: 5px;
-  margin-left: 70px;
+  margin-left: 120px;
   border: none;
   border-bottom: 1.4px solid #E1675A;
   border-right: 1.4px solid #E1675A;
 }
 
+
 #btn {
   position: absolute;
-  margin-top: 385px;
-  margin-left: 10px;
+  margin-top: 90px;
+  margin-left: 65px;
   padding: 2px;
   width: 50px;
   height: 50px;
@@ -80,41 +80,36 @@ h1 {
 
 .list {
   position: absolute;
-  padding-top: 70px;
+  padding-top: 150px;
   padding-left: 10px;
-	font-family:garamond;
+	font-family:Roboto;
 	color:#cc0000;
 }
 
 .item {
   background-color: #22272D;
-  margin: 10px;
+  margin: 25px;
   padding: 10px;
   color: #fff;
-  width: 220px;
+  width: 200px;
+  height: 100%;
 }
 
-.item:before {
-  position: absolute;
-  content: "";
-  width: 13px;
-  height: 13px;
-  background-color: #22272D;
-  left: 14px;
-  transform: rotate(45deg);
-  z-index: 0;
-}
 
-.item:after{
+.deletebutton{
   position: absolute;
   content: "x";
   width: 20px;
   height: 38px;
   margin-top: -10px;
   text-align: center;
-  left: 240px;
+  left: 220px;
   background-color: #CB5C51;
+  outline: 0;
+  border: 0;
+  margin-left: -20px;
 }
+
 
 .item:hover {
   border-bottom: 4px solid #CB5C51;

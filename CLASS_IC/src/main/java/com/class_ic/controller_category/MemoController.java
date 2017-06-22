@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.MemoDAO;
 import com.class_ic.vo.MemoVO;
@@ -37,18 +38,22 @@ public class MemoController {
 private SqlSession sqlsession;
 	
 	
-	
 	//글 등록 : 2017.06.21 최은혜
 	@RequestMapping(value="insertMemo.htm", method=RequestMethod.POST)
-	public @ResponseBody void insert(@RequestParam("memo") String memo) {
+	public @ResponseBody void insert(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	      
+	       String email=request.getParameter("email");
+	       String checkListItem=request.getParameter("checkListItem");
 		
 		MemoVO vo = new MemoVO();
-		vo.setEmail("b@gmail.com");
-		vo.setMemoText(memo);
+		vo.setEmail(email);
+		vo.setMemoText(checkListItem);
 		
 		MemoDAO dao = sqlsession.getMapper(MemoDAO.class);
+		
 		int result = dao.insertMemo(vo);
 		System.out.println("insert result: " +result);
+		
 		
 	}
 	
@@ -74,6 +79,32 @@ private SqlSession sqlsession;
 	          array.add(obj);
 	       }
 	      response.getWriter().println(array);      
+	   }
+	
+	//memo.jsp 글 출력 : 2017.06.21 최은혜
+	@RequestMapping(value="selectMemo2.htm", method= RequestMethod.GET)
+	   public ModelAndView select2(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	      ModelAndView view= new ModelAndView();
+	      view.setViewName("memo.memo");
+	      String email= request.getParameter("email");
+	      System.out.println("controller :" +email);
+	      
+	      MemoVO vo = new MemoVO();
+	      vo.setEmail(email);
+	      
+	      MemoDAO dao = sqlsession.getMapper(MemoDAO.class);
+	      List<MemoVO> memoList = dao.selectMemo(vo);
+	   
+	       JSONArray array = new JSONArray();
+
+	       for(int i=0;i<memoList.size();i++){
+	          JSONObject obj= new JSONObject();
+	          obj.put("memotext",memoList.get(i).getMemoText());
+	          obj.put("memono", memoList.get(i).getMemoNo());
+	          array.add(obj);
+	       }
+	      response.getWriter().println(array);
+		return view;      
 	   }
 	
 	//단일 글 출력
