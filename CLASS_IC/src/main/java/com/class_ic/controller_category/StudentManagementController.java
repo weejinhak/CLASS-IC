@@ -49,7 +49,7 @@ public class StudentManagementController {
 		return "";
 	}
 	
-	//조편성 호출
+	//조편성 호출 (edit 호출)
 	@RequestMapping(value="sgroup.htm", method=RequestMethod.GET)
 	public ModelAndView studentGroup(ModelAndView mv, String classCode){
 		//get 호출이여도 기본으로

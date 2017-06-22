@@ -42,8 +42,8 @@ $(function() {
 			alert("sava 누르셨구요")
 		
 			$('.alternative').each(function(index) {
-				var indexval = $("input[name^='email']").index(this);
-				var emailval =$("input[name^='email']:eq("+indexval+")").val(); 
+				//var indexval = $("input[name^='email']").index(this);
+				var emailval =$("input[name^='email']:eq("+index+")").val(); 
 				
 				var indexTable = $("input[name^='student']").index(this);
 				var groupTableName =$(this).parent().attr('class');
