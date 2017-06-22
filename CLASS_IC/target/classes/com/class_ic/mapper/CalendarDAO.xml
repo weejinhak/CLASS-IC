@@ -27,8 +27,10 @@ delete from Calendar where calNo=#{calNo}
 </delete>   
     
 <!-- 그날의 강의  -->
-<select id="CalendarTodayClass" resultType="com.class_ic.vo.TodayClassDTO" >
-SELECT b.lectureTitle, b.lectureContent FROM TodayLecture t JOIN LectureBoard b ON t.lectureNo = b.lectureNo WHERE calNo=#{calNo};
+<select id="CalendarTodayClass" resultType="String" >
+SELECT b.lectureTitle
+FROM todayslecture t JOIN LectureBoard b ON t.lectureNo = b.lectureNo 
+WHERE t.lectureBM=#{clickdate}
 </select>
 
 <!-- 히스토리 -->

@@ -41,11 +41,12 @@ public class AttendanceService {
 			email=memberList.get(i).getEmail();
 			System.out.println(email);
 			dto.setClassCode(attendanceDao.selectClassNumber(email)); 
+	
 			dto.setEmail(email); 
 			dto.setInClass(null);
 			dto.setOutClass(null);
-		
 			attendanceDao.insert(dto);
+
 			System.out.println("insert"+i);
 			
 		

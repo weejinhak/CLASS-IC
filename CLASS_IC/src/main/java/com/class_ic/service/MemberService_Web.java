@@ -39,6 +39,12 @@ public class MemberService_Web {
 		boolean result = bCryptPasswordEncoder.matches(rawPassword, encodedPassword);
 
 		mv.addObject("member", member);
+		
+		
+		/*
+		 * 여기서 dao 선언 후 아이디에 맞는 메시지 totalcount 가져와서 세션에 담기
+		*/
+		
 		session.setAttribute("email", member.getEmail());
 		session.setAttribute("name", member.getName());
 		

@@ -19,9 +19,12 @@ public interface CalendarDAO {
       public int CalendarDelete(int calendar_id);
       
       //오늘의 수업 보기
-      public ArrayList<TodayClassDTO> CalendarTodayClass();
+
+      public ArrayList<String> CalendarTodayClass(String clickdate);
       
       //히스토리
       public ArrayList<CalendarDTO> HistoryList();
+
+
 
    }   
