@@ -3,6 +3,17 @@
 <%@ page import="com.class_ic.vo.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
+<head>
+<style type="text/css">
+.historydate{
+margin-left: 40px; 
+margin-top: -15px; */
+}
+
+</style>
+
+</head>
 <div class="content">
 	<div class="container-fluid">
 		<!-- 내용물  contents  -->
@@ -25,7 +36,9 @@
                             <span class="label label-danger">
                            		${list.calTitle}
                            	</span>
-                           	 <p style="margin-left: 80px; margin-top: -15px;"> ${list.calStart}   ~   ${list.calEnd} </p>
+                           	<div class="historydate">
+                           	 <p> ${list.calStart}   ~   ${list.calEnd} </p>
+                        	</div>
                         </div>
                         <div class="timeline-body">
                            <p>	${list.calContent}</p>
@@ -45,7 +58,9 @@
 									<span class="label label-success">
 										${list.calTitle}
 									</span>
-									 <p style="margin-left: 80px; margin-top: -15px;"> ${list.calStart}   ~   ${list.calEnd} </p>
+									<div class="historydate">
+									 <p> ${list.calStart}   ~   ${list.calEnd} </p>
+									</div>
 								</div>
 								<div class="timeline-body">
 									<p>
@@ -68,7 +83,9 @@
                             <span class="label label-info">
                            		${list.calTitle}
                            	</span>
-                           	 <p style="margin-left: 80px; margin-top: -15px;"> ${list.calStart}   ~   ${list.calEnd} </p>
+                           	<div class="historydate">
+                           	 <p> ${list.calStart}   ~   ${list.calEnd} </p>
+                           	 </div>
                         </div>
                         <div class="timeline-body">
                            <p>	${list.calContent}</p>
@@ -90,7 +107,9 @@
                           <span class="label label-warning">
 										${list.calTitle}
 							</span>
-							<p style="margin-left: 80px; margin-top: -15px;"> ${list.calStart}   ~   ${list.calEnd} </p>
+							<div class="historydate">
+							<p> ${list.calStart}   ~   ${list.calEnd} </p>
+                        	</div>
                         </div>
                         <div class="timeline-body">
                   				<p>
