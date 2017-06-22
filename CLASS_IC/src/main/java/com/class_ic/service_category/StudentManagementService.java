@@ -43,9 +43,10 @@ public class StudentManagementService {
 	
 	//조 나눈거 정보 가져오기 (ajax get)
 		public List<StudentGroupDTO> getstudentGroup(String classCode){
+			System.out.println(classCode + ": service");
 			StudentManagementDAO student_dao = sqlsession.getMapper(StudentManagementDAO.class);
 			List<StudentGroupDTO> groupList = student_dao.getStudentGroup(classCode);
-			
+			System.out.println(groupList);
 			return groupList;
 		}
 	

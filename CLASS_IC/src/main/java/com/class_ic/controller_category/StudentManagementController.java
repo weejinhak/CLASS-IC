@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -85,11 +86,12 @@ public class StudentManagementController {
 	
 	//저장하자마자 불러오는 요청
 	@RequestMapping(value="callgroup.htm", method=RequestMethod.POST)
-	public String getStudentGroup(Model m, String classCode){
+	public String getStudentGroup(Model m, @RequestParam String classCode){
+		System.out.println(classCode);
 		List<StudentGroupDTO>grouplist =  studentmanagerservice.getstudentGroup(classCode);
 		m.addAttribute("grouplist", grouplist);
 		
-		return "teacher/groupset_ajax";
+		return "teacher/group_ajax";
 	}
 	
 
@@ -103,7 +105,7 @@ public class StudentManagementController {
 		m.addAttribute("settinglist", groupSettingList);
 		System.out.println("과제 게시판 정보 입력하는 컨트롤 탐");
 			
-		return "teacher/group_ajax";
+		return "teacher/groupset_ajax";
 	}
 }
 

@@ -5,7 +5,7 @@
 <link href="${pageContext.request.contextPath}/resources/assets/css/group.css" rel="stylesheet" />
 
 <div class="content">
-       <div class="container-fluid">
+       <div class="container-fluid" id="page">
        <select id="groupCode">
       	 <c:forEach var="i" begin="1" end="10">
       	 <option value="${i }">${i }회차</option>
@@ -28,7 +28,7 @@
 	<!-- 학생 리스트가 있는 칸 -->
 	<!-- 학생 리스트  -->
 	<p>학생리스트</p>
-	<div class="head" style="overflow:auto; ">
+	<div class="head" id="head" style="overflow:auto; ">
 
 	<c:forEach var="slist" items="${member_list2}">
 		
@@ -43,16 +43,11 @@
 	</div>
 </div>
 	<c:set var="count" value="${member_count2}" />
-	<div id="groupTable">
-	<!-- 여기에 조별 테이블  -->
-	</div>
-	
-
 	
 	<!-- 조 선택  -->
-	<div id="groupMap">
+
 	<c:forEach var="i" begin="0" end="${member_count2}">
-	<div class="tier tier${i} ui-sortable"><p>${i }조</p></div>
+	<div class="tier" id="group${1 }"><p>${i }조</p></div>
 	</c:forEach>
 	</div>
 	</div>
@@ -60,7 +55,7 @@
 	
 	 
 </div>
-</div>
+
 <!--  js link -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/group.js"></script>
 <script type="text/javascript">

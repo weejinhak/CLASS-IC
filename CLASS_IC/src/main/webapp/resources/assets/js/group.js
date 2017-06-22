@@ -46,7 +46,7 @@ $(function() {
 				var emailval =$("input[name^='email']:eq("+index+")").val(); 
 				
 				var indexTable = $("input[name^='student']").index(this);
-				var groupTableName =$(this).parent().attr('class');
+				var groupTableName =$(this).parent().attr('id');
 				var name = $(this).text(),
 					order = index;
 				
@@ -87,13 +87,13 @@ $(function() {
 					$.ajax({
 						url: "callgroup.htm",
 						type: "POST",
-						data : {"classCode": '151'},
+						data : {"classCode": '151기'},
 						dataType : 'html',
 						success : function(data){
 							//console.log(data);
 							alert('2번째 ajax 태웠네요');
 							console.log(data);
-							$('#groupMap').html(data);
+							$('#page').html(data);
 						},
 						error:function(request, status, error){
 							//console.log(error);
