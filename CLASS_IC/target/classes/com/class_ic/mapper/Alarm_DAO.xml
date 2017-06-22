@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <!-- 알림  추가 -->
  <insert id="insertAlarm" parameterType="com.class_ic.vo.All_Alarm_DTO">
-  	 insert into alarm(ename,message) values(#{user_id},#{message})    
+     insert into message (messageNo, msContent, msSendTime, email) values ();
  </insert>
 
  <!-- 알림 삭제 -->
@@ -19,5 +19,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <select id="totalCount" resultType="Integer" parameterType="String">
  	select count(*) as total_count from alarm where ename=#{user_id} 
  </select>
+ 
+ 
+
+select messageNo, msSendTime, eamil from message;
+
+select messageNo, msSendTime, eamil from message where email = #{email} AND msSendTime= #{msSendTime};
+
+insert into messageSend (email, messageNo, deleteStateS) values ();
+
+insert into messageReceive (email, messageNo, readTime, readState, deleteStateR) values ();
+ 
+ 
   
 </mapper>
