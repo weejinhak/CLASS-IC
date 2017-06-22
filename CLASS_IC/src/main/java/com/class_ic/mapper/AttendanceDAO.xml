@@ -7,7 +7,8 @@
 
 	<insert id="insert" parameterType="com.class_ic.vo.AttandanceDTO">
 
-		insert into attendance(email,attendDate,inClass,outClass,attendState,classCode)
+		insert into
+		attendance(email,attendDate,inClass,outClass,attendState,classCode)
 		values
 		(#{email},now(),#{inClass},#{outClass},
 		#{attendState},#{classCode})
@@ -18,10 +19,15 @@
 	<select id="memberSelectAll" resultType="com.class_ic.vo.MemberDTO">
 		select * from member
 	</select>
-	
-	<select id="selectClassNumber" parameterType="String" resultType="String">
-	
-     select classCode from classMember where email=#{email}
+
+	<select id="selectClassNumber" parameterType="String"
+		resultType="String">
+
+		select classCode from classMember where email=#{email}
 	</select>
 
+
+	<select id="todayAttendaceData" resultType="com.class_ic.vo.AttandanceDTO">
+	select attendNo,inClass,outClass from attendance where attendDate=CURDATE();
+	</select>
 </mapper>
