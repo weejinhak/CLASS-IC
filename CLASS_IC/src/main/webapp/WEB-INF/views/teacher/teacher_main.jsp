@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link href="${pageContext.request.contextPath}/resources/assets/css/teachermain_memo.css" rel="stylesheet" />
 <div class="content">
 	<div class="container-fluid">
 		<!-- 내용물  contents  -->
@@ -138,8 +139,11 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="memosize">
 			<textarea>Hello~ My name is so hyeon! </textarea>
 			<div id="create">+</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -155,5 +159,9 @@
 
         demo.initVectorMap();
     });
+    
+    $("#create").click(function() {
+    	  $(this).before("<textarea></textarea>");
+    	});
 </script>
 
