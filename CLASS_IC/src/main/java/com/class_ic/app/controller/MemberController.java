@@ -66,6 +66,7 @@ public class MemberController {
 		if(result){
 			return ld;
 		}else{
+			ld.setCount(-1);
 			return ld;
 		}		
 	
