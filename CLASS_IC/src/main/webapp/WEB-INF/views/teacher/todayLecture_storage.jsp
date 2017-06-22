@@ -73,8 +73,8 @@
 												
 												<td class="td-actions text-center">
  															
-												<a href="todayLectureDelete.htm?todayNo=${TodayLectureVO.todayNo}" class="btn btn-simple btn-danger btn-icon remove"><i
-														class="material-icons">close</i></a>
+												<a href="todayLectureDelete.htm?todayNo=${TodayLectureVO.todayNo}" class="btn btn-simple btn-danger btn-icon remove">
+												<i class="material-icons">close</i></a>
 														
 												</td>
 

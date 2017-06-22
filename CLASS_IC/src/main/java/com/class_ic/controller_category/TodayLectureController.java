@@ -119,14 +119,20 @@ public class TodayLectureController{
 	//오늘의 강의 삭제 
 
 	@RequestMapping(value="todayLectureDelete.htm" ) 
-	public void delete(HttpServletRequest request, HttpServletResponse response){ 
-		int lectureNo = Integer.parseInt( request.getParameter("todayNo"));
+	public String delete(HttpServletRequest request, HttpServletResponse response){ 
+		
+		
+		System.out.println("todayLectureDelete.htm 컨트롤러 탐 ");
+		int todayNo = Integer.parseInt( request.getParameter("todayNo"));
 		
 		
 		TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class); 
 		
 		bdao.deleteTodayLect(todayNo) ;
 
+		
+
+		return "teacher.todayLecture_storage";
  
 	}
 	
