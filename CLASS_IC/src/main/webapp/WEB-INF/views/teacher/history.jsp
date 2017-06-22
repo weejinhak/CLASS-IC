@@ -15,7 +15,6 @@
 		
 					
 					<c:forEach var="list" items="${list}">
-					
 				<c:if test="${list.calNo%4==0}">
 						<li class="timeline-inverted">
                      <div class="timeline-badge danger">
