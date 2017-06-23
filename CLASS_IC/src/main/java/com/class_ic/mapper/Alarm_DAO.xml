@@ -28,17 +28,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(#{emailS},#{messageNo},#{deleteStateS});
 	</insert>
 
+
+	<!-- 알림 total count 가져오기 -->
+	<select id="totalCount" resultType="Integer" parameterType="String">
+		select count(*) as total_count from messagereceive where emailR=#{emailR} and readState=1;
+	</select>
+
+
 	<!-- 알림 삭제 -->
 	<delete id="deleteAlarm" parameterType="com.class_ic.vo.All_Alarm_DTO">
 		delete total_count from totalcount where ename=#{user_id}
 	</delete>
-
-	<!-- 알림 total count 가져오기 -->
-	<select id="totalCount" resultType="Integer" parameterType="String">
-		select count(*) as total_count from alarm where ename=#{user_id}
-	</select>
-
-
 
 
 </mapper>

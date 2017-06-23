@@ -8,7 +8,7 @@ public interface AlarmDAO {
 		//알림 확인할시에 해당 알림 지워주기 
 		public void deleteAlarm(String user_id);
 		
-		public int totalCount(String user_id);
+		public int totalCount(String emailR);
 		
 		public int insertMessage(All_Alarm_DTO dto);
 		

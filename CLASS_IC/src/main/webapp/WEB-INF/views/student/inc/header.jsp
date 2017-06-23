@@ -27,7 +27,7 @@
 	function sendMessage() {
 
 		var sendmessage = $("#message").val();
-		var remail="g@g.com";
+		var remail="a@gmail.com";
 		console.log(sendmessage)
 		$.ajax({
 			type : "get",			
@@ -42,13 +42,13 @@
 			}
 		});
 
-		wsocket.send("g@g.com");
+		wsocket.send(remail);
 
 	}
 
 	function onMessage(evt) {
 
-		console.log("받은 메세지 내용은??" + evt.data);
+		console.log(evt.data+"한테 신호옴!!!");
 
 		$.ajax({
 
@@ -116,7 +116,7 @@
 						data-accordion="#accordion">
 						<a class="dropdown-toggle" href="#" data-toggle="dropdown"> <i
 							class="material-icons" style="padding-top: 10px; color: #555555">notifications</i>
-							<span class="notification">${sessionScope.totalCount} </span>
+							<span class="notification" id="alarm">${sessionScope.totalCount}</span>
 							<p class="hidden-lg hidden-md">
 								Notifications <b class="caret"></b>
 							</p>

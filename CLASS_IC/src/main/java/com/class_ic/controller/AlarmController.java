@@ -38,19 +38,19 @@ public class AlarmController {
 	
 		System.out.println("sendmessage 탐 -> 값은 :  "+sendmessage);
 		All_Alarm_DTO dto= new All_Alarm_DTO();
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-		
-		dto.setEmailR(remail);//받는사람
 
-		System.out.println("********************");
+		System.out.println("********받는사람과 보내는사람 찍어보기************");
 		System.out.println(remail);
+		System.out.println((String)session.getAttribute("email"));
 		System.out.println("********************");
-
-		dto.setEmailS(authentication.getName());//보내는사람
+		
+		
+		
+		dto.setEmailS((String)session.getAttribute("email"));//보내는사람
 		Calendar cal= Calendar.getInstance();
 		java.util.Date date= cal.getTime();
-		dto.setMsSendTime(new SimpleDateFormat("yyyyMMddHHmmss").format(date));
+		dto.setMsSendTime(new SimpleDateFormat("yyyyMMddHHmmss").format(date));//메시지받는시간
 		dto.setMsContent(sendmessage);//메시지내용
 		//확인상태,삭제여부 처음에 1
 		
@@ -59,6 +59,7 @@ public class AlarmController {
 		int result=alarm_DAO.insertAlarm(dto);
 		if(result>0){
 			dto=alarm_DAO.selectMessageNum();
+			dto.setEmailR(remail);//받는사람		
 			alarm_DAO.insertMessageReceive(dto);
 			alarm_DAO.insertMessageSend(dto);
 		}		
@@ -78,8 +79,8 @@ public class AlarmController {
 			System.out.println("newAlarm.htm");
 			System.out.println("newAlarm : "+newAlarm);
 			
-			String Ename = (String)session.getAttribute("email");
-			System.out.println(Ename);
+		/*	String Ename = (String)session.getAttribute("email");
+			System.out.println(Ename);*/
 						
 			AlarmDAO alarm_DAO = sqlsession.getMapper(AlarmDAO.class);
 			
