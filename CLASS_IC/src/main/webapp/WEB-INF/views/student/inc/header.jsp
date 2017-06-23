@@ -4,13 +4,14 @@
 <script>
 	var wsocket;
 	var msg;
-	var sessionId;
-	console.log(sessionId);
+	var sessionId="<%=(String)session.getAttribute("email")%>";
+	
 	function connect() {
 
-		
+		alert(sessionId);
+		console.log(sessionId);
 		/* alert("소켓연결!"); */
-		wsocket = new WebSocket("ws://192.168.0.135:8090/class_ic/chat-ws.htm");
+		wsocket = new WebSocket("ws://192.168.0.135:8090/class_ic/chat-ws.htm?email="+sessionId);
 		appendMessage("웹 소켓연결되었습니다.");
 		wsocket.onopen = onOpen;
 		wsocket.onmessage = onMessage;
@@ -142,13 +143,7 @@
 				</li>
 				<!-- 아코디언 끝 -->
 
-
-
 				<!--쪽지알림 끝  -->
-
-
-
-
 
 				<!--즐겨찾기  -->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
