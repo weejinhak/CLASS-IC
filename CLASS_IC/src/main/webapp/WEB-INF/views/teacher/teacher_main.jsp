@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.class_ic.vo.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="${pageContext.request.contextPath}/resources/assets/css/teachermain_memo.css" rel="stylesheet" />
 <div class="content">
 	<div class="container-fluid">
@@ -139,18 +141,17 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="memosize">
 			<textarea>Hello~ My name is so hyeon! </textarea>
 			<div id="create">+</div>
 			</div>
+
 		</div>
 	</div>
 </div>
-<!-- <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
- --><script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
 
@@ -159,6 +160,7 @@
 
         demo.initVectorMap();
     });
+    
     
     $("#create").click(function() {
     	  $(this).before("<textarea></textarea>");
