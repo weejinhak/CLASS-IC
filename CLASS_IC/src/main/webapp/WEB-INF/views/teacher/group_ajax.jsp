@@ -41,26 +41,32 @@ console.log('jsp까지 들어옴');
 
 <!-- container-fluid 이후는 새로 페이지 구성해버리자! -->
 <!-- ${settinglist} -->
-<div id="wrapper">
+<!-- <div id="wrapper">
 	<div id="scale">
 	</div>
-	<!--조 나누기  -->
+	조 나누기 
 <div class="canvas">
-</div>	
+</div>	 -->
 	<!-- 조 선택  -->
+<script type="text/javascript">
+$('.tier').each(function(index) {
+	console.log($('.tier').attr('id'))
+	//var tablename=$('.tier').attr('id');
+});
+</script>
 
-	<c:forEach var="glist" items="${grouplist}">
-	<div class="tier" id="${glist.groupTable}"><p>${glist.groupName}조</p>
-
-	<div class="alternative" id="student_${var.index}">
-		<img src="${pageContext.request.contextPath}/resources/assets/img/${glist.photoSrc}.jpg" class="photo_img_g"/>
-		 ${glist.name }
-		 <input type="hidden" name="email" id="email_${var.index}" value="${glist.email }"/>
-		</div>
-
-	</div>
+	<c:forEach var="glist" items="${grouplist}" varStatus="status">
+	<c:if test="{tablename==glist.groupTale}">
+				<div class="alternative" id="student_${var.index}">
+				<img src="${pageContext.request.contextPath}/resources/assets/img/${glist.photoSrc}.jpg" class="photo_img_g"/>
+				 ${glist.name }
+				 <input type="hidden" name="email" id="email_${var.index}" value="${glist.email }"/>
+				</div>
+	</c:if>
 	</c:forEach>
-	</div>
+	
+	<!-- 
+	</div> -->
 
 	<!-- 조편성 페이지 이동 버튼 선생권한일때만 show 하게 설정 변경 -->
 	<input type="button" id="group_edit"  value="그룹편성GO!" class="btn btn-rose"/>

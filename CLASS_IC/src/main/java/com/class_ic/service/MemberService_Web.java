@@ -114,7 +114,7 @@ public class MemberService_Web {
 		System.out.println("인간 수" + member_count);
 		mv.addObject("member_list2", memberList);
 		mv.addObject("member_count2", member_count);
-		mv.setViewName("teacher.student_groupping");
+		mv.setViewName("teacher.student_group");
 		return mv ;
 	}
 

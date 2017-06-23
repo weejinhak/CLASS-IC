@@ -42,6 +42,7 @@ public class StudentManagementController {
 			
 		return mv;
 	}
+	
 	//학적부 (수정화면에서 값 넘겨준다)
 	@RequestMapping(value="stable.htm", method=RequestMethod.POST)
 	public @ResponseBody String studentTable(StudentTableDTO sTable){
@@ -80,8 +81,10 @@ public class StudentManagementController {
 					System.out.println(value);
 				}*/
 				
+				request.setAttribute("position", tableArr);
+				
 				studentmanagerservice.studentGroup(emailArr, positionArr, tableArr, classCode);
-			return "teacher.student_groupping";	
+			return "teacher/group_ajax";	
 	}
 	
 	//저장하자마자 불러오는 요청

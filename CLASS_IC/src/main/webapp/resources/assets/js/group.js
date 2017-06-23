@@ -93,7 +93,7 @@ $(function() {
 							//console.log(data);
 							alert('2번째 ajax 태웠네요');
 							console.log(data);
-							$('#page').html(data);
+							$('.tier').html(data);
 						},
 						error:function(request, status, error){
 							//console.log(error);

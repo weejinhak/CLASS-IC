@@ -47,7 +47,7 @@
 	<!-- 조 선택  -->
 
 	<c:forEach var="i" begin="0" end="${member_count2}">
-	<div class="tier" id="group${1 }"><p>${i }조</p></div>
+	<div class="tier" id="group${i }"><p>${i }조</p></div>
 	</c:forEach>
 	</div>
 	</div>
