@@ -144,18 +144,12 @@
 					</div>
 				</div>
 			</div>
-			
+		</div>	
+	
 			<!-- 메모 : 2017.06.22 최은혜 -->
-			<div class="col-md-6 col-md-offset-3">
-			<div class="memosize">
 			<input type="hidden" value="b@gmail.com" id="email" name="email">
-				
-			</div>
-		</div>			
-		</div>
-
 			<div class="card">
-				<div class="card-header card-header-icon"
+			<div class="card-header card-header-icon"
 					data-background-color="rose">
 					<i class="material-icons">library_add</i>
 				</div>
@@ -172,8 +166,11 @@
                     </button>
 						 	     <!-- 여기에 리스트가 들어온다 -->
 				</div>
-			</div>
-				<!-- 메모 리스트 ajax   -->
+				
+		</div>			
+	</div>		
+			
+</div>				<!-- 메모 리스트 ajax   -->
 				<script type="text/javascript">
 					$(function() {
 
