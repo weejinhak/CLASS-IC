@@ -1,0 +1,142 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.class_ic.vo.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<link
+	href='https://fonts.googleapis.com/css?family=Open+Sans|Maven+Pro:500'
+	rel='stylesheet' type='text/css'>
+
+
+
+<div class="content">
+	<div class="container-fluid">
+
+
+		<!-- 내용물  contents  -->
+
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<h2 class="title text-center">
+					<b>Spring</b>
+				</h2>
+				<br>
+
+
+
+				<div class="nav-left">
+					<ul class="nav nav-pills nav-pills-warning nav-pills-icons"
+						role="tablist">
+
+						<!--
+                        color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
+                    -->
+
+
+						<!-- 여기두 섭카테에 따라서.. 바뀌게..포문  -->
+						<li class="active"><a href="#description-1" role="tab"
+							data-toggle="tab" aria-expanded="false"> 
+							<i class="material-icons">reorder</i> 자바
+						</a></li>
+
+
+
+					</ul>
+				</div>
+
+				<!-- tab-content -->
+				<div class="tab-content">
+					<div class="tab-pane active" id="description-1">
+						<div class="card">
+							<!--  표-->
+							<div class="card-content table-responsive">
+
+
+								<table class="table">
+									<thead>
+										<tr>
+
+											<th>글 번호</th>
+											<th>글 제목</th>
+
+											<th>작성날짜</th>
+											<th class="text-center">Actions</th>
+
+										</tr>
+									</thead>
+									<tbody>
+
+										<!-- 여기부터 포문  -->
+										<c:forEach var="TodayLectureVO" items="${bvo}">
+
+											<tr>
+
+												<td>${TodayLectureVO.lectureNo}</td>
+												<td>${TodayLectureVO.lectureTitle}</td>
+
+												<td>${TodayLectureVO.lectureDate}</td>
+												
+												
+												<td class="td-actions text-center">
+ 
+
+												<a href="javascript:confirmGo('정말 오늘의 일정을 삭제하시겠습니까?','todayLectureDelete.htm?todayNo=<c:out value="${TodayLectureVO.todayNo}"/>')" class="btn btn-simple btn-danger btn-icon remove">
+												<i class="material-icons">close</i></a>
+														
+												</td>
+
+											</tr>
+
+										</c:forEach>
+
+										<tr>
+											<td colspan="5"><a href="test9.htm">
+													<button type="button" id="submitFrm"
+														class="btn btn-info btn-round" style="margin-left: 50px">캘린더에서
+														확인하기</button>
+											</a></td>
+										</tr>
+
+									</tbody>
+								</table>
+
+							</div>
+
+							<center>
+								<ul class="pagination pagination-info">
+									<li><a href="javascript:void(0);"> prev</a></li>
+									<li><a href="javascript:void(0);">1</a></li>
+									<li><a href="javascript:void(0);">2</a></li>
+									<li class="active"><a href="javascript:void(0);">3</a></li>
+									<li><a href="javascript:void(0);">4</a></li>
+									<li><a href="javascript:void(0);">5</a></li>
+									<li><a href="javascript:void(0);">next </a></li>
+								</ul>
+							</center>
+
+
+
+
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+	
+	
+	
+	 <script>
+            function confirmGo(m,u) {
+                if ( confirm(m) ) {
+                    window.location = u;
+                }
+            }
+        </script>
+ 
