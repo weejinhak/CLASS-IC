@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <link href="${pageContext.request.contextPath}/resources/assets/css/chat.css" rel="stylesheet" />
 <nav class="navbar navbar-transparent navbar-absolute">
 			<div class="container-fluid">
 
@@ -22,13 +23,13 @@
 								</p>
 						</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">채팅채팅</a></li>
-								<li><a href="#">채팅채팅</a></li>
-								<li><a href="#">채팅채팅</a></li>
-								<li><a href="#">채팅채팅</a></li>
-								<li><a href="#">채팅채팅</a></li>
-							</ul></li>
+								
 
+							<!-- 원하는 html 여기에 넣엉 -->
+
+
+
+							</ul></li>
 						<!--쪾찌 끝  -->
 
 						<!--북마크  -->
@@ -99,5 +100,5 @@
 				</div>
 			</div>
 		</nav>
-
+<script src="${pageContext.request.contextPath}/resources/assets/js/chat.js"></script>
     
