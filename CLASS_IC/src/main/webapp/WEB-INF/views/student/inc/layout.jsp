@@ -125,7 +125,7 @@
    <script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
    <script src="${pageContext.request.contextPath}/resources/assets/js/material.min.js" type="text/javascript"></script>
    <script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
->>>>>>> refs/heads/eunyoung
+ 
 </head>
 
 <body>
@@ -148,7 +148,7 @@
 
 		</div>
 	</div>
-=======
+ 
     <div class="wrapper">
        
           <!-- side navi 메뉴 영역-->
@@ -161,7 +161,7 @@
            
         </div>
     </div>
->>>>>>> refs/heads/eunyoung
+ 
 </body>
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////  -->
 <!-- Forms Validations Plugin -->
@@ -201,17 +201,17 @@
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/jquery.datatables.js"></script>
 <!-- Sweet Alert 2 plugin -->
-<<<<<<< HEAD
+ 
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.js"></script>
 <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap.min.js"></script>
-=======
+ 
 <script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.js"></script>
 <!--   Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap.min.js"></script>
->>>>>>> refs/heads/eunyoung
+ 
 <!--  Full Calendar Plugin    -->
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/fullcalendar.min.js"></script>
