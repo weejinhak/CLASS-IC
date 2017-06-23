@@ -41,7 +41,12 @@ public class AlarmController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 		
-		dto.setEmailR(remail);//받는사람		
+		dto.setEmailR(remail);//받는사람
+
+		System.out.println("********************");
+		System.out.println(remail);
+		System.out.println("********************");
+
 		dto.setEmailS(authentication.getName());//보내는사람
 		Calendar cal= Calendar.getInstance();
 		java.util.Date date= cal.getTime();
@@ -51,7 +56,7 @@ public class AlarmController {
 		
 		AlarmDAO alarm_DAO = sqlsession.getMapper(AlarmDAO.class);
 
-		int result=alarm_DAO.insertMessage(dto);
+		int result=alarm_DAO.insertAlarm(dto);
 		if(result>0){
 			dto=alarm_DAO.selectMessageNum();
 			alarm_DAO.insertMessageReceive(dto);
@@ -65,7 +70,7 @@ public class AlarmController {
 	}
 	
 	//alarm test
-	@RequestMapping(value="newAlarm.htm")
+	@RequestMapping(value="student/newAlarm.htm")
     public String newAlarm(@RequestParam(value="newAlarm") String newAlarm,HttpSession session)
             throws ClassNotFoundException, SQLException{
 	
@@ -75,8 +80,7 @@ public class AlarmController {
 			
 			String Ename = (String)session.getAttribute("email");
 			System.out.println(Ename);
-			
-			
+						
 			AlarmDAO alarm_DAO = sqlsession.getMapper(AlarmDAO.class);
 			
 			int totalCount = alarm_DAO.totalCount(newAlarm);

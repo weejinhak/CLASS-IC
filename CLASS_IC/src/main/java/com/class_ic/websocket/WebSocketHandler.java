@@ -24,9 +24,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 
 		log("접속 성공" + session.getId() + "웹소켓 세션 아이디");
-		String userid = (String) session.getAttributes().get("userId");
+		String userid = (String) session.getAttributes().get("email");
 
-		System.out.println("userID" + userid);
+		System.out.println("userID!!! : " + userid);
 
 		users.put(userid, session);
 		ids.put(session.getId(), userid);
