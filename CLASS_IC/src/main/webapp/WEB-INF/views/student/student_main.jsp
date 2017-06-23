@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ page import="com.class_ic.vo.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
     <link href="${pageContext.request.contextPath}/resources/assets/css/todolist.css" rel="stylesheet" />
     <div class="content">
        <div class="container-fluid">
@@ -296,17 +299,16 @@
 			<h2>TO DO LIST</h2>
 			<div class="tdl-content">
 				<ul>
-					<li><label><input type="checkbox"><i></i><span>get up</span><a href='#'>–</a></label></li>
-					<li><label><input type="checkbox" checked><i></i><span>stand up</span><a href='#'>–</a></label></li>
-					<li><label><input type="checkbox"><i></i><span>don't give up the fight.</span><a href='#'>–</a></label></li>
-					<li><label><input type="checkbox" checked><i></i><span>save the world.</span><a href='#'>–</a></label></li>
-					<li><label><input type="checkbox"><i></i><span>do something else</span><a href='#'>–</a></label></li>
+					<c:forEach var="list" items="${list}">
+					<li><label><input type="checkbox"><i></i><span>${list.listContent}</span><a href='#'  id="${list.listNo}">–</a></label></li>
+				
+					</c:forEach>
 				</ul>
 			</div>
-			<input type="text" class="tdl-new" placeholder="Write new item and hit 'Enter'..." style="color: black;">
-		</div>
-		
+			<input type="text" class="tdl-new" name="listContent" id="listContent" placeholder="해야할 일을 쓰세요" style="color: black;">
+				</div>
          </div>
+         
          </div>
       	 </div>
   </div>
@@ -320,16 +322,29 @@
         demo.initVectorMap();
     });
     
-    /* TO DO LIST */
-  /* TO DO LIST */
+    /* TO DO LIST */  
   $(".tdl-new").bind('keypress', function(e){
     var code = (e.keyCode ? e.keyCode : e.which);
+    console.log(code);
+    
     if(code == 13) {
       var v = $(this).val();
       var s = v.replace(/ +?/g, '');
       if (s == ""){
         return false;
       }else{
+    	console.log(v);	
+    	
+    	$.ajax({
+  		url: "TodoListInsertOk.htm",
+  		type:'get',
+  		dataType : "text",
+  		data : {listContent: v},
+  		success : function(){
+  			console.log(data.listContent)
+  		}
+  			 }); 
+    	  
         $(".tdl-content ul").append("<li><label><input type='checkbox'><i></i><span>"+ v +"</span><a href='#'>–</a></label></li>");
         $(this).val("");
       }
@@ -338,19 +353,47 @@
 
 
   $(".tdl-content a").bind("click", function(){
+	    var listNo = $(this).attr('id');
+	    console.log(listNo);
+	
+	      
     var _li = $(this).parent().parent("li");
         _li.addClass("remove").stop().delay(100).slideUp("fast", function(){
           _li.remove();
         });
+        
+        
+        
+        
+    	$.ajax({
+      		url: "TodoListDelete.htm",
+      		type:'get',
+      		dataType : "text",
+      		data : {listNo: listNo},
+      		success : function(){
+      			
+      		}
+      			 }); 
     return false;
   });
 
+  
+  
   // for dynamically created a tags
   $(".tdl-content").on('click', "a", function(){
     var _li = $(this).parent().parent("li");
+    var listNo = $('#listNo');
+  alert(listNo);
+    
         _li.addClass("remove").stop().delay(100).slideUp("fast", function(){
           _li.remove();
+          
+         
         });
+        
+
+        
     return false;
   });
+
 </script>
