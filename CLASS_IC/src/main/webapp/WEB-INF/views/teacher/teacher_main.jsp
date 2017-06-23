@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.class_ic.vo.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="${pageContext.request.contextPath}/resources/assets/css/teachermain_memo.css" rel="stylesheet" />
 <link
 	href="${pageContext.request.contextPath}/resources/assets/css/teacher/teacher_memo.css"
@@ -146,16 +144,12 @@
 					</div>
 				</div>
 			</div>
-			
+		</div>	
+	
 			<!-- 메모 : 2017.06.22 최은혜 -->
-			<div class="col-md-6 col-md-offset-3">
-			<div class="memosize">
 			<input type="hidden" value="b@gmail.com" id="email" name="email">
-				
-			</div>
-			
 			<div class="card">
-				<div class="card-header card-header-icon"
+			<div class="card-header card-header-icon"
 					data-background-color="rose">
 					<i class="material-icons">library_add</i>
 				</div>
@@ -172,15 +166,11 @@
                     </button>
 						 	     <!-- 여기에 리스트가 들어온다 -->
 				</div>
-			</div>
-
-		</div>		
+				
+		</div>			
+	</div>		
 			
-		</div>
-	</div>
-</div>
-
-<!-- 메모 리스트 ajax   -->
+</div>				<!-- 메모 리스트 ajax   -->
 				<script type="text/javascript">
 					$(function() {
 
@@ -221,14 +211,11 @@
 					});
 				</script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
-			
 				<!-- <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
  -->
 				<script
 					src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
-					
 				<script type="text/javascript">
     $(document).ready(function() {
 
@@ -238,7 +225,9 @@
         demo.initVectorMap();
     });
     
-  
+    $("#create").click(function() {
+    	  $(this).before("<textarea></textarea>");
+    	});
 </script>
 				<script
 					src="${pageContext.request.contextPath}/resources/assets/js/teacher/teacher_memo.js"></script>
