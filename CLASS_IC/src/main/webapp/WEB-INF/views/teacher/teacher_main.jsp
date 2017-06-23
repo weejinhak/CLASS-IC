@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link href="${pageContext.request.contextPath}/resources/assets/css/teachermain_memo.css" rel="stylesheet" />
-
 <link
 	href="${pageContext.request.contextPath}/resources/assets/css/teacher/teacher_memo.css"
 	rel="stylesheet" /> <!-- 2017.06.22 최은혜 -->
+
 	
 <div class="content">
 	<div class="container-fluid">
@@ -145,18 +145,11 @@
 				</div>
 			</div>
 			
-			<div class="col-md-6 col-md-offset-3">
 			<!-- 메모 : 2017.06.22 최은혜 -->
+			<div class="col-md-6 col-md-offset-3">
 			<div class="memosize">
 			<input type="hidden" value="b@gmail.com" id="email" name="email">
-				  
-				  <div class="list">
-				     <!-- 여기에 리스트가 들어온다 -->
-				  </div>
-				  
-				  <input type="text" name="checkListItem" class="checkListItem"  id="checkListItem" />
-				  <button id="btn">+</button>
-				 
+				
 			</div>
 		</div>			
 		</div>
@@ -166,28 +159,20 @@
 					data-background-color="rose">
 					<i class="material-icons">library_add</i>
 				</div>
-				<div class="card-content">
 					<h4 class="card-title">MEMO</h4>
 					
-					<div class="form-footer text-right">
+				<div class="card-content memo-content">
+					
+					<!-- input폼, 버튼 -->
 					 <div class="col-md-10">
-					<input type="text" class="form-control" placeholder="메모를 입력해 주세요">
+					<input type="text" class="form-control" placeholder="메모를 입력해 주세요" id="checkListItem">
 					</div>
-					<button class="btn btn-primary btn-round">
-                         <i class="material-icons">check</i>
-                         	등록
+					<button class="btn btn-primary btn-round" id="btn">
+                         <i class="material-icons">check</i>등록
                     </button>
-                    </div>
-                    
-					<div class="row">
-						<div class="col-md-5">
-							<div class="table-responsive table-sales"></div>
-
-
-						</div>
-					</div>
+						 	     <!-- 여기에 리스트가 들어온다 -->
 				</div>
-
+			</div>
 				<!-- 메모 리스트 ajax   -->
 				<script type="text/javascript">
 					$(function() {
@@ -215,10 +200,10 @@
 														data,
 														function(index, item) {
 
-															$('.list').append(
-																			'<div class="alert alert-primary col-xs-4" id="'+item.memono+'"> <input type="hidden" class="memoNo" value="'+item.memono+ '" name="memoNo" />'
+															$('.memo-content').append(
+																			'<div class="alert alert-primary item col-xs-4" id="'+item.memono+'"> <input type="hidden" class="memoNo" value="'+item.memono+ '" name="memoNo" />'
 																					+ item.memotext
-																					+ '<button class="deletebutton" value="'+item.memono+'">x</button></div>')
+																					+ '<button class="deletebutton close" aria-hidden="true" value="'+item.memono+'"><i class="material-icons">close</i></button></div>')
 
 															console.log("memoNO: "+ item.memono)
 														});

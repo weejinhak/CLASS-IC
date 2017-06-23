@@ -11,107 +11,16 @@
 
 @import "https://fonts.googleapis.com/css?family=Roboto:400,700,500";
 
-.memoNo{
-	width: 30px;
-	background-color: black;
-	font: #fff;
+
+#content{
+	margin-top: 50px;
 }
 
-.todo {
-  width: 100%;
-  background-color: #fff;
-  margin: 100px auto;
-}
-
-.todo:after {
-  content: "memo";
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  background-color: #E1675A;
-  color: #fff;
-  padding-top: 10px;
-  padding-left: 10px;
+.alert.alert-primary {
+    margin-left: 20px;
 }
 
 
-.checkListItem, #btn {
-  position: absolute;
-  z-index: 999;
-  margin-top: 100px;
-  margin-left: 30px;
-}
-
-h1 {
-  text-align: center;
-  color: #fff;
-}
-
-.checkListItem {
-  width: 50%;
-  padding: 4px;
-  border-radius: 5px;
-  margin-left: 120px;
-  border: none;
-  border-bottom: 1.4px solid #E1675A;
-  border-right: 1.4px solid #E1675A;
-}
 
 
-#btn {
-  position: absolute;
-  margin-top: 90px;
-  margin-left: 65px;
-  padding: 2px;
-  width: 50px;
-  height: 50px;
-  background-color: #CB5C51;
-  border: none;
-  cursor: pointer;
-  color: #fff;
-  border-radius: 50%;
-}
 
-#btn:hover {
-  -webkit-box-shadow: 1px 1px 1px 0px #22272D;
-  -moz-box-shadow:  1px 1px 1px 0px #22272D;
-  box-shadow: 1px 1px 1px 0px #22272D;
-}
-
-.list {
-  position: absolute;
-  padding-top: 150px;
-  padding-left: 10px;
-	font-family:Roboto;
-	color:#cc0000;
-}
-
-.item {
-  background-color: #22272D;
-  margin: 25px;
-  padding: 10px;
-  color: #fff;
-  width: 200px;
-  height: 100%;
-}
-
-
-.deletebutton{
-  position: absolute;
-  content: "x";
-  width: 20px;
-  height: 38px;
-  margin-top: -10px;
-  text-align: center;
-  left: 220px;
-  background-color: #CB5C51;
-  outline: 0;
-  border: 0;
-  margin-left: -20px;
-}
-
-
-.item:hover {
-  border-bottom: 4px solid #CB5C51;
-  cursor: pointer;
-}

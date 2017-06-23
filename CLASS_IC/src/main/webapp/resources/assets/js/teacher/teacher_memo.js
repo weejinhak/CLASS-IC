@@ -43,6 +43,7 @@ $(document).ready(function(){
     	var id="#"+memoNo;
     	
     	var allData = {"email":email, "memoNo":memoNo}
+    	
     	$.ajaxSetup({cache:false}); 
     	 $.ajax({
     		
