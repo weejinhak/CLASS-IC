@@ -46,6 +46,18 @@ public class BoardService {
     	boarddao.addAttach(fileName);
     }   */
   }
+  
+  //AJAX 서브카테고리 정하기
+  public List<String> getSubCateList(String cateCode) throws Exception {
+		// TODO Auto-generated method stub
+	  	System.out.println("서비스");
+	  	BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+		
+		List<String> result = boarddao.getSubCateList(cateCode);
+		
+		return result;
+  }
+  
   public List<BoardVO> listAll() throws Exception {
 		// TODO Auto-generated method stub
 		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
@@ -132,13 +144,14 @@ public BoardVO read(Integer lectureNo) throws Exception {
 
 
 public void modify(BoardVO board) throws Exception {
-	//아직 구현 안함
+	
 	
 }
 
 
  
 public void delete(Integer lectureNo) throws Exception {
+	
 	BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
 	boarddao.delete(lectureNo);
 	
@@ -150,8 +163,10 @@ public List<String> getAttach(Integer lectureNo) throws Exception {
 	return null;
 }
 
-
-
-
-
+public List<BoardVO> SearchList_MUL(String search) throws Exception {
+	
+	 BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+	 
+	return boarddao.SearchList_MUL(search);
+	}
 }

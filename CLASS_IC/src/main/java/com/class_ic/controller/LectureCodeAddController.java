@@ -111,12 +111,14 @@ public class LectureCodeAddController {
 	@RequestMapping(value = "lecturecodeSelect.htm", method = RequestMethod.POST)
 	public String lectureSelect(@RequestParam String email,Model model){
 		try {
+			
 			List<LectureDTO> lecturelist=lecturecodeaddservice.lecturelistselect(email);	
-			model.addAttribute("lecturelist", lecturelist); 
+			model.addAttribute("lecturelist", lecturelist);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
+		
 		return "common/lectureList";
 	}
-
 }

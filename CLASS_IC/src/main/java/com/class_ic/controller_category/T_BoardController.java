@@ -1,4 +1,6 @@
 package com.class_ic.controller_category;
+import java.util.List;
+
 /*
 * @FileName		:	BoardController.java
 * 
@@ -10,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.class_ic.service.BoardService;
 import com.class_ic.vo.BoardVO;
@@ -37,7 +41,7 @@ public class T_BoardController {
 	    //카테고리 리스트
 	    model.addAttribute("cateList", service.showCateList());
 	    
-		System.out.println("카테고리 리스트: "+service.showCateList());
+		System.out.println("카테고리 리스트: " +service.showCateList());
 		
     return "teacher.board";
   }
@@ -45,7 +49,7 @@ public class T_BoardController {
 //카테,서브카테고리 처리한 board 리스트
   @RequestMapping(value = "detailList.htm", method = RequestMethod.GET)
   public String detail_listPage(@ModelAttribute("cri") Criteria cri,Model model,String cateCode) throws Exception {
-	    
+	  
 	  System.out.println("★서블렛 접속 : boardList.htm");
 
 	    //모든 게시물들 리스트
@@ -95,6 +99,17 @@ public class T_BoardController {
 	  System.out.println(board.toString());
 	 
 	  service.regist(board);
+	  
+	    //////////////파일 업로드 부분//////////////////////
+	    String[] files = board.getFiles();
+	    
+	    if(files == null) 
+	    { return "teacher.board"; } 
+	    
+	    for (String fileName : files) {
+	      /*dao.addAttach(fileName);*/ //추후 맵퍼 만들자
+	    }
+	    ////////////파일 업로드 부분 끝///////////////////////
 
 	  System.out.println("서비스는 잘 들어갔니?");
 
@@ -162,40 +177,57 @@ public class T_BoardController {
   
   //카테고리 추가
   @RequestMapping(value = "makeCategory.htm", method = RequestMethod.POST)
-  public String AddCategory(String cateCode) throws Exception {
+  public String AddCategory(String cateCode, Model model) throws Exception {
 	  System.out.println("★서블렛 접속 : makeCategory.htm");
 	  service.addCategory(cateCode);
-
+	  
+	  model.addAttribute("boardList", service.listAll());
+	  //카테고리 리스트
+	  model.addAttribute("cateList", service.showCateList());
     
-    return "리스트로 가는 주소!";
+    return "teacher.board";
   }
   
   //SUB카테고리 추가
   @RequestMapping(value = "makeSubCategory.htm", method = RequestMethod.POST)
-  public String AddSubCategory(String cateCode, String subcateCode) throws Exception {
+  public String AddSubCategory(@ModelAttribute("cri") SearchCriteria cri, String cateCode, String subcateCode, Model model) throws Exception {
 	 
 	  System.out.println("★서블렛 접속 : makeSubCategory.htm");
 	  System.out.println("catecode & subcatecode"+cateCode+subcateCode);
 	  
 	  service.addSubCategory(cateCode,subcateCode);
 	  
-    
-    return "디테일 리스트로 가는 주소!";
+	  //
+	    System.out.println("★서블렛 접속 : detailList_board.htm");
+	    System.out.println("파라미터 받았니?"+cateCode+subcateCode);
+	    System.out.println("cri에 담겨져 있는것"+cri.toString());
+	    System.out.println("total count??:"+service.listCountCriteria(cri,cateCode,subcateCode));
+	    
+	    //선택된 카테고리 게시판 리스트
+	    model.addAttribute("CateBoardList",service.listWhereCate(cateCode, subcateCode));
+	    System.out.println("카테고리 where 게시판리스트"+service.listWhereCate(cateCode, subcateCode));
+	    //선택한 카테고리 리스트
+	    model.addAttribute("cateCode", cateCode);
+	    //세부카테고리 리스트
+	    model.addAttribute("subCateList", service.showSubCateList(cateCode));
+	    //현재 카테코드
+	    model.addAttribute("subcateCode", subcateCode);
+	    
+	    ////////////////paging 처리 START////////////
+	    //model.addAttribute("list", service.listSearchCriteria(cri)); //맵퍼 : boarddao.listSearch
+	    model.addAttribute("list", service.listCriteria(cri,cateCode,subcateCode)); //맵퍼 : boarddao.
+	    
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(service.listCountCriteria(cri,cateCode,subcateCode));
+		//pageMaker.setTotalCount(service.listSearchCount(cri)); //맵퍼 : boarddao.listSearchCount(cri)
+		
+		model.addAttribute("pageMaker", pageMaker);
+	    ////////////paging 처리 END//////////////////////
+		
+    return "teacher.board_details";
   }
-  
-  //그 게시판 하나의 상세내용
-  @RequestMapping(value = "read.htm", method = RequestMethod.GET)
-  public String read(Model model, Integer lectureNo) throws Exception {
-	  System.out.println("★서블렛 접속 : read.htm");
-	  service.read(lectureNo);
-	  
-	  
-	  model.addAttribute("boardVO", service.read(lectureNo));
-	  System.out.println("read의 값"+service.read(lectureNo).toString());
-    return "teacher.board_details_view";
-  }
-  
-  
   
   //디테일한 boardList에서 눌렀을때 ajax 처리해줄거임
   @RequestMapping(value = "detailList_board.htm", method = RequestMethod.GET)
@@ -228,13 +260,41 @@ public class T_BoardController {
 		model.addAttribute("pageMaker", pageMaker);
 	    ////////////paging 처리 END//////////////////////
 		
-		
-	    
-	    
-		
-		
     return "teacher.board_details";
   }
   
+  
+  //그 게시판 하나의 상세내용
+  @RequestMapping(value = "read.htm", method = RequestMethod.GET)
+  public String read(Model model, Integer lectureNo) throws Exception {
+	  System.out.println("★서블렛 접속 : read.htm");
+	  service.read(lectureNo);
+	  
+	  
+	  model.addAttribute("boardVO", service.read(lectureNo));
+	  System.out.println("read의 값"+service.read(lectureNo).toString());
+    return "teacher.board_details_view";
+  }
+  
+  
+  @RequestMapping("/getAttach/{fileNo}")
+  @ResponseBody
+  public List<String> getAttach(@PathVariable("fileNo")Integer fileNo)throws Exception{
+	  													
+    return service.getAttach(fileNo);
+  
+  }
+  
+  
+  @RequestMapping(value = "SearchList_MUL.htm", method = RequestMethod.GET)
+  public String SearchList_MUL(Model model,String search) throws Exception {
+  	  	
+  	  	System.out.println("SearchList_MUL 접속");
+  	  	
+  	    model.addAttribute("searchList", service.SearchList_MUL(search));
+  	    
+  	    return "teacher.board";
+  
+  }  
 
 }

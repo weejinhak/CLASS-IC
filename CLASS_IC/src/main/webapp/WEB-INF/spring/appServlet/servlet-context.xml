@@ -25,7 +25,7 @@
 	<context:component-scan base-package="com.class_ic.app.controller"/>
 
 	<context:component-scan base-package="com.class_ic.service, com.class_ic.service_category"/>
-
+	<context:component-scan base-package="com.class_ic.util"/>
 
 	
 
@@ -70,6 +70,22 @@
 	<!--스케줄링-->
  	<task:annotation-driven scheduler="scheduler"/>
 	<task:scheduler id="scheduler" pool-size="10"/>
+	
+	<!-- 파일 업로드 서블렛 -->
+	<beans:bean id="multipartResolver"
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
+	
+	
+
+  	<beans:bean id="uploadPath" class="java.lang.String">
+    <beans:constructor-arg value="C:\\ccc\\upload">
+    </beans:constructor-arg>
+  	</beans:bean>
+  	
+	
+	
 
 
 </beans:beans>

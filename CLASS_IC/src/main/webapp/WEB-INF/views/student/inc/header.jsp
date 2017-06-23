@@ -21,6 +21,7 @@
 
 						<!--쪽지 알림  -->
 					   <!--아코디언  -->
+					   
    	<li class="dropdown">
         <div class="dropdown dropdown-accordion" data-accordion="#accordion">
   <a  class="dropdown-toggle" href="#" data-toggle="dropdown">
@@ -94,7 +95,7 @@
             
       <!--채팅 ui  -->
              								
-		 <div class="chat">
+	<div class="chat">
   <ul>
    
                 <li>
@@ -119,7 +120,7 @@
   <input type="text" placeholder="메시지를 입력하세요" /><button>전송</button>
 
 
-</div>
+	</div>
 								
 			
     
@@ -200,7 +201,7 @@
 
 
 					</ul>
-
+					
 					<form class="navbar-form navbar-right" role="search">
 						<div class="form-group form-search is-empty">
 							<input type="text" class="form-control" placeholder="Search">

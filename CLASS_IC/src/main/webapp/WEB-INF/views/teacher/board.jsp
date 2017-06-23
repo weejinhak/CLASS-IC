@@ -4,10 +4,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
+
+
+
+
+
+
  <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
       	 <div class="col-lg-12 col-md-12" style="height: 100px"></div>
+      	 
+      	 
+      	 
+      	 					
       	 
       	 
 <div class="row" style="padding-left: 150px ; padding-right: 150px">
@@ -162,5 +172,22 @@
 				</div>
 			</div>
 			<!-- end notice modal -->
+						
+			<div class="col-lg-2">
+			      	 <form class="navbar-form navbar-right" role="search">	
+							<input type="text" class="form-control" placeholder="Search">
+							<span class="material-input"></span>
+					
+						<button type="submit"
+							class="btn btn-white btn-round btn-just-icon">
+							<i class="material-icons">search</i>
+							<div style="display:inline;" class="ripple-container"></div>
+						</button>
+					</form>
+			</div>
+			
+			
       	 </div>
+      	 
+
       	 

@@ -18,13 +18,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(#{lectureNo}, #{classCode}, #{cateCode}, #{subcateCode}, #{lectureTitle}, #{lectureContent})
 	</insert>
 	
-	<insert id="delete">
-	delete
-	from lectureboard
-	where lectureNo = #{lectureNo}
-	</insert>
+	<select id="getSubCateList" resultType="String">
+		select subcateCode
+		from SubCategory
+		where cateCode = #{cateCode}
+	</select>
 	
-
+	<insert id="delete">
+		delete
+		from LectureBoard
+		where lectureNo = #{lectureNo}
+	</insert>
 	
   	<select id="read" resultType="com.class_ic.vo.BoardVO">
 		select
@@ -34,26 +38,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where lectureNo = #{lectureNo}
 	</select>
 	
-	
 	<select id="listAll" resultType="com.class_ic.vo.BoardVO">
  
- select 
-   lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
- from 
-   LectureBoard 
- where lectureNo > 0 
- order by lectureNo desc, lectureDate desc
+		select 
+		  lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
+		from 
+		  LectureBoard 
+		where lectureNo > 0 
+		order by lectureNo desc, lectureDate desc
 
 	</select>
 	
 	<select id="listWhereCate" resultType="com.class_ic.vo.BoardVO">
  
-	 select 
-	   lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
-	 from 
-	   LectureBoard 
-	 where cateCode= #{param1} and subcateCode = #{param2}
-	 order by lectureNo desc, lectureDate desc
+		select 
+		  lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
+		from 
+		  LectureBoard 
+		where cateCode= #{param1} and subcateCode = #{param2}
+		order by lectureNo desc, lectureDate desc
 
 	</select>
 	
@@ -85,58 +88,63 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- ////////////////////////criteria 들어가는 거 전부다//////////////////////////////// -->
 		<select id="listCriteria" resultType="com.class_ic.vo.BoardVO">
 
- select 
-   lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
- from  
-   LectureBoard 
- where cateCode= #{param3} and subcateCode = #{param4}
- order by lectureNo desc, lectureDate desc
- limit #{param1}, #{param2}
+		 select 
+		   lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
+		 from  
+		   LectureBoard 
+		 where cateCode= #{param3} and subcateCode = #{param4}
+		 order by lectureNo desc, lectureDate desc
+		 limit #{param1}, #{param2}
 
  
 		</select>
 	
 	<select id="countPaging" resultType="int">
 
- select 
-   count(lectureNo) 
- from 
-   LectureBoard 
+ 	select 
+   	count(lectureNo) 
+ 	from 
+   	LectureBoard 
    
-   where cateCode = #{param1} and subcateCode = #{param2} 
+   	where cateCode = #{param1} and subcateCode = #{param2} 
 
 	</select>
 	
 	
-<select id="listSearch" resultType="com.class_ic.vo.BoardVO">
-<![CDATA[  
-  select * 
-  from LectureBoard 
-  where lectureNo > 0
-  
-]]>
-
-		<include refid="search"></include>
-  
-<![CDATA[    
-  order by lectureNo desc
-  limit #{pageStart}, #{perPageNum}
-]]>
+	<select id="listSearch" resultType="com.class_ic.vo.BoardVO">
+	<![CDATA[  
+	  select * 
+	  from LectureBoard 
+	  where lectureNo > 0
+	
+	]]>
+	
+	
+	<include refid="search"></include>
+	
+	<![CDATA[    
+	  order by lectureNo desc
+	  limit #{pageStart}, #{perPageNum}
+	]]>
+		
 	</select>
 
-		<select id="listSearchCount" resultType="int">
+	<select id="listSearchCount" resultType="int">
+	
 <![CDATA[  
   select count(lectureNo) 
   from LectureBoard 
   where lectureNo > 0 
 ]]>
-		<include refid="search"></include>
+	<include refid="search"></include>
+	
 	</select>
+	
 	
 <!-- ////////////////////////criteria END//////////////////////////////// -->
 
 <!-- ////////////////////////////SEARCH//////////////////////////// -->
-	<sql id="search">
+ 	<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType ==  toString()">
 				and lectureTitle like CONCAT('%', #{keyword}, '%')
@@ -160,8 +168,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				writer like CONCAT('%', #{keyword}, '%'))
 			</if>
 		</if>
-	</sql>
+	</sql> 
+	
+	
+<select id="SearchList_MUL" resultType="com.class_ic.vo.BoardVO">
+	
+	select * from LectureBoard
+	<where>
+		<if test="lectureTitle != null">
+			 lectureTitle like '%' || #{search} || '%'
+		</if>
+		<if test="lectureContent != null">
+		     or lectureContent like '%' || #{search} || '%'
+		</if>
+	</where>
+	
+</select>
+		
 <!-- ///////////////////////////////SEARCH END//////////////////////////////////// -->
 
- 
+
+
+<!-- ////////////////////////////file upload/////////////////////////////////////  -->
+
+<insert id="addAttach">
+	insert into File(fileNo, fileSrc) values (LAST_INSERT_ID(), #{fileNo})
+</insert> 
+
+<select id="getAttach" resultType="string">
+	select File from tbl_attach where fileNo = #{fileNo} order by regdate
+</select> 
+
+	<delete id="deleteAttach">
+		delete from File where fileNo = #{fileNo}
+	</delete>
+
+<insert id="replaceAttach">
+	insert into File(fileSrc, fileNo) values (#{fileSrc}, #{fileNo})
+</insert>
+
 </mapper>

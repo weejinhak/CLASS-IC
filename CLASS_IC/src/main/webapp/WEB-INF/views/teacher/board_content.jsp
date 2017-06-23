@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <style>
 .fileDrop {
   width: 25%;
@@ -11,8 +13,8 @@
   margin: auto;
 }
 </style>
-	
-	
+
+
  <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
@@ -24,24 +26,33 @@
                                  <h4 class="card-title">글 입력하기</h4>
                                   </div>
                                   
-                           <form method="post" action="boardWriteOk.htm" class="form-horizontal">
+                           
                            <br><br>
                            
+
+                           
+                           <!-- <input type="radio" name="gender" value="man">남
+						   <input type="radio" name="gender" value="woman">여 -->
+                           
+                  <form  id='registerForm' role =form method="post" action="boardWriteOk.htm" class="form-horizontal">
+                           
                          <div style="display:inline-block;">
-			                            카테고리<select name="cateCode" onchange ="">
-			                
-			                <c:forEach items="${list}" var="list">
-							<option value="${list}">${list}</option>
+                                         카테고리 <select id="category" name="cateCode" >
+			                <c:forEach items="${list}" var="list"> / 
+								<option value="${list}">${list}</option>
 							</c:forEach>
-							</select>
+						</select>
 						 </div>
+						 <br><br>
 						 
-						 <div style="display:inline-block;">
-			                            서브카테고리<select name="subcateCode" onchange ="checkSel(this)">
-							<option value="사과">사과</option>
-							<option value="감">감</option>
-							<option value="배">배</option>
-							</select>
+						  <div style="display:inline-block;" id="subOption">
+							
+						 </div> 
+						 
+						 <div class ="subList" id="subList" style="display:inline-block;">
+							
+			       
+							
 						 </div>
 
                             
@@ -74,30 +85,44 @@
                                             <div class="form-group">
 												<div class="fileDrop"><h5 align="center"><br><br>Drag and Drop your file!</h5></div>
 											</div>
-
+											        </div>
                                        
-                                       <div class="td-actions text-center">
-                                                        <button type="button" rel="tooltip" class="btn btn-info btn-round" data-original-title="" title="">
-                                                            <i class="material-icons">list</i>
-                                                        </button>
-                                                        <button type="submit" rel="tooltip" class="btn btn-success btn-round" data-original-title="" title="">
-                                                            <i class="material-icons">edit</i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" data-original-title="" title="">
-                                                            <i class="material-icons">close</i>
-                                                        </button>
-                                                        </form>
-                                                    </div>
+                                                        <!-- /.box-body -->
+
+	<div class="box-footer">
+		<div>
+			<hr>
+		</div>
+
+		<ul class="uploadedList">
+		</ul>
+
+		<button type="submit" class="btn btn-primary">Submit</button>
+
+	</div>
+</form>
+
+
+		
+
+	</div>
+</div>
+                                                    
                                                     <br>
                                                     <br>
                                                     <br>
+
                                         </div>
                                  
                                     </div>
                            
-                            </div>
-      	 </div>
-</div>
+                            
+                            
+      	 
+
+
+<script type="text/javascript" src="/resources/js/upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <script id="template" type="text/x-handlebars-template">
 <li>
@@ -105,18 +130,16 @@
   <div class="mailbox-attachment-info">
 	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
 	<a href="{{fullName}}" 
-     class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
+     class="delbtn"></a>
 	</span>
   </div>
 </li>                
 </script>    
 
 
-<script type="text/javascript" src="/resources/js/upload.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+
 
 <script>
-
 var template = Handlebars.compile($("#template").html());
 
 $(".fileDrop").on("dragenter dragover", function(event){
@@ -134,15 +157,16 @@ $(".fileDrop").on("drop", function(event){
 	var formData = new FormData();
 	
 	formData.append("file", file);	
-	
+	console.log(file);
 	
 	$.ajax({
-		  url: '/uploadAjax',
+		  url: 'uploadAjax.htm',
 		  data: formData,
 		  dataType:'text',
 		  processData: false,
 		  contentType: false,
 		  type: 'POST',
+		  
 		  success: function(data){
 			  
 			  var fileInfo = getFileInfo(data);
@@ -154,7 +178,7 @@ $(".fileDrop").on("drop", function(event){
 		});	
 });
 
- 
+
 $("#registerForm").submit(function(event){
 	event.preventDefault();
 	
@@ -169,6 +193,42 @@ $("#registerForm").submit(function(event){
 
 	that.get(0).submit();
 });
+
+
+
+/////////////////Option ajax//////////////////
+//id ="cate" name="cateCode_AJAX"
+
+$('#category').change(function(event){
+	
+	
+	var temp = $("#category").val();
+	console.log(temp);
+	
+	$.ajax({
+        url: 'cate_option.htm',
+        data: {"temp":temp},
+        dataType:'text',
+        type: 'POST',
+        
+        success: function(data){
+      
+       	$('#subOption').html(data);
+           
+        }
+    });
+});
+
+
+/* $.ajax({				
+	url:"Apart.etc",
+	data:{ ApartName : $(this).attr('id')},
+	dataType: "text",
+	success: function(data){
+		$('#apartlist').html(data);
+	}				
+}); */
+
 
 
 
