@@ -19,15 +19,11 @@ public interface BoardDAO {
 	
   public void create(BoardVO vo) throws ClassNotFoundException, SQLException;
   
-  public List<String> getSubCateList(String cateCode) throws ClassNotFoundException, SQLException;
-  
   public BoardVO read(Integer lectureNo) throws ClassNotFoundException, SQLException;
-  
+
   public List<BoardVO> listAll() throws ClassNotFoundException, SQLException;
   
   public List<BoardVO> listWhereCate(String cateCode, String subcateCode) throws ClassNotFoundException, SQLException;
-  
-  public List<BoardVO> SearchList_MUL(String search);
   
   public void categoryCreate(String cateCode) throws ClassNotFoundException, SQLException;
   
@@ -48,15 +44,5 @@ public interface BoardDAO {
   
   public int listSearchCount(SearchCriteria cri)throws ClassNotFoundException, SQLException; //
   ///////////////////////////////////////////////////////////////////
-  ////////////////////////file upload DAO///////////////////////////
- public void addAttach(String fullName)throws Exception;
-  
-  public List<String> getAttach(Integer bno)throws Exception;  
-   
-  public void deleteAttach(Integer bno)throws Exception;
-  
-  public void replaceAttach(String fullName, Integer bno)throws Exception;
-  //////////////////////////////////////////////////////////////////////////
-  
 
 }
