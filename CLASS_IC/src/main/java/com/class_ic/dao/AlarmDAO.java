@@ -10,11 +10,13 @@ public interface AlarmDAO {
 		
 		public int totalCount(String user_id);
 		
-	/*	public void insertMessage(All_Alarm_DTO dto);
+		public int insertMessage(All_Alarm_DTO dto);
+		
+		public All_Alarm_DTO selectMessageNum();
 		
 		public void insertMessageReceive(All_Alarm_DTO dto);
 		
-		public void insertMessageSend(All_Alarm_DTO dto);*/
+		public void insertMessageSend(All_Alarm_DTO dto);
 		
 		
 		

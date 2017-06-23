@@ -20,15 +20,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	select count(*) as total_count from alarm where ename=#{user_id} 
  </select>
  
+ <select id="selectMessageNum" >
+  select messageNo, msSendTime, eamil from message;
+ </select>
  
 
-select messageNo, msSendTime, eamil from message;
 
-select messageNo, msSendTime, eamil from message where email = #{email} AND msSendTime= #{msSendTime};
+<!-- select messageNo, msSendTime, eamil from message where email = #{email} AND msSendTime= #{msSendTime};
 
 insert into messageSend (email, messageNo, deleteStateS) values ();
 
-insert into messageReceive (email, messageNo, readTime, readState, deleteStateR) values ();
+insert into messageReceive (email, messageNo, readTime, readState, deleteStateR) values (); -->
  
  
   

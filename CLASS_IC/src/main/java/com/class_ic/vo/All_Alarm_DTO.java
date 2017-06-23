@@ -7,11 +7,11 @@ public class All_Alarm_DTO {
 	private String emailR;
 
 	private String msContent;
-	private Date msSendTime;
+	private String msSendTime;
 	private int messageNo;
-	private String readState;
-	private String deleteStateR;
-	private String deleteStateS;
+	private int readState=1;
+	private int deleteStateR=1;
+	private int deleteStateS=1;
 
 	
 	public String getEmailS() {
@@ -32,10 +32,10 @@ public class All_Alarm_DTO {
 	public void setMsContent(String msContent) {
 		this.msContent = msContent;
 	}
-	public Date getMsSendTime() {
+	public String getMsSendTime() {
 		return msSendTime;
 	}
-	public void setMsSendTime(Date msSendTime) {
+	public void setMsSendTime(String msSendTime) {
 		this.msSendTime = msSendTime;
 	}
 	public int getMessageNo() {
@@ -44,24 +44,25 @@ public class All_Alarm_DTO {
 	public void setMessageNo(int messageNo) {
 		this.messageNo = messageNo;
 	}
-	public String getReadState() {
+	public int getReadState() {
 		return readState;
 	}
-	public void setReadState(String readState) {
+	public void setReadState(int readState) {
 		this.readState = readState;
 	}
-	public String getDeleteStateR() {
+	public int getDeleteStateR() {
 		return deleteStateR;
 	}
-	public void setDeleteStateR(String deleteStateR) {
+	public void setDeleteStateR(int deleteStateR) {
 		this.deleteStateR = deleteStateR;
 	}
-	public String getDeleteStateS() {
+	public int getDeleteStateS() {
 		return deleteStateS;
 	}
-	public void setDeleteStateS(String deleteStateS) {
+	public void setDeleteStateS(int deleteStateS) {
 		this.deleteStateS = deleteStateS;
 	}
+	
 	
 
 }

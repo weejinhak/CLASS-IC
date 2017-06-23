@@ -1,6 +1,7 @@
 package com.class_ic.controller;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,23 +32,31 @@ public class AlarmController {
 	
 	//sendMessage.htm
 	@RequestMapping(value="student/sendMessage.htm")
-    public String sendMessage(@RequestParam(value="sendmessage") String sendmessage,HttpSession session)
+    public String sendMessage(@RequestParam(value="sendmessage") String sendmessage,HttpSession session,
+    		@RequestParam(value="remail") String remail)
             throws ClassNotFoundException, SQLException{
 	
 		System.out.println("sendmessage 탐 -> 값은 :  "+sendmessage);
 		All_Alarm_DTO dto= new All_Alarm_DTO();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
 		
-		dto.setEmailR("셀렉트해오는 email");//받는사람
-		dto.setEmailS("보내는 사람 email");//보내는사람
-		Calendar cal= new 
-		dto.setMsSendTime(msSendTime);
-		dto.setMsContent("가져오는 메시지내용");//메시지내용
-		dto.set
-		/*alarm_DAO.insertMessage(dto);
-		 *alarm_DAO.selectMessageNUM();
-		alarm_DAO.insertMessageReceive(dto);
-		alarm_DAO.insertMessageSend(dto);*/
+		dto.setEmailR(remail);//받는사람		
+		dto.setEmailS(authentication.getName());//보내는사람
+		Calendar cal= Calendar.getInstance();
+		java.util.Date date= cal.getTime();
+		dto.setMsSendTime(new SimpleDateFormat("yyyyMMddHHmmss").format(date));
+		dto.setMsContent(sendmessage);//메시지내용
+		//확인상태,삭제여부 처음에 1
 		
+		AlarmDAO alarm_DAO = sqlsession.getMapper(AlarmDAO.class);
+
+		int result=alarm_DAO.insertMessage(dto);
+		if(result>0){
+			dto=alarm_DAO.selectMessageNum();
+			alarm_DAO.insertMessageReceive(dto);
+			alarm_DAO.insertMessageSend(dto);
+		}		
 		
 		System.out.println(sendmessage+"insert 완료");
 		

@@ -29,7 +29,7 @@
 			url : "sendMessage.htm",
 			dataType : "html",
 			data : {
-				"sendmessage" : sendmessage
+				"sendmessage" : sendmessage				
 			},
 			success : function(data) {
 				console.log("성공!!")
