@@ -22,17 +22,33 @@ public class JoinService {
 	@Autowired
 	private SqlSession sqlsession;
 
-
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-	/*public ModelAndView loginService(@RequestParam("password") String rawPassword,
-			Principal principal, ModelAndView mv){*/
 
-	public ModelAndView loginService(MemberDTO member, ModelAndView mv) {
+	//회원가입
+	public String join(MemberDTO member) throws Exception{
+		
+		member.setPwd(this.bCryptPasswordEncoder.encode(member.getPwd()));
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
-		MemberDTO confirmedMember = member_dao.login(member);
-		return null;
+		String viewpage="";
+		
+		try{
+			int result = member_dao.join(member);
+			if(result>0){
+				member_dao.insertAuthority(member);
+				System.out.println("가입 성공");	
+				viewpage="redirect:join/login";
+								}else{
+									System.out.println("권한부여 실패");
+									viewpage="redirect:join/join";
+								}			
+				}catch(Exception e){
+					e.printStackTrace();
+					System.out.println("가입실패");
+					throw e;				
+				}			
+		return  viewpage;
 	}
+	
 
 }

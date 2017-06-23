@@ -1,14 +1,10 @@
 package com.class_ic.controller_category;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.connector.Request;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,6 +65,10 @@ public class TodayLectureController{
 		// 리턴 셋팅
 		ModelAndView m = new ModelAndView();
 		m.setViewName("teacher.todayLecture_storage");
+		
+	 
+		
+		
 		m.addObject("bvo", blist); 
 
 		return m;
@@ -132,7 +132,7 @@ public class TodayLectureController{
 
 		
 
-		return "teacher.todayLecture_storage";
+		return "redirect:todayLectureList.htm";
  
 	}
 	

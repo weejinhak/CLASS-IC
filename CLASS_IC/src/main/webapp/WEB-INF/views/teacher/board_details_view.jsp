@@ -61,7 +61,7 @@
 						<!--  표-->
 						<div class="card-content table-responsive">
 						
-						<form id="frm" action="multi_storage.htm" method="post">
+					 
 							 <table class="table">
                                             <thead>
                                                 <tr>
@@ -81,10 +81,10 @@
                                             
                                                 <tr>
                                               
-                                                    <td>${TodayLectureVO.lectureNo}a</td>
-                                                    <td>${TodayLectureVO.lectureTitle}a</td>
+                                                    <td>${TodayLectureVO.lectureNo} </td>
+                                                    <td>${TodayLectureVO.lectureTitle} </td>
                                                     
-                                                    <td>${TodayLectureVO.lectureDate}a</td>
+                                                    <td>${TodayLectureVO.lectureDate} </td>
                                                     <td class="td-actions text-center">
                                                   
                                                         <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
@@ -100,13 +100,7 @@
 		                                                    <span class="checkbox-material">
 		                                                    </span>  
 		                                                    </label>
-		                                                    
-                                               			
-						 
-	
-				<a href='teacher/one_storage.htm?lectureNo=${TodayLectureVO.lectureNo}' style='text-decoration:none'>
-			 
-                   
+		                                                     
                                                			</div>
                                                			
                                                			
@@ -136,7 +130,11 @@
                                                
                                             </tbody>
                                         </table>
-                          </form>
+                                        
+                                        
+                                        
+                                        
+                     
                                         
 						</div>
 
@@ -301,8 +299,7 @@
  }
  
  
-</script>
- 
+</script> 
  
  
  

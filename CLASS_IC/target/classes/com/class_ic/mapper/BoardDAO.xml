@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+* @FileName		:	BoardDAO.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.19
+* @Author		:	최석환
+ -->
+
+<mapper namespace="com.class_ic.dao.BoardDAO">
+
+	<insert id="create">
+		insert into LectureBoard (lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent)
+		values(#{lectureNo}, #{classCode}, #{cateCode}, #{subcateCode}, #{lectureTitle}, #{lectureContent})
+	</insert>
+	
+	<insert id="delete">
+	delete
+	from lectureboard
+	where lectureNo = #{lectureNo}
+	</insert>
+	
+
+	
+  	<select id="read" resultType="com.class_ic.vo.BoardVO">
+		select
+		lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
+		from
+		LectureBoard
+		where lectureNo = #{lectureNo}
+	</select>
+	
+	
+	<select id="listAll" resultType="com.class_ic.vo.BoardVO">
+ 
+ select 
+   lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
+ from 
+   LectureBoard 
+ where lectureNo > 0 
+ order by lectureNo desc, lectureDate desc
+
+	</select>
+	
+	<select id="listWhereCate" resultType="com.class_ic.vo.BoardVO">
+ 
+	 select 
+	   lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
+	 from 
+	   LectureBoard 
+	 where cateCode= #{param1} and subcateCode = #{param2}
+	 order by lectureNo desc, lectureDate desc
+
+	</select>
+	
+	<insert id="categoryCreate">
+		insert into category (cateCode, cateTitle)
+		values(#{cateCode} , 0 )
+	</insert>
+	
+	<insert id="subCategoryCreate">
+		insert into SubCategory (subcateCode, cateCode, subcateTitle)
+		values(#{param1} , #{param2}, 0)
+	</insert>
+	
+	
+	<select id="showCateList" resultType="String">
+		select cateCode
+		from
+		Category
+	</select>
+	
+	<select id="showSubCateList" resultType="String">
+		select subcateCode
+		from
+		SubCategory
+		where cateCode= #{cateCode}
+		
+	</select>
+
+<!-- ////////////////////////criteria 들어가는 거 전부다//////////////////////////////// -->
+		<select id="listCriteria" resultType="com.class_ic.vo.BoardVO">
+
+ select 
+   lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
+ from  
+   LectureBoard 
+ where cateCode= #{param3} and subcateCode = #{param4}
+ order by lectureNo desc, lectureDate desc
+ limit #{param1}, #{param2}
+
+ 
+		</select>
+	
+	<select id="countPaging" resultType="int">
+
+ select 
+   count(lectureNo) 
+ from 
+   LectureBoard 
+   
+   where cateCode = #{param1} and subcateCode = #{param2} 
+
+	</select>
+	
+	
+<select id="listSearch" resultType="com.class_ic.vo.BoardVO">
+<![CDATA[  
+  select * 
+  from LectureBoard 
+  where lectureNo > 0
+  
+]]>
+
+		<include refid="search"></include>
+  
+<![CDATA[    
+  order by lectureNo desc
+  limit #{pageStart}, #{perPageNum}
+]]>
+	</select>
+
+		<select id="listSearchCount" resultType="int">
+<![CDATA[  
+  select count(lectureNo) 
+  from LectureBoard 
+  where lectureNo > 0 
+]]>
+		<include refid="search"></include>
+	</select>
+	
+<!-- ////////////////////////criteria END//////////////////////////////// -->
+
+<!-- ////////////////////////////SEARCH//////////////////////////// -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType ==  toString()">
+				and lectureTitle like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and lectureContent like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and ( title like CONCAT('%', #{keyword}, '%') OR content like
+				CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				and ( content like CONCAT('%', #{keyword}, '%') OR writer like
+				CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'tcw'.toString()">
+				and ( title like CONCAT('%', #{keyword}, '%')
+				OR
+				content like CONCAT('%', #{keyword}, '%')
+				OR
+				writer like CONCAT('%', #{keyword}, '%'))
+			</if>
+		</if>
+	</sql>
+<!-- ///////////////////////////////SEARCH END//////////////////////////////////// -->
+
+ 
+</mapper>

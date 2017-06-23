@@ -5,6 +5,7 @@
 <html>
 
 <head>
+ 
 <meta charset="utf-8" />
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -102,9 +103,34 @@
     });
 </script>
 
+=======
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="${pageContext.request.contextPath}/resources/assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>CLASS-IC</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap core CSS     -->
+    <link href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="${pageContext.request.contextPath}/resources/assets/css/material-dashboard.css" rel="stylesheet" />
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="${pageContext.request.contextPath}/resources/assets/css/demo.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+    <!--   Core JS Files   -->
+   <script src="${pageContext.request.contextPath}/resources/assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/jquery-ui.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/material.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+>>>>>>> refs/heads/eunyoung
 </head>
 
 <body>
+<<<<<<< HEAD
 	<div class="wrapper">
 
 		<!-- side navi 메뉴 영역-->
@@ -123,6 +149,20 @@
 
 		</div>
 	</div>
+=======
+    <div class="wrapper">
+       
+          <!-- side navi 메뉴 영역-->
+             <tiles:insertAttribute name="navi" />  
+           <div class="main-panel">
+          <!--  header 영역 -->
+             <tiles:insertAttribute name="header" />
+           <!--  contents 영역 -->
+               <tiles:insertAttribute name="content" />
+           
+        </div>
+    </div>
+>>>>>>> refs/heads/eunyoung
 </body>
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////  -->
 <!-- Forms Validations Plugin -->
@@ -162,11 +202,17 @@
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/jquery.datatables.js"></script>
 <!-- Sweet Alert 2 plugin -->
+<<<<<<< HEAD
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.js"></script>
 <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap.min.js"></script>
+=======
+<script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.js"></script>
+<!--   Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap.min.js"></script>
+>>>>>>> refs/heads/eunyoung
 <!--  Full Calendar Plugin    -->
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/fullcalendar.min.js"></script>
