@@ -88,14 +88,22 @@ public class T_BoardController {
   
   //글쓰기 OK
   @RequestMapping(value = "boardWriteOk.htm", method = RequestMethod.POST)
-  public String registPOST(BoardVO board) throws Exception {
+  public String registPOST(Model model,BoardVO board) throws Exception {
 	  
 	  System.out.println("★서블렛 접속 : boardWriteOk.htm");
 	  System.out.println(board.toString());
 	  
 	  //NULL 값 제거하기 위함
 	  board.setLectureNo(1);
-	  
+	  ////////////////////////////값들 가져와주는거////////////////////////////////
+	    System.out.println("★서블렛 접속 : boardList.htm");
+	    //모든 게시물들 리스트
+	    model.addAttribute("boardList", service.listAll());
+	    //카테고리 리스트
+	    model.addAttribute("cateList", service.showCateList());
+	    
+		System.out.println("카테고리 리스트: " +service.showCateList());
+	  ////////////////////////////값들 가져와주는거///////////////////////////////////
 	  System.out.println(board.toString());
 	 
 	  service.regist(board);
