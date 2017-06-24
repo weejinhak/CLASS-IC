@@ -78,6 +78,17 @@ public class StudentManagementController {
 			
 			return "teacher/final_group_ajax";
 		}
+		
+		
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//학적부 페이지 
+				@RequestMapping(value="student_table.htm", method=RequestMethod.GET)
+				public String studentTable(Model m){
+					System.out.println("학적부 페이지로 이동하는 controller");
+					return "teacher.student_table_final";
+				}
+	
+		
 	
 	
 	
@@ -95,10 +106,7 @@ public class StudentManagementController {
 	
 	
 	
-	
-	
-	/*
-	
+				/*
 	
 	//학적부 (위치)
 	@RequestMapping(value="stable.htm", method=RequestMethod.GET)
@@ -113,6 +121,7 @@ public class StudentManagementController {
 		return mv;
 	}
 	
+
 	//학적부 (수정화면에서 값 넘겨준다)
 	@RequestMapping(value="stable.htm", method=RequestMethod.POST)
 	public @ResponseBody String studentTable(StudentTableDTO sTable){
@@ -135,6 +144,8 @@ public class StudentManagementController {
 			
 		return MnV;
 	}
+	
+	
 	//조편성 저장
 	@RequestMapping(value="sgroup.htm", method=RequestMethod.POST)
 	public String studentGroup(HttpServletRequest request, StudentGroupDTO sgroup){

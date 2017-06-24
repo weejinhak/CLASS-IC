@@ -38,7 +38,9 @@
      <a href="common/select_student.htm">thsSelect_student</a> <br/>
    [선생 페이지]<br/>
    <a href="teacher/test1.htm"> attandance_edit</a> <br/>
-   <a href="teacher/test2.htm"> student</a> <br/>
+   <a href="teacher/student_table.htm"> student Table</a> <br/>
+ 
+   <a href="teacher/test3.htm"> drag 갤러리</a> <br/>
 <!--    <a href="stable.htm?authority="+"ROLE_STUDENT"> student group 아 쫌</a> <br/> -->
    <!--  <a href="teacher/stable.htm"> student group</a> <br/> -->
     <a href="teacher/groupEdit.htm"> student group</a>개피곤 마지막 <br/>
@@ -74,6 +76,7 @@
    <a href="student/test14.htm"> student_main</a> <br/>
    <a href="student/test15.htm"> student_memo</a> <br/>
    <a href="student/test16.htm"> student_message</a> <br/>
+   <a href="student/data_table.htm"> student_data_table</a> <br/>
   	main와 student은 test용으로 내가 별도로 만든거니 체크 안해도 됨<br/>
    
    

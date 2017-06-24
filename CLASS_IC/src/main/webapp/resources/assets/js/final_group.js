@@ -1,29 +1,3 @@
-	/************************************************************************************************************
-	Textarea maxlength
-	Copyright (C) November 2005  DTHMLGoodies.com, Alf Magne Kalleland
-
-	This library is free software; you can redistribute it and/or
-	modify it under the terms of the GNU Lesser General Public
-	License as published by the Free Software Foundation; either
-	version 2.1 of the License, or (at your option) any later version.
-
-	This library is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-	Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public
-	License along with this library; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-
-	Dhtmlgoodies.com., hereby disclaims all copyright interest in this script
-	written by Alf Magne Kalleland.
-
-	Alf Magne Kalleland, 2010
-	Owner of DHTMLgoodies.com
-
-	************************************************************************************************************/
-
 	/* VARIABLES YOU COULD MODIFY */
 	var boxSizeArray = [4,4,4,3,7];	// Array indicating how many items there is rooom for in the right column ULs
 
@@ -313,8 +287,8 @@
 						//console.log(data);
 						alert('2번째 ajax 태웠네요');
 						console.log(data);
-						$('#dhtmlgoodies_dragDropContainer').empty();
-						$('#dhtmlgoodies_dragDropContainer').html(data);
+						$('#dhtmlgoodies_mainContainer').empty();
+						$('#dhtmlgoodies_mainContainer').html(data);
 					},
 					error:function(request, status, error){
 						//console.log(error);
@@ -383,3 +357,4 @@
 	}
 
 	window.onload = initDragDropScript;
+	

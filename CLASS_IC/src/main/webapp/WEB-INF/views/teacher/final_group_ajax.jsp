@@ -8,7 +8,7 @@
 	<ul id="${group.groupName }">
 <c:forEach var="member" items="${memberlist}">
 	<c:if test="${group.groupName == member.groupName}">
-		<li id="${member.email }">${member.name }</li>
+		<li id="node__${member.email }">${member.name }</li>
 	</c:if>
 </c:forEach>
 </ul>

@@ -13,8 +13,10 @@
 	<div class="memberlist" id="studentlist">
 		<img src="${pageContext.request.contextPath}/resources/assets/img/st_006.jpg" class="photo_img"/>
 		<span>노지영</span>
-	</div>		
+	</div>	
+<!-- 분단 나눠서 담기  -->
 
+<!--  분단 나눠서 담는 div 끝-->
 <!--원모양 start -->
 <div class="container">
 	<div class="product">
