@@ -206,7 +206,7 @@ $('#category').change(function(event){
 	console.log(temp);
 	
 	$.ajax({
-        url: 'cate_option.htm',
+        url: 'subOption.htm',
         data: {"temp":temp},
         dataType:'text',
         type: 'POST',

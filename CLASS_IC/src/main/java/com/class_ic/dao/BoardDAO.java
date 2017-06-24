@@ -45,4 +45,6 @@ public interface BoardDAO {
   public int listSearchCount(SearchCriteria cri)throws ClassNotFoundException, SQLException; //
   ///////////////////////////////////////////////////////////////////
 
+  public List<String> getSubCateList(String cateCode);
+
 }

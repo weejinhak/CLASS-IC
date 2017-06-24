@@ -286,7 +286,7 @@ public class T_BoardController {
   }
   
   
-  @RequestMapping(value = "SearchList_MUL.htm", method = RequestMethod.GET)
+/*  @RequestMapping(value = "SearchList_MUL.htm", method = RequestMethod.GET)
   public String SearchList_MUL(Model model,String search) throws Exception {
   	  	
   	  	System.out.println("SearchList_MUL 접속");
@@ -294,7 +294,6 @@ public class T_BoardController {
   	    model.addAttribute("searchList", service.SearchList_MUL(search));
   	    
   	    return "teacher.board";
-  
-  }  
+  } */ 
 
 }

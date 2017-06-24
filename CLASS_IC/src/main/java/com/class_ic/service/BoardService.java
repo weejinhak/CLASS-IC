@@ -163,10 +163,9 @@ public List<String> getAttach(Integer lectureNo) throws Exception {
 	return null;
 }
 
-public List<BoardVO> SearchList_MUL(String search) throws Exception {
+/*public List<BoardVO> SearchList_MUL(String search) throws Exception {
 	
 	 BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
-	 
-	return boarddao.SearchList_MUL(search);
-	}
+	 return boarddao.SearchList_MUL(search);
+	}*/
 }
