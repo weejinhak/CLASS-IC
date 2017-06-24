@@ -40,11 +40,11 @@
    <a href="teacher/test1.htm"> attandance_edit</a> <br/>
    <a href="teacher/test2.htm"> attandance</a> <br/>
    <a href="teacher/test3.htm"> attandanclist_edit</a> <br/>
-   <a href="teacher/test4.htm"> board_content</a> <br/>
+   <a href="board/board_write.htm"> board_write -글쓰기</a> <br/>
    <a href="teacher/test5.htm"> board_details_view</a> <br/>
    <a href="teacher/test6.htm"> board_details</a> <br/>
    <a href="teacher/test7.htm">board_homework_content</a> <br/>
-   <a href="teacher/test8.htm"> board</a> <br/>
+   <a href="board/boardList.htm"> boardList -게시판 리스트</a> <br/>
    <a href="teacher/test9.htm"> Calendar</a> <br/>
    <a href="teacher/test10.htm"> class_condition</a> <br/>
    <a href="teacher/test11.htm">History</a> <br/>
