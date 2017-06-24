@@ -10,7 +10,7 @@
                                         <h4 class="card-title">상세보기</h4>
                                     </div>
                                     <div class="card-content">
-                                      
+                                       
                                        
                                        <div class="td-actions text-center">
                                                         <button type="button" rel="tooltip" class="btn btn-info btn-round" data-original-title="" title="">
