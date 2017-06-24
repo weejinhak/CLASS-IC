@@ -16,9 +16,6 @@
 					<b>Spring</b>
 				</h2>
 				<br>
-
-
-
 				<div class="nav-left">
 					<ul class="nav nav-pills nav-pills-warning nav-pills-icons"
 						role="tablist">
@@ -51,10 +48,10 @@
 									<thead>
 										<tr>
 
-											<th>글 번호</th>
-											<th>글 제목</th>
+											<th class="text-center">글 번호</th>
+											<th class="text-center">글 제목</th>
 
-											<th>작성날짜</th>
+											<th class="text-center">작성날짜</th>
 											<th class="text-center">Actions</th>
 
 										</tr>
@@ -66,10 +63,10 @@
 
 											<tr>
 
-												<td>${TodayLectureVO.lectureNo}</td>
-												<td>${TodayLectureVO.lectureTitle}</td>
+												<td class="text-center"> ${TodayLectureVO.lectureNo}</td>
+												<td class="text-center">${TodayLectureVO.lectureTitle}</td>
 
-												<td>${TodayLectureVO.lectureDate}</td>
+												<td class="text-center">${TodayLectureVO.lectureDate}</td>
 												
 												
 												<td class="td-actions text-center">
@@ -84,7 +81,7 @@
 										</c:forEach>
 
 										<tr>
-											<td colspan="5"><a href="test9.htm">
+											<td colspan="5"><a href="test9.htm" style="padding-left: 490px;">
 													<button type="button" id="submitFrm"
 														class="btn btn-info btn-round" style="margin-left: 50px">캘린더에서
 														확인하기</button>
