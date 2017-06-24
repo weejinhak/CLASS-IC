@@ -210,6 +210,7 @@
 								});
 					});
 				</script>
+				<!-- end 메모  -->
 
 				<!-- <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -225,9 +226,7 @@
         demo.initVectorMap();
     });
     
-    $("#create").click(function() {
-    	  $(this).before("<textarea></textarea>");
-    	});
+   
 </script>
 				<script
-					src="${pageContext.request.contextPath}/resources/assets/js/teacher/teacher_memo.js"></script>
+					src="${pageContext.request.contextPath}/resources/assets/js/teacher/teacher_memo.js"></script> <!-- 메모 스크립트 -->

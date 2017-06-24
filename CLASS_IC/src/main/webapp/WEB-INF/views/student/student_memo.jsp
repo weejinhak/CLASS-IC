@@ -3,7 +3,7 @@
 @File name : student_memo.jsp
 @Author : 최은혜
 @Data : 2017.06.15
-@Desc : 
+@Desc : 메모 게시판
 --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
