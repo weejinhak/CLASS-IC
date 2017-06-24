@@ -5,10 +5,8 @@
 
 <mapper namespace="com.class_ic.dao.AttendanceListDAO">
 
-
-
-	<select id="attendanceSelect" parameterType="String" resultType="String">
-		select classCode from classMember where email=#{email} and classCode=#{classCode}
+	<select id="attendanceSelect" parameterType="String" resultType="com.class_ic.vo.AttandanceDTO">
+		select * from attendance where email=#{param1} and classCode=#{param2}
 	</select>
 
 

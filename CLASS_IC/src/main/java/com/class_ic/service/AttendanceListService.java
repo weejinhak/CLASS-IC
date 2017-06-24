@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.class_ic.dao.AttendanceListDAO;
+import com.class_ic.vo.AttandanceDTO;
 import com.class_ic.vo.MemberDTO;
 
 
@@ -21,13 +22,13 @@ public class AttendanceListService implements AttendanceListDAO{
 	@description : attendance 테이블에 select 해주는 기능.
 	*/
 	@Override
-	public ArrayList<MemberDTO> attendanceSelect(String email, String classcode){
+	public ArrayList<AttandanceDTO> attendanceSelect(String email, String classcode){
 		
 
 		AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);
 		
 
-		ArrayList<MemberDTO> memberList=attendancelistDao.attendanceSelect(email,classcode);
+		ArrayList<AttandanceDTO> memberList=attendancelistDao.attendanceSelect(email,classcode);
 	
 		
 		return memberList;

@@ -10,6 +10,6 @@ public interface AttendanceListDAO {
 	
 
     //오늘 날짜에 맞는 출석 테이블을 select 해서 모두가져온다.
-	public ArrayList<MemberDTO> attendanceSelect(String email,String classcode);
+	public ArrayList<AttandanceDTO> attendanceSelect(String email,String classcode);
 	
 }
