@@ -47,7 +47,7 @@
 						 <!--  <i class="material-icons">exposure_plus_1</i> -->
 							<button class="btn btn-raised btn-round btn-white"
 								data-toggle="modal" data-target="#noticeModal">+</button>
-					  <i]></i><br> ADD
+					  <i></i> ADD
 					</a>
 		       
 					</li>

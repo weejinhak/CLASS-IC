@@ -33,7 +33,7 @@ public class TodayLectureController{
 	
 	
 	//이름 subcate 뭐시기로 변경 
-	@RequestMapping("test5.htm") 
+	@RequestMapping("todayclass.htm") 
 	public ModelAndView allBoard(TodayLectureVO bvo){ 
 		
 		TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class);
