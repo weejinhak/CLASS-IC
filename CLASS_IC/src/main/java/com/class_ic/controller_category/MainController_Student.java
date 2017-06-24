@@ -35,11 +35,11 @@ public class MainController_Student {
 			System.out.println("student main 컨트롤 탐, test.htm ");
 			return "student.board_details_view";
 		}
-		@RequestMapping("test5.htm")
+/*		@RequestMapping("test5.htm")
 		public String studentTest5(){
 			System.out.println("student main 컨트롤 탐, test.htm ");
 			return "student.board_details";
-		}
+		}*/
 		@RequestMapping("test6.htm")
 		public String studentTest6(){
 			System.out.println("student main 컨트롤 탐, test.htm ");
