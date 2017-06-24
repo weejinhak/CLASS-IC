@@ -115,7 +115,7 @@
                                                  <tr>
 										         <td colspan="5">
 										         <!-- 표끝 -->
-							<button type="button" class="btn btn-info btn-round" style="margin-left:200px">write</button>
+						
 							                     			
 							<button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px" onclick="multi_storage()">수업 담기</button>
 					                  			
