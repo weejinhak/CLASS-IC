@@ -18,6 +18,10 @@ public interface MemoDAO {
 	//메모 조회
 	public List<MemoVO> selectMemo(MemoVO vo);
 	
+	//메모 조회(단일출력)
+	public MemoVO oneText(MemoVO vo);
+	
 	//메모 삭제
-	public void deleteMemo(MemoVO vo);
+	public int deleteMemo(MemoVO vo);
+
 }

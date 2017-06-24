@@ -31,6 +31,8 @@
 
 <body>
    
+<<<<<<< HEAD
+=======
    [css 테스트 목록]<br/>
    [공톷페이지] <br/><!-- 기수선택 추가 6/17 -->
     <a href="common/select.htm">thsSelect</a> <br/>
@@ -89,9 +91,7 @@
    타일즈: <a href="teacher/main.htm">선생님 페이지</a> <br/>
    타일즈 : <a href="student/main.htm">학생 페이지</a> <br/>
    
-   
-   
-   
+
     <div class="wrapper wrapper-full-page">
         <div class="full-page login-page" filter-color="black" data-image="${pageContext.request.contextPath}/resources/assets/img/login.jpeg">
             <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->

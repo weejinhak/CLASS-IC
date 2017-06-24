@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <select id="confirmAuthority" resultType="String">
-	SELECT m.email as email, a.authority as authority 
+	SELECT a.authority as authority 
 	FROM member m JOIN classicauthority a 
 	ON m.email = a.email 
 	WHERE m.email=#{email}

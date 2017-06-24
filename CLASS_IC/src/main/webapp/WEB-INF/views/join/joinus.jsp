@@ -96,9 +96,7 @@
 							id="photoSrc_te" name="photoSrc" placeholder="imgSrc" /> <input
 							type="hidden" id="authority_te" name="authority"
 							value="ROLE_TEACHER" />
-						<!-- <button class="btn_sign_up" id="btn_submit_te">Let's
-							go</button> -->
-							<button class="btn_sign_up" tyep="submit">Let's
+						<button class="btn_sign_up" id="btn_submit_te">Let's
 							go</button>
 						</form>
 					</div>

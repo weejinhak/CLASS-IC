@@ -15,7 +15,6 @@
 <meta name="viewport" content="width=device-width" />
 <!-- common header -->
 <jsp:include page="inc/common_header.jsp"></jsp:include>
-
 </head>
 
 <body>
@@ -41,7 +40,7 @@
 						data-header-animation="true" >
 						<div align="center">
 						<h3 class="card-title" >
-							<br>KOSTA 151 기
+							<br>(테스트용) 151기
 						</h3></div>
 					</div>
 					<div class="card-content">
@@ -50,11 +49,14 @@
 								class="btn btn-danger btn-simple fix-broken-card">
 								<i class="material-icons">build</i> Fix Header!
 							</button>
+							<!-- 링크걸기 -->
+							<a href="teacher/main.htm">
 							<button type="button" class="btn btn-info btn-simple"
 								rel="tooltip" data-placement="bottom" title=""
 								data-original-title="go!" >
 								<i class="material-icons">input</i>
 							</button>
+							</a>
 						
 						</div>
 						

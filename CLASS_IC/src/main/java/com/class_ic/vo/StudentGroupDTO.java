@@ -4,6 +4,7 @@ public class StudentGroupDTO {
 	private String email;
 	private String name;
 	private String photoSrc;
+	private String position;
 	private String groupLeaderState;
 	private String groupCode;
 	private String groupName;
@@ -76,6 +77,7 @@ public class StudentGroupDTO {
 
 	public void setClassCode(String classCode) {
 		this.classCode = classCode;
+
 	}
 	
 	

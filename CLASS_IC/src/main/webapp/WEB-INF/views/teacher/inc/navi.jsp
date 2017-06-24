@@ -23,56 +23,56 @@
 					<div class="collapse" id="collapseExample">
 						<ul class="nav">
 							<li><a href="#">나의 정보수정</a></li>
-							<li><a href="#">로그아웃</a></li>
+							<li><a href="../logout.htm">로그아웃</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<ul class="nav">
 				<li>
-					<a href="./dashboard.html"> <i class="material-icons">home</i>
+					<a href="main.htm"> <i class="material-icons">home</i>
 							<p>메인</p>
 					</a>
 				</li>
 				
 				<li>
-					<a href="./dashboard.html"> <i class="material-icons">schedule</i>
+					<a href="historylist.htm"> <i class="material-icons">schedule</i>
 							<p>히스토리</p>
 					</a>
 				</li>
 				
 				<li>
-					<a href="./dashboard.html"> <i class="material-icons">dashboard</i>
+					<a href="board.htm"> <i class="material-icons">dashboard</i>
 							<p>수업보드</p>
 					</a>
 				</li>
 				
 				<li>
-					<a href="./dashboard.html"> <i class="material-icons">playlist_add_check</i>
+					<a href="homework.htm"> <i class="material-icons">playlist_add_check</i>
 							<p>과제게시판</p>
 					</a>
 				</li>
 				
 				<li>
-					<a href="./dashboard.html"><i class="material-icons">account_box</i>
+					<a href="#"><i class="material-icons">account_box</i>
 							<p>학생부</p>
 					</a>
 				</li>
 				
 				<li>
-					<a href="./dashboard.html"> <i class="material-icons">today</i>
+					<a href="calendar.htm"> <i class="material-icons">today</i>
 							<p>달력</p>
 					</a>
 				</li>
 				
 				<li>
-					<a href="./dashboard.html"> <i class="material-icons">edit</i>
+					<a href="memo.htm"> <i class="material-icons">edit</i>
 							<p>메모</p>
 					</a>
 				</li>
 				
 				<li>
-					<a href="./dashboard.html"> <i class="material-icons">toys</i>
+					<a href="#"> <i class="material-icons">toys</i>
 							<p>교실상태</p>
 					</a>
 				</li>

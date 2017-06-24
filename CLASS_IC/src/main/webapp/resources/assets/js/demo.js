@@ -40,7 +40,7 @@ demo = {
          });
 
          $('.datepicker').datetimepicker({
-            format: 'MM/DD/YYYY',
+            format: 'YYYY-MM-DD',
             icons: {
                 time: "fa fa-clock-o",
                 date: "fa fa-calendar",
@@ -645,8 +645,7 @@ demo = {
                     })
                   }
                 })
-
-    	}else if(type == 'custom-html'){
+	}else if(type == 'custom-html'){
         	swal({
                 title: 'HTML example',
                 buttonsStyling: false,
@@ -809,13 +808,16 @@ demo = {
 
 
     },
-
+    
+// 캘린더 시작 
     initFullCalendar: function(){
+    	  
+    	    
         $calendar = $('#fullCalendar');
 
         today = new Date();
         y = today.getFullYear();
-        m = today.getMonth();
+        m = today.getMonth()+1;
         d = today.getDate();
 
         $calendar.fullCalendar({
@@ -835,113 +837,130 @@ demo = {
 			selectHelper: true,
             views: {
                 month: { // name of view
-                    titleFormat: 'MMMM YYYY'
+                    titleFormat: 'YYYY MMMM'
                     // other view-specific options here
                 },
                 week: {
-                    titleFormat: " MMMM D YYYY"
+                    titleFormat: " YYYY MMM D "
                 },
                 day: {
-                    titleFormat: 'D MMM, YYYY'
+                    titleFormat: 'YYYY MMMM D'
                 }
             },
 
-			select: function(start, end) {
+            select: function(start, end, event, jsEvent, view, calEvent,today ) {
+                
+                 var todaylist=new Array();
+                 var html="";
+                 var clickdate=start._d;
+                 console.log(clickdate)
+                 
+                 $.ajax({
+                     url:"todayclass.htm",
+                      type:"POST",
+                      data:{clickdate: clickdate},
+                      dataType:'json',
+                      success:function(data){
+                 
+                        var html='';
+                        $.each(data, function(index,item) {
+                        	html+='<a href="">'+item.todayTitle+'</a><br>'
+                        	
+                        }); 
+                   
+                            
+                            // on select we show the Sweet Alert modal with an input
+                            swal({
+                                title: '오늘의 수업',
+                                html: html,
+                                    showCancelButton: true,
+                                    confirmButtonClass: 'btn btn-success',
+                                    cancelButtonClass: 'btn btn-danger',
+                                    buttonsStyling: false
+                                }) //swal 끝
+                        
+                        
+                      }
+                  }); //ajax 끝
+             
 
-                // on select we show the Sweet Alert modal with an input
-				swal({
-    				title: 'Create an Event',
-    				html: '<div class="form-group">' +
-                            '<input class="form-control" placeholder="Event Title" id="input-field">' +
-                        '</div>',
-    				showCancelButton: true,
-                    confirmButtonClass: 'btn btn-success',
-                    cancelButtonClass: 'btn btn-danger',
-                    buttonsStyling: false
-                }).then(function(result) {
-
-                    var eventData;
-                    event_title = $('#input-field').val();
-
-                    if (event_title) {
-    					eventData = {
-    						title: event_title,
-    						start: start,
-    						end: end
-    					};
-    					$calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
-    				}
-
-    				$calendar.fullCalendar('unselect');
-
-                });
-			},
+     
+              
+                
+          
+             },
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
-
-
-            // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
-            events: [
-				{
-					title: 'All Day Event',
-					start: new Date(y, m, 1),
-                    className: 'event-default'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d-4, 6, 0),
-					allDay: false,
-					className: 'event-rose'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d+3, 6, 0),
-					allDay: false,
-					className: 'event-rose'
-				},
-				{
-					title: 'Meeting',
-					start: new Date(y, m, d-1, 10, 30),
-					allDay: false,
-					className: 'event-green'
-				},
-				{
-					title: 'Lunch',
-					start: new Date(y, m, d+7, 12, 0),
-					end: new Date(y, m, d+7, 14, 0),
-					allDay: false,
-					className: 'event-red'
-				},
-				{
-					title: 'Md-pro Launch',
-					start: new Date(y, m, d-2, 12, 0),
-					allDay: true,
-					className: 'event-azure'
-				},
-				{
-					title: 'Birthday Party',
-					start: new Date(y, m, d+1, 19, 0),
-					end: new Date(y, m, d+1, 22, 30),
-					allDay: false,
-                    className: 'event-azure'
-				},
-				{
-					title: 'Click for Creative Tim',
-					start: new Date(y, m, 21),
-					end: new Date(y, m, 22),
-					url: 'http://www.creative-tim.com/',
-					className: 'event-orange'
-				},
-				{
-					title: 'Click for Google',
-					start: new Date(y, m, 21),
-					end: new Date(y, m, 22),
-					url: 'http://www.creative-tim.com/',
-					className: 'event-orange'
-				}
-			]
+			
+         /*   color classes: [ event-blue | event-azure | event-green | event-orange | event-red ],*/
+            events: {url : 'CalendarList.htm' },
+            eventClick: function(calEvent, jsEvent, view) {
+            	var test="테스트"; 
+            	var id=calEvent.id;
+            	console.log(calEvent); //아이디 값
+            	console.log(jsEvent);
+            	console.log(view);
+            	 swal({
+                     title: 'Are you sure?',
+                     text: 'You will not be able to recover this calendar!',
+                     type: 'warning',
+                     showCancelButton: true,
+                     confirmButtonText: '일정 삭제하기',
+                     cancelButtonText: '일정 유지하기',
+                     confirmButtonClass: "btn btn-success",
+                     cancelButtonClass: "btn btn-danger",
+                     buttonsStyling: false
+                 }).then(function() {
+                	 
+                	   $.ajax({
+                           
+                           type : "GET",
+                           url : "CalendarEditDelete.htm",
+                           data: {id: id},
+                           dataType : "text",
+                           error : function(){
+                        	   swal({
+                                   title: 'Cancelled ',
+                                   text: '일정 삭제를 실패 하셨습니다. 관리자에게 문의하세요.',
+                                   type: 'error',
+                                   confirmButtonClass: "btn btn-info",
+                                   buttonsStyling: false
+                                 })
+                            
+                           },
+                           success : function(data){
+              
+                               
+                               swal({
+                                   title: 'Deleted!',
+                                   text: '삭제가 완료 되었습니다.',
+                                   type: 'success',
+                                   confirmButtonClass: "btn btn-success",
+                                   buttonsStyling: false
+                                   }).then(function() {
+									
+                                   location.href="test9.htm";
+								})
+                                   
+                           }
+                            
+                       });
+                  
+                 }, function(dismiss) {
+                   // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+                   if (dismiss === 'cancel') {
+                     swal({
+                       title: 'Cancelled',
+                       text: '삭제를 취소 하셨습니다.',
+                       type: 'error',
+                       confirmButtonClass: "btn btn-info",
+                       buttonsStyling: false
+                     })
+                   }
+                 })
+           
+              }
+            
 		});
     },
 
@@ -965,3 +984,5 @@ demo = {
 	}
 
 }
+
+

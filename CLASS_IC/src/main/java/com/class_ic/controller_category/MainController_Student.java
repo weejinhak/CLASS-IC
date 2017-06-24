@@ -1,18 +1,65 @@
 package com.class_ic.controller_category;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("student")
 public class MainController_Student {
 
-	//student main
-	@RequestMapping("main.htm")
+	//student main GET
+	@RequestMapping(value="main.htm", method=RequestMethod.GET)
 	public String student(){
-		System.out.println("student main 컨트롤 탐");
-		return "student.main";
+
+		return "student.student_main";
 	}
+	
+	//student main POST
+		@RequestMapping(value="main.htm", method=RequestMethod.POST)
+		public String student(Model m){
+
+			return "student.student_main";
+		}
+	
+	//student memo
+		@RequestMapping(value="memo.htm", method=RequestMethod.GET)
+		public String studentMemo(){
+
+			return "student.student_memo";
+		}
+	
+		//boardList 게시판 이동
+		@RequestMapping(value="board.htm", method=RequestMethod.GET)
+		public String board(){
+
+			return "student.board";
+		}
+		//homework_board게시판 이동
+				@RequestMapping(value="homework.htm", method=RequestMethod.GET)
+				public String homework(){
+
+					return "student.homework_board";
+				}
+	
+	
+				//달력 게시판 이동
+				@RequestMapping(value="calendar.htm", method=RequestMethod.GET)
+				public String calendar(){
+
+					return "student.calendar";
+				}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//student page test용
 		@RequestMapping("test1.htm")

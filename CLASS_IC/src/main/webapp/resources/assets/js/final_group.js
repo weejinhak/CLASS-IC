@@ -356,5 +356,5 @@
 		}
 	}
 
+
 	window.onload = initDragDropScript;
-	

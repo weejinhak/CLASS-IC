@@ -10,7 +10,6 @@
       	 <div class="col-lg-12 col-md-12" style="height: 100px"></div>
       	 
       	 
-      	 
 <div class="row" style="padding-left: 150px ; padding-right: 150px">
                     
                     
@@ -25,48 +24,66 @@
                         <div class="col-lg-6 col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-text" data-background-color="orange">
-                                    <h4 class="card-title">${cateList}</h4>
-                          			 <p class="category">New employees on 15th September, 2016</p> 
+                                    <h2 class="card-title">${cateList}</h2>
+                          			 <p class="category">최신글 목록을 보여줍니다.</p> 
                                 </div>
-                                >
+                                
                                 <div class="card-content table-responsive">
                                     <table class="table table-hover">
                                         <thead class="text-warning">
                                             <tr><th>NO.</th>
-                                            <th>머임</th>
-                                            <th>머임</th>
+                                            <th>글제목</th>
+                                            <th>글쓴시간</th>
                                             
                                         </tr></thead>
                                         
-                                        <!-- if -->
-                                        <c:if test="${boardList.cateCode==cateList.catecode}">
                                         
-                                           <c:set value="dinfree" var="msg"/>
-										   msg : ${msg} <br>
-										   <c:if test="${msg == 'dinfree'}" var="result">
-										   test result = ${result } <br>
-										   </c:if>
+                      			     <c:set var="num" value= '0'/>
+                      			     
+                                     	<c:forEach items="${boardList}" var="boardList">
+                                   		
+                                 			<c:if test="${num <5}">
+                                   								<c:if test="${cateList == boardList.cateCode}" >
+						                                        <c:set var="num" value="${num+1}"/>
+						                                      	
+						                                        
+						                                        
+						                                        
+						                                        <tbody>
+						                                       	
+						                                            <tr>
+						                                            
+						                                                <td>${boardList.lectureNo}</td>
+						                                                <td><a href="read.htm?lectureNo=${boardList.lectureNo}">${boardList.lectureTitle}</a></td>  
+						                                                <td>500</td>
+						                                           	
+						                                            </tr>
+						                                        
+						                                        </tbody>
+						                                        
+						                                        </c:if>
+                                   			
+                                   				
+                                 			
+                                 			
+                                   				
+                                      		</c:if>
+                                      		
+                                        
+                                        </c:forEach>                                        
                                         
                                         
-                                        
-                                     <c:forEach items="${boardList}" var="boardList" begin="1" end="5">
-                                        <tbody>
-                                            <tr>
-                                                <td>${boardList.lectureNo}</td>
-                                                <td>${boardList.lectureTitle}</td>
-                                                <td>500</td>
-                                            </tr>
-                                           
-                                        </tbody>
-                                        </c:forEach>
-                                        </c:if>
                                     </table>
                                   </div>
                                   
                                       					<div align="center">
-                                         				 <button type="button" class="btn btn-round btn-warning dropdown-toggle" data-toggle="dropdown">
+                                      					<form action="detailList.htm">
+                                         				 <input type="hidden" name= "cateCode" value="${cateList}">
+                                         				 <button type="submit" class="btn btn-round btn-warning dropdown-toggle">
+                                                            
                                                             Details
                                                         </button>
+                                                        </form>
                                                         </div>
                                                          
                                   
@@ -123,7 +140,7 @@
 								<div class="row">
 									<div class="col-md-12"> 
 									
-									<input name ="cateTitle" type="text" class="form-control" placeholder="카테고리 이름">
+									<input name ="cateCode" type="text" class="form-control" placeholder="카테고리 이름">
 									</div>
 								 
 								</div>
