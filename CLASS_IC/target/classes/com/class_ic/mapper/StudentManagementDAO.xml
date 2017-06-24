@@ -9,9 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	VALUES (#{groupCode}, #{groupName}, #{bindNum}, #{classCode}, #{groupNum}); 
 </insert>	
 
-<insert id="studentGroupping" parameterType="com.class_ic.vo.StudentGroupDTO">
-	INSERT INTO StudentGroup (email, groupCode, groupName, position, groupLeaderState, groupTable, classCode)
-	VALUES (#{email}, #{groupCode}, #{groupName}, #{position}, #{groupLeaderState}, #{groupTable}, #{classCode})
+<insert id="studentGroupping" parameterType="String">
+	INSERT INTO StudentGroup (email, groupCode, groupName, classCode, groupLeaderState)
+	VALUES (#{email}, #{groupCode}, #{groupName}, #{classCode}, #{groupLeaderState})
 </insert>
 
 <select id="getStudentGroupSetting" resultType="com.class_ic.vo.StudentTableDTO">
@@ -19,10 +19,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <select id="getStudentGroup" resultType="com.class_ic.vo.StudentGroupDTO">
-SELECT m.email as email, m.name as name, m.photoSrc as photoSrc, s.groupCode as groupCode, s.groupName as groupName, s.classCode as classCode, s.groupTable as groupTable, s.position as position, s.groupLeaderState as groupLeaderState
+SELECT m.email as email, m.name as name, m.photoSrc as photoSrc, s.groupName as groupName, s.groupCode as groupCode, s.classCode as classCode, s.groupLeaderState as groupLeaderState
 FROM studentgroup s JOIN member m
-ON  s.email = m.email
-WHERE classCode=#{classCode}
+ON	s.email = m.email
+WHERE classCode=#{param1} AND groupCode=#{param2}
+GROUP BY groupName
+</select>
+
+<select id="getStudentGroupMember" resultType="com.class_ic.vo.StudentGroupDTO">
+SELECT m.email as email, m.name as name, m.photoSrc as photoSrc, s.groupName as groupName, s.groupCode as groupCode, s.classCode as classCode, s.groupLeaderState as groupLeaderState
+FROM studentgroup s JOIN member m
+ON	s.email = m.email
+WHERE classCode=#{param1} AND groupCode=#{param2}
 </select>
 
 
