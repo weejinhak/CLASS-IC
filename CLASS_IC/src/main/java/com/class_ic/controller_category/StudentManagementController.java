@@ -163,7 +163,11 @@ public class StudentManagementController {
 				
 				request.setAttribute("position", tableArr);
 				
+<<<<<<< HEAD
 				studentmanagerservice.studentGroup(emailArr, tableArr, classCode);
+=======
+				//studentmanagerservice.studentGroup(emailArr, positionArr, tableArr, classCode);
+>>>>>>> branch 'master' of https://github.com/johntei/CLASS-IC.git
 			return "teacher/group_ajax";	
 	}
 	
@@ -171,8 +175,8 @@ public class StudentManagementController {
 	@RequestMapping(value="callgroup.htm", method=RequestMethod.POST)
 	public String getStudentGroup(Model m, @RequestParam String classCode){
 		System.out.println(classCode);
-		List<StudentGroupDTO>grouplist =  studentmanagerservice.getstudentGroup(classCode);
-		m.addAttribute("grouplist", grouplist);
+		//List<StudentGroupDTO>grouplist =  studentmanagerservice.getstudentGroup(classCode);
+		//m.addAttribute("grouplist", grouplist);
 		
 		return "teacher/group_ajax";
 	}

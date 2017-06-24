@@ -5,6 +5,7 @@
 <c:forEach var="group" items="${grouplist }">
 	<div>
 	<p>${group.groupName }</p>
+<<<<<<< HEAD
 	<ul id="${group.groupName }">
 <c:forEach var="member" items="${memberlist}">
 	<c:if test="${group.groupName == member.groupName}">
