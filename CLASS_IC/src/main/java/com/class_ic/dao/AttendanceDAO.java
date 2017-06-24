@@ -25,4 +25,7 @@ public interface AttendanceDAO {
 	//기수에 알맞는 시작, 종료 시간을 가지고 온다
 	public 	LectureDTO selectStartEndTime(String classCode); 
 	
+	//오늘 출결 사항을 계산해서 update 해주는 메소드
+	public int updateAttendaceState(String attendState,String email);
+	
 }
