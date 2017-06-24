@@ -64,7 +64,7 @@ public class SchedulerController {
 	}
 	
 
-	@Scheduled(cron="0 0 22 * * *")
+	@Scheduled(cron="0 0 23 * * *")
 	public void updateState() {
 
 		AttendanceDAO attendanceDao=sqlsession.getMapper(AttendanceDAO.class);
@@ -94,6 +94,7 @@ public class SchedulerController {
 			System.out.println(list.getOutClass());
 			
 			
+			
 			//둘다 널이 아니면(입퇴실 둘다 찍은 사람만 출적 판단함.
 			if((list.getInClass()!=null)&&(list.getOutClass()!=null)){
 				
@@ -109,6 +110,7 @@ public class SchedulerController {
 				System.out.println();
 		
 				System.out.println(list.getInClass()+","+list.getOutClass());
+				
 				
 			}
 			
