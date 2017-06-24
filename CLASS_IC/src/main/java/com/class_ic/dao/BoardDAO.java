@@ -17,6 +17,7 @@ import com.class_ic.vo.SearchCriteria;
 
 public interface BoardDAO {  
 	
+	
   public void create(BoardVO vo) throws ClassNotFoundException, SQLException;
   
   public BoardVO read(Integer lectureNo) throws ClassNotFoundException, SQLException;
@@ -26,8 +27,9 @@ public interface BoardDAO {
   public List<BoardVO> listWhereCate(String cateCode, String subcateCode) throws ClassNotFoundException, SQLException;
   
   public void categoryCreate(String cateCode) throws ClassNotFoundException, SQLException;
-  
+
   public void subCategoryCreate(String cateCode, String subcateCode) throws ClassNotFoundException, SQLException;
+  
   
   public List<String> showCateList() throws ClassNotFoundException, SQLException;
   public List<String> showSubCateList(String cateCode) throws ClassNotFoundException, SQLException;
@@ -44,7 +46,16 @@ public interface BoardDAO {
   
   public int listSearchCount(SearchCriteria cri)throws ClassNotFoundException, SQLException; //
   ///////////////////////////////////////////////////////////////////
-
   public List<String> getSubCateList(String cateCode);
+  
+  
+  
+  
+  
+  
+  ////////////////////////////////////안쓰는 잉여 DAO/////////////////////////////////////////
+  
+  
+  
 
 }

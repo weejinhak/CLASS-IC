@@ -12,24 +12,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  -->
 
 <mapper namespace="com.class_ic.dao.BoardDAO">
-
+	
+	<!-- 게시물 등록해주는 역할 -->
 	<insert id="create">
 		insert into LectureBoard (lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent)
 		values(#{lectureNo}, #{classCode}, #{cateCode}, #{subcateCode}, #{lectureTitle}, #{lectureContent})
 	</insert>
 	
+	<!-- 해당 CateCode 에 있는 subCateCode 리스트 가져와 주기 -->
 	<select id="getSubCateList" resultType="String">
 		select subcateCode
 		from SubCategory
 		where cateCode = #{cateCode}
 	</select>
 	
+	<!-- 게시글 삭제 -->
 	<insert id="delete">
 		delete
 		from LectureBoard
 		where lectureNo = #{lectureNo}
 	</insert>
 	
+	<!-- 해당 하나의 게시물의 상세내용 보기 -->
   	<select id="read" resultType="com.class_ic.vo.BoardVO">
 		select
 		lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent, lectureDate
@@ -38,6 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where lectureNo = #{lectureNo}
 	</select>
 	
+	<!-- 모든 게시물 보여주는 역할 -->
 	<select id="listAll" resultType="com.class_ic.vo.BoardVO">
  
 		select 
@@ -49,6 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 	
+	<!-- catecode, subcatecode 에 해당되는 게시물 목록 -->
 	<select id="listWhereCate" resultType="com.class_ic.vo.BoardVO">
  
 		select 
@@ -60,31 +66,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 	
+	<!-- 카테고리 추가 -->
 	<insert id="categoryCreate">
 		insert into category (cateCode, cateTitle)
 		values(#{cateCode} , 0 )
 	</insert>
 	
+	<!-- 서브카테고리 추가 -->
 	<insert id="subCategoryCreate">
 		insert into SubCategory (subcateCode, cateCode, subcateTitle)
 		values(#{param1} , #{param2}, 0)
 	</insert>
 	
-	
+	<!-- 카테고리 리스트 보여주기 return List<String> -->
 	<select id="showCateList" resultType="String">
 		select cateCode
 		from
 		Category
 	</select>
 	
+	<!-- 서브 카테고리 리스트 보여주기 return List<String> -->
 	<select id="showSubCateList" resultType="String">
 		select subcateCode
 		from
 		SubCategory
 		where cateCode= #{cateCode}
-		
 	</select>
 
+<!-- 페이징 처리에 관련된 모든 DAO -->
 <!-- ////////////////////////criteria 들어가는 거 전부다//////////////////////////////// -->
 		<select id="listCriteria" resultType="com.class_ic.vo.BoardVO">
 
@@ -142,7 +151,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 <!-- ////////////////////////criteria END//////////////////////////////// -->
+<!-- 페이징 처리에 관련된 모든 DAO 끝 -->
 
+
+<!-- 비록 안쓰는 DAO지만 지우면 에러나니깐 지우지 말것 -->
 <!-- ////////////////////////////SEARCH//////////////////////////// -->
  	<sql id="search">
 		<if test="searchType != null">
@@ -190,7 +202,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <!-- ////////////////////////////file upload/////////////////////////////////////  -->
-
 <insert id="addAttach">
 	insert into File(fileNo, fileSrc) values (LAST_INSERT_ID(), #{fileNo})
 </insert> 
