@@ -37,7 +37,7 @@
 						data-header-animation="true" >
 						<div align="center">
 						<h3 class="card-title" >
-							<br>KOSTA 151기 (default)
+							<br>(테스트용) 151기
 						</h3></div>
 					</div>
 					<div class="card-content">
@@ -46,12 +46,13 @@
 								class="btn btn-danger btn-simple fix-broken-card">
 								<i class="material-icons">build</i> Fix Header!
 							</button>
+							<a href="student/main.htm">
 							<button type="button" class="btn btn-info btn-simple"
 								rel="tooltip" data-placement="bottom" title=""
 								data-original-title="go!">
 								<i class="material-icons">input</i>
 							</button>
-						
+							</a>
 						</div>
 						
 						<br>
@@ -120,7 +121,36 @@
 
 
 </body>
+
 <!-- common footer -->
+<!-- 기수 정보 가져오기  -->
+<script type="text/javascript">
+	/* 페이지 로드시 QR 코드 가져옴. */
+	$(document).ready(function() {
+   			console.log("페이지가 시작1");
+   			var url ="createCode.htm";			 
+			$("#img").attr("src", url + "?content=" + 151); 	
+	});
+	
+	/* 페이지 로드시 Session- email에 맞는 기수를 가져오고 그 수만큼 반복.   */
+	$(document).ready(function() {
+		  console.log("페이지가 시작2");
+
+			$.ajax({
+				  type : 'POST',
+				  url : 'lecturecodeSelect.htm',
+				  dataType : 'html',
+				  data: {
+				      email : '${sessionScope.email}'
+				  },
+				  success : function(data){
+					  	$('#lecturelist').empty();
+						$('#lecturelist').html(data);
+				  }
+			});
+	});
+</script>
+<!-- 기수 정보 가져오기 끝 -->
 <jsp:include page="inc/common_footer.jsp"></jsp:include>
 <script type="text/javascript">
     $().ready(function() {

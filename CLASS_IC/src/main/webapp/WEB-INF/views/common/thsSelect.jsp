@@ -38,7 +38,7 @@
 				  url : 'lecturecodeSelect.htm',
 				  dataType : 'html',
 				  data: {
-				      email : '111'
+				      email : '${sessionScope.eamil}'
 				  },
 				  success : function(data){
 						$('#lecturelist').html(data);
