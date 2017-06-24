@@ -12,6 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.class_ic.dao.StudentManagementDAO;
 import com.class_ic.vo.StudentGroupDTO;
 import com.class_ic.vo.StudentTableDTO;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.class_ic.dao.StudentManagementDAO;
+import com.class_ic.vo.StudentGroupDTO;
+import com.class_ic.vo.StudentTableDTO;
 
 @Service
 public class StudentManagementService {
@@ -33,7 +39,7 @@ public class StudentManagementService {
 		return null;
 	}
 	
-	//조편성 setting 정보 가져와서 쿠션페이지로 보낸다
+	//조편성 setting 정보 가져와
 	public List<StudentTableDTO> getGroupSettingInfo(){
 		StudentManagementDAO student_dao = sqlsession.getMapper(StudentManagementDAO.class);
 		List<StudentTableDTO> groupsetting=  student_dao.getStudentGroupSetting();
@@ -42,16 +48,20 @@ public class StudentManagementService {
 	}
 	
 	//조 나눈거 정보 가져오기 (ajax get)
-		public List<StudentGroupDTO> getstudentGroup(String classCode){
+		public List<StudentGroupDTO> getstudentGroup(Model m, String classCode, String groupCode){
 			System.out.println(classCode + ": service");
 			StudentManagementDAO student_dao = sqlsession.getMapper(StudentManagementDAO.class);
-			List<StudentGroupDTO> groupList = student_dao.getStudentGroup(classCode);
-			System.out.println(groupList);
+	
+			List<StudentGroupDTO> groupList = student_dao.getStudentGroup(classCode, groupCode);
+			List<StudentGroupDTO> groupMemberList = student_dao.getStudentGroupMember(classCode, groupCode);
+			
+			m.addAttribute("memberlist", groupMemberList);
+			
 			return groupList;
 		}
 	
 	//조 나눈거 정보 저장 (ajax post)
-	public void studentGroup(String[] emailArr, String[] positionArr, String[] tableArr, String classCode){
+	public void studentGroup(String[] emailArr, String[] groupArr, String groupCode, String classCode, String groupLeaderState){
 		StudentManagementDAO student_dao = sqlsession.getMapper(StudentManagementDAO.class);
 		/*
 		 * String[] emailArr= email.split(",");	
@@ -63,11 +73,15 @@ public class StudentManagementService {
 		
 		StudentGroupDTO sgroup  = new StudentGroupDTO();
 		
+		
+		System.out.println(emailArr.length);
+		System.out.println(groupArr.length);
 		for(int i=0;i<emailArr.length;i++){
 			sgroup.setEmail(emailArr[i]);
-			sgroup.setPosition(positionArr[i]);
-			sgroup.setGroupTable(tableArr[i]);	
+			sgroup.setGroupName(groupArr[i]);
 			sgroup.setClassCode(classCode);
+			sgroup.setGroupCode(groupCode);
+			sgroup.setGroupLeaderState(groupLeaderState);
 			student_dao.studentGroupping(sgroup);
 		}
 	

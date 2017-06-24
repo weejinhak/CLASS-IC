@@ -29,6 +29,83 @@ public class StudentManagementController {
 	
 	@Autowired
 	MemberService_Web memberservice;
+		
+	//마지막 조를 나눠볼까 일단 조나누기 edit page 호출하자
+		@RequestMapping(value="groupEdit.htm", method=RequestMethod.GET)
+		public ModelAndView groupEdit(ModelAndView mv, String classCode){
+			//get 호출이여도 기본으로
+			//1. member total count
+			//GroupCategory의 bindnum null/값이 있을 대로 나눠서 처리 > nvl() 으로 null 을 0으로 할 것인가
+			//2. 저장된 student group 값 반영해서 출력해야하므로 list 또 출력
+
+			ModelAndView MnV = memberservice.getMemberGp(mv);
+			//추가 조편성한 내용 저장
+			//ModelAndView MnV = memberservice.getStudentAll(mv, member);
+				
+			return MnV;
+		}
+	
+		//조편성 저장
+		@RequestMapping(value="saveGroup.htm", method=RequestMethod.POST)
+		public String saveGroup(HttpServletRequest request, StudentGroupDTO sgroup){
+			// data : {"email":email, "order":order, "groupTable":groupTable },
+					String email=request.getParameter("email");
+					String groupName = request.getParameter("groupName");
+					String groupCode = request.getParameter("groupCode");
+					String classCode = request.getParameter("classCode");;
+					String groupLeaderState = request.getParameter("groupLeaderState");
+					String[] emailArr= email.split(",");	
+					String[] groupArr = groupName.split(",");
+					System.out.println(emailArr.length + "/" +groupArr.length );
+					System.out.println(classCode);
+	/*				for(String value:emailArr){
+						System.out.println(value);
+					}*/
+					
+					studentmanagerservice.studentGroup(emailArr, groupArr, groupCode, classCode, groupLeaderState);
+				return "teacher/group_ajax";	
+		}
+	
+	
+		//save하고 나서 list에서 저장된 값 불러옵니다. call your save
+		@RequestMapping(value="getSave.htm", method=RequestMethod.POST)
+		public String getSave(Model m, @RequestParam String classCode, @RequestParam String groupCode){
+			System.out.println(classCode);
+			System.out.println(groupCode);
+			List<StudentGroupDTO>grouplist =  studentmanagerservice.getstudentGroup(m, classCode, groupCode);
+			m.addAttribute("grouplist", grouplist);
+			
+			return "teacher/final_group_ajax";
+		}
+		
+		
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//학적부 페이지 
+				@RequestMapping(value="student_table.htm", method=RequestMethod.GET)
+				public String studentTable(Model m){
+					System.out.println("학적부 페이지로 이동하는 controller");
+					return "teacher.student_table_final";
+				}
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+				/*
 	
 	//학적부 (위치)
 	@RequestMapping(value="stable.htm", method=RequestMethod.GET)
@@ -43,6 +120,7 @@ public class StudentManagementController {
 		return mv;
 	}
 	
+
 	//학적부 (수정화면에서 값 넘겨준다)
 	@RequestMapping(value="stable.htm", method=RequestMethod.POST)
 	public @ResponseBody String studentTable(StudentTableDTO sTable){
@@ -65,6 +143,8 @@ public class StudentManagementController {
 			
 		return MnV;
 	}
+	
+	
 	//조편성 저장
 	@RequestMapping(value="sgroup.htm", method=RequestMethod.POST)
 	public String studentGroup(HttpServletRequest request, StudentGroupDTO sgroup){
@@ -77,13 +157,13 @@ public class StudentManagementController {
 				String[] tableArr = groupTable.split(",");
 				String classCode = request.getParameter("classCode");
 				System.out.println(classCode);
-/*				for(String value:emailArr){
+				for(String value:emailArr){
 					System.out.println(value);
-				}*/
+				}
 				
 				request.setAttribute("position", tableArr);
 				
-				studentmanagerservice.studentGroup(emailArr, positionArr, tableArr, classCode);
+				studentmanagerservice.studentGroup(emailArr, tableArr, classCode);
 			return "teacher/group_ajax";	
 	}
 	
@@ -109,6 +189,7 @@ public class StudentManagementController {
 		System.out.println("과제 게시판 정보 입력하는 컨트롤 탐");
 			
 		return "teacher/groupset_ajax";
-	}
+	}*/
+
 }
 

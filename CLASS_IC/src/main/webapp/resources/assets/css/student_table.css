@@ -5,12 +5,21 @@ body {
 	margin-left: 5px;
 }
 .container {
-	width:800px;
+	width:700px;
 	height:700px;
 	margin-top: 100px;
 	margin-left: auto;
 	margin-right: auto;
 	background:linear-gradient(#465, #475);
+    box-shadow:0px 4px 12px rgba(0, 0, 0, 0.5);'
+}
+
+.memberlist {
+	width: 250px;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	backgroundx(#465, #475);
     box-shadow:0px 4px 12px rgba(0, 0, 0, 0.5);'
 }
 
@@ -26,26 +35,26 @@ body {
 
 .photo_img {
 	display:block;
-	max-width:100%;
-	max-height:100%;
-	img-circle{border-radius:50%;
+	max-width:100px;
+	max-height:100px;
+	border-radius:50%;
 	border-radius: 100px;
 	background-position: center center;
 	background-size: 100px;
 }
 
 . product span {
-	display: none;
+	/* display: none; */
 	width:100px;
 	height:100px;
 	border-radius: 100px;
-	background-color: rgba(149, 165, 166,0.6);
+	background-color: rgba(0, 0, 0, 0.1); 
 	text-align: center;
 	font-size: 40px;
-	padding-top: 20px;
+/* 	padding-top: 20px;
 	box-sizing: border-box;
 	color:#FFFFFF;
-	cursor:all-scroll;
+	cursor:all-scroll; */
 } 
 
 .product:hover span {
@@ -61,7 +70,7 @@ body {
 	text-align: center;
 	float: left;
 }	
-/* 
+
 .favourites span {
 	display: block;
 	width:100px;
@@ -81,7 +90,7 @@ body {
 	float: left;
 	margin-left: 10px;
 }
-/* 
+
 .favourites-container span {
 	display: block;
 	width:30px;
@@ -89,15 +98,15 @@ body {
 	border-radius: 30px;
 	background-size: 30px;
 	margin-bottom: 5px;
-} */
+}
 
 .highlight {
 	border:2px dashed rgba(149, 165, 166,0.3);
 }
-/* 
+
 .highlight span:nth-child(1) {
 	display: none;
-} */
+}
 /* 
 .record-foo {
 	background-image: url(http://ecx.images-amazon.com/images/I/51eCZAq37qL.jpg);
