@@ -47,7 +47,7 @@
    <a href="teacher/test2.htm"> attandance</a> <br/>
    <a href="teacher/test3.htm"> attandanclist_edit</a> <br/>
    <a href="teacher/test4.htm"> board_content</a> <br/>
-   <a href="teacher/test5.htm"> board_details_view</a> <br/>
+   <a href="teacher/todayclass.htm""> board_details_view</a> <br/>
    <a href="teacher/test6.htm"> board_details</a> <br/>
    <a href="teacher/test7.htm">board_homework_content</a> <br/>
    <a href="teacher/test8.htm"> board</a> <br/>

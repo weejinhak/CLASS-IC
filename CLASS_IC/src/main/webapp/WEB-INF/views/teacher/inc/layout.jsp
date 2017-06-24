@@ -148,20 +148,7 @@
 
 		</div>
 	</div>
- 
-    <div class="wrapper">
-       
-          <!-- side navi 메뉴 영역-->
-             <tiles:insertAttribute name="navi" />  
-           <div class="main-panel">
-          <!--  header 영역 -->
-             <tiles:insertAttribute name="header" />
-           <!--  contents 영역 -->
-               <tiles:insertAttribute name="content" />
-           
-        </div>
-    </div>
- 
+
 </body>
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////  -->
 <!-- Forms Validations Plugin -->
