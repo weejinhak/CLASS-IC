@@ -37,7 +37,7 @@
 						data-header-animation="true" >
 						<div align="center">
 						<h3 class="card-title" >
-							<br>KOSTA 151 기
+							<br>KOSTA 151기 (default)
 						</h3></div>
 					</div>
 					<div class="card-content">
@@ -68,6 +68,8 @@
 				</div>
 			</div>
 
+
+<!-- 기수 coutn 해서  if 문 for 문으로 show   -->
 			<div class="col-md-4">
 				<div class="card card-chart" data-count="4">
 					<div class="card-header" data-background-color="rose"
