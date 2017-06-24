@@ -144,59 +144,80 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>4.0.4.RELEASE</version>
 		</dependency>
-		 <!-- validation -->
-      <dependency>
-      	<groupId>javax.validation</groupId>
-      	<artifactId>validation-api</artifactId>
-      	<version>1.1.0.Final</version>
-      </dependency>
-      <dependency>
-      	<groupId>org.hibernate</groupId>
-      	<artifactId>hibernate-validator</artifactId>
-      	<version>5.1.1.Final</version>
-      </dependency>
-      <!--  이메일 -->
-     <dependency>
+		<!-- validation -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.1.1.Final</version>
+		</dependency>
+		<!-- 이메일 -->
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>4.2.5.RELEASE</version>
 		</dependency>
-	<!-- schedule -->
+		<!-- schedule -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>4.0.4.RELEASE</version>
 		</dependency>
-      <dependency>
-      	<groupId>javax.mail</groupId>
-      	<artifactId>mail</artifactId>
-      	<version>1.4.7</version>
-      </dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
 		<!-- jackson -->
-    	<dependency>
-    		<groupId>com.fasterxml.jackson.core</groupId>
-    		<artifactId>jackson-core</artifactId>
-    		<version>2.7.3</version>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.7.3</version>
 		</dependency>
 		<dependency>
-    		<groupId>org.codehaus.jackson</groupId>
-    		<artifactId>jackson-core-asl</artifactId>
-    		<version>1.9.13</version>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
 		</dependency>
 		<dependency>
-    		<groupId>com.fasterxml.jackson.core</groupId>
-    		<artifactId>jackson-databind</artifactId>
-    		<version>2.7.3</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.7.3</version>
 		</dependency>
 		<dependency>
-    		<groupId>org.codehaus.jackson</groupId>
-    		<artifactId>jackson-mapper-asl</artifactId>
-    		<version>1.9.13</version>
-    		</dependency>
-		<!-- Json dependency -->
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
+		<!-- Json dependency (소현 추가) -->
 
 
-		
+		<!-- https://mvnrepository.com/artifact/net.sf.ezmorph/ezmorph -->
+		<dependency>
+			<groupId>net.sf.ezmorph</groupId>
+			<artifactId>ezmorph</artifactId>
+			<version>1.0.6</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk15</classifier>
+		</dependency>
+
+
+
+
+
+
 		<!--QR zxing 진학 -->
 		<dependency>
 			<groupId>com.google.zxing</groupId>
@@ -208,7 +229,21 @@
 			<artifactId>javase</artifactId>
 			<version>3.1.0</version>
 		</dependency>
-		
+
+
+		<!-- websocket -->
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<scope>provided</scope>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>4.0.9.RELEASE</version>
+		</dependency>
 
 	</dependencies>
 	<build>
