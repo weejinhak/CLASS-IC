@@ -75,6 +75,7 @@
    <a href="student/test15.htm"> student_memo</a> <br/>
    <a href="student/test16.htm"> student_message</a> <br/>
    <a href="student/test17.htm"> 데이터 시트</a> <br/>
+   <a href="student/test18.htm"> 차트차트</a>
   	main와 student은 test용으로 내가 별도로 만든거니 체크 안해도 됨<br/>
    
    

@@ -407,11 +407,26 @@ demo = {
 
 
         /*  **************** Public Preferences - Pie Chart ******************** */
-
+      
+        
+        
         var dataPreferences = {
-            labels: ['62%','32%','6%'],
-            series: [62, 32, 6]
+            labels: ['70%','0%','0%'],
+            series: [70, 0, 0]
         };
+        
+        $.ajax({
+            url:"attendchart.htm",
+             type:"POST",
+             dataType:'json',
+             data:{
+            	 email:sessionId,
+            	 classcode:'151'
+             },
+             success:function(data){  
+            	 console.log(data);
+             }
+         }); //ajax 끝
 
         var optionsPreferences = {
             height: '230px'

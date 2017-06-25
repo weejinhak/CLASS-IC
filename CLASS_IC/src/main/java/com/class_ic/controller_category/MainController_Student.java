@@ -100,5 +100,10 @@ public class MainController_Student {
 			System.out.println("student main 컨트롤 탐, test.htm ");
 			return "student.data_table";
 		}
+		@RequestMapping("test18.htm")
+		public String studentTest18(){
+			System.out.println("student main 컨트롤 탐, test.htm ");
+			return "student.chart";
+		}
 	/////////////////////////////////////////////////////////////////////////////
 }
