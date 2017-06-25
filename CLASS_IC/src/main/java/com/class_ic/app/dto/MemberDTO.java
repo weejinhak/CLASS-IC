@@ -1,3 +1,11 @@
+/*
+* @FileName		:	LoginDTO.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.16
+* @Author		:	위진학
+* @Desc         :   App 로그인시 안드로이드에서 넘오는 값을 GET,SET하기위한 DTO
+*/
 package com.class_ic.app.dto;
 
 public class MemberDTO {

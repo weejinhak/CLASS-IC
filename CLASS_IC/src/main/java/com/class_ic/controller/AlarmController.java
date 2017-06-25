@@ -1,3 +1,11 @@
+/*
+* @FileName		:	AlarmController.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.16
+* @Author		:	위진학
+* @Desc         :   쪽지 전달시 Message관련 테이블에 Insert 및 Select해오기 위한 Controller
+*/
 package com.class_ic.controller;
 
 import java.sql.SQLException;
@@ -23,14 +31,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.class_ic.dao.AlarmDAO;
 import com.class_ic.vo.All_Alarm_DTO;
 
-/*알람*/
+/*알람 아직 서비스로 빼지 못함*/
 @Controller
 public class AlarmController {
 
 	@Autowired
 	private SqlSession sqlsession;
 	
-	//sendMessage.htm
+	
+	/*
+	@description : 보내온 메시지를 Table에 Insert시키기위한 함수
+	*/
 	@RequestMapping(value="student/sendMessage.htm")
     public String sendMessage(@RequestParam(value="sendmessage") String sendmessage,HttpSession session,
     		@RequestParam(value="remail") String remail)
@@ -70,7 +81,9 @@ public class AlarmController {
 	      
 	}
 	
-	//alarm test
+	/*
+	@description :소켓에 연결 되어 있을 시 실시간 안읽은 쪽지의 TotalCount를 상대방에게 전송하기 위한 함수
+	*/
 	@RequestMapping(value="student/newAlarm.htm")
     public String newAlarm(@RequestParam(value="newAlarm") String newAlarm,HttpSession session)
             throws ClassNotFoundException, SQLException{
@@ -78,10 +91,7 @@ public class AlarmController {
 		
 			System.out.println("newAlarm.htm");
 			System.out.println("newAlarm : "+newAlarm);
-			
-		/*	String Ename = (String)session.getAttribute("email");
-			System.out.println(Ename);*/
-						
+							
 			AlarmDAO alarm_DAO = sqlsession.getMapper(AlarmDAO.class);
 			
 			int totalCount = alarm_DAO.totalCount(newAlarm);
