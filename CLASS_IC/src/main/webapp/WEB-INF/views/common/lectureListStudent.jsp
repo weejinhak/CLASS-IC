@@ -11,7 +11,7 @@ console.log('학생 기수 들어옴');
 						<div class="col-md-4">
 										<div class="card card-chart" data-count="3">
 										
-												<div class="card-header" data-background-color="blue"
+												<div class="card-header" data-background-color="pink"
 													data-header-animation="true" >
 													<div align="center">
 													<h3 class="card-title" >
