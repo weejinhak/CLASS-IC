@@ -7,7 +7,7 @@
                 </a>
             </div>
             <div class="logo logo-mini">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="index.htm" class="simple-text">
                     CLASS-IC
                 </a>
             </div>

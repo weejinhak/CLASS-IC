@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div class="logo logo-mini">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="index.htm" class="simple-text">
                     Ct
                 </a>
             </div>
@@ -25,7 +25,7 @@
 					<div class="collapse" id="collapseExample">
 						<ul class="nav">
 							<li><a href="#">나의 정보수정</a></li>
-							<li><a href="./logout.htm">로그아웃</a></li>
+							<li><a href="../logout.htm">로그아웃</a></li>
 						</ul>
 					</div>
 				</div>
