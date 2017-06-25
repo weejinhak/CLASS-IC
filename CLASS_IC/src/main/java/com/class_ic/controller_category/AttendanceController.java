@@ -8,6 +8,7 @@
 */
 package com.class_ic.controller_category;
 
+<<<<<<< HEAD
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -33,8 +34,17 @@ import net.sf.json.JSONObject;
 * @Author: 위진학
 * @Desc: 
 */
+=======
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+>>>>>>> refs/heads/hyun_0617
 @Controller
 public class AttendanceController {
+	
+	
+
 
 	@Autowired
 	private AttendanceListService attendanceListService;

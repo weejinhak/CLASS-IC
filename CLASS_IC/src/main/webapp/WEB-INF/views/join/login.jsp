@@ -30,7 +30,7 @@
 </head>
 
 <body>
-   
+
    [css 테스트 목록]<br/>
    [공톷페이지] <br/><!-- 기수선택 추가 6/17 -->
     <a href="common/select.htm">thsSelect</a> <br/>
@@ -38,10 +38,12 @@
      <a href="common/select_student.htm">thsSelect_student</a> <br/>
    [선생 페이지]<br/>
    <a href="teacher/test1.htm"> attandance_edit</a> <br/>
-   <a href="teacher/test2.htm"> student</a> <br/>
+   <a href="teacher/student_table.htm"> student Table</a> <br/>
+ 
+   <a href="teacher/test3.htm"> drag 갤러리</a> <br/>
 <!--    <a href="stable.htm?authority="+"ROLE_STUDENT"> student group 아 쫌</a> <br/> -->
    <!--  <a href="teacher/stable.htm"> student group</a> <br/> -->
-    <a href="teacher/sgroup.htm"> student group</a>개피곤 <br/>
+    <a href="teacher/groupEdit.htm"> student group</a>개피곤 마지막 <br/>
    <a href="teacher/test4.htm"> board_content</a> <br/>
    <a href="teacher/test5.htm"> board_details_view</a> <br/>
    <a href="teacher/test6.htm"> board_details</a> <br/>
@@ -74,7 +76,11 @@
    <a href="student/test14.htm"> student_main</a> <br/>
    <a href="student/test15.htm"> student_memo</a> <br/>
    <a href="student/test16.htm"> student_message</a> <br/>
+
    <a href="student/test17.htm"> 데이터 시트</a> <br/>
+
+   <a href="student/data_table.htm"> student_data_table</a> <br/>
+
   	main와 student은 test용으로 내가 별도로 만든거니 체크 안해도 됨<br/>
    
    
@@ -87,9 +93,7 @@
    타일즈: <a href="teacher/main.htm">선생님 페이지</a> <br/>
    타일즈 : <a href="student/main.htm">학생 페이지</a> <br/>
    
-   
-   
-   
+
     <div class="wrapper wrapper-full-page">
         <div class="full-page login-page" filter-color="black" data-image="${pageContext.request.contextPath}/resources/assets/img/login.jpeg">
             <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->

@@ -25,12 +25,17 @@ console.log('jsp까지 들어옴');
 																class="btn btn-danger btn-simple fix-broken-card">
 																<i class="material-icons">build</i> Fix Header!
 															</button>
+															<!-- 링크 추가부분 -->
+															<!-- 학생일 경우  
+															<a href="teacher/main.htm?classCode="+${n.classCode}>
+															-->
+															<a href="teacher/main.htm?classCode="+${n.classCode}>
 															<button type="button" class="btn btn-info btn-simple"
 																rel="tooltip" data-placement="bottom" title=""
 																data-original-title="go!" >
 																<i class="material-icons">input</i>
 															</button>
-														
+															</a>
 														</div>											
 															<br>
 														<p class="category">
