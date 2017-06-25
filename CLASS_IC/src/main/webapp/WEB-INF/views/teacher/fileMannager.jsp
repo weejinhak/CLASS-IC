@@ -18,11 +18,17 @@
 						data-background-color="purple">
 						<i class="material-icons">assignment</i>
 					</div>
+					
+					
+					
+					<!-- content 시작  -->
 					<div class="card-content">
 						<h4 class="card-title">integrated management system</h4>
 						<div class="toolbar">
 							<!--        Here you can write extra buttons/actions for the toolbar              -->
 						</div>
+						
+						<!-- 시작   -->
 						<div class="material-datatables">
 
 							<!-- 카테고리 select start -->
@@ -37,7 +43,7 @@
 							</div>
 							<!-- 카테고리 select end -->
 							
-							<!-- 검색창 -->
+	<!-- 						검색창
 							  <form class="navbar-form navbar-right" role="search">
                             <div class="form-group form-search is-empty">
                                 <input type="text" class="form-control" placeholder="Search">
@@ -49,7 +55,7 @@
                             </button>
                         </form>
 							
-							<!-- 검색창 끝 -->
+							검색창 끝 -->
 							
 							<table id="datatables"
 								class="table table-striped table-no-bordered table-hover"
@@ -63,7 +69,7 @@
 										<th class="disabled-sorting text-right">Actions</th>
 									</tr>
 								</thead>
-								<tfoot>
+							<!-- 	<tfoot>
 									<tr>
 										<th>글번호</th>
 										<th>글내용</th>
@@ -71,7 +77,7 @@
 										<th>작성날짜</th>
 										<th class="text-right">Actions</th>
 									</tr>
-								</tfoot>
+								</tfoot> -->
 								<tbody>
 									<tr>
 										<td>Tiger Nixon</td>
@@ -282,6 +288,9 @@
 								</tbody>
 							</table>
 						</div>
+						
+							<!-- 끝   -->
+						<!--end material-datatables -->
 					</div>
 					<!-- end content-->
 				</div>
