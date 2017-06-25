@@ -180,7 +180,7 @@
 									내 회원정보 수정
 									<div class="ripple-container"></div>
 								</button></li>
-							<li><br> <a href="logout.htm">
+							<li><br> <a href="${pageContext.request.contextPath}/logout.htm">
 									<button class="btn">
 										로그아웃
 										<div class="ripple-container"></div>
