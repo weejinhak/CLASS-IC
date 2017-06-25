@@ -31,7 +31,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.class_ic.dao.AlarmDAO;
 import com.class_ic.vo.All_Alarm_DTO;
 
-/*알람 아직 서비스로 빼지 못함*/
 @Controller
 public class AlarmController {
 
