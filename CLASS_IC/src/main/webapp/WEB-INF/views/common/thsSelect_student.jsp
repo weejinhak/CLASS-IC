@@ -15,7 +15,40 @@
 <meta name="viewport" content="width=device-width" />
 <!-- common header -->
 <jsp:include page="inc/common_header.jsp"></jsp:include>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
 
+	/* 페이지 로드시 QR 코드 가져옴. */
+	$(document).ready(function() {
+   			console.log("페이지가 시작1");
+   			var url ="createCode.htm";			 
+			$("#img").attr("src", url + "?content=" + 151); 	
+	});
+	
+	/* 페이지 로드시 Session- email에 맞는 기수를 가져오고 그 수만큼 반복.   */
+	$(document).ready(function() {
+		  console.log("페이지가 시작2");
+		  var sessionId="<%=(String)session.getAttribute("email")%>";
+		  console.log(sessionId);
+			$.ajax({
+				  type : "POST",
+				  url : "common/lecturecodeSelectStudent.htm",
+				  dataType : "html",
+				  data: {
+				      email: sessionId
+				  },
+				  success : function(data){
+						$('#lecturelist').html(data);
+						alert('성공');
+				  },
+				  error:function(request, status, error){
+		              
+		                alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error );
+		               
+		          }
+			});
+	});
+</script>
 </head>
 
 <body>
@@ -30,84 +63,9 @@
 	<div class="col-xs-3"></div>
 	<div class="col-xs-6">
 		<div class="row">
+			<!-- 기수  -->
+			<div id="lecturelist"></div>
 
-			<div class="col-md-4">
-				<div class="card card-chart" data-count="3">
-					<div class="card-header" data-background-color="blue"
-						data-header-animation="true" >
-						<div align="center">
-						<h3 class="card-title" >
-							<br>(테스트용) 151기
-						</h3></div>
-					</div>
-					<div class="card-content">
-						<div class="card-actions">
-							<button type="button"
-								class="btn btn-danger btn-simple fix-broken-card">
-								<i class="material-icons">build</i> Fix Header!
-							</button>
-							<a href="student/main.htm">
-							<button type="button" class="btn btn-info btn-simple"
-								rel="tooltip" data-placement="bottom" title=""
-								data-original-title="go!">
-								<i class="material-icons">input</i>
-							</button>
-							</a>
-						</div>
-						
-						<br>
-						<p class="category">
-							환영 합니다.
-						</p>
-					</div>
-					<div class="card-footer">
-						<div class="stats">
-							<i class="material-icons">access_time</i> campaign sent 2 days
-							ago
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-<!-- 기수 coutn 해서  if 문 for 문으로 show   -->
-			<div class="col-md-4">
-				<div class="card card-chart" data-count="4">
-					<div class="card-header" data-background-color="rose"
-						data-header-animation="true">
-						
-						<div align="center">
-						<h3 class="card-title" >
-							<br>KOSTA 152기
-						</h3></div>
-					</div>
-					<div class="card-content">
-						<div class="card-actions">
-							<button type="button"
-								class="btn btn-danger btn-simple fix-broken-card">
-								<i class="material-icons">build</i> Fix Header!
-							</button>
-							
-							<button type="button" class="btn btn-info btn-simple"
-								rel="tooltip" data-placement="bottom" title=""
-								data-original-title="go!">
-								<i class="material-icons">input</i>
-							</button>
-						</div>
-					
-						<br>
-						<p class="category">
-							환영 합니다.
-						</p>
-					</div>
-					<div class="card-footer">
-						<div class="stats">
-							<i class="material-icons">access_time</i> campaign sent 2 days
-							ago
-						</div>
-					</div>
-				</div>
-			</div>
 		
 		</div>
 
@@ -123,34 +81,6 @@
 </body>
 
 <!-- common footer -->
-<!-- 기수 정보 가져오기  -->
-<script type="text/javascript">
-	/* 페이지 로드시 QR 코드 가져옴. */
-	$(document).ready(function() {
-   			console.log("페이지가 시작1");
-   			var url ="createCode.htm";			 
-			$("#img").attr("src", url + "?content=" + 151); 	
-	});
-	
-	/* 페이지 로드시 Session- email에 맞는 기수를 가져오고 그 수만큼 반복.   */
-	$(document).ready(function() {
-		  console.log("페이지가 시작2");
-
-			$.ajax({
-				  type : 'POST',
-				  url : 'lecturecodeSelect.htm',
-				  dataType : 'html',
-				  data: {
-				      email : '${sessionScope.email}'
-				  },
-				  success : function(data){
-					  	$('#lecturelist').empty();
-						$('#lecturelist').html(data);
-				  }
-			});
-	});
-</script>
-<!-- 기수 정보 가져오기 끝 -->
 <jsp:include page="inc/common_footer.jsp"></jsp:include>
 <script type="text/javascript">
     $().ready(function() {

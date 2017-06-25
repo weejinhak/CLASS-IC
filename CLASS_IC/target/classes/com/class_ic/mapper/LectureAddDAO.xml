@@ -14,6 +14,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM class WHERE email=#{email}
 	</select>
 
+	<select id="getlectureStudent" resultType="com.class_ic.vo.LectureDTO">
+		SSELECT *
+		FROM ClassMember cm JOIN  Class c
+		ON	cm.classCode=c.classCode
+		WHERE	cm.email=#{email}
+	</select>
+	
 	<insert id="inputMyClassCode">
 	   INSERT INTO classmember (classCode)
 	   SELECT #{classCode} FROM DUAL

@@ -7,7 +7,7 @@
 console.log('jsp까지 들어옴');
 </script>
 
-              <c:forEach items="${lecturelist}" var="n">
+              <c:forEach items="${lecturelistStudent}" var="n">
 						<div class="col-md-4">
 										<div class="card card-chart" data-count="3">
 										
@@ -15,7 +15,7 @@ console.log('jsp까지 들어옴');
 													data-header-animation="true" >
 													<div align="center">
 													<h3 class="card-title" >
-														<br>${n.classcode}
+														<br>${n.classtitle}
 													</h3></div>
 												</div>
 												
@@ -25,18 +25,17 @@ console.log('jsp까지 들어옴');
 																class="btn btn-danger btn-simple fix-broken-card">
 																<i class="material-icons">build</i> Fix Header!
 															</button>
-															<form action="teacher/main.htm" method="POST">
-															<input type="hidden" value="${n.classcode }" name="classCode"/>
-															<button type="submit" class="btn btn-info btn-simple"
+														
+															<button type="button" class="btn btn-info btn-simple"
 																rel="tooltip" data-placement="bottom" title=""
 																data-original-title="go!" >
-																<i class="material-icons">input</i>													
+																<i class="material-icons">input</i>
 															</button>
-														</form>
+														
 														</div>											
 															<br>
 														<p class="category">
-															${n.classtitle}
+															환영 합니다.
 														</p>
 												</div>
 												

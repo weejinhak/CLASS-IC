@@ -7,6 +7,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html PUBLIC ""src/main/webapp/WEB-INF/views/common/thsSelect.jsp"-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,9 +20,9 @@
 <meta name="viewport" content="width=device-width" />
 <!-- common header -->
 <jsp:include page="inc/common_header.jsp"></jsp:include>
-
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
+
 	/* 페이지 로드시 QR 코드 가져옴. */
 	$(document).ready(function() {
    			console.log("페이지가 시작1");
@@ -32,17 +33,24 @@
 	/* 페이지 로드시 Session- email에 맞는 기수를 가져오고 그 수만큼 반복.   */
 	$(document).ready(function() {
 		  console.log("페이지가 시작2");
-
+		  var sessionId="<%=(String)session.getAttribute("email")%>";
+		  console.log(sessionId);
 			$.ajax({
-				  type : 'POST',
-				  url : 'lecturecodeSelect.htm',
-				  dataType : 'html',
+				  type : "POST",
+				  url : "common/lecturecodeSelect.htm",
+				  dataType : "html",
 				  data: {
-				      email : '${sessionScope.eamil}'
+				      email: sessionId
 				  },
 				  success : function(data){
 						$('#lecturelist').html(data);
-				  }
+						alert('성공');
+				  },
+				  error:function(request, status, error){
+		              
+		                alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error );
+		               
+		          }
 			});
 	});
 </script>

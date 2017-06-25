@@ -54,6 +54,7 @@ public class MemberService_Web {
 		session.setAttribute("name", member.getName());
 		session.setAttribute("totalCount", totalCount);
 		if(result){
+
 			if(memberAuthority.equals("ROLE_TEACHER")){
 				mv.setViewName("common/thsSelect_teacher");
 				System.out.println("강사 로그인 성공");
