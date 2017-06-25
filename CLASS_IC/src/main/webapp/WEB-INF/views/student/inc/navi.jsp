@@ -25,7 +25,7 @@
 					<div class="collapse" id="collapseExample">
 						<ul class="nav">
 							<li><a href="#">나의 정보수정</a></li>
-							<li><a href="logout.htm">로그아웃</a></li>
+							<li><a href="./logout.htm">로그아웃</a></li>
 						</ul>
 					</div>
 				</div>
@@ -58,6 +58,12 @@
 				<li>
 					<a href="#"><i class="material-icons">account_box</i>
 							<p>학생부</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="attend.htm"><i class="material-icons">account_box</i>
+							<p>출석부</p>
 					</a>
 				</li>
 				

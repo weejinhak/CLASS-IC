@@ -23,7 +23,7 @@
 					<div class="collapse" id="collapseExample">
 						<ul class="nav">
 							<li><a href="#">나의 정보수정</a></li>
-							<li><a href="../logout.htm">로그아웃</a></li>
+							<li><a href="logout.htm">로그아웃</a></li>
 						</ul>
 					</div>
 				</div>
@@ -64,10 +64,10 @@
 							<p>달력</p>
 					</a>
 				</li>
-				
+				<!-- 링크는 메뉴를 통해서 추가해주세요 -->
 				<li>
-					<a href="memo.htm"> <i class="material-icons">edit</i>
-							<p>메모</p>
+					<a href="#"> <i class="material-icons">edit</i>
+							<p>추가링크</p>
 					</a>
 				</li>
 				

@@ -35,7 +35,7 @@ public class MainController_Teacher {
 		@RequestMapping("calendar.htm")
 		public String history(){
 			System.out.println("teacher common 컨트롤 탐");
-			return "teacher.calender";
+			return "teacher.calendar";
 		}
 		//boardList 게시판 이동
 				@RequestMapping(value="board.htm", method=RequestMethod.GET)
