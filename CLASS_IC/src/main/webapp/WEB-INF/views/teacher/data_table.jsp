@@ -28,6 +28,8 @@
 											<thead>
 												<tr role="row">
 													<th class="sorting" tabindex="0" aria-controls="datatables"
+														rowspan="1" colspan="1" style="width: 98px;">학생이름</th>
+													<th class="sorting" tabindex="0" aria-controls="datatables"
 														rowspan="1" colspan="1" style="width: 98px;">일자</th>
 													<th class="sorting" tabindex="0" aria-controls="datatables"
 														rowspan="1" colspan="1" style="width: 225px;">입실시간</th>
@@ -42,6 +44,7 @@
 
 											<tfoot>
 												<tr>
+     												<th rowspan="1" colspan="1">이름</th>
 													<th rowspan="1" colspan="1">일자</th>
 													<th rowspan="1" colspan="1">입실시간</th>
 													<th rowspan="1" colspan="1">퇴실시간</th>
@@ -73,6 +76,7 @@
 <!--데이터테이블에 값을 가져오는 스크립트  -->
 <script type="text/javascript">
 	console.log("페이지가 시작2");
+	var sessionId="<%=(String)session.getAttribute("email")%>";
 
 	$.ajax({
 		type : 'POST',
@@ -87,6 +91,7 @@
 			$.each(data, function() {
 				$('.tbodyappend').append(
 						'<tr role="row" class="odd">'+
+						'<td>'+ this.name + '</td>' +
 						'<td>'+ this.attendDate + '</td>' +
 						'<td tabindex="0" class="sorting_1">'+ this.inClass + '</td>'+
 						'<td tabindex="0" class="sorting_1">'+ this.outClass + '</td>' + 

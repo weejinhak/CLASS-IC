@@ -9,5 +9,13 @@
 		select * from attendance where email=#{param1} and classCode=#{param2}
 	</select>
 
+	<select id="attendanceSelectByTeacher" resultType="com.class_ic.vo.AttandanceListDTO">
+	SELECT m.name, at.attendDate as attendDate, at.inClass as inClass, at.outClass as outClass, at.attendState as attendState, at.classCode as classCode
+	FROM(SELECT a.email as email, a.attendDate as attendDate, a.inClass as inClass, a.outClass as outClass, a.attendState as attendState, a.classCode as classCode
+	FROM attendance a JOIN class c
+	ON   a.classCode = c.classCode
+	WHERE c.email =#{param1} AND a.classCode=#{param2}) at JOIN member m
+	ON at.email = m.email;
+	</select>
 
 </mapper>

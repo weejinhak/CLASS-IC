@@ -60,7 +60,7 @@ public class LectureCodeAddController {
 		
 		String classstart = request.getParameter("classstart");
 		String classend= request.getParameter("classend");
-		SimpleDateFormat simpledataformat = new SimpleDateFormat("yyyy/mm/dd");
+		SimpleDateFormat simpledataformat = new SimpleDateFormat("yyyy-mm-dd");
 		
 		LectureDTO lectureDto = new LectureDTO();	
 		String viewpage="";

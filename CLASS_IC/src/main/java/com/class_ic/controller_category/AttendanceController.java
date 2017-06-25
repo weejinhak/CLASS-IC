@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.class_ic.service.AttendanceListService;
 import com.class_ic.vo.AttandanceDTO;
+import com.class_ic.vo.AttandanceListDTO;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -65,6 +66,30 @@ public class AttendanceController {
 			obj.put("outClass",memberattendacnelist.get(i).getOutClass());
 			obj.put("attendState",memberattendacnelist.get(i).getAttendState());
 			obj.put("classCode",memberattendacnelist.get(i).getClassCode() );
+			attendanceListArray.add(obj);
+		}
+		response.getWriter().print(attendanceListArray);
+	}
+	
+	/*
+	 * @description : 강사용 출석리스트
+	 */
+	@RequestMapping(value = "teacher/attendanceTable.htm", method = RequestMethod.POST)
+	public void teacherlistPage(String email, String classcode, HttpServletResponse response) throws Exception {
+		System.out.println("강사용attendanceTable컨트롤러");
+
+		List<AttandanceListDTO> memberattendacnelist = attendanceListService.attendanceSelectByTeacher(email, classcode);
+		JSONArray attendanceListArray = new JSONArray();
+		DateFormat transDate = new SimpleDateFormat("yyyy-MM-dd");
+
+		for (int i = 0; i < memberattendacnelist.size(); i++) {
+			JSONObject obj = new JSONObject();
+			obj.put("name", memberattendacnelist.get(i).getName());
+			obj.put("attendDate", transDate.format(memberattendacnelist.get(i).getAttendDate()));
+			obj.put("inClass", memberattendacnelist.get(i).getInClass());
+			obj.put("outClass", memberattendacnelist.get(i).getOutClass());
+			obj.put("attendState", memberattendacnelist.get(i).getAttendState());
+			obj.put("classCode", memberattendacnelist.get(i).getClassCode());
 			attendanceListArray.add(obj);
 		}
 		response.getWriter().print(attendanceListArray);

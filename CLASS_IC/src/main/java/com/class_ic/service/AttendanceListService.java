@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.class_ic.dao.AttendanceListDAO;
 import com.class_ic.vo.AttandanceDTO;
+import com.class_ic.vo.AttandanceListDTO;
 import com.class_ic.vo.MemberDTO;
 
 /*
@@ -42,6 +43,18 @@ public class AttendanceListService implements AttendanceListDAO{
 		return memberList;			
 	}
 
+	/*
+	@description : attendance 테이블에서 select 해주는 기능. (강사)
+	*/
+	@Override
+	public ArrayList<AttandanceListDTO> attendanceSelectByTeacher(String email, String classcode){		
+
+		AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);		
+		ArrayList<AttandanceListDTO> memberList=attendancelistDao.attendanceSelectByTeacher(email,classcode);	
+		
+		return memberList;			
+	}
+	
 	
 	
 	
