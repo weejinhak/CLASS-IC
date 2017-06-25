@@ -13,9 +13,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service.MemberService_Web;
@@ -45,17 +47,20 @@ public class MemberController_Web {
 	}
 	
 	//회원 수정 view  페이지
-	@RequestMapping(value="editMember.htm", method=RequestMethod.GET)
-	public ModelAndView editMyProfile(ModelAndView mv){
+	@RequestMapping(value="editInfo.htm", method=RequestMethod.GET)
+	public @ResponseBody MemberDTO editMyProfile(HttpSession session, Model m, MemberDTO member){
+	
+		MemberDTO memberinfo = memberservice.getMemberInfo(session);
+		m.addAttribute("myinfo", memberinfo);
 		
-	return mv;
+	return member;
 	}
 	
-	//회원 수정 view  값 넘기기
-	@RequestMapping(value="editMember.htm", method=RequestMethod.POST)
-	public ModelAndView editMyProfile(MemberDTO member, ModelAndView mv){
+	//회원 수정  값 넘기기
+	@RequestMapping(value="editInfo.htm", method=RequestMethod.POST)
+	public @ResponseBody MemberDTO editMyProfile(HttpSession session, MemberDTO member, ModelAndView mv){
 			
-		return mv;
+		return member;
 		}
 	
 	//회원 탈퇴

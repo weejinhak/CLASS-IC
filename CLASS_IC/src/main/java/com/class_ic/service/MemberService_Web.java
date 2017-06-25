@@ -16,6 +16,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -70,14 +71,23 @@ public class MemberService_Web {
 		return mv;
 	}
 	
-	//update
-	public ModelAndView update(MemberDTO member, ModelAndView mv){
+	//for update (get member info)
+	public MemberDTO getMemberInfo(HttpSession session){
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
-		MemberDTO getMember = member_dao.selectOne(member);
+		String email = (String) session.getAttribute("email");
+		MemberDTO getMember = member_dao.selectOne(email);		
 		
-		
-		return mv;
+		return getMember;
 	}
+	
+	//for update (edit info)
+		public MemberDTO editMemberInfo(HttpSession session, MemberDTO member){
+			MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+			String email = (String) session.getAttribute("email");
+			int result= member_dao.modify(member);		
+			MemberDTO getMember = member_dao.selectOne(email);	
+			return getMember;
+		}
 	
 	//delete
 	public int delete(String email){

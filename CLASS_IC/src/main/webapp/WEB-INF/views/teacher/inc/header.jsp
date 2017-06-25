@@ -88,14 +88,10 @@
          sendMessage();
 
       });
+      
 
    });
    
-   
-   //로그아웃 : 2017.06.25 최은혜
-   function logout() {
-      
-   }
 </script>
 
 
@@ -188,7 +184,7 @@
                         </div>
                      <li>
                      <br>
-                         <button class="btn btn-primary btn-raised btn-round" data-toggle="modal" data-target="#memberUpdate">
+                         <button class="btn btn-primary btn-raised btn-round" data-toggle="modal" data-target="#memberUpdate" id="myInfo">
                                                   회원정보 수정
                                 </button>
                      </li>
@@ -211,7 +207,16 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="email" class="form-control">
+                                                    <input type="email" class="form-control" name="email" id="email" readonly="readonly">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-md-3 label-on-left">이름</label>
+                                            <div class="col-md-9">
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label"></label>
+                                                    <input type="text" class="form-control" name="name" id="name" readonly="readonly">
                                                 </div>
                                             </div>
                                         </div>
@@ -220,7 +225,7 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="password" class="form-control">
+                                                    <input type="password" class="form-control" name="pwd" id="pwd">
                                                 </div>
                                             </div>
                                         </div>
@@ -229,7 +234,7 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="password" class="form-control">
+                                                    <input type="password" class="form-control"name="pwdconfirm" id="pwdconfirm">
                                                 </div>
                                             </div>
                                         </div>
@@ -238,7 +243,7 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="email" class="form-control">
+                                                    <input type="text" class="form-control" name="phone" id="phone">
                                                 </div>
                                             </div>
                                         </div>
@@ -246,8 +251,9 @@
                                             <label class="col-md-3"></label>
                                             <div class="col-md-9">
                                                 <div class="form-group form-button">
-                                                    <button type="submit" class="btn btn-fill btn-rose">회원정보 수정</button>
+                                                    <button type="submit" class="btn btn-fill btn-rose" id="editMyInfo">회원정보 수정</button>
                                                     <button type="button" class="btn btn-fill" data-dismiss="modal">취소</button>
+                                                    <button type="submit" class="btn btn-fill btn-warning">회원 탈퇴</button>
                                                 </div>
                                             </div>
                                         </div>
