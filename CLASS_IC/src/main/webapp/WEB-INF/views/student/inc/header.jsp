@@ -8,10 +8,10 @@
    var wsocket;
    var msg;
    var sessionId="<%=(String)session.getAttribute("email")%>";
-   
+   var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
    function connect() {
 
-      alert(sessionId);
+	  alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
       wsocket = new WebSocket("ws://192.168.1.180:8090/class_ic/chat-ws.htm?email="+sessionId);
@@ -261,7 +261,7 @@
                                             <!--  End Modal -->
                      
                      <li><br><!-- 로그아웃 -->
-                          <button id="logout" class="btn btn-primary btn-raised btn-round"> <a href="${pageContext.request.contextPath}/logout.htm">Logout</a></button>
+                          <button id="logout" class="btn btn-round"> <a href="${pageContext.request.contextPath}/logout.htm">Logout</a></button>
                      </li>
                </ul></li>
 

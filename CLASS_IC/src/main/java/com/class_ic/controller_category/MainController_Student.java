@@ -1,5 +1,7 @@
 package com.class_ic.controller_category;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,17 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("student")
 public class MainController_Student {
 
-	//student main GET
-	@RequestMapping(value="main.htm", method=RequestMethod.GET)
-	public String student(){
-
-		return "student.student_main";
-	}
 
 	//student main POST
 	@RequestMapping(value="main.htm", method=RequestMethod.POST)
-	public String student(Model m){
-
+	public String student(HttpSession session, String classCode){
+		session.setAttribute("classCode", classCode);
 		return "student.student_main";
 	}
 

@@ -120,12 +120,12 @@ public class LectureCodeAddController {
 		return "common/lectureList";
 	}
 	
-	@RequestMapping(value ="lecturecodeSelectStudent.htm", method = RequestMethod.POST)
+	@RequestMapping(value ="lecturecodeSelectST.htm", method = RequestMethod.POST)
 	public String lectureSelectStudent(@RequestParam String email,Model model){
 		try {
 
-			List<LectureDTO> lecturelist=lecturecodeaddservice.lecturelistselect(email);	
-			model.addAttribute("lecturelistStudent", lecturelist); 
+			List<LectureDTO> lecturelistStudent=lecturecodeaddservice.lecturelistselectStudent(email);	
+			model.addAttribute("lecturelist", lecturelistStudent); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	

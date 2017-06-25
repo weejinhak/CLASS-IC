@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="getlectureStudent" resultType="com.class_ic.vo.LectureDTO">
-		SSELECT *
+		SELECT c.classCode as classCode, c.classTitle as classTitle, c.classStart as classStart, c.classOpenTime as classOpenTime, c.classEnd as classEnd, c.classCloseTime as classCloseTime, c.classInviteCode as classInviteCode
 		FROM ClassMember cm JOIN  Class c
 		ON	cm.classCode=c.classCode
 		WHERE	cm.email=#{email}
