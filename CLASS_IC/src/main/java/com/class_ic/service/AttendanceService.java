@@ -25,10 +25,7 @@ public class AttendanceService {
 	public void insertAttendance(){
 		
 		AttandanceDTO dto=new AttandanceDTO();
-
 		AttendanceDAO attendanceDao=sqlsession.getMapper(AttendanceDAO.class);
-		
-
 		ArrayList<MemberDTO> memberList=attendanceDao.memberSelectAll();
 		
 		String email="";

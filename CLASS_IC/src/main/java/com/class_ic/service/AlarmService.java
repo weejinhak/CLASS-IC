@@ -52,9 +52,6 @@ public class AlarmService {
 		try {
 			int result = lectureDao.insert(lecture);
 			if (result > 0) {
-				System.out.println("insert 성공");
-				System.out.println("성공했으니 theselect.htm으로 보내야되지만");
-				System.out.println("비동기처리를 위해 값을 select 해와서 새로운 htm 에 뿌린다.");
 				viewpage = "redirect:/common/select.htm";
 			} else {
 				System.out.println("insert 실패");

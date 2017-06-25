@@ -4,10 +4,10 @@
 * @Project		:	CLASS-IC
 * @Date		    :	2017.06.25
 * @Author		:	위진학
+* @Desc         :   출석부에 학생(자신의 출석)//강사(기수에 맞는 모든학생출석)Select해오기 위한 Contoller.
 */
 package com.class_ic.controller_category;
 
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.class_ic.service.AttendanceListService;
 import com.class_ic.vo.AttandanceDTO;
 
-import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -39,7 +38,10 @@ public class AttendanceController {
 	@Autowired
 	private AttendanceListService attendanceListService;
 
-	// 학생용 출석리스트
+	
+	/*
+	@description :  학생용 출석리스트
+	*/
 	@RequestMapping(value = "student/attendanceTable.htm", method = RequestMethod.POST)
 	public void studentlistPage(Model model, String email, String classcode, HttpServletResponse response)
 			throws Exception {
