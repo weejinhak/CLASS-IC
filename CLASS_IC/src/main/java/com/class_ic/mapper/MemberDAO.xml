@@ -22,4 +22,11 @@ FROM member m JOIN classicauthority a
 ON m.email = a.email 
 WHERE m.email=#{email}
 </select>
+
+<select id="selectStudent" parameterType="String" resultType="com.class_ic.vo.MemberDTO">
+select *
+from member m join classmember c on m.email = c.email
+where c.classCode=#{classCode};
+</select>
+
 </mapper>

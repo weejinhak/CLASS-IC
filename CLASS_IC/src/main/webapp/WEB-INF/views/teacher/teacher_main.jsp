@@ -180,8 +180,7 @@
 						$.ajaxSetup({
 							cache : false
 						});
-						$
-								.ajax({
+						$.ajax({
 									cashe : false,
 									type : "post",
 									url : "selectMemo.htm",

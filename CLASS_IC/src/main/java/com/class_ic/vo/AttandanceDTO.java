@@ -5,13 +5,13 @@ import java.sql.Date;
 public class AttandanceDTO {
 
 	
-	private int attendNo;
-	private String email;
-	private Date attendDate;
-	private String inClass;
-	private String outClass;
-	private String attendState;
-	private String classCode;
+	private int attendNo; 
+	private String email; //이메일
+	private Date attendDate; 
+	private String inClass; //출석시간
+	private String outClass; //퇴실시간
+	private String attendState; //출석상태
+	private String classCode; //기수 코드
 	public int getAttendNo() {
 		return attendNo;
 	}
