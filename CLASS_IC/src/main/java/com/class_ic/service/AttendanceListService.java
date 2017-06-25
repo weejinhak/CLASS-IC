@@ -19,7 +19,7 @@ public class AttendanceListService implements AttendanceListDAO{
 	private SqlSession sqlsession;
 
 	/*
-	@description : attendance 테이블에 select 해주는 기능.
+	@description : attendance 테이블에서 select 해주는 기능.
 	*/
 	@Override
 	public ArrayList<AttandanceDTO> attendanceSelect(String email, String classcode){

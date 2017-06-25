@@ -1,5 +1,15 @@
+/*
+* @FileName		:   AttendanceController.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.25
+* @Author		:	위진학
+*/
 package com.class_ic.controller_category;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -12,42 +22,49 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.class_ic.service.AttendanceListService;
 import com.class_ic.vo.AttandanceDTO;
-import com.class_ic.vo.MemberDTO;
 
- 
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+/*
+* @Class: AttendanceController
+* @Date: 2017.06. 25.
+* @Author: 위진학
+* @Desc: 
+*/
 @Controller
 public class AttendanceController {
-	  
-	
 
 	@Autowired
 	private AttendanceListService attendanceListService;
 
-	
-	
-/*	//강사용 출석리스트
- 	  @RequestMapping(value = "attendanceTable.htm", method = RequestMethod.GET)
-	  public String teacherlistPage() throws Exception {
-	  
-	      
-	    return "teacher.page";
-	  }*/
-	  
-	//학생용 출석리스트
-	  @RequestMapping(value="student/attendanceTable.htm",method=RequestMethod.POST)
-	  public void studentlistPage(Model model,String email,String classcode,HttpServletResponse response) throws Exception {
-	       
-	  System.out.println("컨트롤러 들어온다!!!!!!!!!!!!!!!!!!!!");
- //     System.out.println(request.getParameter("email"));
- //     System.out.println(request.getParameter("classcode"));
-	  
-	
-	  /*String email =request.getParameter("email");
-	  String classcode = request.getParameter("classcode");*/
-	   
-	  List<AttandanceDTO> memberattendacnelist= attendanceListService.attendanceSelect(email, classcode);
-	  	  
-	  response.getWriter().print(memberattendacnelist);
-	  
-	  }
+	// 학생용 출석리스트
+	@RequestMapping(value = "student/attendanceTable.htm", method = RequestMethod.POST)
+	public void studentlistPage(Model model, String email, String classcode, HttpServletResponse response)
+			throws Exception {
+		System.out.println("attendanceTable컨트롤러");
+		
+		List<AttandanceDTO> memberattendacnelist = attendanceListService.attendanceSelect(email, classcode);
+
+		JSONArray attendanceListArray= new JSONArray();
+		
+		
+		System.out.println("********************************************");
+		System.out.println(memberattendacnelist.size());
+		DateFormat transDate= new SimpleDateFormat("yyyy-MM-dd");
+		String attenddate=transDate.format(memberattendacnelist.get(0).getAttendDate());
+		System.out.println(attenddate);
+		System.out.println("********************************************");
+		for(int i=0;i<memberattendacnelist.size();i++){
+			JSONObject obj=new JSONObject();
+			obj.put("attendDate",transDate.format(memberattendacnelist.get(i).getAttendDate()));
+			obj.put("inClass",memberattendacnelist.get(i).getInClass() );
+			obj.put("outClass",memberattendacnelist.get(i).getOutClass());
+			obj.put("attendState",memberattendacnelist.get(i).getAttendState());
+			obj.put("classCode",memberattendacnelist.get(i).getClassCode() );
+			attendanceListArray.add(obj);
+		}
+		response.getWriter().print(attendanceListArray);
+	}
 }
