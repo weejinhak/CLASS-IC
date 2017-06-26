@@ -13,58 +13,7 @@
 }
 </style>
 <!-- 네이버 에디터 부분 시작 -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript">
-		var oEditors = [];
-		var num = 2;
-		$(function(){
-		      nhn.husky.EZCreator.createInIFrame({
-		          oAppRef: oEditors,
-		          elPlaceHolder: "smarteditor",
-		          //SmartEditor2Skin.html 파일이 존재하는 경로
-		          sSkinURI: "<%= request.getContextPath() %>/SE2/SmartEditor2Skin.html",  
-		          htParams : {
-		              // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-		              bUseToolbar : true,             
-		              // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-		              bUseVerticalResizer : true,     
-		              // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-		              bUseModeChanger : true,         
-		              fOnBeforeUnload : function(){
-		                   
-		              }
-		          }, 
-		          fOnAppLoad : function(){
-		              //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-		             oEditors.getById["smarteditor"].exec("PASTE_HTML", ['${boardDto.getBoard_content()}']);
-		          },
-		          fCreator: "createSEditor2"
-		      });
-		      
-		    //저장버튼 클릭시 form 전송
-		      $("#savebutton").click(function(){
-		          oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD",[]);
-		          $("#frm").submit();
-		      });
-		      $("#plusbutton").click(function(){
-			  		$("#here").after("<tr><td></td><td style='padding-left: 30px;'>"
-			        				+"<input type='file' name='file"+num+"' id='file"+num+"'/>"
-			        				+"<input type='button' id='fileDel"+num+"' onclick='delSelf(this)' style='background-color:black;color:white;margin-left:3px;border-radius:15px;border:1px solid white;' value='x'><td></tr>");
-			        num = num + 1;
-			  });
-		});	
-		function delSelf(obj){
-	    	$(obj).parent().parent().detach();
-	    	num = num - 1;
-	    };
-	    
-	    function hideNdel(obj){
-	    	$(obj).hide();
-	    	$(obj).prev().hide();
-	    	$(obj).prev().prev().attr("name","del");
-	    }
-	</script>
+
 	<!-- 네이버 에디터 부분 끝  -->	
  <div class="content">
        <div class="container-fluid">
