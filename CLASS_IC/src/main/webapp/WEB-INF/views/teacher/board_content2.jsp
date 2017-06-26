@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!-- css link -->
 <style>
 .fileDrop {
   width: 25%;
@@ -12,60 +11,46 @@
   margin: auto;
 }
 </style>
-<!-- 네이버 에디터 부분 시작 -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript">
-		var oEditors = [];
-		var num = 2;
-		$(function(){
-		      nhn.husky.EZCreator.createInIFrame({
-		          oAppRef: oEditors,
-		          elPlaceHolder: "smarteditor",
-		          //SmartEditor2Skin.html 파일이 존재하는 경로
-		          sSkinURI: "<%= request.getContextPath() %>/SE2/SmartEditor2Skin.html",  
-		          htParams : {
-		              // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-		              bUseToolbar : true,             
-		              // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-		              bUseVerticalResizer : true,     
-		              // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-		              bUseModeChanger : true,         
-		              fOnBeforeUnload : function(){
-		                   
-		              }
-		          }, 
-		          fOnAppLoad : function(){
-		              //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-		             oEditors.getById["smarteditor"].exec("PASTE_HTML", ['${boardDto.getBoard_content()}']);
-		          },
-		          fCreator: "createSEditor2"
-		      });
-		      
-		    //저장버튼 클릭시 form 전송
-		      $("#savebutton").click(function(){
-		          oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD",[]);
-		          $("#frm").submit();
-		      });
-		      $("#plusbutton").click(function(){
-			  		$("#here").after("<tr><td></td><td style='padding-left: 30px;'>"
-			        				+"<input type='file' name='file"+num+"' id='file"+num+"'/>"
-			        				+"<input type='button' id='fileDel"+num+"' onclick='delSelf(this)' style='background-color:black;color:white;margin-left:3px;border-radius:15px;border:1px solid white;' value='x'><td></tr>");
-			        num = num + 1;
-			  });
-		});	
-		function delSelf(obj){
-	    	$(obj).parent().parent().detach();
-	    	num = num - 1;
-	    };
-	    
-	    function hideNdel(obj){
-	    	$(obj).hide();
-	    	$(obj).prev().hide();
-	    	$(obj).prev().prev().attr("name","del");
-	    }
-	</script>
-	<!-- 네이버 에디터 부분 끝  -->	
+<!-- 네이버 에디터 부분 시작 -->'
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript">
+var oEditors = [];
+$(function(){
+      nhn.husky.EZCreator.createInIFrame({
+          oAppRef: oEditors,
+          elPlaceHolder: "ir1", //textarea에서 지정한 id와 일치해야 합니다. 
+          //SmartEditor2Skin.html 파일이 존재하는 경로
+          sSkinURI: "/smarteditorSample/SE2/SmartEditor2Skin.html",  
+          htParams : {
+              // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+              bUseToolbar : true,             
+              // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+              bUseVerticalResizer : true,     
+              // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+              bUseModeChanger : true,         
+              fOnBeforeUnload : function(){
+                   
+              }
+          }, 
+          fOnAppLoad : function(){
+              //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
+              oEditors.getById["ir1"].exec("PASTE_HTML", ["기존 DB에 저장된 내용을 에디터에 적용할 문구"]);
+          },
+          fCreator: "createSEditor2"
+      });
+      
+      //저장버튼 클릭시 form 전송
+      $("#save").click(function(){
+          oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+          $("#frm").submit();
+      });    
+});
+ 
+ 
+ 
+</script>
+<!-- 네이버 에디터 부분 끝  -->	
  <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
@@ -117,8 +102,7 @@
                                             <div class="col-sm-10">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <div class="main">
-                                                    <textarea id="smarteditor" name="smarteditor" cols="50" style="width: 90%; height: 300px; color: gray"></textarea>
+                                                    <textarea id="ir1" name="ir1" cols="50" style="width: 90%; height: 300px; color: gray"></textarea>
 
                                                     <span class="help-block">과제의 제목을 입력해 주세요.</span>
                                                 <span class="material-input"></span></div>
