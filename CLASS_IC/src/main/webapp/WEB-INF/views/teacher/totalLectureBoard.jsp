@@ -54,6 +54,7 @@
                         cellspacing="0" width="100%" style="width: 100%">
                         <thead>
                            <tr>
+                             <th class="text-center">check</th>
                               <th class="text-center">글번호</th>
                               <th class="text-center">글내용</th> 
                               <th class="text-center">작성날짜</th>
@@ -74,6 +75,19 @@
                      <!-- 여기부터 포문  -->   
                      <c:forEach var="LectureBoardDTO" items="${bvo}">
                            <tr>
+                             <td>
+                              <div class="text-center" style="margin-top: -13px;">
+                                 <div class="checkbox" id="">
+                                    <label class="text-center"> <input type="checkbox"
+                                       name="multy[]" class="text-center"
+                                       value="${LectureBoardDTO.lectureNo}"> <span
+                                       class="checkbox-material"></span>
+                                    </label>
+                                 </div>
+                              </div>
+                           </td>
+                           
+                           
                               <td class="text-center">${LectureBoardDTO.lectureNo} </td>
                               <td class="text-center">${LectureBoardDTO.lectureTitle} </td> 
                               <td class="text-center" >${LectureBoardDTO.lectureDate} </td>
@@ -146,4 +160,8 @@
 
             $('.card .material-datatables label').addClass('form-group');
          });
+   
+   
+   
+   
 </script>

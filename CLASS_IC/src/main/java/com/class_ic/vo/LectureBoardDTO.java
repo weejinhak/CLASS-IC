@@ -1,8 +1,11 @@
 package com.class_ic.vo;
 
-import java.sql.Date;
-
 public class LectureBoardDTO {
+ 
+	
+	
+	public LectureBoardDTO() {}
+	
  
 
 	private int lectureNo;
@@ -12,6 +15,9 @@ public class LectureBoardDTO {
 	private String lectureTitle;
 	private String lectureContent;
 	private String lectureDate;
+	
+	
+	
 	public int getLectureNo() {
 		return lectureNo;
 	}

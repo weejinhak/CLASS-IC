@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- @Project : CLASS-IC @File name : todaylecture.xml @Author : 김은영 @Data 
+	: 2017.06.19 @Desc : -->
+<mapper namespace="com.class_ic.dao.LectureBoardDAO"> 
+	<select id="allBoard" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="String">
+				select * from lectureboard where subcatecode=#{subcateCode} 
+		
+	</select> 
+ 
+
+</mapper>
+
