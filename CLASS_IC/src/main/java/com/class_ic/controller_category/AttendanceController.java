@@ -12,6 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,5 +98,36 @@ public class AttendanceController {
 			attendanceListArray.add(obj);
 		}
 		response.getWriter().print(attendanceListArray);
+	}
+	
+	/*
+	 * @description : 차트용 출석률
+	 */
+	@RequestMapping(value = "student/attendchart.htm", method = RequestMethod.POST)
+	public void chart(String email, String classcode, HttpServletResponse response , HttpServletRequest request) throws Exception {
+		System.out.println("학생용 차트 컨트롤러");
+
+		
+		List<AttandanceDTO> memberattendacnelist = attendanceListService.attendanceSelect(email, classcode);
+		
+	
+	    String[] labels={"70%","0%","0%"};
+		request.setAttribute("labels", labels);
+		int[] series={70,0,0};
+		request.setAttribute("series", series);
+		
+
+		JSONArray attendanceListArray= new JSONArray();		
+		
+		System.out.println(memberattendacnelist.size());
+		
+		for(int i=0;i<memberattendacnelist.size();i++){
+			JSONObject obj=new JSONObject();
+			obj.put("labels",memberattendacnelist.get(i).getAttendState());
+			obj.put("series",memberattendacnelist.get(i).getOutClass());			
+			attendanceListArray.add(obj);
+		}
+		response.getWriter().print(attendanceListArray);
+
 	}
 }
