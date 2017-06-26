@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.class_ic.dao.AlarmDAO;
 import com.class_ic.dao.MemberDAO;
 import com.class_ic.vo.MemberDTO;
 
@@ -33,21 +34,27 @@ public class MemberService_Web {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	
-	//login
+	/*
+	   @description : longin  마지막 추가수정. 위진학.
+	*/
 	public ModelAndView loginService(HttpSession session,String email, @RequestParam("pwd") String rawPassword, ModelAndView mv){
 		
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+		AlarmDAO alarm_DAO = sqlsession.getMapper(AlarmDAO.class);
+
 		MemberDTO member = member_dao.login(email);
 		String encodedPassword = member.getPwd();
 		String memberAuthority = member_dao.confirmAuthority(email);
-		
+		int totalCount = alarm_DAO.totalCount(member.getEmail());
+
 		boolean result = bCryptPasswordEncoder.matches(rawPassword, encodedPassword);
 
 		mv.addObject("member", member);
 		session.setAttribute("email", member.getEmail());
 		session.setAttribute("name", member.getName());
-		
+		session.setAttribute("totalCount", totalCount);
 		if(result){
+
 			if(memberAuthority.equals("ROLE_TEACHER")){
 				mv.setViewName("common/thsSelect_teacher");
 				System.out.println("강사 로그인 성공");
@@ -117,6 +124,7 @@ public class MemberService_Web {
 		mv.setViewName("teacher.final_group");
 		return mv ;
 	}
+
 
 	
 

@@ -2,12 +2,11 @@
 
 * { box-sizing:border-box; }
 
-body {margin:30px; }
 
 .memosize{
 	margin-left: 15px;
-	
 }
+
 #create, textarea  { 
   float:left; 
   padding:25px 25px 40px;
@@ -15,6 +14,7 @@ body {margin:30px; }
   width:250px;
   height:250px; 
 }
+
 
 #create {
   user-select:none;

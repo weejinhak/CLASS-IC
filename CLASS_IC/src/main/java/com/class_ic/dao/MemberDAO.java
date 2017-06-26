@@ -34,11 +34,16 @@ public interface MemberDAO {
 	public String confirmAuthority(String email);
 
 	//학생인 회원 전체 목록
-		public List<MemberDTO> selectAllStudent();
+	public List<MemberDTO> selectAllStudent();
 	//학원 회원 전체 수 확인
+<<<<<<< HEAD
 		public int selectAllStudentCount();
 		
 	//기수별 학생 전체 목록
 		public List<MemberDTO> selectStudent(MemberDTO dto);
+=======
+	public int selectAllStudentCount();
+	
+>>>>>>> refs/heads/AfterMaster
 
 }

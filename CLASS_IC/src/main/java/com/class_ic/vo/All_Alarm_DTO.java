@@ -1,23 +1,68 @@
 package com.class_ic.vo;
 
+import java.sql.Date;
+
 public class All_Alarm_DTO {
-	private String user_id;
+	private String emailS;
+	private String emailR;
 
-	private String message;
+	private String msContent;
+	private String msSendTime;
+	private int messageNo;
+	private int readState=1;
+	private int deleteStateR=1;
+	private int deleteStateS=1;
+
 	
-	public String getMessage() {
-		return message;
+	public String getEmailS() {
+		return emailS;
 	}
-	public void setMessage(String message) {
-		this.message = message;
+	public void setEmailS(String emailS) {
+		this.emailS = emailS;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getEmailR() {
+		return emailR;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setEmailR(String emailR) {
+		this.emailR = emailR;
 	}
-
+	public String getMsContent() {
+		return msContent;
+	}
+	public void setMsContent(String msContent) {
+		this.msContent = msContent;
+	}
+	public String getMsSendTime() {
+		return msSendTime;
+	}
+	public void setMsSendTime(String msSendTime) {
+		this.msSendTime = msSendTime;
+	}
+	public int getMessageNo() {
+		return messageNo;
+	}
+	public void setMessageNo(int messageNo) {
+		this.messageNo = messageNo;
+	}
+	public int getReadState() {
+		return readState;
+	}
+	public void setReadState(int readState) {
+		this.readState = readState;
+	}
+	public int getDeleteStateR() {
+		return deleteStateR;
+	}
+	public void setDeleteStateR(int deleteStateR) {
+		this.deleteStateR = deleteStateR;
+	}
+	public int getDeleteStateS() {
+		return deleteStateS;
+	}
+	public void setDeleteStateS(int deleteStateS) {
+		this.deleteStateS = deleteStateS;
+	}
+	
 	
 
 }

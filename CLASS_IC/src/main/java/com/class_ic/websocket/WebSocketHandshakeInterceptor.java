@@ -1,3 +1,10 @@
+/*
+* @FileName		:	WebSocketHandshakeInterceptor.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.24
+* @Author		:	위진학
+*/
 package com.class_ic.websocket;
 
 import java.util.Map;
@@ -12,27 +19,27 @@ import org.springframework.web.socket.server.support.HttpSessionHandshakeInterce
 
 
 public class WebSocketHandshakeInterceptor extends HttpSessionHandshakeInterceptor{
-	
 
     @Override
     public boolean beforeHandshake(ServerHttpRequest request,ServerHttpResponse response, WebSocketHandler wsHandler,
          Map<String, Object> attributes) throws Exception {     
     
-        System.out.println("beforehandshake 시작");
-          
-          
+        
         ServletServerHttpRequest ssreq = (ServletServerHttpRequest) request;
         System.out.println("URI:"+request.getURI());
   
-        HttpServletRequest req =  ssreq.getServletRequest();        
-        
+        HttpServletRequest req =  ssreq.getServletRequest();
+ 
+
+        System.out.println("beforehandshake 시작");        
+        String email = (String)req.getSession().getAttribute("email");
+        System.out.println(email); 
+                
         //로그인한 사람 아이디 뽑기
-		String ename = (String) req.getSession().getAttribute("ename");
 		
-        attributes.put("userId", ename);
-  
+        attributes.put("userId",email);  
       
-        System.out.println("인터셉터 ename:"+ ename);
+        System.out.println("인터셉터 id:"+ email);
 
  
         return super.beforeHandshake(request, response, wsHandler, attributes);
@@ -42,6 +49,7 @@ public class WebSocketHandshakeInterceptor extends HttpSessionHandshakeIntercept
     public void afterHandshake(ServerHttpRequest request,
             ServerHttpResponse response, WebSocketHandler wsHandler,
             Exception ex) {
+    	
         System.out.println("After Handshake");
   
         super.afterHandshake(request, response, wsHandler, ex);

@@ -60,7 +60,7 @@ public class LectureCodeAddController {
 		
 		String classstart = request.getParameter("classstart");
 		String classend= request.getParameter("classend");
-		SimpleDateFormat simpledataformat = new SimpleDateFormat("yyyy/mm/dd");
+		SimpleDateFormat simpledataformat = new SimpleDateFormat("yyyy-mm-dd");
 		
 		LectureDTO lectureDto = new LectureDTO();	
 		String viewpage="";
@@ -108,15 +108,28 @@ public class LectureCodeAddController {
 	/*
 	@description : 페이지 로드시 email에 맞는 기수를 가져오기 위한 함수
 	*/
-	@RequestMapping(value = "lecturecodeSelect.htm", method = RequestMethod.POST)
+	@RequestMapping(value ="lecturecodeSelect.htm", method = RequestMethod.POST)
 	public String lectureSelect(@RequestParam String email,Model model){
 		try {
+
 			List<LectureDTO> lecturelist=lecturecodeaddservice.lecturelistselect(email);	
 			model.addAttribute("lecturelist", lecturelist); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
 		return "common/lectureList";
+	}
+	
+	@RequestMapping(value ="lecturecodeSelectST.htm", method = RequestMethod.POST)
+	public String lectureSelectStudent(@RequestParam String email,Model model){
+		try {
+
+			List<LectureDTO> lecturelistStudent=lecturecodeaddservice.lecturelistselectStudent(email);	
+			model.addAttribute("lecturelist", lecturelistStudent); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return "common/lectureListStudent";
 	}
 
 }

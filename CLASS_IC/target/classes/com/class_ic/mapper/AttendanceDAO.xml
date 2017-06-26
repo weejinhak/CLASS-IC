@@ -28,11 +28,15 @@
 
 
 	<select id="todayAttendaceData" resultType="com.class_ic.vo.AttandanceDTO">
-	select attendNo,inClass,outClass,classCode from attendance where attendDate=CURDATE();
+	select attendNo,inClass,outClass,classCode,email from attendance where attendDate=CURDATE()
 	</select>
 	
 	<select id="selectStartEndTime" resultType="com.class_ic.vo.LectureDTO">
 	
       select * from class where classCode=#{classCode}
 	</select>
+	
+	<update id="updateAttendaceState"  parameterType="hashmap">
+	update attendance set attendState=#{param1} where email=#{param2} and attendDate='2017-06-24'
+	</update>
 </mapper>
