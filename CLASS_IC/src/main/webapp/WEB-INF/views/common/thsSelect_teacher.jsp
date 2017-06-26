@@ -123,7 +123,7 @@
 						aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-notice">
 						
-						<form action="lecturecodeadd.htm" method="post">
+						<form action="common/lecturecodeadd.htm" method="post">
 							<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
