@@ -19,8 +19,6 @@ $(document).ready(function(){
  			success : function(item) {
  			
  				location.href= 'selectMemo2.htm';
- 				
-
  			},
  			error : function(request, status, error){
  				alert('에러탐 : '+ error +"\n"+ "message: " + request.responseText +"\n"+ "code" + request.status);

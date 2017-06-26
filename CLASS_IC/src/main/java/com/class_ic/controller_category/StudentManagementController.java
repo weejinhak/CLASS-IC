@@ -83,7 +83,7 @@ public class StudentManagementController {
 				
 				request.setAttribute("position", tableArr);
 				
-				studentmanagerservice.studentGroup(emailArr, positionArr, tableArr, classCode);
+				//studentmanagerservice.studentGroup(emailArr, positionArr, tableArr, classCode);
 			return "teacher/group_ajax";	
 	}
 	
@@ -91,8 +91,8 @@ public class StudentManagementController {
 	@RequestMapping(value="callgroup.htm", method=RequestMethod.POST)
 	public String getStudentGroup(Model m, @RequestParam String classCode){
 		System.out.println(classCode);
-		List<StudentGroupDTO>grouplist =  studentmanagerservice.getstudentGroup(classCode);
-		m.addAttribute("grouplist", grouplist);
+		//List<StudentGroupDTO>grouplist =  studentmanagerservice.getstudentGroup(classCode);
+		//m.addAttribute("grouplist", grouplist);
 		
 		return "teacher/group_ajax";
 	}

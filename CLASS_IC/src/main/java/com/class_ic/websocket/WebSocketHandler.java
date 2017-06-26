@@ -1,3 +1,10 @@
+/*
+* @FileName		:	WebSocketHandler.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.25
+* @Author		:	위진학
+*/
 package com.class_ic.websocket;
 
 import java.util.Date;
