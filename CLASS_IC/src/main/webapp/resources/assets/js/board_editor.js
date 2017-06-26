@@ -278,7 +278,7 @@
   sweDitor.prototype = {
     // this.options.type
     defaults: {
-      textArea: 'editor_area',
+      textArea: 'lectureContent',
       showTextarea: true
     },
     
@@ -396,6 +396,6 @@
 
 // Init editor
 new sweDitor(document.getElementById('editor_panel'),{
-  textArea: 'editor_area', //id of textarea
+  textArea: 'lectureContent', //id of textarea
   showTextarea: false // if true show hidden text area
 });

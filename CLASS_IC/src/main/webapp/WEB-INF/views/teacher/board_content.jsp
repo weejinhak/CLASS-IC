@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- css link -->
+<link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
 <style>
 .fileDrop {
   width: 25%;
@@ -12,9 +13,8 @@
   margin: auto;
 }
 </style>
-<!-- 네이버 에디터 부분 시작 -->
 
-	<!-- 네이버 에디터 부분 끝  -->	
+
  <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
@@ -67,17 +67,15 @@
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
                                                     <div class="main">
-                                                    <textarea id="smarteditor" name="smarteditor" cols="50" style="width: 90%; height: 300px; color: gray"></textarea>
+                                                     <div id="editor_panel"></div>  
+                                                    <textarea id="lectureContent" name="smarteditor" cols="50" style="width: 90%; height: 300px; color: gray"></textarea>
 
                                                     <span class="help-block">과제의 제목을 입력해 주세요.</span>
                                                 <span class="material-input"></span></div>
                                             </div>
                                         </div>
                                         	<br>
-                                            <div class="form-group">
-												<div class="fileDrop"><h5 align="center"><br><br>Drag and Drop your file!</h5></div>
-											</div>
-
+                                            
                                        
                                        <div class="td-actions text-center">
                                                         <button type="button" rel="tooltip" class="btn btn-info btn-round" data-original-title="" title="">
@@ -102,6 +100,7 @@
       	 </div>
 </div>
 
+<script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>	
 <script id="template" type="text/x-handlebars-template">
 <li>
   <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
@@ -116,6 +115,7 @@
 
 
 <script type="text/javascript" src="/resources/js/upload.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <script>
