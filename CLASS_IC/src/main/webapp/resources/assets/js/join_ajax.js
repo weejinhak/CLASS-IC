@@ -1,16 +1,14 @@
 $(function(){
-
-      $('#btn_submit_st').click(function(){
-       alert($("#email_st").val());
-          var email_st = $("#email_st").val();
-           var pwd_st = $('#pwd_st').val();
-           var name_st = $('#name_st').val();
-           var phone_st = $('#phone_st').val();
-           var  photoSrc_st = $('#photoSrc_st').val();         
-           var authority_st  = $('#authority_st').val();
-            
-           var student_data = {"email":email_st, "pwd": pwd_st, "name":name_st , "phone": phone_st,"photoSrc":photoSrc_st, "authority":authority_st };
-           
+		$('#btn_submit_st').click(function(){
+    	alert($("#email_st").val());
+    		var email_st = $("#email_st").val();
+        	var pwd_st = $('#pwd_st').val();
+        	var name_st = $('#name_st').val();
+        	var phone_st = $('#phone_st').val();
+        	var  photoSrc_st = $('#photoSrc_st').val();      	
+        	var authority_st  = $('#authority_st').val();
+         	
+        	var student_data = {"email":email_st, "pwd": pwd_st, "name":name_st , "phone": phone_st,"photoSrc":photoSrc_st, "authority":authority_st };
 
           $.ajax({
              url: "join_st.htm",
@@ -57,5 +55,5 @@ $(function(){
              }
           });
        });
-       
+
 });

@@ -80,6 +80,14 @@ public class LectureCodeAddService {
 		return lecturelist;
 		
 	}
+	public List<LectureDTO> lecturelistselectStudent(String email) throws Exception {
+		
+		LectureAddDAO lectureDao = sqlsession.getMapper(LectureAddDAO.class);
+		List<LectureDTO> lecturelistStudent= lectureDao.getlectureStudent(email);
+		
+		return lecturelistStudent;
+		
+	}
 
 		
 		

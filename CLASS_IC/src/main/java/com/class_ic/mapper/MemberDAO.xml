@@ -12,14 +12,53 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into classicauthority (email, authority) values(#{email}, #{authority})
 </insert>
 
+
+<update id="modify" parameterType="com.class_ic.vo.MemberDTO" >
+	update member set 
+		name=#{name}, pwd=#{pwd}, phone=#{phone}, photoSrc=#{photoSrc}
+	where email=#{email}
+</update>
+
+<delete id="delete">
+	delete from member where email=#{email}
+</delete>
+
 <select id="login" resultType="com.class_ic.vo.MemberDTO">
 	select * from member where email=#{email}
 </select>
 
 <select id="confirmAuthority" resultType="String">
-SELECT m.email as email, a.authority as authority 
-FROM member m JOIN classicauthority a 
-ON m.email = a.email 
-WHERE m.email=#{email}
+	SELECT a.authority as authority 
+	FROM member m JOIN classicauthority a 
+	ON m.email = a.email 
+	WHERE m.email=#{email}
 </select>
+
+
+
+<select id="selectOne" resultType="com.class_ic.vo.MemberDTO">
+select * from member where email=#{email}
+</select>
+
+<select id="selectAll" resultType="com.class_ic.vo.MemberDTO">
+select * from member
+</select>
+<select id="selectAllCount" resultType="Integer">
+select count(email) from member
+</select>
+
+<select id="selectAllStudent" parameterType="com.class_ic.vo.MemberDTO" resultType="com.class_ic.vo.MemberDTO">
+	SELECT m.email as email, m.name as name
+	FROM member m JOIN classicauthority a 
+	ON m.email = a.email
+	WHERE a.authority=<![CDATA['ROLE_STUDENT']]>
+</select>
+
+<select id="selectAllStudentCount" parameterType="com.class_ic.vo.MemberDTO">
+	SELECT count(m.email)
+	FROM member m JOIN classicauthority a 
+	ON m.email = a.email 
+	WHERE a.authority=<![CDATA['ROLE_STUDENT']]>
+</select>
+
 </mapper>

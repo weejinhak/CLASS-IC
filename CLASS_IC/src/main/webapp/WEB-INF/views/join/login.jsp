@@ -30,66 +30,7 @@
 </head>
 
 <body>
-   
-   [css 테스트 목록]<br/>
-   [공톷페이지] <br/><!-- 기수선택 추가 6/17 -->
-    <a href="common/select.htm">thsSelect</a> <br/>
-    <a href="common/select_teacher.htm">thsSelect_teacher</a> <br/>
-     <a href="common/select_student.htm">thsSelect_student</a> <br/>
-   [선생 페이지]<br/>
-   <a href="teacher/test1.htm"> attandance_edit</a> <br/>
-   <a href="teacher/test2.htm"> student</a> <br/>
-<!--    <a href="stable.htm?authority="+"ROLE_STUDENT"> student group 아 쫌</a> <br/> -->
-   <!--  <a href="teacher/stable.htm"> student group</a> <br/> -->
-    <a href="teacher/sgroup.htm"> student group</a>개피곤 <br/>
-   <a href="teacher/test4.htm"> board_content</a> <br/>
-   <a href="teacher/test5.htm"> board_details_view</a> <br/>
-   <a href="teacher/test6.htm"> board_details</a> <br/>
-   <a href="teacher/test7.htm">board_homework_content</a> <br/>
-   <a href="teacher/test8.htm"> board</a> <br/>
-   <a href="teacher/test9.htm"> Calendar</a> <br/>
-   <a href="teacher/test10.htm"> class_condition</a> <br/>
-   <a href="teacher/test11.htm">History</a> <br/>
-   <a href="teacher/test12.htm"> homework_board</a> <br/>
-   <a href="teacher/test13.htm"> message</a> <br/>
-   <a href="teacher/test14.htm"> teacher_main</a> <br/>
-   <a href="teacher/test15.htm"> fileManager</a> <br/>
-   
-   write와 main은 test용으로 내가 별도로 만든거니 체크 안해도 됨<br/>
-   
-   [학생 CSS 체크]<br/>
-   <a href="student/test1.htm"> attendance_edit</a> <br/>
-   <a href="student/test2.htm"> attendance</a> <br/>
-   <a href="student/test3.htm">attandance_check</a><br/>
-   <a href="student/test4.htm"> board_details_view</a> <br/>
-   <a href="student/test5.htm"> board_details</a> <br/>
-   <a href="student/test6.htm">board_homework_content</a> <br/>
-   <a href="student/test7.htm"> board</a> <br/>
-   <a href="student/test8.htm"> calendar</a> <br/>
-   <a href="student/test9.htm"> class_condition</a> <br/>
-   <a href="student/test10.htm">History</a> <br/>
-   <a href="student/test11.htm"> homework_board</a> <br/>
-   <a href="student/test12.htm">linkfilebar</a> <br/>
-   <a href="student/test13.htm"> memo_content</a> <br/>
-   <a href="student/test14.htm"> student_main</a> <br/>
-   <a href="student/test15.htm"> student_memo</a> <br/>
-   <a href="student/test16.htm"> student_message</a> <br/>
-   <a href="student/test17.htm"> 데이터 시트</a> <br/>
-  	main와 student은 test용으로 내가 별도로 만든거니 체크 안해도 됨<br/>
-   
-   
-   
-   
-   
-   <br/><br/>
-   
-   
-   타일즈: <a href="teacher/main.htm">선생님 페이지</a> <br/>
-   타일즈 : <a href="student/main.htm">학생 페이지</a> <br/>
-   
-   
-   
-   
+
     <div class="wrapper wrapper-full-page">
         <div class="full-page login-page" filter-color="black" data-image="${pageContext.request.contextPath}/resources/assets/img/login.jpeg">
             <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->

@@ -33,8 +33,12 @@ import net.sf.json.JSONObject;
 * @Author: 위진학
 * @Desc: 
 */
+
 @Controller
 public class AttendanceController {
+	
+	
+
 
 	@Autowired
 	private AttendanceListService attendanceListService;
