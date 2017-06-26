@@ -34,14 +34,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE m.email=#{email}
 </select>
 
-<<<<<<< HEAD
-<select id="selectStudent" parameterType="String" resultType="com.class_ic.vo.MemberDTO">
-select *
-from member m join classmember c on m.email = c.email
-where c.classCode=#{classCode};
-=======
-
-
 <select id="selectOne" resultType="com.class_ic.vo.MemberDTO">
 select * from member where email=#{email}
 </select>
@@ -65,7 +57,6 @@ select count(email) from member
 	FROM member m JOIN classicauthority a 
 	ON m.email = a.email 
 	WHERE a.authority=<![CDATA['ROLE_STUDENT']]>
->>>>>>> refs/heads/AfterMaster
 </select>
 
 </mapper>

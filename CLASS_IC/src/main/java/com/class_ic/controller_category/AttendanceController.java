@@ -10,12 +10,9 @@ package com.class_ic.controller_category;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
-<<<<<<< HEAD
 import java.io.IOException;
 import java.util.List;
-=======
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +35,7 @@ import net.sf.json.JSONObject;
 * @Desc: 
 */
 
-@Controller
-public class AttendanceController {
 	
-	
->>>>>>> refs/heads/AfterMaster
-
-<<<<<<< HEAD
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -63,44 +54,7 @@ import net.sf.json.JSONObject;
 import com.class_ic.dao.MemberDAO;
 
 @Controller
-@RequestMapping("teacher")
-public class AttendanceController {
-	
-	@Autowired
-	private SqlSession sqlsession;
-
-	@RequestMapping(value="selectStudent.htm", method=RequestMethod.POST)
-	public void selectStudent(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		String classCode = request.getParameter("classCode");
-		System.out.println("classCode : "+ classCode);
-		
-		MemberDTO dto = new MemberDTO();
-		dto.setClassCode(classCode);
-		
-		MemberDAO dao = sqlsession.getMapper(MemberDAO.class);
-		List<MemberDTO> studentList = dao.selectStudent(dto);
-		
-		JSONArray array = new JSONArray();
-		
-		for(int i=0;i<studentList.size();i++){
-			JSONObject obj = new JSONObject();
-			obj.put("photoSrc", studentList.get(i).getPhotoSrc());
-			obj.put("email", studentList.get(i).getEmail());
-			obj.put("name", studentList.get(i).getName());
-			obj.put("phone", studentList.get(i).getPhone());
-			array.add(obj);
-			
-			System.out.println("studentList: "+studentList.toString());
-		}
-		
-		response.getWriter().println(array);
-		
-	}
-	
-	
-=======
-
+public class AttendanceController {	
 	@Autowired
 	private AttendanceListService attendanceListService;
 
@@ -159,5 +113,4 @@ public class AttendanceController {
 		}
 		response.getWriter().print(attendanceListArray);
 	}
->>>>>>> refs/heads/AfterMaster
 }
