@@ -17,32 +17,5 @@ import com.class_ic.vo.SearchCriteria;
 
 public interface BoardDAO {  
 	
-  public void create(BoardVO vo) throws ClassNotFoundException, SQLException;
-  
-  public BoardVO read(Integer lectureNo) throws ClassNotFoundException, SQLException;
-
-  public List<BoardVO> listAll() throws ClassNotFoundException, SQLException;
-  
-  public List<BoardVO> listWhereCate(String cateCode, String subcateCode) throws ClassNotFoundException, SQLException;
-  
-  public void categoryCreate(String cateCode) throws ClassNotFoundException, SQLException;
-  
-  public void subCategoryCreate(String cateCode, String subcateCode) throws ClassNotFoundException, SQLException;
-  
-  public List<String> showCateList() throws ClassNotFoundException, SQLException;
-  public List<String> showSubCateList(String cateCode) throws ClassNotFoundException, SQLException;
-  
-  public void delete(Integer lectureNo) throws ClassNotFoundException, SQLException;
-  /////////////////////////////////////////////////////////////////////
-  public List<BoardVO> listCriteria(int Page,int PerPageNum,String cateCode, String subcateCode) throws ClassNotFoundException, SQLException; //
-
-  public int countPaging(String cateCode, String subcateCode) throws ClassNotFoundException, SQLException; //
-  
-  //use for dynamic sql
-  
-  public List<BoardVO> listSearch(SearchCriteria cri)throws ClassNotFoundException, SQLException; //
-  
-  public int listSearchCount(SearchCriteria cri)throws ClassNotFoundException, SQLException; //
-  ///////////////////////////////////////////////////////////////////
 
 }
