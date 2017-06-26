@@ -65,6 +65,25 @@
 				<!--  end card  -->
 			</div>
 			<!-- end col-md-12 -->
+				<!-- chart Start -->
+			             <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="red">
+                                    <i class="material-icons">pie_chart</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">출석률</h4>
+                                </div>
+                                <div id="chartPreferences" class="ct-chart"></div>
+                                <div class="card-footer">
+                                    <h6>Legend</h6>
+                                    <i class="fa fa-circle text-info"></i> 출석
+                                    <i class="fa fa-circle text-warning"></i> 결석
+                                    <i class="fa fa-circle text-danger"></i> 지각
+                                </div>
+                            </div>
+                        </div> 
+            <!--chart End  -->
 		</div>
 		<!-- end row -->
 	</div>
