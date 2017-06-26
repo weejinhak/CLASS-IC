@@ -5,7 +5,7 @@
 
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/index.htm" class="simple-text">
-                    151기 (학생)
+                    	${sessionScope.classCode }기 (학생)
                 </a>
             </div>
             <div class="logo logo-mini">
@@ -20,7 +20,7 @@
 				</div>
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample" class="collapsed">
-						박소현 <b class="caret"></b>
+						${sessionScope.name } <b class="caret"></b>
 					</a>
 					<div class="collapse" id="collapseExample">
 						<ul class="nav">

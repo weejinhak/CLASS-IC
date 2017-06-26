@@ -15,6 +15,12 @@
                                     <button class="btn btn-danger" id="addCateBtn" data-toggle="modal" data-target="#addCate">
                                        <i class="material-icons">add_circle_outline</i> 카테고리 추가
                                     </button>
+                                    <br>
+                                    <hr style="width: 100%;">
+                                    <button class="btn btn-success cateBtn">
+                                       		 JAVA 기초
+                                    </button>
+                                    
                                 </div>
                                 
                             </div>
@@ -65,12 +71,27 @@
 <script type="text/javascript">
 	$(function() {
 		
+		moveTable();
+		
 		insertCate();
 		
 		function insertCate() { //insertCateBtn버튼 클릭시 카테고리 등록
 			$("#insertCateBtn").on("click",function() {
 				
 				alert("과제카테고리 등록 버튼 클릭");
+				
+			});
+		}
+		
+		function moveTable() {
+			$(".cateBtn").on("click",function() {
+				
+				alert("과제 테이블로 이동");
+				
+				var classCode = ${sessionScope.classCode};
+				console.log(classCode);
+				
+				location.href="movePage.htm?classCode="+classCode;
 				
 			});
 		}
