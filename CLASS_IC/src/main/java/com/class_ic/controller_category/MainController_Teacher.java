@@ -52,7 +52,7 @@ public class MainController_Teacher {
 	@RequestMapping(value="homework.htm", method=RequestMethod.GET)
 	public String homework(){
 
-		return "teacher.homework_board";
+		return "teacher.board_homework_main";
 	}
 
 

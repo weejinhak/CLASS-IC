@@ -150,8 +150,6 @@
 	<!-- 모달  -->
 	<div class="row">
 		<div class="col-md-12 text-center">
-
-
 			<!-- notice modal -->
 			<div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true">

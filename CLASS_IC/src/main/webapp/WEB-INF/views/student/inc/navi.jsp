@@ -32,13 +32,13 @@
 			</div>
 			<ul class="nav">
 				<li>
-					<a href="main.html"> <i class="material-icons">home</i>
+					<a href="main.htm"> <i class="material-icons">home</i>
 							<p>메인</p>
 					</a>
 				</li>
 				
 				<li>
-					<a href="historyList.html"> <i class="material-icons">schedule</i>
+					<a href="historyList.htm"> <i class="material-icons">schedule</i>
 							<p>히스토리</p>
 					</a>
 				</li>
@@ -70,6 +70,12 @@
 				<li>
 					<a href="calendar.htm"> <i class="material-icons">today</i>
 							<p>달력</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="linkFile.htm"> <i class="material-icons">playlist_add_check</i>
+							<p>링크게시판</p>
 					</a>
 				</li>
 				
