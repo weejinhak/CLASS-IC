@@ -46,9 +46,9 @@
 					<div class="instruction">
 								<div class="row">
 									<div class="col-md-12"> 
-										<input type=text name=input_box id=inputBox><!-- groupCode입력 -->
-										<input type="text" class="form-control" placeholder="과제 명을 작성해주세요">
-									
+										<input type=text class="form-control valid" name="groupCode" id="groupCode" style="width: 100px;" maxlength="5" aria-invalid="false" placeholder="groupCode입력"><!-- groupCode입력 -->
+										<input type="text" class="form-control" placeholder="과제 명을 작성해주세요" id="cateTitle">
+										<input type="hidden" id="classCode" value="${sessionScope.classCode }">
 									</div>
 								</div>
 							</div>
@@ -71,15 +71,41 @@
 <script type="text/javascript">
 	$(function() {
 		
+		numberCheck();
+		
 		moveTable();
 		
 		insertCate();
 		
+		//수정 해야함!!!
 		function insertCate() { //insertCateBtn버튼 클릭시 카테고리 등록
 			$("#insertCateBtn").on("click",function() {
 				
 				alert("과제카테고리 등록 버튼 클릭");
 				
+				var email = $('#email').val();
+				
+					$.ajaxSetup({cache : false});
+					$.ajax({
+					cashe : false,
+					type : "post",
+					url : "selectMemo.htm",
+					data : {"email" : email},
+					dataType : 'json',
+					async : false,
+					success : function(data) {
+
+                       $.each(data,function(index, item) {
+
+							$('.memo-content').append(
+									'<div class="alert alert-primary item col-xs-4" id="'+item.memono+'"> <input type="hidden" class="memoNo" value="'+item.memono+ '" name="memoNo" />'
+										+ item.memotext+ '<button class="deletebutton close" aria-hidden="true" value="'+item.memono+'"><i class="material-icons">close</i></button></div>')
+
+									console.log("memoNO: "+ item.memono)
+							});
+			              }
+				     });
+				});
 			});
 		}
 		
@@ -98,5 +124,16 @@
 		
 	});
 
-</script>
+	function numberCheck() {
+		$('#inputBox').keypress(function (event) { 
+			if (event.which && (event.which <= 47 || event.which >= 58) && event.which != 8) {
+				event.preventDefault(); 
+			} 
+		});
+		 
+	}
+	
+ 
+ </script>
+
 

@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("teacher")
-public class Homework_Teacher {
+public class HomeworkController_Teacher {
 
+	//과제 상세게시판으로 이동 : 2017.06.26 최은혜
 	@RequestMapping(value="movePage.htm")
 	public String MovePage(HttpSession session, String classCode) {
 		
