@@ -136,21 +136,33 @@
 				searchPlaceholder : "검색해보세요",
 			}
 
-		});
+		});	
 		
-		
-		  var dataPreferences = {
-		            labels: ['30%','60%','10%'],
-		            series: [30, 60, 10]
-		        };
-		            
-		        var optionsPreferences = {
-		            height: '200px'
-		        };
-
-		        Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
 		
 		
 
 	});
+</script>
+
+
+<script>
+
+		$(document).ready(function() {
+
+			  var dataPreferences = {
+			            labels: ['30%','60%','10%'],
+			            series: [30, 60, 10]
+			        };
+			            
+			        var optionsPreferences = {
+			            height: '200px'
+			        };
+
+			        Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
+			
+
+
+
+		});
+
 </script>

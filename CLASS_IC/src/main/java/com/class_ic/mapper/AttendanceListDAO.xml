@@ -17,5 +17,21 @@
 	WHERE c.email =#{param1} AND a.classCode=#{param2}) at JOIN member m
 	ON at.email = m.email;
 	</select>
+	
+	<select id="attendanceTotalCount" parameterType="String" resultType="Integer">
+		select count(*) from attendance where email=#{param1} and classCode=#{param2}
+	</select>
+	
+	<select id="attendanceNomalCount" parameterType="String" resultType="Integer">
+		select count(*) from attendance where email=#{param1} and classCode=#{param2} and classState='출석'
+	</select>
+	
+	<select id="attendLateCount" parameterType="String" resultType="Integer">
+		select count(*) from attendance where email=#{param1} and classCode=#{param2} and classState='지각'
+	</select>
+	
+	<select id="attendAbsenceCount" parameterType="String" resultType="Integer">
+		select count(*) from attendance where email=#{param1} and classCode=#{param2} and classState='결석'
+	</select>
 
 </mapper>

@@ -108,7 +108,15 @@ public class AttendanceController {
 		System.out.println("학생용 차트 컨트롤러");
 
 		
-		List<AttandanceDTO> memberattendacnelist = attendanceListService.attendanceSelect(email, classcode);
+		int attendancetotalcount = attendanceListService.attendanceTotalCount(email, classcode);
+		int attendnomalcount = attendanceListService.attendanceNomalCount(email, classcode);
+		int attendlatecount = attendanceListService.attendLateCount(email, classcode);
+		int attendabsencecount = attendanceListService.attendAbsenceCount(email, classcode);
+		
+		System.out.println(attendancetotalcount);
+		System.out.println(attendnomalcount);
+		System.out.println(attendlatecount);
+		System.out.println(attendabsencecount);
 		
 	
 	    String[] labels={"70%","0%","0%"};
@@ -117,17 +125,7 @@ public class AttendanceController {
 		request.setAttribute("series", series);
 		
 
-		JSONArray attendanceListArray= new JSONArray();		
 		
-		System.out.println(memberattendacnelist.size());
-		
-		for(int i=0;i<memberattendacnelist.size();i++){
-			JSONObject obj=new JSONObject();
-			obj.put("labels",memberattendacnelist.get(i).getAttendState());
-			obj.put("series",memberattendacnelist.get(i).getOutClass());			
-			attendanceListArray.add(obj);
-		}
-		response.getWriter().print(attendanceListArray);
-
+	
 	}
 }

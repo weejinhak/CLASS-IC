@@ -37,7 +37,8 @@ public class AttendanceListService implements AttendanceListDAO{
 	@Override
 	public ArrayList<AttandanceDTO> attendanceSelect(String email, String classcode){		
 
-		AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);		
+		AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);	
+		
 		ArrayList<AttandanceDTO> memberList=attendancelistDao.attendanceSelect(email,classcode);	
 		
 		return memberList;			
@@ -50,9 +51,65 @@ public class AttendanceListService implements AttendanceListDAO{
 	public ArrayList<AttandanceListDTO> attendanceSelectByTeacher(String email, String classcode){		
 
 		AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);		
+		
 		ArrayList<AttandanceListDTO> memberList=attendancelistDao.attendanceSelectByTeacher(email,classcode);	
 		
 		return memberList;			
+	}
+
+	/*
+	@description : attendance 테이블에서 아이디에 맞는 TotalCount 해주는 기능
+	*/
+	@Override
+	public int attendanceTotalCount(String email, String classcode) {
+		
+		AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);
+		
+	    int attendancetotalcount = attendancelistDao.attendanceTotalCount(email, classcode);
+		
+		return attendancetotalcount;
+	}
+
+	
+	/*
+	@description : attendance 테이블에서 아이디에 맞는 출석 수 해주는 기능
+	*/
+	@Override
+	public int attendanceNomalCount(String email, String classcode) {
+		
+		AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);		
+		
+		int attendancenomalcount = attendancelistDao.attendanceNomalCount(email, classcode);
+		
+		return attendancenomalcount;
+	}
+
+	
+	/*
+	@description : attendance 테이블에서 아이디에 맞는 지각 수 해주는 기능
+	*/
+	@Override
+	public int attendLateCount(String email, String classcode) {
+		
+		AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);	
+		
+		int attendlatecount = attendancelistDao.attendLateCount(email, classcode);
+		
+		return attendlatecount;
+	}
+
+	
+	/*
+	@description : attendance 테이블에서 아이디에 맞는 결석 수  해주는 기능
+	*/
+	@Override
+	public int attendAbsenceCount(String email, String classcode) {
+		
+		AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);		
+		
+		int attendabsencecount = attendancelistDao.attendAbsenceCount(email, classcode);
+		
+		return attendabsencecount;
 	}
 	
 	

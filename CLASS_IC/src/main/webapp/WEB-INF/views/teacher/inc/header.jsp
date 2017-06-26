@@ -5,16 +5,28 @@
 <c:set var="contextPath" value="<%= request.getContextPath()%>"></c:set>  
 
 <script>
+	var sessionId="<%=(String)session.getAttribute("email")%>";
+	var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"
+	
+
+	/* 페이지 로드시 QR 코드 가져옴. */
+	$(document).ready(function() {		
+	      $('#qrclick').click(function() {
+				console.log("페이지가 시작1");
+				var url ="/class_ic/common/createCode.htm";			 
+			    $("#img").attr("src", url + "?content=" + sessionClassCode); 	
+	  	});
+	});
+
+
    var wsocket;
    var msg;
-   var sessionId="<%=(String)session.getAttribute("email")%>";
-   var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"
    function connect() {
 
       alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
-      wsocket = new WebSocket("ws://192.168.1.180:8090/class_ic/chat-ws.htm?email="+sessionId);
+      wsocket = new WebSocket("ws://192.168.0.125:8090/class_ic/chat-ws.htm?email="+sessionId);
       appendMessage("웹 소켓연결되었습니다.");
       wsocket.onopen = onOpen;
       wsocket.onmessage = onMessage;
@@ -108,14 +120,17 @@
             <li>[ ${sessionScope.name } ]님 강의실 입장</li>
             <!-- QR  -->
             <li><a href="#pablo" class="dropdown-toggle"
-               data-toggle="dropdown"> <i class="material-icons">watch_later</i>
+               data-toggle="dropdown" id="qrclick"> <i class="material-icons">watch_later</i>
             </a>
 
                <ul class="dropdown-menu">
-                  <center>
-                     <li>QR 이미지</li>
-                  </center>
-               </ul></li>
+               <center>
+		          <img id="img" style="display: none" onload="this.style.display='block'" width="180" height="180"/>
+               </center>
+               </ul>
+               
+               
+             </li>
             <!--QR코드    -->
 
             <!--쪽지 알림  -->

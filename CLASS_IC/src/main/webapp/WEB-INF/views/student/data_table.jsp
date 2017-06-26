@@ -135,18 +135,41 @@
 		});
 		
 		
-		var dataPreferences = {
-	            labels: ['30%','60%','10%'],
-	            series: [30, 60, 10]
-	        };
-	            
-	        var optionsPreferences = {
-	            height: '200px'
-	        };
 
-	        Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
-	
 
 	});
 </script>
 
+
+<script>
+
+		$(document).ready(function() {
+
+			  var dataPreferences = {
+			            labels: ['30%','60%','10%'],
+			            series: [30, 60, 10]
+			        };
+			            
+			        var optionsPreferences = {
+			            height: '200px'
+			        };
+			        
+			        Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
+		});
+		
+		
+		$.ajax({
+			type : 'POST',
+			url : 'attendanceTable.htm',
+			dataType : 'json',
+			data : {
+				email : sessionId,
+				classcode : '151' /* 여기다가 기수 세션값 넣어야함 */
+			},
+			success : function(data) {
+
+			}
+
+		});
+
+</script>
