@@ -45,8 +45,7 @@
 					<a href="board.htm"> <i class="material-icons">dashboard</i>
 							<p>수업보드</p>
 					</a>
-				</li>
-				
+				</li>		
 				<li>
 					<a href="homework.htm"> <i class="material-icons">playlist_add_check</i>
 							<p>과제게시판</p>

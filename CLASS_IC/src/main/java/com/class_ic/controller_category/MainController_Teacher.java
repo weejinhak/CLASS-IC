@@ -46,7 +46,7 @@ public class MainController_Teacher {
 	@RequestMapping(value="board.htm", method=RequestMethod.GET)
 	public String board(){
 
-		return "teacher.board";
+		return "teacher.board_content";
 	}
 	//homework_board게시판 이동
 	@RequestMapping(value="homework.htm", method=RequestMethod.GET)
