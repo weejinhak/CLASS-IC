@@ -46,7 +46,7 @@
 					<div class="instruction">
 								<div class="row">
 									<div class="col-md-12"> 
-										
+										<input type=text name=input_box id=inputBox><!-- groupCode입력 -->
 										<input type="text" class="form-control" placeholder="과제 명을 작성해주세요">
 									
 									</div>
