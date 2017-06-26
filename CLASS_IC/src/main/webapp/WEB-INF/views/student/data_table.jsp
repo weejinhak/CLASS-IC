@@ -160,8 +160,7 @@
 		
 		$.ajax({
 			type : 'POST',
-			url : 'attendanceTable.htm',
-			dataType : 'json',
+			url : 'attendchart.htm',
 			data : {
 				email : sessionId,
 				classcode : '151' /* 여기다가 기수 세션값 넣어야함 */
