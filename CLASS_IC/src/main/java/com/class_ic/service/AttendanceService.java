@@ -25,17 +25,14 @@ public class AttendanceService {
 	public void insertAttendance(){
 		
 		AttandanceDTO dto=new AttandanceDTO();
-
 		AttendanceDAO attendanceDao=sqlsession.getMapper(AttendanceDAO.class);
-		
-
 		ArrayList<MemberDTO> memberList=attendanceDao.memberSelectAll();
 		
 		String email="";
 		
 		for(int i=0;i<memberList.size();i++){
 			
-
+			System.out.println(memberList.size());
 			//dto.setAttendDate(new Date(2017-12-12)); //sysdate
 			dto.setAttendState("결석"); 
 			email=memberList.get(i).getEmail();

@@ -34,7 +34,9 @@ public class MemberService_Web {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	
-	//login
+	/*
+	   @description : longin  마지막 추가수정. 위진학.
+	*/
 	public ModelAndView loginService(HttpSession session,String email, @RequestParam("pwd") String rawPassword, ModelAndView mv){
 		
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);

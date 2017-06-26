@@ -107,6 +107,11 @@ public class MainController_Teacher {
 			System.out.println("teacher main controller 탐, test.htm ");
 			return "teacher.fileMannager";
 		}
+		@RequestMapping("test16.htm")
+		public String studentTest16(){
+			System.out.println("teacher main controller 탐, test.htm ");
+			return "teacher.data_table";
+		}
 		
 
 	// teacher board
