@@ -46,7 +46,7 @@
    <a href="teacher/test5.htm"> board_details_view</a> <br/>
    <a href="teacher/test6.htm"> board_details</a> <br/>
    <a href="teacher/test7.htm">board_homework_content</a> <br/>
-   <a href="teacher/test8.htm"> board</a> <br/>
+   <a href="teacher/boardlecture.htm"> board</a> <br/>
    <a href="teacher/test9.htm"> Calendar</a> <br/>
    <a href="teacher/test10.htm"> class_condition</a> <br/>
    <a href="teacher/test11.htm">History</a> <br/>
