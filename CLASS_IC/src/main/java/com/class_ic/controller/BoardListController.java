@@ -1,22 +1,17 @@
 package com.class_ic.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.ibatis.session.SqlSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.class_ic.dao.BoardDAO;
-import com.class_ic.vo.CategoryDTO;
-import com.class_ic.vo.LectureBoardDTO;
-import com.class_ic.vo.SubCategoryDTO;
+import com.class_ic.service.BoardListService;
+
 
 
 /*
@@ -41,13 +36,26 @@ public class BoardListController {
 	
 
 	@Autowired
-	private SqlSession sqlsession;
+	private BoardListService boardlistservice;
 	
 
+	@RequestMapping(value = "boardcontent.htm", method = RequestMethod.POST)
+	public String boardContentView(HttpServletRequest request){
+		
+		
+	
+		return "common/board_content";
+
+	
+	}
+	
 	
 	@RequestMapping(value = "boardcontentsave.htm", method = RequestMethod.POST)
 	public String boardContentSave(HttpServletRequest request){
-	System.out.println("boardContentSave 메소드 들어옴.");
+		
+		boardlistservice.boardContentSaveService(request);
+		
+	/*System.out.println("boardContentSave 메소드 들어옴.");
     String title=(String)request.getParameter("title");
     String content=(String)request.getParameter("content");
     String cate=(String)request.getParameter("cate");
@@ -62,36 +70,43 @@ public class BoardListController {
     dto.setLectureTitle(title);
     BoardDAO board=sqlsession.getMapper(BoardDAO.class);
     
-    board.insertBoardContent(dto);
-	return "teacher.board_content";
+    board.insertBoardContent(dto);*/
+	return "common/board_content";
 
 	
 	}
 	
+
 	@RequestMapping(value = "selectcategory.htm", method = RequestMethod.POST)
 	public String selectCategory(Model model,HttpServletRequest request){
-	System.out.println("selectCategory 메소드 들어옴.");
+
 	
-    BoardDAO board=sqlsession.getMapper(BoardDAO.class);
+	
+	String viewpage = boardlistservice.selectCategoryService(model, request);
+   /* BoardDAO board=sqlsession.getMapper(BoardDAO.class);
 	List<CategoryDTO> totalcate= board.selectCategory();
 	
 	System.out.println(totalcate);
 	
-	model.addAttribute("listcategory",totalcate);
+	model.addAttribute("listcategory",totalcate);*/
 	
     /*	for(String value: totalcate){
 	 System.out.println(value);
 	}
 	*/
 	
-	return "common/boardCateList";
+	return viewpage;
     
 	
 	}
 	
 	@RequestMapping(value = "selectsubcategory.htm", method = RequestMethod.POST)
 	public String selectSubCategory(Model model,HttpServletRequest request){
-	System.out.println("selectsubcategory 메소드 들어옴.");
+		
+		String viewpage=boardlistservice.selectSubCategoryService(model, request);
+		
+	/*
+	 System.out.println("selectsubcategory 메소드 들어옴.");
 	
 	String cate=request.getParameter("cate");
 	System.out.println(cate);
@@ -107,15 +122,18 @@ public class BoardListController {
 	}
 	
 	model.addAttribute("subcategory",subcate2);
+	*/
 	
 
-	return "common/boardSubCateList";
+	return viewpage;
     
 	
 	}
 
+
+
 	
-	@RequestMapping(value = "insertboard.htm")
+	@RequestMapping(value = "teacher/insertboard.htm")
 	public String insertBoard(Model model,HttpServletRequest request){
 
 
@@ -123,7 +141,6 @@ public class BoardListController {
     
 	
 	}
-
 
 
 }
