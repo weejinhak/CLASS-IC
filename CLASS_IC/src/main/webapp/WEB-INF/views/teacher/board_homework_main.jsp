@@ -78,7 +78,7 @@
 		insertCate();
 		
 		//수정 해야함!!!
-		function insertCate() { //insertCateBtn버튼 클릭시 카테고리 등록
+		/*  function insertCate() { //insertCateBtn버튼 클릭시 카테고리 등록
 			$("#insertCateBtn").on("click",function() {
 				
 				alert("과제카테고리 등록 버튼 클릭");
@@ -107,7 +107,7 @@
 				     });
 				});
 			});
-		}
+		}  */
 		
 		function moveTable() {
 			$(".cateBtn").on("click",function() {

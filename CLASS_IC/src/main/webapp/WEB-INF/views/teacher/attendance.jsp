@@ -2,14 +2,12 @@
     pageEncoding="UTF-8"%>
     
  <div class="content">
- 	<input type="hidden" value="151" id="classCode" name="classCode" />
+ 	<input type="hidden" value="${sessionScope.classCode }" id="classCode" name="classCode" />
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
-      	 <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header card-header-text" data-background-color="orange">
-                                    <h4 class="card-title">학생부</h4>
-                          			 <p class="category">New employees on 15th September, 2016</p> 
+                                    <h4 class="card-title">${sessionScope.classCode }기 학생부</h4>
                                 </div>
                                 <br> 
                                 <div class="card-content table-responsive">
@@ -28,7 +26,6 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
       	 </div>
  </div>
  

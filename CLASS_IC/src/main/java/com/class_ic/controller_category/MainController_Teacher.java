@@ -52,8 +52,15 @@ public class MainController_Teacher {
 	@RequestMapping(value="homework.htm", method=RequestMethod.GET)
 	public String homework(){
 
-		return "teacher.board_homework_main";
+		return "teacher.homework_board";
 	}
+	
+	//학생부 게시판 이동
+		@RequestMapping(value="studentList.htm", method=RequestMethod.GET)
+		public String selectStudent(){
+
+			return "teacher.attendance";
+		}
 
 
 
