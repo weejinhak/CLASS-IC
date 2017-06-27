@@ -32,6 +32,8 @@
    <script src="${pageContext.request.contextPath}/resources/assets/js/material.min.js" type="text/javascript"></script>
    <script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
 	<link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
+	<!--에디터 추가부분 -->
+	<link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
 	
 </head>
 
@@ -563,11 +565,18 @@
 				<div class="col-sm-10">
 					<div class="form-group label-floating is-empty">
 						<label class="control-label"></label>
+						<!--에디터 추가부분 -->
+						<div class="main">
+                         <div id="editor_panel"></div> 
+                         <!--에디터 추가부분 -->
 						<textarea id="lectureContent" name="lectureContent" cols="50" style="width: 90%; height: 600px; color: gray"
 							id="content" name="contnet"></textarea>
 
 						<span class="help-block">과제의 제목을 입력해 주세요.</span> <span
 							class="material-input"></span>
+							<!--에디터 추가부분 -->
+							</div>
+							<!--에디터 추가부분 -->
 					</div>
 				</div>
 			</div>
@@ -605,6 +614,7 @@
 	</div>
 
 </div>
+<!--에디터 추가부분 -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////  -->
 <!-- Forms Validations Plugin -->

@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insert" parameterType="com.class_ic.vo.LectureDTO">
 	INSERT INTO class (classCode,email,classTitle,classStart,classOpenTime,classEnd,classCloseTime,classInviteCode)
-VALUES(#{classCode}, #{classTitle}, str_to_date(#{classStart},'%Y-%m-%d'),str_to_date(#{classOpenTime}, '%H:%i'),str_to_date(#{classEnd},'%Y-%m-%d'),str_to_date(#{classCloseTime}, '%H:%i'),#{classInviteCode}, #{email} );
+	VALUES(#{classCode}, #{classTitle}, str_to_date(#{classStart},'%Y-%m-%d'),str_to_date(#{classOpenTime}, '%H:%i:%s'),str_to_date(#{classEnd},'%Y-%m-%d'),str_to_date(#{classCloseTime}, '%H:%i:%s'),#{classInviteCode}, #{email} );
 	</insert>
 
 	<select id="getlecture" resultType="com.class_ic.vo.LectureDTO">
