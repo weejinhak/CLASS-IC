@@ -172,9 +172,9 @@ public class AttendanceListService implements AttendanceListDAO{
 	}
 
 	@Override
-	public ArrayList<AttandanceDTO> selectEachStudent(AttandanceDTO dto) {
+	public ArrayList<AttandanceDTO> selectEachStudent(String email , String classcode) {
 		   AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);	
-		   ArrayList<AttandanceDTO> selecteachstudent=attendancelistDao.selectEachStudent(dto);
+		   ArrayList<AttandanceDTO> selecteachstudent=attendancelistDao.selectEachStudent(email,classcode);
 		return selecteachstudent;
 	}
 

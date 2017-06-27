@@ -64,10 +64,10 @@
 	<!--차트용 End -->
 
 
-	<select id="selectEachStudent" parameterType="com.class_ic.vo.AttandanceDTO"
+	<select id="selectEachStudent" parameterType="String"
 		resultType="com.class_ic.vo.AttandanceDTO">
-	select * from attendance where classCode=#{classCode} and email=#{email}
-		</select>
+	   select * from attendance where email=#{param1} and classCode=#{param2} 
+	</select>
 
 	
 </mapper>

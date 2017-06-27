@@ -55,7 +55,7 @@ public class SchedulerController {
  * @Scheduled(fixedRate=5000) -> 5초마다 실행 해주기
  * */
 	
-	@Scheduled(cron="0 0 5 * * *")
+	@Scheduled(fixedRate=50000)
 	public void insert() {
 		System.out.println("아침입니다 출석됭 테이블을 insert 하겠습니다.");
 		attendanceservice.insertAttendance();

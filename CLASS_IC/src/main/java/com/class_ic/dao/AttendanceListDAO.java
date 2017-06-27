@@ -50,7 +50,7 @@ public interface AttendanceListDAO {
 	
 	//이메일에 맞는 출석 결과를 모두 가져와줌
 
-	public ArrayList<AttandanceDTO> selectEachStudent(AttandanceDTO dto);
+	public ArrayList<AttandanceDTO> selectEachStudent(String email,String classcode);
 
 
 

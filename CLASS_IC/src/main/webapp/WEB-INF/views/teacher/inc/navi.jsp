@@ -66,6 +66,12 @@
 				</li>
 				
 				<li>
+					<a href="attend.htm"><i class="material-icons">account_box</i>
+							<p>출석부</p>
+					</a>
+				</li>
+				
+				<li>
 					<a href="calendar.htm"> <i class="material-icons">today</i>
 							<p>달력</p>
 					</a>
