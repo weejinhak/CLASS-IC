@@ -47,7 +47,7 @@
         		data:{title:title,content:content,cate:cate,subcate:subcate},
         		dataType:'text',
                 success : function(data){
-                    alert("통신 성공!!") ;
+                
                 	var title= $("#title").val("");
             		var content=$("#content").val("");
             		var cate=$("#cate").val("");
@@ -67,7 +67,7 @@
         		dataType:'text',
                 success : function(data){
 					$('#cate').html(data);
-                    alert("통신 성공!!") ;
+             
            
                 },
             	error : function(){
@@ -96,8 +96,7 @@
        	        type: 'POST',
        	        
        	        success: function(data){
-       	        	alert("성공!")
-       	      
+       	       
        	       	$('#subcate').html(data);
        	           
        	        }
