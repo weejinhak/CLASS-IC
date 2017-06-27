@@ -37,12 +37,6 @@
 	</select>
 	
 	<update id="updateAttendaceState"  parameterType="hashmap">
-<<<<<<< HEAD
-
 	update attendance set attendState=#{param1} where email=#{param2} and attendDate=CURDATE()
-
-=======
-	update attendance set attendState=#{param1} where email=#{param2} and attendDate=CURDATE()
->>>>>>> refs/heads/Jin_Hak_NewStart
 	</update>
 </mapper>
