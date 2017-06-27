@@ -49,18 +49,7 @@ public class MainController_Teacher {
 
 		return "teacher.board";
 	}
-	//boardList 글쓰기 view 페이지 이동 (테스트용)
-	@RequestMapping(value="boardWriteOk.htm", method=RequestMethod.GET)
-	public String boardWriteOK(){
-
-		return "teacher.board_content";
-	}
-	//boardList 글쓰기 값 넘기기 (테스트용)
-		@RequestMapping(value="boardWriteOk.htm", method=RequestMethod.POST)
-		public String boardWriteOK(LectureBoardDTO board){
-
-			return "teacher.board_content";
-		}
+	
 	//homework_board게시판 이동
 	@RequestMapping(value="homework.htm", method=RequestMethod.GET)
 	public String homework(){

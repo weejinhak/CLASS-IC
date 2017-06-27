@@ -83,10 +83,11 @@
 												<button type="button" class="btn btn-danger btn-simple fix-broken-card">
 													<i class="material-icons">build</i> Fix Header!
 												</button>
-												
-												<button type="button" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="go!">
+												<form action="boardcontent.htm" method="POST">
+												<button type="submit" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="go!">
 													<i class="material-icons">input</i>
 												</button>
+												</form>
 											</div>					
 								            <br>					
 											<p class="category">통합 관리 페이지로 이동.</p>
