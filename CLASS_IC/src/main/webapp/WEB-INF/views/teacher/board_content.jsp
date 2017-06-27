@@ -42,7 +42,7 @@
         	console.log(subcate);
 
         	$.ajax({ 
-        		type: 'get' ,
+        		type: 'post' ,
         		url: '${pageContext.request.contextPath}/boardcontentsave.htm', 
         		data:{title:title,content:content,cate:cate,subcate:subcate},
         		dataType:'text',

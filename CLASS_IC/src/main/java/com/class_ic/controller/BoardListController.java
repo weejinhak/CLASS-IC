@@ -45,7 +45,7 @@ public class BoardListController {
 	
 
 	
-	@RequestMapping(value = "boardcontentsave.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "boardcontentsave.htm", method = RequestMethod.POST)
 	public String boardContentSave(HttpServletRequest request){
 	System.out.println("boardContentSave 메소드 들어옴.");
     String title=(String)request.getParameter("title");
@@ -110,6 +110,16 @@ public class BoardListController {
 	
 
 	return "common/boardSubCateList";
+    
+	
+	}
+
+	
+	@RequestMapping(value = "insertboard.htm")
+	public String insertBoard(Model model,HttpServletRequest request){
+
+
+	return "teacher.board_content";
     
 	
 	}
