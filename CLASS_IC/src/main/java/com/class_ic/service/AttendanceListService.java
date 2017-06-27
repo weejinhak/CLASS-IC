@@ -57,7 +57,7 @@ public class AttendanceListService implements AttendanceListDAO{
 	}
 
 	/*
-	@description : attendance 테이블에서 아이디에 맞는 TotalCount 해주는 기능
+	@description : attendance 테이블에서 아이디에 맞는 TotalCount 해주는 기능(학생)
 	*/
 	@Override
 	public int attendanceTotalCount(String email, String classcode) {
@@ -71,7 +71,7 @@ public class AttendanceListService implements AttendanceListDAO{
 
 	
 	/*
-	@description : attendance 테이블에서 아이디에 맞는 출석 수 해주는 기능
+	@description : attendance 테이블에서 아이디에 맞는 출석 수 해주는 기능(학생)
 	*/
 	@Override
 	public int attendanceNomalCount(String email, String classcode) {
@@ -85,7 +85,7 @@ public class AttendanceListService implements AttendanceListDAO{
 
 	
 	/*
-	@description : attendance 테이블에서 아이디에 맞는 지각 수 해주는 기능
+	@description : attendance 테이블에서 아이디에 맞는 지각 수 해주는 기능(학생)
 	*/
 	@Override
 	public int attendLateCount(String email, String classcode) {
@@ -99,7 +99,7 @@ public class AttendanceListService implements AttendanceListDAO{
 
 	
 	/*
-	@description : attendance 테이블에서 아이디에 맞는 결석 수  해주는 기능
+	@description : attendance 테이블에서 아이디에 맞는 결석 수  해주는 기능(학생)
 	*/
 	@Override
 	public int attendAbsenceCount(String email, String classcode) {
@@ -113,7 +113,7 @@ public class AttendanceListService implements AttendanceListDAO{
 
 	
 	/*
-	@description : attendance 테이블에서 아이디에 맞는 결석 수  해주는 기능
+	@description : attendance 테이블에서 아이디에 맞는 결석 수  해주는 기능(학생)
 	*/
 	@Override
 	public int attendEarlyLeaveCount(String email, String classcode) {
@@ -123,12 +123,60 @@ public class AttendanceListService implements AttendanceListDAO{
 		
 		return attendearlyleavecount;
 	}
+
 	
 	
 	
+	/*
+	@description : attendance 테이블에서 아이디에 맞는 출석 총 수  해주는 기능(강사)
+	*/
+	@Override
+	public int attendanceTotalCountTeacher(String email, String classcode) {
+		return 0;
+	}
 	
+	/*
+	@description : attendance 테이블에서 아이디에 맞는 출석 수  해주는 기능(강사)
+	*/
+
+	@Override
+	public int attendanceNomalCountTeacher(String email, String classcode) {
+		return 0;
+	}
 	
-		
+	/*
+	@description : attendance 테이블에서 아이디에 맞는 지각 수  해주는 기능(강사)
+	*/
+
+	@Override
+	public int attendLateCountTeacher(String email, String classcode) {
+		return 0;
+	}
 	
+	/*
+	@description : attendance 테이블에서 아이디에 맞는 결석 수  해주는 기능(강사)
+	*/
+
+	@Override
+	public int attendAbsenceCountTeacher(String email, String classcode) {
+		return 0;
+	}
+	
+	/*
+	@description : attendance 테이블에서 아이디에 맞는 조퇴 수  해주는 기능(강사)
+	*/
+
+	@Override
+	public int attendEarlyLeaveCountTeacher(String email, String classcode) {
+		return 0;
+	}
+
+	@Override
+	public ArrayList<AttandanceDTO> selectEachStudent(AttandanceDTO dto) {
+		   AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);	
+		   ArrayList<AttandanceDTO> selecteachstudent=attendancelistDao.selectEachStudent(dto);
+		return selecteachstudent;
+	}
+
 
 }
