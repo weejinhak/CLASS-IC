@@ -37,6 +37,6 @@
 	</select>
 	
 	<update id="updateAttendaceState"  parameterType="hashmap">
-	update attendance set attendState=#{param1} where email=#{param2} and attendDate='2017-06-24'
+	update attendance set attendState=#{param1} where email=#{param2} and attendDate=CURDATE()
 	</update>
 </mapper>

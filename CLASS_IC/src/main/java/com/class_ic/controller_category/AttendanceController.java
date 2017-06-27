@@ -10,6 +10,7 @@ package com.class_ic.controller_category;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -97,7 +98,7 @@ public class AttendanceController {
 	}
 
 	/*
-	 * @description : 차트용 출석률
+	 * @description : 차트용 출석률(학생)
 	 */
 	@RequestMapping(value = "student/attendchart.htm", method = RequestMethod.POST)
 	public void chart(String email, String classcode, HttpServletResponse response, HttpServletRequest request)
@@ -154,4 +155,55 @@ public class AttendanceController {
 		response.getWriter().print(attendanceChartArray);
 		
 	}
+	/*
+	 * @description : 차트용 출석률(강사)
+	 */
+	@RequestMapping(value = "teacher/attendchart.htm", method = RequestMethod.POST)
+	public void teacherchart(String email, String classcode, HttpServletResponse response, HttpServletRequest request)
+			throws Exception {
+
+
+	
+	}
+	
+	
+	public int[] eachPercent(String email,String classCode){
+		
+
+		
+		AttandanceDTO dto= new AttandanceDTO();
+		dto.setEmail(email);
+		dto.setClassCode(classCode);
+		AttendanceListService service= new AttendanceListService();
+		ArrayList<AttandanceDTO> list=service.selectEachStudent(dto);
+
+		int attendancetotalcount = list.size();
+		int attendnomalcount =0;
+		int attendlatecount = 0;
+		int attendabsencecount = 0;
+		int attendearlyleavecount=0;
+		
+		for(AttandanceDTO eachlist: list){
+	
+			if(eachlist.getAttendState().equals("출석")){
+				attendnomalcount++;
+				
+			}
+			else if(eachlist.getAttendState().equals("지각")){
+				attendlatecount++;
+			}
+			else if(eachlist.getAttendState().equals("조퇴")){
+				attendearlyleavecount++;
+				
+			}else if(eachlist.getAttendState().equals("결석")){
+				attendabsencecount++;
+			}
+	
+	}
+		
+		int[] avg={(attendnomalcount/attendancetotalcount)*100,(attendlatecount/attendancetotalcount)*100,
+		(attendearlyleavecount/attendancetotalcount)*100,(attendabsencecount/attendancetotalcount)*100};
+	
+		return avg;
+}
 }
