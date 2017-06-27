@@ -26,7 +26,7 @@
                                  <h4 class="card-title">글 입력하기</h4>
                                   </div>
                                   
-                           <form method="post" action="boardWriteOk.htm" class="form-horizontal">
+                           <form method="post" action="boardWriteOk.htm" class="form-horizontal" enctype="multipart/form-data">
                            <br><br>
                            
                          <div style="display:inline-block;">
@@ -70,14 +70,31 @@
                                                      <div id="editor_panel"></div>  
                                                     <textarea id="lectureContent" name="smarteditor" cols="50" style="width: 90%; height: 300px; color: gray"></textarea>
 
-                                                    <span class="help-block">과제의 제목을 입력해 주세요.</span>
-                                                <span class="material-input"></span></div>
+                                                    <!-- <span class="help-block">과제의 제목을 입력해 주세요.</span>
+                                                <span class="material-input"></span></div> -->
                                             </div>
                                         </div>
+                                        </div>
+                                        </div>
+                                        <!--  파일 업로드 -->
+                                       
+                                         <div class="row">
+                                            <label class="col-sm-2 label-on-left">첨부파일 : </label>
+                                            <div class="col-sm-10">
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label"></label>
+                                                    <div class="main">
+                                                     <div id="editor_panel"></div>  
+                                                    &nbsp;<input type="file" id="txtFile" name="files[0]" />
+                                            </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                     
                                         	<br>
                                             
                                        
-                                       <div class="td-actions text-center">
+                                       				<div class="td-actions text-center">
                                                         <button type="button" rel="tooltip" class="btn btn-info btn-round" data-original-title="" title="">
                                                             <i class="material-icons">list</i>
                                                         </button>
@@ -88,7 +105,9 @@
                                                             <i class="material-icons">close</i>
                                                         </button>
                                                         </form>
-                                                    </div>
+                                                       </div>
+                                                        
+                                         </div>
                                                     <br>
                                                     <br>
                                                     <br>
@@ -97,8 +116,8 @@
                                     </div>
                            
                             </div>
-      	 </div>
-</div>
+    
+
 
 <script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>	
 <script id="template" type="text/x-handlebars-template">
