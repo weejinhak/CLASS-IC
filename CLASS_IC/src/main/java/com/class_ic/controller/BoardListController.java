@@ -45,6 +45,17 @@ public class BoardListController {
 	private BoardListService boardlistservice;
 	
 
+	@RequestMapping(value = "boardcontent.htm", method = RequestMethod.POST)
+	public String boardContentView(HttpServletRequest request){
+		
+		
+	
+		return "teacher.board_content";
+
+	
+	}
+	
+	
 	@RequestMapping(value = "boardcontentsave.htm", method = RequestMethod.POST)
 	public String boardContentSave(HttpServletRequest request){
 		
@@ -71,6 +82,7 @@ public class BoardListController {
 	
 	}
 	
+
 	@RequestMapping(value = "selectcategory.htm", method = RequestMethod.POST)
 	public String selectCategory(Model model,HttpServletRequest request){
 
