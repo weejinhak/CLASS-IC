@@ -43,7 +43,6 @@ console.log('jsp까지 들어옴');
 												<div class="card-footer">
 													<div class="stats">
 														<i class="material-icons">access_time</i> campaign sent 2 days ago
-												<!-- 	<img id="img" style="display: none" onload="this.style.display='block'" /> -->
 													</div>
 												</div>
 										</div>

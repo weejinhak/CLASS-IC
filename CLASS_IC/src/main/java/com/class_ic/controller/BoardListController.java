@@ -137,6 +137,18 @@ public class BoardListController {
 	}
 
 
+
+	
+	@RequestMapping(value = "insertboard.htm")
+	public String insertBoard(Model model,HttpServletRequest request){
+
+
+	return "teacher.board_content";
+    
+	
+	}
+
+
 }
 
 

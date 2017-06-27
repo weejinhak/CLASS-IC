@@ -5,7 +5,7 @@
 <div class="content">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12">s
 				<div class="card">
 					<div class="card-header card-header-icon"
 						data-background-color="purple">
@@ -65,6 +65,26 @@
 				<!--  end card  -->
 			</div>
 			<!-- end col-md-12 -->
+				<!-- chart Start -->
+			             <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="red">
+                                    <i class="material-icons">pie_chart</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">출석률</h4>
+                                </div>
+                                <div id="chartPreferences" class="ct-chart"></div>
+                                <div class="card-footer">
+                                    <h6>Legend</h6>
+                                    <i class="fa fa-circle text-info"></i> 출석
+                                    <i class="fa fa-circle text-warning"></i> 결석
+                                    <i class="fa fa-circle text-danger"></i> 지각
+                                    <i class="fa fa-circle text-primary"></i> 지각
+                                </div>
+                            </div>
+                        </div> 
+            <!--chart End  -->
 		</div>
 		<!-- end row -->
 	</div>
@@ -80,8 +100,8 @@
 		url : 'attendanceTable.htm',
 		dataType : 'json',
 		data : {
-			email : sessionId,
-			classcode : '151' /* 여기다가 기수 세션값 넣어야함 */
+			email : sessionId,/* 여기다가 로그인한 ID */
+			classcode : sessionClassCode /* 여기다가 기수 세션값 넣어야함 */
 		},
 		success : function(data) {
 			console.log(data);
@@ -114,7 +134,48 @@
 			}
 
 		});
+		
+		
+
 
 	});
 </script>
 
+
+<script>
+
+		$(document).ready(function() {			
+			
+			$.ajax({
+				type : 'POST',
+				url : 'attendchart.htm',
+				data : {
+					email : sessionId,/* 여기다가 로그인한 ID */
+					classcode : sessionClassCode /* 여기다가 기수 세션값 넣어야함 */
+				},
+				datatype:"json",
+				success : function(data) {
+
+					var labelsin=[];
+					var seriesin=[];
+					
+					$.each(JSON.parse(data), function() {
+						labelsin=this.labels;
+						seriesin=this.series;
+			        });
+										
+					var dataPreferences = { labels: labelsin, series: seriesin};
+			            
+			        var optionsPreferences = {
+			            height: '200px'
+			        };
+			        
+			        Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
+				}
+	
+			});		
+	     
+		});		
+		
+
+</script>
