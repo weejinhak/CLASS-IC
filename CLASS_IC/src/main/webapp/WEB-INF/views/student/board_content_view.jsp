@@ -118,12 +118,7 @@
                                                         <button type="button" rel="tooltip" class="btn btn-info btn-round" data-original-title="" title="">
                                                             <i class="material-icons">list</i>
                                                         </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-success btn-round" data-original-title="" title="">
-                                                            <i class="material-icons">edit</i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" data-original-title="" title="">
-                                                            <i class="material-icons">close</i>
-                                                        </button>
+                                                      
                                                     </div>
                                                     <br>
                                                     <br>

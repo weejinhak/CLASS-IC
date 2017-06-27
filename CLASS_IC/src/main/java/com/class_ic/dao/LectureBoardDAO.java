@@ -19,6 +19,9 @@ public interface LectureBoardDAO {
 				//원래는 boardvo일것 
 	   public  ArrayList<LectureBoardDTO> allBoard(String subcateCode) ;
  
+	   
+	//글삭제    
+	   
  
 	   
 	   

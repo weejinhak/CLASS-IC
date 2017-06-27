@@ -40,7 +40,7 @@ public class LectureBoardController{
  
 	
 	 
-	
+	//글 삭제 
 	
 
 }
