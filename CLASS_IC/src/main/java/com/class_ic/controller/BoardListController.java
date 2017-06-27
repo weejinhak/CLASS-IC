@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.BoardDAO;
+import com.class_ic.dao.LectureBoardDAO;
 import com.class_ic.vo.CategoryDTO;
 import com.class_ic.vo.LectureBoardDTO;
 import com.class_ic.vo.SubCategoryDTO;
@@ -112,6 +113,7 @@ public class BoardListController {
     
 	
 	}
+
 
 
 }

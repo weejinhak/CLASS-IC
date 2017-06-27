@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-
+<%@ page import="com.class_ic.vo.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <br>
 <br>
 <br>
@@ -53,9 +54,9 @@
                         cellspacing="0" width="100%" style="width: 100%">
                         <thead>
                            <tr>
+                             <th class="text-center">check</th>
                               <th class="text-center">글번호</th>
-                              <th class="text-center">글내용</th>
-                              <th class="text-center">글종류</th>
+                              <th class="text-center">글내용</th> 
                               <th class="text-center">작성날짜</th>
                               <th class="text-center">Actions</th>
                            </tr>
@@ -70,28 +71,35 @@
                            </tr>
                         </tfoot> -->
                         <tbody>
+                        
+                     <!-- 여기부터 포문  -->   
+                     <c:forEach var="LectureBoardDTO" items="${bvo}">
                            <tr>
-                              <td class="text-center">Tiger Nixon</td>
-                              <td class="text-center">System Architect</td>
-                              <td class="text-center">Edinburgh</td>
-                              <td class="text-center" >2011/04/25</td>
+                             <td>
+                              <div class="text-center" style="margin-top: -13px;">
+                                 <div class="checkbox" id="">
+                                    <label class="text-center"> <input type="checkbox"
+                                       name="multy[]" class="text-center"
+                                       value="${LectureBoardDTO.lectureNo}"> <span
+                                       class="checkbox-material"></span>
+                                    </label>
+                                 </div>
+                              </div>
+                           </td>
+                           
+                           
+                              <td class="text-center">${LectureBoardDTO.lectureNo} </td>
+                              <td class="text-center">${LectureBoardDTO.lectureTitle} </td> 
+                              <td class="text-center" >${LectureBoardDTO.lectureDate} </td>
                               <td class="text-center"><a href="#"
-                                 class="btn btn-simple btn-info btn-icon like"><i
-                                    class="material-icons">favorite</i></a> <a href="#"
+                                 class="btn btn-simple btn-info btn-icon edit"><i
+                                    class="material-icons">edit</i></a> <a href="#"
                                  class="btn btn-simple btn-danger btn-icon remove"><i
                                     class="material-icons">close</i></a></td>
                            </tr>
-                           <tr>
-                              <td class="text-center">Tasd</td>
-                              <td class="text-center">Sysadt</td>
-                              <td class="text-center">Edasdurgh</td>
-                              <td class="text-center">2013/05/25</td>
-                              <td class="text-center"><a href="#"
-                                 class="btn btn-simple btn-info btn-icon like"><i
-                                    class="material-icons">favorite</i></a> <a href="#"
-                                 class="btn btn-simple btn-danger btn-icon remove"><i
-                                    class="material-icons">close</i></a></td>
-                           </tr>
+                           
+                       </c:forEach>     
+                           
                            
                         </tbody>
                      </table>
@@ -129,14 +137,7 @@
 
             var table = $('#datatables').DataTable();
 
-            // Edit record
-            table.on('click', '.edit', function() {
-               $tr = $(this).closest('tr');
 
-               var data = table.row($tr).data();
-               alert('You press on Row: ' + data[0] + ' ' + data[1] + ' '
-                     + data[2] + '\'s row.');
-            });
 
             // Delete a record
             table.on('click', '.remove', function(e) {
@@ -145,11 +146,15 @@
                e.preventDefault();
             });
 
-            //Like record
-            table.on('click', '.like', function() {
+            //Edit record
+            table.on('click', '.edit', function() {
                alert('You clicked on Like button');
             });
 
             $('.card .material-datatables label').addClass('form-group');
          });
+   
+   
+   
+   
 </script>
