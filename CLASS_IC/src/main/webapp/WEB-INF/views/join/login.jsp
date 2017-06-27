@@ -61,7 +61,8 @@
    <a href="teacher/test14.htm"> teacher_main</a> <br/>
    <a href="teacher/test15.htm"> fileManager</a> <br/>
    <a href="teacher/totalboard.htm"> 통합게시판</a> <br/>
-   
+   <a href="teacher/test16.htm">    board_content_view</a> <br/>
+
    
    write와 main은 test용으로 내가 별도로 만든거니 체크 안해도 됨<br/>
    
@@ -82,6 +83,7 @@
    <a href="student/test14.htm"> student_main</a> <br/>
    <a href="student/test15.htm"> student_memo</a> <br/>
    <a href="student/test16.htm"> student_message</a> <br/>
+   <a href="student/test17.htm">    board_content_view</a> <br/>
   	main와 student은 test용으로 내가 별도로 만든거니 체크 안해도 됨<br/>
    
    

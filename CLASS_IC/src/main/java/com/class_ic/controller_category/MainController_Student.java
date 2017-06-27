@@ -95,5 +95,15 @@ public class MainController_Student {
 			System.out.println("student main 컨트롤 탐, test.htm ");
 			return "student.student_message";
 		}
+		
+		@RequestMapping("test17.htm")
+		public String studentTest17(){
+			System.out.println("student main 컨트롤 탐, test.htm ");
+			return "student.board_content_view";
+		}
+		
+		
+		
+		
 	/////////////////////////////////////////////////////////////////////////////
 }
