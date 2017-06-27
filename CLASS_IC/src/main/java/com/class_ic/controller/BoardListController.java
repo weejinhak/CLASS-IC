@@ -1,6 +1,7 @@
 package com.class_ic.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.vo.CategoryDTO;
 import com.class_ic.vo.LectureBoardDTO;
+import com.class_ic.vo.SubCategoryDTO;
 
 
 /*
@@ -53,8 +55,8 @@ public class BoardListController {
     
     LectureBoardDTO dto= new LectureBoardDTO();
     dto.setClassCode("kkj01331@naver.com");
-    dto.setCateCode("Spring");
-    dto.setSubcateCode("bb");
+    dto.setCateCode(cate);
+    dto.setSubcateCode(subcate);
     dto.setLectureContent(content);
     dto.setLectureTitle(title);
     BoardDAO board=sqlsession.getMapper(BoardDAO.class);
@@ -70,17 +72,43 @@ public class BoardListController {
 	System.out.println("selectCategory 메소드 들어옴.");
 	
     BoardDAO board=sqlsession.getMapper(BoardDAO.class);
-	ArrayList<String> totalcate= board.selectCategory();
+	List<CategoryDTO> totalcate= board.selectCategory();
 	
-	model.addAttribute("list",totalcate);
-	request.setAttribute("list", totalcate);
+	System.out.println(totalcate);
 	
-	for(String value: totalcate){
+	model.addAttribute("listcategory",totalcate);
+	
+    /*	for(String value: totalcate){
 	 System.out.println(value);
 	}
+	*/
 	
+	return "common/boardCateList";
+    
 	
-	return "teacher.board_content";
+	}
+	
+	@RequestMapping(value = "selectsubcategory.htm", method = RequestMethod.POST)
+	public String selectSubCategory(Model model,HttpServletRequest request){
+	System.out.println("selectsubcategory 메소드 들어옴.");
+	
+	String cate=request.getParameter("cate");
+	System.out.println(cate);
+    BoardDAO board=sqlsession.getMapper(BoardDAO.class);
+	List<SubCategoryDTO> subcate= board.selectSubCategory();
+	
+	ArrayList<SubCategoryDTO> subcate2 = new ArrayList<SubCategoryDTO>();
+	for(SubCategoryDTO value:subcate){
+		if(value.getCateCode().equals(cate)){
+			subcate2.add(value);
+			System.out.println(value.getSubcateCode());
+		}
+	}
+	
+	model.addAttribute("subcategory",subcate2);
+	
+
+	return "common/boardSubCateList";
     
 	
 	}
