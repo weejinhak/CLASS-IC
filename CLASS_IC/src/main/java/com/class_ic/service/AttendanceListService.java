@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import com.class_ic.dao.AttendanceListDAO;
 import com.class_ic.vo.AttandanceDTO;
 import com.class_ic.vo.AttandanceListDTO;
-import com.class_ic.vo.MemberDTO;
 
 /*
 * @Class: AlarmService

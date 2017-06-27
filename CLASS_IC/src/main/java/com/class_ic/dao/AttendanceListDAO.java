@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import com.class_ic.vo.AttandanceDTO;
 import com.class_ic.vo.AttandanceListDTO;
-import com.class_ic.vo.LectureDTO;
-import com.class_ic.vo.MemberDTO;
 
 public interface AttendanceListDAO {
 	
