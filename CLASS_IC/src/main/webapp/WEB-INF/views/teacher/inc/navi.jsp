@@ -48,8 +48,8 @@
 				</li>		
 				</li>
 				<li>
-					<a href="boardWriteOk.htm"> <i class="material-icons">dashboard</i>
-							<p>수업게시글 에디터용</p>
+					<a href="insertboard.htm"> <i class="material-icons">dashboard</i>
+							<p>통합게시판(테스트용)</p>
 					</a>
 				</li>
 

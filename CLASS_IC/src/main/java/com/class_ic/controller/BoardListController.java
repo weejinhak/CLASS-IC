@@ -1,23 +1,17 @@
 package com.class_ic.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.ibatis.session.SqlSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.class_ic.dao.BoardDAO;
 import com.class_ic.service.BoardListService;
-import com.class_ic.vo.CategoryDTO;
-import com.class_ic.vo.LectureBoardDTO;
-import com.class_ic.vo.SubCategoryDTO;
+
 
 
 /*
@@ -50,7 +44,7 @@ public class BoardListController {
 		
 		
 	
-		return "teacher.board_content";
+		return "common/board_content";
 
 	
 	}
@@ -139,7 +133,7 @@ public class BoardListController {
 
 
 	
-	@RequestMapping(value = "insertboard.htm")
+	@RequestMapping(value = "teacher/insertboard.htm")
 	public String insertBoard(Model model,HttpServletRequest request){
 
 
