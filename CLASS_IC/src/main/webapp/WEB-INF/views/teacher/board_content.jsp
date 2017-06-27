@@ -1,6 +1,8 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <br>
 <br>
@@ -10,7 +12,7 @@
 <div class="col-md-12">
 	<div class="card">
 		<div class="card-header card-header-text" data-background-color="rose">
-			<h4 class="card-title">글 입력하기</h4>
+			<h4 class="card-title">통합 게시판 글 입력하기</h4>
 		</div>
 		<div class="card-content">
 			<div class="row">
@@ -19,10 +21,11 @@
 					&nbsp; &nbsp; &nbsp; &nbsp; <label class="form-group form-group-sm">카테고리
 					<select id="cate"
 						name="datatables_length" aria-controls="datatables"
-						class="form-control"><option value="Web">Web</option>
-							<option value="Spring">Spring</option>
-							<option value="Java">Java</option>
-							<option value="Detabases">Detabases</option></select> <span
+						class="form-control">           
+						<c:forEach items="${list}" var="item"> 
+							 <option value="${item}">${item}</option>
+						</c:forEach>
+					</select> <span
 						class="material-input"></span></label> &nbsp; &nbsp; &nbsp; &nbsp; <label
 						class="form-group form-group-sm">서브 카테고리
 						
@@ -79,8 +82,6 @@
 
 
 <script type="text/javascript">
-	
-
 
 	   $().ready(function() {
         demo.checkFullPageBackgroundImage();
@@ -89,10 +90,19 @@
             $('.card').removeClass('card-hidden');
         }, 700)
         
-       
+       cate();
+        
+
+
 
         $("#save").click(function() {
+        	save(); 
         	
+        });
+        
+        
+       	function save() {
+       		
         	var title= $("#title").val();
     		var content=$("#content").val();
     		var cate=$("#cate").val();
@@ -110,21 +120,39 @@
         		dataType:'text',
                 success : function(data){
                     alert("통신 성공!!") ;
-             
+                	var title= $("#title").val("");
+            		var content=$("#content").val("");
+            		var cate=$("#cate").val("");
+            		var subcate=$("#subcate").val("");
+                },
+            	error : function(){
+                    alert('통신실패!!');
+         
+                } });	
+        	}
+       	
+       	function cate() {
+       		
+        	$.ajax({ 
+        		type: 'post' ,
+        		url: '${pageContext.request.contextPath}/selectcategory.htm', 
+        		dataType:'text',
+                success : function(data){
+                    alert("통신 성공!!") ;
+           
                 },
             	error : function(){
                     alert('통신실패!!');
                     alert(title);
                     alert(content);
-                }
-
-
-
-        	});	
-        	
-
-
-        	});
+                } });
+       	}
+			
+	
+       	function subcate() {
+			
+		}
+    	
         
     });
 </script>

@@ -7,4 +7,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.class_ic.dao.BoardDAO">
 
+
+<insert id="insertBoardContent" parameterType="com.class_ic.vo.LectureBoardDTO">
+insert into lectureboard(classCode,cateCode,subcateCode,lectureTitle,lectureContent,lectureDate)
+values(#{classCode},#{cateCode},#{subcateCode},#{lectureTitle},#{lectureContent},CURDATE())
+</insert>
+
+<select id="selectCategory" resultType="String">
+select cateCode from category
+</select>
+
+<select id="selectSubCategory" resultType="com.class_ic.vo.SubCategoryDTO">
+select * from subcategory
+</select>
+
 </mapper>

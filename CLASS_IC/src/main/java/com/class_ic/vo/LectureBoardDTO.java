@@ -12,6 +12,8 @@ public class LectureBoardDTO {
 	private String lectureTitle;
 	private String lectureContent;
 	private String lectureDate;
+
+	
 	public int getLectureNo() {
 		return lectureNo;
 	}
