@@ -111,6 +111,19 @@ public class AttendanceListService implements AttendanceListDAO{
 		
 		return attendabsencecount;
 	}
+
+	
+	/*
+	@description : attendance 테이블에서 아이디에 맞는 결석 수  해주는 기능
+	*/
+	@Override
+	public int attendEarlyLeaveCount(String email, String classcode) {
+        AttendanceListDAO attendancelistDao= sqlsession.getMapper(AttendanceListDAO.class);		
+		
+		int attendearlyleavecount = attendancelistDao.attendEarlyLeaveCount(email, classcode);
+		
+		return attendearlyleavecount;
+	}
 	
 	
 	
