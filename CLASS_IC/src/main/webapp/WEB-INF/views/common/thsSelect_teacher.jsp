@@ -74,9 +74,6 @@
 										</div>
 										<div class="card-content">
 											<div class="card-actions">
-												<button type="button" class="btn btn-danger btn-simple fix-broken-card">
-													<i class="material-icons">build</i> Fix Header!
-												</button>
 												<form action="boardcontent.htm" method="POST">
 												<button type="submit" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="go!">
 													<i class="material-icons">input</i>

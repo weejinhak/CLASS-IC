@@ -19,5 +19,8 @@ public interface LectureAddDAO {
 
 	// 학생 강의 최초 등록
 	public int inputMyClassCode(String email, String classCode);
+	
+	// ClassMember테이블에 ID가 존재하는지.
+	public int searchMemberClassMember(String email, String classCode);
 
 }
