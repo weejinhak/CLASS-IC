@@ -88,8 +88,8 @@ public class SchedulerController {
 		for(AttandanceDTO list:todaylist){
 			String attendState="";
 			classdto=attendanceDao.selectStartEndTime(list.getClassCode());
-			System.out.println(classdto.getClassopentime());
-			System.out.println(classdto.getClassclosetime());
+			System.out.println(classdto.getClassOpenTime());
+			System.out.println(classdto.getClassCloseTime());
 			System.out.println(list.getInClass());
 			System.out.println(list.getOutClass());
 			
@@ -99,8 +99,8 @@ public class SchedulerController {
 				
 				inclassArr=list.getInClass().split(":");
 				outclassArr=list.getOutClass().split(":");
-				opentimeArr=classdto.getClassopentime().split(":");
-				closetimeArr=classdto.getClassclosetime().split(":");
+				opentimeArr=classdto.getClassOpenTime().split(":");
+				closetimeArr=classdto.getClassCloseTime().split(":");
 				
 				compareLate(inclassArr[1],inclassArr[2],opentimeArr[0],opentimeArr[1]);
 				compareEaryLeave(outclassArr[1],outclassArr[2],closetimeArr[0],closetimeArr[1]);
