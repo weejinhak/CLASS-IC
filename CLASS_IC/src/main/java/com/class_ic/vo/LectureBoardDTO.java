@@ -38,6 +38,7 @@ public class LectureBoardDTO {
 		this.fileNo = fileNo;
 		this.fileSrc = fileSrc;
 	}
+
 	public int getLectureNo() {
 		return lectureNo;
 	}

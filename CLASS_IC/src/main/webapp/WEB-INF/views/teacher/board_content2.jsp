@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- css link -->
+<link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
 <style>
 .fileDrop {
   width: 25%;
@@ -11,46 +13,8 @@
   margin: auto;
 }
 </style>
-<!-- 네이버 에디터 부분 시작 -->'
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.1.1.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
-<script type="text/javascript">
-var oEditors = [];
-$(function(){
-      nhn.husky.EZCreator.createInIFrame({
-          oAppRef: oEditors,
-          elPlaceHolder: "ir1", //textarea에서 지정한 id와 일치해야 합니다. 
-          //SmartEditor2Skin.html 파일이 존재하는 경로
-          sSkinURI: "/smarteditorSample/SE2/SmartEditor2Skin.html",  
-          htParams : {
-              // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-              bUseToolbar : true,             
-              // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-              bUseVerticalResizer : true,     
-              // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-              bUseModeChanger : true,         
-              fOnBeforeUnload : function(){
-                   
-              }
-          }, 
-          fOnAppLoad : function(){
-              //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-              oEditors.getById["ir1"].exec("PASTE_HTML", ["기존 DB에 저장된 내용을 에디터에 적용할 문구"]);
-          },
-          fCreator: "createSEditor2"
-      });
-      
-      //저장버튼 클릭시 form 전송
-      $("#save").click(function(){
-          oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-          $("#frm").submit();
-      });    
-});
- 
- 
- 
-</script>
-<!-- 네이버 에디터 부분 끝  -->	
+
+
  <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
@@ -62,7 +26,7 @@ $(function(){
                                  <h4 class="card-title">글 입력하기</h4>
                                   </div>
                                   
-                           <form method="post" action="boardWriteOk.htm" class="form-horizontal">
+                           <form method="post" action="boardWriteOk.htm" class="form-horizontal" enctype="multipart/form-data">
                            <br><br>
                            
                          <div style="display:inline-block;">
@@ -102,19 +66,35 @@ $(function(){
                                             <div class="col-sm-10">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <textarea id="ir1" name="ir1" cols="50" style="width: 90%; height: 300px; color: gray"></textarea>
+                                                    <div class="main">
+                                                     <div id="editor_panel"></div>  
+                                                    <textarea id="lectureContent" name="smarteditor" cols="50" style="width: 90%; height: 300px; color: gray"></textarea>
 
-                                                    <span class="help-block">과제의 제목을 입력해 주세요.</span>
-                                                <span class="material-input"></span></div>
+                                                    <!-- <span class="help-block">과제의 제목을 입력해 주세요.</span>
+                                                <span class="material-input"></span></div> -->
                                             </div>
                                         </div>
-                                        	<br>
-                                            <div class="form-group">
-												<div class="fileDrop"><h5 align="center"><br><br>Drag and Drop your file!</h5></div>
-											</div>
-
+                                        </div>
+                                        </div>
+                                        <!--  파일 업로드 -->
                                        
-                                       <div class="td-actions text-center">
+                                         <div class="row">
+                                            <label class="col-sm-2 label-on-left">첨부파일 : </label>
+                                            <div class="col-sm-10">
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label"></label>
+                                                    <div class="main">
+                                                     <div id="editor_panel"></div>  
+                                                    &nbsp;<input type="file" id="txtFile" name="files[0]" />
+                                            </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                     
+                                        	<br>
+                                            
+                                       
+                                       				<div class="td-actions text-center">
                                                         <button type="button" rel="tooltip" class="btn btn-info btn-round" data-original-title="" title="">
                                                             <i class="material-icons">list</i>
                                                         </button>
@@ -125,7 +105,9 @@ $(function(){
                                                             <i class="material-icons">close</i>
                                                         </button>
                                                         </form>
-                                                    </div>
+                                                       </div>
+                                                        
+                                         </div>
                                                     <br>
                                                     <br>
                                                     <br>
@@ -134,9 +116,10 @@ $(function(){
                                     </div>
                            
                             </div>
-      	 </div>
-</div>
+    
 
+
+<script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>	
 <script id="template" type="text/x-handlebars-template">
 <li>
   <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
@@ -151,6 +134,7 @@ $(function(){
 
 
 <script type="text/javascript" src="/resources/js/upload.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <script>
