@@ -17,7 +17,10 @@ public interface LectureBoardDAO {
 
 	  //게시판  리스트 조회 
 	  //원래는 boardvo일것 
-      public  ArrayList<LectureBoardDTO> allBoard(String subcateCode) ;
+      public  ArrayList<LectureBoardDTO> allBoard(String cateCode,String subcateCode) ;
+      
+      //모든 글을 긁어옴.
+      public ArrayList<LectureBoardDTO> allList();
  
       //수정화면에 출력
       public ArrayList<LectureBoardDTO> totalboardEdit(int lectureNo);
