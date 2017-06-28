@@ -133,8 +133,8 @@ public class AttendanceController {
 		if (attendancetotalcount == 0) {
 			System.out.println("데이터 없음.");
 		} else {
-
-			labels[0] = String.valueOf((attendnomalcount / attendancetotalcount) * 100) + "%";
+			System.out.println((attendnomalcount/attendancetotalcount) * 100);
+			labels[0] = String.valueOf((attendnomalcount/ attendancetotalcount) * 100) + "%";
 			labels[1] = String.valueOf((attendlatecount / attendancetotalcount) * 100) + "%";
 			labels[2] = String.valueOf((attendabsencecount / attendancetotalcount) * 100) + "%";
 			labels[3] = String.valueOf((attendearlyleavecount / attendancetotalcount) * 100) + "%";
