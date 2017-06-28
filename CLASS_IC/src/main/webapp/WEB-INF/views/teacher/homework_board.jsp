@@ -25,7 +25,7 @@
                                 </select>
                          </div>  
                          <div class="col-sm-3" align="right">
-                         <button type="button" class="btn btn-info btn-round" id="writeBtn"  data-toggle="modal" data-target="#addCate">
+                         <button type="button" class="btn btn-info btn-round" id="addCateBtn"  data-toggle="modal" data-target="#addCate">
                                             과제 카테고리 추가</a></button>
                          </div>
                                     
@@ -105,12 +105,11 @@
 							<div class="instruction">
 								<div class="row">
 									<div class="col-md-12"> 
-										<input type="hidden" class="form-control" id="email" value="${sessionScope.email }" readonly="readonly">
+										<input type="hidden" class="form-control" id="email" value="${sessionScope.email }" >
 										<input type="text" class="form-control" id="classCode" value="${sessionScope.classCode }기" readonly="readonly">
 										
-										<select class="selectpicker" data-style="select-with-transition" title="메인 카테고리 선택해주세요" data-size="7" >
-                                        <option disabled> 메인 카테고리 선택</option>
-                                        <option value="2">Paris </option>
+										<select class="selectpicker" id="selectCateList" data-style="select-with-transition" title="메인 카테고리 선택해주세요" data-size="7" >
+                                		
                                 		</select>
 										
 										<input type="text" class="form-control" id="teamCate" placeholder="조 이름을 작성해주세요">
@@ -170,8 +169,33 @@
 <script type="text/javascript">
 	$(function() {
 		
+		addCategory();
 		addTeam();
 		
+		function addCategory() {
+			$("#selectCateList").on("click", function() {
+				
+					var email = $("#email").val();
+					
+					$.ajax({
+						
+						type : "post",
+						url:"selectCate.htm",
+						data : {"email" : email},
+						dataType : 'Json',
+						success : function(data) {
+							
+							$.each(data, function(){
+                                $("#selectCateList").append("<option value='" + 
+                                        this.cateTitle + "'>" + this.cateTitle + "</option> ");
+                                
+                                console.log(this.cateTitle)
+
+                        });
+				   }
+			});
+		});
+   }	
 		function addTeam() {
 			$("#submitBtn").on("click",function() {
 				
