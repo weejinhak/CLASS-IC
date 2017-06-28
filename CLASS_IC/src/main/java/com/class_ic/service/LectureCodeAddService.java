@@ -36,8 +36,8 @@ public class LectureCodeAddService {
 		System.out.println("기수추가 서비스 in!");
 		LectureAddDAO lectureDao = sqlsession.getMapper(LectureAddDAO.class);
 
-		String opentime=lecture.getClassOpenTime().substring(0, 5);
-		String closetime=lecture.getClassCloseTime().substring(0, 5);
+		String opentime=lecture.getClassOpenTime().substring(0, 4);
+		String closetime=lecture.getClassCloseTime().substring(0, 4);
 		lecture.setClassOpenTime(opentime+":00");
 		System.out.println(opentime+":00");
 		lecture.setClassCloseTime(closetime+":00");
