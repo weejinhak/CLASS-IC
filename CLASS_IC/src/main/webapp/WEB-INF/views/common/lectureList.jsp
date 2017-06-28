@@ -2,9 +2,36 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-
 <script type="text/javascript">
-console.log('jsp까지 들어옴');
+
+	$(document).ready(function() {
+			$('.gotomain').click(function(){
+
+				  console.log("페이지 이동");
+				  var classcode = $('#classCodehidden').val();
+					var index = $("input[name^='classCodehide']").index(this);
+					var classCodehide =$("input[name^='classCodehide']:eq("+index+")").val(); 
+				  console.log(sessionId);
+					$.ajax({
+						  type : "POST",
+						  url : "main.htm",
+						  data: {
+						      classCode: classCodehide
+						  },
+						  success : function(data){
+								alert('성공');
+								location.href="";
+
+						  },
+						  error:function(request, status, error){
+				              
+				                alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error );
+				               
+				          }
+					});
+			});
+	
+	});
 </script>
 
               <c:forEach items="${lecturelist}" var="n">
@@ -21,14 +48,14 @@ console.log('jsp까지 들어옴');
 												
 												<div class="card-content">
 														<div class="card-actions">
-															<form action="teacher/main.htm" method="POST">
-															<input type="hidden" value="${n.classCode }" name="classCode"/>
-															<button type="submit" class="btn btn-info btn-simple"
+															<!-- <form action="teacher/main.htm" method="POST"> -->
+															<input type="hidden" value="${n.classCode }" name="classCode" id="classCodehide_${var.index}"/>
+															<button type="button" class="btn btn-info btn-simple"
 																rel="tooltip" data-placement="bottom" title=""
-																data-original-title="go!" >
+																data-original-title="go!" name="gotomain">
 																<i class="material-icons">input</i>													
 															</button>
-														</form>
+														<!-- </form> -->
 														</div>											
 															<br>
 														<p class="category">
