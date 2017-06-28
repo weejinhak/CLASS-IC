@@ -55,7 +55,7 @@ public class SchedulerController {
  * @Scheduled(fixedRate=5000) -> 5초마다 실행 해주기
  * */
 	
-	@Scheduled(cron="0 0 5 * * *")
+	@Scheduled(cron="0 42 17 * * *")
 	public void insert() {
 		System.out.println("아침입니다 출석됭 테이블을 insert 하겠습니다.");
 		attendanceservice.insertAttendance();
@@ -64,7 +64,7 @@ public class SchedulerController {
 	}
 	
 
-	@Scheduled(cron="0 0 22 * * *")
+	@Scheduled(cron="0 0 23 * * *")
 	public void updateState() {
 
 		AttendanceDAO attendanceDao=sqlsession.getMapper(AttendanceDAO.class);
@@ -88,10 +88,11 @@ public class SchedulerController {
 		for(AttandanceDTO list:todaylist){
 			String attendState="";
 			classdto=attendanceDao.selectStartEndTime(list.getClassCode());
-			System.out.println(classdto.getClassopentime());
-			System.out.println(classdto.getClassclosetime());
+			System.out.println(classdto.getClassOpenTime());
+			System.out.println(classdto.getClassCloseTime());
 			System.out.println(list.getInClass());
 			System.out.println(list.getOutClass());
+			
 			
 			
 			//둘다 널이 아니면(입퇴실 둘다 찍은 사람만 출적 판단함.
@@ -99,8 +100,8 @@ public class SchedulerController {
 				
 				inclassArr=list.getInClass().split(":");
 				outclassArr=list.getOutClass().split(":");
-				opentimeArr=classdto.getClassopentime().split(":");
-				closetimeArr=classdto.getClassclosetime().split(":");
+				opentimeArr=classdto.getClassOpenTime().split(":");
+				closetimeArr=classdto.getClassCloseTime().split(":");
 				
 				compareLate(inclassArr[1],inclassArr[2],opentimeArr[0],opentimeArr[1]);
 				compareEaryLeave(outclassArr[1],outclassArr[2],closetimeArr[0],closetimeArr[1]);
@@ -109,6 +110,7 @@ public class SchedulerController {
 				System.out.println();
 		
 				System.out.println(list.getInClass()+","+list.getOutClass());
+				
 				
 			}
 			

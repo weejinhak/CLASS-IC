@@ -5,16 +5,28 @@
 <c:set var="contextPath" value="<%= request.getContextPath()%>"></c:set>  
 
 <script>
+	var sessionId="<%=(String)session.getAttribute("email")%>";
+	var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"
+	
+
+	/* 페이지 로드시 QR 코드 가져옴. */
+	$(document).ready(function() {		
+	      $('#qrclick').click(function() {
+				console.log("페이지가 시작1");
+				var url ="/class_ic/common/createCode.htm";			 
+			    $("#img").attr("src", url + "?content=" + sessionClassCode); 	
+	  	});
+	});
+
+
    var wsocket;
    var msg;
-   var sessionId="<%=(String)session.getAttribute("email")%>";
-   var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"
    function connect() {
 
       alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
-      wsocket = new WebSocket("ws://192.168.1.180:8090/class_ic/chat-ws.htm?email="+sessionId);
+      wsocket = new WebSocket("ws://192.168.0.125:8090/class_ic/chat-ws.htm?email="+sessionId);
       appendMessage("웹 소켓연결되었습니다.");
       wsocket.onopen = onOpen;
       wsocket.onmessage = onMessage;
@@ -88,14 +100,10 @@
          sendMessage();
 
       });
+      
 
    });
    
-   
-   //로그아웃 : 2017.06.25 최은혜
-   function logout() {
-      
-   }
 </script>
 
 
@@ -108,14 +116,17 @@
             <li>[ ${sessionScope.name } ]님 강의실 입장</li>
             <!-- QR  -->
             <li><a href="#pablo" class="dropdown-toggle"
-               data-toggle="dropdown"> <i class="material-icons">watch_later</i>
+               data-toggle="dropdown" id="qrclick"> <i class="material-icons">watch_later</i>
             </a>
 
                <ul class="dropdown-menu">
-                  <center>
-                     <li>QR 이미지</li>
-                  </center>
-               </ul></li>
+               <center>
+		          <img id="img" style="display: none" onload="this.style.display='block'" width="180" height="180"/>
+               </center>
+               </ul>
+               
+               
+             </li>
             <!--QR코드    -->
 
             <!--쪽지 알림  -->
@@ -188,7 +199,7 @@
                         </div>
                      <li>
                      <br>
-                         <button class="btn btn-primary btn-raised btn-round" data-toggle="modal" data-target="#memberUpdate">
+                         <button class="btn btn-primary btn-raised btn-round" data-toggle="modal" data-target="#memberUpdate" id="myInfo">
                                                   회원정보 수정
                                 </button>
                      </li>
@@ -211,7 +222,16 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="email" class="form-control">
+                                                    <input type="email" class="form-control" name="email" id="email" readonly="readonly">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-md-3 label-on-left">이름</label>
+                                            <div class="col-md-9">
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label"></label>
+                                                    <input type="text" class="form-control" name="name" id="name" readonly="readonly">
                                                 </div>
                                             </div>
                                         </div>
@@ -220,7 +240,7 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="password" class="form-control">
+                                                    <input type="password" class="form-control" name="pwd" id="pwd">
                                                 </div>
                                             </div>
                                         </div>
@@ -229,7 +249,7 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="password" class="form-control">
+                                                    <input type="password" class="form-control"name="pwdconfirm" id="pwdconfirm">
                                                 </div>
                                             </div>
                                         </div>
@@ -238,7 +258,7 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="email" class="form-control">
+                                                    <input type="text" class="form-control" name="phone" id="phone">
                                                 </div>
                                             </div>
                                         </div>
@@ -246,8 +266,9 @@
                                             <label class="col-md-3"></label>
                                             <div class="col-md-9">
                                                 <div class="form-group form-button">
-                                                    <button type="submit" class="btn btn-fill btn-rose">회원정보 수정</button>
+                                                    <button type="submit" class="btn btn-fill btn-rose" id="editMyInfo">회원정보 수정</button>
                                                     <button type="button" class="btn btn-fill" data-dismiss="modal">취소</button>
+                                                    <button type="submit" class="btn btn-fill btn-warning">회원 탈퇴</button>
                                                 </div>
                                             </div>
                                         </div>

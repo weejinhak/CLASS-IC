@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <update id="modify" parameterType="com.class_ic.vo.MemberDTO" >
 	update member set 
-		name=#{name}, pwd=#{pwd}, phone=#{phone}, photoSrc=#{photoSrc}
+	pwd=#{pwd}, phone=#{phone}, photoSrc=#{photoSrc}
 	where email=#{email}
 </update>
 

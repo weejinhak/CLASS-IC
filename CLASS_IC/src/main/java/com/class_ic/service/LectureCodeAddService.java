@@ -34,18 +34,15 @@ public class LectureCodeAddService {
 	*/
 	public String addclasscode(LectureDTO lecture) throws Exception {
 		System.out.println("기수추가 서비스 in!");
-		
-		lecture.setClasscode(lecture.getClasscode());
-
-		lecture.setClasstitle(lecture.getClasstitle());
-		lecture.setClassstart(lecture.getClassstart());
-		lecture.setClassend(lecture.getClassend());
-
-		lecture.setClassopentime(lecture.getClassopentime());
-		lecture.setClassclosetime(lecture.getClassclosetime());
-
-		lecture.setClassinvitecode(lecture.getClassinvitecode());
 		LectureAddDAO lectureDao = sqlsession.getMapper(LectureAddDAO.class);
+
+		String opentime=lecture.getClassOpenTime().substring(0, 5);
+		String closetime=lecture.getClassCloseTime().substring(0, 5);
+		lecture.setClassOpenTime(opentime+":00");
+		System.out.println(opentime+":00");
+		lecture.setClassCloseTime(closetime+":00");
+		System.out.println(closetime+":00");
+	
 
 		String viewpage = "";
 
@@ -53,8 +50,6 @@ public class LectureCodeAddService {
 			int result = lectureDao.insert(lecture);
 			if (result > 0) {
 				System.out.println("insert 성공");
-				System.out.println("성공했으니 theselect.htm으로 보내야되지만");
-				System.out.println("비동기처리를 위해 값을 select 해와서 새로운 htm 에 뿌린다.");
 				viewpage = "redirect:/common/select.htm";
 			} else {
 				System.out.println("insert 실패");

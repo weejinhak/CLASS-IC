@@ -1,48 +1,25 @@
 package com.class_ic.dao;
 
-/*
-* @FileName		:	BoardDAO.java
-* 
-* @Project		:	CLASS-IC
-* @Date		    :	2017.06.19
-* @Author		:	최석환
-*/
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import com.class_ic.vo.BoardVO;
-import com.class_ic.vo.SearchCriteria;
-
-
+import com.class_ic.vo.CategoryDTO;
+import com.class_ic.vo.LectureBoardDTO;
+import com.class_ic.vo.SubCategoryDTO;
 
 public interface BoardDAO {  
 	
-  public void create(BoardVO vo) throws ClassNotFoundException, SQLException;
-  
-  public BoardVO read(Integer lectureNo) throws ClassNotFoundException, SQLException;
+	//통합 게시판 글입력
+	int insertBoardContent(LectureBoardDTO lectureBoardDTO);
+	
+	//통합 게시판 카테고리 모두가져오기
+	List<CategoryDTO> selectCategory();
+	
+	//통합 게시판 서브 카테고리 모두가져오기
+	ArrayList<SubCategoryDTO> selectSubCategory();
+	
+	
+	
 
-  public List<BoardVO> listAll() throws ClassNotFoundException, SQLException;
-  
-  public List<BoardVO> listWhereCate(String cateCode, String subcateCode) throws ClassNotFoundException, SQLException;
-  
-  public void categoryCreate(String cateCode) throws ClassNotFoundException, SQLException;
-  
-  public void subCategoryCreate(String cateCode, String subcateCode) throws ClassNotFoundException, SQLException;
-  
-  public List<String> showCateList() throws ClassNotFoundException, SQLException;
-  public List<String> showSubCateList(String cateCode) throws ClassNotFoundException, SQLException;
-  
-  public void delete(Integer lectureNo) throws ClassNotFoundException, SQLException;
-  /////////////////////////////////////////////////////////////////////
-  public List<BoardVO> listCriteria(int Page,int PerPageNum,String cateCode, String subcateCode) throws ClassNotFoundException, SQLException; //
-
-  public int countPaging(String cateCode, String subcateCode) throws ClassNotFoundException, SQLException; //
-  
-  //use for dynamic sql
-  
-  public List<BoardVO> listSearch(SearchCriteria cri)throws ClassNotFoundException, SQLException; //
-  
-  public int listSearchCount(SearchCriteria cri)throws ClassNotFoundException, SQLException; //
-  ///////////////////////////////////////////////////////////////////
 
 }

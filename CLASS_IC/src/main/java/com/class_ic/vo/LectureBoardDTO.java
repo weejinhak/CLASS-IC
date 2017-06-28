@@ -1,6 +1,9 @@
 package com.class_ic.vo;
 
 import java.sql.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class LectureBoardDTO {
  
@@ -12,9 +15,71 @@ public class LectureBoardDTO {
 	private String lectureTitle;
 	private String lectureContent;
 	private String lectureDate;
+	//파일 업로드 이하
+	private String lectureFileNo;
+	private String fileNo;
+	private String	fileSrc;
+
+	
+	
+	public LectureBoardDTO() {
+	}
+	public LectureBoardDTO(int lectureNo, String classCode, String cateCode, String subcateCode, String lectureTitle,
+			String lectureContent, String lectureDate, String lectureFileNo, String fileNo, String fileSrc) {
+
+		this.lectureNo = lectureNo;
+		this.classCode = classCode;
+		this.cateCode = cateCode;
+		this.subcateCode = subcateCode;
+		this.lectureTitle = lectureTitle;
+		this.lectureContent = lectureContent;
+		this.lectureDate = lectureDate;
+		this.lectureFileNo = lectureFileNo;
+		this.fileNo = fileNo;
+		this.fileSrc = fileSrc;
+	}
+
 	public int getLectureNo() {
 		return lectureNo;
 	}
+	public String getLectureFileNo() {
+		return lectureFileNo;
+	}
+	public void setLectureFileNo(String lectureFileNo) {
+		this.lectureFileNo = lectureFileNo;
+	}
+	public String getFileNo() {
+		return fileNo;
+	}
+	public void setFileNo(String fileNo) {
+		this.fileNo = fileNo;
+	}
+	public String getFileSrc() {
+		return fileSrc;
+	}
+	public void setFileSrc(String fileSrc) {
+		this.fileSrc = fileSrc;
+	}
+	
+	/*
+	private CommonsMultipartFile file;
+	public CommonsMultipartFile getFile() {
+		return file;
+	}
+	public void setFile(CommonsMultipartFile file) {
+		this.file = file;
+	}
+	*/
+	//다중 파일 업로드
+	private List<CommonsMultipartFile> files;
+
+	public List<CommonsMultipartFile> getFiles() {
+		return files;
+	}
+	public void setFiles(List<CommonsMultipartFile> files) {
+		this.files = files;
+	}
+	//추가부분 끝
 	public void setLectureNo(int lectureNo) {
 		this.lectureNo = lectureNo;
 	}
