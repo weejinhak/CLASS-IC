@@ -145,24 +145,42 @@
 </script>
 
 
+
+
 <script>
 
-		$(document).ready(function() {
+		$(document).ready(function() {			
+			
+			$.ajax({
+				type : 'POST',
+				url : 'attendchart.htm',
+				data : {
+					email : sessionId,/* 여기다가 로그인한 ID */
+					classcode : sessionClassCode /* 여기다가 기수 세션값 넣어야함 */
+				},
+				datatype:"json",
+				success : function(data) {
 
-			  var dataPreferences = {
-			            labels: ['30%','60%','10%'],
-			            series: [30, 60, 10]
-			        };
+					var labelsin=[];
+					var seriesin=[];
+					
+					$.each(JSON.parse(data), function() {
+						labelsin=this.labels;
+						seriesin=this.series;
+			        });
+										
+					var dataPreferences = { labels: labelsin, series: seriesin};
 			            
 			        var optionsPreferences = {
 			            height: '200px'
 			        };
-
+			        
 			        Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
-			
-
-
-
-		});
+				}
+	
+			});		
+	     
+		});		
+		
 
 </script>

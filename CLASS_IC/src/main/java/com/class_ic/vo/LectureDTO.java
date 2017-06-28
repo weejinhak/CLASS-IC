@@ -4,78 +4,65 @@ import java.sql.Date;
 
 public class LectureDTO {
 	
-	String classcode; 
-	String classtitle; 
-	Date classstart; 
- 	Date classend; 
-	String classopentime=null;
-	String classclosetime=null;
-	String classinvitecode;
+	String classCode; 
+	String classTitle; 
+	Date classStart; 
+ 	Date classEnd; 
+	String classOpenTime=null;
+	String classCloseTime=null;
+	String classInviteCode;
 	String email;
-
-	public String getClasscode() {
-		return classcode;
+	
+	public String getClassCode() {
+		return classCode;
 	}
-
-	public void setClasscode(String classcode) {
-		this.classcode = classcode;
+	public void setClassCode(String classCode) {
+		this.classCode = classCode;
 	}
-
-	public String getClasstitle() {
-		return classtitle;
+	public String getClassTitle() {
+		return classTitle;
 	}
-
-	public void setClasstitle(String classtitle) {
-		this.classtitle = classtitle;
+	public void setClassTitle(String classTitle) {
+		this.classTitle = classTitle;
 	}
-
-	public Date getClassstart() {
-		return classstart;
+	public Date getClassStart() {
+		return classStart;
 	}
-
-	public void setClassstart(Date classstart) {
-		this.classstart = classstart;
+	public void setClassStart(Date classStart) {
+		this.classStart = classStart;
 	}
-
-	public Date getClassend() {
-		return classend;
+	public Date getClassEnd() {
+		return classEnd;
 	}
-
-	public void setClassend(Date classend) {
-		this.classend = classend;
+	public void setClassEnd(Date classEnd) {
+		this.classEnd = classEnd;
 	}
-
-	public String getClassopentime() {
-		return classopentime;
+	public String getClassOpenTime() {
+		return classOpenTime;
 	}
-
-	public void setClassopentime(String classopentime) {
-		this.classopentime = classopentime;
+	public void setClassOpenTime(String classOpenTime) {
+		this.classOpenTime = classOpenTime;
 	}
-
-	public String getClassclosetime() {
-		return classclosetime;
+	public String getClassCloseTime() {
+		return classCloseTime;
 	}
-
-	public void setClassclosetime(String classclosetime) {
-		this.classclosetime = classclosetime;
+	public void setClassCloseTime(String classCloseTime) {
+		this.classCloseTime = classCloseTime;
 	}
-
-	public String getClassinvitecode() {
-		return classinvitecode;
+	public String getClassInviteCode() {
+		return classInviteCode;
 	}
-
-	public void setClassinvitecode(String classinvitecode) {
-		this.classinvitecode = classinvitecode;
+	public void setClassInviteCode(String classInviteCode) {
+		this.classInviteCode = classInviteCode;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	
 	
 
 }

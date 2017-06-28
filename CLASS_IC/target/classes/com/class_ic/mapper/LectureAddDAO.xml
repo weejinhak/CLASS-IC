@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.class_ic.dao.LectureAddDAO">
 
 	<insert id="insert" parameterType="com.class_ic.vo.LectureDTO">
-	INSERT INTO class (classCode,email,classTitle,classStart,classOpenTime,classEnd,classCloseTime,classInviteCode)
-	VALUES(#{classCode}, #{classTitle}, str_to_date(#{classStart},'%Y-%m-%d'),str_to_date(#{classOpenTime}, '%H:%i:%s'),str_to_date(#{classEnd},'%Y-%m-%d'),str_to_date(#{classCloseTime}, '%H:%i:%s'),#{classInviteCode}, #{email} );
+	INSERT INTO class (classCode,classTitle,classStart,classOpenTime,classEnd,classCloseTime,classInviteCode,email)
+    VALUES(#{classCode}, #{classTitle}, #{classStart},#{classOpenTime},#{classEnd},#{classCloseTime},#{classInviteCode}, #{email} )
 	</insert>
 
 	<select id="getlecture" resultType="com.class_ic.vo.LectureDTO">
@@ -23,8 +23,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="inputMyClassCode">
 	   INSERT INTO classmember (classCode)
-	   SELECT #{classCode} FROM DUAL
-	   WHERE NOT EXISTS (SELECT * FROM classmember WHERE classCode=#{classCode} AND email=#{email}
+	   SELECT #{param2} FROM DUAL
+	   WHERE NOT EXISTS (SELECT * FROM classmember WHERE classCode=#{param2} AND email=#{param1}
 	</insert>
+	
+	<select id="searchMemberClassMember" resultType="Integer">
+		SELECT count(*) FROM classmember where email=#{param1} and classCode=#{param2}
+	</select>
 
 </mapper>

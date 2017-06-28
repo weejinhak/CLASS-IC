@@ -70,13 +70,13 @@ public class LectureCodeAddController {
 			Date start = new Date(startdate.getTime());
 			Date end = new Date(enddate.getTime());
 			
-			lectureDto.setClasscode(request.getParameter("classcode"));
-			lectureDto.setClasstitle(request.getParameter("classtitle"));
-			lectureDto.setClassstart(start);
-			lectureDto.setClassend(end);
-			lectureDto.setClassopentime(request.getParameter("classopentime"));
-			lectureDto.setClassclosetime(request.getParameter("classclosetime"));
-			lectureDto.setClassinvitecode(request.getParameter("classinvitecode"));
+			lectureDto.setClassCode(request.getParameter("classcode"));
+			lectureDto.setClassTitle(request.getParameter("classtitle"));
+			lectureDto.setClassStart(start);
+			lectureDto.setClassEnd(end);
+			lectureDto.setClassOpenTime(request.getParameter("classopentime"));
+			lectureDto.setClassCloseTime(request.getParameter("classclosetime"));
+			lectureDto.setClassInviteCode(request.getParameter("classinvitecode"));
 			lectureDto.setEmail(request.getParameter("email"));
 			
 			try {

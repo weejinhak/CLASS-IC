@@ -56,6 +56,19 @@ public class MainController_Teacher {
 
 		return "teacher.homework_board";
 	}
+	//출석 데이터 테이블
+	@RequestMapping("attend.htm")
+	public String attend(){
+
+		return "teacher.data_table";
+	}
+	
+	//학생부 게시판 이동
+		@RequestMapping(value="studentList.htm", method=RequestMethod.GET)
+		public String selectStudent(){
+
+			return "teacher.attendance";
+		}
 
 
 

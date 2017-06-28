@@ -23,7 +23,7 @@ public class MainController_Student {
 	@RequestMapping(value="memo.htm", method=RequestMethod.GET)
 	public String studentMemo(){
 
-		return "student.student_memo";
+		return "memo.memo";
 	}
 
 	//boardList 게시판 이동
@@ -39,6 +39,12 @@ public class MainController_Student {
 		return "student.homework_board";
 	}
 
+	//링크_파일 게시판 이동
+		@RequestMapping(value="linkFile.htm", method=RequestMethod.GET)
+		public String linkFile(){
+
+			return "student.LinkFileList";
+		}
 
 	//달력 게시판 이동
 	@RequestMapping(value="calendar.htm", method=RequestMethod.GET)
