@@ -48,7 +48,7 @@
 				</li>		
 				</li>
 				<li>
-					<a href="insertboard.htm"> <i class="material-icons">dashboard</i>
+					<a href="totalboard.htm"> <i class="material-icons">dashboard</i>
 							<p>통합게시판(테스트용)</p>
 					</a>
 				</li>

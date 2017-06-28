@@ -19,8 +19,16 @@ public interface LectureBoardDAO {
 	  //원래는 boardvo일것 
       public  ArrayList<LectureBoardDTO> allBoard(String subcateCode) ;
  
- 
+      //수정화면에 출력
+      public ArrayList<LectureBoardDTO> totalboardEdit(int lectureNo);
       
+      //수정 완료
+      public int totalboardEditOk(LectureBoardDTO dto);
+ 
+      //글  삭제      
+      public void deleteLect(int lectureNo);
+
+
       
       
    
