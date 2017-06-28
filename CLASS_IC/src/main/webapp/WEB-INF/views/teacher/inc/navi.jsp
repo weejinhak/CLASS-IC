@@ -78,8 +78,8 @@
 				</li>
 				<!-- 링크는 메뉴를 통해서 추가해주세요 -->
 				<li>
-					<a href="#"> <i class="material-icons">edit</i>
-							<p>추가링크</p>
+					<a href="link.htm"> <i class="material-icons">edit</i>
+							<p>추가링크(테스트)</p>
 					</a>
 				</li>
 				

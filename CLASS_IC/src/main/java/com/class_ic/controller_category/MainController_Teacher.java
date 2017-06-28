@@ -1,25 +1,13 @@
 package com.class_ic.controller_category;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.class_ic.dao.CalendarDAO;
-import com.class_ic.dao.TestDAO;
 import com.class_ic.service_category.MainService_Teacher;
-import com.class_ic.vo.CalendarDTO;
-import com.class_ic.vo.LectureBoardDTO;
-import com.class_ic.vo.Test;
 
 @Controller
 @RequestMapping("teacher")
@@ -71,9 +59,12 @@ public class MainController_Teacher {
 		}
 
 
+		@RequestMapping(value="link.htm" , method=RequestMethod.GET)
+	 
+		public String link(){
 
-
-
+			return "teacher.LinkFileList";
+		}
 
 
 

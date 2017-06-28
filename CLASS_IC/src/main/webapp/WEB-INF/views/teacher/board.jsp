@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
@@ -50,9 +51,10 @@
                                         </tbody>
                                     </table>
                                       <div align="center">
-                                          <button type="button" class="btn btn-round btn-warning dropdown-toggle" data-toggle="dropdown">
+                                      <!-- board details view 보여주지  -->
+                                      <a href="lectureboard.htm"><button type="button" class="btn btn-round btn-warning dropdown-toggle" data-toggle="dropdown">
                                                             Details
-                                                        </button>
+                                                        </button></a>
                                                         </div>
                                 </div>
                             </div>

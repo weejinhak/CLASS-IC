@@ -1,11 +1,6 @@
 package com.class_ic.controller;
 
-import java.io.IOException;
-import java.lang.ProcessBuilder.Redirect;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,20 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.class_ic.dao.CalendarDAO;
 import com.class_ic.dao.LectureBoardDAO;
-import com.class_ic.dao.TodoListDAO;
-import com.class_ic.vo.CalendarDTO;
+import com.class_ic.dao.TodayLectureDAO;
 import com.class_ic.vo.LectureBoardDTO;
-import com.class_ic.vo.TodoListDTO;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import com.class_ic.vo.TodayLectureVO;
 /*
 * @Class: LectureBoardController
 * @Date: 2017.05. 06
@@ -42,8 +31,8 @@ public class LectureBoardController {
    @Autowired
    private SqlSession sqlsession;
 
-   
-   
+ 
+ 	
    @RequestMapping(value="totalboard.htm") 
       public ModelAndView allBoard(LectureBoardDTO bvo){ 
          
