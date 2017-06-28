@@ -36,8 +36,10 @@ public class LectureCodeAddService {
 		System.out.println("기수추가 서비스 in!");
 		LectureAddDAO lectureDao = sqlsession.getMapper(LectureAddDAO.class);
 
-		String opentime=lecture.getClassOpenTime().substring(0, 5);
-		String closetime=lecture.getClassCloseTime().substring(0, 5);
+		
+		//am/pm시 바꾸기
+		String opentime=lecture.getClassOpenTime().substring(0, 4);	
+		String closetime=lecture.getClassCloseTime().substring(0, 4);
 		lecture.setClassOpenTime(opentime+":00");
 		System.out.println(opentime+":00");
 		lecture.setClassCloseTime(closetime+":00");
@@ -50,7 +52,7 @@ public class LectureCodeAddService {
 			int result = lectureDao.insert(lecture);
 			if (result > 0) {
 				System.out.println("insert 성공");
-				viewpage = "redirect:/common/select.htm";
+				viewpage = "redirect:common/lecturecodeSelect.htm";
 			} else {
 				System.out.println("insert 실패");
 			}

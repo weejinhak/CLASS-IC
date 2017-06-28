@@ -31,14 +31,18 @@
 						<div class="dataTables_length" id="datatables_length">
 							<label class="form-group">카테고리<select id="cate"
 								name="datatables_length" aria-controls="datatables"
-								class="form-control input-sm"></select>
+								class="form-control input-sm">
+								
+  </select>
 							</label> &nbsp; &nbsp; &nbsp; &nbsp; <label class="form-group">서브
 								카테고리<select name="datatables_length" aria-controls="datatables"
 								class="form-control input-sm" id="subcate"></select>
 							</label>
 
 						</div>
+						
 						<!-- 카테고리 select end -->
+						<div id="list">
 						<table id="datatables"
 							class="table table-striped table-no-bordered table-hover"
 							cellspacing="0" width="100%" style="width: 100%">
@@ -53,19 +57,10 @@
 									<th class="text-center">Actions</th>
 								</tr>
 							</thead>
-							<!-- 
-                        <tfoot>
-                           <tr>
-                              <th class="text-center">글번호</th>
-                              <th class="text-center">글내용</th>
-                              <th class="text-center">글종류</th>
-                              <th class="text-center">작성날짜</th>
-                              <th class="text-center">Actions</th>
-                           </tr>
-                        </tfoot> -->
-							<tbody>
+						
 
-								<!-- 여기부터 포문  -->
+				<tbody >
+						<!-- 여기부터 포문  -->
 								<c:forEach var="LectureBoardDTO" items="${bvo}">
 									<tr>
 										<td>
@@ -80,12 +75,15 @@
 										</td>
 
 
-										<td class="text-center" id="lectureNo">${LectureBoardDTO.lectureNo}
-										</td>
+										<td class="text-center" id="lectureNo">${LectureBoardDTO.lectureNo}</td>
 										<td class="text-center">${LectureBoardDTO.cateCode}</td>
 										<td class="text-center">${LectureBoardDTO.subcateCode}</td>
-										<td class="text-center">${LectureBoardDTO.lectureTitle}</td>
-										<td class="text-center">${LectureBoardDTO.lectureDate}</td>
+										
+										 
+                                        <td class="text-center"> <a href="totalBoard_contentview.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+                                 class="btn btn-simple btn-info btn-icon edit">${LectureBoardDTO.lectureTitle}</a>  </td> 
+										
+ 										<td class="text-center">${LectureBoardDTO.lectureDate}</td>
 										<td class="text-center"><a
 											href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
 											class="btn btn-simple btn-info btn-icon edit"><i
@@ -95,11 +93,11 @@
 												class="material-icons">close</i></a></td>
 									</tr>
 
-								</c:forEach>
+								</c:forEach> 
 
 
-							</tbody>
 						</table>
+						</div>
 						<form action="boardcontent.htm">
 						<button  type="button" id="submitFrm" class="btn btn-info btn-round"
 						 style="margin-left:50px; float: right; " onclick="multi_del()" >체크 삭제</button>
@@ -176,10 +174,10 @@ var data="";
     
  
  }
-alert(data);
 
 
-   alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
+
+// alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
    //ajax 로  보낼데이터를 배열형태로 허용해준당 
    jQuery.ajaxSettings.traditional = true;
 
@@ -188,11 +186,17 @@ alert(data);
         url: 'totalBoard_multi_delete.htm',
         data: { data: data } ,
         dataType: 'text',
-  
-        success: alert('good'),
-        error: alert('not good')
-    });
 
+  
+        success: function() {
+        	alert('good');
+        },
+        error: function() {
+        	alert('bad');
+        } 
+
+    });
+ 
 
 
 
@@ -206,11 +210,6 @@ alert(data);
         	 
         	 
         	 cate();
-        	 
-        	    $("#save").click(function() {
-                	save(); 
-                	
-                });
                 
         	 
          	function cate() {
@@ -255,8 +254,62 @@ alert(data);
            	           
            	        }
            	    });
+         
     		}
-        	 
+         
+          $("#subcate").change (function(){
+        	  var cate = $("#cate").val();
+              var subcate = $("#subcate").val();
+              
+              console.log("나는야 카테고리 " + cate);
+              console.log("나는야 서브카테 " + subcate);
+              
+              $.ajax({
+                  url:"totalboard.htm",
+                  data: {cateCode:cate, subcateCode:subcate},
+                  dataType:'html',
+                  success:function(data){
+                	  alert(data);
+                	 
+                	  $('#list').html(data);
+              
+              
+                  }
+                  });
+              
+              
+          });
+          
+          
+          
+          
+/*            	function select(){
+           	    var cate = $("#cate").val();
+                var subcate = $("#subcate").val();
+                
+                console.log("나는야 카테고리 " + cate);
+                console.log("나는야 서브카테 " + subcate);
+                
+                $.ajax({
+                   url:'${pageContext.request.contextPath}/totalboardEdit',
+                   data: {cate:cate, subcate:subcate},
+                   success:function(){
+                	alert('나다');  
+                   }
+                   });
+           		
+           	}
+        	  */
+    
+           	
+           	
+           	
+           	
+           	
+           	
+           	
+           	
+           	
             $('#datatables').DataTable(
                   {
                      "pagingType" : "full_numbers",

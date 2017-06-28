@@ -147,7 +147,7 @@
 		</div>	
 	
 			<!-- 메모 : 2017.06.22 최은혜 -->
-			<input type="hidden" value="${sessionScope.email }" id="email" name="email">
+			<input type="hidden" value="${sessionScope.email}" id="email" name="email">
 			<div class="card">
 			<div class="card-header card-header-icon"
 					data-background-color="rose">
@@ -176,6 +176,7 @@
 
 						//글 출력 : 2017.06.21 최은혜
 						var email = sessionId;
+
 
 						$.ajaxSetup({
 							cache : false
