@@ -5,33 +5,49 @@
 	 <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
+      	 <input type="hidden" class="form-control" id="email" value="${sessionScope.email }">
+		<input type="hidden" class="form-control" id="classCode" value="${sessionScope.classCode }기" >
       	 <div class="row">
 					<div class="card">
-					<div class="col-lg-8 col-md-offset-3">
+					<!-- 과제카테고리 / 조  추가-->
+					<div class="col-sm-10 col-md-offset-3">
 					<!-- 셀렉트 박스(메인 카테고리 선택) -->
 					    <div class="col-sm-3">
-                                <select class="selectpicker" id="mainCate" data-style="select-with-transition" title="메인 카테고리 선택" data-size="7">
+					         <select  id="selectCateList"  title="메인 카테고리 선택해주세요"  >
+                                		
+                             </select>
+                         </div>
+                         <div class="col-sm-3">
+                     <!-- input 박스(조 카테고리 추가) -->
+                             <input type="text" class="form-control" placeholder="조를 입력해주세요" id="teamName"> 
+                         </div>  
+                         <div class="col-sm-3" align="right">
+                         <button type="button" class="btn btn-danger btn-round" id="addCateBtn">카테고리 추가</a></button>
+                         </div>
+                                    
+                         </div><!-- end 과제카테고리 / 조  추가-->
+					</div>
+					
+					<div class="card">
+					<div class="col-lg-8">
+					<!-- 셀렉트 박스(메인 카테고리 선택) -->
+					    <div class="col-sm-3">
+                                <select id="selectCateList2" title="메인 카테고리 선택" >
                                 </select>
                          </div>
                         
                          <div class="col-sm-3">
-                     <!-- 셀렉트 박스(조 카테고리 선택) -->
+                    <!--  셀렉트 박스(조 카테고리 선택) -->
                                 <select class="selectpicker" data-style="select-with-transition" title="조 선택" data-size="7" >
                                         <option disabled> 조 선택</option>
                                         <option value="2">Paris </option>
                                 </select>
                          </div>  
-                         <div class="col-sm-3" align="right">
-                         <button type="button" class="btn btn-info btn-round" id="addCateBtn"  data-toggle="modal" data-target="#addCate">
-                                            과제 카테고리 추가</a></button>
-                         </div>
                                     
                          </div>
                          <div class="col-sm-12"> 
 						<div class="card-content">
 					 				<!-- 테이블 -->
-					 				<input type="hidden" class="form-control" id="email" value="${sessionScope.email }" readonly="readonly">
-					 				<input type="hidden" class="form-control" id="classCode" value="${sessionScope.classCode }기" readonly="readonly">
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
@@ -83,48 +99,6 @@
 		
 	</div>
 
-	<!-- 카테고리 추가 모달(조추가)  -->
-	<div class="row">
-		<div class="col-md-12 text-center">
-
-			<!-- notice modal -->
-			<div class="modal fade" id="addCate" tabindex="-1" role="dialog"
-				aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-notice">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">
-								<i class="material-icons">clear</i>
-							</button>
-							<h5 class="modal-title" id="myModalLabel">카테고리 추가</h5>
-						</div>
-						<!-- modal-body -->
-						<div class="modal-body">
-							<div class="instruction">
-								<div class="row">
-									<div class="col-md-12"> 
-										<%-- <input type="hidden" class="form-control" id="email" value="${sessionScope.email }" > 
-										<input type="text" class="form-control" id="classCode" value="${sessionScope.classCode }기" readonly="readonly">--%>
-										
-										<select class="selectpicker" id="selectCateList" data-style="select-with-transition" title="메인 카테고리 선택해주세요" data-size="7" >
-                                		
-                                		</select>
-										
-										<input type="text" class="form-control" id="teamCate" placeholder="조 이름을 작성해주세요">
-									</div>
-								</div>
-							</div>
-						</div><!-- end modal-body -->
-						<div class="modal-footer text-center">
-							<button type="button" class="btn btn-round" data-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-info btn-round">등록</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 탭추가 모달(조추가) end  -->
-
 			<!-- 글쓰기 모달  -->
 			<div class="modal fade" id="addWrite" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true">
@@ -168,22 +142,32 @@
 <script type="text/javascript">
 	$(function() {
 		
+		var email = sessionId;
+		
 		showMainCate();
+		
+		$("#addCateBtn").click(function() {
+			addHomework();
+		});
 			
 			function showMainCate() {
 					
-						var email = $("#email").val();
+						console.log(email)
 						
 						$.ajax({
 							
 							type : "post",
 							url:"selectCate.htm",
 							data : {"email" : email},
-							dataType : 'text',
+							dataType : 'Json',
 							success : function(data) {
+									
+								$.each(data, function(){
+									$("#selectCateList").append("<option value='1'>" + this.cateTitle + "</option> ");
+		                                console.log(this.cateTitle)
+								});
 								
-									$('#mainCate').html(data);
-					   		},
+					   		}, 
 					   		
 		                	error : function(){
 		                        alert('통신실패!!');
@@ -192,9 +176,40 @@
 	                    	} 
 					   		
 					 });
-				}
-	   });
-
+		} //end showMainCate
+		
+		
+		function addHomework() {
+			
+			console.log(email)
+			
+			var selectVal = $("#selectCateList option:selected").val();
+			var teamName = $("#teamName").val();
+			
+			var allData = [{"selectVal": selectVal, "teamName":teamName,"email":email}];
+			
+			$.ajax({
+				
+				type : "post",
+				url:"addHomework.htm",
+				data : allData,
+				dataType : 'Json',
+				success : function(data) {
+						
+					alert("카테고리 등록 성공");					
+		   		}, 
+		   		
+            	error : function(){
+                    alert('통신실패!!');
+                    alert(title);
+                    alert(content);
+            	} 
+				
+				
+			});
+			
+		}
+	}); 
 </script>
 
 

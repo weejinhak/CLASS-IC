@@ -15,6 +15,7 @@ public class HomeworkService {
 	@Autowired
 	private SqlSession sqlsession;
 	
+	//메인 카테고리 출력
 	public List<HomeworkDTO> selectCate(String email) {
 		System.out.println("Homework Service_Teacher email : "+ email);
 		
@@ -23,5 +24,14 @@ public class HomeworkService {
 		
 		return cateList;
 	}
+	
+	//카테고리별 조 등록
+		public void addTeam(HomeworkDTO dto) {
+			
+			
+			HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+			int result = dao.addTeam(dto);
+			
+		}
 	
 }

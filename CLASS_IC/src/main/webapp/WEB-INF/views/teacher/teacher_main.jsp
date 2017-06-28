@@ -175,7 +175,7 @@
 					$(function() {
 
 						//글 출력 : 2017.06.21 최은혜
-						var email = $('#email').val();
+						var email = sessionId;
 
 						$.ajaxSetup({
 							cache : false

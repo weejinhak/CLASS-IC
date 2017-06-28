@@ -49,7 +49,7 @@
 
 				$.each(data,function(index, item) {
 
-						$('#tbody').append('<tr><td><img src="'+item.photoSrc+'" alt="'+item.name+'"></td><td>'+item.email+'</td><td>'+item.name+'</td><td>'+item.phone+'</td></tr>')
+						$('#tbody').append('<tr><td><img src="${pageContext.request.contextPath}/resources/assets/img/faces/'+item.photoSrc+'" alt="'+item.name+'" style="width: 40px;" class="img-circle"></td><td>'+item.email+'</td><td>'+item.name+'</td><td>'+item.phone+'</td></tr>')
 
 						});
 			}

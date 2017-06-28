@@ -10,14 +10,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("student")
 public class MainController_Student {
-
-
+	
+	
 	//student main POST
-	@RequestMapping(value="main.htm", method=RequestMethod.POST)
-	public String student(HttpSession session, String classCode){
-		session.setAttribute("classCode", classCode);
-		return "student.student_main";
-	}
+	   @RequestMapping(value="main.htm", method=RequestMethod.POST)
+	   public String student(HttpSession session, String classCode){
+	      session.setAttribute("classCode", classCode);
+
+	      
+	      return "student.student_main";
+	   }
+	   
+	   //student main POST
+	      @RequestMapping(value="main.htm", method=RequestMethod.GET)
+	      public String student(){
+
+	         
+	         return "student.student_main";
+	      }
+
 
 	//student memo
 	@RequestMapping(value="memo.htm", method=RequestMethod.GET)

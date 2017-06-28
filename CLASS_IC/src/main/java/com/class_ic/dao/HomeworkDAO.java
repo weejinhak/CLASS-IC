@@ -8,5 +8,8 @@ public interface HomeworkDAO {
 	
 	//과제게시판 카테고리 출력
 	public List<HomeworkDTO> selectCate(String email);
+	
+	//카테고리별 조 등록
+	public int addTeam(HomeworkDTO dto);
 
 }

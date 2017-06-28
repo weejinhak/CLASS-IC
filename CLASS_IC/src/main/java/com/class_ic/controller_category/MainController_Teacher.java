@@ -28,14 +28,23 @@ public class MainController_Teacher {
 	@Autowired	
 	private MainService_Teacher mainteacherservice;
 
-	//teacher main
-	@RequestMapping("main.htm")
-	public String teacherMain(HttpSession session, String classCode){
-		System.out.println("teacher main controller");
-		session.setAttribute("classCode", classCode);
-		
-		return "teacher.teacher_main";
-	}
+     //teacher main POST
+       @RequestMapping(value="main.htm", method=RequestMethod.POST)
+       public String student(HttpSession session, String classCode){
+          session.setAttribute("classCode", classCode);
+
+          
+          return "teacher.teacher_main";
+       }
+       
+       //teacher main GET 
+          @RequestMapping(value="main.htm", method=RequestMethod.GET)
+          public String student(){
+
+             
+             return "teacher.teacher_main";
+          }   
+       
 
 	//teacher calendar
 	@RequestMapping("calendar.htm")
