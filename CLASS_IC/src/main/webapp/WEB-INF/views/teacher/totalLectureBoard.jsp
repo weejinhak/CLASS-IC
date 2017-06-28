@@ -195,14 +195,6 @@ var data="";
         	alert('bad');
         } 
 
-        success: function() {
-            alert('good');
-            location.href="allboard.htm";
-         },
-         error: function() {
-            alert('bad');
-         } 
-
     });
  
 
