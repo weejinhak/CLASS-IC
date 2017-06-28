@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 통합게시판 화면 출력 -->
  <select id="allBoard" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="String">
-    select * from lectureboard where subcateCode=#{subcateCode} 
+    select * from lectureboard where cateCode=#{param1} and subcateCode=#{param2} 
  </select> 
  
 <!--통합게시판 수정화면 출력   --> 
@@ -38,5 +38,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    delete from lectureboard where lectureNo=#{lectureNo}
 </delete>
 
+<!--  -->
+<select id="allList" resultType="com.class_ic.vo.LectureBoardDTO" >
+select * from lectureboard
+
+</select>
 
 </mapper>

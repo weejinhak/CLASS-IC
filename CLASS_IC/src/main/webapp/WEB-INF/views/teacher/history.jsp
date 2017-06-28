@@ -93,6 +93,7 @@
                      </div>
                      <div class="timeline-panel">
                         <div class="timeline-heading">
+                     
                           <span class="label label-warning">
 										${list.calTitle}
 							</span>
