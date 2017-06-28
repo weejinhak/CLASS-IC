@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ page import="com.class_ic.vo.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	<!-- 
+   <!-- 
 @Project : CLASS-IC
 @File name : board_details_
 @Author : 김은영
@@ -31,7 +31,7 @@
 <!--                                                     <label class="control-label"></label> -->
                                                     <input type="text" class="form-control" value="${LectureBoardDTO.lectureTitle}" style="width: 90%" readonly="readonly">
                                                     
-												<!--   <span class="material-input"></span></div> -->
+                                    <!--   <span class="material-input"></span></div> -->
                                             </div>
                                         </div>
                                         
@@ -52,9 +52,9 @@
                                           
                                                <br><br><br><br><br>         
                                        
-				          <div class="col-sm-1">    </div>
-				          <div class="col-sm-5">
-				          
+                      <div class="col-sm-1">    </div>
+                      <div class="col-sm-5">
+                      
                         <!-- 파일 첨부  --> 
                                        첨부 파일 
                                        
