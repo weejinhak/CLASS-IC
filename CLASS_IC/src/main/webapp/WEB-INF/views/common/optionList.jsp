@@ -8,6 +8,5 @@ console.log('jsp까지 들어옴');
 </script>
 
 <c:forEach items="${optionlist}" var="item"> 
-
-   <option value="${item.cateTitle}">${item.cateTitle}</option>
+	<option value="${item.cateTitle}">${item.cateTitle}</option>
 </c:forEach>

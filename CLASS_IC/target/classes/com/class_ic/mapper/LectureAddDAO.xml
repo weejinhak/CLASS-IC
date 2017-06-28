@@ -18,13 +18,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT c.classCode as classCode, c.classTitle as classTitle, c.classStart as classStart, c.classOpenTime as classOpenTime, c.classEnd as classEnd, c.classCloseTime as classCloseTime, c.classInviteCode as classInviteCode
 		FROM ClassMember cm JOIN  Class c
 		ON	cm.classCode=c.classCode
-		WHERE	cm.email=#{email}
+		WHERE cm.email=#{email}
 	</select>
 	
-	<insert id="inputMyClassCode">
-	   INSERT INTO classmember (classCode)
-	   SELECT #{param2} FROM DUAL
-	   WHERE NOT EXISTS (SELECT * FROM classmember WHERE classCode=#{param2} AND email=#{param1}
+	<insert id="inputMyClassCode" parameterType="String">
+	   INSERT INTO classmember (email, classCode)
+		SELECT #{param1}, #{param2} FROM  dual
+		WHERE NOT EXISTS
+		(
+		  SELECT email, classCode
+		  FROM classmember
+		  WHERE  email=#{param1} AND classCode=#{param2}
+		)
 	</insert>
 	
 	<select id="searchMemberClassMember" resultType="Integer">

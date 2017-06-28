@@ -23,7 +23,6 @@
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
 
-
 	/* 페이지 로드시 Session- email에 맞는 기수를 가져오고 그 수만큼 반복.   */
 	$(document).ready(function() {
 		  console.log("페이지가 시작2");
