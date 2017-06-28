@@ -15,16 +15,19 @@ public interface LectureBoardDAO {
  
  
 
-	//게시판  리스트 조회 
-				//원래는 boardvo일것 
+		//게시판  리스트 조회 
+			 
 	   public  ArrayList<LectureBoardDTO> allBoard(String subcateCode) ;
  
-	   
-	//글삭제    
+	   //글 상세보기 
+ 		public ArrayList<LectureBoardDTO> totalBoard_contentview(int lectureNo);
+ 
+		//글  삭제      
+	   public void deleteLect(int lectureNo);
+
+
 	   
  
-	   
-	   
 	   
 	
 

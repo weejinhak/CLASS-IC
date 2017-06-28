@@ -4,12 +4,48 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- @Project : CLASS-IC @File name : todaylecture.xml @Author : 김은영 @Data 
 	: 2017.06.19 @Desc : -->
-<mapper namespace="com.class_ic.dao.LectureBoardDAO"> 
-	<select id="allBoard" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="String">
-				select * from lectureboard where subcatecode=#{subcateCode} 
+<mapper namespace="com.class_ic.dao.LectureBoardDAO">
+	<select id="allBoard" resultType="com.class_ic.vo.LectureBoardDTO"
+		parameterType="String">
+		select * from lectureboard where subcatecode=#{subcateCode}
+	</select>
+
+
+	<select id="totalBoard_contentview" resultType="com.class_ic.vo.LectureBoardDTO"
+		parameterType="int">
 		
-	</select> 
- 
+		select * from (select b.lectureContent lectureContent ,b.lectureDate lectureDate,b.lectureNo lectureNo ,b.lectureTitle lectureTitle,l.linkNo linkNo,l.linkTitle linkTitle, l.linkSrc  linkSrc,f.fileNo fileNo, f.lectureFileNo lectureFileNo,a.fileSrc fileSrc,a.fileTitle fileTitle  
+from lectureboard b, link l , lectureboardfile f  , file a
+where l.lectureno =b.lectureno and b.lectureno= f.lectureno and f.fileno = a.fileno ) lectureboardcontent where lectureno = #{lectureNo}
+		
+<!-- 		
+	select * from (select b.lectureContent lectureContent ,b.lectureDate lectureDate,b.lectureNo lectureNo ,b.lectureTitle lectureTitle,l.linkNo linkNo,l.linkTitle linkTitle, l.linkSrc  linkSrc,f.fileNo fileNo, f.lectureFileNo lectureFileNo,a.filesrc filesrc,a.fileTitle fileTitle  
+from lectureboard b, link l , lectureboardfile f  , file a
+where l.lectureno =b.lectureno and b.lectureno= f.lectureno and f.fileno = a.fileno ) lectureboardcontent where lectureno = 7  
+ -->
+
+
+
+		
+		
+		
+	</select>
+
+
+
+
+
+
+	<delete id="deleteLect" parameterType="Integer">
+		delete from lectureboard where lectureNo=#{lectureNo}
+	</delete>
+
+
+
+
+
+
+
 
 </mapper>
 

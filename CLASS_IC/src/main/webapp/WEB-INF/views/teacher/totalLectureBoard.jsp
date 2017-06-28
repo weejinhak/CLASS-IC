@@ -76,7 +76,7 @@
                      <c:forEach var="LectureBoardDTO" items="${bvo}">
                            <tr>
                              <td>
-                              <div class="text-center" style="margin-top: -13px;">
+                              <div class="text-center" style="margin-top: 4px;">
                                  <div class="checkbox" id="">
                                     <label class="text-center"> <input type="checkbox"
                                        name="multy[]" class="text-center"
@@ -89,17 +89,38 @@
                            
                            
                               <td class="text-center">${LectureBoardDTO.lectureNo} </td>
-                              <td class="text-center">${LectureBoardDTO.lectureTitle} </td> 
+                              
+                                          
+                                            
+                                            <!-- 상세페이지 보기  -->
+                                            
+                                            <td class="text-center"> <a href="totalBoard_contentview.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+                                 class="btn btn-simple btn-info btn-icon edit">${LectureBoardDTO.lectureTitle}</a> 
+                             </td> 
                               <td class="text-center" >${LectureBoardDTO.lectureDate} </td>
-                              <td class="text-center"><a href="#"
-                                 class="btn btn-simple btn-info btn-icon like"><i
-                                    class="material-icons">favorite</i></a> <a href="#"
+                              <td class="text-center"><a href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+                                 class="btn btn-simple btn-info btn-icon edit"><i
+                                    class="material-icons">edit</i></a> 
+                                    
+                               
+                                    
+                                    <a href="totalBoard_delete.htm?lectureNo=${LectureBoardDTO.lectureNo}"
                                  class="btn btn-simple btn-danger btn-icon remove"><i
                                     class="material-icons">close</i></a></td>
                            </tr>
                            
-                       </c:forEach>     
-                           
+                       </c:forEach>    
+                        
+                           <tr>
+                            <td colspan="5">
+                                     			
+							<button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px" onclick="multi_del()">체크 삭제</button>
+					                  			
+					                  		 
+                                                     
+                            
+                            </td>
+                           </tr>
                            
                         </tbody>
                      </table>
@@ -120,6 +141,89 @@
 
 
 <script type="text/javascript">
+
+// 멀티컨텐츠 (삭제 )선택받기
+function multi_del()
+{
+
+	var cnt2 = $("input[name='multy[]']:checked").length;
+
+	if(cnt2 < 1){
+		alert(" 게시물을 선택하여 주세요");
+		return;
+	}
+	
+	var chk = document.getElementsByName("multy[]");
+	var len = chk.length;    //체크박스의 전체 개수 
+// 	var checkRow = '';      //체크된 체크박스의 value를 담기위한 변수 
+	var checkCnt = 0;        //체크된 체크박스의 개수 
+	var checkLast = '';      //체크된 체크박스 중 마지막 체크박스의 인덱스를 담기위한 변수  
+	var cnt = 0;    
+	var rowid = new Array();   //체크된 체크박스의 모든 value 값을 담는다 
+
+	for(var i=0; i<len; i++){
+
+		if(chk[i].checked == true){ 
+		checkCnt++;        //체크된 체크박스의 개수 
+		checkLast = i;     //체크된 체크박스의 인덱스 
+		} 
+		}  
+	  
+   var count=0;
+	for(var i=0; i<len; i++){ 
+	if(chk[i].checked == true){  //체크가 되어있는 값 구분  
+   rowid.push(chk[i].value); 
+	count++;
+	}
+
+	}
+	
+	var data="";
+ 	for(var i=0;i<count;i++){
+ 		if(i==count-1){
+	     data+= rowid[i];
+	    
+ 		}else{
+ 			
+ 		   data+= rowid[i]+",";
+ 	  
+ 		}	
+ 		
+ 		
+ 	
+ 	}
+//    alert(data);
+
+
+		alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
+		//ajax 로  보낼데이터를 배열형태로 허용해준당 
+		jQuery.ajaxSettings.traditional = true;
+
+		 $.ajax({
+	        type: 'POST',
+	        url: 'totalBoard_multi_delete.htm',
+	        data: { data: data } ,
+	        dataType: 'text',
+     
+	        success: function() {
+	        	alert('good');
+	        },
+	        error: function() {
+	        	alert('bad');
+	        } 
+	    });
+
+
+
+
+}
+
+
+
+
+
+
+
    $(document).ready(
          function() {
             $('#datatables').DataTable(
@@ -137,15 +241,8 @@
 
             var table = $('#datatables').DataTable();
 
-            // Edit record
-            table.on('click', '.edit', function() {
-               $tr = $(this).closest('tr');
 
-               var data = table.row($tr).data();
-               alert('You press on Row: ' + data[0] + ' ' + data[1] + ' '
-                     + data[2] + '\'s row.');
-            });
-
+                     b
             // Delete a record
             table.on('click', '.remove', function(e) {
                $tr = $(this).closest('tr');
@@ -153,14 +250,14 @@
                e.preventDefault();
             });
 
-            //Like record
-            table.on('click', '.like', function() {
+            //Edit record
+/*             table.on('click', '.edit', function() {
                alert('You clicked on Like button');
             });
-
+*/
             $('.card .material-datatables label').addClass('form-group');
          });
-   
+    
    
    
    

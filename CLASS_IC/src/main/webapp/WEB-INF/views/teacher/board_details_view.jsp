@@ -82,6 +82,7 @@
                                                 <tr>
                                               
                                                     <td>${TodayLectureVO.lectureNo} </td>
+                                                    <!-- 상세페이지로 ㄱㄱ  -->
                                                     <td>${TodayLectureVO.lectureTitle} </td>
                                                     
                                                     <td>${TodayLectureVO.lectureDate} </td>

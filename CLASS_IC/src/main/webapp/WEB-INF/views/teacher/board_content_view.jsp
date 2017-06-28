@@ -15,30 +15,34 @@
       
       
 <div class="col-md-12">
-                            <div class="card">
+                            <div class="card"> 
+                            <c:forEach var="LectureBoardDTO" items="${bvo}">
                                 <form method="get" action="/" class="form-horizontal">
                                     <div class="card-header card-header-text" data-background-color="rose">
-                                        <h4 class="card-title">글 입력하기</h4>
+                                        <h4 class="card-title">뭐쓰지</h4>
                                     </div>
-                                    <div class="card-content">
+                                    <div class="card-content">    
+                                    <!--  여기서부터 포문 --> 
+
                                         <div class="row">
                                             <label class="col-sm-2 label-on-left">제목 : </label>
                                             <div class="col-sm-10">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label"></label>
-                                                    <input type="text" class="form-control" value="" style="width: 90%" readonly="readonly">
+<!--                                                 <div class="form-group label-floating is-empty"> -->
+<!--                                                     <label class="control-label"></label> -->
+                                                    <input type="text" class="form-control" value="${LectureBoardDTO.lectureTitle}" style="width: 90%" readonly="readonly">
                                                     
-                                                <span class="material-input"></span></div>
+												<!--   <span class="material-input"></span></div> -->
                                             </div>
                                         </div>
+                                        
+                                    
+                    
                                             <div class="row">
                                             <label class="col-sm-2 label-on-left">내용 : </label>
                                             <div class="col-sm-10">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <textarea  cols="50" style="width: 90%; height: 300px; color: gray" readonly="readonly"></textarea>
-
-                                                    <span class="help-block">과제의 내용 뿌려주기 </span>
+                                                    <textarea  cols="50" style="width: 90%; height: 300px; color: gray" readonly="readonly">${LectureBoardDTO.lectureContent}</textarea>
                                                 <span class="material-input"></span></div>
                                             </div>
                                         </div>
@@ -48,17 +52,32 @@
                                           
                                                <br><br><br><br><br>         
                                        
-          <div class="col-sm-1">    </div>
-          <div class="col-sm-5">
+				          <div class="col-sm-1">    </div>
+				          <div class="col-sm-5">
+				          
                         <!-- 파일 첨부  --> 
                                        첨부 파일 
                                        
                                     <ul class="mailbox-attachments clearfix">
+                                    
+                                         <li>
+                  <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
+
+                  <div class="mailbox-attachment-info">  
+                    <a href="#" class="mailbox-attachment-name">
+                    <i class="fa fa-paperclip"></i> ${LectureBoardDTO.fileTitle} </a>
+                        <span class="mailbox-attachment-size">
+                          1,245 KB
+                     
+                        </span>
+                  </div>
+                </li>
                 <li>
                   <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
 
                   <div class="mailbox-attachment-info">
-                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Sep2014-report.pdf</a>
+                    <a href="#" class="mailbox-attachment-name">
+                    <i class="fa fa-paperclip"></i> Sep2014-report.pdf </a>
                         <span class="mailbox-attachment-size">
                           1,245 KB
                      
@@ -94,8 +113,8 @@
                      
                      관련 링크 <br>
                                 <ul class="mailbox-attachments clearfix">
-                                <li>      링크 제목: </li> 
-                                <li>      링크 URL: </li><br>
+                                <li>      링크 제목:${LectureBoardDTO.linkTitle} </li> 
+                                <li>      링크 URL:<a href="${LectureBoardDTO.linkSrc}">${LectureBoardDTO.linkSrc}</a> </li><br>
                                    <li>      링크 제목: </li> 
                                 <li>      링크 URL: </li><br>
                                    <li>      링크 제목: </li> 
@@ -103,15 +122,13 @@
                </ul>
                      </div>
                     <div class="col-sm-1"></div>
-                     <!-- 링크 첨부 끝 -->
-              
-              
-              
+                     <!-- 링크 첨부 끝 --> 
               
                     </div>
                  
-                                        
-                       
+</form>
+                
+ </c:forEach>                      
                   <div class="col-md-12">                 
                                        
                                        <div class="td-actions text-center">
