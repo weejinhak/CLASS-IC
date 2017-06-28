@@ -15,18 +15,14 @@ console.log('학생 기수 들어옴');
 													data-header-animation="true" >
 													<div align="center">
 													<h3 class="card-title" >
-														<br>${n.classcode}
+														<br>${n.classTitle}
 													</h3></div>
 												</div>
 												
 												<div class="card-content">
 														<div class="card-actions">
-															<button type="button"
-																class="btn btn-danger btn-simple fix-broken-card">
-																<i class="material-icons">build</i> Fix Header!
-															</button>
 															<form action="student/main.htm" method="POST">
-															<input type="hidden" value="${n.classcode }" name="classCode"/>
+															<input type="hidden" value="${n.classCode }" name="classCode"/>
 															<button type="submit" class="btn btn-info btn-simple"
 																rel="tooltip" data-placement="bottom" title=""
 																data-original-title="go!" >
@@ -36,7 +32,7 @@ console.log('학생 기수 들어옴');
 														</div>											
 															<br>
 														<p class="category">
-															${n.classtitle}
+															${n.classTitle}
 														</p>
 												</div>
 												

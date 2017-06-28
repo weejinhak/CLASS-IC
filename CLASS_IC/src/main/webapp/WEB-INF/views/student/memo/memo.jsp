@@ -17,7 +17,7 @@
 <!-- 메모 : 2017.06.22 최은혜 -->
 			<div class="col-md-6 col-md-offset-3">
 			<div class="memosize">
-			<input type="hidden" value="b@gmail.com" id="email" name="email">
+			<input type="hidden" value="${sessionScope.email }" id="email" name="email">
 				
 			</div>
 		</div>			
