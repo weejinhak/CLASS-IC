@@ -20,11 +20,10 @@
 			<input type="hidden" value="${sessionScope.email }" id="email" name="email">
 				
 			</div>
-		</div>			
+		   </div>			
 		</div>
-
 			<div class="card">
-				<div class="card-header card-header-icon"
+			<div class="card-header card-header-icon"
 					data-background-color="rose">
 					<i class="material-icons">library_add</i>
 				</div>
@@ -41,8 +40,11 @@
                     </button>
 						 	     <!-- 여기에 리스트가 들어온다 -->
 				</div>
-			</div>
-				<!-- 메모 리스트 ajax   -->
+				
+		</div>			
+	</div>		
+			
+</div>				<!-- 메모 리스트 ajax   -->
 				<script type="text/javascript">
 					$(function() {
 
@@ -82,6 +84,7 @@
 								});
 					});
 				</script>
+				<!-- end 메모  -->
  
 
 

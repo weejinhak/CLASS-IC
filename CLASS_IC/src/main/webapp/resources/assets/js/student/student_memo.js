@@ -1,15 +1,16 @@
 $(document).ready(function(){
 	
 	//#btn 클릭 시 글 등록 된다. 2017.06.21 최은혜
-    $('#btn').click(function(){
+    $('#btn').click(function(event){
       
         var email = $('#email').val();
         var checkListItem=$('#checkListItem').val();
-        
+    
      if(checkListItem === "") {
     	 alert("다시 입력해주세요");
       
      }else{
+    	 
     	 $.ajaxSetup({cache:false}); 
     	 $.ajax({
    		  	cashe:false,
@@ -25,8 +26,8 @@ $(document).ready(function(){
  			}
  	  });
        
-     }
-    });
+       }
+  });
     
     
     //글 삭제(화면) : 2017.06.21 최은혜

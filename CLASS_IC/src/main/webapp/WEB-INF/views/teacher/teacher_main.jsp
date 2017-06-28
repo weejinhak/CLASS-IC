@@ -180,8 +180,7 @@
 						$.ajaxSetup({
 							cache : false
 						});
-						$
-								.ajax({
+						$.ajax({
 									cashe : false,
 									type : "post",
 									url : "selectMemo.htm",
@@ -192,10 +191,7 @@
 									async : false,
 									success : function(data) {
 
-										$
-												.each(
-														data,
-														function(index, item) {
+										$.each(data,function(index, item) {
 
 															$('.memo-content').append(
 																			'<div class="alert alert-primary item col-xs-4" id="'+item.memono+'"> <input type="hidden" class="memoNo" value="'+item.memono+ '" name="memoNo" />'

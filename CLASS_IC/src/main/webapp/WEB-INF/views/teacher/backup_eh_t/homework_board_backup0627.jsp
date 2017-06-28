@@ -37,8 +37,40 @@
 			<div class="tab-content">
 				<div class="tab-pane" id="notice">
 					<div class="card">
-						<!--  표-->
-				<div class="card-content">
+					<div class="col-lg-8">
+					<!-- 셀렉트 박스(메인 카테고리 선택) -->
+					    <div class="col-sm-4">
+                                <select class="selectpicker" data-style="select-with-transition" title="메인 카테고리 선택" data-size="7">
+                                        <option disabled> 메인 카테고리 선택</option>
+                                        <option value="2">Paris </option>
+                                        <option value="3">Bucharest</option>
+                                        <option value="4">Rome</option>
+                                </select>
+                         </div>
+                        
+					<!-- 셀렉트 박스(서브 카테고리 선택) -->
+					    <div class="col-sm-4">
+                                <select class="selectpicker" data-style="select-with-transition" title="서브 카테고리 선택" data-size="7">
+                                        <option disabled> 서브 카테고리 선택</option>
+                                        <option value="2">Paris </option>
+                                        <option value="3">Bucharest</option>
+                                        <option value="4">Rome</option>
+                                </select>
+                         </div>
+                        
+                         <div class="col-sm-4">
+                     <!-- 셀렉트 박스(조 카테고리 선택) -->
+                                <select class="selectpicker" data-style="select-with-transition" title="조 선택" data-size="7">
+                                        <option disabled> 조 선택</option>
+                                        <option value="2">Paris </option>
+                                        <option value="3">Bucharest</option>
+                                        <option value="4">Rome</option>
+                                </select>
+                         </div>  
+                         </div>
+                         <div class="col-sm-12"> 
+						<div class="card-content">
+					 				<!-- 테이블 -->
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
@@ -107,7 +139,6 @@
                                     <div><button type="button" class="btn btn-info btn-round" id="writeBtn" style="float: right;" data-toggle="modal" data-target="#addWrite">
                                     	글쓰기</a></button></div>
                                 </div>
-                                
 						<center>
 							<ul class="pagination pagination-info">
 								<li><a href="javascript:void(0);"> prev</a></li>
@@ -118,9 +149,8 @@
 								<li><a href="javascript:void(0);">5</a></li>
 								<li><a href="javascript:void(0);">next </a></li>
 							</ul>
-							
 						</center>
-						
+					 </div>
 						<!-- 표끝 -->
 
 					</div>
