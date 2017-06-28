@@ -22,13 +22,13 @@ import com.class_ic.vo.SubCategoryDTO;
 /*
 * @Project		:	CLASS-IC
 * @Date		    :	2017.06.27
-* @Author		:	이현정
+* @Author		:	노지영
 */
 
 /*
 * @Class: BoardListController 
 * @Date: 2017.06. 27
-* @Author: 이현정
+* @Author: 노지영
 * @Desc: 게시판의 게시글의 정보의 C.R.U.D 를 담당하는 컨트롤러.
 */
 
@@ -85,6 +85,11 @@ public class BoardListService {
     BoardDAO board=sqlsession.getMapper(BoardDAO.class);
     
     board.insertBoardContent(dto);
+    int file_insert = board.insertFile(dto);
+    System.out.println("파일 입력 결과: "+file_insert);
+    int file_board = board.insertLectureBoardFile(dto);
+    System.out.println("통합게시판 파일 테이블 입력 결과: "+file_board);
+    
 
 	
 	}

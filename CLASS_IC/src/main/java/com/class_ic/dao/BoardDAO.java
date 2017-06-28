@@ -18,6 +18,11 @@ public interface BoardDAO {
 	//통합 게시판 서브 카테고리 모두가져오기
 	ArrayList<SubCategoryDTO> selectSubCategory();
 	
+	//자료 DB에 insert (파일 등록)
+	public int insertFile(LectureBoardDTO lectureBoardDTO);
+	
+	//통합게시판과 파일 게시판을 잇는 테이블 insert
+	public int insertLectureBoardFile(LectureBoardDTO lectureBoardDTO);
 	
 	
 
