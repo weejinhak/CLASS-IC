@@ -18,6 +18,7 @@ import com.class_ic.dao.CalendarDAO;
 import com.class_ic.dao.TestDAO;
 import com.class_ic.service_category.MainService_Teacher;
 import com.class_ic.vo.CalendarDTO;
+import com.class_ic.vo.LectureBoardDTO;
 import com.class_ic.vo.Test;
 
 @Controller
@@ -48,11 +49,18 @@ public class MainController_Teacher {
 
 		return "teacher.board";
 	}
+	
 	//homework_board게시판 이동
 	@RequestMapping(value="homework.htm", method=RequestMethod.GET)
 	public String homework(){
 
 		return "teacher.homework_board";
+	}
+	//출석 데이터 테이블
+	@RequestMapping("attend.htm")
+	public String attend(){
+
+		return "teacher.data_table";
 	}
 	
 	//학생부 게시판 이동

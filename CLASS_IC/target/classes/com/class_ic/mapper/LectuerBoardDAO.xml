@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- @Project : CLASS-IC 
+     @File name : todaylecture.xml 
+     @Author : 김은영
+     @Data : 2017.06.19 
+     @Desc : 
+-->
+<mapper namespace="com.class_ic.dao.LectureBoardDAO"> 
+
+<!-- 통합게시판 화면 출력 -->
+ <select id="allBoard" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="String">
+    select * from lectureboard where subcateCode=#{subcateCode} 
+ </select> 
+ 
+<!--통합게시판 수정화면 출력   --> 
+<select id="totalboardEdit" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="int">
+   select * from lectureboard where lectureNo=#{lectureNo}
+</select>
+
+<!-- 통합게시판 수정 완료 -->
+<update id="totalboardEditOk" parameterType="com.class_ic.vo.LectureBoardDTO">
+	update lectureboard set lectureTitle=#{lectureTitle}, lectureContent=#{lectureContent} where lectureNo=#{lectureNo}
+</update>
+
+<!--통합게시판 삭제 -->
+<delete id="deleteLect" parameterType="Integer">
+   delete from lectureboard where lectureNo=#{lectureNo}
+</delete>
+
+
+</mapper>

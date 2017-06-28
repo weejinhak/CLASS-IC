@@ -23,13 +23,7 @@
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
 
-	/* 페이지 로드시 QR 코드 가져옴. */
-	$(document).ready(function() {
-   			console.log("페이지가 시작1");
-   			var url ="createCode.htm";			 
-			$("#img").attr("src", url + "?content=" + 151); 	
-	});
-	
+
 	/* 페이지 로드시 Session- email에 맞는 기수를 가져오고 그 수만큼 반복.   */
 	$(document).ready(function() {
 		  console.log("페이지가 시작2");
@@ -80,13 +74,11 @@
 										</div>
 										<div class="card-content">
 											<div class="card-actions">
-												<button type="button" class="btn btn-danger btn-simple fix-broken-card">
-													<i class="material-icons">build</i> Fix Header!
-												</button>
-												
-												<button type="button" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="go!">
+												<form action="boardcontent.htm" method="POST">
+												<button type="submit" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="go!">
 													<i class="material-icons">input</i>
 												</button>
+												</form>
 											</div>					
 								            <br>					
 											<p class="category">통합 관리 페이지로 이동.</p>
@@ -123,7 +115,7 @@
 						aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-notice">
 						
-						<form action="lecturecodeadd.htm" method="post">
+						<form action="common/lecturecodeadd.htm" method="post">
 							<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">

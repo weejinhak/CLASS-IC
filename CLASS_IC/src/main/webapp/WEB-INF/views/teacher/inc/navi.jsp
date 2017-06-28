@@ -45,8 +45,14 @@
 					<a href="board.htm"> <i class="material-icons">dashboard</i>
 							<p>수업보드</p>
 					</a>
+				</li>		
 				</li>
-				
+				<li>
+					<a href="totalboard.htm"> <i class="material-icons">dashboard</i>
+							<p>통합게시판(테스트용)</p>
+					</a>
+				</li>
+
 				<li>
 					<a href="homework.htm"> <i class="material-icons">playlist_add_check</i>
 							<p>과제게시판</p>
@@ -56,6 +62,12 @@
 				<li>
 					<a href="studentList.htm"><i class="material-icons">account_box</i>
 							<p>학생부</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="attend.htm"><i class="material-icons">account_box</i>
+							<p>출석부</p>
 					</a>
 				</li>
 				

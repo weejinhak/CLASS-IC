@@ -21,7 +21,7 @@ public interface MemberDAO {
 	//회원 탈퇴
 	public int delete(String email);
 	//회원 email 값으로 1명 select (회원 수정시 페이지)
-	public MemberDTO selectOne(MemberDTO member);
+	public MemberDTO selectOne(String email);
 	//회원 전체 목록 select
 	public List<MemberDTO> selectAll();
 	//회원 전체 수
