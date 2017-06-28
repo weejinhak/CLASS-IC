@@ -2,6 +2,8 @@ package com.class_ic.vo;
 
 public class HomeworkDTO {
 
+	private String classCode; // 기수
+	private String email; //이메일
 	private String cateCode; //메인카테고리 코드
 	private String cateTitle; //카테고리 명
 	private String teamName; //조 명
@@ -9,6 +11,22 @@ public class HomeworkDTO {
 	private String assignContent; //글 내용
 	private String assignDate; //글 등록일
 	private String assignNotice; //공지사항 여부
+	
+	
+	
+	
+	public String getClassCode() {
+		return classCode;
+	}
+	public void setClassCode(String classCode) {
+		this.classCode = classCode;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getCateCode() {
 		return cateCode;
 	}

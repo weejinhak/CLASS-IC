@@ -143,6 +143,7 @@
 	$(function() {
 		
 		var email = sessionId;
+		var classCode = sessionClassCode;
 		
 		showMainCate();
 		
@@ -163,7 +164,7 @@
 							success : function(data) {
 									
 								$.each(data, function(){
-									$("#selectCateList").append("<option value='1'>" + this.cateTitle + "</option> ");
+									$("#selectCateList").append("<option value='"+this.cateCode+"'>" + this.cateTitle + "</option> ");
 		                                console.log(this.cateTitle)
 								});
 								
@@ -186,7 +187,7 @@
 			var selectVal = $("#selectCateList option:selected").val();
 			var teamName = $("#teamName").val();
 			
-			var allData = [{"selectVal": selectVal, "teamName":teamName,"email":email}];
+			var allData = [{"selectVal": selectVal, "teamName":teamName,"email":email,"classCode":classCode}];
 			
 			$.ajax({
 				

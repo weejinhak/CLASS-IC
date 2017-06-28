@@ -10,6 +10,6 @@ public interface HomeworkDAO {
 	public List<HomeworkDTO> selectCate(String email);
 	
 	//카테고리별 조 등록
-	public int addTeam(HomeworkDTO dto);
+	public int addTeamDao(HomeworkDTO dto);
 
 }
