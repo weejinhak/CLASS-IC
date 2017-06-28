@@ -31,10 +31,15 @@
 						<div class="dataTables_length" id="datatables_length">
 							<label class="form-group">카테고리<select id="cate"
 								name="datatables_length" aria-controls="datatables"
-								class="form-control input-sm">
+								class="form-control input-sm"></select>
 								
-  </select>
-							</label> &nbsp; &nbsp; &nbsp; &nbsp; <label class="form-group">서브
+							</label> 
+							&nbsp; &nbsp; &nbsp; &nbsp;
+							<button class="btn btn-just-icon btn-round btn-primary"  data-toggle="modal"
+                     data-target="#noticeModal">
+                     <i class="material-icons">library_add</i><div class="ripple-container"></div></button>
+                       
+							&nbsp; &nbsp; &nbsp; &nbsp; <label class="form-group">서브
 								카테고리<select name="datatables_length" aria-controls="datatables"
 								class="form-control input-sm" id="subcate">
 								</select>
@@ -42,8 +47,7 @@
 							&nbsp; &nbsp; &nbsp; &nbsp; 
 <button class="btn btn-just-icon btn-round btn-primary"  data-toggle="modal"
                      data-target="#noticeModal">
-                                                카테고리 추가
-                                            <div class="ripple-container"></div></button>
+                     <i class="material-icons">library_add</i><div class="ripple-container"></div></button>
                                           
 						</div>
 						
@@ -142,7 +146,7 @@
                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         <i class="material-icons">clear</i>
                      </button>
-                     <h5 class="modal-title" id="myModalLabel">카테고리 서브카테고리 추가</h5>
+                     <h5 class="modal-title" id="myModalLabel">카테고리 추가</h5>
                   </div>
                   <div class="modal-body">
                      <div class="instruction">
