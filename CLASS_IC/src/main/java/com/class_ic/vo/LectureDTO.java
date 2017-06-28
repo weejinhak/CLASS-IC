@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class LectureDTO {
 	
-	String classCode; 
+	private String classCode; 
 	String classTitle; 
 	Date classStart; 
  	Date classEnd; 
@@ -13,6 +13,22 @@ public class LectureDTO {
 	String classInviteCode;
 	String email;
 	
+	
+	
+	public LectureDTO() {
+	}
+	public LectureDTO(String classCode, String classTitle, Date classStart, Date classEnd, String classOpenTime,
+			String classCloseTime, String classInviteCode, String email) {
+
+		this.classCode = classCode;
+		this.classTitle = classTitle;
+		this.classStart = classStart;
+		this.classEnd = classEnd;
+		this.classOpenTime = classOpenTime;
+		this.classCloseTime = classCloseTime;
+		this.classInviteCode = classInviteCode;
+		this.email = email;
+	}
 	public String getClassCode() {
 		return classCode;
 	}
@@ -61,7 +77,6 @@ public class LectureDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	
 	
 
