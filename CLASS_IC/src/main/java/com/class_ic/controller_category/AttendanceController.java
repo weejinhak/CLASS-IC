@@ -138,7 +138,7 @@ public class AttendanceController {
 			labels[1] = String.valueOf((attendlatecount / attendancetotalcount) * 100) + "%";
 			labels[2] = String.valueOf((attendabsencecount / attendancetotalcount) * 100) + "%";
 			labels[3] = String.valueOf((attendearlyleavecount / attendancetotalcount) * 100) + "%";
-
+			System.out.println(labels[0]+","+labels[1]);
 			series[0] = (attendnomalcount / attendancetotalcount) * 100;
 			series[1] = (attendlatecount / attendancetotalcount) * 100;
 			series[2] = (attendabsencecount / attendancetotalcount) * 100;
@@ -199,12 +199,16 @@ public class AttendanceController {
 
 			if (eachlist.getAttendState().equals("출석")) {
 				attendnomalcount++;
+				System.out.println(eachlist.getAttendState().equals("출석"));
 			} else if (eachlist.getAttendState().equals("지각")) {
 				attendlatecount++;
+				System.out.println(eachlist.getAttendState().equals("지각"));
 			} else if (eachlist.getAttendState().equals("조퇴")) {
 				attendearlyleavecount++;
+				System.out.println(eachlist.getAttendState().equals("조퇴"));
 			} else if (eachlist.getAttendState().equals("결석")) {
 				attendabsencecount++;
+				System.out.println(eachlist.getAttendState().equals("결석"));
 			} else {
 			}
 
@@ -214,7 +218,7 @@ public class AttendanceController {
 		labels[1]=String.valueOf((attendlatecount / attendancetotalcount) * 100)+"%";
 		labels[2]=String.valueOf((attendabsencecount / attendancetotalcount) * 100)+"%";
 		labels[3]=String.valueOf((attendearlyleavecount / attendancetotalcount) * 100)+"%";
-		
+		System.out.println(labels[0]+","+labels[1]);
 		series[0]=(attendnomalcount / attendancetotalcount) * 100;
 		series[1]=(attendlatecount / attendancetotalcount) * 100;
 		series[2]=(attendabsencecount / attendancetotalcount) * 100;
