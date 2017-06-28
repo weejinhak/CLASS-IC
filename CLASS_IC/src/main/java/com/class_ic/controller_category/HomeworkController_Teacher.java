@@ -29,26 +29,20 @@ public class HomeworkController_Teacher {
 
 	//과제 상세게시판 메인 카테고리 출력 : 2017.06.27 최은혜
 	@RequestMapping(value="selectCate.htm", method=RequestMethod.POST)
-	public void MovePage(String email, HttpServletResponse response,Model model) throws IOException {
+	public String MovePage(String email, HttpServletResponse response,Model model) throws IOException {
 		
 		System.out.println("Homework controller_Teacher email: "+ email);
 		
 		List<HomeworkDTO> cateList = homeworkService.selectCate(email);
-		//ArrayList<String> optionlist=null;
+		ArrayList<String> optionlist=null;
 		
 		
-		JSONArray array = new JSONArray();
 		for(int i=0;i<cateList.size();i++){
-			JSONObject obj = new JSONObject();
-			obj.put("cateTitle", cateList.get(i).getCateTitle());
-			System.out.println(obj);
-			//optionlist.add(cateList.get(i).getCateTitle());
-			array.add(obj);
+			optionlist.add(cateList.get(i).getCateTitle());
 		}
 		
-		//model.addAttribute("optionlist", cateList);
-		response.getWriter().println(array);
-		//return "common/optionList";
+		model.addAttribute("optionlist", cateList);
+		return "common/optionList";
 		
 	}
 }

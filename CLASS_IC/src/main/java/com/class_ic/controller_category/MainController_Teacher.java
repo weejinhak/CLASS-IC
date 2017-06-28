@@ -33,7 +33,7 @@ public class MainController_Teacher {
 	public String teacherMain(HttpSession session, String classCode){
 		System.out.println("teacher main controller");
 		session.setAttribute("classCode", classCode);
-
+		
 		return "teacher.teacher_main";
 	}
 

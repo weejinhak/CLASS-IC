@@ -7,7 +7,6 @@
       	 <!-- 내용물  contents  -->
       	 <div class="row">
 					<div class="card">
-					
 					<div class="col-lg-8 col-md-offset-3">
 					<!-- 셀렉트 박스(메인 카테고리 선택) -->
 					    <div class="col-sm-3">
@@ -23,7 +22,7 @@
                                 </select>
                          </div>  
                          <div class="col-sm-3" align="right">
-                         <button type="button" class="btn btn-info btn-round" id="addCateBtn" onclick="show('${sessionScope.email}')"  data-toggle="modal" data-target="#addCate">
+                         <button type="button" class="btn btn-info btn-round" id="addCateBtn"  data-toggle="modal" data-target="#addCate">
                                             과제 카테고리 추가</a></button>
                          </div>
                                     
@@ -31,6 +30,8 @@
                          <div class="col-sm-12"> 
 						<div class="card-content">
 					 				<!-- 테이블 -->
+					 				<input type="hidden" class="form-control" id="email" value="${sessionScope.email }" readonly="readonly">
+					 				<input type="hidden" class="form-control" id="classCode" value="${sessionScope.classCode }기" readonly="readonly">
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
@@ -103,8 +104,8 @@
 							<div class="instruction">
 								<div class="row">
 									<div class="col-md-12"> 
-										<input type="hidden" class="form-control" id="email" value="${sessionScope.email }" >
-										<input type="text" class="form-control" id="classCode" value="${sessionScope.classCode }기" readonly="readonly">
+										<%-- <input type="hidden" class="form-control" id="email" value="${sessionScope.email }" > 
+										<input type="text" class="form-control" id="classCode" value="${sessionScope.classCode }기" readonly="readonly">--%>
 										
 										<select class="selectpicker" id="selectCateList" data-style="select-with-transition" title="메인 카테고리 선택해주세요" data-size="7" >
                                 		
@@ -167,9 +168,7 @@
 <script type="text/javascript">
 	$(function() {
 		
-			$("#mainCate").click(function() {
-				showMainCate();
-			});
+		showMainCate();
 			
 			function showMainCate() {
 					
@@ -180,22 +179,21 @@
 							type : "post",
 							url:"selectCate.htm",
 							data : {"email" : email},
-							dataType : 'Json',
+							dataType : 'text',
 							success : function(data) {
 								
-								$.each(data, function(){
-	                                $("#mainCate").append("<option value='" + 
-	                                        this.cateTitle + "'>" + this.cateTitle + "</option> ");
-	                                
-	                                console.log(this.cateTitle)
-
-	                        });
-					   }
-				});
-	   }
-		
-		
-	});
+									$('#mainCate').html(data);
+					   		},
+					   		
+		                	error : function(){
+		                        alert('통신실패!!');
+		                        alert(title);
+		                        alert(content);
+	                    	} 
+					   		
+					 });
+				}
+	   });
 
 </script>
 
