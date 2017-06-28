@@ -40,7 +40,7 @@
        
           <!-- side navi 메뉴 영역-->
            <!--   <tiles:insertAttribute name="navi" /> -->  
-           <div class="main-panel">
+          <div class="main-panel">
           <!--  header 영역 -->
             <!--  <tiles:insertAttribute name="header" /> -->
            <!--  contents 영역 -->
@@ -228,7 +228,7 @@
            <!--   contents 영역 끝 -->
            
         </div>
-    </div>
+         </div>
 </body>
 
 <!-- 에디터 추가부분 -->
