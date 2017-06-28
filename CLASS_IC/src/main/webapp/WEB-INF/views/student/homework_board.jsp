@@ -1,48 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<!DOCTYPE div PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 	 <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
       	 <div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<h2 class="title text-center"><b>과제 게시판</b></h2>
+			<!-- <h2 class="title text-center"><b>과제 게시판</b></h2> -->
 			<br>
-			<div class="nav-left">
-				<ul class="nav nav-pills nav-pills-warning nav-pills-icons"
-					role="tablist">
+			<div class="nav-center">
+				<ul class="nav nav-pills nav-pills-warning nav-pills-icons" role="tablist">
 					<!--
                         color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                     -->
-					<li class="active"><a href="#description-1" role="tab"
+					<li class="active"><a href="#notice" role="tab"
 						data-toggle="tab" aria-expanded="false"> <i
 							class="material-icons">info</i> 과제 공지
 					</a></li>
-					<li class=""><a href="#description-1" role="tab"
+					<li class="team"><a href="#description-1" role="tab"
 						data-toggle="tab" aria-expanded="false"> <i
 							class="material-icons">face</i> 1조
 					</a></li>
-					<li class=""><a href="#description-1" role="tab"
-						data-toggle="tab" aria-expanded="false"> <i
-							class="material-icons">face</i> 2조
-					</a></li>
-					<li class=""><a href="#description-1" role="tab"
-						data-toggle="tab" aria-expanded="false"> <i
-							class="material-icons">face</i> 3조
-					</a></li>
-					<li class=""><a href="#description-2" role="tab"
+					<li class="team"><a href="#description-2" role="tab"
 						data-toggle="tab" aria-expanded="false"> 
 						
-						<!--                                            <i class="material-icons">exposure_plus_1</i> -->
+						<!--     <i class="material-icons">exposure_plus_1</i> -->
 							<button class="btn btn-raised btn-round btn-white"
-								data-toggle="modal" data-target="#noticeModal">+</button>
-								<br>add
+								data-toggle="modal" data-target="#addTeam">+</button>
+								<br>조 추가
 					</a></li>
 				</ul>
 			</div>
-
+		</div>
 			<!-- tab-content -->
 			<div class="tab-content">
-				<div class="tab-pane" id="description-1">
+				<div class="tab-pane" id="notice">
 					<div class="card">
 						<!--  표-->
 				<div class="card-content">
@@ -111,8 +104,10 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div><button type="button" class="btn btn-info btn-round" id="writeBtn" style="float: right;" data-toggle="modal" data-target="#addWrite">
+                                    	글쓰기</a></button></div>
                                 </div>
-
+                                
 						<center>
 							<ul class="pagination pagination-info">
 								<li><a href="javascript:void(0);"> prev</a></li>
@@ -123,9 +118,9 @@
 								<li><a href="javascript:void(0);">5</a></li>
 								<li><a href="javascript:void(0);">next </a></li>
 							</ul>
+							
 						</center>
-
-						<button type="button" class="btn btn-info btn-round" style="margin-left:850px">write</button>
+						
 						<!-- 표끝 -->
 
 					</div>
@@ -138,22 +133,20 @@
                                     </div>
                                 </div> -->
 
-
 			</div>
 
 			<!--  tab content end-->
 
 
-		</div>
+		
 	</div>
 
-	<!-- 모달  -->
+	<!-- 탭추가 모달(조추가)  -->
 	<div class="row">
 		<div class="col-md-12 text-center">
 
-
 			<!-- notice modal -->
-			<div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
+			<div class="modal fade" id="addTeam" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-notice">
 					<div class="modal-content">
@@ -162,42 +155,87 @@
 								aria-hidden="true">
 								<i class="material-icons">clear</i>
 							</button>
-							<h5 class="modal-title" id="myModalLabel">과제 게시판 탭 추가</h5>
+							<h5 class="modal-title" id="myModalLabel">조 추가</h5>
 						</div>
+						<!-- modal-body -->
 						<div class="modal-body">
 							<div class="instruction">
 								<div class="row">
 									<div class="col-md-12"> 
 										
-									<input type="text" class="form-control" placeholder="탭 이름">
+										<input type="text" class="form-control" placeholder="조 이름을 작성해주세요">
+									
 									</div>
-								 
-								</div>
-								
-									<div class="row">
-									<div class="col-md-12">
-									 
-										
-									<input type="text" class="form-control" placeholder="조원 검색">
-									</div>
-								 
 								</div>
 							</div>
-							 
-							 
-						</div>
+						</div><!-- end modal-body -->
 						<div class="modal-footer text-center">
-							<button type="button" class="btn btn-simple" data-dismiss="modal">Never
-								mind</button>
-							<button type="button" class="btn btn-success btn-simple">Yes</button>
+							<button type="button" class="btn btn-simple" data-dismiss="modal">취소</button>
+							<button type="button" class="btn btn-success btn-simple" id="submitBtn">등록</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- end notice modal -->
+			<!-- 탭추가 모달(조추가) end  -->
 
+			<!-- 글쓰기 모달  -->
+			<div class="modal fade" id="addWrite" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-notice">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">
+								<i class="material-icons">clear</i>
+							</button>
+							<h5 class="modal-title" id="myModalLabel">과제 등록</h5>
+						</div>
+						<!-- modal-body -->
+						<div class="modal-body">
+							<div class="instruction">
+								<div class="row">
+									<div class="col-md-12"> 
+										
+										<!-- 여기에 글쓰기 폼 -->
+										
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- modal-body -->
+						<div class="modal-footer text-center">
+							<button type="button" class="btn btn-round" data-dismiss="modal">취소</button>
+							<button type="button" class="btn btn-info btn-round">등록</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 글쓰기 모달 end  -->
 
 		</div>
 	</div>
       	 </div>
       </div>
+      
+<script type="text/javascript">
+	$(function() {
+		
+		addTeam();
+		
+		function addTeam() {
+			$("#submitBtn").on("click",function() {
+				
+				$(".team").append(
+						
+				"<li class='team'><a href='#description-1' role='tab' data-toggle='tab' aria-expanded='false'><i class='material-icons'>face</i> 1조 </a></li>"
+				
+				);
+				
+				
+			});
+		}
+		
+	});
+
+</script>

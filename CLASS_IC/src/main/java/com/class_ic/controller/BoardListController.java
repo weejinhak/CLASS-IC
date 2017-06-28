@@ -66,7 +66,7 @@ public class BoardListController {
 	private BoardListService boardlistservice;
 	
 
-	@RequestMapping(value = "boardcontent.htm", method = RequestMethod.POST)
+	@RequestMapping(value = "teacher/boardcontent.htm", method = RequestMethod.GET)
 	public String boardContentView(HttpServletRequest request){
 		
 		
@@ -156,20 +156,6 @@ public class BoardListController {
     
 	
 	}
-
-
-
-	
-	@RequestMapping(value = "teacher/insertboard.htm")
-	public String insertBoard(Model model,HttpServletRequest request){
-
-
-	return "teacher.board_content";
-    
-	
-	}
-	
-
 
 }
 

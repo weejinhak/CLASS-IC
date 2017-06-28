@@ -172,7 +172,7 @@
 						class="material-input"></span></label>
 				</div>
 
-				<label class="col-sm-2 label-on-left">제목 : </label><div class="col-sm-10">
+				<label class="col-sm-2 label-on-left" style="margin-top: 36px; ">제목  </label><div class="col-sm-10">
 					<div class="form-group label-floating is-empty">
 						<label class="control-label"></label>
 						 <input type="text" class="form-control"  style="width: 90%"
@@ -183,7 +183,7 @@
 			</div>
 
 			<div class="row">
-				<label class="col-sm-2 label-on-left">내용 : </label>
+				<label class="col-sm-2 label-on-left" style="margin-top: 31px;">내용  </label>
 				<div class="col-sm-10">
 					<div class="form-group label-floating is-empty">
 						<label class="control-label"></label>
