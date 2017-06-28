@@ -104,7 +104,7 @@
 		dataType : 'json',
 		data : {
 			email : sessionId,
-			classcode : '151' /* 여기다가 기수 세션값 넣어야함 */
+			classcode : sessionClassCode  /* 여기다가 기수 세션값 넣어야함 */
 		},
 		success : function(data) {
 			console.log(data);
@@ -151,6 +151,8 @@
 <script>
 
 		$(document).ready(function() {			
+			console.log(sessionId)
+			console.log(sessionClassCode)
 			
 			$.ajax({
 				type : 'POST',

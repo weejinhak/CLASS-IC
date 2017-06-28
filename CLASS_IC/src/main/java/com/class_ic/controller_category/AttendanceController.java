@@ -84,8 +84,8 @@ public class AttendanceController {
 	 */
 	@RequestMapping(value = "teacher/attendanceTable.htm", method = RequestMethod.POST)
 	public void teacherlistPage(String email, String classcode, HttpServletResponse response) throws Exception {
-		System.out.println("강사용attendanceTable컨트롤러");
-
+		System.out.println("강사용attendanceTable컨트롤러"+","+"ID:"+email+","+"기수:"+classcode);
+		
 		List<AttandanceListDTO> memberattendacnelist = attendanceListService.attendanceSelectByTeacher(email,
 				classcode);
 		JSONArray attendanceListArray = new JSONArray();
@@ -116,11 +116,11 @@ public class AttendanceController {
 		int[] series = { 0, 0, 0, 0 };
 
 		classcode = "151";
-		int attendancetotalcount = attendanceListService.attendanceTotalCount(email, classcode);
-		int attendnomalcount = attendanceListService.attendanceNomalCount(email, classcode);
-		int attendlatecount = attendanceListService.attendLateCount(email, classcode);
-		int attendabsencecount = attendanceListService.attendAbsenceCount(email, classcode);
-		int attendearlyleavecount = attendanceListService.attendEarlyLeaveCount(email, classcode);
+		float attendancetotalcount = attendanceListService.attendanceTotalCount(email, classcode);
+		float attendnomalcount = attendanceListService.attendanceNomalCount(email, classcode);
+		float attendlatecount = attendanceListService.attendLateCount(email, classcode);
+		float attendabsencecount = attendanceListService.attendAbsenceCount(email, classcode);
+		float attendearlyleavecount = attendanceListService.attendEarlyLeaveCount(email, classcode);
 
 		System.out.println("****차트용 출석률을 위한 숫자들!!!!");
 		System.out.println(attendancetotalcount);
@@ -135,20 +135,20 @@ public class AttendanceController {
 		} else {
 			
 			System.out.println((attendnomalcount*100/attendancetotalcount));
-			labels[0] = String.valueOf((attendnomalcount/ attendancetotalcount) * 100) + "%";
-			labels[1] = String.valueOf((attendlatecount / attendancetotalcount) * 100) + "%";
-			labels[2] = String.valueOf((attendabsencecount / attendancetotalcount) * 100) + "%";
-			labels[3] = String.valueOf((attendearlyleavecount / attendancetotalcount) * 100) + "%";
+			labels[0] = String.valueOf((int)((attendnomalcount/ attendancetotalcount) * 100)) + "%";
+			labels[1] = String.valueOf((int)((attendlatecount / attendancetotalcount) * 100)) + "%";
+			labels[2] = String.valueOf((int)((attendabsencecount / attendancetotalcount) * 100)) + "%";
+			labels[3] = String.valueOf((int)((attendearlyleavecount / attendancetotalcount) * 100)) + "%";
 			System.out.println(labels[0]+","+labels[1]);
-			series[0] = (attendnomalcount / attendancetotalcount) * 100;
-			series[1] = (attendlatecount / attendancetotalcount) * 100;
-			series[2] = (attendabsencecount / attendancetotalcount) * 100;
-			series[3] = (attendearlyleavecount / attendancetotalcount) * 100;
+			series[0] = (int)((attendnomalcount / attendancetotalcount) * 100);
+			series[1] = (int)((attendlatecount / attendancetotalcount) * 100);
+			series[2] = (int)((attendabsencecount / attendancetotalcount) * 100);
+			series[3] = (int)((attendearlyleavecount / attendancetotalcount) * 100);
 
 			for (String v : labels) {
 				System.out.println(v);
 			}
-			for (int b : series) {
+			for (float b : series) {
 				System.out.println(b);
 			}
 
@@ -191,10 +191,10 @@ public class AttendanceController {
 			attendancetotalcount = list.size();
 		}
 
-		int attendnomalcount = 0;
-		int attendlatecount = 0;
-		int attendabsencecount = 0;
-		int attendearlyleavecount = 0;
+		float attendnomalcount = 0;
+		float attendlatecount = 0;
+		float attendabsencecount = 0;
+		float attendearlyleavecount = 0;
 
 		for (AttandanceDTO eachlist : list) {
 
@@ -215,15 +215,15 @@ public class AttendanceController {
 
 		}		
 		
-		labels[0]= String.valueOf((attendnomalcount / attendancetotalcount) * 100)+"%";
-		labels[1]=String.valueOf((attendlatecount / attendancetotalcount) * 100)+"%";
-		labels[2]=String.valueOf((attendabsencecount / attendancetotalcount) * 100)+"%";
-		labels[3]=String.valueOf((attendearlyleavecount / attendancetotalcount) * 100)+"%";
+		labels[0]= String.valueOf((int)((attendnomalcount / attendancetotalcount) * 100))+"%";
+		labels[1]=String.valueOf((int)((attendlatecount / attendancetotalcount) * 100))+"%";
+		labels[2]=String.valueOf((int)((attendabsencecount / attendancetotalcount) * 100))+"%";
+		labels[3]=String.valueOf((int)((attendearlyleavecount / attendancetotalcount) * 100))+"%";
 		System.out.println(labels[0]+","+labels[1]);
-		series[0]=(attendnomalcount / attendancetotalcount) * 100;
-		series[1]=(attendlatecount / attendancetotalcount) * 100;
-		series[2]=(attendabsencecount / attendancetotalcount) * 100;
-		series[3]=(attendearlyleavecount / attendancetotalcount) * 100;
+		series[0]=(int)((attendnomalcount / attendancetotalcount) * 100);
+		series[1]=(int)((attendlatecount / attendancetotalcount) * 100);
+		series[2]=(int)((attendabsencecount / attendancetotalcount) * 100);
+		series[3]=(int)((attendearlyleavecount / attendancetotalcount) * 100);
 		
 		JSONObject obj =new JSONObject();
 		JSONArray attendancChartArray= new JSONArray();
