@@ -84,8 +84,12 @@
 										</td>
 										<td class="text-center">${LectureBoardDTO.cateCode}</td>
 										<td class="text-center">${LectureBoardDTO.subcateCode}</td>
-										<td class="text-center">${LectureBoardDTO.lectureTitle}</td>
-										<td class="text-center">${LectureBoardDTO.lectureDate}</td>
+										
+										 
+                                        <td class="text-center"> <a href="totalBoard_contentview.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+                                 class="btn btn-simple btn-info btn-icon edit">${LectureBoardDTO.lectureTitle}</a>  </td> 
+										
+ 										<td class="text-center">${LectureBoardDTO.lectureDate}</td>
 										<td class="text-center"><a
 											href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
 											class="btn btn-simple btn-info btn-icon edit"><i
@@ -176,10 +180,10 @@ var data="";
     
  
  }
-alert(data);
+// alert(data);
 
 
-   alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
+// alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
    //ajax 로  보낼데이터를 배열형태로 허용해준당 
    jQuery.ajaxSettings.traditional = true;
 
@@ -189,8 +193,12 @@ alert(data);
         data: { data: data } ,
         dataType: 'text',
   
-        success: alert('good'),
-        error: alert('not good')
+        success: function() {
+        	alert('good');
+        },
+        error: function() {
+        	alert('bad');
+        } 
     });
 
 

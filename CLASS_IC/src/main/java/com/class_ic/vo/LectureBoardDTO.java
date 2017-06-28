@@ -19,8 +19,12 @@ public class LectureBoardDTO {
    private String lectureFileNo;
    private String fileNo;
    private String   fileSrc;
-
-   
+	private String fileTitle ;
+   //링크게시판 
+	private int linkNo ; 
+	private String linkSrc; 
+	private String linkTitle ;
+	
    
    public LectureBoardDTO() {
    }
@@ -92,7 +96,31 @@ public class LectureBoardDTO {
    public String getCateCode() {
       return cateCode;
    }
-   public void setCateCode(String cateCode) {
+   public String getFileTitle() {
+	return fileTitle;
+}
+public void setFileTitle(String fileTitle) {
+	this.fileTitle = fileTitle;
+}
+public int getLinkNo() {
+	return linkNo;
+}
+public void setLinkNo(int linkNo) {
+	this.linkNo = linkNo;
+}
+public String getLinkSrc() {
+	return linkSrc;
+}
+public void setLinkSrc(String linkSrc) {
+	this.linkSrc = linkSrc;
+}
+public String getLinkTitle() {
+	return linkTitle;
+}
+public void setLinkTitle(String linkTitle) {
+	this.linkTitle = linkTitle;
+}
+public void setCateCode(String cateCode) {
       this.cateCode = cateCode;
    }
    public String getSubcateCode() {
@@ -120,14 +148,17 @@ public class LectureBoardDTO {
       this.lectureDate = lectureDate;
    }
    
+@Override
+public String toString() {
+	return "LectureBoardDTO [lectureNo=" + lectureNo + ", classCode=" + classCode + ", cateCode=" + cateCode
+			+ ", subcateCode=" + subcateCode + ", lectureTitle=" + lectureTitle + ", lectureContent=" + lectureContent
+			+ ", lectureDate=" + lectureDate + ", lectureFileNo=" + lectureFileNo + ", fileNo=" + fileNo + ", fileSrc="
+			+ fileSrc + ", fileTitle=" + fileTitle + ", linkNo=" + linkNo + ", linkSrc=" + linkSrc + ", linkTitle="
+			+ linkTitle + ", files=" + files + ", toString()=" + super.toString() + "]";
+}
    
-   @Override
-   public String toString() {
-      return "LectureBoardDTO [lectureNo=" + lectureNo + ", classCode=" + classCode + ", cateCode=" + cateCode
-            + ", subcateCode=" + subcateCode + ", lectureTitle=" + lectureTitle + ", lectureContent="
-            + lectureContent + ", lectureDate=" + lectureDate + "]";
-   }
    
+ 
 
    
    
