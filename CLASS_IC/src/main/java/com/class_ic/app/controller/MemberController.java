@@ -82,15 +82,15 @@ public class MemberController {
 		AttendDAO memberDao = sqlsession.getMapper(AttendDAO.class);
 		LectureAddDAO lecDao= sqlsession.getMapper(LectureAddDAO.class);
 		
+		System.out.println(request.getParameter("qr"));
 		System.out.println(request.getParameter("email"));
 		System.out.println(request.getParameter("time"));
 		System.out.println(request.getParameter("state"));
-		System.out.println(request.getParameter("classCode"));
 		
 		String state=request.getParameter("state");
 		String email=request.getParameter("email");
 		String time=request.getParameter("time");
-		String classcode=request.getParameter("classCode");
+		String classcode=request.getParameter("qr");
 		
 		if(0<lecDao.searchMemberClassMember(email,classcode)){
 			System.out.println("이미 기수에 등록되어있음!!");
