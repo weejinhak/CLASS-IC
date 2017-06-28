@@ -112,6 +112,9 @@ public class AttendanceController {
 			throws Exception {
 		System.out.println("학생용 차트 컨트롤러");
 
+		String[] labels = {"","","",""};
+		int[] series = { 0, 0, 0, 0 };
+
 		classcode = "151";
 		int attendancetotalcount = attendanceListService.attendanceTotalCount(email, classcode);
 		int attendnomalcount = attendanceListService.attendanceNomalCount(email, classcode);
@@ -127,13 +130,11 @@ public class AttendanceController {
 		System.out.println(attendearlyleavecount);
 		System.out.println("************************************");
 
-		String[] labels = {"","","",""};
-		int[] series = { 0, 0, 0, 0 };
-
 		if (attendancetotalcount == 0) {
 			System.out.println("데이터 없음.");
 		} else {
-			System.out.println((attendnomalcount/attendancetotalcount) * 100);
+			
+			System.out.println((attendnomalcount*100/attendancetotalcount));
 			labels[0] = String.valueOf((attendnomalcount/ attendancetotalcount) * 100) + "%";
 			labels[1] = String.valueOf((attendlatecount / attendancetotalcount) * 100) + "%";
 			labels[2] = String.valueOf((attendabsencecount / attendancetotalcount) * 100) + "%";
