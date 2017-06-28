@@ -127,7 +127,7 @@ public class AttendanceController {
 		System.out.println(attendearlyleavecount);
 		System.out.println("************************************");
 
-		String[] labels = { "", "", "", "" };
+		String[] labels = {"","","",""};
 		int[] series = { 0, 0, 0, 0 };
 
 		if (attendancetotalcount == 0) {
