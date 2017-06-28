@@ -21,7 +21,11 @@ public class LectureBoardDTO {
    private String fileSrc;
    private String fileSrc2;
 
-   
+
+   //링크게시판 
+	private int linkNo ; 
+	private String linkSrc; 
+	private String linkTitle ;
 
    public LectureBoardDTO() {
 
@@ -101,7 +105,26 @@ public int getLectureNo() {
    public String getCateCode() {
       return cateCode;
    }
-   public void setCateCode(String cateCode) {
+
+public int getLinkNo() {
+	return linkNo;
+}
+public void setLinkNo(int linkNo) {
+	this.linkNo = linkNo;
+}
+public String getLinkSrc() {
+	return linkSrc;
+}
+public void setLinkSrc(String linkSrc) {
+	this.linkSrc = linkSrc;
+}
+public String getLinkTitle() {
+	return linkTitle;
+}
+public void setLinkTitle(String linkTitle) {
+	this.linkTitle = linkTitle;
+}
+public void setCateCode(String cateCode) {
       this.cateCode = cateCode;
    }
    public String getSubcateCode() {
@@ -129,14 +152,17 @@ public int getLectureNo() {
       this.lectureDate = lectureDate;
    }
    
+@Override
+public String toString() {
+	return "LectureBoardDTO [lectureNo=" + lectureNo + ", classCode=" + classCode + ", cateCode=" + cateCode
+			+ ", subcateCode=" + subcateCode + ", lectureTitle=" + lectureTitle + ", lectureContent=" + lectureContent
+			+ ", lectureDate=" + lectureDate + ", lectureFileNo=" + lectureFileNo + ", fileNo=" + fileNo + ", fileSrc="
+			+ fileSrc + ", linkNo=" + linkNo + ", linkSrc=" + linkSrc + ", linkTitle="
+			+ linkTitle + ", files=" + files + ", toString()=" + super.toString() + "]";
+}
    
-   @Override
-   public String toString() {
-      return "LectureBoardDTO [lectureNo=" + lectureNo + ", classCode=" + classCode + ", cateCode=" + cateCode
-            + ", subcateCode=" + subcateCode + ", lectureTitle=" + lectureTitle + ", lectureContent="
-            + lectureContent + ", lectureDate=" + lectureDate + "]";
-   }
    
+ 
 
    
    

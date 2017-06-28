@@ -15,7 +15,7 @@ console.log('jsp까지 들어옴');
 													data-header-animation="true" >
 													<div align="center">
 													<h3 class="card-title" >
-														<br>${n.classTitle}
+														<br>${n.classCode}
 													</h3></div>
 												</div>
 												

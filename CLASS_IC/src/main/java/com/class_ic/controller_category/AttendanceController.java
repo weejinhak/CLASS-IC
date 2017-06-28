@@ -172,25 +172,35 @@ public class AttendanceController {
 		System.out.println(email+","+classcode);
 		System.out.println("강사용 차트 출석률 컨트롤러");
 		
+		
+	    //ArrayList<AttandanceDTO> list = 		
+		//attendanceListService.selectEachStudent(email, classcode);
 
-
-		System.out.println((eachPercent(email, classcode)));
+		//출석현황을 담고있는 배열
+		//index [0]출석률, [1]지각률,[2]결석률,[3]조퇴율
+		int[] avg=eachPercent(email, classcode);
+		System.out.println(avg);
 	
+		
+		
 	}
 
 	public int[] eachPercent(String email, String classcode) {
 
-		AttendanceListService service = new AttendanceListService();
+
 		System.out.println("여기까진오냐");
 		System.out.println(email+","+classcode);
 		
-	    ArrayList<AttandanceDTO> list = service.selectEachStudent(email,classcode);
+	    ArrayList<AttandanceDTO> list = attendanceListService.selectEachStudent(email, classcode);
 
-		int[] avg ={0,0,0};
+		int[] avg ={0,0,0,0};
 		System.out.println("출석테이블의 싸이즈"+list.size());
 		
 		int attendancetotalcount = 1;
-		attendancetotalcount=list.size();
+	if(list.size()!=0){
+		attendancetotalcount=list.size();	
+		}
+
 		int attendnomalcount = 0;
 		int attendlatecount = 0;
 		int attendabsencecount = 0;
@@ -200,20 +210,33 @@ public class AttendanceController {
 
 			if (eachlist.getAttendState().equals("출석")) {
 				attendnomalcount++;
+				System.out.println("설마1");
 			} else if (eachlist.getAttendState().equals("지각")) {
 				attendlatecount++;
+				System.out.println("설마2");
 			} else if (eachlist.getAttendState().equals("조퇴")) {
 				attendearlyleavecount++;
-
+				System.out.println("설마3");
 			} else if (eachlist.getAttendState().equals("결석")) {
 				attendabsencecount++;
+				System.out.println("설마4");
+			}else{
+				System.out.println("설마5");
 			}
 
 		}
 
+
+		//출석률
 		avg[0]=(attendnomalcount / attendancetotalcount) * 100;
+		//지각률
 		avg[1]=(attendlatecount / attendancetotalcount) * 100;
+		//결석률
 		avg[2]=(attendabsencecount / attendancetotalcount) * 100;
+		//조퇴율
+		avg[3]=(attendearlyleavecount/attendancetotalcount)*100;
+		
+		System.out.println(avg[0]+","+avg[1]+","+avg[2]);
 
 		return avg;
 	}

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!-- contextpath 가져와서 변수 정의 하고.. -->
 <c:set var="contextPath" value="<%= request.getContextPath()%>"></c:set>  
-<%= session.getAttribute("email") %>
+
 <script>
 	var sessionId="<%=(String)session.getAttribute("email")%>";
 	var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"

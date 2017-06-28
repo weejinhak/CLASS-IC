@@ -17,7 +17,7 @@
 	</insert>
 
 	<select id="memberSelectAll" resultType="com.class_ic.vo.MemberDTO">
-		select * from member
+	select * from member where email in(select email from classicauthority where authority='ROLE_STUDENT')
 	</select>
 
 	<select id="selectClassNumber" parameterType="String"
