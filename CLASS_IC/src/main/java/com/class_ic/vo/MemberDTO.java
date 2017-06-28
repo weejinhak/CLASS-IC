@@ -2,11 +2,11 @@ package com.class_ic.vo;
 
 public class MemberDTO {
 	
-	private String email;
-	private String name;
-	private String pwd;
-	private String phone;
-	private String photoSrc;
+	private String email; //이메일
+	private String name; //이름
+	private String pwd; //비번
+	private String phone; //전화번호
+	private String photoSrc; //이미지 주소
 	private String authority;	//security 권한
 	private String classCode; 	//기수
 	public static final String STUDENT_AUTHORITY = "ROLE_STUDENT";
@@ -57,6 +57,21 @@ public class MemberDTO {
 	}
 	public void setAuthority(String authority) {
 		this.authority = authority;
+	}
+	
+	public String getClassCode() {
+		return classCode;
+	}
+
+	public void setClassCode(String classCode) {
+		this.classCode = classCode;
+	}
+
+	//임시 toString
+	@Override
+	public String toString() {
+		return "MemberDTO [email=" + email + ", name=" + name + ", pwd=" + pwd + ", phone=" + phone + ", photoSrc="
+				+ photoSrc + ", classCode=" + classCode + "]";
 	}
 	
 	

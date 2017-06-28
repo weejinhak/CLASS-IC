@@ -13,28 +13,35 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.class_ic.service.AttendanceListService;
-import com.class_ic.vo.AttandanceDTO;
-import com.class_ic.vo.AttandanceListDTO;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
 /*
 * @Class: AttendanceController
 * @Date: 2017.06. 25.
 * @Author: 위진학
 * @Desc: 
 */
+
+
+	
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.class_ic.vo.AttandanceDTO;
+import com.class_ic.vo.AttandanceListDTO;
+import com.class_ic.vo.MemberDTO;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import com.class_ic.dao.MemberDAO;
+import com.class_ic.service.AttendanceListService;
 
 @Controller
 public class AttendanceController {

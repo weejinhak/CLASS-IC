@@ -7,8 +7,7 @@
       	 <!-- 내용물  contents  -->
                             <div class="card">
                                 <div class="card-header card-header-text" data-background-color="orange">
-                                    <h4 class="card-title">학생부</h4>
-                          			 <p class="category">New employees on 15th September, 2016</p> 
+                                    <h4 class="card-title">${sessionScope.classCode }기 학생부</h4>
                                 </div>
                                 <br> 
                                 <div class="card-content table-responsive">
