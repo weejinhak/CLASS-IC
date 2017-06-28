@@ -6,18 +6,15 @@
 <mapper namespace="com.class_ic.dao.AttendanceDAO">
 
 	<insert id="insert" parameterType="com.class_ic.vo.AttandanceDTO">
-
 		insert into
 		attendance(email,attendDate,inClass,outClass,attendState,classCode)
 		values
 		(#{email},now(),#{inClass},#{outClass},
 		#{attendState},#{classCode})
-
-
 	</insert>
 
 	<select id="memberSelectAll" resultType="com.class_ic.vo.MemberDTO">
-		select * from member
+	select * from member where email in(select email from classicauthority where authority='ROLE_STUDENT')
 	</select>
 
 	<select id="selectClassNumber" parameterType="String"

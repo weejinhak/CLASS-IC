@@ -90,13 +90,11 @@ public class MemberController {
 		String state=request.getParameter("state");
 		String email=request.getParameter("email");
 		String time=request.getParameter("time");
-		String classcode=request.getParameter("qr");
+		String classCode=request.getParameter("qr");
 		
-		if(0<lecDao.searchMemberClassMember(email,classcode)){
-			System.out.println("이미 기수에 등록되어있음!!");
-		}else{
-			lecDao.inputMyClassCode(email,classcode);
-		}
+	
+		lecDao.inputMyClassCode(email,classCode);
+	
 		
 		//입실일 경우
 		if(state.equals("inClass")){			

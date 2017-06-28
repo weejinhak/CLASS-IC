@@ -49,7 +49,7 @@ public class LectureBoardController {
          
          LectureBoardDAO bdao = sqlsession.getMapper(LectureBoardDAO.class);
          
-         String subcateCode="bb";
+         String subcateCode="6-1";
          ArrayList<LectureBoardDTO> blist = bdao.allBoard(subcateCode); 
          
          // 리턴 셋팅
@@ -60,6 +60,33 @@ public class LectureBoardController {
          return m;
            
       }
+   
+   //게시판 글 상세보기 
+   @RequestMapping("totalBoard_contentview.htm") 
+	public ModelAndView boardContent(HttpServletRequest request, HttpServletResponse response,LectureBoardDTO bvo ){  //lectureNo 올걸 
+		
+		LectureBoardDAO bdao = sqlsession.getMapper(LectureBoardDAO.class); 
+		
+		int lectureNo = Integer.parseInt( request.getParameter("lectureNo"));
+		  
+		ArrayList<LectureBoardDTO> blist = bdao.totalBoard_contentview(lectureNo); 
+		
+		// 리턴 셋팅
+		ModelAndView m = new ModelAndView();
+		m.setViewName("teacher.board_content_view");
+		m.addObject("bvo", blist);  
+		
+		return m;
+		
+		
+		 
+
+		
+		
+		  
+	}
+   
+   
    
    //수정화면처리
    @RequestMapping(value="totalboardEdit.htm",method = RequestMethod.GET)

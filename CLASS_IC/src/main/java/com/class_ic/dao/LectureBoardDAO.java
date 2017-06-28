@@ -28,7 +28,9 @@ public interface LectureBoardDAO {
       //글  삭제      
       public void deleteLect(int lectureNo);
 
-
+      
+	  //글 상세보기 
+	  public ArrayList<LectureBoardDTO> totalBoard_contentview(int lectureNo);
       
       
    
