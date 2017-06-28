@@ -1,6 +1,8 @@
 package com.class_ic.controller;
 
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.class_ic.service.BoardListService;
+import com.class_ic.vo.LectureBoardDTO;
 
 
 
@@ -51,9 +54,9 @@ public class BoardListController {
 	
 	
 	@RequestMapping(value = "boardcontentsave.htm", method = RequestMethod.POST)
-	public String boardContentSave(HttpServletRequest request){
+	public String boardContentSave(HttpServletRequest request, LectureBoardDTO lecture) throws IOException{
 		
-		boardlistservice.boardContentSaveService(request);
+		boardlistservice.boardContentSaveService(request, lecture);
 		
 	/*System.out.println("boardContentSave 메소드 들어옴.");
     String title=(String)request.getParameter("title");

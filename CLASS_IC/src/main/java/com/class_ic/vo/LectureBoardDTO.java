@@ -18,28 +18,37 @@ public class LectureBoardDTO {
    //파일 업로드 이하
    private String lectureFileNo;
    private String fileNo;
-   private String   fileSrc;
+   private String fileSrc;
+   private String fileSrc2;
 
    
-   
+
    public LectureBoardDTO() {
-   }
-   public LectureBoardDTO(int lectureNo, String classCode, String cateCode, String subcateCode, String lectureTitle,
-         String lectureContent, String lectureDate, String lectureFileNo, String fileNo, String fileSrc) {
 
-      this.lectureNo = lectureNo;
-      this.classCode = classCode;
-      this.cateCode = cateCode;
-      this.subcateCode = subcateCode;
-      this.lectureTitle = lectureTitle;
-      this.lectureContent = lectureContent;
-      this.lectureDate = lectureDate;
-      this.lectureFileNo = lectureFileNo;
-      this.fileNo = fileNo;
-      this.fileSrc = fileSrc;
-   }
-
-   public int getLectureNo() {
+}
+public LectureBoardDTO(int lectureNo, String classCode, String cateCode, String subcateCode, String lectureTitle,
+		String lectureContent, String lectureDate, String lectureFileNo, String fileNo, String fileSrc, String fileSrc2,
+		List<CommonsMultipartFile> files) {
+	this.lectureNo = lectureNo;
+	this.classCode = classCode;
+	this.cateCode = cateCode;
+	this.subcateCode = subcateCode;
+	this.lectureTitle = lectureTitle;
+	this.lectureContent = lectureContent;
+	this.lectureDate = lectureDate;
+	this.lectureFileNo = lectureFileNo;
+	this.fileNo = fileNo;
+	this.fileSrc = fileSrc;
+	this.fileSrc2 = fileSrc2;
+	this.files = files;
+}
+public String getFileSrc2() {
+	return fileSrc2;
+}
+public void setFileSrc2(String fileSrc2) {
+	this.fileSrc2 = fileSrc2;
+}
+public int getLectureNo() {
       return lectureNo;
    }
    public String getLectureFileNo() {
