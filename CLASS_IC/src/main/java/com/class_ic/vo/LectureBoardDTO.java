@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+
 public class LectureBoardDTO {
  
 
@@ -19,13 +20,25 @@ public class LectureBoardDTO {
 	private String lectureFileNo;
 	private String fileNo;
 	private String	fileSrc;
+	//파일 업로드 추가
 
-	
+	private String fileSrc2;//파일명
+
+	public String getFileSrc2() {
+		return fileSrc2;
+	}
+	public void setFileSrc2(String fileSrc2) {
+		this.fileSrc2 = fileSrc2;
+	}
 	
 	public LectureBoardDTO() {
+
 	}
+	
 	public LectureBoardDTO(int lectureNo, String classCode, String cateCode, String subcateCode, String lectureTitle,
-			String lectureContent, String lectureDate, String lectureFileNo, String fileNo, String fileSrc) {
+			String lectureContent, String lectureDate, String lectureFileNo, String fileNo, String fileSrc,
+			String fileSrc2, List<CommonsMultipartFile> files) {
+
 
 		this.lectureNo = lectureNo;
 		this.classCode = classCode;
@@ -37,8 +50,10 @@ public class LectureBoardDTO {
 		this.lectureFileNo = lectureFileNo;
 		this.fileNo = fileNo;
 		this.fileSrc = fileSrc;
+		this.fileSrc2 = fileSrc2;
+		this.files = files;
 	}
-
+	
 	public int getLectureNo() {
 		return lectureNo;
 	}

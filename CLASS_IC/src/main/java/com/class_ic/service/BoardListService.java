@@ -37,6 +37,33 @@ public class BoardListService {
 	
 
 	public void boardContentSaveService(HttpServletRequest request){
+		
+	//파일 업로드 처리 시작
+		/*List<CommonsMultipartFile> files = n.getFiles();	
+		List<String> filenames = new ArrayList<String>();//파일명만 추출	
+		
+		if(files != null && files.size() > 0){
+			//업로드한 파일이 하나라도 있다면
+			for(CommonsMultipartFile multifile : files){
+				String filename = multifile.getOriginalFilename();
+				String path = request.getServletContext().getRealPath("/customer/upload");
+				String fpath = path + "\\" + filename;
+				System.out.println(filename + "/" + fpath);
+				if(!filename.equals("")){
+					//서버에 파일 쓰기 작업
+					FileOutputStream fs = new FileOutputStream(fpath);
+					fs.write(multifile.getBytes());
+					fs.close();
+				}
+				filenames.add(filename);// 실제 DB insert 할 파일명
+			}
+		}
+		
+		//DB작업
+		n.setFileSrc(filenames.get(0));
+		n.setFileSrc2(filenames.get(1));*/
+		
+	//파일 업로드 처리 끝
 	System.out.println("boardContentSave 메소드 들어옴.");
     String title=(String)request.getParameter("title");
     String content=(String)request.getParameter("content");

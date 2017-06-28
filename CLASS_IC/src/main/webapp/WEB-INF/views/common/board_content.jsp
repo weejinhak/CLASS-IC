@@ -32,8 +32,8 @@
    <script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
 <!--에디터 추가부분 -->
 <link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
-
-</head>
+<!-- 파일 업로드 추가 부분  -->
+ </head>
 
 <body>
     <div class="wrapper">
@@ -202,7 +202,10 @@
 					</div>
 				</div>
 			</div>
-
+			
+			<!-- 파일 업로드 시작-->
+			
+			<!--  파일 업로드 끝-->
 			<div class="td-actions text-center">
 				<button type="button" rel="tooltip" class="btn btn-info btn-round"
 					id="list" name="list">
@@ -217,6 +220,7 @@
 				</button>
 			</div>
 			<br> <br> <br>
+
 		</div>
 	</div>
 
@@ -226,8 +230,8 @@
         </div>
     </div>
 </body>
-<!-- /////////////////////////////////////////////////////////////////////////////////////////////  -->
---에디터 추가부분 -->
+
+<!-- 에디터 추가부분 -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>
 <!-- Forms Validations Plugin -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.validate.min.js"></script>
