@@ -42,7 +42,9 @@ console.log('jsp까지 들어옴');
 										<td class="text-center" id="lectureNo">${LectureBoardDTO.lectureNo}</td>
 										<td class="text-center">${LectureBoardDTO.cateCode}</td>
 										<td class="text-center">${LectureBoardDTO.subcateCode}</td>
-										<td class="text-center">${LectureBoardDTO.lectureTitle}</td>
+								 <td class="text-center"> <a href="totalBoard_contentview.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+                                 class="btn btn-simple btn-info btn-icon edit">${LectureBoardDTO.lectureTitle}</a>  </td> 
+										
 										<td class="text-center">${LectureBoardDTO.lectureDate}</td>
 										<td class="text-center"><a
 											href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
