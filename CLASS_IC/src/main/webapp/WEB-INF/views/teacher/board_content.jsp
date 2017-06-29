@@ -5,8 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!--에디터 추가부분 -->
-<link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
-
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
 <br>
 <br>
 <br>
@@ -154,8 +153,8 @@
 					<div class="form-group label-floating is-empty">
 						<label class="control-label"></label>
 						<!--에디터 추가부분 -->
-						<div class="main">
-                         <div id="editor_panel"></div> 
+					<!-- 	<div class="main">
+                         <div id="editor_panel"></div>  -->
                          <!--에디터 추가부분 -->
 						<textarea cols="50" style="width: 90%; height: 600px; color: gray"
 							id="content" name="contnet"></textarea>
@@ -169,51 +168,7 @@
 				</div>
 			</div>
 			
-			<!-- 파일 첨부  --> 
-                                       첨부 파일 #01
-                                       
-                                    <ul class="mailbox-attachments clearfix">
-                                    
-                                         <li>
-                  <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
-						&nbsp;<input type="file" id="txtFile" name="files[0]" />
-                  <div class="mailbox-attachment-info">  
-                    <a href="#" class="mailbox-attachment-name">
-                    <i class="fa fa-paperclip"></i></a>
-                        <span class="mailbox-attachment-size">
-                          파일 사이즈
-                     
-                        </span>
-                  </div>
-                </li>
-                    
-              </ul>
-              </div>
-                <div class="col-sm-5">
-                      
-                        <!-- 파일 첨부  --> 
-                                       첨부 파일 #02
-                                       
-                                    <ul class="mailbox-attachments clearfix">
-                                    
-                                         <li>
-                  <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
-						&nbsp;<input type="file" id="txtFile" name="files[1]" />
-                  <div class="mailbox-attachment-info">  
-                    <a href="#" class="mailbox-attachment-name">
-                    <i class="fa fa-paperclip"></i></a>
-                        <span class="mailbox-attachment-size">
-                          파일 사이즈
-                     
-                        </span>
-                  </div>
-                </li>
-                    
-              </ul>
-              </div>
-     
-                    </div>
-			<!-- 파일 추가 끝 -->
+			
 
 			<div class="td-actions text-center">
 				<button type="button" rel="tooltip" class="btn btn-info btn-round"
@@ -232,6 +187,20 @@
 		</div>
 	</div>
 
-</div>
+
 <!--에디터 추가부분 -->
-<script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/lang/summernote-ko-KR.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#content').summernote({
+           dialogsFade: true,
+           height: 600,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true,
+            lang: 'ko-KR',         
+        });
+        
+    });
+  </script>

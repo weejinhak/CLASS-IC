@@ -152,7 +152,7 @@
                               <form method="#" action="#">
                                  <div class="form-group label-floating is-empty">
                                  <div class="dataTables_length" id="datatables_length">
-                     <label class="form-group form-group-sm is-empty">보내는 사람 선택<select id="cate" name="datatables_length" aria-controls="datatables" class="form-control">
+                     <label class="form-group form-group-sm is-empty">보내는 사람 선택<select name="datatables_length" aria-controls="datatables" class="form-control">
 
 </select>
                         
