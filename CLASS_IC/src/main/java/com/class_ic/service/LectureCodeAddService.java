@@ -50,18 +50,27 @@ public class LectureCodeAddService {
 	
 
 		String viewpage = "";
+		
+		//classmember 테이블에 넣는 부분 추가
+		String email = lecture.getEmail();
+		String classCode = lecture.getClassCode();
 
 		try {
 			int result = lectureDao.insert(lecture);
 			if (result > 0) {
 				System.out.println("insert 성공");
-				viewpage = "redirect:common/lecturecodeSelect.htm";
+
+				//ClassMember에 넣기 
+				lectureDao.inputMyClassCode(email, classCode);
+				viewpage = "common/thsSelect_teacher";
+				//viewpage = "redirect:common/lecturecodeSelect.htm";
+
 			} else {
 				System.out.println("insert 실패");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			viewpage = "joinus.join";
+			viewpage = "join.joinus";
 			System.out.println("가입실패");
 			throw e;
 		}

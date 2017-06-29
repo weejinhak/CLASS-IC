@@ -34,6 +34,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE m.email=#{email}
 </select>
 
+
+
 <select id="selectOne" resultType="com.class_ic.vo.MemberDTO">
 select * from member where email=#{email}
 </select>

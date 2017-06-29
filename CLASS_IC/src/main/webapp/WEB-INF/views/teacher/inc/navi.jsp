@@ -3,7 +3,9 @@
         <div class="sidebar" data-active-color="rose" data-background-color="black" data-image="${pageContext.request.contextPath}/resources/assets/img/sidebar-1.jpg">
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/index.htm" class="simple-text">
-                    ${sessionScope.classCode }기 (강사)
+
+                    ${sessionScope.classCode } (강사)
+
                 </a>
             </div>
             <div class="logo logo-mini">
@@ -18,7 +20,7 @@
 				</div>
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample" class="collapsed">
-						${sessionScope.name } <b class="caret"></b>
+						임경균 <b class="caret"></b>
 					</a>
 					<div class="collapse" id="collapseExample">
 						<ul class="nav">
@@ -48,7 +50,9 @@
 				</li>		
 				</li>
 				<li>
+
 					<a href="allboard.htm"> <i class="material-icons">dashboard</i>
+
 							<p>통합게시판(테스트용)</p>
 					</a>
 				</li>
@@ -60,14 +64,21 @@
 				</li>
 				
 				<li>
-					<a href="studentList.htm"><i class="material-icons">account_box</i>
+					<a href="#"><i class="material-icons">account_box</i>
 							<p>학생부</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="groupEdit.htm"><i class="material-icons">account_box</i>
+							<p>조편성</p>
 					</a>
 				</li>
 				
 				<li>
 					<a href="attend.htm"><i class="material-icons">account_box</i>
 							<p>출석부</p>
+
 					</a>
 				</li>
 				
