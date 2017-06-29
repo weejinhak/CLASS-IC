@@ -1,5 +1,6 @@
 package com.class_ic.view;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -69,7 +70,9 @@ public class ExcelBuilder extends AbstractXlsView {
 			
 			HSSFRow aRow = sheet.createRow(rowCount++);
 			aRow.createCell(0).setCellValue(attendance.getEmail());
-			aRow.createCell(1).setCellValue(attendance.getAttendDate());
+			SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String attenddate = transFormat.format(attendance.getAttendDate());			
+			aRow.createCell(1).setCellValue(attenddate);
 			aRow.createCell(2).setCellValue(attendance.getInClass());
 			aRow.createCell(3).setCellValue(attendance.getOutClass());
 			aRow.createCell(4).setCellValue(attendance.getAttendState());
