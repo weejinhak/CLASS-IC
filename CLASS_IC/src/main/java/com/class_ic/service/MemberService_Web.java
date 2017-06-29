@@ -16,13 +16,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.AlarmDAO;
 import com.class_ic.dao.MemberDAO;
 import com.class_ic.vo.MemberDTO;
+
 
 @Service
 public class MemberService_Web {

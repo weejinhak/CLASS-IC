@@ -4,14 +4,18 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.class_ic.app.dto.MemberDTO;
+import com.class_ic.dao.BoardDAO;
 import com.class_ic.dao.LectureBoardDAO;
 import com.class_ic.vo.LectureBoardDTO;
 
@@ -131,7 +135,7 @@ public class LectureBoardController {
              bdao.deleteLect(Integer.parseInt(array[i]));
              
           }
-         return "redirect:totalboard.htm";
+         return "redirect:allboard.htm";
           
     } 
 
@@ -151,7 +155,7 @@ public class LectureBoardController {
             
             bdao.deleteLect(lectureNo) ;
  
-            return "redirect:totalboard.htm";
+            return "redirect:allboard.htm";
        
          }
          
@@ -172,13 +176,9 @@ public class LectureBoardController {
             m.addObject("bvo", blist);  
             
             return m;
-            
-            
-             
-
-            
-            
-              
          }
- 
+         
+  
+         
+
 }

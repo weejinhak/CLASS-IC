@@ -1,8 +1,13 @@
 package com.class_ic.controller;
 
 
-import javax.servlet.http.HttpServletRequest;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.class_ic.app.dto.MemberDTO;
+import com.class_ic.dao.BoardDAO;
 import com.class_ic.service.BoardListService;
+import com.class_ic.vo.LectureBoardDTO;
 
 
 
@@ -44,6 +52,16 @@ public class BoardListController {
 		
 		
 	
+		return "teacher.board_content";
+
+	
+	}
+	
+	@RequestMapping("boardcontent.htm")
+	public String boardContent(HttpServletRequest request){
+		
+		
+	
 		return "common/board_content";
 
 	
@@ -51,9 +69,9 @@ public class BoardListController {
 	
 	
 	@RequestMapping(value = "boardcontentsave.htm", method = RequestMethod.POST)
-	public String boardContentSave(HttpServletRequest request){
+	public String boardContentSave(HttpServletRequest request, LectureBoardDTO lecture) throws IOException{
 		
-		boardlistservice.boardContentSaveService(request);
+		boardlistservice.boardContentSaveService(request, lecture);
 		
 	/*System.out.println("boardContentSave 메소드 들어옴.");
     String title=(String)request.getParameter("title");
@@ -130,19 +148,27 @@ public class BoardListController {
 	
 	}
 
-
-
-	
-/*	@RequestMapping(value = "teacher/insertboard.htm")
-	public String insertBoard(Model model,HttpServletRequest request){
-
-
-	return "teacher.totalLectureBoard";
+	//셀렉바스에 기수 불러오기
+ 	@RequestMapping(value = "selectmember.htm", method = RequestMethod.POST)
+	public String selectMember(Model model,HttpServletRequest request,HttpSession session){
+ 			System.out.println("기수 select 박스 컨트롤러");
+	String viewpage=boardlistservice.selectMember(model, request, session);
+    	return viewpage;
     
 	
 	}
-*/
-
+ 	
+ 	
+    //선택한 체크박스 기수로 보내기
+    @RequestMapping(value="totalBoard_multi_send.htm", method = RequestMethod.GET )
+    public String boardMultiSend(String lectureNo,String classCode){
+    	System.out.println("기수보내기 컨트롤러 ");
+    	
+    	String viewpage = boardlistservice.boardMultiSend(lectureNo,classCode);
+   	 
+   	 return viewpage;
+    }
+ 	
 }
 
 

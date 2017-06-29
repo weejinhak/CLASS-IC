@@ -13,7 +13,7 @@ import com.class_ic.vo.LectureBoardDTO;
 
 public interface LectureBoardDAO {
  
- 
+	
 
 	  //게시판  리스트 조회 
 	  //원래는 boardvo일것 
@@ -35,6 +35,7 @@ public interface LectureBoardDAO {
 	  //글 상세보기 
 	  public ArrayList<LectureBoardDTO> totalBoard_contentview(int lectureNo);
       
+	  //
 
    
 

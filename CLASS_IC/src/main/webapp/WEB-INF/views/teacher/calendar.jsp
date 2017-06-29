@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
 
-
-<body>
    <div class="content">
       <div class="container-fluid">
          <div class="row">
@@ -93,7 +89,7 @@
                            <div class="col-md-12">
                             
                               
-                            <input type="hidden" class="form-control" placeholder="교실코드" id="classCode" name="classCode" value="1" >
+                            <input type="hidden" class="form-control" placeholder="교실코드" id="classCode" name="classCode" value="${sessionScope.classCode}" >
                            </div>
                          
                         </div>
@@ -103,9 +99,10 @@
                       
                   </div>
                   <div class="modal-footer text-center" >
-                     <button type="button" class="btn btn-simple" data-dismiss="modal">Never
-                        mind</button>
-                     <button type="submit" class="btn btn-success btn-simple" >Yes</button>
+                 	 <button type="submit" class="btn btn-success btn-simple" >작성</button>
+                     <button type="button" class="btn btn-simple" data-dismiss="modal">취소
+                        </button>
+                     
                   </div>
                
                </div>
@@ -120,7 +117,6 @@
               
                   
                   
-</body>
 
 <script type="text/javascript">
     $(document).ready(function() {       
@@ -129,5 +125,3 @@
         
     });
 </script>
-
-</html>
