@@ -5,7 +5,7 @@
 
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/index.htm" class="simple-text">
-                    	${sessionScope.classCode }기 (학생)
+                    	${sessionScope.classCode } (학생)
                 </a>
             </div>
             <div class="logo logo-mini">

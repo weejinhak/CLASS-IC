@@ -1,8 +1,11 @@
 package com.class_ic.controller;
 
 
-import javax.servlet.http.HttpServletRequest;
 
+import java.io.IOException;
+
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import com.class_ic.service.BoardListService;
+import com.class_ic.vo.LectureBoardDTO;
 
 
 
@@ -44,6 +49,16 @@ public class BoardListController {
 		
 		
 	
+		return "teacher.board_content";
+
+	
+	}
+	
+	@RequestMapping("boardcontent.htm")
+	public String boardContent(HttpServletRequest request){
+		
+		
+	
 		return "common/board_content";
 
 	
@@ -51,9 +66,9 @@ public class BoardListController {
 	
 	
 	@RequestMapping(value = "boardcontentsave.htm", method = RequestMethod.POST)
-	public String boardContentSave(HttpServletRequest request){
+	public String boardContentSave(HttpServletRequest request, LectureBoardDTO lecture) throws IOException{
 		
-		boardlistservice.boardContentSaveService(request);
+		boardlistservice.boardContentSaveService(request, lecture);
 		
 	/*System.out.println("boardContentSave 메소드 들어옴.");
     String title=(String)request.getParameter("title");
@@ -129,19 +144,6 @@ public class BoardListController {
     
 	
 	}
-
-
-
-	
-/*	@RequestMapping(value = "teacher/insertboard.htm")
-	public String insertBoard(Model model,HttpServletRequest request){
-
-
-	return "teacher.totalLectureBoard";
-    
-	
-	}
-*/
 
 }
 

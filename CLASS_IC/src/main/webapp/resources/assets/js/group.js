@@ -45,6 +45,7 @@ $(function() {
 				//var indexval = $("input[name^='email']").index(this);
 				var emailval =$("input[name^='email']:eq("+index+")").val(); 
 				
+				
 				var indexTable = $("input[name^='student']").index(this);
 				var groupTableName =$(this).parent().attr('id');
 				var name = $(this).text(),
