@@ -5,7 +5,16 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="card">
+         <form class="navbar-form navbar-right" role="search" action="excelDownload.htm?tEmail=<%=(String)session.getAttribute("email")%>" method="post">
+            <div class="form-group form-search is-empty">
+               <input type="text" class="form-control" placeholder="Search" id="sEmail" name="sEmail">
+               <span class="material-input"></span>
+            </div>
+		   <button type="submit" id="submitFrm"
+	          class="btn btn-info btn-round" style="margin-left: 820px; margin-top:10px; float: left;" >출석EXCEL다운
+	       </button>
+		</form>
+			<div class="card">
 					<div class="card-header card-header-icon"
 						data-background-color="purple">
 						<i class="material-icons">assignment</i>
