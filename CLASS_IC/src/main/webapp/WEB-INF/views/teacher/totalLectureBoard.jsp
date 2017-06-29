@@ -98,13 +98,17 @@
 
 						</table>
 						</div>
+						
 						<form action="boardcontent.htm">
+						<button type="submit" id="submitFrm"
+						class="btn btn-info btn-round" style="margin-left: 820px; margin-top:10px; float: left;" >글쓰기</button>
+						</form>		
+						
 						<button  type="button" id="submitFrm" class="btn btn-info btn-round"
-						 style="margin-left:50px; float: right; " onclick="multi_del()" >체크 삭제</button>
-							<button type="submit" id="submitFrm"
-								class="btn btn-info btn-round" style="margin-left: 925px">글쓰기</button>
+						 style="margin-left:20px; " onclick="multi_del()" >체크 삭제</button>
+
 								
-						</form>
+					
 						
 						
 						   

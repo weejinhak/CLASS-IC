@@ -30,7 +30,7 @@
 <!--                                                 <div class="form-group label-floating is-empty"> -->
 <!--                                                     <label class="control-label"></label> -->
                                                     <input type="text" class="form-control" value="${LectureBoardDTO.lectureTitle}" style="width: 90%" readonly="readonly">
-                                                    
+                                                  	 <input type="hidden" value="${LectureBoardDTO.lectureNo}" id="lectureNo" name="lectureNo">
                                     <!--   <span class="material-input"></span></div> -->
                                             </div>
                                         </div>
@@ -132,15 +132,21 @@
                   <div class="col-md-12">                 
                                        
                                        <div class="td-actions text-center">
-                                                        <button type="button" rel="tooltip" class="btn btn-info btn-round" data-original-title="" title="">
-                                                            <i class="material-icons">list</i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-success btn-round" data-original-title="" title="">
+	
+											<button type="button" rel="tooltip" class="btn btn-info btn-round"
+												id="list" name="list" onclick="location.href='allboard.htm' ">
+												<i class="material-icons">list</i>
+											</button>
+                                                       <%--  <a href="${pageContext.request.contextPath}/teacher/totalLectureBoard_Edit?lectureNo=${LectureBoardDTO.lectureNo}" id="lectureNo" name="lectureNo"> --%>
+                                                       
+                                                     
+                                                        <button type="button" rel="tooltip" class="btn btn-success btn-round"
+                                                      id="edit" name="edit" onclick="location.href='totalboardEdit.htm?lectureNo=${lectureBoardDTO.lectureNo}'">
                                                             <i class="material-icons">edit</i>
                                                         </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" data-original-title="" title="">
-                                                            <i class="material-icons">close</i>
-                                                        </button>
+                                                         
+                                                		
+                                                		
                                                     </div>
                                                     <br>
                                                     <br>
@@ -151,16 +157,36 @@
                            
                             </div>
                  
-
-      
-      
-      
-      
-      
-      
       </div>
  </div>
  
+ <script type="text/javascript">
+/*  $(document).ready(function(){
+	 
  
+ $("#edit").on("click", (function(){
+
+ 
+ 
+		var lectureNo = $("#lectureNo").val();
+		console.log(lectureNo);
+		
+			$.ajax({
+	   	        url: "totalboardEdit.htm",
+	   	        data: {lectureNo:lectureNo},
+	   	        type: 'GET',
+	   	        
+	   	        success: function(data){
+	   	          location.href="";
+	   	       
+	   	        }
+	   	    });
+	 
+	 
+ }); */
+
+ 
+ 
+</script>
  
  

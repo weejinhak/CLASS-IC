@@ -122,7 +122,7 @@ public class LectureBoardController {
 	   
 	   System.out.println("수정오케이컨트롤러"+dto);
 	                 
-	  return "redirect:totalboard.htm";
+	  return "redirect:allboard.htm";
 	   
    }
    
