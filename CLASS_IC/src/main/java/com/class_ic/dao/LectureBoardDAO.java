@@ -13,7 +13,7 @@ import com.class_ic.vo.LectureBoardDTO;
 
 public interface LectureBoardDAO {
  
- 
+	
 
 	  //게시판  리스트 조회 
 	  //원래는 boardvo일것 

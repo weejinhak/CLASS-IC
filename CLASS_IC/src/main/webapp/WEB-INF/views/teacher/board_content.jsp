@@ -37,27 +37,31 @@
     		var content=$("#content").val();
     		var cate=$("#cate").val();
     		var subcate=$("#subcate").val();
+    		var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
 
         	console.log(title);
         	console.log(content);
         	console.log(cate);
         	console.log(subcate);
+        	console.log(sessionClassCode);
 
         	$.ajax({ 
         		type: 'post' ,
+        		/* enctype: "multipart/form-data", */
         		url: '${pageContext.request.contextPath}/boardcontentsave.htm', 
-        		data:{title:title,content:content,cate:cate,subcate:subcate},
+        		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode},
         		dataType:'text',
                 success : function(data){
-                
-                	var title= $("#title").val("");
+                	alert('글쓰기 입력 성공!');
+                	location.href="boardcontent.htm";
+                	/* var title= $("#title").val("");
             		var content=$("#content").val("");
             		var cate=$("#cate").val("");
-            		var subcate=$("#subcate").val("");
+            		var subcate=$("#subcate").val(""); */
                 },
-            	error : function(){
-                    alert('통신실패!!');
-         
+                error:function(request, status, error){
+                    //console.log(error);
+                    alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
                 } });	
         	}
        	
@@ -164,6 +168,52 @@
 					</div>
 				</div>
 			</div>
+			
+			<!-- 파일 첨부  --> 
+                                       첨부 파일 #01
+                                       
+                                    <ul class="mailbox-attachments clearfix">
+                                    
+                                         <li>
+                  <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
+						&nbsp;<input type="file" id="txtFile" name="files[0]" />
+                  <div class="mailbox-attachment-info">  
+                    <a href="#" class="mailbox-attachment-name">
+                    <i class="fa fa-paperclip"></i></a>
+                        <span class="mailbox-attachment-size">
+                          파일 사이즈
+                     
+                        </span>
+                  </div>
+                </li>
+                    
+              </ul>
+              </div>
+                <div class="col-sm-5">
+                      
+                        <!-- 파일 첨부  --> 
+                                       첨부 파일 #02
+                                       
+                                    <ul class="mailbox-attachments clearfix">
+                                    
+                                         <li>
+                  <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
+						&nbsp;<input type="file" id="txtFile" name="files[1]" />
+                  <div class="mailbox-attachment-info">  
+                    <a href="#" class="mailbox-attachment-name">
+                    <i class="fa fa-paperclip"></i></a>
+                        <span class="mailbox-attachment-size">
+                          파일 사이즈
+                     
+                        </span>
+                  </div>
+                </li>
+                    
+              </ul>
+              </div>
+     
+                    </div>
+			<!-- 파일 추가 끝 -->
 
 			<div class="td-actions text-center">
 				<button type="button" rel="tooltip" class="btn btn-info btn-round"
