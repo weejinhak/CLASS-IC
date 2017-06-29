@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ page import="com.class_ic.vo.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <br>
@@ -7,123 +7,127 @@
 <br>
 <br>
 <div align="center">
-	<h3>교사 통합 관리 페이지</h3>
+   <h3>교사 통합 관리 페이지</h3>
 </div>
 <div class="container-fluid">
 
-	<div class="row">
+   <div class="row">
 
-		<div class="col-md-12">
+      <div class="col-md-12">
 
-			<div class="card">
-				<div class="card-header card-header-icon"
-					data-background-color="purple">
-					<i class="material-icons">assignment</i>
-				</div>
-				<div class="card-content">
-					<h4 class="card-title">integrated management system</h4>
-					<div class="toolbar">
-						<!--        Here you can write extra buttons/actions for the toolbar              -->
-					</div>
-					<div class="material-datatables">
+         <div class="card">
+            <div class="card-header card-header-icon"
+               data-background-color="purple">
+               <i class="material-icons">assignment</i>
+            </div>
+            <div class="card-content">
+               <h4 class="card-title">integrated management system</h4>
+               <div class="toolbar">
+                  <!--        Here you can write extra buttons/actions for the toolbar              -->
+               </div>
+               <div class="material-datatables">
 
-						<!-- 카테고리 select start -->
-						<div class="dataTables_length" id="datatables_length">
-							<label class="form-group">카테고리<select id="cate"
-								name="datatables_length" aria-controls="datatables"
-								class="form-control input-sm"></select>
-							</label> &nbsp; &nbsp; &nbsp; &nbsp; <label class="form-group">서브
-								카테고리<select name="datatables_length" aria-controls="datatables"
-								class="form-control input-sm" id="subcate"></select>
-							</label>
+                  <!-- 카테고리 select start -->
+                  <div class="dataTables_length" id="datatables_length">
+                     <label class="form-group">카테고리<select id="cate"
+                        name="datatables_length" aria-controls="datatables"
+                        class="form-control input-sm">
+                        
+  </select>
+                     </label> &nbsp; &nbsp; &nbsp; &nbsp; <label class="form-group">서브
+                        카테고리<select name="datatables_length" aria-controls="datatables"
+                        class="form-control input-sm" id="subcate"></select>
+                     </label>
 
-						</div>
-						<!-- 카테고리 select end -->
-						<table id="datatables"
-							class="table table-striped table-no-bordered table-hover"
-							cellspacing="0" width="100%" style="width: 100%">
-							<thead>
-								<tr>
-									<th class="text-center">check</th>
-									<th class="text-center">글번호</th>
-									<th class="text-center">category</th>
-									<th class="text-center">sub category</th>
-									<th class="text-center">제목</th>
-									<th class="text-center">작성날짜</th>
-									<th class="text-center">Actions</th>
-								</tr>
-							</thead>
-							<!-- 
-                        <tfoot>
+                  </div>
+                  
+                  <!-- 카테고리 select end -->
+                  <div id="list">
+                  <table id="datatables"
+                     class="table table-striped table-no-bordered table-hover"
+                     cellspacing="0" width="100%" style="width: 100%">
+                     <thead>
+                        <tr>
+                           <th class="text-center">check</th>
+                           <th class="text-center">글번호</th>
+                           <th class="text-center">category</th>
+                           <th class="text-center">sub category</th>
+                           <th class="text-center">제목</th>
+                           <th class="text-center">작성날짜</th>
+                           <th class="text-center">Actions</th>
+                        </tr>
+                     </thead>
+                  
+
+            <tbody >
+                  <!-- 여기부터 포문  -->
+                        <c:forEach var="LectureBoardDTO" items="${bvo}">
                            <tr>
-                              <th class="text-center">글번호</th>
-                              <th class="text-center">글내용</th>
-                              <th class="text-center">글종류</th>
-                              <th class="text-center">작성날짜</th>
-                              <th class="text-center">Actions</th>
-                           </tr>
-                        </tfoot> -->
-							<tbody>
-
-								<!-- 여기부터 포문  -->
-								<c:forEach var="LectureBoardDTO" items="${bvo}">
-									<tr>
-										<td>
-											<div class="text-center" style="margin-top: -12px;">
-												<div class="checkbox" id="">
-													<label class="text-center"> <input type="checkbox"
-														name="multy[]" value="${LectureBoardDTO.lectureNo}">
-														<span class="checkbox-material"></span>
-													</label>
-												</div>
-											</div>
-										</td>
+                              <td>
+                                 <div class="text-center" style="margin-top: -12px;">
+                                    <div class="checkbox" id="">
+                                       <label class="text-center"> <input type="checkbox"
+                                          name="multy[]" value="${LectureBoardDTO.lectureNo}">
+                                          <span class="checkbox-material"></span>
+                                       </label>
+                                    </div>
+                                 </div>
+                              </td>
 
 
-										<td class="text-center" id="lectureNo">${LectureBoardDTO.lectureNo}
-										</td>
-										<td class="text-center">${LectureBoardDTO.cateCode}</td>
-										<td class="text-center">${LectureBoardDTO.subcateCode}</td>
-										
-										 
+                              <td class="text-center" id="lectureNo">${LectureBoardDTO.lectureNo}</td>
+                              <td class="text-center">${LectureBoardDTO.cateCode}</td>
+                              <td class="text-center">${LectureBoardDTO.subcateCode}</td>
+                              
+                               
                                         <td class="text-center"> <a href="totalBoard_contentview.htm?lectureNo=${LectureBoardDTO.lectureNo}"
                                  class="btn btn-simple btn-info btn-icon edit">${LectureBoardDTO.lectureTitle}</a>  </td> 
-										
- 										<td class="text-center">${LectureBoardDTO.lectureDate}</td>
-										<td class="text-center"><a
-											href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
-											class="btn btn-simple btn-info btn-icon edit"><i
-												class="material-icons">edit</i></a> <a
-											href="totalBoard_delete.htm?lectureNo=${LectureBoardDTO.lectureNo}"
-											class="btn btn-simple btn-danger btn-icon remove"><i
-												class="material-icons">close</i></a></td>
-									</tr>
+                              
+                               <td class="text-center">${LectureBoardDTO.lectureDate}</td>
+                              <td class="text-center"><a
+                                 href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+                                 class="btn btn-simple btn-info btn-icon edit"><i
+                                    class="material-icons">edit</i></a> <a
+                                 href="totalBoard_delete.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+                                 class="btn btn-simple btn-danger btn-icon remove"><i
+                                    class="material-icons">close</i></a></td>
+                           </tr>
 
-								</c:forEach>
+                        </c:forEach> 
 
 
-							</tbody>
-						</table>
-						<form action="boardcontent.htm">
-						<button  type="button" id="submitFrm" class="btn btn-info btn-round"
-						 style="margin-left:50px; float: right; " onclick="multi_del()" >체크 삭제</button>
-							<button type="submit" id="submitFrm"
-								class="btn btn-info btn-round" style="margin-left: 925px">글쓰기</button>
-								
-						</form>
-						
-						
-						   
-						
-					</div>
-				</div>
-				<!-- end content-->
-			</div>
-			<!--  end card  -->
-		</div>
-		<!-- end col-md-12 -->
-	</div>
-	<!-- end row -->
+                  </table>
+                  </div>
+                  
+                  <form action="boardcontent.htm">
+                  <button type="submit" id="submitFrm"
+                  class="btn btn-info btn-round" style="margin-left: 730px; margin-top:10px; float: left;" >
+                  <i class="material-icons">done</i>글쓰기</button>
+                  </form>      
+                  
+                  <button  type="button" id="send" class="btn btn-info btn-round"
+                   style="margin-left:20px; " onclick="" >
+                   <i class="material-icons">send</i> 기수 보내기</button>
+                   
+                  <button  type="button" id="submitFrm" class="btn btn-info btn-round"
+                   style="margin-left:20px; " onclick="multi_del()" >
+                  <i class="material-icons">clear</i>체크 삭제</button>
+
+                        
+               
+                  
+                  
+                     
+                  
+               </div>
+            </div>
+            <!-- end content-->
+         </div>
+         <!--  end card  -->
+      </div>
+      <!-- end col-md-12 -->
+   </div>
+   <!-- end row -->
 </div>
 
 
@@ -180,7 +184,7 @@ var data="";
     
  
  }
-// alert(data);
+
 
 
 // alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
@@ -192,15 +196,17 @@ var data="";
         url: 'totalBoard_multi_delete.htm',
         data: { data: data } ,
         dataType: 'text',
+
   
         success: function() {
-        	alert('good');
+           alert('good');
         },
         error: function() {
-        	alert('bad');
+           alert('bad');
         } 
-    });
 
+    });
+ 
 
 
 
@@ -211,60 +217,109 @@ var data="";
 
    $(document).ready(
          function() {
-        	 
-        	 
-        	 cate();
-        	 
-        	    $("#save").click(function() {
-                	save(); 
-                	
-                });
+            
+            
+            cate();
                 
-        	 
-         	function cate() {
-           		
-            	$.ajax({ 
-            		type: 'post' ,
-            		url: '${pageContext.request.contextPath}/selectcategory.htm', 
-            		dataType:'text',
+            
+            function cate() {
+                 
+               $.ajax({ 
+                  type: 'post' ,
+                  url: '${pageContext.request.contextPath}/selectcategory.htm', 
+                  dataType:'text',
                     success : function(data){
-    					$('#cate').html(data);
+                   $('#cate').html(data);
                     
                
                     },
-                	error : function(){
+                   error : function(){
                         alert('통신실패!!');
                         alert(title);
                         alert(content);
                     } });
-           	}
-    			
-           	$('#cate').change(function(event){
-           		
-           		subcate();
-           	
-           	});
+              }
+             
+              $('#cate').change(function(event){
+                 
+                 subcate();
+              
+              });
 
-           	function subcate() {
-           		
-           		
-           		var cate = $("#cate").val();
-           		console.log(cate);
-           		
-           		$.ajax({
-           	        url: '${pageContext.request.contextPath}/selectsubcategory.htm',
-           	        data: {"cate":cate},
-           	        dataType:'text',
-           	        type: 'POST',
-           	        
-           	        success: function(data){
-           	      
-           	       	$('#subcate').html(data);
-           	           
-           	        }
-           	    });
-    		}
-        	 
+              function subcate() {
+                 
+                 
+                 var cate = $("#cate").val();
+                 console.log(cate);
+                 
+                 $.ajax({
+                      url: '${pageContext.request.contextPath}/selectsubcategory.htm',
+                      data: {"cate":cate},
+                      dataType:'text',
+                      type: 'POST',
+                      
+                      success: function(data){
+                    
+                        $('#subcate').html(data);
+                         
+                      }
+                  });
+         
+          }
+         
+          $("#subcate").change (function(){
+             var cate = $("#cate").val();
+              var subcate = $("#subcate").val();
+              
+              console.log("나는야 카테고리 " + cate);
+              console.log("나는야 서브카테 " + subcate);
+              
+              $.ajax({
+                  url:"totalboard.htm",
+                  data: {cateCode:cate, subcateCode:subcate},
+                  dataType:'html',
+                  success:function(data){
+                     alert(data);
+                    
+                     $('#list').html(data);
+              
+              
+                  }
+                  });
+              
+              
+          });
+          
+          
+          
+          
+/*               function select(){
+                  var cate = $("#cate").val();
+                var subcate = $("#subcate").val();
+                
+                console.log("나는야 카테고리 " + cate);
+                console.log("나는야 서브카테 " + subcate);
+                
+                $.ajax({
+                   url:'${pageContext.request.contextPath}/totalboardEdit',
+                   data: {cate:cate, subcate:subcate},
+                   success:function(){
+                   alert('나다');  
+                   }
+                   });
+                 
+              }
+             */
+    
+              
+              
+              
+              
+              
+              
+              
+              
+              
             $('#datatables').DataTable(
                   {
                      "pagingType" : "full_numbers",

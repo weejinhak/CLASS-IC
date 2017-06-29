@@ -12,7 +12,7 @@
 	$(document).ready(function() {		
 	      $('#qrclick').click(function() {
 				console.log("페이지가 시작1");
-				var url ="class_ic/common/createCode.htm";			 
+				var url ="/class_ic/common/createCode.htm";			 
 			    $("#img").attr("src", url + "?content=" + sessionClassCode); 	
 			
 	  	});
@@ -24,7 +24,7 @@
    var msg;
    function connect() {
 
-	  alert(sessionClassCode + " / " + sessionId);
+	  //alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
       wsocket = new WebSocket("ws://192.168.0.125:8090/class_ic/chat-ws.htm?email="+sessionId);
@@ -122,7 +122,7 @@
 
                <ul class="dropdown-menu">
                   <center>
-		          <img id="img" style="display: none" onload="this.style.display='block'" />
+		          <img id="img" style="display: none" onload="this.style.display='block'" width="180" height="180" />
                   </center>
                </ul>
                

@@ -74,7 +74,7 @@
                                     <i class="material-icons">pie_chart</i>
                                 </div>
                                 <div class="card-content">
-                                    <h4 class="card-title">출석률</h4>
+                                    <h4 class="card-title">우리반 출석률</h4>
                                 </div>
                                 <div id="chartPreferences" class="ct-chart"></div>
                                 <div class="card-footer">
@@ -82,6 +82,7 @@
                                     <i class="fa fa-circle text-info"></i> 출석
                                     <i class="fa fa-circle text-warning"></i> 결석
                                     <i class="fa fa-circle text-danger"></i> 지각
+                                    <i class="fa fa-circle text-primary"></i> 조퇴
                                 </div>
                             </div>
                         </div> 
@@ -103,7 +104,7 @@
 		dataType : 'json',
 		data : {
 			email : sessionId,
-			classcode : '151' /* 여기다가 기수 세션값 넣어야함 */
+			classcode : sessionClassCode  /* 여기다가 기수 세션값 넣어야함 */
 		},
 		success : function(data) {
 			console.log(data);
@@ -150,6 +151,8 @@
 <script>
 
 		$(document).ready(function() {			
+			console.log(sessionId)
+			console.log(sessionClassCode)
 			
 			$.ajax({
 				type : 'POST',

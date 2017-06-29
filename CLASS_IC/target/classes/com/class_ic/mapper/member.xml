@@ -6,7 +6,7 @@
 <mapper namespace="com.class_ic.app.dao.AttendDAO">
 
 	<update id="attendanceMember" >
-		 UPDATE attendance SET ${attendState}=#{time} WHERE email=#{email} 
+		 UPDATE attendance SET ${attendState}=#{time} WHERE email=#{email} and attendDate=CURDATE()
 	</update>
 
 	<select id="login" resultType="Integer">

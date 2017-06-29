@@ -49,6 +49,16 @@ public class BoardListController {
 		
 		
 	
+		return "teacher.board_content";
+
+	
+	}
+	
+	@RequestMapping("boardcontent.htm")
+	public String boardContent(HttpServletRequest request){
+		
+		
+	
 		return "common/board_content";
 
 	

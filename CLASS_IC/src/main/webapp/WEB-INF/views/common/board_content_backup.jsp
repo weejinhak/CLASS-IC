@@ -1,14 +1,39 @@
-<%@page import="java.io.PrintWriter"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+    <%@page import="java.io.PrintWriter"%>
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="${pageContext.request.contextPath}/resources/assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>CLASS-IC</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap core CSS     -->
+    <link href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="${pageContext.request.contextPath}/resources/assets/css/material-dashboard.css" rel="stylesheet" />
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="${pageContext.request.contextPath}/resources/assets/css/demo.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+    <!--   Core JS Files   -->
+   <script src="${pageContext.request.contextPath}/resources/assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/jquery-ui.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/material.min.js" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
 <!--에디터 추가부분 -->
 <link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
-<<<<<<< HEAD
-<!-- 파일 업로드 추가 부분  -->
- </head>
+
+</head>
 
 <body>
     <div class="wrapper">
@@ -20,9 +45,6 @@
             <!--  <tiles:insertAttribute name="header" /> -->
            <!--  contents 영역 -->
            
-=======
-
->>>>>>> refs/heads/AfterMaster
 <br>
 <br>
 <br>
@@ -53,31 +75,30 @@
     		var content=$("#content").val();
     		var cate=$("#cate").val();
     		var subcate=$("#subcate").val();
-    		var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
+    		var files = $('#"txtFile"').val();
 
         	console.log(title);
         	console.log(content);
         	console.log(cate);
         	console.log(subcate);
-        	console.log(sessionClassCode);
+        	console.log("파일추가"+files);
 
         	$.ajax({ 
         		type: 'post' ,
-        		/* enctype: "multipart/form-data", */
         		url: '${pageContext.request.contextPath}/boardcontentsave.htm', 
-        		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode},
+        		data:{title:title,content:content,cate:cate,subcate:subcate,files:files},
         		dataType:'text',
                 success : function(data){
-                	alert('글쓰기 입력 성공!');
-                	location.href="boardcontent.htm";
-                	/* var title= $("#title").val("");
+                
+                	var title= $("#title").val("");
             		var content=$("#content").val("");
             		var cate=$("#cate").val("");
-            		var subcate=$("#subcate").val(""); */
+            		var subcate=$("#subcate").val("");
+            		var files = $('#"txtFile"').val();
                 },
-                error:function(request, status, error){
-                    //console.log(error);
-                    alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
+            	error : function(){
+                    alert('통신실패!!');
+         
                 } });	
         	}
        	
@@ -154,7 +175,7 @@
 						class="material-input"></span></label>
 				</div>
 
-				<label class="col-sm-2 label-on-left">제목 : </label><div class="col-sm-10">
+				<label class="col-sm-2 label-on-left" style="margin-top: 36px; ">제목  </label><div class="col-sm-10">
 					<div class="form-group label-floating is-empty">
 						<label class="control-label"></label>
 						 <input type="text" class="form-control"  style="width: 90%"
@@ -165,7 +186,7 @@
 			</div>
 
 			<div class="row">
-				<label class="col-sm-2 label-on-left">내용 : </label>
+				<label class="col-sm-2 label-on-left" style="margin-top: 31px;">내용  </label>
 				<div class="col-sm-10">
 					<div class="form-group label-floating is-empty">
 						<label class="control-label"></label>
@@ -184,13 +205,12 @@
 					</div>
 				</div>
 			</div>
-			
-<<<<<<< HEAD
-			<!-- 파일 업로드 시작-->
-			
-			<!--  파일 업로드 끝-->
-=======
-			<!-- 파일 첨부  --> 
+			<!--파일 추가 시작  -->
+			                                      
+                      <div class="col-sm-1">    </div>
+                      <div class="col-sm-5">
+                      
+                        <!-- 파일 첨부  --> 
                                        첨부 파일 #01
                                        
                                     <ul class="mailbox-attachments clearfix">
@@ -236,7 +256,6 @@
                     </div>
 			<!-- 파일 추가 끝 -->
 
->>>>>>> refs/heads/AfterMaster
 			<div class="td-actions text-center">
 				<button type="button" rel="tooltip" class="btn btn-info btn-round"
 					id="list" name="list">
@@ -251,20 +270,51 @@
 				</button>
 			</div>
 			<br> <br> <br>
-
 		</div>
 	</div>
 
 </div>
-<<<<<<< HEAD
            <!--   contents 영역 끝 -->
            
         </div>
-         </div>
+       
 </body>
-
-<!-- 에디터 추가부분 -->
-=======
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////  -->
 <!--에디터 추가부분 -->
->>>>>>> refs/heads/AfterMaster
 <script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>
+<!-- Forms Validations Plugin -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.validate.min.js"></script>
+<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+<script src="${pageContext.request.contextPath}/resources/assets/js/moment.min.js"></script>
+<!--  Charts Plugin -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/chartist.min.js"></script>
+<!--  Plugin for the Wizard -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootstrap-wizard.js"></script>
+<!--  Notifications Plugin    -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap-notify.js"></script>
+<!-- DateTimePicker Plugin -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap-datetimepicker.js"></script>
+<!-- Vector Map plugin -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery-jvectormap.js"></script>
+<!-- Sliders Plugin -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/nouislider.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<!-- Select Plugin -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.select-bootstrap.js"></script>
+<!--  DataTables.net Plugin    -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.datatables.js"></script>
+<!-- Sweet Alert 2 plugin -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.js"></script>
+<!--   Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap.min.js"></script>
+<!--  Full Calendar Plugin    -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/fullcalendar.min.js"></script>
+<!-- TagsInput Plugin -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.tagsinput.js"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/material-dashboard.js"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/demo.js"></script>
+
+</html>

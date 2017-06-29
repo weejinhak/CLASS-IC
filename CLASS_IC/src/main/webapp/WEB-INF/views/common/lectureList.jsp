@@ -15,7 +15,11 @@ console.log('jsp까지 들어옴');
                                        data-header-animation="true" >
                                        <div align="center">
                                        <h3 class="card-title" >
+<<<<<<< HEAD
                                           <br>${n.classTitle}
+=======
+                                          <br>${n.classCode}
+>>>>>>> refs/heads/AfterMaster
                                        </h3></div>
                                     </div>
                                     
