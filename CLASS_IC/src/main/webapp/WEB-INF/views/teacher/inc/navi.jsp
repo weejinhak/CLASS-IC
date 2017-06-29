@@ -3,7 +3,7 @@
         <div class="sidebar" data-active-color="rose" data-background-color="black" data-image="${pageContext.request.contextPath}/resources/assets/img/sidebar-1.jpg">
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/index.htm" class="simple-text">
-                    ${sessionScope.classCode }기 (강사)
+                    ${sessionScope.classCode } (강사)
                 </a>
             </div>
             <div class="logo logo-mini">
@@ -62,6 +62,12 @@
 				<li>
 					<a href="studentList.htm"><i class="material-icons">account_box</i>
 							<p>학생부</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="groupEdit.htm"><i class="material-icons">account_box</i>
+							<p>조편성</p>
 					</a>
 				</li>
 				
