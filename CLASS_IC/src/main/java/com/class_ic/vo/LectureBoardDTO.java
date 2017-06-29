@@ -1,6 +1,5 @@
 package com.class_ic.vo;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;

@@ -30,7 +30,11 @@
 <!--                                                 <div class="form-group label-floating is-empty"> -->
 <!--                                                     <label class="control-label"></label> -->
                                                     <input type="text" class="form-control" value="${LectureBoardDTO.lectureTitle}" style="width: 90%" readonly="readonly">
+<<<<<<< HEAD
                                                   
+=======
+                                                    
+>>>>>>> refs/heads/masterFormerge
                                     <!--   <span class="material-input"></span></div> -->
                                             </div>
                                         </div>

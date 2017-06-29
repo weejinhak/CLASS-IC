@@ -34,6 +34,7 @@ public class LectureBoardController {
  //오늘의 강의 넣기 
    
 
+<<<<<<< HEAD
 	
 	//이름 subcate 뭐시기로 변경 
 	   @RequestMapping(value="lectureboard.htm" , method=RequestMethod.GET) 
@@ -148,46 +149,51 @@ public class LectureBoardController {
    @RequestMapping(value="totalboard.htm") 
       public ModelAndView allBoard(LectureBoardDTO bvo){ 
          
+=======
+   @RequestMapping(value="allboard.htm") 
+      public ModelAndView allBoard(LectureBoardDTO bvo, HttpServletRequest request){ 
+         System.out.println("컨트롤러 타냐? ");
+>>>>>>> refs/heads/masterFormerge
          LectureBoardDAO bdao = sqlsession.getMapper(LectureBoardDAO.class);
          
-         String subcateCode="6-1";
-         ArrayList<LectureBoardDTO> blist = bdao.allBoard(subcateCode); 
+
+         ArrayList<LectureBoardDTO> blist = bdao.allList();
          
+         System.out.println("셀렉리스트 컨트롤러 : " +blist);
+
          // 리턴 셋팅
          ModelAndView m = new ModelAndView();
          m.setViewName("teacher.totalLectureBoard");
          m.addObject("bvo", blist);  
          
+         System.out.println(m);
          return m;
            
       }
    
-   //게시판 글 상세보기 
-   @RequestMapping("totalBoard_contentview.htm") 
-	public ModelAndView boardContent(HttpServletRequest request, HttpServletResponse response,LectureBoardDTO bvo ){  //lectureNo 올걸 
-		
-		LectureBoardDAO bdao = sqlsession.getMapper(LectureBoardDAO.class); 
-		
-		int lectureNo = Integer.parseInt( request.getParameter("lectureNo"));
-		  
-		ArrayList<LectureBoardDTO> blist = bdao.totalBoard_contentview(lectureNo); 
-		
-		// 리턴 셋팅
-		ModelAndView m = new ModelAndView();
-		m.setViewName("teacher.board_content_view");
-		m.addObject("bvo", blist);  
-		
-		return m;
-		
-		
-		 
-
-		
-		
-		  
-	}
+   @RequestMapping(value="totalboard.htm") 
+      public ModelAndView totalBoard(LectureBoardDTO bvo, HttpServletRequest request){ 
+         System.out.println("컨트롤러 타냐? ");
+         LectureBoardDAO bdao = sqlsession.getMapper(LectureBoardDAO.class);
+         
+         String cateCode = request.getParameter("cateCode");
+         String subcateCode = request.getParameter("subcateCode");
+         
+         ArrayList<LectureBoardDTO> blist = bdao.allBoard(cateCode,subcateCode); 
+         
+         System.out.println("셀렉리스트 컨트롤러 : " +blist);
+         
+         // 리턴 셋팅
+         ModelAndView m = new ModelAndView();
+         m.setViewName("common/totalboardlist");
+         m.addObject("bvo", blist);  
+         
+         System.out.println(m);
+         return m;
+           
+      }
    
-   
+ 
    
    //수정화면처리
    @RequestMapping(value="totalboardEdit.htm",method = RequestMethod.GET)
@@ -200,11 +206,11 @@ public class LectureBoardController {
 	   System.out.println("lectureNo 나오냐" + lectureNo);
 	   
 	   ArrayList<LectureBoardDTO> list = bdao.totalboardEdit(lectureNo1);
-
+	   System.out.println(list.size());
 	   ModelAndView m = new ModelAndView();
 	   m.setViewName("teacher.totalLectureBoard_Edit");
 	   m.addObject("list", list);
-	    System.out.println(m);
+	    System.out.println("모델단"+m);
 	  
 	   return m;
    }
@@ -276,6 +282,29 @@ public class LectureBoardController {
          }
          
    
+         //게시판 글 상세보기 
+         @RequestMapping("totalBoard_contentview.htm") 
+         public ModelAndView boardContentDetail(HttpServletRequest request, HttpServletResponse response,LectureBoardDTO bvo ){  //lectureNo 올걸 
+            
+            LectureBoardDAO bdao = sqlsession.getMapper(LectureBoardDAO.class); 
+            
+            int lectureNo = Integer.parseInt( request.getParameter("lectureNo"));
+              System.out.println("lectno" +lectureNo);
+            ArrayList<LectureBoardDTO> blist = bdao.totalBoard_contentview(lectureNo); 
+            System.out.println("은영 상세"+blist);
+            // 리턴 셋팅
+            ModelAndView m = new ModelAndView();
+            m.setViewName("teacher.board_content_view");
+            m.addObject("bvo", blist);  
+            
+            return m;
+            
+            
+             
 
+            
+            
+              
+         }
  
 }

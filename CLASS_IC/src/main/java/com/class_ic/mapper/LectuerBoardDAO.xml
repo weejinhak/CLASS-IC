@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 통합게시판 화면 출력 -->
  <select id="allBoard" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="String">
-    select * from lectureboard where subcateCode=#{subcateCode} 
+    select * from lectureboard where cateCode=#{param1} and subcateCode=#{param2} 
  </select> 
  
 <!--통합게시판 수정화면 출력   --> 
@@ -22,10 +22,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--통합게시판 상세보기 화면 출력   --> 
 <select id="totalBoard_contentview" resultType="com.class_ic.vo.LectureBoardDTO"
-		parameterType="int"> 
-		select * from (select b.lectureContent lectureContent ,b.lectureDate lectureDate,b.lectureNo lectureNo ,b.lectureTitle lectureTitle,l.linkNo linkNo,l.linkTitle linkTitle, l.linkSrc  linkSrc,f.fileNo fileNo, f.lectureFileNo lectureFileNo,a.fileSrc fileSrc,a.fileTitle fileTitle  
-		from lectureboard b, link l , lectureboardfile f  , file a
-		where l.lectureno =b.lectureno and b.lectureno= f.lectureno and f.fileno = a.fileno ) lectureboardcontent where lectureno = #{lectureNo}
+      parameterType="int"> 
+      select * from (select b.lectureContent lectureContent ,b.lectureDate lectureDate,b.lectureNo lectureNo ,b.lectureTitle lectureTitle,l.linkNo linkNo,l.linkTitle linkTitle, l.linkSrc  linkSrc,f.fileNo fileNo, f.lectureFileNo lectureFileNo,a.fileSrc fileSrc,a.fileTitle fileTitle  
+      from lectureboard b, link l , lectureboardfile f  , file a
+      where l.lectureno =b.lectureno and b.lectureno= f.lectureno and f.fileno = a.fileno ) lectureboardcontent where lectureno = #{lectureNo}
 </select>
 
 <!-- 통합게시판 수정 완료 -->
@@ -38,5 +38,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    delete from lectureboard where lectureNo=#{lectureNo}
 </delete>
 
+<!--  -->
+<select id="allList" resultType="com.class_ic.vo.LectureBoardDTO" >
+select * from lectureboard
+
+</select>
 
 </mapper>
