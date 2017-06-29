@@ -53,8 +53,8 @@ public class CalendarController {
      //내용
       String calContent = request.getParameter("calContent");
       //코드
-/*      String classCode = request.getParameter("classCode");*/
-      String classCode = "151";
+      String classCode = request.getParameter("classCode");
+     // String classCode = "151";
       //class code가 1로 들어옴.
       String[] colorlist= {"event-blue" , "event-azure" , "event-green" , "event-orange" , "event-red" };
       int random=(int) (Math.random() * 5) ; 

@@ -35,4 +35,5 @@ public class CommonController {
 		return "common/thsSelect_student";
 	}
 
+	
 }

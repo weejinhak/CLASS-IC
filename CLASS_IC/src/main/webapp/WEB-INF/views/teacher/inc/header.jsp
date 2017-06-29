@@ -6,7 +6,7 @@
 
 <script>
 	var sessionId="<%=(String)session.getAttribute("email")%>";
-	var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"
+	var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
 	
 
 	/* 페이지 로드시 QR 코드 가져옴. */
@@ -23,7 +23,7 @@
    var msg;
    function connect() {
 
-      alert(sessionClassCode + " / " + sessionId);
+      //(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
       wsocket = new WebSocket("ws://192.168.0.125:8090/class_ic/chat-ws.htm?email="+sessionId);
