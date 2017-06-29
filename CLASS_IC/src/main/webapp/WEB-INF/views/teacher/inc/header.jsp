@@ -23,7 +23,7 @@
    var msg;
    function connect() {
 
-      alert(sessionClassCode + " / " + sessionId);
+      //alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
       wsocket = new WebSocket("ws://192.168.0.125:8090/class_ic/chat-ws.htm?email="+sessionId);
