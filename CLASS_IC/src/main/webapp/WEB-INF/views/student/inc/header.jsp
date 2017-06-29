@@ -27,7 +27,7 @@
 	  //alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
-      wsocket = new WebSocket("ws://192.168.0.125:8090/class_ic/chat-ws.htm?email="+sessionId);
+      wsocket = new WebSocket("ws://192.168.0.135:8090/class_ic/chat-ws.htm?email="+sessionId);
       appendMessage("웹 소켓연결되었습니다.");
       wsocket.onopen = onOpen;
       wsocket.onmessage = onMessage;
@@ -40,25 +40,25 @@
    function onOpen(evt) {
       appendMessage("연결되었습니다.");
    }
-   function sendMessage() {
+   function sendMessage(studentId) {
 
-      var sendmessage = $("#message").val();
+	  var sendmessage = $("#messageContent").val();
       var remail="a@gmail.com";
       console.log(sendmessage)
       $.ajax({
          type : "get",         
-         url : "sendMessage.htm",
+         url : "/class_ic/common/sendMessage.htm",
          dataType : "html",
          data : {
-            "sendmessage" : sendmessage   ,
-            "remail": remail
+        	 "sendmessage" : sendmessage   ,
+             "remail": studentId
          },
          success : function(data) {
             console.log("성공!!")
          }
       });
 
-      wsocket.send(remail);
+      wsocket.send(studentId);
 
    }
 
@@ -94,15 +94,16 @@
    }
 
    $(document).ready(function() {
-      appendMessage("소켓이 준비되었습니다.");
-      connect();
-      $('#sendBtn').click(function() {
+	      appendMessage("소켓이 준비되었습니다.");
+	      connect();
+	      $('#sendmessagebtn').click(function() {
+	         var studentId=$('#students').val();
+	         console.log(studentId);
+	         sendMessage(studentId);
+	      });
+	      
 
-         sendMessage();
-
-      });
-
-   });
+	   });
    
    
 </script>
@@ -129,7 +130,7 @@
              </li>
             <!--QR코드    -->
 
-            <!--쪽지 알림  -->
+    <!--쪽지 알림  -->
             <!--아코디언  -->
             <li class="dropdown">
                <div class="dropdown dropdown-accordion"
@@ -143,19 +144,47 @@
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                      <li>
-                        <div class="panel-group" id="accordion">
-                           <div class="panel panel-default">
-                              <div class="panel-heading">
-                                 <h4 class="panel-title">
-                                    <a href="#collapseOne" data-toggle="collapse"
-                                       data-parent="#accordion"> 김은영 <span
-                                       class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                    </a> <input type="text" id="message" placeholder="메시지를 입력하세요" />
-                                    <button id="sendBtn">전송</button>
-                                 </h4>
-                              </div>
-                           </div>
-                        </div>
+               <div class="col-sm-12">
+				<div class="card card-stats">
+					<div class="card-header" data-background-color="orange">
+						<i class="material-icons">near_me</i>
+					</div>
+					<div class="card-content">
+					<button class="btn btn-reddit btn-round"  data-toggle="modal"
+                     data-target="#noticeModal2">
+                                        <i class="material-icons">near_me</i> 쪽지 보내기   
+                                    <div class="ripple-container"></div></button>
+					</div>
+					<div class="card-footer">
+					<!-- 	<div class="stats">
+							<i class="material-icons text-danger">warning</i> <a href="#pablo">Get More Space...</a>
+						</div> -->
+					</div>
+				</div>
+			</div>
+                     </li>
+                                          <li>
+               <div class="col-sm-12">
+				<div class="card card-stats">
+					<div class="card-header" data-background-color="orange">
+						 <i class="material-icons">email</i> 
+						 <span class="btn btn-just-icon btn-round btn-pinterest" style="font-size:15px ; float: ">
+                                                ${sessionScope.totalCount}
+                         </span>
+					</div>
+					<div class="card-content">
+						<button class="btn btn-reddit btn-round"  data-toggle="modal"
+                     data-target="#noticeModal">
+                            <i class="material-icons">email</i> 쪽지함
+                        <div class="ripple-container"></div></button>
+					</div>
+					<div class="card-footer">
+					<!-- 	<div class="stats">
+							<i class="material-icons text-danger">warning</i> <a href="#pablo">Get More Space...</a>
+						</div> -->
+					</div>
+				</div>
+			</div>
                      </li>
                   </ul>
                </div>
@@ -199,9 +228,9 @@
                         </div>
                      <li>
                      <br>
-                         <button class="btn btn-primary btn-raised btn-round" data-toggle="modal" data-target="#memberUpdate">
+                         <button class="btn btn-primary btn-raised btn-round" data-toggle="modal" data-target="#memberUpdate" id="myInfo">
                                                   회원정보 수정
-                          </button>
+                                </button>
                      </li>
                      <!-- 회원정보 수정 Modal -->
                                             <div class="modal fade" id="memberUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -222,7 +251,16 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="email" class="form-control">
+                                                    <input type="email" class="form-control" name="email" id="email" readonly="readonly">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-md-3 label-on-left">이름</label>
+                                            <div class="col-md-9">
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label"></label>
+                                                    <input type="text" class="form-control" name="name" id="name" readonly="readonly">
                                                 </div>
                                             </div>
                                         </div>
@@ -231,7 +269,7 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="password" class="form-control">
+                                                    <input type="password" class="form-control" name="pwd" id="pwd">
                                                 </div>
                                             </div>
                                         </div>
@@ -240,7 +278,7 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="password" class="form-control">
+                                                    <input type="password" class="form-control"name="pwdconfirm" id="pwdconfirm">
                                                 </div>
                                             </div>
                                         </div>
@@ -249,7 +287,7 @@
                                             <div class="col-md-9">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="email" class="form-control">
+                                                    <input type="text" class="form-control" name="phone" id="phone">
                                                 </div>
                                             </div>
                                         </div>
@@ -257,8 +295,9 @@
                                             <label class="col-md-3"></label>
                                             <div class="col-md-9">
                                                 <div class="form-group form-button">
-                                                    <button type="submit" class="btn btn-fill btn-rose">회원정보 수정</button>
+                                                    <button type="submit" class="btn btn-fill btn-rose" id="editMyInfo">회원정보 수정</button>
                                                     <button type="button" class="btn btn-fill" data-dismiss="modal">취소</button>
+                                                    <button type="submit" class="btn btn-fill btn-warning">회원 탈퇴</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -296,3 +335,125 @@
       </div>
    </div>
 </nav>
+
+<!-- 쪽지 list 모달 -->
+   <div class="row">
+      <div class="col-md-12 text-center">
+         <!-- notice modal -->
+         
+         <div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notice">
+         <form action="CalendarInsertOk.htm" method="POST">         
+               <div class="modal-content">
+                  <div class="modal-header">
+              <!-- 타이틀 내용  -->
+                  </div>
+                  <div class="modal-body">
+                   
+                      <!-- 주요 내용  -->
+                      
+                  </div>
+                  <div class="modal-footer text-center" >
+                 	 <button type="submit" class="btn btn-success btn-simple" >작성</button>
+                     <button type="button" class="btn btn-simple" data-dismiss="modal">취소
+                        </button>
+                     
+                  </div>
+               
+               </div>
+            </form>
+               
+            </div>
+         </div>
+         
+         <!-- end notice modal -->
+                  </div>
+                  </div>
+                  
+                  
+                  
+                   <!-- 쪽지 보내기 모달 -->
+   <div class="row">
+      <div class="col-md-12 text-center">
+         <!-- notice modal -->
+         
+         <div class="modal fade" id="noticeModal2" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notice">
+            
+    
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="material-icons">clear</i>
+                     </button>
+                     <h5 class="modal-title" id="myModalLabel">일정 추가</h5>
+                  </div>
+                  <div class="modal-body">
+                       <div class="card">
+	                           <div class="card-header card-header-icon"
+	                              data-background-color="orange">
+	                              <i class="material-icons">mail_outline</i>
+	                           </div>
+	                           <div class="card-content">
+	                              <h4 class="card-title">쪽지 보내기</h4>
+	                              <!-- 쪽지 태그 -->
+	                                 <div class="form-group label-floating is-empty">
+	                                	  <div class="dataTables_length" id="datatables_length">
+					                      <label class="form-group form-group-sm is-empty">보내는 사람 선택
+					                      <!-- 아아아아아아아 -->
+					                      <select id="students" name="datatables_length" aria-controls="datatables" class="form-control">				
+										  </select>				                        
+					                      <span class="material-input"></span>
+					                      </label> 
+					                      &nbsp; &nbsp; &nbsp; &nbsp;
+					                      </div>
+	                                 </div>                           
+	                                 <textarea cols="50"style="width: 90%; height: 150px; color: gray" id="messageContent" name="messageContent"></textarea>
+	                                 <br><br>
+	                                 <button id="sendmessagebtn" class="btn btn-fill btn-warning">쪽지보내기</button>
+	                           <!-- 쪽지 태그 -->
+	                           </div>
+                        </div>
+                      
+                      
+                  </div>
+                  <div class="modal-footer text-center" >
+                 	 <button type="submit" class="btn btn-success btn-simple" >작성</button>
+                     <button type="button" class="btn btn-simple" data-dismiss="modal">취소
+                        </button>
+                     
+                  </div>
+               
+               </div>
+
+               
+            </div>
+         </div>
+         
+         <!-- end notice modal -->
+                  </div>
+                  </div>
+                  
+                  
+     <script type="text/javascript">
+              	$(document).ready(function() {		
+              		list();
+                 	function list() {                   		
+                    	$.ajax({ 
+                    		type: 'post' ,
+                    		url: '${pageContext.request.contextPath}/messagememberlist.htm', 
+                    		dataType:'text',
+                    		data:{classCode:sessionClassCode},
+                            success : function(data){
+            					$('#students').html(data);                       
+                            },
+                        	error : function(){
+                                alert('통신실패!!');
+                                alert(title);
+                                alert(content);
+                            } });
+                   	}
+              	});                 
+        </script>
