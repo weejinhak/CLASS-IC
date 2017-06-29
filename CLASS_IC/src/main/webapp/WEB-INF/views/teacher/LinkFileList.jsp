@@ -16,7 +16,16 @@
                                 <div class="card-content">
                                     <h4 class="card-title">링크 | 파일 게시판</h4>
                                     
-                                           
+                                    
+                                    <div class="ref_search">
+    <div class="ref_field">
+        <div class="ref_label">Search:</div>
+        <div class="ref_input"><input type="text"></div>
+     </div>
+<div class="ref_field"><div class="ref_label">Group:</div>
+<div class="ref_input"><a class="site-btn small">Buttons</a><a class="site-btn small">Editor</a><a class="site-btn small">
+elect</a></div></div></div>
+                                 	<select id="list" style="width:100px;"  multiple></select>          
                 <!--임시 test  -->
                 <div class="card-content">
                                     <ul class="nav nav-pills nav-pills-warning">
@@ -70,6 +79,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <!--  여기서부터 tr td-->
+                                            
                                                 <tr>
                                                     <td>Tiger Nixon</td>
                                                     <td>System Architect</td>
@@ -94,7 +105,7 @@
                                                         <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
                                                     </td>
                                                 </tr>
-                                                
+                                         <!--   tr td 끝-->
                                             </tbody>
                                         </table>
                                     </div>
