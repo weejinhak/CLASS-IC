@@ -101,11 +101,17 @@
 						
 						<form action="boardcontent.htm">
 						<button type="submit" id="submitFrm"
-						class="btn btn-info btn-round" style="margin-left: 970px; margin-top:10px; float: left;" >글쓰기</button>
+						class="btn btn-info btn-round" style="margin-left: 730px; margin-top:10px; float: left;" >
+						<i class="material-icons">done</i>글쓰기</button>
 						</form>		
 						
+						<button  type="button" id="send" class="btn btn-info btn-round"
+						 style="margin-left:20px; " onclick="" >
+						 <i class="material-icons">send</i> 기수 보내기</button>
+						 
 						<button  type="button" id="submitFrm" class="btn btn-info btn-round"
-						 style="margin-left:20px; " onclick="multi_del()" >체크 삭제</button>
+						 style="margin-left:20px; " onclick="multi_del()" >
+						<i class="material-icons">clear</i>체크 삭제</button>
 
 								
 					
