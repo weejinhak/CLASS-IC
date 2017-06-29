@@ -3,9 +3,11 @@ package com.class_ic.controller;
 
 
 import java.io.IOException;
-
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import com.class_ic.app.dto.MemberDTO;
+import com.class_ic.dao.BoardDAO;
 import com.class_ic.service.BoardListService;
 import com.class_ic.vo.LectureBoardDTO;
 
@@ -145,6 +148,27 @@ public class BoardListController {
 	
 	}
 
+	//셀렉바스에 기수 불러오기
+ 	@RequestMapping(value = "selectmember.htm", method = RequestMethod.POST)
+	public String selectMember(Model model,HttpServletRequest request,HttpSession session){
+ 			System.out.println("기수 select 박스 컨트롤러");
+	String viewpage=boardlistservice.selectMember(model, request, session);
+    	return viewpage;
+    
+	
+	}
+ 	
+ 	
+    //선택한 체크박스 기수로 보내기
+    @RequestMapping(value="totalBoard_multi_send.htm", method = RequestMethod.GET )
+    public String boardMultiSend(String lectureNo,String classCode){
+    	System.out.println("기수보내기 컨트롤러 ");
+    	
+    	String viewpage = boardlistservice.boardMultiSend(lectureNo,classCode);
+   	 
+   	 return viewpage;
+    }
+ 	
 }
 
 

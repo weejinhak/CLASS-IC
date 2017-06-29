@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.class_ic.app.dto.MemberDTO;
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.vo.CategoryDTO;
+import com.class_ic.vo.ClassByLectureDTO;
 import com.class_ic.vo.LectureBoardDTO;
 import com.class_ic.vo.SubCategoryDTO;
 
@@ -148,5 +151,67 @@ public class BoardListService {
     
 	
 	}
+	
+	public String selectMember(Model model,HttpServletRequest request,HttpSession session){
+
+			BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
+			
+			String email=(String)session.getAttribute("email");
+			
+			ArrayList<MemberDTO> memberlist = dao.selectMember(email);
+			
+			System.out.println("memberlist뜨냐?"+memberlist);
+			System.out.println("이메일이다~  " + email);
+			
+			model.addAttribute("memberlist",memberlist);
+			
+			String viewpage = "common/boardMemberList";
+	
+		return viewpage;
+		
+	}
+	
+	public String boardMultiSend(String lectureNo,String classCode){
+			
+		System.out.println("기수로 보내기 서비스 탄다.");
+
+		
+		BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
+			
+		String[] array = lectureNo.split(",");
+	    ClassByLectureDTO dto=new ClassByLectureDTO();
+		dto.setClassCode(classCode);
+		
+		ArrayList<ClassByLectureDTO> list=dao.selectClassByLecture();
+		
+		boolean exist=false;
+	     for(int i=0;i<array.length;i++){
+	    	 
+	    	 for(ClassByLectureDTO all:list){
+	    		 if(all.getlectureNo()==Integer.parseInt(array[i])){
+	    			 
+	    			 System.out.println(array[i]+"있음");
+	    			 exist=true;
+	    			 
+	    		 }
+	    	 }
+	    	 if(exist){
+	    	 break;
+	    	 }
+	    	 
+	    			 System.out.println(array[i]);
+	                 dto.setlectureNo(Integer.parseInt(array[i]));
+	                 dao.boardMultiSend(dto);
+	    		
+	    	 }
+            
+	     
+
+	     
+	String viewpage = "teacher.totalLectureBoard";
+	return viewpage;
+	
+}
+	
 
 }

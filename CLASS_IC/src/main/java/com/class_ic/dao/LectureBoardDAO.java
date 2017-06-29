@@ -35,6 +35,7 @@ public interface LectureBoardDAO {
 	  //글 상세보기 
 	  public ArrayList<LectureBoardDTO> totalBoard_contentview(int lectureNo);
       
+	  //
 
    
 

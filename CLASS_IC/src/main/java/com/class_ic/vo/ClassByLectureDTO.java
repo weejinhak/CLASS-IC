@@ -3,7 +3,7 @@ package com.class_ic.vo;
 public class ClassByLectureDTO {
 
 	private boolean select;
-	private int llectureNo;
+	private int lectureNo;
 	private String classCode;
 	public boolean isSelect() {
 		return select;
@@ -11,11 +11,11 @@ public class ClassByLectureDTO {
 	public void setSelect(boolean select) {
 		this.select = select;
 	}
-	public int getLlectureNo() {
-		return llectureNo;
+	public int getlectureNo() {
+		return lectureNo;
 	}
-	public void setLlectureNo(int llectureNo) {
-		this.llectureNo = llectureNo;
+	public void setlectureNo(int lectureNo) {
+		this.lectureNo = lectureNo;
 	}
 	public String getClassCode() {
 		return classCode;
@@ -25,7 +25,7 @@ public class ClassByLectureDTO {
 	}
 	@Override
 	public String toString() {
-		return "ClassByLectureDTO [select=" + select + ", llectureNo=" + llectureNo + ", classCode=" + classCode + "]";
+		return "ClassByLectureDTO [select=" + select + ", lectureNo=" + lectureNo + ", classCode=" + classCode + "]";
 	}
 	
 	
