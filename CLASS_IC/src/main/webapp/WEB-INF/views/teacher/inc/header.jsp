@@ -142,21 +142,28 @@
                      </p>
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                     <li>
-                        <div class="panel-group" id="accordion">
-                           <div class="panel panel-default">
-                              <div class="panel-heading">
-                                 <h4 class="panel-title">
-                                    <a href="#collapseOne" data-toggle="collapse"
-                                       data-parent="#accordion"> 김은영 <span
-                                       class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                    </a> <input type="text" id="message" placeholder="메시지를 입력하세요" />
-                                    <button id="sendBtn">전송</button>
-                                 </h4>
-                              </div>
-                           </div>
-                        </div>
-                     </li>
+               <!-- 여기다 넣어 !!!! -->
+             	
+				  <div class="list-view">
+				    <ul>
+				    	<li>
+				        <span class="avatar"></span>
+				        <span class="name">Wilfrid Wolfgang</span>
+				      </li>    
+				    </ul>
+				  </div>
+				  <div class="details-view">
+				    <div class="back"></div>
+				    <div class="background"></div>
+				    <ul>
+				    	<li><i class="fa fa-envelope"></i>blah@gmail.com</li>
+				    	<li><i class="fa fa-mobile"></i>(593)273-2847</li>
+				    </ul>
+				  </div>
+
+               
+               
+               
                   </ul>
                </div>
 
@@ -306,3 +313,5 @@
       </div>
    </div>
 </nav>
+
+<script src="${pageContext.request.contextPath}/resources/assets/js/chat.js"></script>
