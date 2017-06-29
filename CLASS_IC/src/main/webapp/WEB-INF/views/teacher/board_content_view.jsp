@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ page import="com.class_ic.vo.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	<!-- 
+   <!-- 
 @Project : CLASS-IC
 @File name : board_details_
 @Author : 김은영
@@ -30,8 +30,8 @@
 <!--                                                 <div class="form-group label-floating is-empty"> -->
 <!--                                                     <label class="control-label"></label> -->
                                                     <input type="text" class="form-control" value="${LectureBoardDTO.lectureTitle}" style="width: 90%" readonly="readonly">
-                                                    
-												<!--   <span class="material-input"></span></div> -->
+                                                  
+                                    <!--   <span class="material-input"></span></div> -->
                                             </div>
                                         </div>
                                         
@@ -52,9 +52,9 @@
                                           
                                                <br><br><br><br><br>         
                                        
-				          <div class="col-sm-1">    </div>
-				          <div class="col-sm-5">
-				          
+                      <div class="col-sm-1">    </div>
+                      <div class="col-sm-5">
+                      
                         <!-- 파일 첨부  --> 
                                        첨부 파일 
                                        
@@ -132,15 +132,20 @@
                   <div class="col-md-12">                 
                                        
                                        <div class="td-actions text-center">
-                                                        <button type="button" rel="tooltip" class="btn btn-info btn-round" data-original-title="" title="">
-                                                            <i class="material-icons">list</i>
+   
+                                 <button type="button" rel="tooltip" class="btn btn-info btn-round"
+                                    id="list" name="list" onclick="location.href='allboard.htm' ">
+                                    <i class="material-icons">list</i>
+                                 </button>
+                                                       <%--  <a href="${pageContext.request.contextPath}/teacher/totalLectureBoard_Edit?lectureNo=${LectureBoardDTO.lectureNo}" id="lectureNo" name="lectureNo"> --%>
+                                                       
+                                                     
+                                                        <button type="submit" rel="tooltip" class="btn btn-success btn-round" >
+                                                            <i class="material-icons">edit</i>>
                                                         </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-success btn-round" data-original-title="" title="">
-                                                            <i class="material-icons">edit</i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" data-original-title="" title="">
-                                                            <i class="material-icons">close</i>
-                                                        </button>
+                                                          <input type="hidden" value="${LectureBoardDTO.lectureNo}">
+                                                      
+                                                      
                                                     </div>
                                                     <br>
                                                     <br>

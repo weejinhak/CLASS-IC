@@ -52,7 +52,7 @@
                                     </table>
                                       <div align="center">
                                       <!-- board details view 보여주지  -->
-                                      <a href="lectureboard.htm"><button type="button" class="btn btn-round btn-warning dropdown-toggle" data-toggle="dropdown">
+                                      <a href="${pageContext.request.contextPath}/teacher/lectureboard.htm"><button type="button" class="btn btn-round btn-warning dropdown-toggle" data-toggle="dropdown">
                                                             Details
                                                         </button></a>
                                                         </div>
