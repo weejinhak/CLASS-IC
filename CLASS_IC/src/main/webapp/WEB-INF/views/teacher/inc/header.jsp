@@ -96,8 +96,8 @@
       appendMessage("소켓이 준비되었습니다.");
       connect();
       $('#sendBtn').click(function() {
-
-         sendMessage();
+		
+         sendMessage(selectId);
 
       });
       
@@ -118,14 +118,12 @@
             <li><a href="#pablo" class="dropdown-toggle"
                data-toggle="dropdown" id="qrclick"> <i class="material-icons">watch_later</i>
             </a>
-
                <ul class="dropdown-menu">
                   <center>
-                     <img id="img" style="display: none"
-                        onload="this.style.display='block'" width="180" height="180" />
+                     <img id="img" style="display: none" onload="this.style.display='block'" width="180" height="180" />
                   </center>
                </ul></li>
-            <!--QR코드    -->
+            <!--QR  -->
 
             <!--쪽지 알림  -->
             <!--아코디언  -->
@@ -143,33 +141,28 @@
                      <li>
 
                         <div class="card">
-                           <div class="card-header card-header-icon"
-                              data-background-color="orange">
-                              <i class="material-icons">mail_outline</i>
-                           </div>
-                           <div class="card-content">
-                              <h4 class="card-title">쪽지 보내기</h4>
-                              <form method="#" action="#">
-                                 <div class="form-group label-floating is-empty">
-                                 <div class="dataTables_length" id="datatables_length">
-                     <label class="form-group form-group-sm is-empty">보내는 사람 선택<select id="cate" name="datatables_length" aria-controls="datatables" class="form-control">
-
-</select>
-                        
-                     <span class="material-input"></span></label> 
-                     &nbsp; &nbsp; &nbsp; &nbsp;
-      
-                                          
-                  </div>
-                                 </div>
-                           
-                                 <textarea cols="50"
-                                    style="width: 90%; height: 150px; color: gray"
-                                    id="lectureContent" name="lectureContent"></textarea>
-                                 <br><br>
-                                 <button type="submit" class="btn btn-fill btn-warning">Submit</button>
-                              </form>
-                           </div>
+	                           <div class="card-header card-header-icon"
+	                              data-background-color="orange">
+	                              <i class="material-icons">mail_outline</i>
+	                           </div>
+	                           <div class="card-content">
+	                              <h4 class="card-title">쪽지 보내기</h4>
+	                              <!-- 쪽지 태그 -->
+	                                 <div class="form-group label-floating is-empty">
+	                                	  <div class="dataTables_length" id="datatables_length">
+					                      <label class="form-group form-group-sm is-empty">보내는 사람 선택
+					                      <select id="students" name="datatables_length" aria-controls="datatables" class="form-control">				
+										  </select>				                        
+					                      <span class="material-input"></span>
+					                      </label> 
+					                      &nbsp; &nbsp; &nbsp; &nbsp;
+					                      </div>
+	                                 </div>                           
+	                                 <textarea cols="50"style="width: 90%; height: 150px; color: gray" id="lectureContent" name="lectureContent"></textarea>
+	                                 <br><br>
+	                                 <button id="sendbtn" class="btn btn-fill btn-warning">쪽지보내기</button>
+	                           <!-- 쪽지 태그 -->
+	                           </div>
                         </div>
 
                      </li>
@@ -330,3 +323,26 @@
       </div>
    </div>
 </nav>
+
+
+<script type="text/javascript">
+$().ready(function() {
+	list();
+	function list() {
+
+    	$.ajax({ 
+    		type: 'post' ,
+    		url: '${pageContext.request.contextPath}/messagememberlist.htm', 
+    		data:{classCode:sessionClassCode},
+    		dataType:'text',
+            success : function(data){
+				$('#students').html(data);       
+            },
+        	error : function(){
+                alert('통신실패!!');
+                alert(title);
+                alert(content);
+            } });
+   	}	
+});
+</script>
