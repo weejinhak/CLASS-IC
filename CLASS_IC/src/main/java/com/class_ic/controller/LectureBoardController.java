@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.LectureBoardDAO;
+ 
 import com.class_ic.dao.TodayLectureDAO;
+ 
 import com.class_ic.vo.LectureBoardDTO;
+ 
 import com.class_ic.vo.TodayLectureVO;
 /*
 * @Class: LectureBoardController
@@ -22,8 +25,7 @@ import com.class_ic.vo.TodayLectureVO;
 * @Author: 김은영, 노지영, 박소현
 * @Desc: 통합게시판 출력, 수정, 삭제
 */
-
-
+ 
 @Controller
 @RequestMapping(value="teacher")
 public class LectureBoardController {
@@ -225,7 +227,7 @@ public class LectureBoardController {
 	   
 	   System.out.println("수정오케이컨트롤러"+dto);
 	                 
-	  return "redirect:totalboard.htm";
+	  return "redirect:allboard.htm";
 	   
    }
    

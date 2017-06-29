@@ -141,7 +141,7 @@
                                                        
                                                      
                                                         <button type="button" rel="tooltip" class="btn btn-success btn-round"
-                                                      id="edit" name="edit">
+                                                      id="edit" name="edit" onclick="location.href='totalboardEdit.htm?lectureNo=${lectureBoardDTO.lectureNo}'">
                                                             <i class="material-icons">edit</i>
                                                         </button>
                                                          
@@ -161,23 +161,11 @@
  </div>
  
  <script type="text/javascript">
- $(document).ready(function(){
+/*  $(document).ready(function(){
     
  
  $("#edit").on("click", (function(){
-    edit();
-    
-    
-    
- });
- });
- 
- function edit(){
-     var comSubmit = new ComSubmit();
-     comSubmit.setUrl("<c:url value='/sample/openBoardList.do' />");
-     comSubmit.submit();
- }
-  
+
  
  
       var lectureNo = $("#lectureNo").val();
@@ -189,13 +177,13 @@
                  type: 'GET',
                  
                  success: function(data){
-               
+                   location.href="";AE
                 
                  }
              });
     
     
- });
+ }); */
 
  
  

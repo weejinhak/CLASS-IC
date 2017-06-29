@@ -31,14 +31,24 @@
 						<div class="dataTables_length" id="datatables_length">
 							<label class="form-group">카테고리<select id="cate"
 								name="datatables_length" aria-controls="datatables"
-								class="form-control input-sm">
+								class="form-control input-sm"></select>
 								
-  </select>
-							</label> &nbsp; &nbsp; &nbsp; &nbsp; <label class="form-group">서브
+							</label> 
+							&nbsp; &nbsp; &nbsp; &nbsp;
+							<button class="btn btn-just-icon btn-round btn-primary"  data-toggle="modal"
+                     data-target="#noticeModal">
+                     <i class="material-icons">library_add</i><div class="ripple-container"></div></button>
+                       
+							&nbsp; &nbsp; &nbsp; &nbsp; <label class="form-group">서브
 								카테고리<select name="datatables_length" aria-controls="datatables"
-								class="form-control input-sm" id="subcate"></select>
+								class="form-control input-sm" id="subcate">
+								</select>
 							</label>
-
+							&nbsp; &nbsp; &nbsp; &nbsp; 
+<button class="btn btn-just-icon btn-round btn-primary"  data-toggle="modal"
+                     data-target="#noticeModal">
+                     <i class="material-icons">library_add</i><div class="ripple-container"></div></button>
+                                          
 						</div>
 						
 						<!-- 카테고리 select end -->
@@ -98,13 +108,17 @@
 
 						</table>
 						</div>
+						
 						<form action="boardcontent.htm">
+						<button type="submit" id="submitFrm"
+						class="btn btn-info btn-round" style="margin-left: 820px; margin-top:10px; float: left;" >글쓰기</button>
+						</form>		
+						
 						<button  type="button" id="submitFrm" class="btn btn-info btn-round"
-						 style="margin-left:50px; float: right; " onclick="multi_del()" >체크 삭제</button>
-							<button type="submit" id="submitFrm"
-								class="btn btn-info btn-round" style="margin-left: 925px">글쓰기</button>
+						 style="margin-left:20px; " onclick="multi_del()" >체크 삭제</button>
+
 								
-						</form>
+					
 						
 						
 						   
@@ -118,6 +132,66 @@
 		<!-- end col-md-12 -->
 	</div>
 	<!-- end row -->
+	
+	
+	   <!-- 모달  -->
+   <div class="row">
+      <div class="col-md-12 text-center">
+         <!-- notice modal -->
+         
+         <div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notice">
+            
+            
+         <form action="CalendarInsertOk.htm" method="POST">         
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="material-icons">clear</i>
+                     </button>
+                     <h5 class="modal-title" id="myModalLabel">카테고리 추가</h5>
+                  </div>
+                  <div class="modal-body">
+                     <div class="instruction">
+                       
+                              <div class="row">
+                           <div class="col-md-12">
+                            
+                              
+                           <input type="text" class="form-control" placeholder="카테고리 이름" id="calContent" name="calContent">
+                           </div>
+                         
+                        </div>
+                        
+                              <div class="row">
+                           <div class="col-md-12">
+                            
+                              
+                            <input type="hidden" class="form-control" placeholder="서브카테고리 이름" id="classCode" name="classCode" value="1" >
+                           </div>
+                         
+                        </div>
+                        
+                     </div>
+                      
+                      
+                  </div>
+                  <div class="modal-footer text-center" >
+                     <button type="button" class="btn btn-simple" data-dismiss="modal">Never
+                        mind</button>
+                     <button type="submit" class="btn btn-success btn-simple" >Yes</button>
+                  </div>
+               
+               </div>
+
+               
+            </div>
+         </div>
+         
+         <!-- end notice modal -->
+                  </div>
+                  </div>
 </div>
 
 
@@ -281,33 +355,6 @@ var data="";
           });
           
           
-          
-          
-/*            	function select(){
-           	    var cate = $("#cate").val();
-                var subcate = $("#subcate").val();
-                
-                console.log("나는야 카테고리 " + cate);
-                console.log("나는야 서브카테 " + subcate);
-                
-                $.ajax({
-                   url:'${pageContext.request.contextPath}/totalboardEdit',
-                   data: {cate:cate, subcate:subcate},
-                   success:function(){
-                	alert('나다');  
-                   }
-                   });
-           		
-           	}
-        	  */
-    
-           	
-           	
-           	
-           	
-           	
-           	
-           	
            	
            	
             $('#datatables').DataTable(

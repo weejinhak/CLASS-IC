@@ -205,14 +205,18 @@
 
 			<div class="td-actions text-center">
 				<button type="button" rel="tooltip" class="btn btn-info btn-round"
-					id="list" name="list">
+					id="list" name="list" onclick="location.href='allboard.htm' ">
 					<i class="material-icons">list</i>
 				</button>
+				
+				
 				<button type="button" rel="tooltip"
 					class="btn btn-success btn-round" id="save" name="save">
 					<i class="material-icons">done</i>
 				</button>
-				<button type="button" rel="tooltip" class="btn btn-danger btn-round">
+				
+				
+				<button type="reset" rel="tooltip" class="btn btn-danger btn-round">
 					<i class="material-icons" id="close" name="close">close</i>
 				</button>
 			</div>
