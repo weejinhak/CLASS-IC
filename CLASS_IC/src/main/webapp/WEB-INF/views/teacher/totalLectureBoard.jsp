@@ -96,7 +96,6 @@
                         </c:forEach> 
 
 
-<<<<<<< HEAD
                   </table>
                   </div>
                   
@@ -129,35 +128,7 @@
       <!-- end col-md-12 -->
    </div>
    <!-- end row -->
-=======
-						</table>
-						</div>
-						
-						<form action="boardcontent.htm">
-						<button type="submit" id="submitFrm"
-						class="btn btn-info btn-round" style="margin-left: 970px; margin-top:10px; float: left;" >글쓰기</button>
-						</form>		
-						
-						<button  type="button" id="submitFrm" class="btn btn-info btn-round"
-						 style="margin-left:20px; " onclick="multi_del()" >체크 삭제</button>
 
-								
-					
-						
-						
-						   
-						
-					</div>
-				</div>
-				<!-- end content-->
-			</div>
-			<!--  end card  -->
-		</div>
-		<!-- end col-md-12 -->
-	</div>
-	<!-- end row -->
->>>>>>> branch 'AfterMaster' of https://github.com/johntei/CLASS-IC.git
-</div>
 
 
 
