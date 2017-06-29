@@ -11,5 +11,8 @@ public interface HomeworkDAO {
 	
 	//카테고리별 조 등록
 	public int addTeamDao(HomeworkDTO dto);
+	
+	//카테고리 선택시 조 출력
+	public List<HomeworkDTO> selectTeamDao(HomeworkDTO dto);
 
 }

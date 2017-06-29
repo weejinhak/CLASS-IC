@@ -9,12 +9,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select cateCode,cateTitle from category where email=#{email} 
 </select>
 
-<!-- 카테고리별 조 등록 -->
-<insert id="addCate" parameterType="com.class_ic.vo.HomeworkDTO">
+<!-- 카테고리별 조 등록 : 2017.06.28 최은혜 -->
+<insert id="addTeamDao" parameterType="com.class_ic.vo.HomeworkDTO">
 	insert into groupcategory(email,classCode,cateCode,teamName) 
-	values(email=#{email}, classCode=#{classCode},cateCode=#{cateCode},teamName=#{teamName});
+	values(#{email},#{classCode},#{cateCode},#{teamName})
 </insert> 
 
-
+<!-- 카테고리 선택시 조 출력 : 2017.06.29 최은혜 -->
+<select id="selectTeamDao" parameterType="com.class_ic.vo.HomeworkDTO" resultType="com.class_ic.vo.HomeworkDTO">
+	select teamName from groupcategory where classCode=#{classCode} and cateCode=#{cateCode} and email=#{email}
+</select>
 
 </mapper>

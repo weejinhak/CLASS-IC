@@ -1,6 +1,7 @@
 package com.class_ic.controller_category;
 
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,12 +51,34 @@ public class HomeworkController_Teacher {
 	}
 	
 	//과제 게시판 조 등록 : 2017.06.28 최은혜
-	@RequestMapping(value="addHomework.htm", method=RequestMethod.POST)
-	public void addCate(HttpServletRequest request) {
+	@RequestMapping(value="addHomework.htm", method = RequestMethod.POST)
+	public String addCate(String email, String classCode, String cateCode, String teamName) {
 		
-		homeworkService.addTeamService(request);
+		System.out.println("addTeam 메소드 들어옴");
 		
+		homeworkService.addTeamService(email,classCode,cateCode,teamName);
+		
+		return "redirect:homework.htm";
 	}
+	
+	//카테고리 선택시 조 출력 : 2017.06.29  최은혜
+		@RequestMapping(value="selectTeam.htm", method=RequestMethod.POST)
+		public void MovePage(String email, String classCode, String cateCode,HttpServletResponse response) throws IOException {
+			
+			List<HomeworkDTO> TeamList = homeworkService.selectTeamService(email, classCode, cateCode);
+			
+			JSONArray array = new JSONArray();
+			for(int i=0;i<TeamList.size();i++){
+				JSONObject obj = new JSONObject();
+				obj.put("teamName", TeamList.get(i).getTeamName());
+				array.add(obj);
+				
+				System.out.println(TeamList.get(i).getTeamName());
+			}
+			
+			response.getWriter().println(array);
+			
+		}
 }
 
 

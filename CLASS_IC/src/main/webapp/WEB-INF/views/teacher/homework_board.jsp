@@ -13,7 +13,7 @@
 					<div class="col-sm-10 col-md-offset-3">
 					<!-- 셀렉트 박스(메인 카테고리 선택) -->
 					    <div class="col-sm-3">
-					         <select  id="selectCateList"  title="메인 카테고리 선택해주세요"  >
+					         <select  id="selectCateList01" class="selectCateList" title="메인 카테고리 선택해주세요"  >
                                 		
                              </select>
                          </div>
@@ -22,7 +22,7 @@
                              <input type="text" class="form-control" placeholder="조를 입력해주세요" id="teamName"> 
                          </div>  
                          <div class="col-sm-3" align="right">
-                         <button type="button" class="btn btn-danger btn-round" id="addCateBtn">카테고리 추가</a></button>
+                         <button type="button" class="btn btn-danger btn-round" id="addCateBtn">조 추가</a></button>
                          </div>
                                     
                          </div><!-- end 과제카테고리 / 조  추가-->
@@ -32,15 +32,13 @@
 					<div class="col-lg-8">
 					<!-- 셀렉트 박스(메인 카테고리 선택) -->
 					    <div class="col-sm-3">
-                                <select id="selectCateList2" title="메인 카테고리 선택" >
+                                <select id="selectCateList02" class="selectCateList" title="메인 카테고리 선택" >
                                 </select>
                          </div>
                         
                          <div class="col-sm-3">
                     <!--  셀렉트 박스(조 카테고리 선택) -->
-                                <select class="selectpicker" data-style="select-with-transition" title="조 선택" data-size="7" >
-                                        <option disabled> 조 선택</option>
-                                        <option value="2">Paris </option>
+                                <select id="selectTeamList" title="조 선택" >
                                 </select>
                          </div>  
                                     
@@ -142,16 +140,19 @@
 <script type="text/javascript">
 	$(function() {
 		
-		var email = sessionId;
-		var classCode = sessionClassCode;
-		
 		showMainCate();
 		
 		$("#addCateBtn").click(function() {
 			addHomework();
 		});
+		
+		$("#selectCateList02").change(function(){
+			showTeamList();
+		});
 			
 			function showMainCate() {
+				
+				var email = sessionId;
 					
 						console.log(email)
 						
@@ -164,17 +165,16 @@
 							success : function(data) {
 									
 								$.each(data, function(){
-									$("#selectCateList").append("<option value='"+this.cateCode+"'>" + this.cateTitle + "</option> ");
+									$(".selectCateList").append("<option value='"+this.cateCode+"'>" + this.cateTitle + "</option> ");
 		                                console.log(this.cateTitle)
 								});
 								
 					   		}, 
 					   		
-		                	error : function(){
-		                        alert('통신실패!!');
-		                        alert(title);
-		                        alert(content);
-	                    	} 
+					   		error:function(request, status, error){
+			                    //console.log(error);
+			                    alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
+					   		}
 					   		
 					 });
 		} //end showMainCate
@@ -182,34 +182,66 @@
 		
 		function addHomework() {
 			
+			var email = sessionId;
+			var classCode = sessionClassCode;
+			
 			console.log(email)
 			
-			var selectVal = $("#selectCateList option:selected").val();
+			var cateCode = $("#selectCateList01 option:selected").val();
 			var teamName = $("#teamName").val();
-			
-			var allData = [{"selectVal": selectVal, "teamName":teamName,"email":email,"classCode":classCode}];
 			
 			$.ajax({
 				
 				type : "post",
 				url:"addHomework.htm",
-				data : allData,
-				dataType : 'Json',
+				data : {"cateCode": cateCode, "teamName":teamName,"email":email,"classCode":classCode},
+				dataType: 'text',
 				success : function(data) {
+					
+						alert("성공");
 						
-					alert("카테고리 등록 성공");					
+						$("#teamName").val("");
 		   		}, 
 		   		
-            	error : function(){
-                    alert('통신실패!!');
-                    alert(title);
-                    alert(content);
-            	} 
-				
+		   		error:function(request, status, error){
+                    //console.log(error);
+                    alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
+		   		}
 				
 			});
 			
-		}
+		}//end addHomework
+		
+		function showTeamList() {
+			
+			var email = sessionId;
+			var classCode = sessionClassCode;
+			var cateCode = $("#selectCateList02").val();
+				
+			console.log("showTeamList : "+cateCode)
+					
+					$.ajax({
+						
+						type : "post",
+						url:"selectTeam.htm",
+						data : {"email" : email, "calssCode": classCode , "cateCode":cateCode},
+						dataType : 'Json',
+						success : function(data) {
+								
+							$.each(data, function(){
+								$("#selectTeamList").append("<option value='"+this.teamName+"'>" + this.teamName + "</option> ");
+	                                console.log(this.teamName)
+							});
+							
+				   		}, 
+				   		
+				   		error:function(request, status, error){
+		                    //console.log(error);
+		                    alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
+				   		}
+				   		
+				 });
+		} //end showTeamList
 	}); 
 </script>
 

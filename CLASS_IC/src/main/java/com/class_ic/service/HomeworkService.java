@@ -28,25 +28,33 @@ public class HomeworkService {
 	}
 	
 	//카테고리별 조 등록
-		public void addTeamService(HttpServletRequest request) {
+		public void addTeamService(String email, String classCode, String cateCode, String teamName) {
 			
-			System.out.println("addTeam 메소드 들어옴");
-			String cateCode = request.getParameter("cateCode");
-			String teamName = request.getParameter("teamName");
-			String email = request.getParameter("email");
-			String classCode = request.getParameter("classCode");
-			
-		    HomeworkDTO dto = new HomeworkDTO();
-		    dto.setCateCode(cateCode);
-		    dto.setTeamName(teamName);
+			HomeworkDTO dto = new HomeworkDTO();
 		    dto.setEmail(email);
 		    dto.setClassCode(classCode);
+		    dto.setCateCode(cateCode);
+		    dto.setTeamName(teamName);
 			
 			HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
 			int result = dao.addTeamDao(dto);
 			
-			System.out.println("cate result : "+result);
+			System.out.println("team insert result : "+result);
 			
+		}
+		
+		//카테고리 선택시 조 출력
+		public List<HomeworkDTO> selectTeamService(String email, String classCode, String cateCode) {
+
+			HomeworkDTO dto = new HomeworkDTO();
+		    dto.setEmail(email);
+		    dto.setClassCode(classCode);
+		    dto.setCateCode(cateCode);
+		    
+			HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+			List<HomeworkDTO> TeamList = dao.selectTeamDao(dto);
+			
+			return TeamList;
 		}
 	
 }
