@@ -128,6 +128,7 @@ public class BoardListService {
 	
 	String cate=request.getParameter("cate");
 	System.out.println(cate);
+
     BoardDAO board=sqlsession.getMapper(BoardDAO.class);
 	List<SubCategoryDTO> subcate= board.selectSubCategory();
 	
