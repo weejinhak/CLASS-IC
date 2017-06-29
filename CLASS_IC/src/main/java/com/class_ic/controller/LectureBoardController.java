@@ -33,9 +33,7 @@ public class LectureBoardController {
 
  //오늘의 강의 넣기 
    
-
-<<<<<<< HEAD
-	
+ 
 	//이름 subcate 뭐시기로 변경 
 	   @RequestMapping(value="lectureboard.htm" , method=RequestMethod.GET) 
 	   public ModelAndView lectureBoard(TodayLectureVO bvo){ 
@@ -146,14 +144,12 @@ public class LectureBoardController {
    
  //오늘의 강의 넣기 끝   
  	
-   @RequestMapping(value="totalboard.htm") 
-      public ModelAndView allBoard(LectureBoardDTO bvo){ 
-         
-=======
+ 
+ 
    @RequestMapping(value="allboard.htm") 
       public ModelAndView allBoard(LectureBoardDTO bvo, HttpServletRequest request){ 
          System.out.println("컨트롤러 타냐? ");
->>>>>>> refs/heads/masterFormerge
+ 
          LectureBoardDAO bdao = sqlsession.getMapper(LectureBoardDAO.class);
          
 
@@ -203,7 +199,7 @@ public class LectureBoardController {
 	   LectureBoardDAO bdao = sqlsession.getMapper(LectureBoardDAO.class);
 	  
 	   int lectureNo1 = lectureNo;
-	   System.out.println("lectureNo 나오냐" + lectureNo);
+	   System.out.println("lectureNo 나오냐" + lectureNo1);
 	   
 	   ArrayList<LectureBoardDTO> list = bdao.totalboardEdit(lectureNo1);
 	   System.out.println(list.size());

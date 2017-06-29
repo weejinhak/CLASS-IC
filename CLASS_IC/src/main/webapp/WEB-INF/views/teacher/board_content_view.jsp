@@ -30,11 +30,7 @@
 <!--                                                 <div class="form-group label-floating is-empty"> -->
 <!--                                                     <label class="control-label"></label> -->
                                                     <input type="text" class="form-control" value="${LectureBoardDTO.lectureTitle}" style="width: 90%" readonly="readonly">
-<<<<<<< HEAD
-                                                  
-=======
-                                                    
->>>>>>> refs/heads/masterFormerge
+                                                      <input type="hidden" value="${LectureBoardDTO.lectureNo}" id="lectureNo" name="lectureNo">
                                     <!--   <span class="material-input"></span></div> -->
                                             </div>
                                         </div>
@@ -144,10 +140,11 @@
                                                        <%--  <a href="${pageContext.request.contextPath}/teacher/totalLectureBoard_Edit?lectureNo=${LectureBoardDTO.lectureNo}" id="lectureNo" name="lectureNo"> --%>
                                                        
                                                      
-                                                        <button type="submit" rel="tooltip" class="btn btn-success btn-round" >
-                                                            <i class="material-icons">edit</i>>
+                                                        <button type="button" rel="tooltip" class="btn btn-success btn-round"
+                                                      id="edit" name="edit">
+                                                            <i class="material-icons">edit</i>
                                                         </button>
-                                                          <input type="hidden" value="${LectureBoardDTO.lectureNo}">
+                                                         
                                                       
                                                       
                                                     </div>
@@ -160,16 +157,48 @@
                            
                             </div>
                  
-
-      
-      
-      
-      
-      
-      
       </div>
  </div>
  
+ <script type="text/javascript">
+ $(document).ready(function(){
+    
  
+ $("#edit").on("click", (function(){
+    edit();
+    
+    
+    
+ });
+ });
+ 
+ function edit(){
+     var comSubmit = new ComSubmit();
+     comSubmit.setUrl("<c:url value='/sample/openBoardList.do' />");
+     comSubmit.submit();
+ }
+  
+ 
+ 
+      var lectureNo = $("#lectureNo").val();
+      console.log(lectureNo);
+      
+         $.ajax({
+                 url: "totalboardEdit.htm",
+                 data: {lectureNo:lectureNo},
+                 type: 'GET',
+                 
+                 success: function(data){
+               
+                
+                 }
+             });
+    
+    
+ });
+
+ 
+ 
+</script>
  
  
