@@ -46,6 +46,7 @@ public class LectureCodeAddController {
 	@RequestMapping(value = "lecturecodeadd.htm", method = RequestMethod.POST)
 	public String lectureinsert(HttpServletRequest request,Model model){
 		
+		
 		///값이 들어오는지 확인.		
 		System.out.println("lecturecodeadd 컨트롤 탔음");
 		System.out.println(request.getParameter("classcode"));
