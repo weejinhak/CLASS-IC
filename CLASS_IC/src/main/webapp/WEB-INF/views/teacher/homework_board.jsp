@@ -47,7 +47,7 @@
 						<div class="card-content">
 					 				<!-- 테이블 -->
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table table-striped table-no-bordered table-hover" id="datatables" cellspacing="0" width="100%" style="width: 100%">
                                             <thead>
                                                 <tr>
                                                     <th class="text-center">#</th>
@@ -70,18 +70,7 @@
                                     
                                     </div>
                                     
-                                
-						<center>
-							<ul class="pagination pagination-info">
-								<li><a href="javascript:void(0);"> prev</a></li>
-								<li><a href="javascript:void(0);">1</a></li>
-								<li><a href="javascript:void(0);">2</a></li>
-								<li class="active"><a href="javascript:void(0);">3</a></li>
-								<li><a href="javascript:void(0);">4</a></li>
-								<li><a href="javascript:void(0);">5</a></li>
-								<li><a href="javascript:void(0);">next </a></li>
-							</ul>
-						</center>
+                
 					 
 					 		</div>
 					 </div>
@@ -242,7 +231,7 @@
 		}
 		
 		//페이징
-		 $('#datatables2').DataTable({
+		 $('#datatables').DataTable({
 	            "pagingType": "full_numbers",
 	            "lengthMenu": [
 	                [10, 25, 50, -1],

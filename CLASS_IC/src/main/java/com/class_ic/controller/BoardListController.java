@@ -227,6 +227,9 @@ public class BoardListController {
     	
     }
     
+    //링크 파일 게시판 합치기  
+    
+    
 }
 
 
