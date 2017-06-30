@@ -28,7 +28,6 @@ public interface BoardDAO {
 
 	// LectureBoard DAO 옮겨옴
 
-
 	// 통합게시판 카테고리,서브카테고리 select box
 	public ArrayList<LectureBoardDTO> allBoard(SubCategoryDTO dto);
 
