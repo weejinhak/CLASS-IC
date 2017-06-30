@@ -22,9 +22,7 @@ public interface BoardDAO {
 	
 	//자료 DB에 insert (파일 등록)
 	public int insertFile(LectureBoardDTO lectureBoardDTO);
-	
-	//통합게시판과 파일 게시판을 잇는 테이블 insert
-	public int insertLectureBoardFile(LectureBoardDTO lectureBoardDTO);
+
 	
 	//LectureBoard DAO 옮겨옴
 	

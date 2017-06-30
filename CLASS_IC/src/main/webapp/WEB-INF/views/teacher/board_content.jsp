@@ -41,18 +41,21 @@ function myFunction() {
     		var cate=$("#cate").val();
     		var subcate=$("#subcate").val();
     		var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
+    		var fileData = new FormData();
+    		fileData.append('file', $('input[type=file]')[0].files[0]);
 
         	console.log(title);
         	console.log(content);
         	console.log(cate);
         	console.log(subcate);
         	console.log(sessionClassCode);
+        	console.log(fileData);
 
         	$.ajax({ 
         		type: 'post' ,
-        		/* enctype: "multipart/form-data", */
+        		enctype: "multipart/form-data", 
         		url: '${pageContext.request.contextPath}/boardcontentsave.htm', 
-        		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode},
+        		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode, files:fileData},
         		dataType:'text',
                 success : function(data){
                 	
