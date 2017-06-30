@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+    <link href="${pageContext.request.contextPath}/resources/assets/css/qrcode.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">  
+       
 <!-- contextpath 가져와서 변수 정의 하고.. -->
 <c:set var="contextPath" value="<%= request.getContextPath()%>"></c:set>  
 
@@ -105,7 +110,25 @@
 
 	   });
    
+   var today = new Date();
+   var dd = today.getDate();
+   var mm = today.getMonth()+1; //January is 0!
+   var yyyy = today.getFullYear();
+   var hours = today.getHours();
+   var min = today.getMinutes();
+   var sec = today.getSeconds();
    
+   
+   if(dd<10) {
+       dd='0'+dd
+   } 
+
+   if(mm<10) {
+       mm='0'+mm
+   } 
+	    today = yyyy+'/'+mm+'/'+dd;
+   		time = hours+':'+min+':'+sec;
+   		
 </script>
 
 
@@ -122,9 +145,58 @@
             </a>
 
                <ul class="dropdown-menu">
-                  <center>
-		          <img id="img" style="display: none" onload="this.style.display='block'" width="180" height="180" />
-                  </center>
+                          <!-- 여기가 QR코드   -->
+              <div class="ant">
+              <div class="container first">
+		<div class="top left corner"></div>
+	    <div class="top right corner"></div>
+	    <div class="bottom left corner"></div>
+	    <div class="bottom right corner"></div>
+	    <div class="spacer">
+	    	<div class="name-flight" >
+	    		<h3 style="margin-left: 85px;">QR Code</h3>
+	    		<br>
+	    		<h4 style="margin-left: 80px;">ClassCode: <span><%=(String)session.getAttribute("classCode")%></span></h4>
+	    	</div>
+	    	<div class="destination">
+	    		<div class="from">
+	    			<h1>입실</h1>
+	    			<h6>Check In</h6>
+	    		</div>
+	    		<div class="center">
+	    			<i class="material-icons">cached</i>
+	    		</div>
+	    		<div class="to">
+	    			<h1>퇴실</h1>
+	    			<h6 align="center">Check Out</h6>
+	    		</div>
+	    	</div>
+	    	<div class="details">
+	    		<div class="left-side">
+		    		<h5>Date</br><span><script>document.write(today)</script></span></h5>
+		    		
+	    		</div>
+	    		<div class="right-side">
+		    		<h5>Current Time</br><span><script>document.write(time)</script></span></h5>
+		    	
+	    		</div>
+	    	</div>
+	    </div>
+	</div>
+	<div class="container second">
+		<div class="top left"></div>
+	    <div class="top right"></div>
+	    <div class="bottom left"></div>
+	    <div class="bottom right"></div>
+	    <div class="spacer2">
+	    	<h3>QR 코드를 찍어주세요.</h3>
+	    	<div class="text-barcode">
+	    		<div class="flight-gate">
+	    	  <img id="img" style="display: none; margin-top: -15px; margin-left: 20px;" onload="this.style.display='block'" width="180" height="180" />
+	    	</div></div>
+	    </div>
+	</div>
+          </div>
                </ul>
                
              </li>
