@@ -71,6 +71,28 @@
 		ON   c.classCode= a.classCode
 		Where c.email = #{param1} AND c.classCode=#{param2};
 	</select>
+	
+	<!-- 이메일과 classCode 에 맞는 학생의 attendace 정보를 가져와주는 쿼리 -->
+	<select id="selectStudentListByTeacher" parameterType="String"
+		resultType="com.class_ic.vo.AttandanceListDTO">
+	    SELECT m.name,
+        at.attendDate as attendDate, at.inClass as inClass,
+        at.outClass as
+        outClass, at.attendState as attendState, at.classCode
+        as classCode
+        FROM(SELECT a.email as email, a.attendDate as attendDate, a.inClass as
+        inClass,
+        a.outClass as outClass, a.attendState as attendState,
+        a.classCode as
+        classCode
+        FROM attendance a JOIN class c
+        ON a.classCode =
+        c.classCode
+        WHERE c.email =#{param1} AND a.classCode=#{param2}) at JOIN
+        member m
+        ON at.email = m.email
+        WHERE m.name=#{param3}
+	</select>
 
 	
 </mapper>

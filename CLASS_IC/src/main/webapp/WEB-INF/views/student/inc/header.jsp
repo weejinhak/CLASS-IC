@@ -27,7 +27,7 @@
 	  //alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
-      wsocket = new WebSocket("ws://192.168.0.135:8090/class_ic/chat-ws.htm?email="+sessionId);
+      wsocket = new WebSocket("ws://192.168.0.142:8090/class_ic/chat-ws.htm?email="+sessionId);
       appendMessage("웹 소켓연결되었습니다.");
       wsocket.onopen = onOpen;
       wsocket.onmessage = onMessage;
@@ -70,7 +70,7 @@
 
          type : "post",
          dataType : "html",
-         url : "newAlarm.htm",
+         url : "/class_ic/common/newAlarm.htm",
          data : {
             "newAlarm" : evt.data
          },
