@@ -175,11 +175,8 @@
 					$(function() {
 
 						//글 출력 : 2017.06.21 최은혜
-<<<<<<< HEAD
-						var email = sessionId;
-=======
+
 						var email =sessionId;
->>>>>>> branch 'AfterMaster' of https://github.com/johntei/CLASS-IC.git
 
 						$.ajaxSetup({
 							cache : false
