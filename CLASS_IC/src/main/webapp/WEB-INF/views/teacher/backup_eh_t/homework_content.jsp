@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,16 +8,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!--에디터 추가부분 -->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
-<br>
-<br>
-<br>
-<br>
-<script type="text/javascript">
+<link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
+<!-- 파일 업로드 추가 부분  -->
+ </head>
 
-function myFunction() {
-    document.getElementById("writeForm").reset();
-}
+    <div class="wrapper">
+       
+          <!-- side navi 메뉴 영역-->
+           <!--   <tiles:insertAttribute name="navi" /> -->  
+          <div class="main-panel">
+          <!--  header 영역 -->
+            <!--  <tiles:insertAttribute name="header" /> -->
+           <!--  contents 영역 -->
+           
+
+<script type="text/javascript">
 
 	   $().ready(function() {
         demo.checkFullPageBackgroundImage();
@@ -40,40 +48,27 @@ function myFunction() {
     		var content=$("#content").val();
     		var cate=$("#cate").val();
     		var subcate=$("#subcate").val();
-<<<<<<< HEAD
     		var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
-    		var fileData = new FormData();
-    		fileData.append('file', $('input[type=file]')[0].files[0]);
-=======
-    		var sessionClassCode="<%=(String)session.getAttribute("email")%>";
->>>>>>> branch 'AfterMaster' of https://github.com/johntei/CLASS-IC.git
 
-       		console.log(title);
+        	console.log(title);
         	console.log(content);
         	console.log(cate);
         	console.log(subcate);
         	console.log(sessionClassCode);
-        	console.log(fileData);
 
         	$.ajax({ 
         		type: 'post' ,
-        		enctype: "multipart/form-data", 
+        		/* enctype: "multipart/form-data", */
         		url: '${pageContext.request.contextPath}/boardcontentsave.htm', 
-        		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode, files:fileData},
+        		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode},
         		dataType:'text',
                 success : function(data){
-                	
-                    swal({
-                        title: '글쓰기 완료',
-                        text: '글쓰기가 완료 되었습니다.',
-                        type: 'success',
-                        confirmButtonClass: "btn btn-success",
-                        buttonsStyling: false
-                        }).then(function() {
-        					
-                       	 location.href="allboard.htm"
-        				})
-
+                	alert('글쓰기 입력 성공!');
+                	location.href="boardcontent.htm";
+                	/* var title= $("#title").val("");
+            		var content=$("#content").val("");
+            		var cate=$("#cate").val("");
+            		var subcate=$("#subcate").val(""); */
                 },
                 error:function(request, status, error){
                     //console.log(error);
@@ -133,9 +128,8 @@ function myFunction() {
 <div class="col-md-12">
 	<div class="card">
 		<div class="card-header card-header-text" data-background-color="rose">
-			<h4 class="card-title">통합 게시판 글 입력하기</h4>
+			<h4 class="card-title">공지</h4>
 		</div>
-		<form id ="writeForm">
 		<div class="card-content">
 			<div class="row">
 
@@ -171,8 +165,8 @@ function myFunction() {
 					<div class="form-group label-floating is-empty">
 						<label class="control-label"></label>
 						<!--에디터 추가부분 -->
-					<!-- 	<div class="main">
-                         <div id="editor_panel"></div>  -->
+						<div class="main">
+                         <div id="editor_panel"></div> 
                          <!--에디터 추가부분 -->
 						<textarea cols="50" style="width: 90%; height: 600px; color: gray"
 							id="content" name="contnet"></textarea>
@@ -186,9 +180,9 @@ function myFunction() {
 				</div>
 			</div>
 			
-<<<<<<< HEAD
+			<!-- 파일 업로드 시작-->
 			
-=======
+			<!--  파일 업로드 끝-->
 			<!-- 파일 첨부  --> 
                                        첨부 파일 #01
                                        
@@ -231,45 +225,35 @@ function myFunction() {
                     
               </ul>
               </div>
-     </form>
+     
                     </div>
 			<!-- 파일 추가 끝 -->
->>>>>>> refs/remotes/origin/AfterMaster
 
 			<div class="td-actions text-center">
-	
 				<button type="button" rel="tooltip" class="btn btn-info btn-round"
 					id="list" name="list" onclick="location.href='allboard.htm' ">
 					<i class="material-icons">list</i>
 				</button>
+				
 				
 				<button type="button" rel="tooltip"
 					class="btn btn-success btn-round" id="save" name="save">
 					<i class="material-icons">done</i>
 				</button>
 				
-				<button type="button" rel="tooltip" onclick="myFunction()" class="btn btn-danger btn-round">
-					<i class="material-icons" >close</i>
+				
+				<button type="reset" rel="tooltip" class="btn btn-danger btn-round">
+					<i class="material-icons" id="close" name="close">close</i>
 				</button>
 			</div>
 			<br> <br> <br>
+
 		</div>
 	</div>
 
+</div>
+           <!--   contents 영역 끝 -->
+           
 
 <!--에디터 추가부분 -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
-<script src="${pageContext.request.contextPath}/resources/assets/js/lang/summernote-ko-KR.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#content').summernote({
-           dialogsFade: true,
-           height: 600,                 // set editor height
-            minHeight: null,             // set minimum height of editor
-            maxHeight: null,             // set maximum height of editor
-            focus: true,
-            lang: 'ko-KR',         
-        });
-        
-    });
-  </script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>

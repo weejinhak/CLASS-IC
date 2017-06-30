@@ -41,7 +41,7 @@ public class AlarmController {
 	/*
 	@description : 보내온 메시지를 Table에 Insert시키기위한 함수
 	*/
-	@RequestMapping(value="student/sendMessage.htm")
+	@RequestMapping(value="common/sendMessage.htm")
     public String sendMessage(@RequestParam(value="sendmessage") String sendmessage,HttpSession session,
     		@RequestParam(value="remail") String remail)
             throws ClassNotFoundException, SQLException{
@@ -83,7 +83,7 @@ public class AlarmController {
 	/*
 	@description :소켓에 연결 되어 있을 시 실시간 안읽은 쪽지의 TotalCount를 상대방에게 전송하기 위한 함수
 	*/
-	@RequestMapping(value="student/newAlarm.htm")
+	@RequestMapping(value="common/newAlarm.htm")
     public String newAlarm(@RequestParam(value="newAlarm") String newAlarm,HttpSession session)
             throws ClassNotFoundException, SQLException{
 	

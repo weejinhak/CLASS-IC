@@ -22,7 +22,8 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<beans:bean id="qrcodeview" class="com.class_ic.view.QRCodeView" />
-	<beans:bean id="excelview" class="com.class_ic.view.ExcelBuilder"/>
+	<beans:bean id="studensExcelview" class="com.class_ic.view.ExcelBuilder"/>
+	<beans:bean id="teacherExcelview" class="com.class_ic.view.ExcelBuilder2"/>
 
 	<context:component-scan
 		base-package="com.class_ic.controller, com.class_ic.controller_category" />

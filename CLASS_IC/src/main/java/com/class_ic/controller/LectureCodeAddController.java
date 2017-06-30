@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,23 +39,22 @@ public class LectureCodeAddController {
 
 	@Autowired
 	private LectureCodeAddService lecturecodeaddservice;
-
 	
 	/*
 	@description : 강사가 입력하는 input을 parameter로 받아 service로 넘김.
 	*/
 	@RequestMapping(value = "lecturecodeadd.htm", method = RequestMethod.POST)
-	public String lectureinsert(HttpServletRequest request){
+	public String lectureinsert(HttpServletRequest request,Model model){
+		
 		
 		///값이 들어오는지 확인.		
-		System.out.println("lecture 컨트롤 탔음");
+		System.out.println("lecturecodeadd 컨트롤 탔음");
 		System.out.println(request.getParameter("classcode"));
 		System.out.println(request.getParameter("classtitle"));
 		System.out.println(request.getParameter("classstart"));
 		System.out.println(request.getParameter("classend"));
 		System.out.println(request.getParameter("classopentime"));
 		System.out.println(request.getParameter("classclosetime"));
-		System.out.println(request.getParameter("classinvitecode"));
 		System.out.println(request.getParameter("email"));		
 		///
 		
@@ -81,6 +81,9 @@ public class LectureCodeAddController {
 			
 			try {
 				viewpage=lecturecodeaddservice.addclasscode(lectureDto);
+				List<LectureDTO> lecturelist=lecturecodeaddservice.lecturelistselect(request.getParameter("email"));	
+				System.out.println(lecturelist.size());
+				model.addAttribute("lecturelist", lecturelist); 			
 			} catch (Exception e) {
 				System.out.println("insert가 안되는 경우");
 				e.printStackTrace();
@@ -89,7 +92,6 @@ public class LectureCodeAddController {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		
 		return viewpage; 		
 	}
 	
@@ -104,14 +106,13 @@ public class LectureCodeAddController {
 		return new ModelAndView("qrcodeview", "content", content);
 	}
 	
-	
 	/*
 	@description : 페이지 로드시 email에 맞는 기수를 가져오기 위한 함수
 	*/
 	@RequestMapping(value ="lecturecodeSelect.htm", method = RequestMethod.POST)
-	public String lectureSelect(@RequestParam String email,Model model){
+	public String lectureSelect(HttpSession session,Model model){
 		try {
-
+			String email=(String)session.getAttribute("email");
 			List<LectureDTO> lecturelist=lecturecodeaddservice.lecturelistselect(email);	
 			model.addAttribute("lecturelist", lecturelist); 
 		} catch (Exception e) {

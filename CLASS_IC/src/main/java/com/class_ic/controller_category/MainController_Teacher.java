@@ -24,9 +24,9 @@ public class MainController_Teacher {
 		public String student(HttpSession session, String classCode){
 			session.setAttribute("classCode", classCode);
 
-			
-			return "teacher.teacher_main";
-		}
+          return "teacher.teacher_main";
+       }
+
 		
 		//teacher main GET 
 			@RequestMapping(value="main.htm", method=RequestMethod.GET)
