@@ -36,9 +36,7 @@ public class LectureCodeAddService {
 		System.out.println("기수추가 서비스 in!");
 		LectureAddDAO lectureDao = sqlsession.getMapper(LectureAddDAO.class);
 
-
 		String opentime=lecture.getClassOpenTime().substring(0, 4);
-
 		
 		//am/pm시 바꾸기
 
@@ -62,8 +60,8 @@ public class LectureCodeAddService {
 
 				//ClassMember에 넣기 
 				lectureDao.inputMyClassCode(email, classCode);
-				viewpage = "common/thsSelect_teacher";
-				//viewpage = "redirect:common/lecturecodeSelect.htm";
+				viewpage = "common/lectureList";
+				//viewpage = "redirect:thsSelect_teacher.jsp";
 
 			} else {
 				System.out.println("insert 실패");
@@ -89,6 +87,9 @@ public class LectureCodeAddService {
 		return lecturelist;
 		
 	}
+	/*
+	@description : email 맞는 기수 Select 하는 service(학생)
+	*/
 	public List<LectureDTO> lecturelistselectStudent(String email) throws Exception {
 		
 		LectureAddDAO lectureDao = sqlsession.getMapper(LectureAddDAO.class);
