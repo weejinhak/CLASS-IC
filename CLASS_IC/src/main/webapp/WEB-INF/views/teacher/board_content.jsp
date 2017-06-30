@@ -12,6 +12,9 @@
 <br>
 <br>
 <script type="text/javascript">
+function myFunction() {
+    document.getElementById("writeForm").reset();
+}
 
 	   $().ready(function() {
         demo.checkFullPageBackgroundImage();
@@ -52,12 +55,18 @@
         		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode},
         		dataType:'text',
                 success : function(data){
-                	alert('글쓰기 입력 성공!');
-                	location.href="boardcontent.htm";
-                	/* var title= $("#title").val("");
-            		var content=$("#content").val("");
-            		var cate=$("#cate").val("");
-            		var subcate=$("#subcate").val(""); */
+                	
+                    swal({
+                        title: '글쓰기 완료',
+                        text: '글쓰기가 완료 되었습니다.',
+                        type: 'success',
+                        confirmButtonClass: "btn btn-success",
+                        buttonsStyling: false
+                        }).then(function() {
+        					
+                       	 location.href="allboard.htm"
+        				})
+
                 },
                 error:function(request, status, error){
                     //console.log(error);
@@ -119,6 +128,7 @@
 		<div class="card-header card-header-text" data-background-color="rose">
 			<h4 class="card-title">통합 게시판 글 입력하기</h4>
 		</div>
+		<form id ="writeForm">
 		<div class="card-content">
 			<div class="row">
 
@@ -211,21 +221,24 @@
                     
               </ul>
               </div>
-     
+     </form>
                     </div>
 			<!-- 파일 추가 끝 -->
 
 			<div class="td-actions text-center">
+	
 				<button type="button" rel="tooltip" class="btn btn-info btn-round"
-					id="list" name="list">
+					id="list" name="list" onclick="location.href='allboard.htm' ">
 					<i class="material-icons">list</i>
 				</button>
+				
 				<button type="button" rel="tooltip"
 					class="btn btn-success btn-round" id="save" name="save">
 					<i class="material-icons">done</i>
 				</button>
-				<button type="button" rel="tooltip" class="btn btn-danger btn-round">
-					<i class="material-icons" id="close" name="close">close</i>
+				
+				<button type="button" rel="tooltip" onclick="myFunction()" class="btn btn-danger btn-round">
+					<i class="material-icons" >close</i>
 				</button>
 			</div>
 			<br> <br> <br>

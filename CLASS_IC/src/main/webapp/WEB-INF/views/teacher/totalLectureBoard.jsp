@@ -155,19 +155,11 @@
 									aria-hidden="true">
 									<i class="material-icons">clear</i>
 								</button>
-								<h5 class="modal-title" id="myModalLabel">일정 추가</h5>
+								<h5 class="modal-title" id="myModalLabel">기수보내기</h5>
 							</div>
 							<div class="modal-body">
 								<div class="instruction">
-						
-							      <!-- 체크한 글의 타이틀 -->
-									<div class="row">
-										<div class="col-md-12">
-											<input type="text" class="form-control" placeholder="이동할 글"
-												 name="lectureTitle" value="${LectureBoardDTO.lectureTitle}">
-										</div>
-									</div>
-									
+								
 							      <!-- 체크한 기수 -->
 									<div class="row" style="margin-left:2px;">
 										<div class="dataTables_length" id="datatables_length">
@@ -178,6 +170,53 @@
 										</div>
 									</div>
 
+								</div>
+							</div>
+							<div class="modal-footer text-center">
+								<button type="button" class="btn btn-success btn-simple" onclick="multi_send()">작성</button>
+								<button type="button" class="btn btn-simple" data-dismiss="modal">취소</button>
+
+							</div>
+
+						</div>
+				
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--기수로 보내기 모달 끝 -->
+<!-- 카테고리 모달 시작 -->
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<!-- notice modal -->
+
+			<div class="modal fade" id="cateModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-notice">
+
+
+	
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">
+									<i class="material-icons">clear</i>
+								</button>
+								<h5 class="modal-title" id="myModalLabel">카테고리 추가</h5>
+							</div>
+							<div class="modal-body">
+								<div class="instruction">
+						
+							      <!-- 체크한 글의 타이틀 -->
+									<div class="row">
+										<div class="col-md-12">
+											<input type="text" class="form-control" placeholder="추가할 카테고리를 입력하세요."
+												 name="lectureTitle" value="">
+										</div>
+									</div>
+									
+							
 
 
 
@@ -196,8 +235,66 @@
 			</div>
 		</div>
 	</div>
-	<!--기수로 보내기 모달 끝 -->
+	<!--카테고리 모달 끝 -->
+	<!-- 서브 카테고리 모달 시작 -->
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<!-- notice modal -->
 
+			<div class="modal fade" id="subcateModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-notice">
+
+
+	
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">
+									<i class="material-icons">clear</i>
+								</button>
+								<h5 class="modal-title" id="myModalLabel">서브 카테고리 추가</h5>
+							</div>
+							<div class="modal-body">
+								<div class="instruction">
+						
+							      <!-- 체크한 기수 -->
+									<div class="row" style="margin-left:2px;">
+										<div class="dataTables_length" id="datatables_length">
+											<label class="form-group">카테고리를 먼저 선택 해주세요
+											<select id="cate2" name="send" aria-controls="datatables"
+												class="form-control input-sm"></select>
+											</label>
+										</div>
+									</div>
+
+							      <!-- 체크한 글의 타이틀 -->
+									<div class="row">
+										<div class="col-md-12">
+											<input type="text" class="form-control" placeholder="추가할 서브 카테고리를 입력하세요."
+												 name="lectureTitle" value="${LectureBoardDTO.lectureTitle}">
+										</div>
+									</div>
+									
+
+
+
+								</div>
+							</div>
+							<div class="modal-footer text-center">
+								<button type="button" class="btn btn-success btn-simple" onclick="multi_send()">작성</button>
+								<button type="button" class="btn btn-simple" data-dismiss="modal">취소</button>
+
+							</div>
+
+						</div>
+				
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--서브카테고리 모달 끝 -->
 
 	<script type="text/javascript">
 
@@ -210,7 +307,13 @@
 	   var cnt2 = $("input[name='multy[]']:checked").length;
 		
 	   if(cnt2 < 1){
-	      alert(" 게시물을 선택하여 주세요");
+		   swal({
+	           title: '선택된 게시글이 없습니다.',
+	           text: '게시글을 선택해주세요.',
+	           type: 'warning',
+	           confirmButtonClass: "btn btn-danger",
+	           buttonsStyling: false
+	         })
 	      return;
 	   }
 
@@ -254,8 +357,6 @@
 	    
 	    }
 
-	    alert(data);
-
 	    var classCode=$('#sendnum').val();
 	      jQuery.ajaxSettings.traditional = true;
 
@@ -265,8 +366,16 @@
 	           data: { lectureNo: data, classCode:classCode} ,
 	           dataType: 'text',
 	           success: function() {
-	        	   location.href="allboard.htm"
-	           alert(classCode+"보내기 성공!")
+	               swal({
+	                   title: 'Success!',
+	                   text: '선택된 기수로 글이 이동되었습니다.',
+	                   type: 'success',
+	                   confirmButtonClass: "btn btn-success",
+	                   buttonsStyling: false
+	                   }).then(function() {
+	   					
+	                  	 location.href="allboard.htm"
+	   				})
 	           },
 	           error: function() {
 	              alert('bad');
@@ -284,7 +393,13 @@ function multi_del()
 var cnt2 = $("input[name='multy[]']:checked").length;
 
 if(cnt2 < 1){
-   alert(" 게시물을 선택하여 주세요");
+	   swal({
+           title: '선택된 게시글이 없습니다.',
+           text: '게시글을 선택해주세요.',
+           type: 'warning',
+           confirmButtonClass: "btn btn-danger",
+           buttonsStyling: false
+         })
    return;
 }
 
@@ -342,7 +457,21 @@ var data="";
 	
   
         success: function() {
-           location.href="allboard.htm"
+        	
+            
+            swal({
+                title: 'Deleted!',
+                text: '삭제가 완료 되었습니다.',
+                type: 'success',
+                confirmButtonClass: "btn btn-success",
+                buttonsStyling: false
+                }).then(function() {
+					
+               	 location.href="allboard.htm"
+				})
+                
+    
+        
         },
         error: function() {
            alert('bad');
@@ -364,7 +493,7 @@ var data="";
                   url: '${pageContext.request.contextPath}/selectmember.htm', 
                   dataType:'text',
                     success : function(data){
-                    	alert(data)
+                    	
                    $('#sendnum').html(data);
                     
                
@@ -392,6 +521,8 @@ var data="";
                   dataType:'text',
                     success : function(data){
                    $('#cate').html(data);
+                   $('#cate2').html(data);
+                   
                     
                
                     },
@@ -441,7 +572,7 @@ var data="";
                   data: {cateCode:cate, subcateCode:subcate},
                   dataType:'html',
                   success:function(data){
-                     alert(data);
+                     
                     
                      $('#list').html(data);
               

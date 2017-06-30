@@ -116,7 +116,7 @@ public class LectureBoardController {
    
     @RequestMapping(value="totalBoard_multi_delete.htm" ) 
    public String multi_del(HttpServletRequest request, HttpServletResponse response ) {
-       
+        System.out.println("다중삭제 컨트롤러");
 
        String test=request.getParameter("data");
        System.out.println(test);

@@ -11,9 +11,7 @@
 					<div class="col-lg-8 col-md-offset-3">
 					<!-- 셀렉트 박스(메인 카테고리 선택) -->
 					    <div class="col-sm-3">
-                                <select class="selectpicker" data-style="select-with-transition" title="메인 카테고리 선택" data-size="7">
-                                        <option disabled> 메인 카테고리 선택</option>
-                                        <option value="2">Paris </option>
+                                <select class="selectpicker" id="mainCate" data-style="select-with-transition" title="메인 카테고리 선택" data-size="7">
                                 </select>
                          </div>
                         
@@ -25,7 +23,7 @@
                                 </select>
                          </div>  
                          <div class="col-sm-3" align="right">
-                         <button type="button" class="btn btn-info btn-round" id="addCateBtn"  data-toggle="modal" data-target="#addCate">
+                         <button type="button" class="btn btn-info btn-round" id="addCateBtn" onclick="show('${sessionScope.email}')"  data-toggle="modal" data-target="#addCate">
                                             과제 카테고리 추가</a></button>
                          </div>
                                     
@@ -169,46 +167,39 @@
 <script type="text/javascript">
 	$(function() {
 		
-		addCategory();
-		addTeam();
-		
-		function addCategory() {
-			$("#selectCateList").on("click", function() {
-				
-					var email = $("#email").val();
+			$("#mainCate").click(function() {
+				showMainCate();
+			});
+			
+			function showMainCate() {
 					
-					$.ajax({
+						var email = $("#email").val();
 						
-						type : "post",
-						url:"selectCate.htm",
-						data : {"email" : email},
-						dataType : 'Json',
-						success : function(data) {
+						$.ajax({
 							
-							$.each(data, function(){
-                                $("#selectCateList").append("<option value='" + 
-                                        this.cateTitle + "'>" + this.cateTitle + "</option> ");
-                                
-                                console.log(this.cateTitle)
+							type : "post",
+							url:"selectCate.htm",
+							data : {"email" : email},
+							dataType : 'Json',
+							success : function(data) {
+								
+								$.each(data, function(){
+	                                $("#mainCate").append("<option value='" + 
+	                                        this.cateTitle + "'>" + this.cateTitle + "</option> ");
+	                                
+	                                console.log(this.cateTitle)
 
-                        });
-				   }
-			});
-		});
-   }	
-		function addTeam() {
-			$("#submitBtn").on("click",function() {
-				
-				$(".team").append(
-						
-				"<li class='team'><a href='#description-1' role='tab' data-toggle='tab' aria-expanded='false'><i class='material-icons'>face</i> 1조 </a></li>"
-				
-				);
-				
-				
-			});
-		}
+	                        });
+					   }
+				});
+	   }
+		
 		
 	});
 
 </script>
+
+
+
+
+

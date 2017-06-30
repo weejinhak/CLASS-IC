@@ -18,7 +18,6 @@
 		
 	
 	<c:forEach var="list" items="${list}">
-	<form action="totalboardEdit.htm" method="POST">	
 		<div class="card-content">
 			<div class="row">
 
@@ -34,7 +33,7 @@
 						 
 						 <span class="material-input"></span></label>
 				</div>
-
+				<form id="editForm">
 				<label class="col-sm-2 label-on-left" style="margin-top: 30px;">제목  </label><div class="col-sm-10">
 					<div class="form-group label-floating is-empty">
 						<label class="control-label"></label>
@@ -58,6 +57,7 @@
 					</div>
 				</div>
 			</div>
+			</form>
 
 			<div class="td-actions text-center">
 			
@@ -69,23 +69,63 @@
 
 			
 				<button type="submit" rel="tooltip"
-					class="btn btn-success btn-round" id="save" name="save">
+					class="btn btn-success btn-round" id="editOk" name="editOk">
 					<i class="material-icons">done</i>
 				</button>
 				
 			
-				<button type="reset" rel="tooltip" class="btn btn-danger btn-round">
-					<i class="material-icons" id="close" name="close">close</i>
+				<button type="button" rel="tooltip" onclick="myFunction()" class="btn btn-danger btn-round">
+					<i class="material-icons" >close</i>
 				</button>
 		
 			</div>
 			<br> <br> <br>
 		
 		</div>
-		</form>
 		</c:forEach>
 	
 	</div>
 
 </div>
 
+<script type="text/javascript">
+function myFunction() {
+    document.getElementById("editForm").reset();
+}
+
+
+$("#editOk").click(function() {
+	editOk(); 
+	
+});
+
+function editOk(){
+	var lectureTitle =$("#lectureTitle").val();
+	var lectureContent = $("#lectureContent").val();
+	var lectureNo = $("#lectureNo").val();
+
+	$.ajax({ 
+		type: 'post' ,
+		url: 'totalboardEdit.htm', 
+		data:{lectureTitle:lectureTitle,lectureContent:lectureContent,lectureNo:lectureNo },
+		dataType:'text',
+        success : function(data){
+        	
+            swal({
+                title: '수정 완료',
+                text: '수정이 완료 되었습니다.',
+                type: 'success',
+                confirmButtonClass: "btn btn-success",
+                buttonsStyling: false
+                }).then(function() {
+					
+               	 location.href="allboard.htm"
+				})
+
+        },
+        error:function(request, status, error){
+           alert("수정 실패")
+        } });	
+	
+}
+</script>

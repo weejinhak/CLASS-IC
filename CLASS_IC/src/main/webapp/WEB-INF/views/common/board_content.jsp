@@ -6,7 +6,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!--에디터 추가부분 -->
 <link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
-<<<<<<< HEAD
 <!-- 파일 업로드 추가 부분  -->
  </head>
 
@@ -20,9 +19,7 @@
             <!--  <tiles:insertAttribute name="header" /> -->
            <!--  contents 영역 -->
            
-=======
 
->>>>>>> refs/heads/AfterMaster
 <br>
 <br>
 <br>
