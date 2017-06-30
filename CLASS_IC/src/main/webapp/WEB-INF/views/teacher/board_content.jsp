@@ -38,7 +38,7 @@
     		var subcate=$("#subcate").val();
     		var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
 
-        	console.log(title);
+       		console.log(title);
         	console.log(content);
         	console.log(cate);
         	console.log(subcate);
