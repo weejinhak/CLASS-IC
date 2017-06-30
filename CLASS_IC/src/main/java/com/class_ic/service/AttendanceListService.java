@@ -135,9 +135,10 @@ public class AttendanceListService implements AttendanceListDAO {
 	 * @description : 테이블에서 강사가 자기 기수 학생들 출석 리스트 SELET 해주는 기능(강사)
 	 */
 	@Override
-	public ArrayList<AttandanceDTO> selectStudentListByTeacher(String sEmail, String tEmail) {
+	public ArrayList<AttandanceListDTO> selectStudentListByTeacher( String tEmail,String classCode,String sEmail) {
+		
 		AttendanceListDAO attendancelistDao = sqlsession.getMapper(AttendanceListDAO.class);
-		ArrayList<AttandanceDTO> seletStudentByTeacher = attendancelistDao.selectStudentListByTeacher(sEmail, tEmail);
+		ArrayList<AttandanceListDTO> seletStudentByTeacher = attendancelistDao.selectStudentListByTeacher(tEmail,classCode,sEmail);
 
 		return seletStudentByTeacher;
 	}

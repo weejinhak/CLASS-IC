@@ -33,7 +33,7 @@ public interface AttendanceListDAO {
 	public ArrayList<AttandanceDTO> selectEachStudent(String email,String classcode);
 
 	//강사이메일에서 학생을 입력해 학생들의 엑셀 다운로드를 하기위함(강사)
-	public ArrayList<AttandanceDTO> selectStudentListByTeacher(String sEmail,String tEmail);
+	public ArrayList<AttandanceListDTO> selectStudentListByTeacher(String tEmail,String classCode,String sEmail);
 
 
 }
