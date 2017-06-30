@@ -30,13 +30,27 @@ public class ExcelDownloadController {
 	 * @description :엑셀로 학생출석을 다운로드
 	 */
 	@RequestMapping(value = "student/excelDownload.htm", method = RequestMethod.POST)
-	public ModelAndView createCode(HttpServletRequest request) {
+	public ModelAndView attendanceExcelByStudent(HttpServletRequest request) {
 		// ModelAndView 바로 리턴
 		String email=request.getParameter("email");
 		String classcode=request.getParameter("classcode");
 		System.out.println("엑셀다운을위한 컨트롤러 탐 !!" + email+":"+classcode);
 		List<AttandanceDTO> memberattendacnelist = attendanceListService.attendanceSelect(email, classcode);
 
+		
+		return new ModelAndView("excelview", "memberattendacnelist", memberattendacnelist);
+	}
+	
+	/*
+	 * @description :강사가 학생을 골라 출석을 다운로드
+	 */
+	@RequestMapping(value = "teacher/excelDownload.htm", method = RequestMethod.POST)
+	public ModelAndView attendanceExcelByTeacher(HttpServletRequest request) {
+		// ModelAndView 바로 리턴
+		String sEmail=request.getParameter("sEmail");
+		String tEmail=request.getParameter("tEmail");
+		System.out.println("엑셀다운을위한 컨트롤러 탐 !!" + sEmail+","+tEmail);
+		List<AttandanceDTO> memberattendacnelist = attendanceListService.selectStudentListByTeacher(sEmail, tEmail);
 		
 		return new ModelAndView("excelview", "memberattendacnelist", memberattendacnelist);
 	}
