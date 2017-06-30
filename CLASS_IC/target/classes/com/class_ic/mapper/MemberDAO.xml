@@ -61,4 +61,20 @@ select count(email) from member
 	WHERE a.authority=<![CDATA['ROLE_STUDENT']]>
 </select>
 
+<!-- 비밀번호 변경 전에 본인 체크  -->
+
+<select id="membercheck" parameterType="MemberDTO" resultType="int">
+		select count(*) cnt
+		from member
+		where email = #{memberEmail} AND phone = #{memberPhone} 
+</select>
+
+
+<!-- 비밀번호 변경시   -->
+<!-- 	<update id="memberPwChg" parameterType="MemberDTO">
+		update member
+		set pwd = #{memberPw}
+		where email = #{memberEmail} and phone =#{memberPhone}
+	</update>
+ -->
 </mapper>

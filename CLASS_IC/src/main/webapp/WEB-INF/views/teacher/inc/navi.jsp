@@ -89,7 +89,7 @@
 				</li>
 				<!-- 링크는 메뉴를 통해서 추가해주세요 -->
 				<li>
-					<a href="#"> <i class="material-icons">edit</i>
+					<a href="linkfile.htm"> <i class="material-icons">edit</i>
 							<p>추가링크</p>
 					</a>
 				</li>

@@ -35,7 +35,12 @@ public interface LectureBoardDAO {
 	  //글 상세보기 
 	  public ArrayList<LectureBoardDTO> totalBoard_contentview(int lectureNo);
       
+	  //링크 리스트 			//나중에 기수 세션으로 불러와 담아 
+	  public ArrayList<LectureBoardDTO> linkList();
+	  
+	  //파일 리스트  			//나중에 기수 세션으로 불러와 담아  
 
+	  public ArrayList<LectureBoardDTO> fileList();
    
 
       

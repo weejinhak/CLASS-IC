@@ -1,16 +1,21 @@
 package com.class_ic.controller_category;
 
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-
+import com.class_ic.dao.LectureBoardDAO;
 import com.class_ic.service_category.MainService_Teacher;
+import com.class_ic.vo.LectureBoardDTO;
 
 @Controller
 @RequestMapping("teacher")
@@ -18,6 +23,9 @@ public class MainController_Teacher {
 
 	@Autowired	
 	private MainService_Teacher mainteacherservice;
+	   
+	   @Autowired
+	   private SqlSession sqlsession;
 
 	//teacher main POST
 		@RequestMapping(value="main.htm", method=RequestMethod.POST)
@@ -69,6 +77,34 @@ public class MainController_Teacher {
 
 			return "teacher.attendance";
 		}
+
+
+		//링크게시판 , 파일 게시판 임시 
+		@RequestMapping(value="linkfile.htm" , method=RequestMethod.GET)
+		  public ModelAndView linkfile (LectureBoardDTO bvo, HttpServletRequest request){
+			System.out.println("링크팡리 컨트롤러 타냐? ");
+			 LectureBoardDAO bdao = sqlsession.getMapper(LectureBoardDAO.class);
+
+
+	         ArrayList<LectureBoardDTO> llist = bdao.linkList();
+	         ArrayList<LectureBoardDTO> flist = bdao.fileList();
+	         System.out.println("셀렉리스트 컨트롤러 : " +llist);
+	         System.out.println("셀렉리스트 컨트롤러 : " +flist);
+	         
+	         ModelAndView m = new ModelAndView();
+	         m.setViewName("teacher.LinkFileList");
+	         m.addObject("lvo", llist);   
+	         m.addObject("fvo", flist);   
+	         System.out.println(m);
+	         return m;
+	         
+	     	//	linkTitle, linkSrc
+	 		//	fileSrc, fileSrc2
+	         
+		}
+
+
+
 
 
 

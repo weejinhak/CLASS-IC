@@ -1,65 +1,90 @@
 <!--
 	@Project : CLASS-IC
-	@File Name : login.jsp
-	@Author : 이현정
+	@File Name : memberPwChg.jsp
+	@Author : 은영
 	@Date : 2017.06.15
 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE>
+<%@ page import="com.class_ic.vo.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
+    
+<!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="${pageContext.request.contextPath}/resources/assets/img/apple-icon.png" />
-    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/assets/img/favicon.png" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>CLASS-IC LOGIN</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-    <!-- Bootstrap core CSS     -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CLASS-IC</title>
+ <!-- Bootstrap core CSS     -->
     <link href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
     <!--  Material Dashboard CSS    -->
     <link href="${pageContext.request.contextPath}/resources/assets/css/material-dashboard.css" rel="stylesheet" />
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="${pageContext.request.contextPath}/resources/assets/css/demo.css" rel="stylesheet" />
-    <!--     Fonts and icons     -->
+<!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+
+ <link href="${pageContext.request.contextPath}/resources/assets/css/login.css" rel="stylesheet" />
+ 
 </head>
 
-<body>
+<script type="text/javascript">
+$(function(){
+	$('#memberChkBtn').click(function(){
+		if($('#memberEmail').val()==""){
+			alert('이메일 주소(아이디)를 입력해주세요.');
+			$('#memberPw').focus();
+			return;
+		}
+		if($('#memberPhone').val()==""){
+			alert('가입한 전화번호를 입력해 주세요 .');
+			$('#memberPhone').focus();
+			return;
+		}
+	  
+		$('#frm').submit();
+	});
+});
+</script>
 
-    <div class="wrapper wrapper-full-page">
-        <div class="full-page login-page" filter-color="black" data-image="${pageContext.request.contextPath}/resources/assets/img/login.jpeg">
-            <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
-            <div class="content">
-                <div class="container">
+<c:if test="${result == 1 }">
+	<script type="text/javascript">
+		alert('이메일이 전송되었습니다 .');
+	 /* 맨 처음 로그인 페이지로 이동  */
+	</script>
+</c:if>
+
+<body>
+  <div id="particles-js">
+  <div id="formpz">
+	<!-- <img src="resources/assets/img/login_bg.jpg"> -->
+	 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                        
-                		 <form action="loginOk.htm" method="POST">
+                         <!-- 폼 태그  -->
+                            <form id="frm" method="post" action="memberCheck.htm">
+							
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="rose">
-                                                     <h3 class="card-title">Login</h3>
-                                       
+                                    
+                                                     <h3 class="card-title">비밀번호 변경 본인확인</h3>
+                                   
                                     </div>
                                     <p class="category text-center">
-                                        Class intelligent Command 
+                                        
                                         
                                     </p>
-                                    
                                     <div class="card-content">
-                             <br>
-                            
+                             <br><center> 
+                             <h6 class="card-title">본인 확인을 위한 정보를 입력해 주세요</h6></center>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">email</i>
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email address</label>
-                                                <input type="email" class="form-control"  id="email" name="email">
+                                                <input type="email" class="form-control"  id="memberEmail" name=memberEmail placeholder="ex) class_ic@gmail.com" />
                                             </div>
                                         </div>
                                         <div class="input-group">
@@ -67,27 +92,24 @@
                                                 <i class="material-icons">lock_outline</i>
                                             </span>
                                             <div class="form-group label-floating">
-                                                <label class="control-label">Password</label>
-                                                <input type="password" class="form-control" id="pwd" name="pwd">
+                                                <label class="control-label">Phone number</label>
+                                                <input type="text" class="form-control"   id="memberPhone" name=memberPhone placeholder="ex) 010-1111-1234" />
                                             </div>
                                         </div>
                                         <br>
                                     </div>
                                     <div class="footer text-center">
-                                       <button class="btn btn-rose" type="submit">Login </button>
+                                       <button class="btn btn-rose" type="submit" id="memberChkBtn">본인 인증</button>
                                     </div>
-                                </div> 
-                                 </form>     
-                                	<a href="join.htm">회원가입 링크</a>   &nbsp;&nbsp; &nbsp; &nbsp; 
-                                	<a href="memberPwChg.htm">비밀번호를 잊어버리셨나요?</a>                  
+                                </div>
+                            </form>
                         </div>
-                       
                     </div>
                 </div>
-            </div>
-        
-        </div>
-    </div>
+  </div>
+  </div>
+
+<script src="${pageContext.request.contextPath}/resources/assets/js/login.js" type="text/javascript"></script>
 </body>
 <!--   Core JS Files   -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>

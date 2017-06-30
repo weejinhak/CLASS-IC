@@ -38,5 +38,12 @@ public interface MemberDAO {
 	
 	//학원 회원 전체 수 확인
 	public int selectAllStudentCount();
+	
+	//비밀번호 변경 전 본인인지 체크 
+	   public int membercheck(MemberDTO mvo) ;
+	//비밀번호 변경 
+	   public int memberPwChg(MemberDTO mvo) ;
+	
+	
 
 }
