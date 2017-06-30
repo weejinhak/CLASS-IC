@@ -294,7 +294,7 @@ public class BoardListService {
 
 	}
 
-	// 하나 씩 삭제
+	//action의 x버튼 누르기 삭제 
 	public String delete(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("totalBoard_delete.htm 컨트롤러 탐 ");
 		int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));

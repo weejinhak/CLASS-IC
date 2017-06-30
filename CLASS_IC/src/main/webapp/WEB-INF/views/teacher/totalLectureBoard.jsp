@@ -100,9 +100,11 @@
 												href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
 												class="btn btn-simple btn-info btn-icon edit"><i
 													class="material-icons">edit</i></a> <a
-												href="totalBoard_delete.htm?lectureNo=${LectureBoardDTO.lectureNo}"
 												class="btn btn-simple btn-danger btn-icon remove"><i
-													class="material-icons">close</i></a></td>
+													class="material-icons" onclick="deletex()">close</i></a>
+													<input type="hidden" id="lectureNum" name="lectureNum" value="${LectureBoardDTO.lectureNo}">
+											</td>
+										
 										</tr>
 
 									</c:forEach>
@@ -361,6 +363,32 @@
 	       });
 	}
 	
+	//x표시 눌러서 삭제
+	function deletex(){
+		var lectrueNo = $('#lectureNum').val();
+		
+	       $.ajax({
+	           type: 'POST',
+	           url: 'totalBoard_delete.htm',
+	           data: { lectureNo: lectrueNo} ,
+	           success: function() {
+	               swal({
+	                   title: 'Deleted!',
+	                   text: '선택된 글이 삭제되었습니다.',
+	                   type: 'success',
+	                   confirmButtonClass: "btn btn-success",
+	                   buttonsStyling: false
+	                   }).then(function() {
+	   					
+	                  	 location.href="allboard.htm"
+	   				})
+	           },
+	           error: function() {
+	              alert('삭제 실패');
+	           } 
+
+	       }); 
+	}
 	
 	//멀티컨텐츠 기수로 보내기
 	   function multi_send()

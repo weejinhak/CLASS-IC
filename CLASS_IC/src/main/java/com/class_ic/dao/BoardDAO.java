@@ -28,8 +28,12 @@ public interface BoardDAO {
 
 	// LectureBoard DAO 옮겨옴
 
+
 	// 통합게시판 카테고리,서브카테고리 select box
 	public ArrayList<LectureBoardDTO> allBoard(SubCategoryDTO dto);
+
+  //action의 x버튼 누르기 삭제  
+    public void deleteLect(int lectureNo);
 
 	// 모든 글을 긁어옴.
 	public ArrayList<LectureBoardDTO> allList(String email);
@@ -39,9 +43,6 @@ public interface BoardDAO {
 
 	// 수정 완료
 	public int totalboardEditOk(LectureBoardDTO dto);
-
-	// 글 삭제
-	public void deleteLect(int lectureNo);
 
 	// 글 상세보기
 	public ArrayList<LectureBoardDTO> totalBoard_contentview(int lectureNo);
