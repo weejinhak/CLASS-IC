@@ -25,8 +25,6 @@
    var wsocket;
    var msg;
    function connect() {
-
-      alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
       wsocket = new WebSocket("ws://192.168.0.135:8090/class_ic/chat-ws.htm?email="+sessionId);
@@ -175,7 +173,7 @@
                </div>
                <div class="card-content">
                   <button class="btn btn-reddit btn-round"  data-toggle="modal"
-                     data-target="#noticeModal">
+                     data-target="#noticeModal1">
                             <i class="material-icons">email</i> 쪽지함
                         <div class="ripple-container"></div></button>
                </div>
@@ -343,7 +341,7 @@
       <div class="col-md-12 text-center">
          <!-- notice modal -->
          
-         <div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
+         <div class="modal fade" id="noticeModal1" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-notice">
          <form action="CalendarInsertOk.htm" method="POST">         

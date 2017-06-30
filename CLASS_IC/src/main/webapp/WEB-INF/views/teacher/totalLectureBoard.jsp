@@ -155,19 +155,11 @@
 									aria-hidden="true">
 									<i class="material-icons">clear</i>
 								</button>
-								<h5 class="modal-title" id="myModalLabel">일정 추가</h5>
+								<h5 class="modal-title" id="myModalLabel">기수보내기</h5>
 							</div>
 							<div class="modal-body">
 								<div class="instruction">
-						
-							      <!-- 체크한 글의 타이틀 -->
-									<div class="row">
-										<div class="col-md-12">
-											<input type="text" class="form-control" placeholder="이동할 글"
-												 name="lectureTitle" value="${LectureBoardDTO.lectureTitle}">
-										</div>
-									</div>
-									
+								
 							      <!-- 체크한 기수 -->
 									<div class="row" style="margin-left:2px;">
 										<div class="dataTables_length" id="datatables_length">
@@ -177,9 +169,6 @@
 											</label>
 										</div>
 									</div>
-
-
-
 
 								</div>
 							</div>
@@ -318,7 +307,13 @@
 	   var cnt2 = $("input[name='multy[]']:checked").length;
 		
 	   if(cnt2 < 1){
-	      alert(" 게시물을 선택하여 주세요");
+		   swal({
+	           title: '선택된 게시글이 없습니다.',
+	           text: '게시글을 선택해주세요.',
+	           type: 'warning',
+	           confirmButtonClass: "btn btn-danger",
+	           buttonsStyling: false
+	         })
 	      return;
 	   }
 
@@ -362,8 +357,6 @@
 	    
 	    }
 
-	    alert(data);
-
 	    var classCode=$('#sendnum').val();
 	      jQuery.ajaxSettings.traditional = true;
 
@@ -373,8 +366,16 @@
 	           data: { lectureNo: data, classCode:classCode} ,
 	           dataType: 'text',
 	           success: function() {
-	        	   location.href="allboard.htm"
-	           alert(classCode+"보내기 성공!")
+	               swal({
+	                   title: 'Success!',
+	                   text: '선택된 기수로 글이 이동되었습니다.',
+	                   type: 'success',
+	                   confirmButtonClass: "btn btn-success",
+	                   buttonsStyling: false
+	                   }).then(function() {
+	   					
+	                  	 location.href="allboard.htm"
+	   				})
 	           },
 	           error: function() {
 	              alert('bad');
@@ -392,7 +393,13 @@ function multi_del()
 var cnt2 = $("input[name='multy[]']:checked").length;
 
 if(cnt2 < 1){
-   alert(" 게시물을 선택하여 주세요");
+	   swal({
+           title: '선택된 게시글이 없습니다.',
+           text: '게시글을 선택해주세요.',
+           type: 'warning',
+           confirmButtonClass: "btn btn-danger",
+           buttonsStyling: false
+         })
    return;
 }
 
@@ -450,7 +457,21 @@ var data="";
 	
   
         success: function() {
-           location.href="allboard.htm"
+        	
+            
+            swal({
+                title: 'Deleted!',
+                text: '삭제가 완료 되었습니다.',
+                type: 'success',
+                confirmButtonClass: "btn btn-success",
+                buttonsStyling: false
+                }).then(function() {
+					
+               	 location.href="allboard.htm"
+				})
+                
+    
+        
         },
         error: function() {
            alert('bad');
@@ -472,7 +493,7 @@ var data="";
                   url: '${pageContext.request.contextPath}/selectmember.htm', 
                   dataType:'text',
                     success : function(data){
-                    	alert(data)
+                    	
                    $('#sendnum').html(data);
                     
                
@@ -551,7 +572,7 @@ var data="";
                   data: {cateCode:cate, subcateCode:subcate},
                   dataType:'html',
                   success:function(data){
-                     alert(data);
+                     
                     
                      $('#list').html(data);
               
