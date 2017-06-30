@@ -22,19 +22,15 @@
 <jsp:include page="inc/common_header.jsp"></jsp:include>
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
-
 	/* 페이지 로드시 Session- email에 맞는 기수를 가져오고 그 수만큼 반복.   */
+	var sessionId="";
 	$(document).ready(function() {
-		  console.log("페이지가 시작2");
-		  var sessionId="<%=(String)session.getAttribute("email")%>";
+		 sessionId="<%=(String)session.getAttribute("email")%>";
 		  console.log(sessionId);
 			$.ajax({
 				  type : "POST",
 				  url : "common/lecturecodeSelect.htm",
 				  dataType : "html",
-				  data: {
-				      email: sessionId
-				  },
 				  success : function(data){
 						$('#lecturelist').html(data);
 
@@ -46,7 +42,39 @@
 		          }
 			});
 	});
+	  function addClassCode(){
+		  
+		   var classcode =$("#classcode").val();		   
+		   var classstart = $("#classstart").val();		   
+		   var classend = $("#classend").val();		   
+		   var classtitle= $("#classtitle").val();		   
+		   var classopentime = $("#classopentime").val();		   
+		   var classclosetime = $("#classclosetime").val();		   
+		   
+		   $.ajax({ 
+		      type: 'post' ,
+		      url: 'common/lecturecodeadd.htm', 
+		      data:{
+		    	  classcode:classcode,
+		    	  classstart:classstart,
+		    	  classend:classend,
+		    	  classtitle:classtitle,
+		    	  classopentime:classopentime,
+		    	  classclosetime:classclosetime,
+		    	  email:sessionId
+		      },
+		      dataType:'html',
+		        success : function(data){
+		            $('#lecturelist').empty();
+	     			$('#lecturelist').html(data);
+		        },
+		        error:function(request, status, error){
+		           alert("기수추가 실패")
+		        } });   
+		   
+		}
 </script>
+
 
 </head>
 
@@ -58,7 +86,7 @@
 						<div class="col-xs-3"></div>
 						<div class="col-xs-6">
 							  <button class="btn btn-success" data-toggle="modal" data-target="#noticeModal">
-						         <span class="btn-label"><i class="material-icons">check</i>새로운 기수 만들기
+						         <span class="btn-label"><i class="material-icons">check</i>새로운 기수 만들기</span>
 	                          </button>
 							<div class="row">					
 
@@ -114,7 +142,6 @@
 						aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-notice">
 						
-						<form action="common/lecturecodeadd.htm" method="post">
 							<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -122,10 +149,8 @@
 										</button>
 										<h5 class="modal-title" id="myModalLabel">과정 추가</h5>
 									</div>
-									
 											<div class="modal-body">
 												<div class="instruction">
-												
 												<div class="row">
 														<div class="col-md-12">				
 															  <div class="form-group">
@@ -135,7 +160,6 @@
 							                                   </div>
 														</div>
 													</div>
-												
 													<div class="row">
 														<div class="col-md-12"> 															
 															<div class="form-group">
@@ -154,7 +178,6 @@
 					                                        </div>														
 														</div>													 
 													</div>		
-													
 														<div class="row">
 														<div class="col-md-12"> 															
 															<div class="form-group">
@@ -164,9 +187,6 @@
 					                                        </div>														
 														</div>													 
 													</div>	
-																								
-										
-													
 													<div class="row">
 														<div class="col-md-12">				
 															  <div class="form-group">
@@ -176,8 +196,6 @@
 							                                   </div>
 														</div>
 													</div>
-		
-				
 													<div class="row">
 														<div class="col-md-12">				
 															  <div class="form-group">
@@ -188,39 +206,14 @@
 														</div>
 													</div>
 													
-													<input type="hidden" value="${sessionScope.email }" name="email" id="email" />
-													<!-- <div class="row">
-														<div class="col-md-12">				
-															  <div class="form-group">
-							                                   	     <label class="label-control">초대 코드</label>
-							                                        <input type="text" class="form-control" id="classinvitecode" name="classinvitecode">
-							                                    	<span class="material-input"></span>
-							                                   </div>
-														</div>
-													</div> -->
-													
-														<!-- <div class="row">
-														<div class="col-md-12">				
-															  <div class="form-group">
-							                                   	     <label class="label-control">이메일</label>
-							                                        <input type="text" class="form-control" id="email" name="email">
-							                                    	<span class="material-input"></span>
-							                                   </div>
-														</div>
-													</div> -->
-													
-														
 												</div>												 
 											</div>
 								<div class="modal-footer text-center">
-									<button type="submit" class="btn btn-success btn-simple">만들기</button>
-									<button type="button" class="btn btn-simple" data-dismiss="modal">취소
-										mind</button>
-									
+									<button type="submit" class="btn btn-success btn-simple" id="addclassbtn" name="addclassbtn" onclick="addClassCode()">만들기</button>
+									<button type="button" class="btn btn-simple" data-dismiss="modal">취소</button>									
 								</div>
 								
 							</div>
-							</form>
 					 </div>
 				</div>
 		
@@ -242,3 +235,4 @@
     });
 </script>
 </html>
+

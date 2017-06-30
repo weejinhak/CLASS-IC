@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("student")
 public class MainController_Student {
-
-
-	//student main POST
+	
+	
 	@RequestMapping(value="main.htm", method=RequestMethod.POST)
 	public String student(HttpSession session, String classCode){
 		session.setAttribute("classCode", classCode);
