@@ -5,6 +5,13 @@ public class CategoryDTO {
 	
 	private String cateCode;
 	private String cateTitle;
+	private String email;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getCateCode() {
 		return cateCode;
 	}
@@ -19,7 +26,7 @@ public class CategoryDTO {
 	}
 	@Override
 	public String toString() {
-		return "CategoryDTO [cateCode=" + cateCode + ", cateTitle=" + cateTitle + "]";
+		return "CategoryDTO [cateCode=" + cateCode + ", cateTitle=" + cateTitle + ", email=" + email + "]";
 	}
 
 
