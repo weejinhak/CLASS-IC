@@ -182,11 +182,11 @@
 				</div>
 			</div>
 			
-<<<<<<< HEAD
+
 			<!-- 파일 업로드 시작-->
 			
 			<!--  파일 업로드 끝-->
-=======
+
 			<!-- 파일 첨부  --> 
                                        첨부 파일 #01
                                        
@@ -233,7 +233,7 @@
                     </div>
 			<!-- 파일 추가 끝 -->
 
->>>>>>> refs/heads/AfterMaster
+
 			<div class="td-actions text-center">
 				<button type="button" rel="tooltip" class="btn btn-info btn-round"
 					id="list" name="list" onclick="location.href='allboard.htm' ">
@@ -257,15 +257,12 @@
 	</div>
 
 </div>
-<<<<<<< HEAD
+
            <!--   contents 영역 끝 -->
            
         </div>
          </div>
 </body>
 
-<!-- 에디터 추가부분 -->
-=======
 <!--에디터 추가부분 -->
->>>>>>> refs/heads/AfterMaster
 <script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>
