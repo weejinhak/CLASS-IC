@@ -84,4 +84,14 @@ insert into classbylecture values(#{lectureNo},#{classCode})
 <select id="selectClassByLecture" resultType="com.class_ic.vo.ClassByLectureDTO">
 select * from classbylecture
 </select>
+
+
+<insert id="insertCate" parameterType="com.class_ic.vo.CategoryDTO">
+insert into category values(#{cateCode},#{cateTitle},#{email})
+</insert>
+
+<insert id="insertSubcate" parameterType="com.class_ic.vo.SubCategoryDTO">
+
+insert into subcategory values(#{subcateCode},#{cateCode},#{subcateTitle},#{email})
+</insert>
 </mapper>
