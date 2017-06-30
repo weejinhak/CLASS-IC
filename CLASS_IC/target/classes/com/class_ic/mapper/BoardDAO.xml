@@ -14,20 +14,21 @@ values(#{classCode},#{cateCode},#{subcateCode},#{lectureTitle},#{lectureContent}
 </insert>
 
 <!--카테고리 select box  -->
-<select id="selectCategory" resultType="com.class_ic.vo.CategoryDTO">
-select * from category
+<select id="selectCategory" resultType="com.class_ic.vo.CategoryDTO" parameterType="String">
+select * from category where email=#{email}
 </select>
 
 <!--서브카테고리 select box  -->
-<select id="selectSubCategory" resultType="com.class_ic.vo.SubCategoryDTO">
-select * from subcategory
+<select id="selectSubCategory" resultType="com.class_ic.vo.SubCategoryDTO" parameterType="String">
+select * from subcategory where email=#{email}
 </select>
 
 <!-- LectureBoard 추가부분 -->
 
 <!-- 통합게시판 화면 출력 -->
- <select id="allBoard" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="String">
-    select * from lectureboard where cateCode=#{param1} and subcateCode=#{param2} 
+ <select id="allBoard" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="com.class_ic.vo.SubCategoryDTO">
+    select * from lectureboard where cateCode=#{cateCode} and subcateCode=#{subcateCode} and classCode in
+(select classCode from classMember where email=#{email}) 
  </select> 
  
 <!--통합게시판 수정화면 출력   --> 
@@ -53,9 +54,12 @@ select * from subcategory
    delete from lectureboard where lectureNo=#{lectureNo}
 </delete>
 
-<!--  -->
+<!--  전체 글 출력 -->
 <select id="allList" resultType="com.class_ic.vo.LectureBoardDTO" >
-select * from lectureboard
+
+select * from lectureboard where classCode in 
+(select classCode from classMember where email=#{email})
+
 
 </select>
 

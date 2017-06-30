@@ -12,6 +12,7 @@
 <br>
 <br>
 <script type="text/javascript">
+
 function myFunction() {
     document.getElementById("writeForm").reset();
 }
@@ -40,9 +41,13 @@ function myFunction() {
     		var content=$("#content").val();
     		var cate=$("#cate").val();
     		var subcate=$("#subcate").val();
+<<<<<<< HEAD
     		var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
     		var fileData = new FormData();
     		fileData.append('file', $('input[type=file]')[0].files[0]);
+=======
+    		var sessionClassCode="<%=(String)session.getAttribute("email")%>";
+>>>>>>> branch 'AfterMaster' of https://github.com/johntei/CLASS-IC.git
 
         	console.log(title);
         	console.log(content);

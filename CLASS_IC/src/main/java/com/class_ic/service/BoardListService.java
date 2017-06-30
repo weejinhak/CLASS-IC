@@ -105,7 +105,10 @@ public class BoardListService {
 		System.out.println("selectCategory 메소드 들어옴.");
 
 		BoardDAO board = sqlsession.getMapper(BoardDAO.class);
-		List<CategoryDTO> totalcate = board.selectCategory();
+		HttpSession session=request.getSession();
+		String email=(String) session.getAttribute("email");
+		System.out.println("야 임마너"+session.getAttribute("email"));;
+		List<CategoryDTO> totalcate = board.selectCategory(email);
 
 		System.out.println(totalcate);
 
@@ -126,9 +129,10 @@ public class BoardListService {
 
 		String cate = request.getParameter("cate");
 		System.out.println(cate);
-
+		HttpSession session=request.getSession();
+		String email=(String) session.getAttribute("email");
 		BoardDAO board = sqlsession.getMapper(BoardDAO.class);
-		List<SubCategoryDTO> subcate = board.selectSubCategory();
+		List<SubCategoryDTO> subcate = board.selectSubCategory(email);
 
 		ArrayList<SubCategoryDTO> subcate2 = new ArrayList<SubCategoryDTO>();
 		for (SubCategoryDTO value : subcate) {
@@ -207,8 +211,9 @@ public class BoardListService {
 	public ModelAndView allBoard(LectureBoardDTO bvo, HttpServletRequest request) {
 
 		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
-
-		ArrayList<LectureBoardDTO> blist = bdao.allList();
+		HttpSession session=request.getSession();
+		String email=(String) session.getAttribute("email");
+		ArrayList<LectureBoardDTO> blist = bdao.allList(email);
 
 		// 리턴 셋팅
 		ModelAndView m = new ModelAndView();
@@ -222,11 +227,18 @@ public class BoardListService {
 	public ModelAndView totalBoard(LectureBoardDTO bvo, HttpServletRequest request) {
 
 		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+		HttpSession session=request.getSession();
+		String email=(String) session.getAttribute("email");
 
 		String cateCode = request.getParameter("cateCode");
 		String subcateCode = request.getParameter("subcateCode");
+		SubCategoryDTO dto=new SubCategoryDTO();
+		dto.setEmail(email);
+		dto.setSubcateCode(subcateCode);
+		dto.setCateCode(cateCode);
+		
 
-		ArrayList<LectureBoardDTO> blist = bdao.allBoard(cateCode, subcateCode);
+		ArrayList<LectureBoardDTO> blist = bdao.allBoard(dto);
 
 		// 리턴 셋팅
 		ModelAndView m = new ModelAndView();
@@ -285,7 +297,7 @@ public class BoardListService {
 
 	}
 
-	// 하나 씩 삭제
+	//action의 x버튼 누르기 삭제 
 	public String delete(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("totalBoard_delete.htm 컨트롤러 탐 ");
 		int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));
