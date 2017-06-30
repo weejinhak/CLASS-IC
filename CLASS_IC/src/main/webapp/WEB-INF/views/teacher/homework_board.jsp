@@ -44,8 +44,8 @@
                          </div>
                          
                          <div class="col-sm-12"> 
-                  <div class="card-content">
-                            <!-- 테이블 -->
+<!--                   <div class="card-content">
+                            테이블
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
@@ -62,13 +62,46 @@
                                             </tbody>
                                         </table>
                                     </div>
-                        </div> 
+                        </div>  -->
+                        
+                        <table id="datatables"
+											class="table table-striped table-no-bordered table-hover dataTable dtr-inline"
+											cellspacing="0" width="100%" style="width: 100%;" role="grid"
+											aria-describedby="datatables_info">
+											<thead>
+												<tr role="row">
+													<th class="sorting" tabindex="0" aria-controls="datatables"
+														rowspan="1" colspan="1" style="width: 98px;">학생이름</th>
+													<th class="sorting" tabindex="0" aria-controls="datatables"
+														rowspan="1" colspan="1" style="width: 98px;">일자</th>
+													<th class="sorting" tabindex="0" aria-controls="datatables"
+														rowspan="1" colspan="1" style="width: 225px;">입실시간</th>
+													<th class="sorting" tabindex="0" aria-controls="datatables"
+														rowspan="1" colspan="1" style="width: 225px;">퇴실시간</th>
+													<th class="sorting" tabindex="0" aria-controls="datatables"
+														rowspan="1" colspan="1" style="width: 114px;">상태</th>
+												</tr>
+											</thead>
+
+											<tfoot>
+												<tr>
+     												<th rowspan="1" colspan="1">이름</th>
+													<th rowspan="1" colspan="1">일자</th>
+													<th rowspan="1" colspan="1">입실시간</th>
+													<th rowspan="1" colspan="1">퇴실시간</th>
+													<th rowspan="1" colspan="1">상태</th>
+												</tr>
+											</tfoot>
+											<tbody class="tbodyappend">
+
+											</tbody>
+										</table>
                                     
                                      <button type="button" class="btn btn-info btn-round" id="noticeBtn" style="float: right;">
-                                       글쓰기</a>
+                                                                                               글쓰기
                                     </button>
                                     
-                                    </div>
+                        </div>
                                     
                                 
                   <center>
@@ -226,12 +259,12 @@
                
                $.each(data, function(){
                   
-                  $("#tbody").append("<tr><td>"+this.assignNo+"</td><td>"+this.cateCode+"</td><td>"+this.assignTitle+"</td><td>"+this.name+"</td><td>"+this.assignDate+"</td></tr>");
+                  $(".tbodyappend").append('<tr role="row" class="odd">'+"<td>"+this.assignNo+"</td><td>"+this.cateCode+"</td><td>"+this.assignTitle+"</td><td>"+this.name+"</td><td>"+this.assignDate+"</td></tr>");
                            
                });
                
                $('td').click(function() {
-					var assignNo =$("#assignNo").val();
+					var assignNo = this.assignNo;
 					
 					$.ajax({
 						type:'GET',
@@ -257,52 +290,28 @@
          
       }
       
-      //페이징
-       $('#datatables2').DataTable({
-               "pagingType": "full_numbers",
-               "lengthMenu": [
-                   [10, 25, 50, -1],
-                   [10, 25, 50, "All"]
-               ], //게시물 표시
-               responsive: true,
-               language: {
-                   search: "_INPUT_",
-                   searchPlaceholder: "단어를 입력하세요", //단어검색
-               }
-
-           }); 
-
+    
       
       
       
    }); 
 </script>
-<script>
-   //partyName별 출력
-  /*서브카테고리가 변경이 되면 Ajax를 태움.   */
-  /* $('#서브카테고리').change(function(event)){
 
-     var 메인카테고리= $('#메인카테고리').val();
-     var 서브카테고리=$('#서브카테고리').val();
 
-     $.ajax({
-       
-        url:'homeworkSelectList.htm',
-        data:{
-         
-           email:sessionId,
-           classcode:sessionClassId,
-           cateCode:cateCode,
-           partyName:partyName
-        },
-        dataType:'html',
-        success:function(data){
-         $('#list').html(data);        
-        }
-     });
-  }); */
+
+<!--데이터테이블에 검색과 페이징처리를 담당하는 스크립트 -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#datatables').DataTable({
+			"pagingType" : "full_numbers",
+			"lengthMenu" : [ [ 10, 25, 50, -1 ], [ 10, 25, 50, "All" ] ],
+			responsive : true,
+			language : {
+				search : "__INPUT__",
+				searchPlaceholder : "검색해보세요",
+			}
+
+		});		
+		
+	});
 </script>
-
-
-
-
