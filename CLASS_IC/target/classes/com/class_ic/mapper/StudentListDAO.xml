@@ -8,7 +8,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectStudent" parameterType="String" resultType="com.class_ic.vo.MemberDTO">
 	select *
 	from member m join classmember c on m.email = c.email
-	where c.classCode=#{classCode};
+	join classicauthority a on a.email = c.email
+	where 
+	c.classCode=#{classCode} and a.authority='ROLE_STUDENT';
 	</select>
 
 </mapper>

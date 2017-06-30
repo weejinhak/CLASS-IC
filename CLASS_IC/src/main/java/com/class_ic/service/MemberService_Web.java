@@ -54,7 +54,6 @@ public class MemberService_Web {
 		session.setAttribute("email", member.getEmail());
 		session.setAttribute("name", member.getName());
 		session.setAttribute("totalCount", totalCount);
-		session.setAttribute("classCode", member.getClassCode());
 		
 		if(result){
 
