@@ -13,6 +13,11 @@ public interface HomeworkDAO {
 	public int addTeamDao(HomeworkDTO dto);
 	
 	//카테고리 선택시 조 출력
-	public List<HomeworkDTO> selectTeamDao(HomeworkDTO dto);
+	public List<String> selectTeamDao(HomeworkDTO dto);
+	
+	//공지사항 등록 : 강사
+ 	public int addNoticeDao(HomeworkDTO dto);
 
+ 	//과제게시판 전체 출력
+ 	public List<HomeworkDTO> selectAll(HomeworkDTO dto);
 }

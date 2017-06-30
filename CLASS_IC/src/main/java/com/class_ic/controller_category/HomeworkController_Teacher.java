@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service.HomeworkService;
 import com.class_ic.service.StudentListService;
@@ -52,11 +53,11 @@ public class HomeworkController_Teacher {
 	
 	//과제 게시판 조 등록 : 2017.06.28 최은혜
 	@RequestMapping(value="addHomework.htm", method = RequestMethod.POST)
-	public String addCate(String email, String classCode, String cateCode, String teamName) {
+	public String addCate(String email, String classCode, String cateCode, String partyName) {
 		
 		System.out.println("addTeam 메소드 들어옴");
 		
-		homeworkService.addTeamService(email,classCode,cateCode,teamName);
+		homeworkService.addTeamService(email,classCode,cateCode,partyName);
 		
 		return "redirect:homework.htm";
 	}
@@ -65,15 +66,68 @@ public class HomeworkController_Teacher {
 		@RequestMapping(value="selectTeam.htm", method=RequestMethod.POST)
 		public void MovePage(String email, String classCode, String cateCode,HttpServletResponse response) throws IOException {
 			
-			List<HomeworkDTO> TeamList = homeworkService.selectTeamService(email, classCode, cateCode);
+			System.out.println("selectTeam.html controller 들어옴");
+			
+
+			List<String> teamList = homeworkService.selectTeamService(email, classCode, cateCode);
 			
 			JSONArray array = new JSONArray();
-			for(int i=0;i<TeamList.size();i++){
+			for(int i=0;i<teamList.size();i++){
+				
 				JSONObject obj = new JSONObject();
-				obj.put("teamName", TeamList.get(i).getTeamName());
+				obj.put("partyName", teamList.get(i));
 				array.add(obj);
 				
-				System.out.println(TeamList.get(i).getTeamName());
+			}
+			
+			response.getWriter().println(array);
+			
+		}
+		
+		//과제 공지 페이지 이동 : 2017.06.29  최은혜
+		@RequestMapping("homeworkNoticePage.htm")
+		public String homeworkNotice(HttpServletRequest request){
+		
+			return "teacher.homework_content";
+		
+		}
+		
+		//공지사항 등록 : 강사  2017.06.28 최은혜
+		@RequestMapping(value="addNotice.htm", method = RequestMethod.POST)
+		public String addNotice(String email,String classCode,String cateCode,String assignNotice,String assignTitle,String assignContent) {
+			
+			System.out.println("addNotice controller 들어옴");
+			
+			System.out.println(email +"/"+classCode+"/"+cateCode+"/"+assignNotice+"/"+assignTitle+"/"+assignContent);
+			
+			homeworkService.addNoticeService(email,classCode,cateCode,assignNotice,assignTitle,assignContent);
+			
+			return "redirect:homework.htm";
+		}
+		
+		
+		//과제 게시판 전체 출력 : 2017.06.30 최은혜
+		@RequestMapping(value="selectAllList.htm", method=RequestMethod.POST)
+		public void selectAllList(String classCode, String email ,HttpServletResponse response) throws IOException {
+			
+			HomeworkDTO dto = new HomeworkDTO();
+			dto.setClassCode(classCode);
+			dto.setEmail(email);
+			
+			System.out.println("Homework controller_Teacher classCode: "+ classCode);
+			
+			List<HomeworkDTO> AllList = homeworkService.selectAllList(dto);
+			
+			JSONArray array = new JSONArray();
+			for(int i=0;i<AllList.size();i++){
+				JSONObject obj = new JSONObject();
+				obj.put("assignNo", AllList.get(i).getAssignNo());
+				obj.put("cateCode", AllList.get(i).getCateCode());
+				obj.put("assignTitle", AllList.get(i).getAssignTitle());
+				obj.put("assignContent", AllList.get(i).getAssignContent());
+				obj.put("name", AllList.get(i).getName());
+				obj.put("assignDate", AllList.get(i).getAssignDate());
+				array.add(obj);
 			}
 			
 			response.getWriter().println(array);

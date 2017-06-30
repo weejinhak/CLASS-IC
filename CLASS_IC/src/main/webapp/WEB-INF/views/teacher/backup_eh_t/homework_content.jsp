@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,7 +12,6 @@
 <!-- 파일 업로드 추가 부분  -->
  </head>
 
-<body>
     <div class="wrapper">
        
           <!-- side navi 메뉴 영역-->
@@ -20,10 +22,6 @@
            <!--  contents 영역 -->
            
 
-<br>
-<br>
-<br>
-<br>
 <script type="text/javascript">
 
 	   $().ready(function() {
@@ -130,7 +128,7 @@
 <div class="col-md-12">
 	<div class="card">
 		<div class="card-header card-header-text" data-background-color="rose">
-			<h4 class="card-title">통합 게시판 글 입력하기</h4>
+			<h4 class="card-title">공지</h4>
 		</div>
 		<div class="card-content">
 			<div class="row">
@@ -256,11 +254,6 @@
 </div>
            <!--   contents 영역 끝 -->
            
-        </div>
-         </div>
-</body>
 
-<!-- 에디터 추가부분 -->
-=======
 <!--에디터 추가부분 -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>

@@ -11,13 +11,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 카테고리별 조 등록 : 2017.06.28 최은혜 -->
 <insert id="addTeamDao" parameterType="com.class_ic.vo.HomeworkDTO">
-	insert into groupcategory(email,classCode,cateCode,teamName) 
-	values(#{email},#{classCode},#{cateCode},#{teamName})
+	insert into groupcategory(email,classCode,cateCode,partyName) 
+	values(#{email},#{classCode},#{cateCode},#{partyName})
 </insert> 
 
 <!-- 카테고리 선택시 조 출력 : 2017.06.29 최은혜 -->
-<select id="selectTeamDao" parameterType="com.class_ic.vo.HomeworkDTO" resultType="com.class_ic.vo.HomeworkDTO">
-	select teamName from groupcategory where classCode=#{classCode} and cateCode=#{cateCode} and email=#{email}
+<select id="selectTeamDao"  parameterType="com.class_ic.vo.HomeworkDTO" resultType="String">
+	select partyName from groupcategory where classCode=#{classCode} and cateCode=#{cateCode} and email=#{email} order by partyName
+</select>
+
+
+<!-- 공지글  등록 : 2017.06.29 최은혜 -->
+<insert id="addNoticeDao" parameterType="com.class_ic.vo.HomeworkDTO">
+	insert into assignboard(classCode,email,cateCode,assignTitle,assignContent,assignDate,assignNotice)
+	values(#{classCode},#{email},#{cateCode},#{assignTitle},#{assignContent},now(),#{assignNotice});
+</insert> 
+
+<!-- 과제 게시판 전체 출력 : 2017.06.30 최은혜 -->
+<select id="selectAll" parameterType="com.class_ic.vo.HomeworkDTO" resultType="com.class_ic.vo.HomeworkDTO">
+select * from 
+assignboard a inner join member m on a.email=m.email
+where a.classCode=#{classCode} and a.email=#{email} order by field(assignNotice,'true') desc, assignDate desc;
 </select>
 
 </mapper>
+
+
+
+
