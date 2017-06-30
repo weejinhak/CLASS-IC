@@ -241,7 +241,7 @@
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                      <li>
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD
 
                         <div class="card">
                            <div class="card-header card-header-icon"
@@ -273,7 +273,7 @@
                            </div>
                         </div>
 
-=======
+======= -->
                <div class="col-sm-12">
             <div class="card card-stats">
                <div class="card-header" data-background-color="orange">
@@ -315,7 +315,7 @@
                </div>
             </div>
          </div>
->>>>>>> refs/remotes/origin/AfterMaster
+
                      </li>
                   </ul>
                </div>
