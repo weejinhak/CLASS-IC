@@ -67,11 +67,7 @@ select * from lectureboard where classCode in
 
 <!-- 통합게시판 자료 입력 -->
 <insert id="insertFile">
-	INSERT INTO file (fileSrc, fileSrc2)values(#{fileSrc}, #{fileSrc2});
-</insert>
-<!-- 통합게시판 자료 게시판 잇는 테이블 insert -->
-<insert id="insertLectureBoardFile">
-	INSERT INTO lectureboardfile (fileNo, lectureNo) VALUES (LAST_INSERT_ID(), LAST_INSERT_ID())
+	INSERT INTO filelecture (lectureNo, fileSrc ) VALUES (LAST_INSERT_ID() , #{fileSrc})
 </insert>
 
 <!-- 멤버 select box 출력 -->

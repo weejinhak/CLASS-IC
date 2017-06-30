@@ -41,19 +41,26 @@ function myFunction() {
     		var content=$("#content").val();
     		var cate=$("#cate").val();
     		var subcate=$("#subcate").val();
+<<<<<<< HEAD
+    		var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
+    		var fileData = new FormData();
+    		fileData.append('file', $('input[type=file]')[0].files[0]);
+=======
     		var sessionClassCode="<%=(String)session.getAttribute("email")%>";
+>>>>>>> branch 'AfterMaster' of https://github.com/johntei/CLASS-IC.git
 
         	console.log(title);
         	console.log(content);
         	console.log(cate);
         	console.log(subcate);
         	console.log(sessionClassCode);
+        	console.log(fileData);
 
         	$.ajax({ 
         		type: 'post' ,
-        		/* enctype: "multipart/form-data", */
+        		enctype: "multipart/form-data", 
         		url: '${pageContext.request.contextPath}/boardcontentsave.htm', 
-        		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode},
+        		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode, files:fileData},
         		dataType:'text',
                 success : function(data){
                 	
