@@ -40,7 +40,7 @@ public interface BoardDAO {
     //수정 완료
     public int totalboardEditOk(LectureBoardDTO dto);
 
-    //글  삭제      
+  //action의 x버튼 누르기 삭제  
     public void deleteLect(int lectureNo);
 
     

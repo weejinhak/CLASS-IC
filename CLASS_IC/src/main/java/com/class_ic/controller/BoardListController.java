@@ -212,11 +212,13 @@ public class BoardListController {
      	 return viewpage;
     }
     
-    //하나 씩 삭제
-    @RequestMapping(value="teacher/totalBoard_delete.htm" ) 
+    //action의 x버튼 누르기 삭제 
+    @RequestMapping(value="teacher/totalBoard_delete.htm", method = RequestMethod.POST ) 
     public String delete(HttpServletRequest request, HttpServletResponse response){ 
+    	 System.out.println("*****************삭제 컨트롤러러러럴럴ㄹ");
+    	
     	String viewpage = boardlistservice.delete(request, response);
-    	 
+    	
     	 return viewpage;
     }
     
