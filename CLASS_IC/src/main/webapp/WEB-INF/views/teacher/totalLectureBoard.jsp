@@ -212,7 +212,7 @@
 									<div class="row">
 										<div class="col-md-12">
 											<input type="text" class="form-control" placeholder="추가할 카테고리를 입력하세요."
-												 name="lectureTitle" value="">
+												 name="lectureTitle" value="" id="insertcate">
 										</div>
 									</div>
 									
@@ -223,7 +223,7 @@
 								</div>
 							</div>
 							<div class="modal-footer text-center">
-								<button type="button" class="btn btn-success btn-simple" onclick="multi_send()">작성</button>
+								<button type="button" class="btn btn-success btn-simple" onclick="insertcate()">카테고리 만들기</button>
 								<button type="button" class="btn btn-simple" data-dismiss="modal">취소</button>
 
 							</div>
@@ -272,8 +272,8 @@
 									<div class="row">
 										<div class="col-md-12">
 											<input type="text" class="form-control" placeholder="추가할 서브 카테고리를 입력하세요."
-												 name="lectureTitle" value="${LectureBoardDTO.lectureTitle}">
-										</div>
+												 name="lectureTitle" value="" id="insertsubcate">
+								 		</div>
 									</div>
 									
 
@@ -282,7 +282,7 @@
 								</div>
 							</div>
 							<div class="modal-footer text-center">
-								<button type="button" class="btn btn-success btn-simple" onclick="multi_send()">작성</button>
+								<button type="button" class="btn btn-success btn-simple" onclick="insertsubcate()">서브 카테고리 생성</button>
 								<button type="button" class="btn btn-simple" data-dismiss="modal">취소</button>
 
 							</div>
@@ -298,8 +298,70 @@
 
 	<script type="text/javascript">
 
-	   
+	var email="<%=(String)session.getAttribute("email")%>";
 
+	//카테고리 추가하는 함수
+	function insertcate(){
+		
+		var insertcate=$('#insertcate').val();
+
+		 $.ajax({
+	           type: 'POST',
+	           url: 'insertcate.htm',
+	           data: {cateCode:insertcate,cateTitle:insertcate,email:email} ,
+	           dataType: 'text',
+	           success: function() {
+	               swal({
+	                   title: 'Success!',
+	                   text: '카테고리가 추가 되었습니다.',
+	                   type: 'success',
+	                   confirmButtonClass: "btn btn-success",
+	                   buttonsStyling: false
+	                   }).then(function() {
+	   					
+	                  	 location.href="allboard.htm"
+	   				})
+	           },
+	           error: function() {
+	              alert('bad');
+	           } 
+
+	       });
+		
+	}
+
+	//서브 카테고리 추가하는 함수
+	function insertsubcate(){
+
+		var insertsubcate=$('#insertsubcate').val();
+		var cateCode=$('#cate2').val();
+
+		alert(insertsubcate+","+cateCode);
+		 $.ajax({
+	           type: 'POST',
+	           url: 'insertsubcate.htm',
+	           data: {subcateCode:insertsubcate,cateCode:cateCode,subcateTitle:insertsubcate,email:email} ,
+	           dataType: 'text',
+	           success: function() {
+	               swal({
+	                   title: 'Success!',
+	                   text: '서브 카테고리가 추가 되었습니다.',
+	                   type: 'success',
+	                   confirmButtonClass: "btn btn-success",
+	                   buttonsStyling: false
+	                   }).then(function() {
+	   					
+	                  	 location.href="allboard.htm"
+	   				})
+	           },
+	           error: function() {
+	              alert('bad');
+	           } 
+
+	       });
+	}
+	
+	
 	//멀티컨텐츠 기수로 보내기
 	   function multi_send()
 	   {
@@ -513,6 +575,7 @@ var data="";
             cate();
             sendclass();  
             
+
             function cate() {
                  
                $.ajax({ 

@@ -19,7 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.class_ic.app.dto.MemberDTO;
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.service.BoardListService;
+import com.class_ic.vo.CategoryDTO;
 import com.class_ic.vo.LectureBoardDTO;
+import com.class_ic.vo.SubCategoryDTO;
 
 
 
@@ -222,6 +224,27 @@ public class BoardListController {
     @RequestMapping("teacher/totalBoard_contentview.htm") 
     public ModelAndView boardContentDetail(HttpServletRequest request, HttpServletResponse response,LectureBoardDTO bvo ){
   	  ModelAndView viewpage = boardlistservice.boardContentDetail(request, response, bvo);
+  	   
+      return viewpage;
+    	
+    }
+    //카테고리 추가 함수
+    
+    @RequestMapping("teacher/insertcate.htm") 
+    public ModelAndView insertCate(HttpServletRequest request, HttpServletResponse response,CategoryDTO dto){
+  	  System.out.println("카테고리 insert 컨트롤러 탐");
+    	ModelAndView viewpage = boardlistservice.insertCate(request, response, dto);
+  	   
+      return viewpage;
+    	
+    }
+    
+    //서브 카테고리 추가 함수
+    
+    @RequestMapping("teacher/insertsubcate.htm") 
+    public ModelAndView insertSubate(HttpServletRequest request, HttpServletResponse response,SubCategoryDTO dto){
+    	  System.out.println("서브 카테고리 insert 컨트롤러 탐");
+    	ModelAndView viewpage = boardlistservice.insertSubcate(request, response, dto);
   	   
       return viewpage;
     	
