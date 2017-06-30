@@ -56,4 +56,10 @@ public interface BoardDAO {
 	  //ClassByLecture 데이터 모두 가져오기
 	  
 	  public ArrayList<ClassByLectureDTO> selectClassByLecture();
+	  
+	  //카테고리 추가	  
+	  public int insertCate(CategoryDTO dto);
+	  
+	  //서브 카테고리 추가
+	  public int insertSubcate(SubCategoryDTO dto);
 }
