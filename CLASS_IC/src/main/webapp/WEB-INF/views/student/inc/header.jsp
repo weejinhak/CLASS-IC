@@ -70,7 +70,7 @@
 
          type : "post",
          dataType : "html",
-         url : "newAlarm.htm",
+         url : "/class_ic/common/newAlarm.htm",
          data : {
             "newAlarm" : evt.data
          },
