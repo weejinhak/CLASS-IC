@@ -7,16 +7,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.class_ic.dao.BoardDAO">
 
-
+<!--통합게시판 글쓰기 -->
 <insert id="insertBoardContent" parameterType="com.class_ic.vo.LectureBoardDTO">
 insert into lectureboard(classCode,cateCode,subcateCode,lectureTitle,lectureContent,lectureDate)
 values(#{classCode},#{cateCode},#{subcateCode},#{lectureTitle},#{lectureContent},CURDATE())
 </insert>
 
+<!--카테고리 select box  -->
 <select id="selectCategory" resultType="com.class_ic.vo.CategoryDTO">
 select * from category
 </select>
 
+<!--서브카테고리 select box  -->
 <select id="selectSubCategory" resultType="com.class_ic.vo.SubCategoryDTO">
 select * from subcategory
 </select>

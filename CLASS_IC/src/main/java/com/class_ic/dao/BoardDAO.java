@@ -27,9 +27,8 @@ public interface BoardDAO {
 	public int insertLectureBoardFile(LectureBoardDTO lectureBoardDTO);
 	
 	//LectureBoard DAO 옮겨옴
-
-	  //게시판  리스트 조회 
-	  //원래는 boardvo일것 
+	
+	//통합게시판 카테고리,서브카테고리 select box 
     public  ArrayList<LectureBoardDTO> allBoard(String cateCode,String subcateCode) ;
     
     //모든 글을 긁어옴.

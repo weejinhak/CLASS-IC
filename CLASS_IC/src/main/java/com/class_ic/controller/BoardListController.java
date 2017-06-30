@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.app.dto.MemberDTO;
 import com.class_ic.dao.BoardDAO;
@@ -32,7 +33,7 @@ import com.class_ic.vo.LectureBoardDTO;
 /*
 * @Class: BoardListController 
 * @Date: 2017.06. 24
-* @Author: 노지영
+* @Author: 노지영, 김은영, 박소현
 * @Desc: 게시판의 게시글의 정보의 C.R.U.D 를 담당하는 컨트롤러.
 */
 
@@ -49,9 +50,6 @@ public class BoardListController {
 
 	@RequestMapping(value = "teacher/boardcontent.htm", method = RequestMethod.GET)
 	public String boardContentView(HttpServletRequest request){
-		
-		
-	
 		return "teacher.board_content";
 
 	
@@ -59,9 +57,6 @@ public class BoardListController {
 	
 	@RequestMapping("boardcontent.htm")
 	public String boardContent(HttpServletRequest request){
-		
-		
-	
 		return "common/board_content";
 
 	
@@ -148,11 +143,12 @@ public class BoardListController {
 	
 	}
 
-	//셀렉바스에 기수 불러오기
+
+	//셀렉박스에 기수 불러오기
  	@RequestMapping(value = "selectmember.htm", method = RequestMethod.POST)
 	public String selectMember(Model model,HttpServletRequest request,HttpSession session){
  			System.out.println("기수 select 박스 컨트롤러");
-	String viewpage=boardlistservice.selectMember(model, request, session);
+ 			String viewpage=boardlistservice.selectMember(model, request, session);
     	return viewpage;
     
 	
@@ -168,7 +164,69 @@ public class BoardListController {
    	 
    	 return viewpage;
     }
- 	
+    
+	///여기서 부터 합쳤어용
+    
+    //통합게시판 전체 출력
+    @RequestMapping(value="teacher/allboard.htm") 
+    public ModelAndView allBoard(LectureBoardDTO bvo, HttpServletRequest request){ 
+        ModelAndView viewpage = boardlistservice.allBoard(bvo, request);
+        
+        return viewpage;
+         
+    }
+    
+    //통합게시판 카테고리,서브카테고리 select box 
+    @RequestMapping(value="teacher/totalboard.htm") 
+    public ModelAndView totalBoard(LectureBoardDTO bvo, HttpServletRequest request){ 
+    ModelAndView viewpage = boardlistservice.totalBoard(bvo, request);
+        
+        return viewpage;
+         
+    }
+    
+    //통합게시판 수정화면 처리
+    @RequestMapping(value="teacher/totalboardEdit.htm",method = RequestMethod.GET)
+    public ModelAndView  totalboardEdit(LectureBoardDTO dto,HttpServletRequest request,int lectureNo){
+    	  ModelAndView viewpage = boardlistservice.totalboardEdit(dto, request, lectureNo);
+          
+          return viewpage;
+           
+    }
+    
+    //통합게시판 수정된 데이터 DB저장
+    @RequestMapping(value="teacher/totalboardEdit.htm", method = RequestMethod.POST )
+    public String totalboardEditOk(LectureBoardDTO dto){
+    	String viewpage = boardlistservice.totalboardEditOk(dto);
+      	 
+      	 return viewpage;
+    }
+    
+    //다중삭제 
+    @RequestMapping(value="teacher/totalBoard_multi_delete.htm" ) 
+    public String multi_del(HttpServletRequest request, HttpServletResponse response ) {
+    	String viewpage = boardlistservice.multi_del(request, response);
+     	 
+     	 return viewpage;
+    }
+    
+    //하나 씩 삭제
+    @RequestMapping(value="teacher/totalBoard_delete.htm" ) 
+    public String delete(HttpServletRequest request, HttpServletResponse response){ 
+    	String viewpage = boardlistservice.delete(request, response);
+    	 
+    	 return viewpage;
+    }
+    
+    //게시판 글 상세보기
+    @RequestMapping("teacher/totalBoard_contentview.htm") 
+    public ModelAndView boardContentDetail(HttpServletRequest request, HttpServletResponse response,LectureBoardDTO bvo ){
+  	  ModelAndView viewpage = boardlistservice.boardContentDetail(request, response, bvo);
+  	   
+      return viewpage;
+    	
+    }
+    
 }
 
 
