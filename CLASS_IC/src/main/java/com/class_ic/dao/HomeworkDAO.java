@@ -20,4 +20,7 @@ public interface HomeworkDAO {
 
  	//과제게시판 전체 출력
  	public List<HomeworkDTO> selectAll(HomeworkDTO dto);
+ 	
+ 	//과제게시판 상세보기
+ 	public List<HomeworkDTO> selectContent(int assignNo);
 }

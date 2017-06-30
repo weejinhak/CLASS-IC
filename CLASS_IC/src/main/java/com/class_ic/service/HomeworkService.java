@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.HomeworkDAO;
 import com.class_ic.vo.HomeworkDTO;
@@ -85,5 +86,18 @@ public class HomeworkService {
 			List<HomeworkDTO> AllList = dao.selectAll(dto);
 			
 			return AllList;
+		}
+		
+		//과제게시판 상세보기 
+		public ModelAndView homeworkContent(int assignNo){
+			System.out.println("상세보기 서비스탄다.");
+			HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+			List<HomeworkDTO> ContentList = dao.selectContent(assignNo);
+			
+			ModelAndView m = new ModelAndView();
+			m.setViewName("teacher.homework_content");
+			m.addObject("list", ContentList);
+			
+			return m;
 		}
 }
