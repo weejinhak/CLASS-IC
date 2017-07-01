@@ -98,11 +98,10 @@
 											<td class="text-center">${LectureBoardDTO.lectureDate}</td>
 											<td class="text-center"><a
 												href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
-												class="btn btn-simple btn-info btn-icon edit"><i
-													class="material-icons">edit</i></a> <a
+												class="btn btn-simple btn-primary btn-icon edit"><i class="material-icons">border_color</i></a><%--  <a
 												class="btn btn-simple btn-danger btn-icon remove"><i
 													class="material-icons" onclick="deletex()">close</i></a>
-													<input type="hidden" id="lectureNum" name="lectureNum" value="${LectureBoardDTO.lectureNo}">
+													<input type="hidden" id="lectureNum" name="lectureNum" value="${LectureBoardDTO.lectureNo}"> --%>
 											</td>
 										
 										</tr>
@@ -137,7 +136,7 @@
 			<!--  end card  -->
 		</div>
 		<!-- end col-md-12 -->
-	</div>
+	</div></div>
 	<!-- end row -->
 
 	<!-- 기수로 보내기 모달 시작 -->

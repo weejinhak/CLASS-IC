@@ -121,4 +121,49 @@ public class BoardClassListService {
 		
 		return modal;
 	}
+	
+	
+	// 수업 보드 내 action의 x버튼 누르기 삭제 
+	public String delete(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String classCode = (String) session.getAttribute("classCode");
+		System.out.println("totalBoard_delete.htm 컨트롤러 탐 ");
+		ClassByLectureDTO dto= new ClassByLectureDTO();
+		int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));
+		dto.setlectureNo(lectureNo);
+		dto.setClassCode(classCode);
+
+		BoardClassDAO bdao = sqlsession.getMapper(BoardClassDAO.class);
+		int result=bdao.deletx(dto);
+
+
+		return "redirect:allboard.htm";
+	}
+	
+	// 다중삭제
+	public String multi_del(HttpServletRequest request, HttpServletResponse response,Model model) {
+		
+		System.out.println("다중삭제 컨트롤러");
+		HttpSession session=request.getSession();
+		String classCode = (String) session.getAttribute("classCode");
+		String test = request.getParameter("data");
+		ClassByLectureDTO dto= new ClassByLectureDTO();
+		BoardClassDAO bdao = sqlsession.getMapper(BoardClassDAO.class);
+		dto.setClassCode(classCode);
+		
+
+		
+		String[] array = test.split(",");
+
+		for (int i = 0; i < array.length; i++) {
+			dto.setlectureNo(Integer.parseInt(array[i]));
+			// 삭제로 바꿈
+			bdao.deletx(dto);
+
+		}
+		
+	
+		return "redirect:allboard.htm";
+
+	}
 }

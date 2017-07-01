@@ -80,6 +80,25 @@ public class BoardListClassController {
 		return modal;
 	}
 	
+	
+    
+    //수업보드의 action의 x버튼 누르기 삭제 
+    @RequestMapping(value="teacher/classBoard_delete.htm", method = RequestMethod.POST ) 
+    public String delete(HttpServletRequest request, HttpServletResponse response){ 
+    	 System.out.println("*****************삭제 컨트롤러러러럴럴ㄹ");
+    	
+    	String viewpage = boardclasslistservice.delete(request, response);
+    	
+    	 return viewpage;
+    }
+    
+    //다중삭제 
+    @RequestMapping(value="teacher/classtotalBoard_multi_delete.htm" ) 
+    public String multi_del(HttpServletRequest request, HttpServletResponse response,Model model) {
+    	String viewpage =boardclasslistservice.multi_del(request, response,model);
+     	 
+     	 return viewpage;
+    }
     
 }
 
