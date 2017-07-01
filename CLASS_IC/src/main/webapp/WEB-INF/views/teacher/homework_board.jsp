@@ -72,13 +72,11 @@
                         cellspacing="0" width="100%" style="width: 100%">
                         <thead>
                            <tr>
-                              <th class="text-center">check</th>
                               <th class="text-center">#</th>
                               <th class="text-center">category</th>
                               <th class="text-center">제목</th>
                               <th class="text-center">글쓴이</th>
                               <th class="text-center">등록일</th>
-                              <th class="text-center">Actions</th>
                            </tr>
                         </thead>
 
@@ -131,8 +129,7 @@
    $(function(){
       
        showMainCate();
-       datatables();
-         
+       
          $("#addCateBtn").click(function() {
             addHomework();
          });
@@ -149,26 +146,7 @@
              selectCateCodeList();
           });
          
-         //데이터 테이블
-         function datatables() {
-             
-             $('#datatables').DataTable(
-                   {
-                      "pagingType" : "full_numbers",
-                      "lengthMenu" : [ [ 10, 25, 50, -1 ],
-                            [ 10, 25, 50, "All" ] ],
-                      responsive : true,
-                      language : {
-                         search : "_INPUT_",
-                         searchPlaceholder : "Search records",
-                      }
-
-                   });
-
-             var table = $('#datatables').DataTable();
-        }
-   
-    $('.card .material-datatables label').addClass('form-group');
+         
         
          
             function showMainCate() {
@@ -242,8 +220,8 @@
             console.log("showTeamList : "+cateCode)
             console.log(classCode)
             console.log(email)
-                  
-                  $.ajax({
+            
+           $.ajax({
                      
                      type : "post",
                      url:"selectTeam.htm",
@@ -266,8 +244,10 @@
                              //console.log(error);
                              alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
                         }
-                        
-                });
+           		
+           });
+                  
+                 
          } //end showTeamList
          
       
@@ -277,30 +257,37 @@
     /*서브카테고리가 변경이 되면 Ajax를 태움 : 2017.06.29 위진학   */ 
     function selectCateCodeList() {
 
+    	alert("함수는 타니");
              var partyName=$('#selectTeamList').val();
-
-             $.ajax({
-                type : "post",
-                url:'homeworkSelectList.htm',
-                data:{
-                 
-                   email:sessionId,
-                   classcode:sessionClassCode,
-                   partyName:partyName
-                },
-                dataType:'html',
-                success:function(data){
-                
-                   $('#tbody').empty();   
-                 $('#tbody').html(data);    
-                 
-                 console.log(data)
-                }
-             });
+             
+             $('#datatables').DataTable({
+                 "pagingType" : "full_numbers",
+                 "lengthMenu" : [ [ 10, 25, 50, -1 ],
+                       [ 10, 25, 50, "All" ] ],
+                 "responsive" : true,
+                 "language" : {
+                    "search" : "_INPUT_",
+                    "searchPlaceholder" : "Search records"
+                 		},
+                 	"ajax" : {
+                 	  "type" : "post",
+                      "url":"homeworkSelectList.htm",
+                      "data" : {"email" : email, "classCode": classCode , "cateCode":cateCode}
+                 	},//end ajax
+                 	"colums" : [
+                 		{"data": "assignNo"},
+                 		{"data": "cateCode"},
+                 		{"data": "assignTitle"},
+                 		{"data": "name"},
+                 		{"data": "assignDate"}
+                 	]
+                 		
+                 });
+             
   }
          
    });//end 전체 function
-
-   
    
 </script>
+<!--  DataTables.net Plugin    -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.datatables.js"></script>

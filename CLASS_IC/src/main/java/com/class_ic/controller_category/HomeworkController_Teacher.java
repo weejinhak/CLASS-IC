@@ -126,7 +126,7 @@ public class HomeworkController_Teacher {
       
          //팀별 게시물 출력 : 2017.06.30 위진학
          @RequestMapping(value="homeworkSelectList.htm", method=RequestMethod.POST)
-         public String homeworkSelectList(HttpSession session, HttpServletRequest request,Model model) throws IOException {
+         public void homeworkSelectList(HttpSession session, HttpServletRequest request,Model model,HttpServletResponse response) throws IOException {
             
             System.out.println(request.getParameter("partyName"));//select태그에서 선택된 서브카테고리
             System.out.println(session.getAttribute("email"));//세션으로 가지고 다니는 email
@@ -134,9 +134,19 @@ public class HomeworkController_Teacher {
             
             List<HomeworkDTO> AllList = homeworkService.homeworkSelectList(session,request,model);
             
-            model.addAttribute("homeworkselectlist", AllList);
-            
-            return "teacher/homework_partyNameList";
+            JSONArray array = new JSONArray();
+			for(int i=0;i<AllList.size();i++){
+				JSONObject obj = new JSONObject();
+				obj.put("assignNo", AllList.get(i).getAssignNo());
+				obj.put("cateCode", AllList.get(i).getCateCode());
+				obj.put("assignTitle", AllList.get(i).getAssignTitle());
+				obj.put("assignContent", AllList.get(i).getAssignContent());
+				obj.put("name", AllList.get(i).getName());
+				obj.put("assignDate", AllList.get(i).getAssignDate());
+				array.add(obj);
+			}
+			
+			response.getWriter().println(array);
             
          }
          
