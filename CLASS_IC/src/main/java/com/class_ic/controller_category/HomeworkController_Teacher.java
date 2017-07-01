@@ -133,6 +133,14 @@ public class HomeworkController_Teacher {
 			response.getWriter().println(array);
 			
 		}
+		
+		@RequestMapping(value="homeworkContent.htm", method=RequestMethod.GET)
+		public ModelAndView homeworkContent(int assignNo){
+			System.out.println("상세보기 컨트롤러 ");
+			ModelAndView viewpage =homeworkService.homeworkContent(assignNo);
+					
+			return viewpage;
+		}
 }
 
 

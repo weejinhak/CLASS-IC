@@ -137,7 +137,7 @@
 			<!--  end card  -->
 		</div>
 		<!-- end col-md-12 -->
-	</div>
+	</div></div>
 	<!-- end row -->
 
 	<!-- 기수로 보내기 모달 시작 -->

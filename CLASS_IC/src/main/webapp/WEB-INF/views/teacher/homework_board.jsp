@@ -41,7 +41,11 @@
                                    <option disabled="disabled" selected="selected" id="op1">조 선택</option>
                                 </select>
                          </div>  
-                         </div>
+                <button class="btn btn-just-icon btn-round btn-primary"  data-toggle="modal"
+                     data-target="#subcateModal">
+                     <i class="material-icons">library_add</i><div class="ripple-container"></div></button>
+                </div>
+                
                          
                          <div class="col-sm-12"> 
                   <div class="card-content">
@@ -225,14 +229,25 @@
             success : function(data) {
                
                $.each(data, function(){
-                  var html = "";
                   
-                  html =+ "<tr>";
-                  html =+ "<td>"+this.assignNo+"</td><td>"+this.cateCode+"</td><td>"+this.assignTitle+"</td><td>"+this.name+"</td><td>"+this.assignDate+"</td>";
-                  html =+ "</tr>";
-                  $("#tbody").append(html);
+                  $("#tbody").append("<tr><td>"+this.assignNo+"</td><td>"+this.cateCode+"</td><td>"+this.assignTitle+"</td><td>"+this.name+"</td><td>"+this.assignDate+"</td></tr>");
                            
                });
+               
+               $('td').click(function() {
+					var assignNo =$("#assignNo").val();
+					
+					$.ajax({
+						type:'GET',
+						url:'homeworkContent.htm',
+						data : {classCode:classCode,email:email,assignNo:assignNo},
+						success: function(){
+							alert('성공');
+							locatio.href="homeworkContent.htm"
+						}
+					
+					})
+			   });
                
                
                }, 
