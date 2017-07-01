@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,11 +9,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!--에디터 추가부분 -->
 <link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
+<!-- 파일 업로드 추가 부분  -->
+ </head>
 
-<br>
-<br>
-<br>
-<br>
+    <div class="wrapper">
+       
+          <!-- side navi 메뉴 영역-->
+           <!--   <tiles:insertAttribute name="navi" /> -->  
+          <div class="main-panel">
+          <!--  header 영역 -->
+            <!--  <tiles:insertAttribute name="header" /> -->
+           <!--  contents 영역 -->
+           
+
 <script type="text/javascript">
 
 	   $().ready(function() {
@@ -117,7 +128,7 @@
 <div class="col-md-12">
 	<div class="card">
 		<div class="card-header card-header-text" data-background-color="rose">
-			<h4 class="card-title">통합 게시판 글 입력하기</h4>
+			<h4 class="card-title">공지</h4>
 		</div>
 		<div class="card-content">
 			<div class="row">
@@ -169,6 +180,9 @@
 				</div>
 			</div>
 			
+			<!-- 파일 업로드 시작-->
+			
+			<!--  파일 업로드 끝-->
 			<!-- 파일 첨부  --> 
                                        첨부 파일 #01
                                        
@@ -217,21 +231,29 @@
 
 			<div class="td-actions text-center">
 				<button type="button" rel="tooltip" class="btn btn-info btn-round"
-					id="list" name="list">
+					id="list" name="list" onclick="location.href='allboard.htm' ">
 					<i class="material-icons">list</i>
 				</button>
+				
+				
 				<button type="button" rel="tooltip"
 					class="btn btn-success btn-round" id="save" name="save">
 					<i class="material-icons">done</i>
 				</button>
-				<button type="button" rel="tooltip" class="btn btn-danger btn-round">
+				
+				
+				<button type="reset" rel="tooltip" class="btn btn-danger btn-round">
 					<i class="material-icons" id="close" name="close">close</i>
 				</button>
 			</div>
 			<br> <br> <br>
+
 		</div>
 	</div>
 
 </div>
+           <!--   contents 영역 끝 -->
+           
+
 <!--에디터 추가부분 -->
 <script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>

@@ -5,21 +5,19 @@
 	 <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
-      	 <input type="hidden" class="form-control" id="email" value="${sessionScope.email }">
-		<input type="hidden" class="form-control" id="classCode" value="${sessionScope.classCode }기" >
       	 <div class="row">
 					<div class="card">
 					<!-- 과제카테고리 / 조  추가-->
 					<div class="col-sm-10 col-md-offset-3">
 					<!-- 셀렉트 박스(메인 카테고리 선택) -->
 					    <div class="col-sm-3">
-					         <select  id="selectCateList01" class="selectCateList" title="메인 카테고리 선택해주세요"  >
-                                		
+					         <select  id="selectCateList01" class="form-control selectCateList" title="메인 카테고리 선택해주세요"  >
+                                		<option disabled="disabled" selected="selected">카테고리 선택</option>
                              </select>
                          </div>
                          <div class="col-sm-3">
                      <!-- input 박스(조 카테고리 추가) -->
-                             <input type="text" class="form-control" placeholder="조를 입력해주세요" id="teamName"> 
+                             <input type="text" class="form-control" placeholder="조를 입력해주세요" id="partyName"> 
                          </div>  
                          <div class="col-sm-3" align="right">
                          <button type="button" class="btn btn-danger btn-round" id="addCateBtn">조 추가</a></button>
@@ -32,17 +30,19 @@
 					<div class="col-lg-8">
 					<!-- 셀렉트 박스(메인 카테고리 선택) -->
 					    <div class="col-sm-3">
-                                <select id="selectCateList02" class="selectCateList" title="메인 카테고리 선택" >
+                                <select id="selectCateList02" class="form-control selectCateList"   title="메인 카테고리 선택" >
+                                	<option disabled="disabled" selected="selected">카테고리 선택</option>
                                 </select>
                          </div>
                         
                          <div class="col-sm-3">
                     <!--  셀렉트 박스(조 카테고리 선택) -->
-                                <select id="selectTeamList" title="조 선택" >
+                                <select id="selectTeamList" class="form-control" title="조 선택" >
+                                	<option disabled="disabled" selected="selected" id="op1">조 선택</option>
                                 </select>
                          </div>  
-                                    
                          </div>
+                         
                          <div class="col-sm-12"> 
 						<div class="card-content">
 					 				<!-- 테이블 -->
@@ -51,29 +51,26 @@
                                             <thead>
                                                 <tr>
                                                     <th class="text-center">#</th>
-                                                    <th>글 제목 </th>
-                                                    <th>글 쓴이</th>
-                                                    <th>작성날짜</th>
-                                                    <th class="text-center">Actions</th>
+                                                    <th>카테고리 </th>
+                                                    <th>제목</th>
+                                                    <th>글쓴이</th>
+                                                    <th>등록일</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td>박소현 사람 만들기</td>
-                                                    <td>박소현 어머니</td>
-                                                    <td>2017/06/09</td>
-                                                     <td class="td-actions text-center">
-                                                        <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
-                                                        <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
-                                                    </td>
-                                                </tr>
+                                            <tbody id="tbody">
+                                            	<div class="div"></div>
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div><button type="button" class="btn btn-info btn-round" id="writeBtn" style="float: right;" data-toggle="modal" data-target="#addWrite">
-                                    	글쓰기</a></button></div>
-                                </div>
+                        </div> 
+                                    
+                                     <button type="button" class="btn btn-info btn-round" id="noticeBtn" style="float: right;">
+                                    	글쓰기</a>
+                                    </button>
+                                    
+                                    </div>
+                                    
+                                
 						<center>
 							<ul class="pagination pagination-info">
 								<li><a href="javascript:void(0);"> prev</a></li>
@@ -85,62 +82,22 @@
 								<li><a href="javascript:void(0);">next </a></li>
 							</ul>
 						</center>
+					 
+					 		</div>
 					 </div>
 						<!-- 표끝 -->
 
 
 			</div>
 
-			<!--  tab content end-->
-
-
-		
-	</div>
-
-			<!-- 글쓰기 모달  -->
-			<div class="modal fade" id="addWrite" tabindex="-1" role="dialog"
-				aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-notice">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">
-								<i class="material-icons">clear</i>
-							</button>
-							<h5 class="modal-title" id="myModalLabel">과제 등록</h5>
-						</div>
-						<!-- modal-body -->
-						<div class="modal-body">
-							<div class="instruction">
-								<div class="row">
-									<div class="col-md-12"> 
-										
-										<!-- 여기에 글쓰기 폼 -->
-										
-										
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- modal-body -->
-						<div class="modal-footer text-center">
-							<button type="button" class="btn btn-round" data-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-info btn-round">등록</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 글쓰기 모달 end  -->
-
 		</div>
-	</div>
-      	 </div>
-      </div>
+
       
 <script type="text/javascript">
 	$(function() {
 		
 		showMainCate();
+		selectAllList();
 		
 		$("#addCateBtn").click(function() {
 			addHomework();
@@ -148,6 +105,16 @@
 		
 		$("#selectCateList02").change(function(){
 			showTeamList();
+		});
+		
+		$('#selectTeamList').change(function(){
+			selectCateCodeList();
+		});
+		
+		
+		
+		$("#noticeBtn").click(function() {
+			location.href="homeworkNoticePage.htm";
 		});
 			
 			function showMainCate() {
@@ -166,7 +133,7 @@
 									
 								$.each(data, function(){
 									$(".selectCateList").append("<option value='"+this.cateCode+"'>" + this.cateTitle + "</option> ");
-		                                console.log(this.cateTitle)
+		                                console.log("main cateTitle: "+this.cateTitle)
 								});
 								
 					   		}, 
@@ -188,19 +155,19 @@
 			console.log(email)
 			
 			var cateCode = $("#selectCateList01 option:selected").val();
-			var teamName = $("#teamName").val();
+			var partyName = $("#partyName").val();
 			
 			$.ajax({
 				
 				type : "post",
 				url:"addHomework.htm",
-				data : {"cateCode": cateCode, "teamName":teamName,"email":email,"classCode":classCode},
+				data : {"cateCode": cateCode, "partyName":partyName,"email":email,"classCode":classCode},
 				dataType: 'text',
 				success : function(data) {
 					
 						alert("성공");
 						
-						$("#teamName").val("");
+						$("#partyName").val("");
 		   		}, 
 		   		
 		   		error:function(request, status, error){
@@ -219,19 +186,26 @@
 			var cateCode = $("#selectCateList02").val();
 				
 			console.log("showTeamList : "+cateCode)
+			console.log(classCode)
+			console.log(email)
 					
 					$.ajax({
 						
 						type : "post",
 						url:"selectTeam.htm",
-						data : {"email" : email, "calssCode": classCode , "cateCode":cateCode},
+						data : {"email" : email, "classCode": classCode , "cateCode":cateCode},
 						dataType : 'Json',
 						success : function(data) {
-								
+							
+							 $("#selectTeamList").empty();
+							
 							$.each(data, function(){
-								$("#selectTeamList").append("<option value='"+this.teamName+"'>" + this.teamName + "</option> ");
-	                                console.log(this.teamName)
+								$("#selectTeamList").append("<option value='"+this.partyName+"'>" + this.partyName + "</option> ");
+	                                console.log("partyName: "+this.partyName)
+	                               
 							});
+							
+							selectCateCodeList();
 							
 				   		}, 
 				   		
@@ -242,6 +216,66 @@
 				   		
 				 });
 		} //end showTeamList
+		
+		//과제게시판 전체 정렬
+		function selectAllList() {
+			
+			var email = sessionId;
+			var classCode = sessionClassCode;
+			
+			$.ajax({
+				
+				type : "post",
+				url:"selectAllList.htm",
+				data : {"email" : email, "classCode": classCode },
+				dataType : 'html',
+				success : function(data) {
+					
+					$('#tbody').empty();
+					$('#tbody').html(data); 
+					console.log(data)
+					
+		   		}, 
+		   		
+		   		error:function(request, status, error){
+                    //console.log(error);
+                    alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
+		   		}
+				
+			});
+			
+		}
+		
+		
+
+		//partyName별 출력
+		  /*서브카테고리가 변경이 되면 Ajax를 태움 : 2017.06.29 위진학   */ 
+		  function selectCateCodeList() {
+
+				     var partyName=$('#selectTeamList').val();
+
+				     $.ajax({
+				    	 type : "post",
+				        url:'homeworkSelectList.htm',
+				        data:{
+				         
+				           email:sessionId,
+				           classcode:sessionClassCode,
+				           partyName:partyName
+				        },
+				        dataType:'html',
+				        success:function(data){
+				        
+				        	$('#tbody').empty();	
+				         $('#tbody').html(data);    
+				         
+				         console.log(data)
+				        }
+				     });
+		}
+		
+		
+		
 	}); 
 </script>
 

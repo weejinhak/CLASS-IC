@@ -5,7 +5,12 @@
 <div class="content">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12">s
+			<div class="col-md-12">
+			  		<form id="frm" action="excelDownload.htm?email=<%=(String)session.getAttribute("email")%>&classcode=<%=(String)session.getAttribute("classCode")%>" method="post">          
+					<button type="submit" id="submitFrm"
+                  	class="btn btn-info btn-round" style="margin-left: 820px; margin-top:10px; float: left;" >출석EXCEL다운
+                  	</button>
+					</form>	
 				<div class="card">
 					<div class="card-header card-header-icon"
 						data-background-color="purple">

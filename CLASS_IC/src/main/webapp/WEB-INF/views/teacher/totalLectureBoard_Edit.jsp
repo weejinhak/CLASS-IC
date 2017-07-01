@@ -9,8 +9,7 @@
 
    
    
-</script>
- -->
+
 <div class="col-md-12">
 	<div class="card">
 		<div class="card-header card-header-text"  data-background-color="purple">
@@ -62,12 +61,12 @@
 
 			<div class="td-actions text-center">
 			
-			<form action="teacher/totalLectureBoard">
-				<button type="submit" rel="tooltip" class="btn btn-info btn-round"
-					id="list" name="list" style="">
+			
+				<button type="button" rel="tooltip" class="btn btn-info btn-round"
+					id="list" name="list" onclick="location.href='allboard.htm' ">
 					<i class="material-icons">list</i>
 				</button>
-			</form>
+
 			
 				<button type="submit" rel="tooltip"
 					class="btn btn-success btn-round" id="save" name="save">
@@ -91,3 +90,8 @@
 </div>
 
 
+<script type="text/javascript">
+
+
+
+</script>

@@ -125,6 +125,17 @@
 									
 											<div class="modal-body">
 												<div class="instruction">
+												
+												<div class="row">
+														<div class="col-md-12">				
+															  <div class="form-group">
+							                                   	     <label class="label-control">classcode</label>
+							                                        <input type="text" class="form-control" id="classcode" name="classcode">
+							                                    	<span class="material-input"></span>
+							                                   </div>
+														</div>
+													</div>
+												
 													<div class="row">
 														<div class="col-md-12"> 															
 															<div class="form-group">
@@ -176,8 +187,9 @@
 							                                   </div>
 														</div>
 													</div>
-															
-													<div class="row">
+													
+													<input type="hidden" value="${sessionScope.email }" name="email" id="email" />
+													<!-- <div class="row">
 														<div class="col-md-12">				
 															  <div class="form-group">
 							                                   	     <label class="label-control">초대 코드</label>
@@ -185,9 +197,9 @@
 							                                    	<span class="material-input"></span>
 							                                   </div>
 														</div>
-													</div>
+													</div> -->
 													
-														<div class="row">
+														<!-- <div class="row">
 														<div class="col-md-12">				
 															  <div class="form-group">
 							                                   	     <label class="label-control">이메일</label>
@@ -195,23 +207,16 @@
 							                                    	<span class="material-input"></span>
 							                                   </div>
 														</div>
-													</div>
+													</div> -->
 													
-														<div class="row">
-														<div class="col-md-12">				
-															  <div class="form-group">
-							                                   	     <label class="label-control">classcode</label>
-							                                        <input type="text" class="form-control" id="classcode" name="classcode">
-							                                    	<span class="material-input"></span>
-							                                   </div>
-														</div>
-													</div>
+														
 												</div>												 
 											</div>
 								<div class="modal-footer text-center">
-									<button type="button" class="btn btn-simple" data-dismiss="modal">Never
+									<button type="submit" class="btn btn-success btn-simple">만들기</button>
+									<button type="button" class="btn btn-simple" data-dismiss="modal">취소
 										mind</button>
-									<button type="submit" class="btn btn-success btn-simple">Yes</button>
+									
 								</div>
 								
 							</div>
