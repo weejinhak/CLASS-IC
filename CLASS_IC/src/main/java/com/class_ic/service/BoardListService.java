@@ -104,7 +104,9 @@ public class BoardListService {
 		
 				int file_insert = board.insertFile(dto);		
 				System.out.println("파일 입력 결과: "+file_insert); 
-		
+				int fileNum = board.seqFile();
+				dto.setFileNo(fileNum);
+				board.updateLectureNO(lecNo, fileNum);
 
 	}
 

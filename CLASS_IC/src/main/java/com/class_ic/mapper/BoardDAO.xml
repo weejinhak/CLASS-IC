@@ -88,12 +88,20 @@ select * from lectureboard where classCode in
 
 <!--  방금 입력한 게시판 번호 -->
 <select id="seq" resultType="Integer">
-	select * from lectureboard ORDER BY lectureNo DESC limit 1;
+	select lectureNo from lectureboard ORDER BY lectureNo DESC limit 1;
 </select>
 <!-- 통합게시판 자료 입력 -->
 <insert id="insertFile" parameterType="com.class_ic.vo.LectureBoardDTO">
 	INSERT INTO filelecture (lectureNo, fileSrc, fileSrc2 ) VALUES (#{lectureNo} , #{fileSrc}, #{fileSrc2})
 </insert>
+<!--  방금 입력한 자료 게시판 번호 -->
+<select id="seqFile" resultType="Integer">
+select fileNo from filelecture ORDER BY fileNo DESC limit 1
+</select>
+<!--  자료 게시판 lectureNo update -->
+<update id="updateLectureNO"  parameterType="Integer">
+update filelecture set lectureNo = #{param1} WHERE fileNo=${param2};
+</update>
 
 <!-- 멤버 select box 출력 -->
 <select id="selectMember" resultType="com.class_ic.vo.MemberDTO" parameterType="String">
