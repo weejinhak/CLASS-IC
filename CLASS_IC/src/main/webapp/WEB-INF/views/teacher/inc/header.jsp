@@ -31,6 +31,7 @@
    var msg;
    function connect() {
       console.log(sessionId);
+      console.log(sessionClassCode);
       /* alert("소켓연결!"); */
       wsocket = new WebSocket("ws://192.168.0.142:8090/class_ic/chat-ws.htm?email="+sessionId);
       appendMessage("웹 소켓연결되었습니다.");
