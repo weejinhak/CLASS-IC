@@ -317,13 +317,16 @@ public class BoardClassListService {
 
 		int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));
 		System.out.println("lectno" + lectureNo);
-		ArrayList<LectureBoardDTO> blist = bdao.totalBoard_contentview(lectureNo);
+		LectureBoardDTO blist = bdao.totalBoard_contentview(lectureNo);
+		ArrayList<LectureBoardDTO> bfile = bdao.totalBoard_contenFile(lectureNo);
+		ArrayList<LectureBoardDTO> blink = bdao.totalBoard_contenLink(lectureNo);
 		System.out.println("은영 상세" + blist);
 		// 리턴 셋팅
 		ModelAndView m = new ModelAndView();
 		m.setViewName("teacher.board_content_view");
 		m.addObject("bvo", blist);
-
+		m.addObject("bfile", bfile);
+		m.addObject("blink",blink );
 		return m;
 	}
 
