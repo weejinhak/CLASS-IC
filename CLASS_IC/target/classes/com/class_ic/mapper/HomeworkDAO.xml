@@ -38,6 +38,16 @@ where a.classCode=#{classCode} and a.email=#{email} order by field(assignNotice,
 <select id="selectContent" resultType="com.class_ic.vo.HomeworkDTO" parameterType="int">
 select * from assignboard where assignNo=#{assignNo} and email=#{email} and classCode=#{classCode}
 </select>
+
+<!-- 과제 게시판 전체 출력 : 2017.06.30 위진학-->
+<select id="selectAllByTeacher" parameterType="com.class_ic.vo.HomeworkDTO" resultType="com.class_ic.vo.HomeworkDTO">
+select a.assignNo as assignNo ,a.cateCode as cateCode , a.assignTitle assignTitle, m.name as name, a.assignDate as assignDate
+from 
+groupcategory g inner join assignboard a on g.cateCode=a.cateCode
+inner join member m on m.email = a.email
+where g.partyName=#{partyName} and g.classCode=#{classCode} and g.email=#{email}
+</select>
+
 </mapper>
 
 

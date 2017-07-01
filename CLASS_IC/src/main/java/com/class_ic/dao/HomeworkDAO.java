@@ -23,4 +23,7 @@ public interface HomeworkDAO {
  	
  	//과제게시판 상세보기
  	public List<HomeworkDTO> selectContent(int assignNo);
+ 	
+ 	//partyName별 출력 
+    public List<HomeworkDTO> selectAllByTeacher(HomeworkDTO dto);
 }

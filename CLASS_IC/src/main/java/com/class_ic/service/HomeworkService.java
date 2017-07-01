@@ -3,10 +3,12 @@ package com.class_ic.service;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.HomeworkDAO;
@@ -100,4 +102,23 @@ public class HomeworkService {
 			
 			return m;
 		}
+		
+		//과제게시판 전체  출력 (추가.진학)
+        public List<HomeworkDTO> homeworkSelectList(HttpSession session, HttpServletRequest request,Model model) {
+           
+           String partyName=request.getParameter("partyName");
+           String email=(String)session.getAttribute("email");
+           String classCode=(String)session.getAttribute("classCode");
+           
+           HomeworkDTO dto= new HomeworkDTO();
+           dto.setPartyName(partyName);
+           dto.setEmail(email);
+           dto.setClassCode(classCode);
+           
+           HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+           List<HomeworkDTO> selectAllList = dao.selectAllByTeacher(dto);
+           
+           return selectAllList;
+        }
+        
 }
