@@ -7,7 +7,7 @@
  <div class="content">
                 <div class="container-fluid">
                 
-                
+                	<input type="hidden" value="${sessionScope.classCode}" id="classCode" name=classCode>
         
                     <div class="row">
                         <div class="col-md-12">
@@ -76,45 +76,127 @@
                                             
                                             
                                                 <tr>
-                                                    <th>링크 제목</th> 
-                                                    <th>링크 주소</th> 
+                                                    <th   align="center">링크 제목</th> 
+                                                    <th   align="center">링크 주소</th> 
                                                     
-                                                    <th>연관 글 링크</th> 
+                                                    <th   align="center">연관 글 링크</th> 
                                                     <th class="disabled-sorting text-right">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                             <!--  여기서부터 tr td-->
-<%--                                                       <c:forEach var="lvo" items="${lvo}"> --%>
+                                                      <c:forEach var="lvo" items="${lvo}">
                                                 <tr>
                                                     <td>
-<%--                                                     ${lvo.linkTitle} --%>
+                                                    ${lvo.linkTitle}
                                                     </td>
                                                     <td>
-                                               <%--      <a href="http://${lvo.linkSrc}"  target="_blank">
-                                                    ${lvo.linkSrc}</a> --%>
+                                                      <a href="http://${lvo.linkSrc}"  target="_blank">
+                                                    ${lvo.linkSrc}</a>  
                                                     </td> 
+                                                    <td> 
+			<!--  lectureno 넘겨줘서 상세보여주기  --> <a href="#">
+                                                    ${lvo.lectureTitle}</a></td>
                                                     <td class="text-right">
                                                         <a href="#" class="btn btn-simple btn-info btn-icon like"><i class="material-icons">favorite</i></a> 
                                                         <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
                                                     </td>
                                                    <td></td>
                                                 </tr>
-<%--                                                 </c:forEach> --%>
+                                                </c:forEach>
                                          <!--   tr td 끝-->
+                                         
+                                         
+                                         
                                             </tbody>
                                         </table>
                                     </div>
-                                  <!--  넣어주기 끝-->      
-                     
+                                  <!--  넣어주기 끝-->   
+                                  
+                                    <div align="right">
+                  <button class="btn btn-danger" data-toggle="modal"
+                     data-target="#noticeModal">
+                     <span class="btn-label"> <i class="material-icons">check</i>
+                     </span>링크 추가
+                  </button>
+               </div>
+                  
                                         
 						</div>
         
         	</div>
        	 </div>
        
+       <!--  -->
+       
+       
+	 <!-- 모달  -->
+   <div class="row">
+      <div class="col-md-12 text-center">
+         <!-- notice modal -->
+         
+         <div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notice">
+            
+            
+         <form action="linkInsert.htm" method="POST">         
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="material-icons">clear</i>
+                     </button>
+                     <h5 class="modal-title" id="myModalLabel">링크 추가</h5>
+                  </div>
+                  <div class="modal-body">
+                     <div class="instruction">
+                     
+                          
+                        
+                           <div class="row">
+                           <div class="col-md-12">
+                            
+                              
+                           <input type="text" class="form-control" placeholder="링크 이름" id="linkTitle" name="linkTitle">
+                           </div>
+                         
+                        </div>
+                        
+                              <div class="row">
+                           <div class="col-md-12">
+                            
+                              
+                           <input type="text" class="form-control" placeholder="링크 주소" id="linkSrc" name="linkSrc">
+                           </div>
+                         
+                        </div>
+                        
+                         
+                        
+                     </div>
+                      
+                      
+                  </div>
+                  <div class="modal-footer text-center" >
+                 	 <button type="submit" class="btn btn-success btn-simple" >작성</button>
+                     <button type="button" class="btn btn-simple" data-dismiss="modal">취소
+                        </button>
+                     
+                  </div>
+               
+               </div>
+            </form>
+               
+            </div>
+         </div>
+           </div>
+                  </div>
+              
+         <!-- end notice modal -->
 	 
-					 
+	 
+	 
+		<!--  -->				 
 				 
 <!--    여기서부터 파일게시판           -->
                                             
@@ -127,22 +209,24 @@
                                         <table id="datatables2" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                                 <tr>   
-                                                    <th>파일1</th>
-                                                    <th>파일2</th> 
-                                                    <th>연관 수업 글</th> 
+                                                    <th   align="center">파일</th>
+                                                   
+                                                    <th   align="center">연관 수업 글</th> 
                                                     <th class="disabled-sorting text-right">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                             <!--  여기서부터 tr td-->
-<%--                                              <c:forEach var="fvo" items="${fvo}"> --%>
+                                             <c:forEach var="lfvo" items="${lfvo}">
                                                 <tr>
                                                     <td>
-<%--                                                     ${fvo.fileSrc} --%>
+                                                    ${lfvo.fileSrc}
                                                     </td>
-                                                    <td>
-<%--                                                     ${fvo.fileSrc2} --%>
+                                                  <td>
+                                                  			<!--  lectureno 넘겨줘서 상세보여주기  --> <a href="#">
+                                                    ${lfvo.lectureTitle}</a>
                                                     </td>
+                                               
                                                    
                                                     <td class="text-right">
                                                         <a href="#" class="btn btn-simple btn-info btn-icon like"><i class="material-icons">favorite</i></a> 
@@ -150,7 +234,7 @@
                                                     </td>
                                                    <td></td>
                                                 </tr>
-<%--                                                 </c:forEach>  --%>
+                                                </c:forEach> 
                                          <!--   tr td 끝-->
                                             </tbody>
                                         </table>
@@ -177,21 +261,22 @@
                                         <table id="datatables3" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                                 <tr>   
-                                                    <th>파일1</th>
-                                                    <th>파일2</th> 
-                                                    <th>연관 과제 글</th> 
+                                                    <th   align="center">파일</th>
+                                                   
+                                                    <th   align="center">연관 과제 글</th> 
                                                     <th class="disabled-sorting text-right">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                             <!--  여기서부터 tr td-->
-<%--                                              <c:forEach var="fvo" items="${fvo}"> --%>
+                                             <c:forEach var="afvo" items="${afvo}">
                                                 <tr>
                                                     <td>
-<%--                                                     ${fvo.fileSrc} --%>
+                                                    ${afvo.fileSrc}
                                                     </td>
                                                     <td>
-<%--                                                     ${fvo.fileSrc2} --%>
+                                                    			<!--  assignNo 넘겨줘서 상세보여주기  --> <a href="#">
+                                                    			${afvo.assignTitle}</a>
                                                     </td>
                                                    <td></td>
                                                     <td class="text-right">
@@ -199,13 +284,15 @@
                                                         <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
                                                     </td>
                                                 </tr>
-<%--                                                 </c:forEach>  --%>
+                                                </c:forEach> 
                                          <!--   tr td 끝-->
                                             </tbody>
                                         </table>
                                     </div>   
                                         
                      <!--  넣어주기 끝 -->    
+                              
+                                  
                                         
 						</div>
         
@@ -286,10 +373,7 @@
             e.preventDefault();
         });
 
-        //좋아요 record
-        table.on('click', '.like', function() {
-            alert('You clicked on Like button');
-        });
+ 
 
         $('.card .material-datatables label').addClass('form-group');
     });
@@ -328,10 +412,7 @@
             e.preventDefault();
         });
 
-        //좋아요 record
-        table.on('click', '.like', function() {
-            alert('You clicked on Like button');
-        });
+  
 
         $('.card .material-datatables2 label').addClass('form-group');
     });
@@ -370,10 +451,7 @@
             e.preventDefault();
         });
 
-        //좋아요 record
-        table.on('click', '.like', function() {
-            alert('You clicked on Like button');
-        });
+   
 
         $('.card .material-datatables3 label').addClass('form-group');
     });

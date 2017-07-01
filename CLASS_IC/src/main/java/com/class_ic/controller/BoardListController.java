@@ -3,7 +3,6 @@ package com.class_ic.controller;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.class_ic.app.dto.MemberDTO;
-import com.class_ic.dao.BoardDAO;
 import com.class_ic.service.BoardListService;
 import com.class_ic.vo.CategoryDTO;
 import com.class_ic.vo.LectureBoardDTO;

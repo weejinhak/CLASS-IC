@@ -14,6 +14,15 @@ public class LectureBoardDTO {
 	private String lectureTitle;
 	private String lectureContent;
 	private String lectureDate;
+	
+
+
+
+
+	public void setAssignTitle(String assignTitle) {
+		this.assignTitle = assignTitle;
+	}
+
 	//파일 업로드
 	private int fileNo;
 	private String fileSrc;
@@ -24,6 +33,9 @@ public class LectureBoardDTO {
 	private String linkSrc; 
 	private String linkTitle ;
 	private String assignNo;
+	//0701추가 
+	private String assignTitle ;
+	
 
 	//다중 파일 업로드
 	private List<CommonsMultipartFile> files;
@@ -57,6 +69,9 @@ public class LectureBoardDTO {
 	}
 
 
+	public String getAssignTitle() {
+		return assignTitle;
+	}
 
 
 	public int getLectureNo() {
@@ -171,13 +186,19 @@ public class LectureBoardDTO {
 		this.files = files;
 	}
 
+
+
+
 	@Override
 	public String toString() {
 		return "LectureBoardDTO [lectureNo=" + lectureNo + ", classCode=" + classCode + ", cateCode=" + cateCode
-				+ ", subcateCode=" + subcateCode + ", lectureTitle=" + lectureTitle + ", lectureContent=" + lectureContent
-				+ ", lectureDate=" + lectureDate + ", fileNo=" + fileNo + ", fileSrc=" + fileSrc + ", linkNo=" + linkNo
-				+ ", linkSrc=" + linkSrc + ", linkTitle=" + linkTitle + ", assignNo=" + assignNo + ", files=" + files + "]";
+				+ ", subcateCode=" + subcateCode + ", lectureTitle=" + lectureTitle + ", lectureContent="
+				+ lectureContent + ", lectureDate=" + lectureDate + ", fileNo=" + fileNo + ", fileSrc=" + fileSrc
+				+ ", linkNo=" + linkNo + ", linkSrc=" + linkSrc + ", linkTitle=" + linkTitle + ", assignNo=" + assignNo
+				+ ", assignTitle=" + assignTitle + ", files=" + files + ", toString()=" + super.toString() + "]";
 	}
+
+ 
 
 
 

@@ -65,12 +65,15 @@ public interface BoardDAO {
 	
 	  //링크 리스트 			//나중에 기수 세션으로 불러와 담아 
 	//  public ArrayList<LectureBoardDTO> linkList();
+	  public ArrayList<LectureBoardDTO>  linkList (String classCode) ;
+	  //링크 입력 
+	  public void linkInsert(LectureBoardDTO dto) ; 
 	  
-	  //파일 리스트  			//나중에 기수 세션으로 불러와 담아  
-
-	//  public ArrayList<LectureBoardDTO> fileList();
- 
- 
+	  //과제 파일 리스트  			//나중에 기수 세션으로 불러와 담아   
+	  public  ArrayList<LectureBoardDTO>  assignfileList (String classCode) ;
+	//수업 파일 리스트 
+	  public ArrayList<LectureBoardDTO> lecturefileList (String classCode) ; 
+	
 
 	// 글 상세보기 (파일 가져오기)
 	public ArrayList<LectureBoardDTO> totalBoard_contenFile(int lectureNo);

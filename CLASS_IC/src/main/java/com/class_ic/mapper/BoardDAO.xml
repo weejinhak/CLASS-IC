@@ -116,14 +116,43 @@ insert into subcategory values(#{subcateCode},#{cateCode},#{subcateTitle},#{emai
 </insert>
 
  <!--링크 파일 게시판   -->
-<!-- <select id="linkList" resultType="com.class_ic.vo.LectureBoardDTO">
-select * from link
+ <select id="linkList" resultType="com.class_ic.vo.LectureBoardDTO"  parameterType="String">
+select DISTINCT lb.lectureNo,lb.lectureTitle  as lectureTitle , li.linkTitle as linkTitle, li.linkSrc as linkSrc 
+from  link li , lectureboard lb  , classbylecture c       
+where c.classCode = #{classCode} 
 </select>
 
-<select id="fileList" resultType="com.class_ic.vo.LectureBoardDTO">
-select * from assignboardfile 
-</select>
-  -->
 
+<!-- 링크 입력  -->
+
+<insert id="linkInsert" parameterType="com.class_ic.vo.SubCategoryDTO">
+
+insert into link (linktitle, linksrc ) values (#{linkTitle},#{linkSrc}); 
+
+</insert>
+ <!--과제 파일 게시판   -->
+<select id="assignfileList" resultType="com.class_ic.vo.LectureBoardDTO"  parameterType="String">
+
+select DISTINCT c.classCode classCode,  b.assignTitle assignTitle, b.assignNo assignNo ,
+  f.assignfileNo assignfileNo, f.fileSrc fileSrc    
+from assignboard b,   assignboardfile f  , classbylecture c       
+where b.assignNo= f.assignNo and c.classCode =  #{classCode} 
+
+ 
+
+
+</select>
+ 
+ 
+<!--수업 파일 게시판   -->
+<select id="lecturefileList" resultType="com.class_ic.vo.LectureBoardDTO"  parameterType="String">
+ 
+select DISTINCT c.classCode classCode,  b.lectureTitle lectureTitle, b.lectureNo lectureNo ,
+  f.fileNo fileNo, f.fileSrc fileSrc    
+from lectureboard b,   filelecture f , classbylecture c        
+where b.lectureno= f.lectureno and c.classCode =  #{classCode} 
+
+</select>
+ 
 
 </mapper>

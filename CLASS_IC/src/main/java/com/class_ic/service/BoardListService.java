@@ -1,7 +1,5 @@
 package com.class_ic.service;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +12,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.app.dto.MemberDTO;
-import com.class_ic.dao.BoardDAO;
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.vo.CategoryDTO;
 import com.class_ic.vo.ClassByLectureDTO;
@@ -360,4 +354,67 @@ public class BoardListService {
 
 		return m;
 	}
+	
+	//링크파일 뷰
+	public ModelAndView  linkfileview (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){//classcode올걸 
+
+		HttpSession session=request.getSession();
+		String classCode=(String)session.getAttribute("classCode");
+		System.out.println(classCode);
+		 BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+	   
+		 System.out.println("classCode"+classCode); //여기까지 ㅇㅋ
+		 //여기서 오류.. 
+		 ArrayList<LectureBoardDTO>  llist = bdao.linkList(classCode);
+		 ArrayList<LectureBoardDTO>   aflist = bdao.assignfileList(classCode); 
+		 ArrayList<LectureBoardDTO>   lflist = bdao.lecturefileList(classCode);
+         
+		  
+		  
+         System.out.println("셀렉리스트 컨트롤러 : " +llist);
+         System.out.println("셀렉리스트 컨트롤러 : " +aflist);
+         System.out.println("셀렉리스트 컨트롤러 : " +lflist);
+         
+
+         mv.setViewName("teacher.LinkFileList");
+         mv.addObject("lvo",llist) ;
+         mv.addObject("afvo",aflist) ;
+         mv.addObject("lfvo",lflist) ;
+	 
+		 
+
+         return mv;
+		//클래스 코드를 받아서 
+		
+		
+	}
+	
+	
+	//링크 추가 
+	public String linkInsert(HttpServletRequest request ){
+		 BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+		 LectureBoardDTO bdto = new  LectureBoardDTO(); 
+		 // 링크 제목 
+		  String linkTitle = request.getParameter("linkTitle");
+		 //링크 주소  
+		  String linkSrc = request.getParameter("linkSrc");
+		
+		System.out.println("링크제목 : "+linkTitle);
+		System.out.println("링크 주소: "+linkSrc);
+		
+		bdto.setLinkTitle(linkTitle);
+		bdto.setLinkSrc(linkSrc); 
+		
+		bdao.linkInsert(bdto); 
+		
+ 
+		return "teacher.LinkFileList"; 
+		
+		
+	}
+	
+	
+	
+	
+	 
 }
