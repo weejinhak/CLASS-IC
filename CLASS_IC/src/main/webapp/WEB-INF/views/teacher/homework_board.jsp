@@ -41,7 +41,11 @@
                                    <option disabled="disabled" selected="selected" id="op1">조 선택</option>
                                 </select>
                          </div>  
-                         </div>
+                <button class="btn btn-just-icon btn-round btn-primary"  data-toggle="modal"
+                     data-target="#subcateModal">
+                     <i class="material-icons">library_add</i><div class="ripple-container"></div></button>
+                </div>
+                
                          
                          <div class="col-sm-12"> 
                   <div class="card-content">
