@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="com.class_ic.vo.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
- <div class="content">
-       <div class="container-fluid">
-      	 <!-- 내용물  contents  -->
-      	 <div class="row">
-      	 
-      	       	
-      	 
+<br>
+<br>
+<br>
+
+	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<h2 class="title text-center"><b>${cateCode}</b></h2>
-			<button type="submit" class="btn btn-primary" id="goListBtn" onclick="location.href='boardList.htm'">▲상위목록 </button>
 			<br>
 	 
                                 
@@ -23,21 +22,20 @@
 					<!--
                         color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                     -->
-                    <!--------------------------foreach  -->
-                    <c:forEach items="${subCateList}" var="subCateList">
-                    
-					<li class="active"><a href="detailList_board.htm?cateCode=${cateCode}&subcateCode=${subCateList} "> 
-						<i class="material-icons">reorder</i> ${subCateList}
+					<li class="active"><a href="#description-1" role="tab"
+						data-toggle="tab" aria-expanded="false"> 
+						<i class="material-icons">reorder</i> Spring_FrameWork
 					</a></li>
-					
-					</c:forEach>
-					<!-- end -->
-					
-					<li class=""><a href="" role="tab"
+					<li class=""><a href="#description-1" role="tab"
+						data-toggle="tab" aria-expanded="false"> 
+							<i class="material-icons">reorder</i> MyBatis(ibatis)
+					</a></li>
+			 
+					<li class=""><a href="#description-2" role="tab"
 						data-toggle="tab" aria-expanded="false"> <!--                                            <i class="material-icons">exposure_plus_1</i> -->
 							<button class="btn btn-raised btn-round btn-white"
 								data-toggle="modal" data-target="#noticeModal">+</button>
-					  <i></i><br> ADD
+					  <i]></i><br> ADD
 					</a>
 		       
 					</li>
@@ -45,82 +43,110 @@
 			</div>
 
 			<!-- tab-content -->
+			<div class="tab-content">
+				<div class="tab-pane" id="description-1">
+					<div class="card">
+						<!--  표-->
+						<div class="card-content table-responsive">
+							 <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">#</th>
+                                                    <th>글 제목 </th>
+                                                    <th>글 쓴이</th>
+                                                    <th>작성날짜</th>
+                                                    <th class="text-center">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td>박소현 사람 만들기</td>
+                                                    <td>박소현 어머니</td>
+                                                    <td>2017/06/09</td>
+                                                                <td class="td-actions text-center">
+                                                  
+                                                               <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
+                                                        <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">2</td>
+                                                    <td>이은영 다이어트</td>
+                                                    <td>트레이너</td>
+                                                    <td>2017/06/15</td>
+                                                      <td class="td-actions text-center">
+                                                      
+                                                             <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
+                                                        <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">3</td>
+                                                    <td>노지영 체력 키우기</td>
+                                                    <td>관장님</td>
+                                                    <td>2017/06/30</td>
+                                                 <td class="td-actions text-center">
+                                                        <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
+                                                        <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">4</td>
+                                                    <td>Mike Monday</td>
+                                                    <td>Marketing</td>
+                                                    <td>2013</td>
+                                                 <td class="td-actions text-center">
+                                                 <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
+                                                        <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">5</td>
+                                                    <td>Paul Dickens</td>
+                                                    <td>Communication</td>
+                                                    <td>2015</td>  
+                                                    <td class="td-actions text-center">
+                                                      <a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
+                                                        <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+						</div>
+
+						<center>
+							<ul class="pagination pagination-info">
+								<li><a href="javascript:void(0);"> prev</a></li>
+								<li><a href="javascript:void(0);">1</a></li>
+								<li><a href="javascript:void(0);">2</a></li>
+								<li class="active"><a href="javascript:void(0);">3</a></li>
+								<li><a href="javascript:void(0);">4</a></li>
+								<li><a href="javascript:void(0);">5</a></li>
+								<li><a href="javascript:void(0);">next </a></li>
+							</ul>
+						</center>
+						<!-- 표끝 -->
+							<button type="button" class="btn btn-info btn-round" style="margin-left:850px">write</button>
+					</div>
+				</div>
+
+				<!-- 탭2 -->
+				<!--              <div class="tab-pane" id="description-2">
+                                    <div class="card">
+                                              
+                                    </div>
+                                </div> -->
+
+
+			</div>
 
 			<!--  tab content end-->
-			
+
 
 		</div>
 	</div>
-							<!--  표-->
-      <div class="card-content table-responsive">
-                                    <table class="table table-hover">
-                                        <thead class="text-warning">
-                                            <tr><th>NO.</th>
-                                            <th>글제목</th>
-                                            <th>글쓴시간</th>
-                                            
-                                        </tr></thead>
-                                        
-                                        
-                      			     
-                      			     
-                                     	<c:forEach items="${list}" var="boardVO">
-                                   		
-                                 			
-						                                        
-						                                        <tbody>
-						                                       	
-						                                            <tr>
-						                                            
-						                                                <td>${boardVO.lectureNo}</td>
-						                                                <td><a href="read.htm${pageMaker.makeSearch(pageMaker.cri.page) }&lectureNo=${boardVO.lectureNo}">${boardVO.lectureTitle}</a></td>
-						                                                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.lectureDate}" /></td>
-						                                           	
-						                                            </tr>
-						                                        
-						                                        </tbody>
-						                                        
-						                                    
-                                        </c:forEach>                                        
-                                        
-                                        
-                                    </table>
-                                    
-                                     <!-- 페이징처리 -->
-										<div class="box-footer">
 
-					<div class="text-center">
-						<ul class="pagination">
-
-							<c:if test="${pageMaker.prev}">
-								<li><a
-									href="detailList.htm${pageMaker.makeSearch(pageMaker.startPage - 1) }&cateCode=${cateCode}&subcateCode=${subcateCode}">&laquo;</a></li>
-							</c:if>
-
-							<c:forEach begin="${pageMaker.startPage }"
-								end="${pageMaker.endPage }" var="idx">
-								<li
-									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="detailList_board.htm${pageMaker.makeSearch(idx)}&cateCode=${cateCode}&subcateCode=${subcateCode}">${idx}</a>
-								</li>
-							</c:forEach>
-
-							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a
-									href="detailList_board.htm${pageMaker.makeSearch(pageMaker.endPage +1) }&cateCode=${cateCode}&subcateCode=${subcateCode}">&raquo;</a></li>
-							</c:if>
-
-						</ul>
-					</div>
-
-				</div>
-				<!-- 페이징 처리 END -->
-                                    
-                                  </div>
-						<!-- 표끝 -->
-						
-						
-						
 	<!-- 모달  -->
 	<div class="row">
 		<div class="col-md-12 text-center">
@@ -138,14 +164,12 @@
 							</button>
 							<h5 class="modal-title" id="myModalLabel">수업보드 세부 카테고리 추가</h5>
 						</div>
-						
-						<form action="makeSubCategory.htm" method="post">
 						<div class="modal-body">
 							<div class="instruction">
 								<div class="row">
 									<div class="col-md-12"> 
-									<input name= "cateCode" type="hidden" value="${cateCode}" >
-									<input name="subcateCode" type="text" class="form-control" placeholder="세부 카테고리 이름">
+										
+									<input type="text" class="form-control" placeholder="카테고리 이름">
 									</div>
 								 
 								</div>
@@ -158,9 +182,8 @@
 						<div class="modal-footer text-center">
 							<button type="button" class="btn btn-simple" data-dismiss="modal">Never
 								mind</button>
-							<button type="submit" class="btn btn-success btn-simple">Yes</button>
+							<button type="button" class="btn btn-success btn-simple">Yes</button>
 						</div>
-						</form>
 					</div>
 				</div>
 			</div>
@@ -169,12 +192,4 @@
 
 		</div>
 	</div>
-      	 </div>
-      	 
 
-      	 
-      	 
- </div>
- 
- 
- 

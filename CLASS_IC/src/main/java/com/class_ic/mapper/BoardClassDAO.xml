@@ -7,4 +7,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.class_ic.dao.BoardClassDAO">
 
+<select id="selectCate" parameterType="String" resultType="com.class_ic.vo.SubCategoryDTO">
+select distinct cateCode from lectureboard
+where lectureNo in(select lectureNo from classbylecture)
+and  classCode in (select classCode from classMember where email=#{email})
+</select>
+
+<select id="selectSubcate" parameterType="com.class_ic.vo.SubCategoryDTO" resultType="com.class_ic.vo.SubCategoryDTO">
+
+select distinct subcateCode from lectureboard
+where lectureNo in(select lectureNo from classbylecture)
+and  classCode in (select classCode from classMember where email=#{email}) 
+and cateCode=#{cateCode}
+</select>
+
+
+<select id="selectCateSubcateboard" resultType="com.class_ic.vo.LectureBoardDTO"
+parameterType="com.class_ic.vo.SubCategoryDTO">
+select * from lectureboard
+where lectureNo in(select lectureNo from classbylecture)
+and  classCode in (select classCode from classMember where email=#{email})
+and cateCode=#{cateCode} and subcateCode=#{subcateCode}
+
+
+</select>
+
+<select id="selectCateboard" parameterType="com.class_ic.vo.SubCategoryDTO"
+resultType="com.class_ic.vo.LectureBoardDTO">
+select * from lectureboard
+where lectureNo in(select lectureNo from classbylecture)
+and  classCode in (select classCode from classMember where email=#{email}) 
+and cateCode=#{cateCode} ORDER BY lectureNo desc limit 4
+</select>
+
 </mapper>

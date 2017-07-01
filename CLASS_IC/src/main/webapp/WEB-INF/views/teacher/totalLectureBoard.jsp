@@ -638,7 +638,7 @@ var data="";
                  var cate = $("#cate").val();
                  console.log(cate);
                  
-                 $.ajax({
+                                  $.ajax({
                       url: '${pageContext.request.contextPath}/selectsubcategory.htm',
                       data: {"cate":cate},
                       dataType:'text',
@@ -657,9 +657,15 @@ var data="";
              var cate = $("#cate").val();
               var subcate = $("#subcate").val();
               
+              
+             
               console.log("나는야 카테고리 " + cate);
               console.log("나는야 서브카테 " + subcate);
               
+              
+              if(subcate!='all'){
+            	  
+            	
               $.ajax({
                   url:"totalboard.htm",
                   data: {cateCode:cate, subcateCode:subcate},
@@ -673,7 +679,7 @@ var data="";
                   }
                   });
               
-              
+              }
           });
           
           

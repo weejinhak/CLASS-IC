@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,9 +52,24 @@ public class BoardListClassController {
 	
 	//boardList 게시판 이동
 	@RequestMapping(value="teacher/board.htm", method=RequestMethod.GET)
-	public String board(){
+	public ModelAndView board(ModelAndView modal,HttpServletRequest request,HttpServletResponse response){
 
-		return "teacher.board";
+      modal=boardclasslistservice.selectCate(request, response);
+		
+		return modal;
+	}
+	
+	
+	//카테고리에서 상세보기 누르면 서브카테고리와 게시글 상세로 들어감
+	@RequestMapping(value="teacher/catedetails.htm", method=RequestMethod.GET)
+	public ModelAndView cateDetails(ModelAndView modal,HttpServletRequest request,HttpServletResponse response,String cateCode){
+
+	System.out.println("퇀다퇀다");
+      modal.setViewName("teacher.board_details");
+      modal.addObject("cateCode",cateCode);
+      
+		
+		return modal;
 	}
 	
     
