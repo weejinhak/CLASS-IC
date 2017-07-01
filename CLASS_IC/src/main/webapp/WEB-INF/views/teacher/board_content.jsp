@@ -24,8 +24,6 @@ function myFunction() {
         }, 700)
         
        cate();
-        
-
 
 
         $("#save").click(function() {
@@ -40,26 +38,21 @@ function myFunction() {
     		var content=$("#content").val();
     		var cate=$("#cate").val();
     		var subcate=$("#subcate").val();
-<<<<<<< HEAD
     		var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
-    		var fileData = new FormData();
-    		fileData.append('file', $('input[type=file]')[0].files[0]);
-=======
-    		var sessionClassCode="<%=(String)session.getAttribute("email")%>";
->>>>>>> branch 'AfterMaster' of https://github.com/johntei/CLASS-IC.git
+    		
 
        		console.log(title);
         	console.log(content);
         	console.log(cate);
         	console.log(subcate);
         	console.log(sessionClassCode);
-        	console.log(fileData);
+       
 
         	$.ajax({ 
         		type: 'post' ,
-        		enctype: "multipart/form-data", 
+        		/* enctype: "multipart/form-data",  */
         		url: '${pageContext.request.contextPath}/boardcontentsave.htm', 
-        		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode, files:fileData},
+        		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode},
         		dataType:'text',
                 success : function(data){
                 	
@@ -184,57 +177,24 @@ function myFunction() {
 							<!--에디터 추가부분 -->
 					</div>
 				</div>
-			</div>
-			
-<<<<<<< HEAD
-			
-=======
-			<!-- 파일 첨부  --> 
-                                       첨부 파일 #01
-                                       
-                                    <ul class="mailbox-attachments clearfix">
-                                    
-                                         <li>
-                  <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
-						&nbsp;<input type="file" id="txtFile" name="files[0]" />
-                  <div class="mailbox-attachment-info">  
-                    <a href="#" class="mailbox-attachment-name">
-                    <i class="fa fa-paperclip"></i></a>
-                        <span class="mailbox-attachment-size">
-                          파일 사이즈
-                     
-                        </span>
-                  </div>
-                </li>
-                    
-              </ul>
+				<!-- 파일 첨부  --> 
+                 첨부 파일 #01<br/>  
+                 &nbsp;<input type="file"  name="files" />
+                 <br/>
+                  첨부 파일 #02<br/>  
+                 &nbsp;<input type="file" name="files" />
+						    
+						<!-- &nbsp;<input class="note-image-input form-control" type="file" id="txtFile" name="files[0]" />
+						 --><br/>
+                <!-- 첨부파일 끝 -->
+			</div><!-- card-content  -->
+</form>
               </div>
                 <div class="col-sm-5">
-                      
-                        <!-- 파일 첨부  --> 
-                                       첨부 파일 #02
-                                       
-                                    <ul class="mailbox-attachments clearfix">
-                                    
-                                         <li>
-                  <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
-						&nbsp;<input type="file" id="txtFile" name="files[1]" />
-                  <div class="mailbox-attachment-info">  
-                    <a href="#" class="mailbox-attachment-name">
-                    <i class="fa fa-paperclip"></i></a>
-                        <span class="mailbox-attachment-size">
-                          파일 사이즈
-                     
-                        </span>
-                  </div>
-                </li>
-                    
-              </ul>
+
               </div>
-     </form>
                     </div>
-			<!-- 파일 추가 끝 -->
->>>>>>> refs/remotes/origin/AfterMaster
+
 
 			<div class="td-actions text-center">
 	
