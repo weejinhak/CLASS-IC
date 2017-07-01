@@ -59,7 +59,7 @@ public interface BoardDAO {
 
 	// 서브 카테고리 추가
 	public int insertSubcate(SubCategoryDTO dto);
-<<<<<<< HEAD
+ 
  
 	//링크 파일 게시판 
 	
@@ -70,13 +70,12 @@ public interface BoardDAO {
 
 	//  public ArrayList<LectureBoardDTO> fileList();
  
-	
-=======
+ 
 
 	// 글 상세보기 (파일 가져오기)
 	public ArrayList<LectureBoardDTO> totalBoard_contenFile(int lectureNo);
 
 	// 글 상세보기 (링크 가져오기)
 	public ArrayList<LectureBoardDTO> totalBoard_contenLink(int lectureNo);
->>>>>>> branch 'AfterMaster' of https://github.com/johntei/CLASS-IC.git
+ 
 }

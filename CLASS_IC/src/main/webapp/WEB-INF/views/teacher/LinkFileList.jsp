@@ -76,8 +76,10 @@
                                             
                                             
                                                 <tr>
-                                                    <th>링크 제목</th>
+                                                    <th>링크 제목</th> 
                                                     <th>링크 주소</th> 
+                                                    
+                                                    <th>연관 글 링크</th> 
                                                     <th class="disabled-sorting text-right">Actions</th>
                                                 </tr>
                                             </thead>
@@ -96,6 +98,7 @@
                                                         <a href="#" class="btn btn-simple btn-info btn-icon like"><i class="material-icons">favorite</i></a> 
                                                         <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
                                                     </td>
+                                                   <td></td>
                                                 </tr>
 <%--                                                 </c:forEach> --%>
                                          <!--   tr td 끝-->
@@ -126,6 +129,7 @@
                                                 <tr>   
                                                     <th>파일1</th>
                                                     <th>파일2</th> 
+                                                    <th>연관 수업 글</th> 
                                                     <th class="disabled-sorting text-right">Actions</th>
                                                 </tr>
                                             </thead>
@@ -144,6 +148,7 @@
                                                         <a href="#" class="btn btn-simple btn-info btn-icon like"><i class="material-icons">favorite</i></a> 
                                                         <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
                                                     </td>
+                                                   <td></td>
                                                 </tr>
 <%--                                                 </c:forEach>  --%>
                                          <!--   tr td 끝-->
@@ -174,6 +179,7 @@
                                                 <tr>   
                                                     <th>파일1</th>
                                                     <th>파일2</th> 
+                                                    <th>연관 과제 글</th> 
                                                     <th class="disabled-sorting text-right">Actions</th>
                                                 </tr>
                                             </thead>
@@ -187,7 +193,7 @@
                                                     <td>
 <%--                                                     ${fvo.fileSrc2} --%>
                                                     </td>
-                                                   
+                                                   <td></td>
                                                     <td class="text-right">
                                                         <a href="#" class="btn btn-simple btn-info btn-icon like"><i class="material-icons">favorite</i></a> 
                                                         <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
