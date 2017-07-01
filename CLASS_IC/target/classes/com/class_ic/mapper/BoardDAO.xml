@@ -40,7 +40,7 @@ select * from subcategory where email=#{email}
 <select id="totalBoard_contentview" resultType="com.class_ic.vo.LectureBoardDTO"
       parameterType="Integer"> 
 
-select lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent FROM lectureboard WHERE  lectureNo = #{lectureNo}
+select lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent,  lectureDate FROM lectureboard WHERE  lectureNo = #{lectureNo}
 </select>
 
 <!--통합게시판 상세보기 파일 출력   --> 
