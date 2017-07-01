@@ -4,9 +4,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.class_ic.dao.HomeworkDAO">
 
-<!-- 과제 게시판 메인카테고리 출력 : 2017.06.27 최은혜 -->
+
+<!-- 과제 게시판 메인카테고리 출력 : 강사 2017.06.27 최은혜 -->
 <select id="selectCate" parameterType="String" resultType="com.class_ic.vo.HomeworkDTO">
-	select cateCode,cateTitle from category where email=#{email} 
+
+	select cateCode,cateTitle from category where email=#{email}
+</select>
+
+<!-- 과제 게시판 메인카테고리 출력 : 학생 2017.06.27 최은혜 -->
+<select id="selectCate" parameterType="String" resultType="com.class_ic.vo.HomeworkDTO">
+	select cateCode,cateTitle from category where email=#{email}
+</select>
+
+<!-- 강사 이메일, 기수 출력: 2017.06.30 최은혜 -->
+<select id="teacherClassCode" parameterType="com.class_ic.vo.HomeworkDTO" resultType="com.class_ic.vo.HomeworkDTO">
+	SELECT c.email as email, c.classCode as classCode
+	FROM
+(SELECT classCode, email
+FROM    class
+WHERE    email = #{email}) st  JOIN class c
+ON st.classCode= c.classCode; 
 </select>
 
 <!-- 카테고리별 조 등록 : 2017.06.28 최은혜 -->
@@ -33,6 +50,16 @@ select * from
 assignboard a inner join member m on a.email=m.email
 where a.classCode=#{classCode} and a.email=#{email} order by field(assignNotice,'true') desc, assignDate desc;
 </select>
+
+<!-- partyName별 출력 : 2017.06.30 위진학-->
+<select id="selectAllByTeacher" parameterType="com.class_ic.vo.HomeworkDTO" resultType="com.class_ic.vo.HomeworkDTO">
+select a.assignNo as assignNo ,a.cateCode as cateCode , a.assignTitle assignTitle, m.name as name, a.assignDate as assignDate
+from 
+groupcategory g inner join assignboard a on g.cateCode=a.cateCode
+inner join member m on m.email = a.email
+where g.partyName=#{partyName} and g.classCode=#{classCode} and g.email=#{email}
+</select>
+
 
 </mapper>
 

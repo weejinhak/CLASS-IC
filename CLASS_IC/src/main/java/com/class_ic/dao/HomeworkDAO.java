@@ -20,4 +20,11 @@ public interface HomeworkDAO {
 
  	//과제게시판 전체 출력
  	public List<HomeworkDTO> selectAll(HomeworkDTO dto);
+ 	
+ 	//partyName별 출력 
+ 	public List<HomeworkDTO> selectAllByTeacher(HomeworkDTO dto);
+ 	
+ 	//강사 이메일, 기수 출력
+ 	public HomeworkDTO teacherClassCode(HomeworkDTO dto);
+ 	
 }
