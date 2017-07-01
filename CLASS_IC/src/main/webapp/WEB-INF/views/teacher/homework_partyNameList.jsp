@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:forEach var="list" items="${homeworkselectlist}">
-	<tr>
+	<tr role="row" class="odd">
 		<td>
 			<div class="text-center" style="margin-top: -12px;">
 				<div class="checkbox" id="">
@@ -16,14 +16,13 @@
 			</div>
 		</td>
 
-		<td>${list.assignNo }</td>
-		<td>${list.cateCode }</td>
-		<td>${list.assignTitle }</td>
-		<td>${list.name }</td>
-		<td>${list.assignDate }</td>
+		<td tabindex="0" class="sorting_1">${list.assignNo }</td>
+		<td tabindex="0" class="sorting_1">${list.cateCode }</td>
+		<td tabindex="0" class="sorting_1">${list.assignTitle }</td>
+		<td tabindex="0" class="sorting_1">${list.name }</td>
+		<td tabindex="0" class="sorting_1">${list.assignDate }</td>
 
-		<td class="text-center"><a
-			href="totalboardEdit.htm?lectureNo=${homelist.assignNo}"
+		<td class="text-center"><a href="totalboardEdit.htm?lectureNo=${homelist.assignNo}"
 			class="btn btn-simple btn-info btn-icon edit"><i
 				class="material-icons">edit</i></a> <a
 			class="btn btn-simple btn-danger btn-icon remove"><i
