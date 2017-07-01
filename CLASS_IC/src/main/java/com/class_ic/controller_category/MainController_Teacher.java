@@ -43,12 +43,12 @@ public class MainController_Teacher {
 		System.out.println("teacher common 컨트롤 탐");
 		return "teacher.calendar";
 	}
-	//boardList 게시판 이동
+/*	//boardList 게시판 이동
 	@RequestMapping(value="board.htm", method=RequestMethod.GET)
 	public String board(){
 
 		return "teacher.board";
-	}
+	}*/
 	
 	//homework_board게시판 이동
 	@RequestMapping(value="homework.htm", method=RequestMethod.GET)
