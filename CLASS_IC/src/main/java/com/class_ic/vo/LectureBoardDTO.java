@@ -17,6 +17,7 @@ public class LectureBoardDTO {
 	//파일 업로드
 	private int fileNo;
 	private String fileSrc;
+	private String fileSrc2;
 
 
 	//링크게시판 
@@ -27,19 +28,18 @@ public class LectureBoardDTO {
 
 	//다중 파일 업로드
 	private List<CommonsMultipartFile> files;
-
-	//이후 생성자 함수와 getter setter
-
+	
+	
+	
 	public LectureBoardDTO() {
-
 	}
-
-
-
+	
+	
 
 	public LectureBoardDTO(int lectureNo, String classCode, String cateCode, String subcateCode, String lectureTitle,
-			String lectureContent, String lectureDate, int fileNo, String fileSrc, int linkNo, String linkSrc,
-			String linkTitle, String assignNo, List<CommonsMultipartFile> files) {
+			String lectureContent, String lectureDate, int fileNo, String fileSrc, String fileSrc2, int linkNo,
+			String linkSrc, String linkTitle, String assignNo, List<CommonsMultipartFile> files) {
+
 		this.lectureNo = lectureNo;
 		this.classCode = classCode;
 		this.cateCode = cateCode;
@@ -49,6 +49,7 @@ public class LectureBoardDTO {
 		this.lectureDate = lectureDate;
 		this.fileNo = fileNo;
 		this.fileSrc = fileSrc;
+		this.fileSrc2 = fileSrc2;
 		this.linkNo = linkNo;
 		this.linkSrc = linkSrc;
 		this.linkTitle = linkTitle;
@@ -58,6 +59,9 @@ public class LectureBoardDTO {
 
 
 
+	//이후 생성자 함수와 getter setter
+	
+	
 
 	public int getLectureNo() {
 		return lectureNo;
@@ -131,6 +135,14 @@ public class LectureBoardDTO {
 		this.fileSrc = fileSrc;
 	}
 
+	public String getFileSrc2() {
+		return fileSrc2;
+	}
+
+	public void setFileSrc2(String fileSrc2) {
+		this.fileSrc2 = fileSrc2;
+	}
+
 	public int getLinkNo() {
 		return linkNo;
 	}
@@ -171,16 +183,7 @@ public class LectureBoardDTO {
 		this.files = files;
 	}
 
-	@Override
-	public String toString() {
-		return "LectureBoardDTO [lectureNo=" + lectureNo + ", classCode=" + classCode + ", cateCode=" + cateCode
-				+ ", subcateCode=" + subcateCode + ", lectureTitle=" + lectureTitle + ", lectureContent=" + lectureContent
-				+ ", lectureDate=" + lectureDate + ", fileNo=" + fileNo + ", fileSrc=" + fileSrc + ", linkNo=" + linkNo
-				+ ", linkSrc=" + linkSrc + ", linkTitle=" + linkTitle + ", assignNo=" + assignNo + ", files=" + files + "]";
-	}
-
-
-
+	
 
 }
 

@@ -65,4 +65,7 @@ public interface BoardDAO {
 
 	// 글 상세보기 (링크 가져오기)
 	public ArrayList<LectureBoardDTO> totalBoard_contenLink(int lectureNo);
+	
+	//SEQ
+	public int seq();
 }

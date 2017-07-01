@@ -48,7 +48,9 @@ public class BoardListService {
 
 	public void boardContentSaveService(HttpServletRequest request, LectureBoardDTO lecture) throws IOException {
 
-/*		//파일 업로드 처리 추가
+		//데이터 가져오는지
+		System.out.println("데이터 가져옵니다: " + lecture.getCateCode() + lecture.getSubcateCode() + lecture.getLectureTitle() + lecture.getLectureContent());
+		//파일 업로드 처리 추가
 		List<CommonsMultipartFile> files = lecture.getFiles();	
 		List<String> filenames = new ArrayList<String>();//파일명만 추출	
 		
@@ -67,36 +69,41 @@ public class BoardListService {
 				}
 				filenames.add(filename);// 실제 DB insert 할 파일명
 			}
-		}*/
+		}
 		//파일 업로드 처리 끝
 
 		System.out.println("boardContentSave 메소드 들어옴.");
-		String title = (String) request.getParameter("title");
+	/*	String title = (String) request.getParameter("title");
 		String content = (String) request.getParameter("content");
 		String cate = (String) request.getParameter("cate");
 		String subcate = (String) request.getParameter("subcate");
 		String classCode = request.getParameter("classCode");
-		System.out.println(title + "," + content + "," + cate + "," + subcate + "/" + classCode);
+		System.out.println(cate + "," + subcate + "/" + classCode);
 
 		LectureBoardDTO dto = new LectureBoardDTO();
 		dto.setClassCode(classCode);
 		dto.setCateCode(cate);
 		dto.setSubcateCode(subcate);
 		dto.setLectureContent(content);
-		dto.setLectureTitle(title);
-		// 파일 업로드 추가 부분
-	/*	
-		 dto.setFileSrc(filenames.get(0)); */
-		// dto.setFileSrc2(filenames.get(1));
-		 
-		// 파일 업로드 추가 부분
+		dto.setLectureTitle(title);  */
+
 		BoardDAO board = sqlsession.getMapper(BoardDAO.class);
 
-		board.insertBoardContent(dto);
-
+		board.insertBoardContent(lecture);
 		
-/*		  int file_insert = board.insertFile(dto);		
-		  System.out.println("파일 입력 결과: "+file_insert); */
+		// 파일 업로드 추가 부분
+			LectureBoardDTO dto = new LectureBoardDTO();
+				dto.setFileSrc(filenames.get(0)); 
+				dto.setFileSrc2(filenames.get(1));
+				int lecNo = board.seq();
+				dto.setLectureNo(lecNo);
+				
+				System.out.println("방금 들어간 게시판 번호 : "+dto.getLectureNo());
+		
+				System.out.println("파일 이름: " + dto.getFileSrc() + " / " + dto.getFileSrc2());
+		
+				int file_insert = board.insertFile(dto);		
+				System.out.println("파일 입력 결과: "+file_insert); 
 		
 
 	}

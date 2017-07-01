@@ -90,7 +90,7 @@ public class BoardListController {
     BoardDAO board=sqlsession.getMapper(BoardDAO.class);
     
     board.insertBoardContent(dto);*/
-	return "common/board_content";
+	return "teacher/board_content";
 
 	
 	}
