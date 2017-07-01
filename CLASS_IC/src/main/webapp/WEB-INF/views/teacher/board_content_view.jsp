@@ -71,7 +71,7 @@
                                 <div class="card-header">
                                    
                                 </div>
-                                <div class="card-content">
+                                <div class="card-content" style="height: 500px">
                                 ${LectureBoardDTO.lectureContent}  
                                     <!--여기에 뿌려준다   -->
                                     

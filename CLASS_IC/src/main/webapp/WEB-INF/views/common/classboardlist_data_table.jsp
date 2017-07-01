@@ -2,24 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.class_ic.vo.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<br>
-<br>
-<br>
-<br>
 
-<div class="container-fluid">
 
 	<div class="row">
 
 		<div class="col-md-12">
 
 			<div class="card">
-				<div class="card-header card-header-icon"
-					data-background-color="purple">
-					<i class="material-icons">assignment</i>
-				</div>
+			
 				<div class="card-content">
-					<h4 class="card-title">integrated management system</h4>
+					<h4 class="card-title"></h4>
 					<div class="toolbar">
 						<!--        Here you can write extra buttons/actions for the toolbar              -->
 					</div>
@@ -72,11 +64,8 @@
 											<td class="text-center">${LectureBoardDTO.lectureDate}</td>
 											<td class="text-center"><a
 												href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
-												class="btn btn-simple btn-info btn-icon edit"><i
-													class="material-icons">edit</i></a> <a
-												class="btn btn-simple btn-danger btn-icon remove"><i
-													class="material-icons" onclick="deletex()">close</i></a>
-													<input type="hidden" id="lectureNum" name="lectureNum" value="${LectureBoardDTO.lectureNo}">
+												class="btn btn-simple btn-rose btn-icon edit"><i class="material-icons">border_color</i></a> 
+												
 											</td>
 										
 										</tr>
@@ -111,41 +100,11 @@
 
 
 
-	</div>
-	
 
 	<script type="text/javascript">
 
 	var email="<%=(String)session.getAttribute("email")%>";
 
-	
-	//x표시 눌러서 삭제
-	function deletex(){
-		var lectrueNo = $('#lectureNum').val();
-		
-	       $.ajax({
-	           type: 'POST',
-	           url: 'totalBoard_delete.htm',
-	           data: { lectureNo: lectrueNo} ,
-	           success: function() {
-	               swal({
-	                   title: 'Deleted!',
-	                   text: '선택된 글이 삭제되었습니다.',
-	                   type: 'success',
-	                   confirmButtonClass: "btn btn-success",
-	                   buttonsStyling: false
-	                   }).then(function() {
-	   					
-	                  	 location.href="allboard.htm"
-	   				})
-	           },
-	           error: function() {
-	              alert('삭제 실패');
-	           } 
-
-	       }); 
-	}
-	
 	
 	
 //멀티컨텐츠 (삭제 )선택받기
@@ -213,7 +172,7 @@ var data="";
 
     $.ajax({
         type: 'POST',
-        url: 'totalBoard_multi_delete.htm',
+        url: 'classtotalBoard_multi_delete.htm',
         data: { data: data } ,
         dataType: 'text',
 	
@@ -229,7 +188,7 @@ var data="";
                 buttonsStyling: false
                 }).then(function() {
 					
-               	 location.href="allboard.htm"
+               	 
 				})
                 
     

@@ -40,4 +40,9 @@ and  classCode in (select classCode from classMember where email=#{email})
 and cateCode=#{cateCode} ORDER BY lectureNo desc limit 4
 </select>
 
+<delete id="deletx" parameterType="com.class_ic.vo.ClassByLectureDTO">
+
+delete from classbylecture where classCode=#{classCode} and lectureNo=#{lectureNo}
+</delete>
+
 </mapper>

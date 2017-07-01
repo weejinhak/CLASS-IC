@@ -2,6 +2,7 @@ package com.class_ic.dao;
 
 import java.util.ArrayList;
 
+import com.class_ic.vo.ClassByLectureDTO;
 import com.class_ic.vo.LectureBoardDTO;
 import com.class_ic.vo.SubCategoryDTO;
 
@@ -18,6 +19,9 @@ public interface BoardClassDAO {
 	
 	//각 카테고리에 알맞는 서브카테고리를 중복 없이 select 해옴.
 	ArrayList<SubCategoryDTO> selectSubcate(SubCategoryDTO dto);
+	
+	// 출력된 게시글 중 x 버튼을 누를 경우에 수업담기에 담겨 있던 것을 지워줌.
+	int deletx(ClassByLectureDTO dto);
 	
 	
 
