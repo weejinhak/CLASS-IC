@@ -69,7 +69,7 @@ overflow-x:hidden;
 .hidden { display:none;}
 
 #face { position:relative;
-  min-height:2900px;
+  min-height:900px;
 }
 
 #face:after { content:""; display:block; clear:both;}
