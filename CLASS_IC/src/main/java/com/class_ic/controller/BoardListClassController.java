@@ -64,10 +64,18 @@ public class BoardListClassController {
 	@RequestMapping(value="teacher/catedetails.htm", method=RequestMethod.GET)
 	public ModelAndView cateDetails(ModelAndView modal,HttpServletRequest request,HttpServletResponse response,String cateCode){
 
-	System.out.println("퇀다퇀다");
-      modal.setViewName("teacher.board_details");
-      modal.addObject("cateCode",cateCode);
-      
+	
+		modal=boardclasslistservice.cateDetails(modal, request, response, cateCode);
+		
+		return modal;
+	}
+	
+	//카테고리 서브 카테고리에 알맞는 게시글을 모두 가져옴.
+	@RequestMapping(value="teacher/selectcatesubcateboard.htm", method=RequestMethod.GET)
+	public ModelAndView selectCateSubcateboard(ModelAndView modal,HttpServletRequest request,HttpServletResponse response,SubCategoryDTO dto){
+
+	
+		modal=boardclasslistservice.selectCateSubcateboard(modal, request, response, dto);
 		
 		return modal;
 	}

@@ -21,6 +21,7 @@
                                 
                                 <div class="card-content table-responsive" style="height: 260px">
                                     <table class="table table-hover">
+                               
                                         <thead class="text-warning">
                                             <tr><th>No</th>
                                              <th>Title</th>
