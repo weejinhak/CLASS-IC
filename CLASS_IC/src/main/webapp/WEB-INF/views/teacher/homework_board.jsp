@@ -120,7 +120,7 @@
 			
 			function showMainCate() {
 				
-				var email = sessionId;
+				var email = "<%=(String)session.getAttribute("email")%>";
 					
 						console.log(email)
 						
@@ -149,8 +149,8 @@
 		
 		function addHomework() {
 			
-			var email = sessionId;
-			var classCode = sessionClassCode;
+			var email = "<%=(String)session.getAttribute("email")%>";
+			var classCode = "<%=(String)session.getAttribute("classCode")%>";
 			
 			console.log(email)
 			
@@ -181,8 +181,8 @@
 		
 		function showTeamList() {
 			
-			var email = sessionId;
-			var classCode = sessionClassCode;
+			var email = "<%=(String)session.getAttribute("email")%>";
+			var classCode = "<%=(String)session.getAttribute("classCode")%>";
 			var cateCode = $("#selectCateList02").val();
 				
 			console.log("showTeamList : "+cateCode)
@@ -220,8 +220,8 @@
 		//과제게시판 전체 정렬
 		function selectAllList() {
 			
-			var email = sessionId;
-			var classCode = sessionClassCode;
+			var email = "<%=(String)session.getAttribute("email")%>";
+			var classCode = "<%=(String)session.getAttribute("classCode")%>";
 			
 			$.ajax({
 				
@@ -232,7 +232,7 @@
 				success : function(data) {
 					
 					$('#tbody').empty();
-					$('#tbody').html(data); 
+					$('#tbody').html(data);    
 					console.log(data)
 					
 		   		}, 

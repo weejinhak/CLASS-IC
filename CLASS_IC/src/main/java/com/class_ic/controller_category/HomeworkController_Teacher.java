@@ -43,7 +43,6 @@ public class HomeworkController_Teacher {
 		for(int i=0;i<cateList.size();i++){
 			JSONObject obj = new JSONObject();
 			obj.put("cateCode", cateList.get(i).getCateCode());
-			obj.put("cateTitle", cateList.get(i).getCateTitle());
 			array.add(obj);
 		}
 		
