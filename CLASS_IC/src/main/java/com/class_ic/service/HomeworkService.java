@@ -8,7 +8,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 import org.springframework.ui.Model;
+=======
+import org.springframework.web.servlet.ModelAndView;
+>>>>>>> refs/remotes/origin/sohyeon
 
 import com.class_ic.dao.HomeworkDAO;
 import com.class_ic.vo.HomeworkDTO;
@@ -89,6 +93,7 @@ public class HomeworkService {
 			return AllList;
 		}
 		
+<<<<<<< HEAD
 	      //과제게시판 전체  출력 (추가.진학)
 	      public List<HomeworkDTO> homeworkSelectList(HttpSession session, HttpServletRequest request,Model model) {
 	         
@@ -107,4 +112,18 @@ public class HomeworkService {
 	         return selectAllList;
 	      }
 	      
+=======
+		//과제게시판 상세보기 
+		public ModelAndView homeworkContent(int assignNo){
+			System.out.println("상세보기 서비스탄다.");
+			HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+			List<HomeworkDTO> ContentList = dao.selectContent(assignNo);
+			
+			ModelAndView m = new ModelAndView();
+			m.setViewName("teacher.homework_content");
+			m.addObject("list", ContentList);
+			
+			return m;
+		}
+>>>>>>> refs/remotes/origin/sohyeon
 }

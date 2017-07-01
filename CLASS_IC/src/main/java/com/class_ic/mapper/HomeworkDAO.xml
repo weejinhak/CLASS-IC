@@ -51,6 +51,7 @@ assignboard a inner join member m on a.email=m.email
 where a.classCode=#{classCode} and a.email=#{email} order by field(assignNotice,'true') desc, assignDate desc;
 </select>
 
+<<<<<<< HEAD
 <!-- partyName별 출력 : 2017.06.30 위진학-->
 <select id="selectAllByTeacher" parameterType="com.class_ic.vo.HomeworkDTO" resultType="com.class_ic.vo.HomeworkDTO">
 select a.assignNo as assignNo ,a.cateCode as cateCode , a.assignTitle assignTitle, m.name as name, a.assignDate as assignDate
@@ -61,6 +62,12 @@ where g.partyName=#{partyName} and g.classCode=#{classCode} and g.email=#{email}
 </select>
 
 
+=======
+<!-- 과제게시판 상세보기 : 2017.06.30 박소현 -->
+<select id="selectContent" resultType="com.class_ic.vo.HomeworkDTO" parameterType="int">
+select * from assignboard where assignNo=#{assignNo} and email=#{email} and classCode=#{classCode}
+</select>
+>>>>>>> refs/remotes/origin/sohyeon
 </mapper>
 
 
