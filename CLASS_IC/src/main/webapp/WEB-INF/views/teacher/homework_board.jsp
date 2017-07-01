@@ -58,7 +58,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="tbody">
-                                                
+                                            	<div class="div"></div>
                                             </tbody>
                                         </table>
                                     </div>
@@ -107,6 +107,12 @@
 			showTeamList();
 		});
 		
+		$('#selectTeamList').change(function(){
+			selectCateCodeList();
+		});
+		
+		
+		
 		$("#noticeBtn").click(function() {
 			location.href="homeworkNoticePage.htm";
 		});
@@ -127,7 +133,7 @@
 									
 								$.each(data, function(){
 									$(".selectCateList").append("<option value='"+this.cateCode+"'>" + this.cateTitle + "</option> ");
-		                                console.log(this.cateTitle)
+		                                console.log("main cateTitle: "+this.cateTitle)
 								});
 								
 					   		}, 
@@ -195,10 +201,11 @@
 							
 							$.each(data, function(){
 								$("#selectTeamList").append("<option value='"+this.partyName+"'>" + this.partyName + "</option> ");
-	                                console.log(this.partyName)
+	                                console.log("partyName: "+this.partyName)
 	                               
 							});
 							
+							selectCateCodeList();
 							
 				   		}, 
 				   		
@@ -221,14 +228,12 @@
 				type : "post",
 				url:"selectAllList.htm",
 				data : {"email" : email, "classCode": classCode },
-				dataType : 'Json',
+				dataType : 'html',
 				success : function(data) {
 					
-					$.each(data, function(){
-						$("#tbody").append("<tr><td>"+this.assignNo+"</td><td>"+this.cateCode+"</td><td>"+this.assignTitle+"</td><td>"+this.name+"</td><td>"+this.assignDate+"</td></tr>");
-                           
-					});
-					
+					$('#tbody').empty();
+					$('#tbody').html(data); 
+					console.log(data)
 					
 		   		}, 
 		   		
@@ -241,21 +246,33 @@
 			
 		}
 		
-		//페이징
-		 $('#datatables2').DataTable({
-	            "pagingType": "full_numbers",
-	            "lengthMenu": [
-	                [10, 25, 50, -1],
-	                [10, 25, 50, "All"]
-	            ], //게시물 표시
-	            responsive: true,
-	            language: {
-	                search: "_INPUT_",
-	                searchPlaceholder: "단어를 입력하세요", //단어검색
-	            }
+		
 
-	        }); 
+		//partyName별 출력
+		  /*서브카테고리가 변경이 되면 Ajax를 태움 : 2017.06.29 위진학   */ 
+		  function selectCateCodeList() {
 
+				     var partyName=$('#selectTeamList').val();
+
+				     $.ajax({
+				    	 type : "post",
+				        url:'homeworkSelectList.htm',
+				        data:{
+				         
+				           email:sessionId,
+				           classcode:sessionClassCode,
+				           partyName:partyName
+				        },
+				        dataType:'html',
+				        success:function(data){
+				        
+				        	$('#tbody').empty();	
+				         $('#tbody').html(data);    
+				         
+				         console.log(data)
+				        }
+				     });
+		}
 		
 		
 		

@@ -101,9 +101,9 @@ $("#frm").submit(function(event) {
 	var classCode = $("#classCode").val();
 	var cateCode = $(".selectCateList").val();
 	var assignNotice = $("#assignNotice").val();
+	
 	var assignTitle = $("#assignTitle").val();
 	var assignContent = $("#assignContent").val();
-	
 });
 
 //function : 메인 카테고리 출력
