@@ -72,7 +72,7 @@ select * from lectureboard where classCode in
 
 <!-- 멤버 select box 출력 -->
 <select id="selectMember" resultType="com.class_ic.vo.MemberDTO" parameterType="String">
-select classCode from classmember where email=#{email};
+   SELECT classCode FROM class WHERE email=#{email} and classCode!=#{email}
 </select>
 
 <!-- 통합게시판 글 기수로 보내기 -->
