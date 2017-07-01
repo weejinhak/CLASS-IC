@@ -37,8 +37,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
 
 <!-- 최초 가입시 classCode email 로 넣기-->
-<!-- <insert id="insertDefault" parameterType="com.class_ic.vo.LectureDTO">
+<insert id="insertDefault" parameterType="com.class_ic.vo.LectureDTO">
    INSERT INTO class (classCode,classTitle,classStart,classOpenTime,classEnd,classCloseTime,classInviteCode,email)
-    VALUES(#{classCode}, #{classTitle}, now(),now(),now(),now(), #{email} )
-   </insert> -->
+    VALUES(#{classCode}, #{classTitle}, CURDATE(),CURDATE(),CURDATE(),CURDATE(), #{email} )
+   </insert>
 </mapper>

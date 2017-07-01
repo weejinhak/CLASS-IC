@@ -40,12 +40,6 @@ public class JoinService {
 		lecture.setEmail(email);
 		String viewpage="";
 		
-		/*
-		 * INSERT INTO class (classCode,classTitle,classStart,classOpenTime,classEnd,classCloseTime,classInviteCode,email)
-    VALUES(#{classCode}, #{classTitle}, #{classStart},#{classOpenTime},#{classEnd},#{classCloseTime},#{classInviteCode}, #{email} )
-  
-		 * 
-		 */
 		
 		try{
 			int result = member_dao.join(member);
@@ -54,7 +48,7 @@ public class JoinService {
 				member_dao.insertAuthority(member);
 				System.out.println("가입 성공");	
 				//class에 email 값으로 classCode 입력
-				 lectureDao.insert(lecture);
+				 lectureDao.insertDefault(lecture);
 				 System.out.println("class에 email 넣기");
 				//classmember에 classCode와 email 입력 
 				lectureDao.inputMyClassCode(email, classCode);
