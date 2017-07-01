@@ -48,7 +48,7 @@ public class BoardListService {
 
 	public void boardContentSaveService(HttpServletRequest request, LectureBoardDTO lecture) throws IOException {
 
-		//파일 업로드 처리 추가
+/*		//파일 업로드 처리 추가
 		List<CommonsMultipartFile> files = lecture.getFiles();	
 		List<String> filenames = new ArrayList<String>();//파일명만 추출	
 		
@@ -67,7 +67,7 @@ public class BoardListService {
 				}
 				filenames.add(filename);// 실제 DB insert 할 파일명
 			}
-		}
+		}*/
 		//파일 업로드 처리 끝
 
 		System.out.println("boardContentSave 메소드 들어옴.");
@@ -85,8 +85,8 @@ public class BoardListService {
 		dto.setLectureContent(content);
 		dto.setLectureTitle(title);
 		// 파일 업로드 추가 부분
-		
-		 dto.setFileSrc(filenames.get(0)); 
+	/*	
+		 dto.setFileSrc(filenames.get(0)); */
 		// dto.setFileSrc2(filenames.get(1));
 		 
 		// 파일 업로드 추가 부분
@@ -95,8 +95,8 @@ public class BoardListService {
 		board.insertBoardContent(dto);
 
 		
-		  int file_insert = board.insertFile(dto);		
-		  System.out.println("파일 입력 결과: "+file_insert); 
+/*		  int file_insert = board.insertFile(dto);		
+		  System.out.println("파일 입력 결과: "+file_insert); */
 		
 
 	}
