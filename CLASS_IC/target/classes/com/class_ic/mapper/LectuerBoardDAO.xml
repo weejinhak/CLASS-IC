@@ -2,8 +2,12 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- @Project : CLASS-IC @File name : todaylecture.xml @Author : 김은영 @Data 
-   : 2017.06.19 @Desc : -->
+<!-- @Project : CLASS-IC 
+     @File name : todaylecture.xml 
+     @Author : 김은영
+     @Data : 2017.06.19 
+     @Desc : 
+-->
 <mapper namespace="com.class_ic.dao.LectureBoardDAO"> 
 
 <!-- 통합게시판 화면 출력 -->
@@ -19,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--통합게시판 상세보기 화면 출력   --> 
 <select id="totalBoard_contentview" resultType="com.class_ic.vo.LectureBoardDTO"
       parameterType="int"> 
-      select * from (select b.lectureContent lectureContent ,b.lectureDate lectureDate,b.lectureNo lectureNo ,b.lectureTitle lectureTitle,l.linkNo linkNo,l.linkTitle linkTitle, l.linkSrc  linkSrc,f.fileNo fileNo, f.lectureFileNo lectureFileNo,a.fileSrc fileSrc  
+      select * from (select b.lectureContent lectureContent ,b.lectureDate lectureDate,b.lectureNo lectureNo ,b.lectureTitle lectureTitle,l.linkNo linkNo,l.linkTitle linkTitle, l.linkSrc  linkSrc,f.fileNo fileNo, f.lectureFileNo lectureFileNo,a.fileSrc fileSrc,a.fileTitle fileTitle  
       from lectureboard b, link l , lectureboardfile f  , file a
       where l.lectureno =b.lectureno and b.lectureno= f.lectureno and f.fileno = a.fileno ) lectureboardcontent where lectureno = #{lectureNo}
 </select>
@@ -34,19 +38,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    delete from lectureboard where lectureNo=#{lectureNo}
 </delete>
 
-<!-- 통합게시판 자료 입력 -->
-<insert id="insertFile">
-	INSERT INTO file (fileSrc, fileSrc2)values(#{fileSrc}, #{fileSrc2});
-</insert>
-<!-- 통합게시판 자료 게시판 잇는 테이블 insert -->
-<insert id="insertLectureBoardFile">
-	INSERT INTO lectureboardfile (fileNo, lectureNo) VALUES (LAST_INSERT_ID(), LAST_INSERT_ID())
-</insert>
-
 <!--  -->
 <select id="allList" resultType="com.class_ic.vo.LectureBoardDTO" >
 select * from lectureboard
+
 </select>
 
 </mapper>
-
