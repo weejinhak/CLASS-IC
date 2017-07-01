@@ -46,7 +46,7 @@ public class HomeworkService {
 		}
 		
 		//카테고리 선택시 조 출력
-		public List<String> selectTeamService(String email, String classCode, String cateCode) {
+		public List<HomeworkDTO> selectTeamService(String email, String classCode, String cateCode) {
 			
 			System.out.println("selectTeamService 들어옴");
 			
@@ -56,7 +56,7 @@ public class HomeworkService {
 		    dto.setCateCode(cateCode);
 		  
 			HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
-			List<String> teamList = dao.selectTeamDao(dto);
+			List<HomeworkDTO> teamList = dao.selectTeamDao(dto);
 			
 			return teamList;
 		}
@@ -89,7 +89,7 @@ public class HomeworkService {
 			return AllList;
 		}
 		
-	      //과제게시판 전체  출력 (추가.진학)
+	      //과제게시판 partyName별 출력 (추가.진학)
 	      public List<HomeworkDTO> homeworkSelectList(HttpSession session, HttpServletRequest request,Model model) {
 	         
 	         String partyName=request.getParameter("partyName");
@@ -106,5 +106,77 @@ public class HomeworkService {
 	         
 	         return selectAllList;
 	      }
+	      
+	      
+	///////////////////////////////////////////////학생 
+	    //student 메인 카테고리 출력
+			public List<HomeworkDTO> studentMainCate(String classCode) {
+				System.out.println("Homework Service_Student email : "+ classCode);
+				
+				HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+				List<HomeworkDTO> cateList = dao.studentMainCate(classCode);
+				
+				return cateList;
+			}
+	
+			//카테고리 선택시 조 출력
+			public List<HomeworkDTO> studentTeamService(String classCode, String cateCode) {
+				
+				System.out.println("selectTeamService 들어옴");
+				
+				HomeworkDTO dto = new HomeworkDTO();
+			    dto.setClassCode(classCode);
+			    dto.setCateCode(cateCode);
+			  
+				HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+				List<HomeworkDTO> teamList = dao.selectTeamStudent(dto);
+				
+				return teamList;
+			}
+	
+			//과제게시판 전체  출력
+			public List<HomeworkDTO> selectAllStudent(HomeworkDTO dto) {
+				
+				HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+				List<HomeworkDTO> AllList = dao.selectAllStudent(dto);
+				
+				return AllList;
+			}
+	
+			//과제게시판 partyName별 출력 : 학생 (추가.진학)
+		      public List<HomeworkDTO> homeworkSelectListStudent(HttpSession session, HttpServletRequest request,Model model) {
+		         
+		         String partyName=request.getParameter("partyName");
+		         String classCode=(String)session.getAttribute("classCode");
+		         
+		         HomeworkDTO dto= new HomeworkDTO();
+		         dto.setPartyName(partyName);
+		         dto.setClassCode(classCode);
+		         
+		         HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+		         List<HomeworkDTO> selectAllList = dao.selectAllByStudent(dto);
+		         
+		         return selectAllList;
+		      }
+		      
+		    //과제  등록
+				public void addHomeworkService(String email,String classCode,String cateCode,String assignNotice,String assignTitle,String assignContent, String partyName) {
+					
+					HomeworkDTO dto = new HomeworkDTO();
+					dto.setEmail(email);
+					dto.setClassCode(classCode);
+					dto.setCateCode(cateCode);
+					dto.setAssignNotice(assignNotice);
+					dto.setAssignTitle(assignTitle);
+					dto.setAssignContent(assignContent);
+					dto.setPartyName(partyName);
+					
+					HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+					int result = dao.addHomeworkDao(dto);
+					
+					System.out.println("homework insert result : "+result);
+							
+				}
+				
 	      
 }

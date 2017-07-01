@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 	<!DOCTYPE div PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<!-- 강사 -->
 	 <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
@@ -132,8 +133,7 @@
 							success : function(data) {
 									
 								$.each(data, function(){
-									$(".selectCateList").append("<option value='"+this.cateCode+"'>" + this.cateTitle + "</option> ");
-		                                console.log("main cateTitle: "+this.cateTitle)
+									$(".selectCateList").append("<option value='"+this.cateCode+"'>" + this.cateCode + "</option> ");
 								});
 								
 					   		}, 

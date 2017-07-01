@@ -15,7 +15,6 @@ public class MainController_Student {
 	@RequestMapping(value="main.htm", method=RequestMethod.POST)
 	public String student(HttpSession session, String classCode){
 		session.setAttribute("classCode", classCode);
-
 		
 		return "student.student_main";
 	}
