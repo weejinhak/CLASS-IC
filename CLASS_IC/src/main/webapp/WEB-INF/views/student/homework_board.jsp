@@ -39,7 +39,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="tbody">
-                                            	<div class="div"></div>
                                             </tbody>
                                         </table>
                                     </div>
