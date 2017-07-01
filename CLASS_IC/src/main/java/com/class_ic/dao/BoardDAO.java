@@ -59,4 +59,15 @@ public interface BoardDAO {
 
 	// 서브 카테고리 추가
 	public int insertSubcate(SubCategoryDTO dto);
+ 
+	//링크 파일 게시판 
+	
+	  //링크 리스트 			//나중에 기수 세션으로 불러와 담아 
+	//  public ArrayList<LectureBoardDTO> linkList();
+	  
+	  //파일 리스트  			//나중에 기수 세션으로 불러와 담아  
+
+	//  public ArrayList<LectureBoardDTO> fileList();
+ 
+	
 }

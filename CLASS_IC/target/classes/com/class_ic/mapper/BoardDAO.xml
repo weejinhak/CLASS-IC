@@ -94,4 +94,16 @@ insert into category values(#{cateCode},#{cateTitle},#{email})
 
 insert into subcategory values(#{subcateCode},#{cateCode},#{subcateTitle},#{email})
 </insert>
+
+ <!--링크 파일 게시판   -->
+<!-- <select id="linkList" resultType="com.class_ic.vo.LectureBoardDTO">
+select * from link
+</select>
+
+<select id="fileList" resultType="com.class_ic.vo.LectureBoardDTO">
+select * from assignboardfile 
+</select>
+  -->
+
+
 </mapper>
