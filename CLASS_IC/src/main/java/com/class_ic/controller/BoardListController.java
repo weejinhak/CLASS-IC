@@ -19,7 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.class_ic.app.dto.MemberDTO;
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.service.BoardListService;
+import com.class_ic.vo.CategoryDTO;
 import com.class_ic.vo.LectureBoardDTO;
+import com.class_ic.vo.SubCategoryDTO;
 
 
 
@@ -47,6 +49,8 @@ public class BoardListController {
 	@Autowired
 	private BoardListService boardlistservice;
 	
+	
+	
 
 	@RequestMapping(value = "teacher/boardcontent.htm", method = RequestMethod.GET)
 	public String boardContentView(HttpServletRequest request){
@@ -63,6 +67,8 @@ public class BoardListController {
 	}
 	
 	
+	
+	//글 insert 
 	@RequestMapping(value = "boardcontentsave.htm", method = RequestMethod.POST)
 	public String boardContentSave(HttpServletRequest request, LectureBoardDTO lecture) throws IOException{
 		
@@ -90,11 +96,14 @@ public class BoardListController {
 	}
 	
 
+	//카테고리 select 
 	@RequestMapping(value = "selectcategory.htm", method = RequestMethod.POST)
 	public String selectCategory(Model model,HttpServletRequest request){
 
-	
-	
+/*        HttpSession session=request.getSession();
+        String email=(String) session.getAttribute("email");
+        
+	*/
 	String viewpage = boardlistservice.selectCategoryService(model, request);
    /* BoardDAO board=sqlsession.getMapper(BoardDAO.class);
 	List<CategoryDTO> totalcate= board.selectCategory();
@@ -113,6 +122,7 @@ public class BoardListController {
 	
 	}
 	
+	//서브 카테고리 select 
 	@RequestMapping(value = "selectsubcategory.htm", method = RequestMethod.POST)
 	public String selectSubCategory(Model model,HttpServletRequest request){
 		
@@ -170,13 +180,14 @@ public class BoardListController {
     //통합게시판 전체 출력
     @RequestMapping(value="teacher/allboard.htm") 
     public ModelAndView allBoard(LectureBoardDTO bvo, HttpServletRequest request){ 
-        ModelAndView viewpage = boardlistservice.allBoard(bvo, request);
+
+    	ModelAndView viewpage = boardlistservice.allBoard(bvo, request);
         
         return viewpage;
          
     }
     
-    //통합게시판 카테고리,서브카테고리 select box 
+    //통합게시판 카테고리,서브카테고리 select box 0
     @RequestMapping(value="teacher/totalboard.htm") 
     public ModelAndView totalBoard(LectureBoardDTO bvo, HttpServletRequest request){ 
     ModelAndView viewpage = boardlistservice.totalBoard(bvo, request);
@@ -210,11 +221,13 @@ public class BoardListController {
      	 return viewpage;
     }
     
-    //하나 씩 삭제
-    @RequestMapping(value="teacher/totalBoard_delete.htm" ) 
+    //action의 x버튼 누르기 삭제 
+    @RequestMapping(value="teacher/totalBoard_delete.htm", method = RequestMethod.POST ) 
     public String delete(HttpServletRequest request, HttpServletResponse response){ 
+    	 System.out.println("*****************삭제 컨트롤러러러럴럴ㄹ");
+    	
     	String viewpage = boardlistservice.delete(request, response);
-    	 
+    	
     	 return viewpage;
     }
     
@@ -222,6 +235,29 @@ public class BoardListController {
     @RequestMapping("teacher/totalBoard_contentview.htm") 
     public ModelAndView boardContentDetail(HttpServletRequest request, HttpServletResponse response,LectureBoardDTO bvo ){
   	  ModelAndView viewpage = boardlistservice.boardContentDetail(request, response, bvo);
+  	   
+      return viewpage;
+    	
+    }
+    
+    
+    //카테고리 추가 함수
+    
+    @RequestMapping("teacher/insertcate.htm") 
+    public ModelAndView insertCate(HttpServletRequest request, HttpServletResponse response,CategoryDTO dto){
+  	  System.out.println("카테고리 insert 컨트롤러 탐");
+    	ModelAndView viewpage = boardlistservice.insertCate(request, response, dto);
+  	   
+      return viewpage;
+    	
+    }
+    
+    //서브 카테고리 추가 함수
+    
+    @RequestMapping("teacher/insertsubcate.htm") 
+    public ModelAndView insertSubate(HttpServletRequest request, HttpServletResponse response,SubCategoryDTO dto){
+    	  System.out.println("서브 카테고리 insert 컨트롤러 탐");
+    	ModelAndView viewpage = boardlistservice.insertSubcate(request, response, dto);
   	   
       return viewpage;
     	

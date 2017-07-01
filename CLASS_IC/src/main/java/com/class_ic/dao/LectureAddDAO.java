@@ -23,4 +23,6 @@ public interface LectureAddDAO {
 	// ClassMember테이블에 ID가 존재하는지.
 	public int searchMemberClassMember(String email, String classCode);
 
+	//강사 가입시 최초 classCode 에 email 값 넣기 
+	public int insertDefault (LectureDTO lecture);
 }

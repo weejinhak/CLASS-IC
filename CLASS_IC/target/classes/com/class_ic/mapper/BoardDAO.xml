@@ -14,34 +14,55 @@ values(#{classCode},#{cateCode},#{subcateCode},#{lectureTitle},#{lectureContent}
 </insert>
 
 <!--카테고리 select box  -->
-<select id="selectCategory" resultType="com.class_ic.vo.CategoryDTO">
-select * from category
+<select id="selectCategory" resultType="com.class_ic.vo.CategoryDTO" parameterType="String">
+select * from category where email=#{email}
 </select>
 
 <!--서브카테고리 select box  -->
-<select id="selectSubCategory" resultType="com.class_ic.vo.SubCategoryDTO">
-select * from subcategory
+<select id="selectSubCategory" resultType="com.class_ic.vo.SubCategoryDTO" parameterType="String">
+select * from subcategory where email=#{email}
 </select>
 
 <!-- LectureBoard 추가부분 -->
 
 <!-- 통합게시판 화면 출력 -->
- <select id="allBoard" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="String">
-    select * from lectureboard where cateCode=#{param1} and subcateCode=#{param2} 
+ <select id="allBoard" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="com.class_ic.vo.SubCategoryDTO">
+    select * from lectureboard where cateCode=#{cateCode} and subcateCode=#{subcateCode} and classCode in
+(select classCode from classMember where email=#{email}) 
  </select> 
  
 <!--통합게시판 수정화면 출력   --> 
-<select id="totalboardEdit" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="int">
+<select id="totalboardEdit" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="Integer">
    select * from lectureboard where lectureNo=#{lectureNo}
 </select>
 
 <!--통합게시판 상세보기 화면 출력   --> 
 <select id="totalBoard_contentview" resultType="com.class_ic.vo.LectureBoardDTO"
-      parameterType="int"> 
-      select * from (select b.lectureContent lectureContent ,b.lectureDate lectureDate,b.lectureNo lectureNo ,b.lectureTitle lectureTitle,l.linkNo linkNo,l.linkTitle linkTitle, l.linkSrc  linkSrc,f.fileNo fileNo, f.lectureFileNo lectureFileNo,a.fileSrc fileSrc  
-      from lectureboard b, link l , lectureboardfile f  , file a
-      where l.lectureno =b.lectureno and b.lectureno= f.lectureno and f.fileno = a.fileno ) lectureboardcontent where lectureno = #{lectureNo}
+      parameterType="Integer"> 
+
+select lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent,  lectureDate FROM lectureboard WHERE  lectureNo = #{lectureNo}
 </select>
+
+<!--통합게시판 상세보기 파일 출력   --> 
+<select id="totalBoard_contenFile" resultType="com.class_ic.vo.LectureBoardDTO"
+      parameterType="Integer"> 
+
+SELECT  f.fileSrc as fileSrc
+FROM lectureboard l JOIN filelecture f
+ON l.lectureNo = f.lectureNo
+WHERE f.lectureNo=#{lectureNo}
+</select>
+
+<!--통합게시판 상세보기 링크 출력   --> 
+<select id="totalBoard_contenLink" resultType="com.class_ic.vo.LectureBoardDTO"
+      parameterType="Integer"> 
+
+SELECT li.linkTitle as linkTitle, li.linkSrc as linkSrc
+FROM link li JOIN lectureboard lb
+ON li.lectureNo = lb.lectureNo
+WHERE li.lectureNo = #{lectureNo}
+</select>
+
 
 <!-- 통합게시판 수정 완료 -->
 <update id="totalboardEditOk" parameterType="com.class_ic.vo.LectureBoardDTO">
@@ -53,9 +74,12 @@ select * from subcategory
    delete from lectureboard where lectureNo=#{lectureNo}
 </delete>
 
-<!--  -->
+<!--  전체 글 출력 -->
 <select id="allList" resultType="com.class_ic.vo.LectureBoardDTO" >
-select * from lectureboard
+
+select * from lectureboard where classCode in 
+(select classCode from classMember where email=#{email})
+
 
 </select>
 
@@ -63,16 +87,12 @@ select * from lectureboard
 
 <!-- 통합게시판 자료 입력 -->
 <insert id="insertFile">
-	INSERT INTO file (fileSrc, fileSrc2)values(#{fileSrc}, #{fileSrc2});
-</insert>
-<!-- 통합게시판 자료 게시판 잇는 테이블 insert -->
-<insert id="insertLectureBoardFile">
-	INSERT INTO lectureboardfile (fileNo, lectureNo) VALUES (LAST_INSERT_ID(), LAST_INSERT_ID())
+	INSERT INTO filelecture (lectureNo, fileSrc ) VALUES (LAST_INSERT_ID() , #{fileSrc})
 </insert>
 
 <!-- 멤버 select box 출력 -->
 <select id="selectMember" resultType="com.class_ic.vo.MemberDTO" parameterType="String">
-select classCode from classmember where email=#{email};
+   SELECT classCode FROM class WHERE email=#{email} and classCode!=#{email}
 </select>
 
 <!-- 통합게시판 글 기수로 보내기 -->
@@ -84,4 +104,14 @@ insert into classbylecture values(#{lectureNo},#{classCode})
 <select id="selectClassByLecture" resultType="com.class_ic.vo.ClassByLectureDTO">
 select * from classbylecture
 </select>
+
+
+<insert id="insertCate" parameterType="com.class_ic.vo.CategoryDTO">
+insert into category values(#{cateCode},#{cateTitle},#{email})
+</insert>
+
+<insert id="insertSubcate" parameterType="com.class_ic.vo.SubCategoryDTO">
+
+insert into subcategory values(#{subcateCode},#{cateCode},#{subcateTitle},#{email})
+</insert>
 </mapper>

@@ -12,6 +12,7 @@
 <br>
 <br>
 <script type="text/javascript">
+
 function myFunction() {
     document.getElementById("writeForm").reset();
 }
@@ -40,17 +41,22 @@ function myFunction() {
     		var content=$("#content").val();
     		var cate=$("#cate").val();
     		var subcate=$("#subcate").val();
-    		var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
+    		var sessionClassCode="<%=(String)session.getAttribute("email")%>";
+/*     		var fileData = new FormData();
+    		fileData.append('file', $('input[type=file]')[0].files[0]);
+
+    		 */
 
         	console.log(title);
         	console.log(content);
         	console.log(cate);
         	console.log(subcate);
         	console.log(sessionClassCode);
+        	/* console.log(fileData); */
 
         	$.ajax({ 
         		type: 'post' ,
-        		/* enctype: "multipart/form-data", */
+        	/* 	enctype: "multipart/form-data",  */
         		url: '${pageContext.request.contextPath}/boardcontentsave.htm', 
         		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode},
         		dataType:'text',
@@ -180,7 +186,7 @@ function myFunction() {
 			</div>
 			
 			<!-- 파일 첨부  --> 
-                                       첨부 파일 #01
+            <!--                            첨부 파일 #01
                                        
                                     <ul class="mailbox-attachments clearfix">
                                     
@@ -201,7 +207,7 @@ function myFunction() {
               </div>
                 <div class="col-sm-5">
                       
-                        <!-- 파일 첨부  --> 
+                        파일 첨부  
                                        첨부 파일 #02
                                        
                                     <ul class="mailbox-attachments clearfix">
@@ -223,7 +229,7 @@ function myFunction() {
               </div>
      </form>
                     </div>
-			<!-- 파일 추가 끝 -->
+			파일 추가 끝 -->
 
 			<div class="td-actions text-center">
 	

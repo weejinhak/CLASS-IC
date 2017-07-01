@@ -29,19 +29,19 @@ import com.class_ic.vo.SubCategoryDTO;
 
 /*
 * @Project		:	CLASS-IC
-* @Date		    :	2017.06.27
+* @Date		    :	2017.07.1
 * @Author		:	노지영
 */
 
 /*
 * @Class: BoardListController 
-* @Date: 2017.06. 27
+* @Date: 2017.07. 1
 * @Author: 노지영
-* @Desc: 게시판의 게시글의 정보의 C.R.U.D 를 담당하는 컨트롤러.
+* @Desc: 클래스별 게시판의 게시글의 정보의 C.R.U.D 를 담당하는 서비스.
 */
 
 @Service
-public class BoardListService {
+public class BoardClassListService {
 
 	@Autowired
 	private SqlSession sqlsession;
@@ -316,19 +316,17 @@ public class BoardListService {
 		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
 		int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));
-		System.out.println("lectureNo : " + lectureNo);
+		System.out.println("lectno" + lectureNo);
 		LectureBoardDTO blist = bdao.totalBoard_contentview(lectureNo);
-		ArrayList<LectureBoardDTO> bfilelist = bdao.totalBoard_contenFile(lectureNo);
-		ArrayList<LectureBoardDTO> blinklist = bdao.totalBoard_contenLink(lectureNo);
-		System.out.println("가져온 게시판 글번호: " +blist.getLectureNo());
+		ArrayList<LectureBoardDTO> bfile = bdao.totalBoard_contenFile(lectureNo);
+		ArrayList<LectureBoardDTO> blink = bdao.totalBoard_contenLink(lectureNo);
 		System.out.println("은영 상세" + blist);
 		// 리턴 셋팅
 		ModelAndView m = new ModelAndView();
 		m.setViewName("teacher.board_content_view");
 		m.addObject("bvo", blist);
-		m.addObject("bfile", bfilelist );
-		m.addObject("blink", blinklist);
-
+		m.addObject("bfile", bfile);
+		m.addObject("blink",blink );
 		return m;
 	}
 
