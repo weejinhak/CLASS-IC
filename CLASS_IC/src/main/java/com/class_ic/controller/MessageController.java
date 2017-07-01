@@ -8,13 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.class_ic.service.MessageService;
+//import com.class_ic.service.MessageService;
 import com.class_ic.vo.MemberDTO;
 
 @Controller
 public class MessageController {
 	
-	@Autowired
+	/*@Autowired
 	private MessageService messageService;
 	
 	
@@ -33,7 +33,7 @@ public class MessageController {
 	
 		return "common/senderlist";
 		
-	}
+	}*/
 	
 	
 }

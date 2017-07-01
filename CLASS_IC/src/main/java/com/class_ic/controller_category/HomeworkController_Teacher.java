@@ -124,7 +124,6 @@ public class HomeworkController_Teacher {
 			
 		}
 		
-<<<<<<< HEAD
 		   //팀별 게시물 출력 : 2017.06.30 위진학
 	      @RequestMapping(value="homeworkSelectList.htm", method=RequestMethod.POST)
 	      public String homeworkSelectList(HttpSession session, HttpServletRequest request,Model model) throws IOException {
@@ -140,7 +139,6 @@ public class HomeworkController_Teacher {
 	         return "teacher/homework_partyNameList";
 	         
 	      }
-=======
 		@RequestMapping(value="homeworkContent.htm", method=RequestMethod.GET)
 		public ModelAndView homeworkContent(int assignNo){
 			System.out.println("상세보기 컨트롤러 ");
@@ -148,7 +146,6 @@ public class HomeworkController_Teacher {
 					
 			return viewpage;
 		}
->>>>>>> refs/remotes/origin/sohyeon
 }
 
 

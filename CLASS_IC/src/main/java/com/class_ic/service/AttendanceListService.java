@@ -8,6 +8,7 @@
 package com.class_ic.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -177,6 +178,7 @@ public class AttendanceListService implements AttendanceListDAO{
 		   ArrayList<AttandanceDTO> selecteachstudent=attendancelistDao.selectEachStudent(email,classcode);
 		return selecteachstudent;
 	}
+
 
 
 }

@@ -44,7 +44,7 @@ public class ExcelDownloadController {
 	/*
 	 * @description :강사가 학생을 골라 출석을 다운로드
 	 */
-	@RequestMapping(value = "teacher/excelDownload.htm", method = RequestMethod.POST)
+	/*@RequestMapping(value = "teacher/excelDownload.htm", method = RequestMethod.POST)
 	public ModelAndView attendanceExcelByTeacher(HttpSession session,HttpServletRequest request) {
 		String tEmail=(String)session.getAttribute("email");
 		String classCode=(String)session.getAttribute("classCode");
@@ -53,6 +53,6 @@ public class ExcelDownloadController {
 		
 		// ModelAndView 바로 리턴
 		return new ModelAndView("teacherExcelview", "memberattendacnelist", memberattendacnelist);
-	}
+	}*/
 
 }
