@@ -75,7 +75,7 @@ public interface BoardDAO {
 	public int totalboardEditOk(LectureBoardDTO dto);
 
 	// 글 상세보기
-	public ArrayList<LectureBoardDTO> totalBoard_contentview(int lectureNo);
+	public LectureBoardDTO totalBoard_contentview(int lectureNo);
 
 	// 기수 불러오기
 	ArrayList<MemberDTO> selectMember(String email);
@@ -92,4 +92,8 @@ public interface BoardDAO {
 
 	// 서브 카테고리 추가
 	public int insertSubcate(SubCategoryDTO dto);
+
+	ArrayList<LectureBoardDTO> totalBoard_contenFile(int lectureNo);
+
+	ArrayList<LectureBoardDTO> totalBoard_contenLink(int lectureNo);
 }

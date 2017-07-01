@@ -29,19 +29,19 @@ import com.class_ic.vo.SubCategoryDTO;
 
 /*
 * @Project		:	CLASS-IC
-* @Date		    :	2017.06.27
+* @Date		    :	2017.07.1
 * @Author		:	노지영
 */
 
 /*
 * @Class: BoardListController 
-* @Date: 2017.06. 27
+* @Date: 2017.07. 1
 * @Author: 노지영
-* @Desc: 게시판의 게시글의 정보의 C.R.U.D 를 담당하는 컨트롤러.
+* @Desc: 클래스별 게시판의 게시글의 정보의 C.R.U.D 를 담당하는 서비스.
 */
 
 @Service
-public class BoardListService {
+public class BoardClassListService {
 
 	@Autowired
 	private SqlSession sqlsession;
@@ -100,186 +100,6 @@ public class BoardListService {
 		
 
 	}
-	
-	public String selectMember1(Model model,HttpServletRequest request,HttpSession session){
-
-			BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
-			
-			String email=(String)session.getAttribute("email");
-			
-			ArrayList<MemberDTO> memberlist = dao.selectMember(email);
-			
-			System.out.println("memberlist뜨냐?"+memberlist);
-			System.out.println("이메일이다~  " + email);
-			
-			model.addAttribute("memberlist",memberlist);
-			
-			String viewpage = "common/boardMemberList";
-	
-		return viewpage;
-		
-	}
-	
-	public String boardMultiSend1(String lectureNo,String classCode){
-			
-		System.out.println("기수로 보내기 서비스 탄다.");
-
-		
-		BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
-			
-		String[] array = lectureNo.split(",");
-	    ClassByLectureDTO dto=new ClassByLectureDTO();
-		dto.setClassCode(classCode);
-		
-		ArrayList<ClassByLectureDTO> list=dao.selectClassByLecture();
-		
-		boolean exist=false;
-	     for(int i=0;i<array.length;i++){
-	    	 
-	    	 for(ClassByLectureDTO all:list){
-	    		 if(all.getlectureNo()==Integer.parseInt(array[i])){
-	    			 
-	    			 System.out.println(array[i]+"있음");
-	    			 exist=true;
-	    			 
-	    		 }
-	    	 }
-	    	 if(exist){
-	    	 break;
-	    	 }
-	    	 
-	    			 System.out.println(array[i]);
-	                 dto.setlectureNo(Integer.parseInt(array[i]));
-	                 dao.boardMultiSend(dto);
-	    		
-	    	 }
-            
-	     
-
-	     
-	String viewpage = "teacher.totalLectureBoard";
-	return viewpage;
-	
-}
-	
-	//여기서 부터 합침
-	//통합게시판 리스트 출력
-	 public ModelAndView allBoard1(LectureBoardDTO bvo, HttpServletRequest request){
-		 
-		 BoardDAO  bdao = sqlsession.getMapper(BoardDAO.class);
-         
-         ArrayList<LectureBoardDTO> blist = bdao.allList();
-         
-         // 리턴 셋팅
-         ModelAndView m = new ModelAndView();
-         m.setViewName("teacher.totalLectureBoard");
-         m.addObject("bvo", blist);  
-         
-         return m;
-	 }
-	
-	  
-	//통합게시판 카테고리,서브카테고리 select box 
-	  public ModelAndView totalBoard1(LectureBoardDTO bvo, HttpServletRequest request){ 
-		  
-		  BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
-	         
-	         String cateCode = request.getParameter("cateCode");
-	         String subcateCode = request.getParameter("subcateCode");
-	         
-	         ArrayList<LectureBoardDTO> blist = bdao.allBoard(cateCode,subcateCode); 
- 
-	         // 리턴 셋팅
-	         ModelAndView m = new ModelAndView();
-	         m.setViewName("common/totalboardlist");
-	         m.addObject("bvo", blist);  
-	         
-	         return m;
-	  }
-	  
-	  //통합게시판 수정화면 처리
-	   public ModelAndView totalboardEdit1(LectureBoardDTO dto,HttpServletRequest request,int lectureNo){
-
-		   BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
-		  
-		   int lectureNo1 = lectureNo;
-		   System.out.println("lectureNo 나오냐" + lectureNo);
-		   
-		   ArrayList<LectureBoardDTO> list = bdao.totalboardEdit(lectureNo1);
-		   System.out.println(list.size());
-		   
-		   ModelAndView m = new ModelAndView();
-		   m.setViewName("teacher.totalLectureBoard_Edit");
-		   m.addObject("list", list);
-		    System.out.println("모델단"+m);
-		  
-		   return m;
-	   }
-	   
-	   //통합게시판 수정된 데이터 DB저장
-	    public String totalboardEditOk1(LectureBoardDTO dto){
-	 	   System.out.println("수정오케이컨트롤러11"+dto);
-		   
-		   BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
-		   dao.totalboardEditOk(dto);
-		                 
-		  return "redirect:allboard.htm";
-	    }
-	   
-	    //다중삭제
-	    public String multi_del1(HttpServletRequest request, HttpServletResponse response ) {
-	    	  System.out.println("다중삭제 컨트롤러");
-
-	          String test=request.getParameter("data");
-	     
-	          BoardDAO bdao = sqlsession.getMapper(BoardDAO.class); 
-	          
-	             String[] array = test.split(",");
-
-	             for(int i=0;i<array.length;i++){
-	                
-	                //삭제로 바꿈    
-	                bdao.deleteLect(Integer.parseInt(array[i]));
-	                
-	             }
-	            return "redirect:allboard.htm";
-	            
-	   		}
-	    
-	    //하나 씩 삭제
-         public String delete1(HttpServletRequest request, HttpServletResponse response){ 
-             System.out.println("totalBoard_delete.htm 컨트롤러 탐 ");
-             int lectureNo = Integer.parseInt( request.getParameter("lectureNo"));
-             
-             
-             BoardDAO bdao = sqlsession.getMapper(BoardDAO.class); 
-             
-             bdao.deleteLect(lectureNo) ;
-  
-             return "redirect:allboard.htm";
-         }
-            
-	    	 
-	   //게시판 글 상세보기
-         public ModelAndView boardContentDetail1(HttpServletRequest request, HttpServletResponse response,LectureBoardDTO bvo ){  //lectureNo 올걸 
-             
-             BoardDAO bdao = sqlsession.getMapper(BoardDAO.class); 
-             
-             int lectureNo = Integer.parseInt( request.getParameter("lectureNo"));
-               System.out.println("lectno" +lectureNo);
-             LectureBoardDTO blist = bdao.totalBoard_contentview(lectureNo); 
-             ArrayList<LectureBoardDTO> bfile= bdao.totalBoard_contenFile(lectureNo);
-             ArrayList<LectureBoardDTO> blink = bdao.totalBoard_contenLink(lectureNo);
-             System.out.println("은영 상세"+blist);
-             // 리턴 셋팅
-             ModelAndView m = new ModelAndView();
-             m.setViewName("teacher.board_content_view");
-             m.addObject("bvo", blist);  
-             m.addObject("bfile", bfile);  
-             m.addObject("blink", blink);  
-             
-             return m;
-          }
 
 	public String selectCategoryService(Model model, HttpServletRequest request) {
 		System.out.println("selectCategory 메소드 들어옴.");
@@ -496,19 +316,17 @@ public class BoardListService {
 		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
 		int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));
-		System.out.println("lectureNo : " + lectureNo);
+		System.out.println("lectno" + lectureNo);
 		LectureBoardDTO blist = bdao.totalBoard_contentview(lectureNo);
-		ArrayList<LectureBoardDTO> bfilelist = bdao.totalBoard_contenFile(lectureNo);
-		ArrayList<LectureBoardDTO> blinklist = bdao.totalBoard_contenLink(lectureNo);
-		System.out.println("가져온 게시판 글번호: " +blist.getLectureNo());
+		ArrayList<LectureBoardDTO> bfile = bdao.totalBoard_contenFile(lectureNo);
+		ArrayList<LectureBoardDTO> blink = bdao.totalBoard_contenLink(lectureNo);
 		System.out.println("은영 상세" + blist);
 		// 리턴 셋팅
 		ModelAndView m = new ModelAndView();
 		m.setViewName("teacher.board_content_view");
 		m.addObject("bvo", blist);
-		m.addObject("bfile", bfilelist );
-		m.addObject("blink", blinklist);
-
+		m.addObject("bfile", bfile);
+		m.addObject("blink",blink );
 		return m;
 	}
 
@@ -540,5 +358,4 @@ public class BoardListService {
 
 		return m;
 	}
-
 }

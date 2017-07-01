@@ -24,5 +24,5 @@ public interface LectureAddDAO {
 	public int searchMemberClassMember(String email, String classCode);
 
 	//강사 가입시 최초 classCode 에 email 값 넣기 
-	//public int insertDefault (LectureDTO lecture);
+	public int insertDefault (LectureDTO lecture);
 }

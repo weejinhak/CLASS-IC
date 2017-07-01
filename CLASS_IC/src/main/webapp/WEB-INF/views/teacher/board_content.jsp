@@ -39,18 +39,16 @@ function myFunction() {
     		var cate=$("#cate").val();
     		var subcate=$("#subcate").val();
     		var sessionClassCode="<%=(String)session.getAttribute("classCode")%>";
-    		
+
 
        		console.log(title);
         	console.log(content);
         	console.log(cate);
         	console.log(subcate);
         	console.log(sessionClassCode);
-       
 
         	$.ajax({ 
         		type: 'post' ,
-        		/* enctype: "multipart/form-data",  */
         		url: '${pageContext.request.contextPath}/boardcontentsave.htm', 
         		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode},
         		dataType:'text',
@@ -177,6 +175,7 @@ function myFunction() {
 							<!--에디터 추가부분 -->
 					</div>
 				</div>
+
 				<!-- 파일 첨부  --> 
                  첨부 파일 #01<br/>  
                  &nbsp;<input type="file"  name="files" />
@@ -189,11 +188,6 @@ function myFunction() {
                 <!-- 첨부파일 끝 -->
 			</div><!-- card-content  -->
 </form>
-              </div>
-                <div class="col-sm-5">
-
-              </div>
-                    </div>
 
 
 			<div class="td-actions text-center">

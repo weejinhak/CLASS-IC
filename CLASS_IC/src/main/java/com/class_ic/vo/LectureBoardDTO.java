@@ -15,163 +15,169 @@ public class LectureBoardDTO {
 	private String lectureContent;
 	private String lectureDate;
 	//파일 업로드
-	private int lectureFileNo;
 	private int fileNo;
 	private String fileSrc;
-	private String fileSrc2;
 
 
 	//링크게시판 
 	private int linkNo ; 
 	private String linkSrc; 
 	private String linkTitle ;
+	private String assignNo;
 
-   //다중 파일 업로드
-   private List<CommonsMultipartFile> files;
+	//다중 파일 업로드
+	private List<CommonsMultipartFile> files;
 
-public int getLectureNo() {
-	return lectureNo;
-}
+	//이후 생성자 함수와 getter setter
 
-public void setLectureNo(int lectureNo) {
-	this.lectureNo = lectureNo;
-}
+	public LectureBoardDTO() {
 
-public String getClassCode() {
-	return classCode;
-}
+	}
 
-public void setClassCode(String classCode) {
-	this.classCode = classCode;
-}
 
-public String getCateCode() {
-	return cateCode;
-}
 
-public void setCateCode(String cateCode) {
-	this.cateCode = cateCode;
-}
 
-public String getSubcateCode() {
-	return subcateCode;
-}
+	public LectureBoardDTO(int lectureNo, String classCode, String cateCode, String subcateCode, String lectureTitle,
+			String lectureContent, String lectureDate, int fileNo, String fileSrc, int linkNo, String linkSrc,
+			String linkTitle, String assignNo, List<CommonsMultipartFile> files) {
+		this.lectureNo = lectureNo;
+		this.classCode = classCode;
+		this.cateCode = cateCode;
+		this.subcateCode = subcateCode;
+		this.lectureTitle = lectureTitle;
+		this.lectureContent = lectureContent;
+		this.lectureDate = lectureDate;
+		this.fileNo = fileNo;
+		this.fileSrc = fileSrc;
+		this.linkNo = linkNo;
+		this.linkSrc = linkSrc;
+		this.linkTitle = linkTitle;
+		this.assignNo = assignNo;
+		this.files = files;
+	}
 
-public void setSubcateCode(String subcateCode) {
-	this.subcateCode = subcateCode;
-}
 
-public String getLectureTitle() {
-	return lectureTitle;
-}
 
-public void setLectureTitle(String lectureTitle) {
-	this.lectureTitle = lectureTitle;
-}
 
-public String getLectureContent() {
-	return lectureContent;
-}
+	public int getLectureNo() {
+		return lectureNo;
+	}
 
-public void setLectureContent(String lectureContent) {
-	this.lectureContent = lectureContent;
-}
+	public void setLectureNo(int lectureNo) {
+		this.lectureNo = lectureNo;
+	}
 
-public String getLectureDate() {
-	return lectureDate;
-}
+	public String getClassCode() {
+		return classCode;
+	}
 
-public void setLectureDate(String lectureDate) {
-	this.lectureDate = lectureDate;
-}
+	public void setClassCode(String classCode) {
+		this.classCode = classCode;
+	}
 
-public int getLectureFileNo() {
-	return lectureFileNo;
-}
+	public String getCateCode() {
+		return cateCode;
+	}
 
-public void setLectureFileNo(int lectureFileNo) {
-	this.lectureFileNo = lectureFileNo;
-}
+	public void setCateCode(String cateCode) {
+		this.cateCode = cateCode;
+	}
 
-public int getFileNo() {
-	return fileNo;
-}
+	public String getSubcateCode() {
+		return subcateCode;
+	}
 
-public void setFileNo(int fileNo) {
-	this.fileNo = fileNo;
-}
+	public void setSubcateCode(String subcateCode) {
+		this.subcateCode = subcateCode;
+	}
 
-public String getFileSrc() {
-	return fileSrc;
-}
+	public String getLectureTitle() {
+		return lectureTitle;
+	}
 
-public void setFileSrc(String fileSrc) {
-	this.fileSrc = fileSrc;
-}
+	public void setLectureTitle(String lectureTitle) {
+		this.lectureTitle = lectureTitle;
+	}
 
-public String getFileSrc2() {
-	return fileSrc2;
-}
+	public String getLectureContent() {
+		return lectureContent;
+	}
 
-public void setFileSrc2(String fileSrc2) {
-	this.fileSrc2 = fileSrc2;
-}
+	public void setLectureContent(String lectureContent) {
+		this.lectureContent = lectureContent;
+	}
 
-public int getLinkNo() {
-	return linkNo;
-}
+	public String getLectureDate() {
+		return lectureDate;
+	}
 
-public void setLinkNo(int linkNo) {
-	this.linkNo = linkNo;
-}
+	public void setLectureDate(String lectureDate) {
+		this.lectureDate = lectureDate;
+	}
 
-public String getLinkSrc() {
-	return linkSrc;
-}
+	public int getFileNo() {
+		return fileNo;
+	}
 
-public void setLinkSrc(String linkSrc) {
-	this.linkSrc = linkSrc;
-}
+	public void setFileNo(int fileNo) {
+		this.fileNo = fileNo;
+	}
 
-public String getLinkTitle() {
-	return linkTitle;
-}
+	public String getFileSrc() {
+		return fileSrc;
+	}
 
-public void setLinkTitle(String linkTitle) {
-	this.linkTitle = linkTitle;
-}
+	public void setFileSrc(String fileSrc) {
+		this.fileSrc = fileSrc;
+	}
 
-public List<CommonsMultipartFile> getFiles() {
-	return files;
-}
+	public int getLinkNo() {
+		return linkNo;
+	}
 
-public void setFiles(List<CommonsMultipartFile> files) {
-	this.files = files;
-}
+	public void setLinkNo(int linkNo) {
+		this.linkNo = linkNo;
+	}
 
-public LectureBoardDTO() {
-}
+	public String getLinkSrc() {
+		return linkSrc;
+	}
 
-public LectureBoardDTO(int lectureNo, String classCode, String cateCode, String subcateCode, String lectureTitle,
-		String lectureContent, String lectureDate, int lectureFileNo, int fileNo, String fileSrc, String fileSrc2,
-		int linkNo, String linkSrc, String linkTitle, List<CommonsMultipartFile> files) {
+	public void setLinkSrc(String linkSrc) {
+		this.linkSrc = linkSrc;
+	}
 
-	this.lectureNo = lectureNo;
-	this.classCode = classCode;
-	this.cateCode = cateCode;
-	this.subcateCode = subcateCode;
-	this.lectureTitle = lectureTitle;
-	this.lectureContent = lectureContent;
-	this.lectureDate = lectureDate;
-	this.lectureFileNo = lectureFileNo;
-	this.fileNo = fileNo;
-	this.fileSrc = fileSrc;
-	this.fileSrc2 = fileSrc2;
-	this.linkNo = linkNo;
-	this.linkSrc = linkSrc;
-	this.linkTitle = linkTitle;
-	this.files = files;
-}
+	public String getLinkTitle() {
+		return linkTitle;
+	}
+
+	public void setLinkTitle(String linkTitle) {
+		this.linkTitle = linkTitle;
+	}
+
+	public String getAssignNo() {
+		return assignNo;
+	}
+
+	public void setAssignNo(String assignNo) {
+		this.assignNo = assignNo;
+	}
+
+	public List<CommonsMultipartFile> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<CommonsMultipartFile> files) {
+		this.files = files;
+	}
+
+	@Override
+	public String toString() {
+		return "LectureBoardDTO [lectureNo=" + lectureNo + ", classCode=" + classCode + ", cateCode=" + cateCode
+				+ ", subcateCode=" + subcateCode + ", lectureTitle=" + lectureTitle + ", lectureContent=" + lectureContent
+				+ ", lectureDate=" + lectureDate + ", fileNo=" + fileNo + ", fileSrc=" + fileSrc + ", linkNo=" + linkNo
+				+ ", linkSrc=" + linkSrc + ", linkTitle=" + linkTitle + ", assignNo=" + assignNo + ", files=" + files + "]";
+	}
 
 
 
