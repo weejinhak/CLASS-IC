@@ -32,17 +32,37 @@ select * from subcategory where email=#{email}
  </select> 
  
 <!--통합게시판 수정화면 출력   --> 
-<select id="totalboardEdit" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="int">
+<select id="totalboardEdit" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="Integer">
    select * from lectureboard where lectureNo=#{lectureNo}
 </select>
 
 <!--통합게시판 상세보기 화면 출력   --> 
 <select id="totalBoard_contentview" resultType="com.class_ic.vo.LectureBoardDTO"
-      parameterType="int"> 
-      select * from (select b.lectureContent lectureContent ,b.lectureDate lectureDate,b.lectureNo lectureNo ,b.lectureTitle lectureTitle,l.linkNo linkNo,l.linkTitle linkTitle, l.linkSrc  linkSrc,f.fileNo fileNo, f.lectureFileNo lectureFileNo,a.fileSrc fileSrc  
-      from lectureboard b, link l , lectureboardfile f  , file a
-      where l.lectureno =b.lectureno and b.lectureno= f.lectureno and f.fileno = a.fileno ) lectureboardcontent where lectureno = #{lectureNo}
+      parameterType="Integer"> 
+
+select lectureNo, classCode, cateCode, subcateCode, lectureTitle, lectureContent,  lectureDate FROM lectureboard WHERE  lectureNo = #{lectureNo}
 </select>
+
+<!--통합게시판 상세보기 파일 출력   --> 
+<select id="totalBoard_contenFile" resultType="com.class_ic.vo.LectureBoardDTO"
+      parameterType="Integer"> 
+
+SELECT  f.fileSrc as fileSrc
+FROM lectureboard l JOIN filelecture f
+ON l.lectureNo = f.lectureNo
+WHERE f.lectureNo=#{lectureNo}
+</select>
+
+<!--통합게시판 상세보기 링크 출력   --> 
+<select id="totalBoard_contenLink" resultType="com.class_ic.vo.LectureBoardDTO"
+      parameterType="Integer"> 
+
+SELECT li.linkTitle as linkTitle, li.linkSrc as linkSrc
+FROM link li JOIN lectureboard lb
+ON li.lectureNo = lb.lectureNo
+WHERE li.lectureNo = #{lectureNo}
+</select>
+
 
 <!-- 통합게시판 수정 완료 -->
 <update id="totalboardEditOk" parameterType="com.class_ic.vo.LectureBoardDTO">

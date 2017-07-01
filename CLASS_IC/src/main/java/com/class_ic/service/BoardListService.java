@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.class_ic.app.dto.MemberDTO;
+import com.class_ic.vo.MemberDTO;
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.vo.CategoryDTO;
@@ -316,13 +316,18 @@ public class BoardListService {
 		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
 		int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));
-		System.out.println("lectno" + lectureNo);
-		ArrayList<LectureBoardDTO> blist = bdao.totalBoard_contentview(lectureNo);
+		System.out.println("lectureNo : " + lectureNo);
+		LectureBoardDTO blist = bdao.totalBoard_contentview(lectureNo);
+		ArrayList<LectureBoardDTO> bfilelist = bdao.totalBoard_contenFile(lectureNo);
+		ArrayList<LectureBoardDTO> blinklist = bdao.totalBoard_contenLink(lectureNo);
+		System.out.println("가져온 게시판 글번호: " +blist.getLectureNo());
 		System.out.println("은영 상세" + blist);
 		// 리턴 셋팅
 		ModelAndView m = new ModelAndView();
 		m.setViewName("teacher.board_content_view");
 		m.addObject("bvo", blist);
+		m.addObject("bfile", bfilelist );
+		m.addObject("blink", blinklist);
 
 		return m;
 	}
