@@ -20,7 +20,6 @@ $().ready(function() {
 	           data: {cateCode:cateCode,subcateCode:subcateCode} ,
 	           dataType: 'text',
 	           success: function(data) {
-	             alert(data);
 	             $('#selectdatatable').html(data);
 	           },
 	           error: function() {
@@ -70,10 +69,11 @@ $().ready(function() {
 		       
 					</li>
 				</ul>
+				<div id="selectdatatable">
+	</div>
 			</div>
 
-	<div id="selectdatatable">
-	</div>
+	
 	</div>
 
 	<!-- 모달  -->
@@ -120,5 +120,6 @@ $().ready(function() {
 
 
 		</div>
+	</div>
 	</div>
 
