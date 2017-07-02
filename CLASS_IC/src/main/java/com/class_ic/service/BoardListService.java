@@ -230,8 +230,8 @@ public class BoardListService {
 		HttpSession session=request.getSession();
 		String email=(String) session.getAttribute("email");
 
-		String cateCode = request.getParameter("cateCode");
-		String subcateCode = request.getParameter("subcateCode");
+		String cateCode = request.getParameter("cate");
+		String subcateCode = request.getParameter("subcate");
 		SubCategoryDTO dto=new SubCategoryDTO();
 		dto.setEmail(email);
 		dto.setSubcateCode(subcateCode);
@@ -242,7 +242,7 @@ public class BoardListService {
 
 		// 리턴 셋팅
 		ModelAndView m = new ModelAndView();
-		m.setViewName("common/totalboardlist");
+		m.setViewName("teacher.totalLectureBoard");
 		m.addObject("bvo", blist);
 
 		return m;
