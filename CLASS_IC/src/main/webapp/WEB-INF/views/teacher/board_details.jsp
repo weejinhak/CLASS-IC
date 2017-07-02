@@ -1,126 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="com.class_ic.vo.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
- <div class="content">
-       <div class="container-fluid">
-      	 <!-- 내용물  contents  -->
-      	 <div class="row">
-      	 
-      	       	
-      	 
+<script type="text/javascript">
+
+$().ready(function() {
+
+  	 $('.clicksub').click(function click() {
+
+  		 var subcateCode=$(this).attr("id");
+  		var cateCode=$('#refercate').text();
+  		
+  		 $.ajax({
+	           type: 'GET',
+	           url: 'selectcatesubcateboard.htm',
+	           data: {cateCode:cateCode,subcateCode:subcateCode} ,
+	           dataType: 'text',
+	           success: function(data) {
+	             $('#selectdatatable').html(data);
+	           },
+	           error: function() {
+	              alert('bad');
+	            
+	           } 
+
+	       });
+
+	});
+  	 
+
+   });
+
+</script>
+<br>
+<br>
+<br>
+
+	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<h2 class="title text-center"><b>${cateCode}</b></h2>
-			<button type="submit" class="btn btn-primary" id="goListBtn" onclick="location.href='boardList.htm'">▲상위목록 </button>
+			<h2 class="title text-center"><b id="refercate">${cateCode}</b></h2>
 			<br>
 	 
                                 
                                 
 			<div class="nav-left">
-				<ul class="nav nav-pills nav-pills-warning nav-pills-icons"
+				<ul class="nav nav-pills nav-pills-info nav-pills-icons"
 					role="tablist">
 					<!--
                         color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                     -->
-                    <!--------------------------foreach  -->
-                    <c:forEach items="${subCateList}" var="subCateList">
-                    
-					<li class="active"><a href="detailList_board.htm?cateCode=${cateCode}&subcateCode=${subCateList} "> 
-						<i class="material-icons">reorder</i> ${subCateList}
+                    	<c:forEach var="SubCategoryDTO" items="${sublist}">
+					<li class=""><a href="#description-1" role="tab"
+						data-toggle="tab" aria-expanded="false" class="clicksub" id="${SubCategoryDTO.subcateCode}" > 
+						
+						<i class="material-icons">reorder</i> ${SubCategoryDTO.subcateCode}
 					</a></li>
-					
-					</c:forEach>
-					<!-- end -->
-					
-					<li class=""><a href="" role="tab"
-						data-toggle="tab" aria-expanded="false"> <!--                                            <i class="material-icons">exposure_plus_1</i> -->
+		            </c:forEach>
+			 
+					<li class=""><a href="#description-2" role="tab"
+						data-toggle="tab" aria-expanded="false" > <!--                                            <i class="material-icons">exposure_plus_1</i> -->
 							<button class="btn btn-raised btn-round btn-white"
 								data-toggle="modal" data-target="#noticeModal">+</button>
-					  <i></i><br> ADD
+					  <i]></i><br> ADD
 					</a>
 		       
 					</li>
 				</ul>
+				<div id="selectdatatable">
+	</div>
 			</div>
 
-			<!-- tab-content -->
-
-			<!--  tab content end-->
-			
-
-		</div>
+	
 	</div>
-							<!--  표-->
-      <div class="card-content table-responsive">
-                                    <table class="table table-hover">
-                                        <thead class="text-warning">
-                                            <tr><th>NO.</th>
-                                            <th>글제목</th>
-                                            <th>글쓴시간</th>
-                                            
-                                        </tr></thead>
-                                        
-                                        
-                      			     
-                      			     
-                                     	<c:forEach items="${list}" var="boardVO">
-                                   		
-                                 			
-						                                        
-						                                        <tbody>
-						                                       	
-						                                            <tr>
-						                                            
-						                                                <td>${boardVO.lectureNo}</td>
-						                                                <td><a href="read.htm${pageMaker.makeSearch(pageMaker.cri.page) }&lectureNo=${boardVO.lectureNo}">${boardVO.lectureTitle}</a></td>
-						                                                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.lectureDate}" /></td>
-						                                           	
-						                                            </tr>
-						                                        
-						                                        </tbody>
-						                                        
-						                                    
-                                        </c:forEach>                                        
-                                        
-                                        
-                                    </table>
-                                    
-                                     <!-- 페이징처리 -->
-										<div class="box-footer">
 
-					<div class="text-center">
-						<ul class="pagination">
-
-							<c:if test="${pageMaker.prev}">
-								<li><a
-									href="detailList.htm${pageMaker.makeSearch(pageMaker.startPage - 1) }&cateCode=${cateCode}&subcateCode=${subcateCode}">&laquo;</a></li>
-							</c:if>
-
-							<c:forEach begin="${pageMaker.startPage }"
-								end="${pageMaker.endPage }" var="idx">
-								<li
-									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="detailList_board.htm${pageMaker.makeSearch(idx)}&cateCode=${cateCode}&subcateCode=${subcateCode}">${idx}</a>
-								</li>
-							</c:forEach>
-
-							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a
-									href="detailList_board.htm${pageMaker.makeSearch(pageMaker.endPage +1) }&cateCode=${cateCode}&subcateCode=${subcateCode}">&raquo;</a></li>
-							</c:if>
-
-						</ul>
-					</div>
-
-				</div>
-				<!-- 페이징 처리 END -->
-                                    
-                                  </div>
-						<!-- 표끝 -->
-						
-						
-						
 	<!-- 모달  -->
 	<div class="row">
 		<div class="col-md-12 text-center">
@@ -138,14 +93,12 @@
 							</button>
 							<h5 class="modal-title" id="myModalLabel">수업보드 세부 카테고리 추가</h5>
 						</div>
-						
-						<form action="makeSubCategory.htm" method="post">
 						<div class="modal-body">
 							<div class="instruction">
 								<div class="row">
 									<div class="col-md-12"> 
-									<input name= "cateCode" type="hidden" value="${cateCode}" >
-									<input name="subcateCode" type="text" class="form-control" placeholder="세부 카테고리 이름">
+										
+									<input type="text" class="form-control" placeholder="카테고리 이름">
 									</div>
 								 
 								</div>
@@ -158,9 +111,8 @@
 						<div class="modal-footer text-center">
 							<button type="button" class="btn btn-simple" data-dismiss="modal">Never
 								mind</button>
-							<button type="submit" class="btn btn-success btn-simple">Yes</button>
+							<button type="button" class="btn btn-success btn-simple">Yes</button>
 						</div>
-						</form>
 					</div>
 				</div>
 			</div>
@@ -169,12 +121,5 @@
 
 		</div>
 	</div>
-      	 </div>
-      	 
+	</div>
 
-      	 
-      	 
- </div>
- 
- 
- 

@@ -1,16 +1,20 @@
 package com.class_ic.vo;
 
+import java.util.ArrayList;
+
 public class SubCategoryDTO {
 
 	private String subcateCode;
 	private String cateCode;
 	private String subcateTitle;
 	private String email;
-	
-	@Override
-	public String toString() {
-		return "SubCategoryDTO [subcateCode=" + subcateCode + ", cateCode=" + cateCode + ", subcateTitle="
-				+ subcateTitle + ", email=" + email + "]";
+	private String color;
+	private ArrayList<LectureBoardDTO> boardlist;
+	public ArrayList<LectureBoardDTO> getBoardlist() {
+		return boardlist;
+	}
+	public void setBoardlist(ArrayList<LectureBoardDTO> boardlist) {
+		this.boardlist = boardlist;
 	}
 	public String getSubcateCode() {
 		return subcateCode;
@@ -36,7 +40,19 @@ public class SubCategoryDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	@Override
+	public String toString() {
+		return "SubCategoryDTO [subcateCode=" + subcateCode + ", cateCode=" + cateCode + ", subcateTitle="
+				+ subcateTitle + ", email=" + email + ", color=" + color + ", boardlist=" + boardlist + "]";
+	}
 
-
+	
+	
 
 }

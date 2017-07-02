@@ -14,17 +14,17 @@
    var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"
    
 
-   /* 페이지 로드시 QR 코드 가져옴. */
-   $(document).ready(function() {      
-         $('#qrclick').click(function() {
-            console.log("페이지가 시작1");
-            var url ="/class_ic/common/createCode.htm";          
-             $("#img").attr("src", url + "?content=" + sessionClassCode);    
-             
-             
-             
-        });
-   });
+	/* 페이지 로드시 QR 코드 가져옴. */
+	$(document).ready(function() {		
+	      $('#qrclick').click(function() {
+				console.log("페이지가 시작1");
+				var url ="/class_ic/common/createCode.htm";			 
+			    $("#img").attr("src", url + "?content=" + sessionClassCode); 	
+			
+	  	});
+	});
+
+ 
 
 
    var wsocket;

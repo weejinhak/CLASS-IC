@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.class_ic.app.dto.MemberDTO;
+import com.class_ic.vo.MemberDTO;
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.vo.CategoryDTO;
