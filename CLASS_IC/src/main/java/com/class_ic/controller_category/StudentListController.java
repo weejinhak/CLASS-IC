@@ -8,14 +8,16 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.class_ic.service.StudentListService;
-import com.class_ic.vo.MemberDTO;
+import com.class_ic.vo.AttandanceDTO;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+
 
 @Controller
 @RequestMapping("teacher")
@@ -29,7 +31,11 @@ public class StudentListController {
 		
 		System.out.println("StudentListController classCode: " + classCode);
 		
-		List<MemberDTO> studentList = studentListService.selectStudent(classCode);
+		List<AttandanceDTO> studentList = studentListService.selectStudent(classCode);
+		
+		/*model.addAttribute("studentList", studentList);
+		System.out.println("studentList: "+studentList.toString());
+		return "teacher/attendance_check";*/
 		
 		JSONArray array = new JSONArray();
 		
@@ -39,13 +45,14 @@ public class StudentListController {
 			obj.put("email", studentList.get(i).getEmail());
 			obj.put("name", studentList.get(i).getName());
 			obj.put("phone", studentList.get(i).getPhone());
+			obj.put("inClass", studentList.get(i).getInClass());
+			obj.put("outClass", studentList.get(i).getOutClass());
 			array.add(obj);
 			
 			System.out.println("studentList: "+studentList.toString());
 		}
 		
 		response.getWriter().println(array);
-		
 		
 	}
 

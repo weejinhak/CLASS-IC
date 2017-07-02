@@ -4,105 +4,109 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-	<div class="row">
+<div class="row">
 
-		<div class="col-md-12">
+	<div class="col-md-12">
 
-			<div class="card">
-			
-				<div class="card-content">
-					<h4 class="card-title"></h4>
-					<div class="toolbar">
-						<!--        Here you can write extra buttons/actions for the toolbar              -->
-					</div>
-					<div class="material-datatables">
-				  
-						<div id="list">
-							<table id="datatables"
-								class="table table-striped table-no-bordered table-hover"
-								cellspacing="0" width="100%" style="width: 100%">
-								<thead>
-									<tr>
-										<th class="text-center">check</th>
-										<th class="text-center">#</th>
-										<th class="text-center">category</th>
-										<th class="text-center">제목</th>
-										<th class="text-center">글쓴이</th>
-										<th class="text-center">작성날짜</th>
-										<th class="text-center">Actions</th>
-									</tr>
-								</thead>
+		<div class="card">
 
-
-								<tbody>
-									<!-- 여기부터 포문  -->
-									<c:forEach var="homeworklist" items="${homeworkselectlist}">
-										<tr>
-											<td>
-												<div class="text-center" style="margin-top: -12px;">
-														<label class="text-center"> <input type="checkbox"
-															name="multy[]" value="${homeworklist.assignNo}">
-															<span class="checkbox-material"></span>
-														</label>
-												</div>
-											</td>
-
-
-											<td class="text-center" id="assignNo">${homeworklist.assignNo}</td>
-											<td class="text-center">${homeworklist.cateCode}</td>
-											
-											<td class="text-center" ><a href="homeworkContent.htm?assignNo=${homeworklist.assignNo}&email=<%=(String)session.getAttribute("email")%>
-																					              &classCode=<%=(String)session.getAttribute("classCode")%>"
-												class="btn btn-simple btn-info  btn-icon edit" >${homeworklist.assignTitle}</a></td>
-												
-											<td class="text-center">${homeworklist.name}</td>
-											<td class="text-center">${homeworklist.assignDate}</td>
-
-											
-											<td class="text-center"><a
-												href="totalboardEdit.htm?lectureNo=${homeworklist.assignNo}"
-												class="btn btn-simple btn-rose btn-icon edit"><i class="material-icons">border_color</i></a> 
-												
-											</td>
-										
-										</tr>
-
-									</c:forEach>
-							</table>
-						</div>
-
-						<form action="boardcontent.htm">
-							<button type="submit" id="submitFrm"
-								class="btn btn-info btn-round"
-								style=" margin-top: 10px; float: left;">
-								<i class="material-icons">done</i>글쓰기
-							</button>
-						</form>
-
-				
-						<button type="button" id="submitFrm"
-							class="btn btn-info btn-round" style="margin-left: 20px;"
-							onclick="multi_del()">
-							<i class="material-icons">clear</i>체크 삭제
-						</button>
-					</div>
+			<div class="card-content">
+				<h4 class="card-title"></h4>
+				<div class="toolbar">
+					<!--        Here you can write extra buttons/actions for the toolbar              -->
 				</div>
-				<!-- end content-->
+				<div class="material-datatables">
+
+					<div id="list">
+						<table id="datatables"
+							class="table table-striped table-no-bordered table-hover"
+							cellspacing="0" width="100%" style="width: 100%">
+							<thead>
+								<tr>
+									<th class="text-center">check</th>
+									<th class="text-center">#</th>
+									<th class="text-center">category</th>
+									<th class="text-center">제목</th>
+									<th class="text-center">글쓴이</th>
+									<th class="text-center">작성날짜</th>
+									<th class="text-center">Actions</th>
+								</tr>
+							</thead>
+
+
+							<tbody>
+								<!-- 여기부터 포문  -->
+								<c:forEach var="homeworklist" items="${homeworkselectlist}">
+									<tr>
+										<td>
+											<div class="text-center" style="margin-top: -12px;">
+												<label class="text-center"> <input type="checkbox"
+													name="multy[]" value="${homeworklist.assignNo}"> <span
+													class="checkbox-material"></span>
+												</label>
+											</div>
+										</td>
+
+
+										<td class="text-center" id="assignNo">${homeworklist.assignNo}</td>
+										<td class="text-center">${homeworklist.cateCode}</td>
+
+										<td class="text-center"><a
+											href="homeworkContent.htm?assignNo=${homeworklist.assignNo}&email=<%=(String)session.getAttribute("email")%>
+																					              &classCode=<%=(String)session.getAttribute("classCode")%>"
+											class="btn btn-simple btn-info  btn-icon edit">${homeworklist.assignTitle}</a></td>
+
+										<td class="text-center">${homeworklist.name}</td>
+										<td class="text-center">${homeworklist.assignDate}</td>
+
+
+										<td class="text-center"><a
+											href="homeworkEdit.htm?assignNo=${homeworklist.assignNo}&email=<%=(String)session.getAttribute("email")%>
+																					              &classCode=<%=(String)session.getAttribute("classCode")%>"
+											class="btn btn-simple btn-rose btn-icon edit"><i
+												class="material-icons">border_color</i></a></td>
+
+									</tr>
+
+								</c:forEach>
+						</table>
+					</div>
+					<button type="button" id="submitFrm" class="btn btn-info btn-round"
+						style="float: right; margin-left: 10px;" onclick="multi_del()">
+						<i class="material-icons">clear</i>체크 삭제
+					</button>
+
+					<form action="boardcontent.htm">
+						<button type="button" id="noticeBtn"
+							class="btn btn-info btn-round"
+							style="margin-top: 10px; float: right;">
+							<i class="material-icons">done</i>글쓰기
+						</button>
+					</form>
+
+
+
+				</div>
 			</div>
-			<!--  end card  -->
+			<!-- end content-->
 		</div>
-		<!-- end col-md-12 -->
+		<!--  end card  -->
 	</div>
-	<!-- end row -->
+	<!-- end col-md-12 -->
+</div>
+<!-- end row -->
 
 
 
 
-	<script type="text/javascript">
+<script type="text/javascript">
 
 	var email="<%=(String)session.getAttribute("email")%>";
     var classCode="<%=(String)session.getAttribute("classCode")%>";
 	
+	$("#noticeBtn").click(function() {
+		location.href="homeworkNoticePage.htm";
+	});
 	
 //멀티컨텐츠 (삭제 )선택받기
 function multi_del()
@@ -173,10 +177,7 @@ var data="";
         url: 'homeworkDelete.htm',
         data: { data: data } ,
         dataType: 'text',
-	
-  
         success: function() {
-        	
             
             swal({
                 title: 'Deleted!',
@@ -186,7 +187,7 @@ var data="";
                 buttonsStyling: false
                 }).then(function() {
 					
-                	 location.href="selectAllList.htm"
+                	 location.href="homework.htm"
 				})
                 
     

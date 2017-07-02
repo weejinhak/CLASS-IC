@@ -93,16 +93,15 @@ public class HomeworkService {
 		}
 		
 	      //과제게시판 partyName별 출력 (추가.진학)
-	      public List<HomeworkDTO> homeworkSelectList(HttpSession session, HttpServletRequest request,Model model) {
+	      public List<HomeworkDTO> homeworkSelectList(HttpSession session, HttpServletRequest request,Model model,String cateCode) {
 	         
 	         String partyName=request.getParameter("partyName");
-	         String email=(String)session.getAttribute("email");
 	         String classCode=(String)session.getAttribute("classCode");
 	         
 	         HomeworkDTO dto= new HomeworkDTO();
 	         dto.setPartyName(partyName);
-	         dto.setEmail(email);
 	         dto.setClassCode(classCode);
+	         dto.setCateCode(cateCode);
 	         
 	         HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
 	         List<HomeworkDTO> selectAllList = dao.selectAllByTeacher(dto);
@@ -195,7 +194,7 @@ public class HomeworkService {
 			         System.out.println("상세보기 리스트" + contentlist);
 			         
 			         ModelAndView m = new ModelAndView();
-			         m.setViewName("teacher.homework_content");
+			         m.setViewName("teacher.homework_detail");
 			         m.addObject("list",contentlist);
 			         
 			         System.out.println("모델단" + m);
@@ -222,15 +221,14 @@ public class HomeworkService {
 			      }
 			      
 			      //수정한 데이터 DB저장
-			      public String homeworkEditOk(HomeworkDTO dto){
+			      public void homeworkEditOk(HomeworkDTO dto){
 			         HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
 			         dao.homeworkEditOk(dto);
-			         
-			         return "redirect:selectAllList.htm";
+			         System.out.println("수정완료 여기까지 오니 ?");
 			      }
 			      
 			      //과제게시판 삭제
-			      public String homeworkDelete(HttpServletRequest request, HttpServletResponse response){
+			      public void homeworkDelete(HttpServletRequest request, HttpServletResponse response){
 			         String delete = request.getParameter("data");
 			         
 			         HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
@@ -241,10 +239,9 @@ public class HomeworkService {
 			         for (int i = 0; i < array.length; i++) {
 
 			        	 assignNo=Integer.parseInt(array[i]);
-			            dao.homeworkDelete(assignNo);
+			            int result = dao.homeworkDelete(assignNo);
 			            	
 			         }
-			         System.out.println( "여기까지 오지?" );
-			         return "redirect:selectAllList.htm";
+			   
 			      }
 }

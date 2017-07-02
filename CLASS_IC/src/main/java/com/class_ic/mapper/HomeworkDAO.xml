@@ -42,7 +42,7 @@ ON st.classCode= c.classCode;
 <select id="selectAll" parameterType="com.class_ic.vo.HomeworkDTO" resultType="com.class_ic.vo.HomeworkDTO">
 select * from 
 assignboard a inner join member m on a.email=m.email
-where a.classCode=#{classCode} and a.email=#{email} order by field(assignNotice,'true') desc, assignDate desc;
+where a.classCode=#{classCode} order by field(assignNotice,'true') desc, assignDate desc;
 </select>
 
 <!-- partyName별 출력 : 2017.06.30 위진학-->
@@ -51,9 +51,23 @@ select a.assignNo as assignNo ,a.cateCode as cateCode , a.assignTitle assignTitl
 from 
 groupcategory g inner join assignboard a on g.cateCode=a.cateCode
 inner join member m on m.email = a.email
-where g.partyName=#{partyName} and g.classCode=#{classCode} and g.email=#{email}
+where g.partyName=#{partyName} and g.classCode=#{classCode} and g.cateCode=#{cateCode}
 </select>
 
+<!-- 과제게시판 상세보기 / 과제게시판 수정화면 출력: 2017.06.30 박소현 -->
+<select id="selectContent" resultType="com.class_ic.vo.HomeworkDTO"  parameterType="com.class_ic.vo.HomeworkDTO" >
+select * from assignboard where assignNo=#{assignNo} and email=#{email} and classCode=#{classCode}
+</select>
+
+<!--과제게시판 수정된 데이터 DB저장 : 2017.07.01 박소현-->
+<update id="homeworkEditOk" parameterType="com.class_ic.vo.HomeworkDTO">
+update assignboard set assignTitle=#{assignTitle} , assignContent=#{assignContent}where assignNo=#{assignNo} and email=#{email} and classCode=#{classCode}
+</update>
+
+<!--과제게시판 삭제 : 2017.07.01 박소현 -->
+<delete id="homeworkDelete" parameterType="Integer" >
+delete from assignboard where assignNo=#{assignNo} 
+</delete>
 
 
 <!-- 학생 -->
@@ -92,20 +106,6 @@ where g.partyName=#{partyName} and g.classCode=#{classCode}
 	values(#{classCode},#{email},#{cateCode},#{assignTitle},#{assignContent},now(),#{assignNotice},#{partyName});
 </insert>
 
-<!-- 과제게시판 상세보기 / 과제게시판 수정화면 출력: 2017.06.30 박소현 -->
-<select id="selectContent" resultType="com.class_ic.vo.HomeworkDTO"  parameterType="com.class_ic.vo.HomeworkDTO" >
-select * from assignboard where assignNo=#{assignNo} and email=#{email} and classCode=#{classCode}
-</select>
-
-<!--과제게시판 수정된 데이터 DB저장 : 2017.07.01 박소현-->
-<update id="homeworkEditOk" parameterType="com.class_ic.vo.HomeworkDTO">
-update assignboard set assignTitle=#{assignTitle} , assignContent=#{assignContent}where assignNo=#{assignNo} and email=#{email} and classCode=#{classCode}
-</update>
-
-<!--과제게시판 삭제 : 2017.07.01 박소현 -->
-<delete id="homeworkDelete" parameterType="Integer" >
-delete from assignboard where assignNo=#{assignNo} 
-</delete>
 
 </mapper>
 

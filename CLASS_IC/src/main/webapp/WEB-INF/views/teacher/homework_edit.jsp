@@ -63,7 +63,7 @@
          
          
             <button type="button" rel="tooltip" class="btn btn-info btn-round"
-               id="list" name="list" onclick="location.href='selectAllList.htm' ">
+               id="list" name="list" onclick="location.href='homework.htm' ">
                <i class="material-icons">list</i>
             </button>
 
@@ -112,7 +112,7 @@ function editOk(){
       type: 'post' ,
       url: 'homeworkEdit.htm', 
       data:{assignTitle:assignTitle,assignContent:assignContent,assignNo:assignNo,email:email,classCode:classCode},
-      dataType:'text',
+     
         success : function(data){
            
             swal({
@@ -122,14 +122,15 @@ function editOk(){
                 confirmButtonClass: "btn btn-success",
                 buttonsStyling: false
                 }).then(function() {
-               
-                   location.href="selectAllList.htm"
-            })
+					
+               	 location.href="homework.htm"
+				})
 
         },
         error:function(request, status, error){
            alert("수정 실패")
-        } });   
+        } 
+        });   
    
 }
 </script>

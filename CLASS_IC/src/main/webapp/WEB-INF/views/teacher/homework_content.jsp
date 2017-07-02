@@ -1,101 +1,149 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="com.class_ic.vo.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link
-	href="${pageContext.request.contextPath}/resources/assets/css/board_content.css"
-	rel="stylesheet" />
-<!-- 
-@Project : CLASS-IC
-@File name : board_details_
-@Author : 김은영
-@Data : 2017.06.21
-@Desc :
- -->
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="java.io.PrintWriter"%>
+<%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<!-- 강사 -->
+<!--에디터 추가부분 -->
+<link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
+<!-- 파일 업로드 추가 부분  -->
+
+
+<script type="text/javascript">
+
+	   
+</script>
 
 <div class="content">
 
-	<div class="container-fluid">
-
-
-		<div class="col-md-12">
-			<div class="card">
-				<c:set var="list" value="${list}" />
-				<div class="card-header card-header-text"
-					data-background-color="rose">
-					<h4 class="card-title">&nbsp;
-						&nbsp;&nbsp;${list.cateCode}&nbsp;&nbsp;&nbsp;</h4>
-
-				</div>
-
-				<div class="card-content ">
-					<div id="face">
-						<div class="singlepage old-singlepage">
-							<div class="entry-wrap">
-								<div class="entry">
-									<div id="single-title-wrap">
-										<div id="single-title-block">
-											<h1 class="new-single-title">${list.assignTitle}</h1>
-											<div class="single-meta-wrap">
-												<div class="single-meta-line"></div>
-												<div class="single-meta">
-													<span class="sm-dot">·</span> <a>작성일자:
-														${list.assignDate}</a><span class="sm-dot">·</span>
-												</div>
+	<div class="col-md-12">
+                            <div class="card">
+                            <form method="post" action="addNotice.htm" class="form-horizontal" name="frm" id="frm">
+                            		<input type="hidden" name="email" id="email" value="${sessionScope.email }">
+                            		<input type="hidden" name="classCode" id="classCode" value="${sessionScope.classCode }">
+                                    <div class="card-header card-header-text" data-background-color="rose">
+                                        <i class="material-icons">library_books</i>
+                                    </div>
+                                    <div class="card-content">
+                                    	
+                                        <div class="row">
+                                        
+                                        <!-- 카테고리 select box -->
+                                         <div class="col-sm-3">
+					         			<select  id="selectCateList01" class="form-control selectCateList" title="메인 카테고리 선택해주세요"  name="cateCode">
+                                			<option disabled="disabled" selected="selected">카테고리 선택</option>
+                             			</select>
+                         				</div>
+                         					<!-- 제목 -->
+                                            <div class="col-sm-8">
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label"></label>
+                                                    <input type="text" class="form-control" placeholder="제목을 입력하세요" id="assignTitle" name="assignTitle">
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- 체크박스 -->
+                                                <div class="checkbox checkbox-inline">
+                                                    <label>
+                                                        <input type="checkbox" name="assignNotice" id="assignNotice" value="true">공지
+                                                    </label>
+                                                </div>
+                                        </div>
+                                       
+                                        <!-- 내용 -->
+                                        <div class="row">
+                                        	<div class="col-md-4">
+                                        	<textarea rows="20%" cols="100%" id="assignContent" name="assignContent"></textarea>
+                                        	</div>
+                                        </div>
+                                    </div>
+                                   </form> 
+                                 <!-- 버튼 -->
+                                        <div class="row">
+                                        	<div class="td-actions text-center">
+												<button type="button" rel="tooltip"
+													class="btn btn-success btn-round" id="save" name="save">
+													<i class="material-icons">done</i>
+												</button>
+												<button type="button" rel="tooltip" class="btn btn-danger btn-round">
+													<i class="material-icons" id="close" name="close">close</i>
+												</button>
 											</div>
-										</div>
-									</div>
-									<div class="single-top-ads">
-										<!-- BuySellAds.com Zone Code -->
-										<div id="bsap_672" class="bsap" data-serve="CA7DP">
-
-											<article class="entry-content alert alert"
-												style="width: 690px; height: 400px;">
-												<p class="single-first-p">${list.assignContent}</p>
-												<p class="fixed-empty-p">&nbsp;</p>
-
-											</article>
-											<!-- enty-content -->
-										</div>
-										<!-- entry -->
-
-									</div>
-									<!-- entry-wrap -->
-
-								</div>
-
-							</div>
-
-						</div>
-						<div class="td-actions text-center" style="margin-top: 500px;">
-							<button type="button" rel="tooltip"
-								class="btn btn-info btn-round" id="list" name="list"
-								onclick="location.href='selectAllList.htm' ">
-								<i class="material-icons">list</i>
-							</button>
-
-							<a href="homeworkEdit.htm?assignNo=${list.assignNo}
-														&email=<%=(String)session.getAttribute("email")%>
-														&classCode=<%=(String)session.getAttribute("classCode")%>">
-								<button type="submit" rel="tooltip"
-									class="btn btn-success btn-round edit">
-									<i class="material-icons">done</i>
-								</button>
-							</a>
-							
-
-						</div>
-					</div>
-					<!--  row 끝-->
-				</div>
-				<!-- 카드 끝 -->
-			</div>
-			<!--12 end  -->
-
-		</div>
-
-
-	</div>
+                                        	
+                                        </div>
+                            </div>
+                        </div>
+	
 </div>
+         <!--   contents 영역 끝 -->
 
+
+<script type="text/javascript">
+//화면 갱신 시 메인카테고리 출력
+showMainCate();
+
+//close 버튼 클릭시
+$("#close").click(function() {
+	closeBtn();
+});
+
+//save 버튼 클릭시
+$("#save").click(function() {
+	$("#frm").submit();
+	
+});
+
+//form
+$("#frm").submit(function(event) {
+	
+	var email = "<%=(String)session.getAttribute("email")%>";
+	var classCode = "<%=(String)session.getAttribute("classCode")%>";
+	var cateCode = $(".selectCateList").val();
+	var assignNotice = $("#assignNotice").val();
+	
+	var assignTitle = $("#assignTitle").val();
+	var assignContent = $("#assignContent").val();
+});
+
+//function : 메인 카테고리 출력
+function showMainCate() {
+	
+	var email = "<%=(String)session.getAttribute("email")%>";
+		
+			console.log(email)
+			
+			$.ajax({
+				
+				type : "post",
+				url:"selectCate.htm",
+				data : {"email" : email},
+				dataType : 'Json',
+				success : function(data) {
+						
+					$.each(data, function(){
+						$(".selectCateList").append("<option value='"+this.cateCode+"'>" + this.cateCode + "</option> ");
+                            console.log(this.cateTitle)
+					});
+					
+		   		}, 
+		   		
+		   		error:function(request, status, error){
+                    //console.log(error);
+                    alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
+		   		}
+		   		
+		 });
+} //end showMainCate
+
+//function : close버튼 클릭시
+function closeBtn() {
+		location.href="homework.htm";
+}
+
+
+</script>
+<!--에디터 추가부분 -->
+<script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>

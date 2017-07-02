@@ -53,10 +53,7 @@
 
 									<div id="selectdatatable">
 									</div>
-									                                    
-	                                     <button type="button" class="btn btn-info btn-round" id="noticeBtn" style="float: right;">
-	                                    	글쓰기</a>
-	                                    </button>
+							
                                 </div>
 					 		</div>
 					 </div>
@@ -81,8 +78,8 @@ $().ready(function() {
 		$("#selectCateList02").change(function(){
 			showTeamList();
 		});
-		
-		$('#selectTeamList').change(function(){
+
+		$('#selectTeamList').click(function(){
 			selectCateCodeList();
 		});
 		
@@ -224,19 +221,16 @@ $().ready(function() {
 		  /*서브카테고리가 변경이 되면 Ajax를 태움 : 2017.06.29 위진학   */ 
 		  function selectCateCodeList() {
 
-				var email = "<%=(String)session.getAttribute("email")%>";
 				var classCode = "<%=(String)session.getAttribute("classCode")%>";
-				
-			
-				     var partyName=$('#selectTeamList').val();
+				var cateCode = $("#selectCateList02").val();
+				var partyName=$('#selectTeamList').val();
 				    
 
 				     $.ajax({
 				    	 type : "post",
 				        url:'homeworkSelectList.htm',
 				        data:{
-				         
-				           email:email,
+				           cateCode : cateCode,
 				           classCode:classCode,
 				           partyName:partyName
 				        },

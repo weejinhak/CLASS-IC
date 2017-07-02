@@ -125,13 +125,13 @@ public class HomeworkController_Teacher {
 		
 		   //팀별 게시물 출력 : 2017.06.30 위진학
 	      @RequestMapping(value="homeworkSelectList.htm", method=RequestMethod.POST)
-	      public String homeworkSelectList(HttpSession session, HttpServletRequest request,Model model) throws IOException {
+	      public String homeworkSelectList(HttpSession session, HttpServletRequest request,Model model, String cateCode) throws IOException {
 	         
 	         System.out.println(request.getParameter("partyName"));//select태그에서 선택된 서브카테고리
-	         System.out.println(session.getAttribute("email"));//세션으로 가지고 다니는 email
 	         System.out.println(session.getAttribute("classCode"));//세션으로 가지고 다니는 classCode
+	         System.out.println(cateCode);
 	         
-	         List<HomeworkDTO> AllList = homeworkService.homeworkSelectList(session,request,model);
+	         List<HomeworkDTO> AllList = homeworkService.homeworkSelectList(session,request,model,cateCode);
 	         
 	         model.addAttribute("homeworkselectlist", AllList);
 	         
@@ -159,16 +159,18 @@ public class HomeworkController_Teacher {
 	      //과제게시판 수정한 데이터 DB저장 : 2017.07.01 박소현
 	      @RequestMapping(value="homeworkEdit.htm",  method=RequestMethod.POST)
 	      public String homeworkEditOk(HomeworkDTO dto){
-	         String viewpage = homeworkService.homeworkEditOk(dto);
+	         homeworkService.homeworkEditOk(dto);
 	      
-	         return "viewpage";
+	         return "redirect:homework.htm";
 	      }
 	      
 	      //과제게시판 삭제 : 2017.07.01 박소현 
 	      @RequestMapping(value="homeworkDelete.htm")
 	      public String homeworkDelete(HttpServletRequest request, HttpServletResponse response){
-	         String viewpage = homeworkService.homeworkDelete(request, response);
-	          return "viewpage";
+	        
+	    	homeworkService.homeworkDelete(request, response);
+	         
+	          return "redirect:homework.htm";
 	      }
 	      
 }
