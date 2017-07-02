@@ -92,6 +92,10 @@ where g.partyName=#{partyName} and g.classCode=#{classCode}
 	values(#{classCode},#{email},#{cateCode},#{assignTitle},#{assignContent},now(),#{assignNotice},#{partyName});
 </insert>
 
+<!-- 과제게시판 상세보기 : 2017.06.30 박소현 -->
+<select id="selectContent" resultType="com.class_ic.vo.HomeworkDTO" parameterType="int">
+select * from assignboard where assignNo=#{assignNo} and email=#{email} and classCode=#{classCode}
+</select>
 
 </mapper>
 

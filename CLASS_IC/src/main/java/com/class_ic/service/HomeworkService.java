@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.HomeworkDAO;
 import com.class_ic.vo.HomeworkDTO;
@@ -178,5 +179,18 @@ public class HomeworkService {
 							
 				}
 				
+			    //과제게시판 상세보기 
+			      public ModelAndView homeworkContent(int assignNo){
+			         System.out.println("상세보기 서비스탄다.");
+			         HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+			         List<HomeworkDTO> ContentList = dao.selectContent(assignNo);
+			         
+			         ModelAndView m = new ModelAndView();
+			         m.setViewName("teacher.homework_content");
+			         m.addObject("list", ContentList);
+			         
+			         System.out.println("모델단" + m);
+			         return m;
+			      }
 	      
 }

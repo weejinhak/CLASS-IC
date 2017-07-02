@@ -137,6 +137,15 @@ public class HomeworkController_Teacher {
 	         return "teacher/homework_partyNameList";
 	         
 	      }
+	      
+	      //상세보기 페이지로 이동 : 2017.07.02 박소현
+	      @RequestMapping(value="homeworkContent.htm", method=RequestMethod.GET)
+	      public ModelAndView homeworkContent(int assignNo){
+	         System.out.println("*************상세보기 컨트롤********************88");
+	         ModelAndView viewpage =homeworkService.homeworkContent(assignNo);
+	               
+	         return viewpage;
+	      }
 }
 
 

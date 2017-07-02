@@ -47,4 +47,7 @@ public interface HomeworkDAO {
  	
  	//과제 등록 : 학생
  	 public int addHomeworkDao(HomeworkDTO dto);
+ 	 
+     //과제게시판 상세보기
+     public List<HomeworkDTO> selectContent(int assignNo);
 }
