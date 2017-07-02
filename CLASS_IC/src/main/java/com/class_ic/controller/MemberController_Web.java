@@ -8,6 +8,7 @@
 package com.class_ic.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service.MemberService_Web;
+import com.class_ic.vo.LectureDTO;
 import com.class_ic.vo.MemberDTO;
 
 
@@ -53,18 +55,31 @@ public class MemberController_Web {
 		return MnV;
 	}
 	
-	//회원 수정 view  페이지
-	@RequestMapping(value="editInfo.htm", method=RequestMethod.GET)
-	public @ResponseBody MemberDTO editMyProfile(HttpSession session, Model m, MemberDTO member){
+	//회원별 사진 가져오기 
+	@RequestMapping(value ="getEditInfo.htm", method = RequestMethod.POST)
+	public String lectureSelect(HttpSession session,Model model){
+		try {
+			System.out.println("사진 가져오기 컨트롤러");
+			MemberDTO myphoto=memberservice.getMemberInfo(session);	
+			model.addAttribute("myphoto", myphoto); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return "teacher.myinfo_photo";
+	}
 	
+	//회원 수정 view  페이지
+	@RequestMapping(value="editInfo.htm", method=RequestMethod.POST)
+	public String editMyProfile(HttpSession session, Model m, MemberDTO member){
+		System.out.println("회원수정위해 정보 가져오기");
 		MemberDTO memberinfo = memberservice.getMemberInfo(session);
 		m.addAttribute("myinfo", memberinfo);
 		
-	return member;
+		return "teacher.myinfo_ajax";
 	}
 	
 	//회원 수정  값 넘기기
-	@RequestMapping(value="editInfo.htm", method=RequestMethod.POST)
+	@RequestMapping(value="editInfoOk.htm", method=RequestMethod.POST)
 	public @ResponseBody MemberDTO editMyProfile(HttpSession session, MemberDTO member, ModelAndView mv){
 			
 		return member;
