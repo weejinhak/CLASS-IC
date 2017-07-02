@@ -550,15 +550,17 @@
                  });
                  
                  $("#receiveRoom").click(function() {
+                	 	alert("클릭!");
                 		selectMsgContentTable(); 
                 		
                 	});
 
                 	function selectMsgContentTable(){
-                		
+                		var sessionId="<%=(String)session.getAttribute("email")%>";
+
                 		$.ajax({ 
                 			type: 'post' ,
-                			url: 'messagecontentlist.htm', 
+                			url: '${pageContext.request.contextPath}/messagecontentlist.htm',
                 			data:{email:sessionId},
                 			dataType:'html',
                 	        success : function(data){
@@ -568,7 +570,9 @@
                 	        },
                 	        error:function(request, status, error){
                 	           alert("가져오기 실패")
-                	        } });	
+                	        } 
+                	        
+                		});	
                 		
                 	}
                  
