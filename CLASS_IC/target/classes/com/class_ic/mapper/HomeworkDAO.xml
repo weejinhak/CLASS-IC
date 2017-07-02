@@ -42,7 +42,7 @@ ON st.classCode= c.classCode;
 <select id="selectAll" parameterType="com.class_ic.vo.HomeworkDTO" resultType="com.class_ic.vo.HomeworkDTO">
 select * from 
 assignboard a inner join member m on a.email=m.email
-where a.classCode=#{classCode} and a.email=#{email} order by field(assignNotice,'true') desc, assignDate desc;
+where a.classCode=#{classCode} order by field(assignNotice,'true') desc, assignDate desc;
 </select>
 
 <!-- partyName별 출력 : 2017.06.30 위진학-->

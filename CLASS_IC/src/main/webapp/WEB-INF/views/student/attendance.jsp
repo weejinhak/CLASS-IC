@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <!DOCTYPE div PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     
  <div class="content">
  	<input type="hidden" value="${sessionScope.classCode }" id="classCode" name="classCode" />
@@ -34,12 +35,11 @@
 	
 	$(function() {
 		
-		var classCode = $("#classCode").val();
-		console.log(classCode)
+		var classCode = "<%=(String)session.getAttribute("classCode")%>";
+		console.log("attendance : "+classCode)
 		
 		$.ajax({
 			
-			cashe : false,
 			type : "post",
 			url : "selectStudent.htm",
 			data : {
@@ -47,16 +47,24 @@
 			},
 			dataType : "Json",
 			success : function(data) {
+				
+				alert("뜨나");
+				
+				/* $("#tbody").empty();
+				$("#tbody").html(data); */
+				$.each(data, function(){
+					
+					$("#tbody").append("<tr><td><img src='"+${this.photoSrc }+'" id="img"></td>"+
+							+"<td>"+${this.email}+"</td>"+
+							+"<td>"+${this.name }+"</td>"+
+							+"<td>"+${this.phone}+"</td></tr>");   
+					
+		});	//end each
+				
+				
+	}// end success
+	
+}); //end ajax
 
-				$.each(data,function(index, item) {
-
-						$('#tbody').append('<tr><td><img src="'+item.photoSrc+'" alt="'+item.name+'"></td><td>'+item.email+'</td><td>'+item.name+'</td><td>'+item.phone+'</td></tr>')
-
-						});
-			}
-			
-		});
-		
-	});
 	
 </script>

@@ -12,6 +12,12 @@ public class AttandanceDTO {
 	private String outClass; //퇴실시간
 	private String attendState; //출석상태
 	private String classCode; //기수 코드
+	
+	//////학적부(name,phone,photoSrc) 추가
+	private String name;
+	private String phone;
+	private String photoSrc;
+	
 	public int getAttendNo() {
 		return attendNo;
 	}
@@ -53,6 +59,27 @@ public class AttandanceDTO {
 	}
 	public void setClassCode(String classCode) {
 		this.classCode = classCode;
+	}
+	
+	//////학적부(name,phone,photoSrc) 추가
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getPhotoSrc() {
+		return photoSrc;
+	}
+	public void setPhotoSrc(String photoSrc) {
+		this.photoSrc = photoSrc;
 	}
 	@Override
 	public String toString() {

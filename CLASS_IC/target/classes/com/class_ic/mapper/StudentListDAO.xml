@@ -4,13 +4,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.class_ic.dao.StudentListDAO">
 	
-	<!-- 학적부 : 2017.06.24 최은혜 -->
-	<select id="selectStudent" parameterType="String" resultType="com.class_ic.vo.MemberDTO">
+	<!-- 학적부 ,입실 체크: 2017.07.02 최은혜 -->
+	<select id="selectStudent" parameterType="String" resultType="com.class_ic.vo.AttandanceDTO">
 	select *
-	from member m join classmember c on m.email = c.email
-	join classicauthority a on a.email = c.email
-	where 
-	c.classCode=#{classCode} and a.authority='ROLE_STUDENT';
+	from
+	attendance a inner join member m on a.email = m.email
+	where a.classCode=#{classCode};
 	</select>
+	
 
 </mapper>

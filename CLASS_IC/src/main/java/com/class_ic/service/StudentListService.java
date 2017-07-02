@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.class_ic.dao.StudentListDAO;
+import com.class_ic.vo.AttandanceDTO;
 import com.class_ic.vo.MemberDTO;
 
 @Service
@@ -23,11 +24,11 @@ public class StudentListService implements StudentListDAO{
 	 * */
 
 	@Override
-	public List<MemberDTO> selectStudent(String classCode) {
+	public List<AttandanceDTO> selectStudent(String classCode) {
 		System.out.println("classCode : "+ classCode);
 		
 		StudentListDAO dao = sqlsession.getMapper(StudentListDAO.class);
-		List<MemberDTO> studentList = dao.selectStudent(classCode);
+		List<AttandanceDTO> studentList = dao.selectStudent(classCode);
 		
 		return studentList;
 	}
