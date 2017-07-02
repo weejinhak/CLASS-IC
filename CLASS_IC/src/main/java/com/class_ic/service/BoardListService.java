@@ -1,11 +1,13 @@
 package com.class_ic.service;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -369,4 +371,27 @@ public class BoardListService {
 
 		return m;
 	}
+	
+	//파일 다운로드
+	public void download(String p, String f, HttpServletRequest request,
+	 		   HttpServletResponse response) throws IOException {
+
+	 		  String fname = new String(f.getBytes("euc-kr"), "8859_1");
+	 		  response.setHeader("Content-Disposition", "attachment;filename=" + fname + ";");
+	 		
+	 		  String fullpath = request.getServletContext().getRealPath(
+	 		    "/resources/" + p + "/" + f);
+	 		
+	 		  FileInputStream fin = new FileInputStream(fullpath);
+	 		
+	 		  ServletOutputStream sout = response.getOutputStream();
+	 		  byte[] buf = new byte[1024]; // 전체를 다읽지 않고 1204byte씩 읽어서
+	 		  int size = 0;
+	 		  while ((size = fin.read(buf, 0, buf.length)) != -1)   		             
+	 		  {
+	 			  sout.write(buf, 0, size); // 1kbyte씩 출력
+	 		  }
+	 		  fin.close();
+	 		  sout.close();
+	 		 }
 }

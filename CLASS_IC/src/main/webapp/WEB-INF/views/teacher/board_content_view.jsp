@@ -2,7 +2,6 @@
    pageEncoding="UTF-8"%>
 <%@ page import="com.class_ic.vo.*" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
    <!-- 
 @Project : CLASS-IC
 @File name : board_details_
@@ -98,7 +97,7 @@
                                 <div class="card-content">
                                 
                                 <!-- 여기 파일 뿌려준다  -->
-                                <c:forEach var="file" items="${bfile}">
+                                <c:set var="file" value="${bfile}" />
                                     <ul class="mailbox-attachments clearfix">
                                     
                 <li>
@@ -112,30 +111,17 @@
                   </div>
                 </li>
                 <li>
-                  <span class="mailbox-attachment-icon"><i class="fa fa-file-word-o"></i></span>
-
+                <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span> 
                   <div class="mailbox-attachment-info">
-                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> App Description.docx</a>
+                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> ${file.fileSrc2}</a>
                         <span class="mailbox-attachment-size">
                           1,245 KB
-                          
-                        </span>
-                  </div>
-                </li>
-                <li>
-                  <span class="mailbox-attachment-icon has-img"><img src=" " alt="Attachment"></span>
-
-                  <div class="mailbox-attachment-info">
-                    <a href="#" class="mailbox-attachment-name"><i class="fa fa-camera"></i> photo1.png</a>
-                        <span class="mailbox-attachment-size">
-                          2.67 MB
-                       
+                        
                         </span>
                   </div>
                 </li>           
               </ul>
-              
-              </c:forEach>
+
                </div>
               
               </div><!--card end  -->
