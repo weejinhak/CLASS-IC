@@ -38,12 +38,12 @@ public class MessageController {
 	
 	
 	@RequestMapping(value="messagecontentlist.htm",method=RequestMethod.POST)
-	public String messageContentList(String classCode,String email,Model model){
-		System.out.println("메세지 컨텐츠 컨트롤러"+classCode+email);
+	public String messageContentList(String email,Model model){
+		System.out.println("메세지 컨텐츠 컨트롤러"+email);
 		
 		ArrayList<MessageDTO> msgcontentlist= new ArrayList<MessageDTO>();
 		
-		msgcontentlist=messageService.selectMsgContentList(classCode,email);
+		msgcontentlist=messageService.selectMsgContentList(email);
 		for (MessageDTO m : msgcontentlist) {
 			System.out.println(m.getMessageNo());
 			System.out.println(m.getMsContent());

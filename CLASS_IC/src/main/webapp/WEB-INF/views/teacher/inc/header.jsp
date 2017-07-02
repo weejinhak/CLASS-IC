@@ -267,7 +267,7 @@
                          </span>
                </div>
                <div class="card-content">
-                  <button class="btn btn-reddit btn-round"  data-toggle="modal"
+                  <button class="btn btn-reddit btn-round"  data-toggle="modal" id="receiveRoom"
                      data-target="#noticeModal1">
                             <i class="material-icons">email</i> 쪽지함
                         <div class="ripple-container"></div></button>
@@ -547,6 +547,32 @@
                                 alert(content);
                             } });
                       }
-                 });                 
+                 });
+                 
+                 $("#receiveRoom").click(function() {
+                		selectMsgContentTable(); 
+                		
+                	});
+
+                	function selectMsgContentTable(){
+                		
+                		$.ajax({ 
+                			type: 'post' ,
+                			url: 'messagecontentlist.htm', 
+                			data:{email:sessionId},
+                			dataType:'html',
+                	        success : function(data){
+                	        	
+                	        $('#messageTable').html(data);
+
+                	        },
+                	        error:function(request, status, error){
+                	           alert("가져오기 실패")
+                	        } });	
+                		
+                	}
+                 
         </script>
+        
+        
         

@@ -11,7 +11,13 @@ select email ,name from member where email in(select email from classmember wher
 
 
 <select  id="selectMsgContentList" parameterType="String" resultType="com.class_ic.vo.MessageDTO">
-select email ,name from member where email in(select email from classmember where classCode=#{classCode})
+SELECT  msr.name as name, ms.messageNo as messageNo, ms.msContent as msContent,  ms.msSendTime as msSendTime
+FROM (
+SELECT m.name as name, mr.messageNo as messageNo
+FROM Member m JOIN MessageReceive mr
+ON m.email = mr.emailR
+WEHRE mr.emailR=#{email}) msr JOIN Message ms
+ON msr.messageNo = ms.messageNo
 </select>
 
 </mapper>

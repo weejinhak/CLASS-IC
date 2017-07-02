@@ -11,7 +11,7 @@ public interface MessageDAO {
 	public ArrayList<MemberDTO> selectSameMemberList(String classCode);
 	   
     //로그인한 아이디가 받은 메시지를 가져오는 메소드
-	public ArrayList<MessageDTO> selectMsgContentList(String classCode,String email);
+	public ArrayList<MessageDTO> selectMsgContentList(String email);
 		
 		
 }

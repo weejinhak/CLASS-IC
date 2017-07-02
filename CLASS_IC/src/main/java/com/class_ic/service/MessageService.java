@@ -35,11 +35,11 @@ public class MessageService implements MessageDAO{
 	}
 
 	@Override
-	public ArrayList<MessageDTO> selectMsgContentList(String classCode, String email) {
+	public ArrayList<MessageDTO> selectMsgContentList(String email) {
 		
 		MessageDAO msgDao= sqlsession.getMapper(MessageDAO.class);
 		
-		ArrayList<MessageDTO> msgcontentlist= msgDao.selectMsgContentList(classCode,email);
+		ArrayList<MessageDTO> msgcontentlist= msgDao.selectMsgContentList(email);
 		
 		return msgcontentlist;
 	}
