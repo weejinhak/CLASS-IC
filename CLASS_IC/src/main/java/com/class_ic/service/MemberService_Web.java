@@ -76,9 +76,10 @@ public class MemberService_Web {
 	public MemberDTO getMemberInfo(HttpSession session){
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		String email = (String) session.getAttribute("email");
-		MemberDTO getMember = member_dao.selectOne(email);		
-		
-		return getMember;
+		System.out.println("세션은 잘 가져왔나: " +email);
+		MemberDTO getMember_photo = member_dao.selectOne(email);		
+		System.out.println(getMember_photo.getPhotoSrc()+"사진 경로 값 가져옴");
+		return getMember_photo;
 	}
 	
 	//for update (edit info)
