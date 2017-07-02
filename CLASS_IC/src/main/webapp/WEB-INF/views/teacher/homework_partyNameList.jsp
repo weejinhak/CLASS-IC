@@ -40,12 +40,10 @@
 										<tr>
 											<td>
 												<div class="text-center" style="margin-top: -12px;">
-													<div class="checkbox" id="">
 														<label class="text-center"> <input type="checkbox"
 															name="multy[]" value="${homeworklist.assignNo}">
 															<span class="checkbox-material"></span>
 														</label>
-													</div>
 												</div>
 											</td>
 
@@ -53,7 +51,8 @@
 											<td class="text-center" id="assignNo">${homeworklist.assignNo}</td>
 											<td class="text-center">${homeworklist.cateCode}</td>
 											
-											<td class="text-center" ><a href="homeworkContent.htm?assignNo=${homeworklist.assignNo}"
+											<td class="text-center" ><a href="homeworkContent.htm?assignNo=${homeworklist.assignNo}&email=<%=(String)session.getAttribute("email")%>
+																					              &classCode=<%=(String)session.getAttribute("classCode")%>"
 												class="btn btn-simple btn-info  btn-icon edit" >${homeworklist.assignTitle}</a></td>
 												
 											<td class="text-center">${homeworklist.name}</td>
@@ -102,7 +101,7 @@
 	<script type="text/javascript">
 
 	var email="<%=(String)session.getAttribute("email")%>";
-
+    var classCode="<%=(String)session.getAttribute("classCode")%>";
 	
 	
 //멀티컨텐츠 (삭제 )선택받기
@@ -166,11 +165,12 @@ var data="";
 
    // alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
    //ajax 로  보낼데이터를 배열형태로 허용해준당 
+  
    jQuery.ajaxSettings.traditional = true;
 
     $.ajax({
         type: 'POST',
-        url: 'classtotalBoard_multi_delete.htm',
+        url: 'homeworkDelete.htm',
         data: { data: data } ,
         dataType: 'text',
 	
@@ -186,7 +186,7 @@ var data="";
                 buttonsStyling: false
                 }).then(function() {
 					
-               	 
+                	 location.href="selectAllList.htm"
 				})
                 
     
