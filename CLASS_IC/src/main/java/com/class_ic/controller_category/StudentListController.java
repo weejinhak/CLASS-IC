@@ -46,6 +46,7 @@ public class StudentListController {
 			obj.put("name", studentList.get(i).getName());
 			obj.put("phone", studentList.get(i).getPhone());
 			obj.put("inClass", studentList.get(i).getInClass());
+			obj.put("outClass", studentList.get(i).getOutClass());
 			array.add(obj);
 			
 			System.out.println("studentList: "+studentList.toString());

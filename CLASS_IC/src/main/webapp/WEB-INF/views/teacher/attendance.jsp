@@ -33,28 +33,58 @@
 	
 	$(function() {
 		
-		var classCode = $("#classCode").val();
-		console.log(classCode)
-		
-		$.ajax({
+		 //1초 마다 출석했는지 확인
+		checkAlert = setInterval(function() {
 			
-			cashe : false,
-			type : "post",
-			url : "selectStudent.htm",
-			data : {
-				"classCode" : classCode
-			},
-			dataType : "Json",
-			success : function(data) {
-
-				$.each(data,function(index, item) {
-
-						$('#tbody').append('<tr><td><img src="${pageContext.request.contextPath}/resources/assets/img/faces/'+item.photoSrc+'" alt="'+item.name+'" style="width: 40px;" class="img-circle"></td><td>'+item.email+'</td><td>'+item.name+'</td><td>'+item.phone+'</td></tr>')
-
-						});
+			checkStudent();
+			console.log("출석 체크")
+			
+			var hour = new Date().getHours();
+			var min = new Date().getMinutes();
+			
+			if(hour==09 && min == 10){ //오전 9시 10분에 완료
+				clearInterval(checkAlert);
+				console.log("오늘 출석체크 완료")
 			}
 			
-		});
+		}, 5000); 
+		
+		
+		//학생 출석 여부
+		function checkStudent() {
+			
+			var classCode = $("#classCode").val();
+			console.log(classCode)
+			
+			$.ajax({
+				
+				cashe : false,
+				type : "post",
+				url : "selectStudent.htm",
+				data : {
+					"classCode" : classCode
+				},
+				dataType : "Json",
+				success : function(data) {
+
+					$.each(data,function() {
+						
+						if(this.inClass == undefined){ //inClass에 값이 없으면 (javascript에서 값이 없는것은 undefinde)
+							$('#tbody').empty();
+							$('#tbody').append('<tr><td><img src="${pageContext.request.contextPath}/resources/assets/img/faces/'+this.photoSrc+'" alt="'+this.name+'" style="width: 60px; opacity: 0.5; background-color: black;" class="img-circle"></td><td>'+this.email+'</td><td>'+this.name+'</td><td>'+this.phone+'</td></tr>')
+
+						}else{
+						
+							$('#tbody').empty();
+							$('#tbody').append('<tr><td><img src="${pageContext.request.contextPath}/resources/assets/img/faces/'+this.photoSrc+'" alt="'+this.name+'" style="width: 60px;" class="img-circle"></td><td>'+this.email+'</td><td>'+this.name+'</td><td>'+this.phone+'</td></tr>')
+						}
+						
+					});
+				}
+				
+			});
+		}
+		
 		
 	});
 	
