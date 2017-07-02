@@ -87,10 +87,10 @@ public class JoinService {
 				//classmember에 classCode와 email 입력 
 				lectureDao.inputMyClassCode(email, classCode);
 				System.out.println("classmember email 입력");
-				viewpage="redirect:join/login";
+				viewpage="login.htm";
 								}else{
 									System.out.println("권한부여 실패");
-									viewpage="redirect:join/join";
+									viewpage="join.htm";
 								}			
 				}catch(Exception e){
 					e.printStackTrace();

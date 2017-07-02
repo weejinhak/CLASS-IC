@@ -31,11 +31,18 @@ public class MemberController_Web {
 	private MemberService_Web memberservice;
 
 	//로그인 폼
-	@RequestMapping("login.htm")
+	@RequestMapping(value="login.htm", method=RequestMethod.GET)
 	public String login(){
 
 		return "common/main";
 	}
+	
+	//로그인 폼
+	@RequestMapping(value="login.htm", method=RequestMethod.POST)
+		public String loginPost(){
+
+			return "common/main";
+		}
 	
 	//로그인 처리
 	@RequestMapping("loginOk.htm")
