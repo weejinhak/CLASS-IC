@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.class_ic.dao.MessageDAO;
 import com.class_ic.vo.MemberDTO;
+import com.class_ic.vo.MessageDTO;
 
 @Service
 public class MessageService implements MessageDAO{
@@ -33,6 +34,17 @@ public class MessageService implements MessageDAO{
 		return msgmemberlist;
 	}
 
+	@Override
+	public ArrayList<MessageDTO> selectMsgContentList(String classCode, String email) {
+		
+		MessageDAO msgDao= sqlsession.getMapper(MessageDAO.class);
+		
+		ArrayList<MessageDTO> msgcontentlist= msgDao.selectMsgContentList(classCode,email);
+		
+		return msgcontentlist;
+	}
 
+
+	
 
 }

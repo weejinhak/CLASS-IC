@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.class_ic.service.MessageService;
 import com.class_ic.vo.MemberDTO;
+import com.class_ic.vo.MessageDTO;
 
 @Controller
 public class MessageController {
@@ -32,6 +33,27 @@ public class MessageController {
 		model.addAttribute("member", msgmemberlist);
 	
 		return "common/senderlist";
+		
+	}
+	
+	
+	@RequestMapping(value="messagecontentlist.htm",method=RequestMethod.POST)
+	public String messageContentList(String classCode,String email,Model model){
+		System.out.println("메세지 컨텐츠 컨트롤러"+classCode+email);
+		
+		ArrayList<MessageDTO> msgcontentlist= new ArrayList<MessageDTO>();
+		
+		msgcontentlist=messageService.selectMsgContentList(classCode,email);
+		for (MessageDTO m : msgcontentlist) {
+			System.out.println(m.getMessageNo());
+			System.out.println(m.getMsContent());
+			System.out.println(m.getEmailS());
+			System.out.println(m.getMsSendTime());
+		}
+		
+		model.addAttribute("msgcontentlist", msgcontentlist);
+	
+		return "common/message_data_table";
 		
 	}
 	

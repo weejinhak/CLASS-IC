@@ -433,38 +433,40 @@
 
  <!-- 쪽지 list 모달 -->
    <div class="row">
-      <div class="col-md-12 text-center">
-         <!-- notice modal -->
-         
-         <div class="modal fade" id="noticeModal1" tabindex="-1" role="dialog"
-            aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-notice">
-         <form action="CalendarInsertOk.htm" method="POST">         
-               <div class="modal-content">
-                  <div class="modal-header">
-              <!-- 타이틀 내용  -->
-                  </div>
-                  <div class="modal-body">
-                   
-                      <!-- 주요 내용  -->
-                      
-                  </div>
-                  <div class="modal-footer text-center" >
-                     <button type="submit" class="btn btn-success btn-simple" >작성</button>
-                     <button type="button" class="btn btn-simple" data-dismiss="modal">취소
-                        </button>
-                     
-                  </div>
-               
-               </div>
-            </form>
-               
+					      <div class="col-md-12 text-center">
+					         <!-- notice modal -->
+					         
+					         <div class="modal fade" id="noticeModal1" tabindex="-1" role="dialog"
+					            aria-labelledby="myModalLabel" aria-hidden="true">
+					            <div class="modal-dialog modal-notice">
+					         <form action="CalendarInsertOk.htm" method="POST">         
+					               <div class="modal-content">
+					                  <div class="modal-header">
+					              <!-- 타이틀 내용  -->
+					                  </div>
+					                  <div class="modal-body">
+					                   
+					                   <div id="messageTable">
+					                   </div>
+					                      <!-- 주요 내용  -->
+					                      
+					                  </div>
+					                  <div class="modal-footer text-center" >
+					                     <button type="submit" class="btn btn-success btn-simple" >작성</button>
+					                     <button type="button" class="btn btn-simple" data-dismiss="modal">취소
+					                        </button>
+					                     
+					                  </div>
+					               
+					               </div>
+					            </form>
+					               
+					            </div>
+					         </div>
+					         
+					         <!-- end notice modal -->
+					                  </div>
             </div>
-         </div>
-         
-         <!-- end notice modal -->
-                  </div>
-                  </div>
                   
                   
                   
@@ -483,7 +485,7 @@
                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         <i class="material-icons">clear</i>
                      </button>
-                     <h5 class="modal-title" id="myModalLabel">일정 추가</h5>
+                     <h5 class="modal-title" id="myModalLabel">쪽지보내기</h5>
                   </div>
                   <div class="modal-body">
                        <div class="card">
@@ -514,12 +516,7 @@
                       
                       
                   </div>
-                  <div class="modal-footer text-center" >
-                     <button type="submit" class="btn btn-success btn-simple" >작성</button>
-                     <button type="button" class="btn btn-simple" data-dismiss="modal">취소
-                        </button>
-                     
-                  </div>
+
                
                </div>
 
