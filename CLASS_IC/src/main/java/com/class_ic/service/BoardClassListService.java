@@ -116,6 +116,7 @@ public class BoardClassListService {
 		System.out.println("퇀다퇀다3");
 	    modal.setViewName("common/classboardlist_data_table");
 	    modal.addObject("boardlist",boardlist);
+	    modal.addObject("cateCode",dto.getCateCode());
 	   
 	      
 		

@@ -74,7 +74,7 @@
 							</table>
 						</div>
 
-						<form action="boardcontent.htm">
+						<form action="${pageContext.request.contextPath}/boardcontentclass.htm">
 							<button type="submit" id="submitFrm"
 								class="btn btn-info btn-round"
 								style=" margin-top: 10px; float: left;">
@@ -104,6 +104,7 @@
 	<script type="text/javascript">
 
 	var email="<%=(String)session.getAttribute("email")%>";
+	var cateCode="<%=(String)request.getAttribute("cateCode")%>";
 
 	
 	
@@ -165,7 +166,6 @@ var data="";
  }
 
 
-
 // alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
    //ajax 로  보낼데이터를 배열형태로 허용해준당 
    jQuery.ajaxSettings.traditional = true;
@@ -187,8 +187,8 @@ var data="";
                 confirmButtonClass: "btn btn-success",
                 buttonsStyling: false
                 }).then(function() {
-					
-               	 
+					location.href="catedetails.htm?cateCode="+cateCode;
+               
 				})
                 
     
