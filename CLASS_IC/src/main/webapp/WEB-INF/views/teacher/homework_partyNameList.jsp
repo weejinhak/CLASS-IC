@@ -16,7 +16,6 @@
 						<!--        Here you can write extra buttons/actions for the toolbar              -->
 					</div>
 					<div class="material-datatables">
-
 				  
 						<div id="list">
 							<table id="datatables"
@@ -24,11 +23,11 @@
 								cellspacing="0" width="100%" style="width: 100%">
 								<thead>
 									<tr>
-										<th class="text-center">과제번호</th>
-										<th class="text-center">카테고리코드</th>
-										<th class="text-center">과제명</th>
-										<th class="text-center">이름</th>
-										<th class="text-center">과제날짜</th>
+										<th class="text-center">check</th>
+										<th class="text-center">#</th>
+										<th class="text-center">category</th>
+										<th class="text-center">제목</th>
+										<th class="text-center">글쓴이</th>
 										<th class="text-center">작성날짜</th>
 										<th class="text-center">Actions</th>
 									</tr>
@@ -41,27 +40,25 @@
 										<tr>
 											<td>
 												<div class="text-center" style="margin-top: -12px;">
-													<div class="checkbox" id="">
 														<label class="text-center"> <input type="checkbox"
 															name="multy[]" value="${homeworklist.assignNo}">
 															<span class="checkbox-material"></span>
 														</label>
-													</div>
 												</div>
 											</td>
 
 
-											<td class="text-center" id="lectureNo">${homeworklist.cateCode}</td>
-											<td class="text-center">${homeworklist.assignTitle}</td>
+											<td class="text-center" id="assignNo">${homeworklist.assignNo}</td>
+											<td class="text-center">${homeworklist.cateCode}</td>
+											
+											<td class="text-center" ><a href="homeworkContent.htm?assignNo=${homeworklist.assignNo}&email=<%=(String)session.getAttribute("email")%>
+																					              &classCode=<%=(String)session.getAttribute("classCode")%>"
+												class="btn btn-simple btn-info  btn-icon edit" >${homeworklist.assignTitle}</a></td>
+												
 											<td class="text-center">${homeworklist.name}</td>
-
-
-											<td class="text-center"><a
-												href="totalBoard_contentview.htm?lectureNo=${homeworklist.assignDate}"
-												class="btn btn-simple btn-info btn-icon edit">${homeworklist.assignDate}</a>
-											</td>
-
 											<td class="text-center">${homeworklist.assignDate}</td>
+
+											
 											<td class="text-center"><a
 												href="totalboardEdit.htm?lectureNo=${homeworklist.assignNo}"
 												class="btn btn-simple btn-rose btn-icon edit"><i class="material-icons">border_color</i></a> 
@@ -104,7 +101,7 @@
 	<script type="text/javascript">
 
 	var email="<%=(String)session.getAttribute("email")%>";
-
+    var classCode="<%=(String)session.getAttribute("classCode")%>";
 	
 	
 //멀티컨텐츠 (삭제 )선택받기
@@ -168,11 +165,12 @@ var data="";
 
    // alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
    //ajax 로  보낼데이터를 배열형태로 허용해준당 
+  
    jQuery.ajaxSettings.traditional = true;
 
     $.ajax({
         type: 'POST',
-        url: 'classtotalBoard_multi_delete.htm',
+        url: 'homeworkDelete.htm',
         data: { data: data } ,
         dataType: 'text',
 	
@@ -188,7 +186,7 @@ var data="";
                 buttonsStyling: false
                 }).then(function() {
 					
-               	 
+                	 location.href="selectAllList.htm"
 				})
                 
     

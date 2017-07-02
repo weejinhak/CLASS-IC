@@ -37,6 +37,7 @@
                            <div id="single-title-wrap">
                               <div id="single-title-block">
 
+
                                  <h1 class="new-single-title">${LectureBoardDTO.lectureTitle}</h1>
 
                                  <div class="single-meta-wrap">
