@@ -23,6 +23,8 @@ public interface BoardClassDAO {
 	// 출력된 게시글 중 x 버튼을 누를 경우에 수업담기에 담겨 있던 것을 지워줌.
 	int deletx(ClassByLectureDTO dto);
 	
+	// 기수 담기테이블에 insert 
+	public void boardMultiSend(ClassByLectureDTO dto);
 	
 
 }

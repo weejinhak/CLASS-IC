@@ -60,7 +60,7 @@ $().ready(function() {
 					</a></li>
 		            </c:forEach>
 			 
-					<li class=""><a href="#description-2" role="tab"
+					<li class="active"><a href="#description-2" role="tab"
 						data-toggle="tab" aria-expanded="false" > <!--                                            <i class="material-icons">exposure_plus_1</i> -->
 							<button class="btn btn-raised btn-round btn-white"
 								data-toggle="modal" data-target="#noticeModal">+</button>
