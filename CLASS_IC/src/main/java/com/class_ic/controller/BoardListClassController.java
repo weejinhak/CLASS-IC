@@ -59,6 +59,13 @@ public class BoardListClassController {
 		return modal;
 	}
 	
+	@RequestMapping("boardcontentclass.htm")
+	public String boardContent(HttpServletRequest request){
+		return "teacher.board_content_class";
+
+	
+	}
+	
 	
 	//카테고리에서 상세보기 누르면 서브카테고리와 게시글 상세로 들어감
 	@RequestMapping(value="teacher/catedetails.htm", method=RequestMethod.GET)
