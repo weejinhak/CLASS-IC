@@ -20,7 +20,9 @@
 
 <link rel="stylesheet"
    href="${pageContext.request.contextPath}/resources/assets/css/style.css">
-
+<!-- 프로필 사진 추가 -->
+<link rel="stylesheet"
+   href="${pageContext.request.contextPath}/resources/assets/css/photo.css">
 </head>
 
 <body>
@@ -67,40 +69,60 @@
                      src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d"
                      alt="" />
                </div>
+               <form id="join_student" action="${pageContext.request.contextPath}/join_st.htm" method="POST" enctype="multipart/form-data">              		
                <div class="cont_form_login">
                   <a href="#" onclick="ocultar_login_sign_up()"><i
                      class="material-icons">&#xE5C4;</i></a>
                   <h2>Sign up as a Student</h2>
-               
+               		<!-- 사진 업로드 시작 -->
+                     <div id='profile-upload'>
+					 <div class="hvr-profile-img">
+					  <input type="file" name="files[0]" id='getval'  class="upload w180" title="Dimensions 180 X 180" id="imag"></div>
+					  <i class="material-icons">camera_enhance</i>
+					  </div>
+                     <!-- 사진 업로드 끝 -->
                      <input type="text" id="email_st" name="email" placeholder="Email" />
                      <input type="text" id="name_st" name="name" placeholder="User" /> 
                      <input type="password" id="pwd_st" name="pwd" placeholder="Password" /> 
                      <input type="password" id="pwdconfirm_st" name="pwdconfirm" placeholder="Confirm Password" />
                      <input type="text" id="phone_st" name="phone" placeholder="PhoneNumber" />
-                     <input type="text" id="photoSrc_st" name="photoSrc" aceholder="imgSrc" /> 
+                     <!-- <input type="file" id="photoSrc_st" name="files" aceholder="imgSrc" />  -->
+                     
                      <input type="hidden" id="authority_st" name="authority" value="ROLE_STUDENT" />
                      <button class="btn_login" id="btn_submit_st">let's go</button>
                </div>
-
+               </form>
+				<!-- student -->
+				<form id="join_teacher" action="${pageContext.request.contextPath}/join_te.htm" method="POST" enctype="multipart/form-data">
                <div class="cont_form_sign_up">
                   <br> <br> <br> <a href="#"
                      onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
                   <h2>Sign up as a Teacher</h2>
+                  <!-- 사진 업로드 시작 -->
+                     <div id='profile-upload2'>
+						<div class="hvr-profile-img">
+						<input type="file" name="files[0]" id='getval2'  class="upload w180" title="Dimensions 180 X 180" id="imag"></div>
+						<i class="material-icons">camera_enhance</i>
+					 </div>
+                     <!-- 사진 업로드 끝 -->
                   <input type="text" id="email_te" name="email" placeholder="Email" />
                   <input type="text" id="name_te" name="name" placeholder="User" /> <input
                      type="password" id="pwd_te" name="pwd" placeholder="Password" /> <input
                      type="password" id="pwdconfirm_te" name="pwdconfirm"
                      placeholder="Confirm Password" /> 
                      <input type="text" id="phone_te"
-                     name="phone" placeholder="PhoneNumber" /> <input type="text"
-                     id="photoSrc_te" name="photoSrc" placeholder="imgSrc" /> <input
+                     name="phone" placeholder="PhoneNumber" /> 
+                     <!-- <input type="text"
+                     id="photoSrc_te" name="photoSrc" placeholder="imgSrc" />  -->
+                     <input
                      type="hidden" id="authority_te" name="authority"
                      value="ROLE_TEACHER" />
                   <button class="btn_sign_up" id="btn_submit_te">Let's
                      go</button>
-                  </form>
+                  
                </div>
-
+               </form>
+				<!-- teacher -->
             </div>
 
          </div>
@@ -109,7 +131,9 @@
 
    <script
       src="${pageContext.request.contextPath}/resources/assets/js/join.js"></script>
-
+ <!-- 사진 추가부분 -->
+ <script
+      src="${pageContext.request.contextPath}/resources/assets/js/photo.js"></script>
 </body>
 <!--   Core JS Files   -->
 <script
@@ -179,8 +203,8 @@
 <script
    src="${pageContext.request.contextPath}/resources/assets/js/demo.js"></script>
    <!-- 회원가입 ajax  -->
-<script
-   src="${pageContext.request.contextPath}/resources/assets/js/join_ajax.js"></script> 
+<%-- <script
+   src="${pageContext.request.contextPath}/resources/assets/js/join_ajax.js"></script>  --%>
 
 <script type="text/javascript">
     $().ready(function() {
