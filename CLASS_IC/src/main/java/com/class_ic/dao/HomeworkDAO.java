@@ -47,4 +47,14 @@ public interface HomeworkDAO {
  	
  	//과제 등록 : 학생
  	 public int addHomeworkDao(HomeworkDTO dto);
+ 	 
+     //과제게시판 상세보기, 과제게시판 수정 화면 출력
+     public HomeworkDTO selectContent(HomeworkDTO dto);
+
+     //과제게시판 수정한 데이터 DB저장
+     public int homeworkEditOk(HomeworkDTO dto);
+     
+     //과제게시판 삭제
+     public void homeworkDelete(int assignNo);
+     
 }

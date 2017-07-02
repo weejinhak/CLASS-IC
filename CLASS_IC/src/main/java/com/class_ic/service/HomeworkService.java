@@ -3,15 +3,18 @@ package com.class_ic.service;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.HomeworkDAO;
 import com.class_ic.vo.HomeworkDTO;
+import com.class_ic.vo.LectureBoardDTO;
 
 @Service
 public class HomeworkService {
@@ -178,5 +181,70 @@ public class HomeworkService {
 							
 				}
 				
-	      
+			    //과제게시판 상세보기 
+			      public ModelAndView homeworkContent(HttpServletRequest request, HttpServletResponse response,
+			  			HomeworkDTO dto){
+			         System.out.println("상세보기 서비스탄다.");
+			         System.out.println("dto들어오나 확인 :" +dto );
+			         System.out.println("확인" + dto.getAssignNo()+dto.getEmail()+dto.getClassCode());
+			         HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+
+			         
+			         HomeworkDTO contentlist = dao.selectContent(dto);
+			         
+			         System.out.println("상세보기 리스트" + contentlist);
+			         
+			         ModelAndView m = new ModelAndView();
+			         m.setViewName("teacher.homework_content");
+			         m.addObject("list",contentlist);
+			         
+			         System.out.println("모델단" + m);
+			         return m;
+			      }
+			      
+			      
+			      //수정화면으로 이동
+			      public ModelAndView homeworkEdit(HttpServletRequest request, HttpServletResponse response,
+				  			HomeworkDTO dto){
+			         HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+			     
+			          
+					HomeworkDTO contentlist = dao.selectContent(dto);
+			
+					System.out.println("수정화면으로 이동 리스트" + contentlist);
+			
+					ModelAndView m = new ModelAndView();
+					m.setViewName("teacher.homework_edit");
+					m.addObject("list", contentlist);
+			
+					System.out.println("수정화면 모델단" + m);
+					return m;
+			      }
+			      
+			      //수정한 데이터 DB저장
+			      public String homeworkEditOk(HomeworkDTO dto){
+			         HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+			         dao.homeworkEditOk(dto);
+			         
+			         return "redirect:selectAllList.htm";
+			      }
+			      
+			      //과제게시판 삭제
+			      public String homeworkDelete(HttpServletRequest request, HttpServletResponse response){
+			         String delete = request.getParameter("data");
+			         
+			         HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+			         
+			         String[] array = delete.split(",");
+			         System.out.println("assiNo 확인중"+array.length);
+			         int assignNo=0;
+			         for (int i = 0; i < array.length; i++) {
+
+			        	 assignNo=Integer.parseInt(array[i]);
+			            dao.homeworkDelete(assignNo);
+			            	
+			         }
+			         System.out.println( "여기까지 오지?" );
+			         return "redirect:selectAllList.htm";
+			      }
 }

@@ -230,8 +230,8 @@ public class BoardListService {
 		HttpSession session=request.getSession();
 		String email=(String) session.getAttribute("email");
 
-		String cateCode = request.getParameter("cateCode");
-		String subcateCode = request.getParameter("subcateCode");
+		String cateCode = request.getParameter("cate");
+		String subcateCode = request.getParameter("subcate");
 		SubCategoryDTO dto=new SubCategoryDTO();
 		dto.setEmail(email);
 		dto.setSubcateCode(subcateCode);
@@ -242,7 +242,7 @@ public class BoardListService {
 
 		// 리턴 셋팅
 		ModelAndView m = new ModelAndView();
-		m.setViewName("common/totalboardlist");
+		m.setViewName("teacher.totalLectureBoard");
 		m.addObject("bvo", blist);
 
 		return m;
@@ -360,4 +360,68 @@ public class BoardListService {
 
 		return m;
 	}
+	
+	
+	
+	
+
+	
+	//링크파일 뷰
+	public ModelAndView  linkfileview (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){//classcode올걸 
+
+		HttpSession session=request.getSession();
+		String classCode=(String)session.getAttribute("classCode");
+		System.out.println(classCode);
+		 BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+	   
+		 System.out.println("classCode"+classCode); //여기까지 ㅇㅋ
+		 //여기서 오류.. 
+		 ArrayList<LectureBoardDTO>  llist = bdao.linkList(classCode);
+
+         
+		  
+		  
+         System.out.println("셀렉리스트 컨트롤러 : " +llist); 
+         
+
+         mv.setViewName("teacher.link");
+         mv.addObject("lvo",llist) ;
+	 
+		 
+
+         return mv;
+		//클래스 코드를 받아서 
+		
+		
+	}
+	
+	
+	//링크 추가 
+	public void linkInsert(HttpServletRequest request ){
+		
+		HttpSession session=request.getSession();
+		String classCode=(String)session.getAttribute("classCode");
+		 BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+		 LectureBoardDTO bdto = new  LectureBoardDTO(); 
+		 // 링크 제목 
+		  String linkTitle = request.getParameter("linkTitle");
+		 //링크 주소  
+		  String linkSrc = request.getParameter("linkSrc");
+		
+		System.out.println("링크제목 : "+linkTitle);
+		System.out.println("링크 주소: "+linkSrc);
+		System.out.println("링크추가 기수: "+classCode);
+		
+		bdto.setLinkTitle(linkTitle);
+		bdto.setLinkSrc(linkSrc); 
+		bdto.setClassCode(classCode);  
+		bdao.linkInsert(bdto); 
+		
+  
+		
+		
+	}
+	
+	
+	
 }

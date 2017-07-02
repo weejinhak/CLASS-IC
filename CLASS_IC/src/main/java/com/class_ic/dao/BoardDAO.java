@@ -65,4 +65,12 @@ public interface BoardDAO {
 
 	// 글 상세보기 (링크 가져오기)
 	public ArrayList<LectureBoardDTO> totalBoard_contenLink(int lectureNo);
+	
+	
+	
+	//링크 파일 게시판  
+	  //링크 리스트 			 
+	  public ArrayList<LectureBoardDTO>  linkList (String classCode) ;
+	  //링크 입력 
+	  public void linkInsert(LectureBoardDTO dto) ; 
 }

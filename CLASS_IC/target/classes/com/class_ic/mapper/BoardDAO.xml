@@ -114,4 +114,19 @@ insert into category values(#{cateCode},#{cateTitle},#{email})
 
 insert into subcategory values(#{subcateCode},#{cateCode},#{subcateTitle},#{email})
 </insert>
+
+
+
+<!-- 링크 게시판 출력  --> 
+ <select id="linkList" resultType="com.class_ic.vo.LectureBoardDTO"  parameterType="String">
+select  * from  link  where classCode = #{classCode} 
+</select>
+ 
+<!-- 링크 입력  --> 
+<insert id="linkInsert" parameterType="com.class_ic.vo.SubCategoryDTO"> 
+insert into link (linktitle, linksrc, classCode ) values (#{linkTitle},#{linkSrc}, #{classCode});  
+</insert>
+
+
+
 </mapper>
