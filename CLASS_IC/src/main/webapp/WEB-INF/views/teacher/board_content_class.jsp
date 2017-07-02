@@ -38,7 +38,6 @@ function myFunction() {
     		var content=$("#content").val();
     		var cate=$("#cate").val();
     		var subcate=$("#subcate").val();
-    		alert(cate);
     		var sessionClassCode="<%=(String)session.getAttribute("email")%>";
 /*     		var fileData = new FormData();
     		fileData.append('file', $('input[type=file]')[0].files[0]);
