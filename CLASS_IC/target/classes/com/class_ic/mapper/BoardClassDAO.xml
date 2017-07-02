@@ -32,6 +32,12 @@ and cateCode=#{cateCode} and subcateCode=#{subcateCode}
 
 </select>
 
+<!-- 통합게시판 글 기수로 보내기 -->
+<insert id="boardMultiSend" parameterType="com.class_ic.vo.ClassByLectureDTO">
+
+insert into classbylecture values((select Max(lectureNo) from lectureboard),${classCode})
+</insert>
+
 <select id="selectCateboard" parameterType="com.class_ic.vo.SubCategoryDTO"
 resultType="com.class_ic.vo.LectureBoardDTO">
 select * from lectureboard

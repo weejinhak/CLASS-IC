@@ -24,10 +24,7 @@ function myFunction() {
             $('.card').removeClass('card-hidden');
         }, 700)
         
-       cate();
-        
-
-
+ 
 
         $("#save").click(function() {
         	save(); 
@@ -41,6 +38,7 @@ function myFunction() {
     		var content=$("#content").val();
     		var cate=$("#cate").val();
     		var subcate=$("#subcate").val();
+    		alert(cate);
     		var sessionClassCode="<%=(String)session.getAttribute("email")%>";
 /*     		var fileData = new FormData();
     		fileData.append('file', $('input[type=file]')[0].files[0]);
@@ -57,7 +55,7 @@ function myFunction() {
         	$.ajax({ 
         		type: 'post' ,
         	/* 	enctype: "multipart/form-data",  */
-        		url: '${pageContext.request.contextPath}/boardcontentsave.htm', 
+        		url: '${pageContext.request.contextPath}/classboardcontentsave.htm', 
         		data:{title:title,content:content,cate:cate,subcate:subcate, classCode:sessionClassCode},
         		dataType:'text',
                 success : function(data){
@@ -70,7 +68,7 @@ function myFunction() {
                         buttonsStyling: false
                         }).then(function() {
         					
-                       	 location.href="allboard.htm"
+                       	 location.href="catedetails.htm?cateCode="+cate;
         				})
 
                 },
@@ -79,51 +77,6 @@ function myFunction() {
                     alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
                 } });	
         	}
-       	
-       	function cate() {
-       		
-        	$.ajax({ 
-        		type: 'post' ,
-        		url: '${pageContext.request.contextPath}/selectcategory.htm', 
-        		dataType:'text',
-                success : function(data){
-					$('#cate').html(data);
-             
-           
-                },
-            	error : function(){
-                    alert('통신실패!!');
-                    alert(title);
-                    alert(content);
-                } });
-       	}
-			
-       	$('#cate').change(function(event){
-       		
-       		subcate();
-       	
-       	});
-
-       	function subcate() {
-       		
-       		
-       		var cate = $("#cate").val();
-       		console.log(cate);
-       		
-       		$.ajax({
-       	        url: '${pageContext.request.contextPath}/selectsubcategory.htm',
-       	        data: {"cate":cate},
-       	        dataType:'text',
-       	        type: 'POST',
-       	        
-       	        success: function(data){
-       	       
-       	       	$('#subcate').html(data);
-       	           
-       	        }
-       	    });
-		}
-    	
     
         
     });
@@ -141,16 +94,18 @@ function myFunction() {
 				<div class="dataTables_length" id="datatables_length">&nbsp; &nbsp; &nbsp; &nbsp;
 					<label class="form-group form-group-sm">카테고리
 					<select id="cate"name="datatables_length" aria-controls="datatables"class="form-control">           
-					
+					<option value="${cateCode}">${cateCode}</option>
 					</select> 
 					<span
 						class="material-input">
 					</span>
 					</label> &nbsp; &nbsp; &nbsp; &nbsp; <label
 						class="form-group form-group-sm">서브 카테고리
-						
+					
 						<select name="datatables_length" aria-controls="datatables"
-						class="form-control" id="subcate"></select> <span
+						class="form-control" id="subcate">
+					<option value="${subcateCode}">${subcateCode}</option>
+						</select> <span
 						class="material-input"></span></label>
 				</div>
 

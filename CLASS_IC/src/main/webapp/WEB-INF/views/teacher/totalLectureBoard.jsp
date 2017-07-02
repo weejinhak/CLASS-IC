@@ -75,7 +75,7 @@
 										<tr>
 											<td>
 												<div class="text-center" style="margin-top: -12px;">
-													<div class="checkbox" id="">
+													<div id="">
 														<label class="text-center"> <input type="checkbox"
 															name="multy[]" value="${LectureBoardDTO.lectureNo}">
 															<span class="checkbox-material"></span>

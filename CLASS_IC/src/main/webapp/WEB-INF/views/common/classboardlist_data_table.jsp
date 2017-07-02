@@ -11,7 +11,7 @@
 			<div class="card">
 			
 				<div class="card-content">
-					<h4 class="card-title"></h4>
+					<h4 class="card-title">${cateCode}/${subcateCode}</h4>
 					<div class="toolbar">
 						<!--        Here you can write extra buttons/actions for the toolbar              -->
 					</div>
@@ -74,7 +74,9 @@
 							</table>
 						</div>
 
-						<form action="${pageContext.request.contextPath}/boardcontentclass.htm">
+						<form action="boardcontentclass.htm">
+						<input type="text" value="${cateCode}" hidden="" name="cateCode">
+						<input type="text" value="${subcateCode}" hidden="" name="subcateCode">
 							<button type="submit" id="submitFrm"
 								class="btn btn-info btn-round"
 								style=" margin-top: 10px; float: left;">
