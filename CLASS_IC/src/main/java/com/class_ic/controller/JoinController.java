@@ -7,6 +7,8 @@
 */
 package com.class_ic.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,11 +34,11 @@ public class JoinController {
 	
 	//회원가입 학생
 	@RequestMapping("join_st.htm")
-	public @ResponseBody String joinStudent(MemberDTO member){
+	public @ResponseBody String joinStudent(MemberDTO member, HttpServletRequest request){
 		System.out.println("학생가입 데이터 넘겨받음 이메일: " + member.getEmail());
 		String viewpage = "";
 		try{
-			viewpage = joinservice.join(member);
+			viewpage = joinservice.join(member, request);
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
@@ -45,11 +47,11 @@ public class JoinController {
 	
 	//회원가입 선생
 		@RequestMapping("join_te.htm")
-		public @ResponseBody String joinTeacher(MemberDTO member){
+		public @ResponseBody String joinTeacher(MemberDTO member ,HttpServletRequest request){
 
 			String viewpage = "";
 			try{
-				viewpage = joinservice.join(member);
+				viewpage = joinservice.join(member, request);
 			}catch(Exception e){
 				System.out.println(e.getMessage());
 			}

@@ -1,5 +1,9 @@
 package com.class_ic.vo;
 
+import java.util.List;
+
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class MemberDTO {
 	
 	private String email; //이메일
@@ -9,19 +13,36 @@ public class MemberDTO {
 	private String photoSrc; //이미지 주소
 	private String authority;	//security 권한
 	private String classCode; 	//기수
+	private List<CommonsMultipartFile> files;
 	public static final String STUDENT_AUTHORITY = "ROLE_STUDENT";
 	
 	public MemberDTO(){};
 	
-	public MemberDTO(String email, String name, String pwd, String phone, String photoSrc, String authority) {
-		super();
+	
+	
+	public MemberDTO(String email, String name, String pwd, String phone, String photoSrc, String authority,
+			String classCode, List<CommonsMultipartFile> files) {
+
 		this.email = email;
 		this.name = name;
 		this.pwd = pwd;
 		this.phone = phone;
 		this.photoSrc = photoSrc;
 		this.authority = authority;
+		this.classCode = classCode;
+		this.files = files;
 	}
+
+
+
+	public List<CommonsMultipartFile> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<CommonsMultipartFile> files) {
+		this.files = files;
+	}
+
 	public String getEmail() {
 		return email;
 	}

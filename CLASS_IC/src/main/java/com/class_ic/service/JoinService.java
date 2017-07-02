@@ -7,10 +7,17 @@
 */
 package com.class_ic.service;
 
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.LectureAddDAO;
@@ -28,7 +35,34 @@ public class JoinService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	//회원가입
-	public String join(MemberDTO member) throws Exception{
+	public String join(MemberDTO member, HttpServletRequest request) throws Exception{
+		
+		//사진 파일 업로드 관련
+				List<CommonsMultipartFile> files = member.getFiles();	
+				List<String> filenames = new ArrayList<String>();//파일명만 추출	
+				
+				if(files != null && files.size() > 0){
+					//업로드한 파일이 하나라도 있다면
+					for(CommonsMultipartFile multifile : files){
+						String filename = multifile.getOriginalFilename();
+						String path = request.getServletContext().getRealPath("/resources/upload");
+						String fpath = path + "\\" + filename;
+						System.out.println(filename + "/" + fpath);
+						if(!filename.equals("")){
+							//서버에 파일 쓰기 작업
+							FileOutputStream fs = new FileOutputStream(fpath);
+							fs.write(multifile.getBytes());
+							fs.close();
+						}
+						filenames.add(filename);// 실제 DB insert 할 파일명
+					}
+				}
+				
+				//DB작업
+				member.setPhotoSrc(filenames.get(0));
+				//board.setFileSrc2(filenames.get(1));
+				
+				//사진 파일 업로드 끝
 		
 		member.setPwd(this.bCryptPasswordEncoder.encode(member.getPwd()));
 		String email = member.getEmail();
