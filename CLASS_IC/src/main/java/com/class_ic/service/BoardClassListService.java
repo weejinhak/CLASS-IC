@@ -43,7 +43,16 @@ public class BoardClassListService {
 	private SqlSession sqlsession;
 
 
-
+	public ModelAndView boardContent(HttpServletRequest request,ModelAndView model){
+		
+		String cateCode=request.getParameter("cateCode");
+		String subcateCode=request.getParameter("subcateCode");
+		model.addObject("cateCode",cateCode);
+		model.addObject("subcateCode",subcateCode);
+		model.setViewName("teacher.board_content_class");
+		return model;
+		
+	}
 	// 카테고리 select 
 	public ModelAndView selectCate(HttpServletRequest request, HttpServletResponse response) { // lectureNo
 
@@ -79,6 +88,71 @@ public class BoardClassListService {
 		
 		return m;
 	}
+	
+	
+	//게시글 insert(게시판 insert 수업담기 insert) 
+	public void boardContentSaveService(HttpServletRequest request, LectureBoardDTO lecture) throws IOException {
+
+/*		//파일 업로드 처리 추가
+		List<CommonsMultipartFile> files = lecture.getFiles();	
+		List<String> filenames = new ArrayList<String>();//파일명만 추출	
+		
+		if(files != null && files.size() > 0){
+			//업로드한 파일이 하나라도 있다면
+			for(CommonsMultipartFile multifile : files){
+				String filename = multifile.getOriginalFilename();
+				String path = request.getServletContext().getRealPath("/resources/upload");
+				String fpath = path + "\\" + filename;
+				System.out.println(filename + "/" + fpath);
+				if(!filename.equals("")){
+					//서버에 파일 쓰기 작업
+					FileOutputStream fs = new FileOutputStream(fpath);
+					fs.write(multifile.getBytes());
+					fs.close();
+				}
+				filenames.add(filename);// 실제 DB insert 할 파일명
+			}
+		}*/
+		//파일 업로드 처리 끝
+
+		System.out.println("boardContentSave 메소드 들어옴.");
+		String title = (String) request.getParameter("title");
+		String content = (String) request.getParameter("content");
+		String cate = (String) request.getParameter("cate");
+		String subcate = (String) request.getParameter("subcate");
+		String classCode = request.getParameter("classCode");
+		System.out.println(title + "," + content + "," + cate + "," + subcate + "/" + classCode);
+		HttpSession session=request.getSession();
+		String classCode2 = (String) session.getAttribute("classCode");
+		LectureBoardDTO dto = new LectureBoardDTO();
+		ClassByLectureDTO dto2=new ClassByLectureDTO();
+
+		dto2.setClassCode(classCode2);
+		dto.setClassCode(classCode);
+		dto.setCateCode(cate);
+		dto.setSubcateCode(subcate);
+		dto.setLectureContent(content);
+		dto.setLectureTitle(title);
+		// 파일 업로드 추가 부분
+	/*	
+		 dto.setFileSrc(filenames.get(0)); */
+		// dto.setFileSrc2(filenames.get(1));
+		 
+		// 파일 업로드 추가 부분
+		BoardDAO board = sqlsession.getMapper(BoardDAO.class);
+		BoardClassDAO classboard=sqlsession.getMapper(BoardClassDAO.class);
+
+		board.insertBoardContent(dto);
+
+		  classboard.boardMultiSend(dto2);
+			
+		
+/*		  int file_insert = board.insertFile(dto);		
+		  System.out.println("파일 입력 결과: "+file_insert); */
+		
+
+	}
+
 	
 	//카테고리에서 상세보기 누르면 서브카테고리와 게시글 상세로 들어감
 	public ModelAndView cateDetails(ModelAndView modal,HttpServletRequest request,HttpServletResponse response,String cateCode){ // lectureNo
@@ -116,6 +190,8 @@ public class BoardClassListService {
 		System.out.println("퇀다퇀다3");
 	    modal.setViewName("common/classboardlist_data_table");
 	    modal.addObject("boardlist",boardlist);
+	    modal.addObject("cateCode",dto.getCateCode());
+	    modal.addObject("subcateCode",dto.getSubcateCode());
 	   
 	      
 		

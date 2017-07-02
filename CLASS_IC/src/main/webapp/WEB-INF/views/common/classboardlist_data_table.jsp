@@ -11,7 +11,7 @@
 			<div class="card">
 			
 				<div class="card-content">
-					<h4 class="card-title"></h4>
+					<h4 class="card-title">${cateCode}/${subcateCode}</h4>
 					<div class="toolbar">
 						<!--        Here you can write extra buttons/actions for the toolbar              -->
 					</div>
@@ -41,7 +41,7 @@
 										<tr>
 											<td>
 												<div class="text-center" style="margin-top: -12px;">
-													<div class="checkbox" id="">
+													<div id="">
 														<label class="text-center"> <input type="checkbox"
 															name="multy[]" value="${LectureBoardDTO.lectureNo}">
 															<span class="checkbox-material"></span>
@@ -74,7 +74,9 @@
 							</table>
 						</div>
 
-						<form action="boardcontent.htm">
+						<form action="boardcontentclass.htm">
+						<input type="text" value="${cateCode}" hidden="" name="cateCode">
+						<input type="text" value="${subcateCode}" hidden="" name="subcateCode">
 							<button type="submit" id="submitFrm"
 								class="btn btn-info btn-round"
 								style=" margin-top: 10px; float: left;">
@@ -104,6 +106,7 @@
 	<script type="text/javascript">
 
 	var email="<%=(String)session.getAttribute("email")%>";
+	var cateCode="<%=(String)request.getAttribute("cateCode")%>";
 
 	
 	
@@ -165,7 +168,6 @@ var data="";
  }
 
 
-
 // alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
    //ajax 로  보낼데이터를 배열형태로 허용해준당 
    jQuery.ajaxSettings.traditional = true;
@@ -187,8 +189,8 @@ var data="";
                 confirmButtonClass: "btn btn-success",
                 buttonsStyling: false
                 }).then(function() {
-					
-               	 
+					location.href="catedetails.htm?cateCode="+cateCode;
+               
 				})
                 
     

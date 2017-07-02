@@ -59,6 +59,46 @@ public class BoardListClassController {
 		return modal;
 	}
 	
+	@RequestMapping("teacher/boardcontentclass.htm")
+	public ModelAndView boardContent(HttpServletRequest request,ModelAndView model){
+		
+		model=boardclasslistservice.boardContent(request, model);
+		
+		
+		return model;
+
+	
+	}
+	
+	
+	
+	
+	//게시글 insert(게시판 insert 수업담기 insert) 
+	@RequestMapping(value = "classboardcontentsave.htm", method = RequestMethod.POST)
+	public String boardContentSave(HttpServletRequest request, LectureBoardDTO lecture) throws IOException{
+		
+		boardclasslistservice.boardContentSaveService(request, lecture);
+		
+	/*System.out.println("boardContentSave 메소드 들어옴.");
+    String title=(String)request.getParameter("title");
+    String content=(String)request.getParameter("content");
+    String cate=(String)request.getParameter("cate");
+    String subcate=(String)request.getParameter("subcate");
+    System.out.println(title+","+content+","+cate+","+subcate);
+    
+    LectureBoardDTO dto= new LectureBoardDTO();
+    dto.setClassCode("kkj01331@naver.com");
+    dto.setCateCode(cate);
+    dto.setSubcateCode(subcate);
+    dto.setLectureContent(content);
+    dto.setLectureTitle(title);
+    BoardDAO board=sqlsession.getMapper(BoardDAO.class);
+    
+    board.insertBoardContent(dto);*/
+	return "common/board_content";
+
+	
+	}
 	
 	//카테고리에서 상세보기 누르면 서브카테고리와 게시글 상세로 들어감
 	@RequestMapping(value="teacher/catedetails.htm", method=RequestMethod.GET)
@@ -75,6 +115,7 @@ public class BoardListClassController {
 	public ModelAndView selectCateSubcateboard(ModelAndView modal,HttpServletRequest request,HttpServletResponse response,SubCategoryDTO dto){
 
 	
+		
 		modal=boardclasslistservice.selectCateSubcateboard(modal, request, response, dto);
 		
 		return modal;
