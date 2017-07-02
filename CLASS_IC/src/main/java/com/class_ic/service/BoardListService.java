@@ -1,11 +1,13 @@
 package com.class_ic.service;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -48,7 +50,9 @@ public class BoardListService {
 
 	public void boardContentSaveService(HttpServletRequest request, LectureBoardDTO lecture) throws IOException {
 
-/*		//파일 업로드 처리 추가
+		//데이터 가져오는지
+		System.out.println("데이터 가져옵니다: " + lecture.getCateCode() + lecture.getSubcateCode() + lecture.getLectureTitle() + lecture.getLectureContent());
+		//파일 업로드 처리 추가
 		List<CommonsMultipartFile> files = lecture.getFiles();	
 		List<String> filenames = new ArrayList<String>();//파일명만 추출	
 		
@@ -67,37 +71,44 @@ public class BoardListService {
 				}
 				filenames.add(filename);// 실제 DB insert 할 파일명
 			}
-		}*/
+		}
 		//파일 업로드 처리 끝
 
 		System.out.println("boardContentSave 메소드 들어옴.");
-		String title = (String) request.getParameter("title");
+	/*	String title = (String) request.getParameter("title");
 		String content = (String) request.getParameter("content");
 		String cate = (String) request.getParameter("cate");
 		String subcate = (String) request.getParameter("subcate");
 		String classCode = request.getParameter("classCode");
-		System.out.println(title + "," + content + "," + cate + "," + subcate + "/" + classCode);
+		System.out.println(cate + "," + subcate + "/" + classCode);
 
 		LectureBoardDTO dto = new LectureBoardDTO();
 		dto.setClassCode(classCode);
 		dto.setCateCode(cate);
 		dto.setSubcateCode(subcate);
 		dto.setLectureContent(content);
-		dto.setLectureTitle(title);
-		// 파일 업로드 추가 부분
-	/*	
-		 dto.setFileSrc(filenames.get(0)); */
-		// dto.setFileSrc2(filenames.get(1));
-		 
-		// 파일 업로드 추가 부분
+		dto.setLectureTitle(title);  */
+
 		BoardDAO board = sqlsession.getMapper(BoardDAO.class);
 
-		board.insertBoardContent(dto);
-
+		board.insertBoardContent(lecture);
 		
-/*		  int file_insert = board.insertFile(dto);		
-		  System.out.println("파일 입력 결과: "+file_insert); */
+		// 파일 업로드 추가 부분
+			LectureBoardDTO dto = new LectureBoardDTO();
+				dto.setFileSrc(filenames.get(0)); 
+				dto.setFileSrc2(filenames.get(1));
+				int lecNo = board.seq();
+				dto.setLectureNo(lecNo);
+				
+				System.out.println("방금 들어간 게시판 번호 : "+dto.getLectureNo());
 		
+				System.out.println("파일 이름: " + dto.getFileSrc() + " / " + dto.getFileSrc2());
+		
+				int file_insert = board.insertFile(dto);		
+				System.out.println("파일 입력 결과: "+file_insert); 
+				int fileNum = board.seqFile();
+				dto.setFileNo(fileNum);
+				board.updateLectureNO(lecNo, fileNum);
 
 	}
 
@@ -360,4 +371,27 @@ public class BoardListService {
 
 		return m;
 	}
+	
+	//파일 다운로드
+	public void download(String p, String f, HttpServletRequest request,
+	 		   HttpServletResponse response) throws IOException {
+
+	 		  String fname = new String(f.getBytes("euc-kr"), "8859_1");
+	 		  response.setHeader("Content-Disposition", "attachment;filename=" + fname + ";");
+	 		
+	 		  String fullpath = request.getServletContext().getRealPath(
+	 		    "/resources/" + p + "/" + f);
+	 		
+	 		  FileInputStream fin = new FileInputStream(fullpath);
+	 		
+	 		  ServletOutputStream sout = response.getOutputStream();
+	 		  byte[] buf = new byte[1024]; // 전체를 다읽지 않고 1204byte씩 읽어서
+	 		  int size = 0;
+	 		  while ((size = fin.read(buf, 0, buf.length)) != -1)   		             
+	 		  {
+	 			  sout.write(buf, 0, size); // 1kbyte씩 출력
+	 		  }
+	 		  fin.close();
+	 		  sout.close();
+	 		 }
 }

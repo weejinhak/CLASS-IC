@@ -34,7 +34,7 @@ public class MemberController_Web {
 	@RequestMapping("login.htm")
 	public String login(){
 
-		return "join/login";
+		return "join/main";
 	}
 	
 	//로그인 처리

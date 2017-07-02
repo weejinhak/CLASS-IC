@@ -1,7 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- 강사 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:forEach var="list" items="${homeworkselectlist}">
+<tr>
+	<td>${list.assignNo }</td>
+	<td>${list.cateCode }</td>
+	<td>${list.assignTitle }</td>
+	<td>${list.name }</td>
+	<td>${list.assignDate }</td>
+</tr>
+</c:forEach>
+
 <%@ page import="com.class_ic.vo.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 
 
 	<div class="row">

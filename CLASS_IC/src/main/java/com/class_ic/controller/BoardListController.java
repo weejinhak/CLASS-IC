@@ -2,9 +2,10 @@ package com.class_ic.controller;
 
 
 
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.class_ic.app.dto.MemberDTO;
-import com.class_ic.dao.BoardDAO;
 import com.class_ic.service.BoardListService;
 import com.class_ic.vo.CategoryDTO;
 import com.class_ic.vo.LectureBoardDTO;
@@ -90,7 +89,7 @@ public class BoardListController {
     BoardDAO board=sqlsession.getMapper(BoardDAO.class);
     
     board.insertBoardContent(dto);*/
-	return "common/board_content";
+	return "teacher/board_content";
 
 	
 	}
@@ -262,6 +261,16 @@ public class BoardListController {
       return viewpage;
     	
     }
+    
+    //파일 다운로드
+    @RequestMapping("techer/download.htm")
+	 public void download(String p, String f, HttpServletRequest request,
+	   HttpServletResponse response) throws IOException {
+    	boardlistservice.download(p, f, request, response);
+	 }
+    
+    
+    
     
 }
 
