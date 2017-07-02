@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page import="com.class_ic.vo.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+	<!DOCTYPE div PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-
-
-<!-- 강사 -->
+<!-- 학생 -->
 	 <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
@@ -29,12 +24,11 @@
                          </div>  
                          </div>
                          
-                               <div class="col-sm-12"> 
-
-									<div id="selectdatatable">
-									</div>
-							
-                                </div>
+                         <div class="col-sm-12"> 
+							<div id="selectdatatable">
+							</div>
+                         </div>
+					 
 					 		</div>
 					 </div>
 						<!-- 표끝 -->
@@ -46,45 +40,37 @@
 
       
 <script type="text/javascript">
-$().ready(function() {
+	$(function() {
 		
 		showMainCate();
 		selectAllList();
 		
-		$("#addCateBtn").click(function() {
-			addHomework();
-		});
-		
 		$("#selectCateList02").change(function(){
 			showTeamList();
 		});
-
+		
 		$('#selectTeamList').click(function(){
 			selectCateCodeList();
 		});
 		
+
 		
-		
-		$("#noticeBtn").click(function() {
-			location.href="homeworkNoticePage.htm";
-		});
 			
+		//메인카테고리
 			function showMainCate() {
 				
-				var email = "<%=(String)session.getAttribute("email")%>";
-					
-						console.log(email)
+				var classCode = sessionClassCode;	
 						
 						$.ajax({
 							
 							type : "post",
-							url:"selectCate.htm",
-							data : {"email" : email},
+							url:"selectMainCate.htm",
+							data : {"classCode" : classCode},
 							dataType : 'Json',
 							success : function(data) {
 									
 								$.each(data, function(){
-									$(".selectCateList").append("<option value='"+this.cateCode+"'>" + this.cateCode + "</option> ");
+									$("#selectCateList02").append("<option value='"+this.cateCode+"'>" + this.cateCode + "</option> ");
 								});
 								
 					   		}, 
@@ -98,53 +84,17 @@ $().ready(function() {
 		} //end showMainCate
 		
 		
-		function addHomework() {
-			
-			var email = "<%=(String)session.getAttribute("email")%>";
-			var classCode = "<%=(String)session.getAttribute("classCode")%>";
-			
-			console.log(email)
-			
-			var cateCode = $("#selectCateList01 option:selected").val();
-			var partyName = $("#partyName").val();
-			
-			$.ajax({
-				
-				type : "post",
-				url:"addHomework.htm",
-				data : {"cateCode": cateCode, "partyName":partyName,"email":email,"classCode":classCode},
-				dataType: 'text',
-				success : function(data) {
-					
-						alert("성공");
-						
-						$("#partyName").val("");
-		   		}, 
-		   		
-		   		error:function(request, status, error){
-                    //console.log(error);
-                    alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
-		   		}
-				
-			});
-			
-		}//end addHomework
-		
+		//팀명 List
 		function showTeamList() {
 			
-			var email = "<%=(String)session.getAttribute("email")%>";
-			var classCode = "<%=(String)session.getAttribute("classCode")%>";
+			var classCode = sessionClassCode;
 			var cateCode = $("#selectCateList02").val();
-				
-			console.log("showTeamList cateCode : "+cateCode)
-			console.log(classCode)
-			console.log(email)
 					
 					$.ajax({
 						
 						type : "post",
-						url:"selectTeam.htm",
-						data : {"email" : email, "classCode": classCode , "cateCode":cateCode},
+						url:"selectStudentTeam.htm",
+						data : { "classCode": classCode , "cateCode":cateCode},
 						dataType : 'Json',
 						success : function(data) {
 							
@@ -168,23 +118,23 @@ $().ready(function() {
 				 });
 		} //end showTeamList
 		
-		//과제게시판 전체 정렬
+		//과제게시판 전체 출력
 		function selectAllList() {
 			
-			var email = "<%=(String)session.getAttribute("email")%>";
-			var classCode = "<%=(String)session.getAttribute("classCode")%>";
+			var email = sessionId;
+			var classCode = sessionClassCode;
 			
 			$.ajax({
 				
 				type : "post",
-				url:"selectAllList.htm",
+				url:"selectAllListStudent.htm",
 				data : {"email" : email, "classCode": classCode },
-				dataType : 'html',
+				dataType : 'text',
 				success : function(data) {
 					
-					
-					$('#selectdatatable').html(data);    
-					alert(data);
+					$('#selectdatatable').empty();
+					$('#selectdatatable').html(data); 
+					console.log(data)
 					
 		   		}, 
 		   		
@@ -197,32 +147,32 @@ $().ready(function() {
 			
 		}
 		
+		
+
 		//partyName별 출력
 		  /*서브카테고리가 변경이 되면 Ajax를 태움 : 2017.06.29 위진학   */ 
 		  function selectCateCodeList() {
 
-				var classCode = "<%=(String)session.getAttribute("classCode")%>";
-				var cateCode = $("#selectCateList02").val();
-				var partyName=$('#selectTeamList').val();
-				    
+				     var partyName=$('#selectTeamList').val();
 
 				     $.ajax({
 				    	 type : "post",
 				        url:'homeworkSelectList.htm',
 				        data:{
-				           cateCode : cateCode,
-				           classCode:classCode,
+				         
+				           classcode:sessionClassCode,
 				           partyName:partyName
 				        },
-				        dataType:'text',
+				        dataType:'html',
 				        success:function(data){
-				         $('#selectdatatable').empty();
+				        
+				        	$('#selectdatatable').empty();	
 				         $('#selectdatatable').html(data);    
 				         
-				         console.log(data)
 				        }
 				     });
 		}
+		
 		
 		
 	}); 

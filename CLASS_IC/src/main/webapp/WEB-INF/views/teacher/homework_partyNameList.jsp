@@ -104,9 +104,11 @@
 	var email="<%=(String)session.getAttribute("email")%>";
     var classCode="<%=(String)session.getAttribute("classCode")%>";
 	
-	$("#noticeBtn").click(function() {
+ 	$("#noticeBtn").click(function() {
 		location.href="homeworkNoticePage.htm";
-	});
+	}); 
+	
+	 
 	
 //멀티컨텐츠 (삭제 )선택받기
 function multi_del()
