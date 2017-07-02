@@ -27,7 +27,7 @@
         <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="" action="login.htm">
+                            <form method="POST" action="loginOk.htm">
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="rose">
                                                      <h3 class="card-title">Login</h3>
@@ -45,7 +45,7 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email address</label>
-                                                <input type="email" class="form-control">
+                                                <input type="email" class="form-control" id="email" name="email">
                                             </div>
                                         </div>
                                         <div class="input-group">
@@ -54,7 +54,7 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Password</label>
-                                                <input type="password" class="form-control">
+                                                <input type="password" class="form-control" id="pwd" name="pwd">
                                             </div>
                                         </div>
                                         <br>

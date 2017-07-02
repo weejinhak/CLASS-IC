@@ -28,7 +28,7 @@ public class IndexController {
 	@RequestMapping("index.htm")
 	public String index(){
 		
-		return "join/login";
+		return "common/index";
 	}
 	
 	@RequestMapping("main.htm")
