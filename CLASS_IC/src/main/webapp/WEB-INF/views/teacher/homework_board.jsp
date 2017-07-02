@@ -71,9 +71,6 @@
 <script type="text/javascript">
 $().ready(function() {
 		
-		
-	
-		
 		showMainCate();
 		selectAllList();
 		
@@ -162,7 +159,7 @@ $().ready(function() {
 			var classCode = "<%=(String)session.getAttribute("classCode")%>";
 			var cateCode = $("#selectCateList02").val();
 				
-			console.log("showTeamList : "+cateCode)
+			console.log("showTeamList cateCode : "+cateCode)
 			console.log(classCode)
 			console.log(email)
 					
@@ -208,9 +205,9 @@ $().ready(function() {
 				dataType : 'html',
 				success : function(data) {
 					
-					$('#tbody').empty();
-					$('#tbody').html(data);    
-					console.log(data)
+					
+					$('#selectdatatable').html(data);    
+					alert(data);
 					
 		   		}, 
 		   		
@@ -232,6 +229,7 @@ $().ready(function() {
 				
 			
 				     var partyName=$('#selectTeamList').val();
+				    
 
 				     $.ajax({
 				    	 type : "post",
@@ -239,12 +237,12 @@ $().ready(function() {
 				        data:{
 				         
 				           email:email,
-				           classcode:classCode,
+				           classCode:classCode,
 				           partyName:partyName
 				        },
 				        dataType:'text',
 				        success:function(data){
-				        
+				         $('#selectdatatable').empty();
 				         $('#selectdatatable').html(data);    
 				         
 				         console.log(data)
