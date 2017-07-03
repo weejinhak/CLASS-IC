@@ -114,9 +114,9 @@ public class MainController_Teacher {
 
 //  BoardListService
   //링크 게시판 이동
-  @RequestMapping(value="linkfile.htm", method=RequestMethod.GET)
+  @RequestMapping(value="linkFile.htm", method=RequestMethod.GET)
       public ModelAndView linkfile (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){  
-        ModelAndView viewpage = boardlistservice.linkfileview(request, response, mv); 
+        ModelAndView viewpage = boardlistservice.linkfileviewByTeacher(request, response, mv); 
      return viewpage;
      
      

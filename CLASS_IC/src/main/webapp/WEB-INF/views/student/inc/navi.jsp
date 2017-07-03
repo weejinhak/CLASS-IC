@@ -74,10 +74,10 @@
 				</li>
 				
 				<li>
-					<a href="linkFile.htm"> <i class="material-icons">playlist_add_check</i>
-							<p>링크게시판</p>
-					</a>
-				</li>
+	               <a href="linkFile.htm"> <i class="material-icons">playlist_add_check</i>
+	                     <p>링크게시판</p>
+	               </a>
+                </li>
 				
 				<li>
 					<a href="memo.htm"> <i class="material-icons">edit</i>
