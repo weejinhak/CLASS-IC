@@ -245,7 +245,7 @@
                          </span>
 					</div>
 					<div class="card-content">
-						<button class="btn btn-reddit btn-round"  data-toggle="modal"
+						<button class="btn btn-reddit btn-round"  data-toggle="modal" id="receiveRoom"
                      data-target="#noticeModal">
                             <i class="material-icons">email</i> 쪽지함
                         <div class="ripple-container"></div></button>
@@ -423,6 +423,8 @@
                   </div>
                   <div class="modal-body">
                    
+                   <div id="messageTable">
+				    </div>
                       <!-- 주요 내용  -->
                       
                   </div>
@@ -491,12 +493,6 @@
                       
                       
                   </div>
-                  <div class="modal-footer text-center" >
-                 	 <button type="submit" class="btn btn-success btn-simple" >작성</button>
-                     <button type="button" class="btn btn-simple" data-dismiss="modal">취소
-                        </button>
-                     
-                  </div>
                
                </div>
 
@@ -511,6 +507,8 @@
                   
      <script type="text/javascript">
               	$(document).ready(function() {		
+                   var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"
+
               		list();
                  	function list() {                   		
                     	$.ajax({ 
@@ -527,5 +525,35 @@
                                 alert(content);
                             } });
                    	}
-              	});                 
+              	});  
+              	
+              	
+                $("#receiveRoom").click(function() {
+            	 	alert("클릭!");
+            		selectMsgContentTable(); 
+            		
+            	});
+
+            	function selectMsgContentTable(){
+            		var sessionId="<%=(String)session.getAttribute("email")%>";
+
+            		$.ajax({ 
+            			type: 'post' ,
+            			url: '${pageContext.request.contextPath}/messagecontentlist.htm',
+            			data:{email:sessionId},
+            			dataType:'html',
+            	        success : function(data){
+            	        	
+            	        $('#messageTable').html(data);
+
+            	        },
+            	        error:function(request, status, error){
+            	           alert("가져오기 실패")
+            	        } 
+            	        
+            		});	
+            		
+            	}
+              	
+              	
         </script>

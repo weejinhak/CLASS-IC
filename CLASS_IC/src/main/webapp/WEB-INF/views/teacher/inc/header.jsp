@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
     <link href="${pageContext.request.contextPath}/resources/assets/css/qrcode.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">  
+<!-- 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">   -->
      
 <!-- contextpath 가져와서 변수 정의 하고.. -->
 <c:set var="contextPath" value="<%= request.getContextPath()%>"></c:set>  
@@ -25,7 +25,7 @@
              
              
         });
- //  });
+    });
 
 
    var wsocket;
@@ -131,19 +131,6 @@
    		time = hours+':'+min+':'+sec;
    
 
-/*    document.write('현재 년: ' + d.getFullYear() + '<br />');
-   document.write('현재 월: ' + (d.getMonth() + 1) + '<br />');
-   document.write('현재 일: ' + d.getDate() + '<br />');
-
-   document.write('<br />'); // 줄바꿈
-
-   document.write('현재 시: ' + d.getHours() + '<br />');
-   document.write('현재 분: ' + d.getMinutes() + '<br />');
-   document.write('현재 초: ' + d.getSeconds() + '<br />');
-
-   document.write('<br />');
-
-   document.write('오늘 요일: ' + d.getDay() + '<br />'); // 일요일 = 0 */
    
    
 </script>
@@ -305,7 +292,7 @@
 
 
             <li><a href="#pablo" class="dropdown-toggle"
-               data-toggle="dropdown" id=""> <i class="material-icons">brightness_low</i>
+               data-toggle="dropdown"> <i class="material-icons">brightness_low</i>
                   <p class="hidden-lg hidden-md">option</p>
             </a>
 
@@ -530,7 +517,9 @@
                   
                   
      <script type="text/javascript">
-                 $(document).ready(function() {      
+                 $(document).ready(function() {
+               	   var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"
+
                     list();
                     function list() {                         
                        $.ajax({ 

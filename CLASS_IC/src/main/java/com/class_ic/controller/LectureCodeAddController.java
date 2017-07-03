@@ -76,7 +76,6 @@ public class LectureCodeAddController {
 			lectureDto.setClassEnd(end);
 			lectureDto.setClassOpenTime(request.getParameter("classopentime"));
 			lectureDto.setClassCloseTime(request.getParameter("classclosetime"));
-			lectureDto.setClassInviteCode(request.getParameter("classinvitecode"));
 			lectureDto.setEmail(request.getParameter("email"));
 			
 			try {
@@ -126,6 +125,7 @@ public class LectureCodeAddController {
 		try {
 
 			List<LectureDTO> lecturelistStudent=lecturecodeaddservice.lecturelistselectStudent(email);	
+			System.out.println(lecturelistStudent.size());
 			model.addAttribute("lecturelist", lecturelistStudent); 
 		} catch (Exception e) {
 			e.printStackTrace();

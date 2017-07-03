@@ -13,7 +13,15 @@ public class MessageDTO {
 	String msContent;
     String msSendTime;
     String emailS;
+    String name;
     
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getMessageNo() {
 		return messageNo;
 	}

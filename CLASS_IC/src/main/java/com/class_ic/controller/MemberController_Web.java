@@ -33,18 +33,12 @@ public class MemberController_Web {
 	private MemberService_Web memberservice;
 
 	//로그인 폼
-	@RequestMapping(value="login.htm", method=RequestMethod.GET)
+	@RequestMapping("login.htm")
 	public String login(){
 
 		return "common/main";
 	}
 	
-	//로그인 폼
-	@RequestMapping(value="login.htm", method=RequestMethod.POST)
-		public String loginPost(){
-
-			return "common/main";
-		}
 	
 	//로그인 처리
 	@RequestMapping("loginOk.htm")
@@ -56,7 +50,7 @@ public class MemberController_Web {
 	}
 	
 	//회원별 사진 가져오기 
-	@RequestMapping(value ="getEditInfo.htm", method = RequestMethod.POST)
+	/*@RequestMapping(value ="getEditInfo.htm", method = RequestMethod.POST)
 	public String lectureSelect(HttpSession session,Model model){
 		try {
 			System.out.println("사진 가져오기 컨트롤러");
@@ -66,10 +60,10 @@ public class MemberController_Web {
 			e.printStackTrace();
 		}	
 		return "teacher.myinfo_photo";
-	}
+	}*/
 	
 	//회원 수정 view  페이지
-	@RequestMapping(value="editInfo.htm", method=RequestMethod.POST)
+	@RequestMapping(value="editInfo.htm", method=RequestMethod.GET)
 	public String editMyProfile(HttpSession session, Model m, MemberDTO member){
 		System.out.println("회원수정위해 정보 가져오기");
 		MemberDTO memberinfo = memberservice.getMemberInfo(session);
@@ -79,7 +73,7 @@ public class MemberController_Web {
 	}
 	
 	//회원 수정  값 넘기기
-	@RequestMapping(value="editInfoOk.htm", method=RequestMethod.POST)
+	@RequestMapping(value="editInfo.htm", method=RequestMethod.POST)
 	public @ResponseBody MemberDTO editMyProfile(HttpSession session, MemberDTO member, ModelAndView mv){
 			
 		return member;

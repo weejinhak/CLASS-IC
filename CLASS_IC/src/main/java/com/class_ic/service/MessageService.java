@@ -40,6 +40,7 @@ public class MessageService implements MessageDAO{
 		MessageDAO msgDao= sqlsession.getMapper(MessageDAO.class);
 		
 		ArrayList<MessageDTO> msgcontentlist= msgDao.selectMsgContentList(email);
+		System.out.println(msgcontentlist.size());
 		
 		return msgcontentlist;
 	}

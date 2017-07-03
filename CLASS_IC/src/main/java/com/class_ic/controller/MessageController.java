@@ -44,6 +44,7 @@ public class MessageController {
 		ArrayList<MessageDTO> msgcontentlist= new ArrayList<MessageDTO>();
 		
 		msgcontentlist=messageService.selectMsgContentList(email);
+		
 		for (MessageDTO m : msgcontentlist) {
 			System.out.println(m.getMessageNo());
 			System.out.println(m.getMsContent());
