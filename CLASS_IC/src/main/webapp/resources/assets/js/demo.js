@@ -939,7 +939,7 @@ demo = {
                                    buttonsStyling: false
                                    }).then(function() {
 									
-                                   location.href="test9.htm";
+                                   location.href="calendar.htm";
 								})
                                    
                            }
