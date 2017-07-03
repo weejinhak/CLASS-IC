@@ -16,15 +16,15 @@
             <div class="sidebar-wrapper">
 			<div class="user">
 				<div class="photo">
-					<img src="${pageContext.request.contextPath}/resources/assets/img/faces/kosta.jpg" />
+					<img src="${pageContext.request.contextPath}/resources/assets/img/faces/kosta.png" />
 				</div>
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample" class="collapsed">
-						임경균 <b class="caret"></b>
+						${sessionScope.name }<b class="caret"></b>
 					</a>
 					<div class="collapse" id="collapseExample">
 						<ul class="nav">
-							<li><a href="#">나의 정보수정</a></li>
+							
 							<li><a href="${pageContext.request.contextPath}/logout.htm">로그아웃</a></li>
 						</ul>
 					</div>

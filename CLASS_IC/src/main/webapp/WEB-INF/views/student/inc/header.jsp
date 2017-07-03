@@ -130,7 +130,7 @@
          time = hours+':'+min+':'+sec;
          
 </script>
-
+<script src="${pageContext.request.contextPath}/resources/assets/js/myinfo.js"></script>
 
 
 <nav class="navbar navbar-transparent navbar-absolute">
@@ -283,7 +283,7 @@
 
 
             <li><a href="#pablo" class="dropdown-toggle"
-               data-toggle="dropdown"> <i class="material-icons">brightness_low</i>
+               data-toggle="dropdown" id="myinfo_show"> <i class="material-icons">brightness_low</i>
                   <p class="hidden-lg hidden-md">option</p>
             </a>
 
