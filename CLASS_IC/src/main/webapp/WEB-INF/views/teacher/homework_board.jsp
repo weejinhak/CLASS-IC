@@ -202,9 +202,7 @@ $().ready(function() {
 				dataType : 'html',
 				success : function(data) {
 					
-					
 					$('#selectdatatable').html(data);    
-					alert(data);
 					
 		   		}, 
 		   		

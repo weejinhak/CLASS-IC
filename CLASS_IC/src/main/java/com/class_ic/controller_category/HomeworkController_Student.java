@@ -1,3 +1,5 @@
+
+
 package com.class_ic.controller_category;
 
 import java.io.IOException;
@@ -127,6 +129,40 @@ public class HomeworkController_Student {
 	         
 	         return "student/homework_partyNameList";
 	         
+	      }
+	      
+	    //상세보기 페이지로 이동 : 2017.07.02 박소현
+	      @RequestMapping(value="homeworkContent.htm", method=RequestMethod.GET)
+	      public ModelAndView homeworkContent(HttpServletRequest request, HttpServletResponse response,HomeworkDTO dto){
+	         System.out.println("*************상세보기 컨트롤********************88");
+	         ModelAndView viewpage =homeworkService.homeworkContent(request, response, dto);
+	               
+	         return viewpage;
+	      }
+	      
+	     //과제게시판 수정화면 출력 : 2017.07.01 박소현
+	      @RequestMapping(value="homeworkEdit.htm",  method=RequestMethod.GET)
+	      public ModelAndView homeworkEdit(HttpServletRequest request, HttpServletResponse response,HomeworkDTO dto){
+	            ModelAndView viewpage = homeworkService.homeworkEdit(request, response, dto);
+	         
+	         return viewpage;
+	      }
+	      
+	      //과제게시판 수정한 데이터 DB저장 : 2017.07.01 박소현
+	      @RequestMapping(value="homeworkEdit.htm",  method=RequestMethod.POST)
+	      public String homeworkEditOk(HomeworkDTO dto){
+	         homeworkService.homeworkEditOk(dto);
+	      
+	         return "redirect:homework.htm";
+	      }
+	      
+	      //과제게시판 삭제 : 2017.07.01 박소현 
+	      @RequestMapping(value="homeworkDelete.htm")
+	      public String homeworkDelete(HttpServletRequest request, HttpServletResponse response){
+	        
+	    	homeworkService.homeworkDelete(request, response);
+	         
+	          return "redirect:homework.htm";
 	      }
 	
 }
