@@ -10,7 +10,7 @@
 	rel="stylesheet" />
 <!-- 2017.06.22 최은혜 -->
 
-  <link href="${pageContext.request.contextPath}/resources/assets/css/clock.css" rel="stylesheet" />
+<%--   <link href="${pageContext.request.contextPath}/resources/assets/css/clock.css" rel="stylesheet" /> --%>
 
 <div class="content">
 	<div class="container-fluid">
@@ -73,7 +73,7 @@
 					</div>
 					<div class="card-content">
 						<p class="category">현재시간</p>
-						<span class="clock"></span>
+				
 
 					</div>
 					<div class="card-footer">
@@ -152,7 +152,12 @@
 					</div>
 				</div>
 			</div>
+
+				<div id="boardlist"></div>		
+
 		</div>
+	
+			
 
 		<!-- 메모 : 2017.06.22 최은혜 -->
 		<input type="hidden" value="${sessionScope.email}" id="email"
@@ -223,6 +228,29 @@
 <!-- <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
  -->
+ 
+ <script type="text/javascript">
+   $(document).ready(function() {
+
+
+      $.ajax({
+         type : "get",
+         url : "boardmain.htm",
+         dataType : 'html',
+         success : function(data) {
+
+            $('#boardlist').html(data);
+      
+         }
+      });
+
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+      demo.initVectorMap();
+   });
+</script>
+ 
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
 <script type="text/javascript">
@@ -240,4 +268,4 @@
 	src="${pageContext.request.contextPath}/resources/assets/js/teacher/teacher_memo.js"></script>
 <!-- 메모 스크립트 -->
 
-<script src="${pageContext.request.contextPath}/resources/assets/js/clock.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/assets/js/clock.js"></script> --%>

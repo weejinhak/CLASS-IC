@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="selectCate" parameterType="String" resultType="com.class_ic.vo.SubCategoryDTO">
 select distinct cateCode from lectureboard
 where lectureNo in(select lectureNo from classbylecture)
-and  classCode in (select classCode from classMember where email=#{email})
+and  classCode in (select classCode from classMember where email=#{email}) 
 </select>
 
 <select id="selectSubcate" parameterType="com.class_ic.vo.SubCategoryDTO" resultType="com.class_ic.vo.SubCategoryDTO">
@@ -27,15 +27,21 @@ parameterType="com.class_ic.vo.SubCategoryDTO">
 select * from lectureboard
 where lectureNo in(select lectureNo from classbylecture)
 and  classCode in (select classCode from classMember where email=#{email})
-and cateCode=#{cateCode} and subcateCode=#{subcateCode}
+and cateCode=#{cateCode} and subcateCode=#{subcateCode} order by lectureNo desc
 
 
+</select>
+
+ 
+<!--통합게시판 수정화면 출력   --> 
+<select id="totalboardEdit" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="Integer">
+   select * from lectureboard where lectureNo=#{lectureNo}
 </select>
 
 <!-- 통합게시판 글 기수로 보내기 -->
 <insert id="boardMultiSend" parameterType="com.class_ic.vo.ClassByLectureDTO">
 
-insert into classbylecture values((select Max(lectureNo) from lectureboard),${classCode})
+insert into classbylecture values((select Max(lectureNo) from lectureboard),${classCode}) 
 </insert>
 
 <select id="selectCateboard" parameterType="com.class_ic.vo.SubCategoryDTO"
