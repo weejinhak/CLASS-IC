@@ -32,7 +32,7 @@
      //alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
-      wsocket = new WebSocket("ws://172.20.10.9:8090/class_ic/chat-ws.htm?email="+sessionId);
+      wsocket = new WebSocket("ws://192.168.0.3:8090/class_ic/chat-ws.htm?email="+sessionId);
       appendMessage("웹 소켓연결되었습니다.");
       wsocket.onopen = onOpen;
       wsocket.onmessage = onMessage;
@@ -84,6 +84,8 @@
             console.log(data);
             $('#alarm').empty();
             $('#alarm').html(data);
+        	noticeOk(); 
+
 
          }
       });
@@ -547,6 +549,12 @@
                   });   
                   
                }
+               
+               function noticeOk(){
+              		
+                   demo.showNotification('right','center');
+	
+            	}
                  
                  
         </script>
