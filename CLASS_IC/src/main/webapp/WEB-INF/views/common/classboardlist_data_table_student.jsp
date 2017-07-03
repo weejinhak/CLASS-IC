@@ -41,14 +41,7 @@
                            <c:forEach var="LectureBoardDTO" items="${boardlist}">
                               <tr>
                                  <td>
-                                    <div class="text-center" style="margin-top: -12px;">
-                                       <div id="">
-                                          <label class="text-center"> <input type="checkbox"
-                                             name="multy[]" value="${LectureBoardDTO.lectureNo}">
-                                             <span class="checkbox-material"></span>
-                                          </label>
-                                       </div>
-                                    </div>
+                                   
                                  </td>
 
 
