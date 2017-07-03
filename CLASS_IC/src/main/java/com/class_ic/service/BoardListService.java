@@ -360,4 +360,116 @@ public class BoardListService {
 
 		return m;
 	}
+	
+
+
+	   
+	   //링크파일 뷰
+	   public ModelAndView  linkfileview (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){//classcode올걸 
+
+	      HttpSession session=request.getSession();
+	      String classCode=(String)session.getAttribute("classCode");
+	      System.out.println(classCode);
+	       BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+	      
+	       System.out.println("classCode"+classCode); //여기까지 ㅇㅋ
+	       //여기서 오류.. 
+	       ArrayList<LectureBoardDTO>  llist = bdao.linkList(classCode);
+
+	         
+	        
+	        
+	         System.out.println("셀렉리스트 컨트롤러 : " +llist); 
+	         
+
+	         mv.setViewName("teacher.link");
+	         mv.addObject("lvo",llist) ;
+	    
+	       
+
+	         return mv;
+	      //클래스 코드를 받아서 
+	      
+	      
+	   }
+	   
+	   
+	   //링크 추가 
+	   public void linkInsert(HttpServletRequest request ){
+	      
+	      HttpSession session=request.getSession();
+	      String classCode=(String)session.getAttribute("classCode");
+	       BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+	       LectureBoardDTO bdto = new  LectureBoardDTO(); 
+	       // 링크 제목 
+	        String linkTitle = request.getParameter("linkTitle");
+	       //링크 주소  
+	        String linkSrc = request.getParameter("linkSrc");
+	      
+	      System.out.println("링크제목 : "+linkTitle);
+	      System.out.println("링크 주소: "+linkSrc);
+	      System.out.println("링크추가 기수: "+classCode);
+	      
+	      bdto.setLinkTitle(linkTitle);
+	      bdto.setLinkSrc(linkSrc); 
+	      bdto.setClassCode(classCode);  
+	      bdao.linkInsert(bdto); 
+	      
+	  
+	      
+	      
+	   }
+	   
+	   
+	   // 링크 다중삭제
+	   public String link_multi_del(HttpServletRequest request, HttpServletResponse response) {
+	      System.out.println("다중삭제 컨트롤러");
+
+	      String test = request.getParameter("data");
+
+	      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+
+	      String[] array = test.split(",");
+
+	      for (int i = 0; i < array.length; i++) {
+
+	         // 삭제로 바꿈
+	         bdao.deleteLink(Integer.parseInt(array[i]));
+
+	      }
+	      return "redirect:linkfile.htm";
+
+	   }
+
+	 
+	   // 링크게시판 수정화면 처리
+	   public ModelAndView linkboardEdit(LectureBoardDTO dto, HttpServletRequest request, int linkNo) {
+
+	      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+
+	      int linkNo1 = linkNo;
+	      System.out.println("linkNo 나오냐" + linkNo);
+
+	      ArrayList<LectureBoardDTO> list = bdao.linkboardEdit(linkNo1);
+	      System.out.println(list.size());
+
+	      ModelAndView m = new ModelAndView();
+	      m.setViewName("teacher.link_Edit");
+	      m.addObject("list", list);
+	      System.out.println("모델단" + m);
+
+	      return m;
+	   }
+
+	   // 링크게시판 수정된 데이터 DB저장
+	   public String linkboardEditOk(LectureBoardDTO dto) {
+	      System.out.println("수정오케이컨트롤러11" + dto);
+
+	      BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
+	      dao.linkboardEditOk(dto);
+
+	      return "redirect:linkfile.htm";
+	   }
+	   
+	   
 }

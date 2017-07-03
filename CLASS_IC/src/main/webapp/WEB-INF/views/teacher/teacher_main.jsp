@@ -11,7 +11,7 @@
 <div class="content">
 	<div class="container-fluid">
 		<!-- 내용물  contents  -->
-<%-- 		 <c:forEach var="main" items="${mainlist}" > --%>
+	 <c:forEach var="main" items="${mainlist}" > 
 		<div class="row">
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="card card-stats">
@@ -20,7 +20,7 @@
 					</div>
 					<div class="card-content">
 						<p class="category">강좌정보</p>
-						<%-- <h3 class="card-title">${sessionScope.classCode} 기 / ${main.classTitle}강좌</h3> --%>
+					 <h3 class="card-title">${sessionScope.classCode} 기 / ${main.classTitle}강좌</h3> 
 					</div>
 					<div class="card-footer">
 						<div class="stats">
@@ -78,7 +78,7 @@
 				</div>
 			</div>
 		</div>
-<%-- 		</c:forEach> --%>
+		</c:forEach> 
 	</div>
 	<div class="wrapper">
 		<div class="row">
@@ -179,7 +179,7 @@
 
 						//글 출력 : 2017.06.21 최은혜
 
-						var email =sessionId;
+						var email ="<%=(String)session.getAttribute("email")%>";
 
 						$.ajaxSetup({
 							cache : false

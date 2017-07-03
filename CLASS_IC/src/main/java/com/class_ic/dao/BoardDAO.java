@@ -23,13 +23,12 @@ public interface BoardDAO {
 	// 자료 DB에 insert (파일 등록)
 	public int insertFile(LectureBoardDTO lectureBoardDTO);
 
-
 	// LectureBoard DAO 옮겨옴
 
 	// 통합게시판 카테고리,서브카테고리 select box
 	public ArrayList<LectureBoardDTO> allBoard(SubCategoryDTO dto);
 
-	//action의 x버튼 누르기 삭제  
+	// action의 x버튼 누르기 삭제
 	public void deleteLect(int lectureNo);
 
 	// 모든 글을 긁어옴.
@@ -65,4 +64,21 @@ public interface BoardDAO {
 
 	// 글 상세보기 (링크 가져오기)
 	public ArrayList<LectureBoardDTO> totalBoard_contenLink(int lectureNo);
+
+	// 링크 파일 게시판
+	// 링크 리스트
+	public ArrayList<LectureBoardDTO> linkList(String classCode);
+
+	// 링크 입력
+	public void linkInsert(LectureBoardDTO dto);
+
+	// 링크 삭제
+	public void deleteLink(int linkNo);
+
+	// 수정화면에 출력
+	public ArrayList<LectureBoardDTO> linkboardEdit(int linkNo);
+
+	// 수정 완료
+	public int linkboardEditOk(LectureBoardDTO dto);
+
 }

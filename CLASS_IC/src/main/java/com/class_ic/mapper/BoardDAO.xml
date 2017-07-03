@@ -114,4 +114,33 @@ insert into category values(#{cateCode},#{cateTitle},#{email})
 
 insert into subcategory values(#{subcateCode},#{cateCode},#{subcateTitle},#{email})
 </insert>
+
+<!-- 링크 게시판 출력  --> 
+ <select id="linkList" resultType="com.class_ic.vo.LectureBoardDTO"  parameterType="String">
+select  * from  link  where classCode = #{classCode} 
+</select>
+ 
+<!-- 링크 입력  --> 
+<insert id="linkInsert" parameterType="com.class_ic.vo.SubCategoryDTO"> 
+insert into link (linktitle, linksrc, classCode ) values (#{linkTitle},#{linkSrc}, #{classCode});  
+</insert>
+
+<!--링크  삭제 -->
+<delete id="deleteLink" parameterType="Integer">
+   delete from link where linkNo=#{linkNo}
+</delete>
+
+<!--링크 수정화면 출력   --> 
+<select id="linkboardEdit" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="Integer">
+   select * from link where linkNo=#{linkNo}
+</select>
+
+
+<!-- 링크 수정 완료 -->
+<update id="linkboardEditOk" parameterType="com.class_ic.vo.LectureBoardDTO">
+   update link set linkTitle=#{linkTitle}, linkSrc=#{linkSrc} where linkNo=#{linkNo}
+</update>
+ 
+ 
+ 
 </mapper>
