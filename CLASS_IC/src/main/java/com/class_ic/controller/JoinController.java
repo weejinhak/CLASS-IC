@@ -34,7 +34,7 @@ public class JoinController {
 	
 	//회원가입 학생
 	@RequestMapping("join_st.htm")
-	public @ResponseBody String joinStudent(MemberDTO member, HttpServletRequest request){
+	public String joinStudent(MemberDTO member, HttpServletRequest request){
 		System.out.println("학생가입 데이터 넘겨받음 이메일: " + member.getEmail());
 		String viewpage = "";
 		try{
@@ -47,7 +47,7 @@ public class JoinController {
 	
 	//회원가입 선생
 		@RequestMapping("join_te.htm")
-		public @ResponseBody String joinTeacher(MemberDTO member ,HttpServletRequest request){
+		public String joinTeacher(MemberDTO member ,HttpServletRequest request){
 
 			String viewpage = "";
 			try{

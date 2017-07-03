@@ -81,16 +81,20 @@ public class JoinService {
 				//권한처리
 				member_dao.insertAuthority(member);
 				System.out.println("가입 성공");	
-				//class에 email 값으로 classCode 입력
-				 lectureDao.insertDefault(lecture);
-				 System.out.println("class에 email 넣기");
-				//classmember에 classCode와 email 입력 
-				lectureDao.inputMyClassCode(email, classCode);
-				System.out.println("classmember email 입력");
-				viewpage="redirect:join/login";
+				String memberAuthority = member_dao.confirmAuthority(email);
+				if(memberAuthority.equals("ROLE_TEACHER")){
+					//class에 email 값으로 classCode 입력
+					 lectureDao.insertDefault(lecture);
+					 System.out.println("class에 email 넣기");
+					//classmember에 classCode와 email 입력 
+					lectureDao.inputMyClassCode(email, classCode);
+					System.out.println("classmember email 입력");
+				}
+				
+				viewpage="common/main";
 								}else{
 									System.out.println("권한부여 실패");
-									viewpage="redirect:join/join";
+									viewpage="join/joinus";
 								}			
 				}catch(Exception e){
 					e.printStackTrace();

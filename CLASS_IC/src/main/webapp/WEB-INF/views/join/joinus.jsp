@@ -89,7 +89,7 @@
                      <!-- <input type="file" id="photoSrc_st" name="files" aceholder="imgSrc" />  -->
                      
                      <input type="hidden" id="authority_st" name="authority" value="ROLE_STUDENT" />
-                     <button class="btn_login" id="btn_submit_st">let's go</button>
+                     <button class="btn_login" id="btn_submit_st" type="submit">let's go</button>
                </div>
                </form>
 				<!-- student -->
@@ -117,7 +117,7 @@
                      <input
                      type="hidden" id="authority_te" name="authority"
                      value="ROLE_TEACHER" />
-                  <button class="btn_sign_up" id="btn_submit_te">Let's
+                  <button class="btn_sign_up" id="btn_submit_te" type="submit">Let's
                      go</button>
                   
                </div>
@@ -202,9 +202,7 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script
    src="${pageContext.request.contextPath}/resources/assets/js/demo.js"></script>
-   <!-- 회원가입 ajax  -->
-<%-- <script
-   src="${pageContext.request.contextPath}/resources/assets/js/join_ajax.js"></script>  --%>
+
 
 <script type="text/javascript">
     $().ready(function() {
