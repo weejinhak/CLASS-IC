@@ -11,6 +11,9 @@ public interface StudentListDAO {
 	public List<AttandanceDTO> selectStudent(String classCode);
 
 	//조편성 저장
-		public int insertTeamStudent(StudentGroupDTO dto);
+	public int insertTeamStudent(StudentGroupDTO dto);
+	
+	//편성된 조 출력
+	public List<StudentGroupDTO> selectStudentTeam(StudentGroupDTO dto);
 
 }

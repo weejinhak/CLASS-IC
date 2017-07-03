@@ -16,5 +16,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertTeamStudent" parameterType="com.class_ic.vo.StudentGroupDTO">
 	insert into studentGroup(name,partyName,classCode,cateCode) values(#{name},#{partyName},#{classCode},#{cateCode});
 	</insert>
-
+	
+	<!-- 조 편성 출력 -->
+	<select id="selectStudentTeam" parameterType="com.class_ic.vo.StudentGroupDTO" resultType="com.class_ic.vo.StudentGroupDTO">
+	select * from studentgroup where classCode=#{classCode}  and cateCode=#{cateCode} and partyName=#{partyName};
+	</select>
 </mapper>
