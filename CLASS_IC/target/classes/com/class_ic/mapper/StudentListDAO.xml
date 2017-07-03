@@ -12,5 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where a.classCode=#{classCode};
 	</select>
 
+	<!-- 조 편성 -->
+	<insert id="insertTeamStudent" parameterType="com.class_ic.vo.StudentGroupDTO">
+	insert into studentGroup(name,partyName,classCode,cateCode) values(#{name},#{partyName},#{classCode},#{cateCode});
+	</insert>
 
 </mapper>

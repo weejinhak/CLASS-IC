@@ -12,9 +12,10 @@ import org.springframework.stereotype.Service;
 import com.class_ic.dao.StudentListDAO;
 import com.class_ic.vo.AttandanceDTO;
 import com.class_ic.vo.MemberDTO;
+import com.class_ic.vo.StudentGroupDTO;
 
 @Service
-public class StudentListService implements StudentListDAO{
+public class StudentListService{
 	
 	@Autowired
 	private SqlSession sqlsession;
@@ -23,7 +24,6 @@ public class StudentListService implements StudentListDAO{
 	 * @description : 학적부 학생리스트 출력(강사페이지)
 	 * */
 
-	@Override
 	public List<AttandanceDTO> selectStudent(String classCode) {
 		System.out.println("classCode : "+ classCode);
 		
@@ -32,6 +32,24 @@ public class StudentListService implements StudentListDAO{
 		
 		return studentList;
 	}
+	
+		//조편성
+		public void insertTeamStudent(String cateCode,String partyName,String classCode,String[] nameArr) {
+			
+			StudentGroupDTO dto = new StudentGroupDTO();
+			
+			for(int i=0;i<nameArr.length;i++){
+				dto = new StudentGroupDTO();
+				dto.setCateCode(cateCode);
+				dto.setPartyName(partyName);
+				dto.setClassCode(classCode);
+				dto.setName(nameArr[i]);
+			}
+			 
+			StudentListDAO dao = sqlsession.getMapper(StudentListDAO.class);
+			int result = dao.insertTeamStudent(dto);
+		
+		}
 	
 	
 

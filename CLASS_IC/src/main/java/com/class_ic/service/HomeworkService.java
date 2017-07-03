@@ -103,8 +103,12 @@ public class HomeworkService {
 	         dto.setClassCode(classCode);
 	         dto.setCateCode(cateCode);
 	         
+	         System.out.println(dto.getPartyName());
+	         System.out.println(dto.getClassCode());
+	         System.out.println(dto.getCateCode());
+	         
 	         HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
-	         List<HomeworkDTO> selectAllList = dao.selectAllByTeacher(dto);
+	         List<HomeworkDTO> selectAllList = dao.selectAllByTeacher(dto); 
 	         
 	         return selectAllList;
 	      }

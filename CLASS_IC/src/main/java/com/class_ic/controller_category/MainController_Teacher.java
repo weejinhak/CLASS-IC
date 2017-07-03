@@ -90,7 +90,13 @@ public class MainController_Teacher {
 
 			return "teacher.attendance";
 		}
+	
+	//조편성
+	@RequestMapping(value = "makeGroup.htm", method = RequestMethod.GET)
+	public String makeStudentGroup() {
 
+		return "teacher.makeStudentGroup";
+	}
 
 
 

@@ -56,7 +56,7 @@
 				</li>
 				
 				<li>
-					<a href="#"><i class="material-icons">account_box</i>
+					<a href="studentList_student.htm"><i class="material-icons">account_box</i>
 							<p>학생부</p>
 					</a>
 				</li>

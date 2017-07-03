@@ -3,6 +3,7 @@ package com.class_ic.controller_category;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -53,6 +54,25 @@ public class StudentListController {
 		}
 		
 		response.getWriter().println(array);
+		
+	}
+	
+	@RequestMapping(value="selectAllInsert.htm", method=RequestMethod.POST)
+	public String insertTeam(HttpServletRequest request) throws IOException {
+		
+		String cateCode = request.getParameter("cateCode");
+		String partyName = request.getParameter("partyName");
+		String classCode = request.getParameter("classCode");
+		String name = request.getParameter("selected");
+		
+		String[] nameArr = name.split(",");
+		// " , " 구분된 문자열 분해
+		
+		System.out.println("StudentListController 들어왓당");
+		
+		studentListService.insertTeamStudent(cateCode,partyName,classCode,nameArr);
+		
+		return "redirect:makeGroup.htm";
 		
 	}
 
