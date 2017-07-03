@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.CalendarDAO;
 import com.class_ic.vo.CalendarDTO;
+import com.class_ic.vo.TodayLectureVO;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -195,18 +196,23 @@ public class CalendarController {
 			   
 	 System.out.println(clickdate);
 	 
-	 ArrayList<String> todaylist=calendardao.CalendarTodayClass(clickdate);
-	 for(String value: todaylist){
+	 ArrayList<TodayLectureVO> todaylist=calendardao.CalendarTodayClass(clickdate);
+     JSONArray array= new JSONArray();
+	 for(TodayLectureVO value: todaylist){
 		 JSONObject obj = new JSONObject();
-		 System.out.println(value);
-	       obj.put("todayTitle", value);
-	       todatlist.add(obj);
+		 System.out.println("***********************");
+		 System.out.println(value.getLectureNo());
+		 System.out.println(value.getLectureTitle());
+		 System.out.println("***********************");
+	       obj.put("todayTitle", value.getLectureTitle());
+	       obj.put("lectureNum", value.getLectureNo());
+	       array.add(obj);
 	 }
 
 
 	   System.out.println("todayclass.htm 경로");
 	   
-	   response.getWriter().print(todatlist);
+	   response.getWriter().print(array);
 	   
          }
       

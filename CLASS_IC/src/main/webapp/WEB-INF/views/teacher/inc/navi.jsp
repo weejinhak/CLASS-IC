@@ -88,11 +88,13 @@
 					</a>
 				</li>
 				<!-- 링크는 메뉴를 통해서 추가해주세요 -->
-				<li>
-	               <a href="linkFile.htm"> <i class="material-icons">playlist_add_check</i>
-	                     <p>링크게시판</p>
-	               </a>
-                </li>
+
+		<li>
+					<a href="linkFile.htm"> <i class="material-icons">playlist_add_check</i>
+							<p>링크게시판</p>
+					</a>
+				</li>
+
 				
 				<li>
 					<a href="#"> <i class="material-icons">toys</i>
