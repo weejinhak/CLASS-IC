@@ -10,7 +10,6 @@ public class LectureDTO {
  	Date classEnd; 
 	String classOpenTime=null;
 	String classCloseTime=null;
-	String classInviteCode;
 	String email;
 	
 	
@@ -18,7 +17,7 @@ public class LectureDTO {
 	public LectureDTO() {
 	}
 	public LectureDTO(String classCode, String classTitle, Date classStart, Date classEnd, String classOpenTime,
-			String classCloseTime, String classInviteCode, String email) {
+			String classCloseTime, String email) {
 
 		this.classCode = classCode;
 		this.classTitle = classTitle;
@@ -26,7 +25,6 @@ public class LectureDTO {
 		this.classEnd = classEnd;
 		this.classOpenTime = classOpenTime;
 		this.classCloseTime = classCloseTime;
-		this.classInviteCode = classInviteCode;
 		this.email = email;
 	}
 	public String getClassCode() {
@@ -65,12 +63,7 @@ public class LectureDTO {
 	public void setClassCloseTime(String classCloseTime) {
 		this.classCloseTime = classCloseTime;
 	}
-	public String getClassInviteCode() {
-		return classInviteCode;
-	}
-	public void setClassInviteCode(String classInviteCode) {
-		this.classInviteCode = classInviteCode;
-	}
+
 	public String getEmail() {
 		return email;
 	}

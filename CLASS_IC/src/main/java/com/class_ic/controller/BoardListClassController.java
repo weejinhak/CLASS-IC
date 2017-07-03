@@ -170,5 +170,18 @@ public class BoardListClassController {
           return viewpage;
     }
     
+
+    
+    //게시판 글 상세보기
+    @RequestMapping("teacher/totalclassBoard_contentview.htm") 
+    public ModelAndView boardContentDetail(HttpServletRequest request, HttpServletResponse response,LectureBoardDTO bvo ){
+       ModelAndView viewpage = boardclasslistservice.boardContentDetail(request, response, bvo);
+        
+      return viewpage;
+       
+    }
+    
+
+    
 }
 

@@ -19,11 +19,11 @@
 
 		<div class="col-md-12">
 			<div class="card">
-				<c:set var="list" value="${list}" />
+				<c:set var="homework" value="${list}" />
 				<div class="card-header card-header-text"
 					data-background-color="rose">
 					<h4 class="card-title">&nbsp;
-						&nbsp;&nbsp;${list.cateCode}&nbsp;&nbsp;&nbsp;</h4>
+						&nbsp;&nbsp;${homework.cateCode}&nbsp;&nbsp;&nbsp;</h4>
 
 				</div>
 
@@ -34,12 +34,12 @@
 								<div class="entry">
 									<div id="single-title-wrap">
 										<div id="single-title-block">
-											<h1 class="new-single-title">${list.assignTitle}</h1>
+											<h1 class="new-single-title">${homework.assignTitle}</h1>
 											<div class="single-meta-wrap">
 												<div class="single-meta-line"></div>
 												<div class="single-meta">
 													<span class="sm-dot">·</span> <a>작성일자:
-														${list.assignDate}</a><span class="sm-dot">·</span>
+														${homework.assignDate}</a><span class="sm-dot">·</span>
 												</div>
 											</div>
 										</div>
@@ -50,7 +50,7 @@
 
 											<article class="entry-content alert alert"
 												style="width: 690px; height: 400px;">
-												<p class="single-first-p">${list.assignContent}</p>
+												<p class="single-first-p">${homework.assignContent}</p>
 												<p class="fixed-empty-p">&nbsp;</p>
 
 											</article>
@@ -73,7 +73,7 @@
 								<i class="material-icons">list</i>
 							</button>
 
-							<a href="homeworkEdit.htm?assignNo=${list.assignNo}
+							<a href="homeworkEdit.htm?assignNo=${homework.assignNo}
 														&email=<%=(String)session.getAttribute("email")%>
 														&classCode=<%=(String)session.getAttribute("classCode")%>">
 								<button type="submit" rel="tooltip"

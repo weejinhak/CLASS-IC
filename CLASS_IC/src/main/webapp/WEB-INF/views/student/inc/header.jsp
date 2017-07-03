@@ -32,7 +32,7 @@
      //alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
-      wsocket = new WebSocket("ws://192.168.0.142:8090/class_ic/chat-ws.htm?email="+sessionId);
+      wsocket = new WebSocket("ws://192.168.0.155:8090/class_ic/chat-ws.htm?email="+sessionId);
       appendMessage("웹 소켓연결되었습니다.");
       wsocket.onopen = onOpen;
       wsocket.onmessage = onMessage;
@@ -48,15 +48,15 @@
    function sendMessage(studentId) {
 
      var sendmessage = $("#messageContent").val();
-      var remail="a@gmail.com";
+      var remail= sessionId ;
       console.log(sendmessage)
       $.ajax({
          type : "get",         
          url : "/class_ic/common/sendMessage.htm",
          dataType : "html",
          data : {
-            "sendmessage" : sendmessage   ,
-             "remail": studentId
+            sendmessage : sendmessage ,
+             remail: studentId
          },
          success : function(data) {
             console.log("성공!!")
@@ -77,7 +77,7 @@
          dataType : "html",
          url : "/class_ic/common/newAlarm.htm",
          data : {
-            "newAlarm" : evt.data
+            newAlarm : evt.data
          },
          success : function(data) {
             console.log("헤더 업데이트 성공");
@@ -246,7 +246,7 @@
                </div>
                <div class="card-content">
                   <button class="btn btn-reddit btn-round"  data-toggle="modal" id="receiveRoom"
-                     data-target="#noticeModal">
+                     data-target="#noticeModalp2">
                             <i class="material-icons">email</i> 쪽지함
                         <div class="ripple-container"></div></button>
                </div>
@@ -413,7 +413,7 @@
       <div class="col-md-12 text-center">
          <!-- notice modal -->
          
-         <div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
+         <div class="modal fade" id="noticeModalp2" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-notice">
          <form action="CalendarInsertOk.htm" method="POST">         
@@ -423,16 +423,10 @@
                   </div>
                   <div class="modal-body">
                    
-                   <div id="messageTable">
+                   <div id="messageTable1">
                 </div>
                       <!-- 주요 내용  -->
                       
-                  </div>
-                  <div class="modal-footer text-center" >
-                     <button type="submit" class="btn btn-success btn-simple" >작성</button>
-                     <button type="button" class="btn btn-simple" data-dismiss="modal">취소
-                        </button>
-                     
                   </div>
                
                </div>
@@ -529,7 +523,6 @@
                  
                  
                 $("#receiveRoom").click(function() {
-                   alert("클릭!");
                   selectMsgContentTable(); 
                   
                });
@@ -544,7 +537,7 @@
                      dataType:'html',
                        success : function(data){
                           
-                       $('#messageTable').html(data);
+                       $('#messageTable1').html(data);
 
                        },
                        error:function(request, status, error){

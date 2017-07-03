@@ -58,13 +58,13 @@
 
 
                                  <td class="text-center"><a
-                                    href="totalBoard_contentview.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+                                    href="totalclassBoard_contentview.htm?lectureNo=${LectureBoardDTO.lectureNo}"
                                     class="btn btn-simple btn-info btn-icon edit">${LectureBoardDTO.lectureTitle}</a>
                                  </td>
 
                                  <td class="text-center">${LectureBoardDTO.lectureDate}</td>
                                  <td class="text-center"><a
-                                    href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+                                    href="totalclassboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
                                     class="btn btn-simple btn-rose btn-icon edit"><i class="material-icons">border_color</i></a> 
                                     
                                  </td>
@@ -91,15 +91,6 @@
                      onclick="multi_del()">
                      <i class="material-icons">clear</i>체크 삭제
                   </button>
-                  
-                     <button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px" onclick="multi_storage()">수업 담기</button>
-                                          
-                                          <a href="todayLectureList.htm">
-                     <button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px">담은 수업 보기</button>
-                                    </a>
-                                           
-                  
-                  
                </div>
             </div>
             <!-- end content-->
@@ -253,80 +244,7 @@ var data="";
             $('.card .material-datatables label').addClass('form-group');
          });
     
-   /* 은영 추가 오늘의 수업 담기  */
-   function multi_storage()
- {
-
-    var cnt2 = $("input[name='multy[]']:checked").length;
-
-    if(cnt2 < 1){
-       alert(" 게시물을 선택하여 주세요");
-       return;
-    }
-    
-    var chk = document.getElementsByName("multy[]");
-    var len = chk.length;    //체크박스의 전체 개수 
-//     var checkRow = '';      //체크된 체크박스의 value를 담기위한 변수 
-    var checkCnt = 0;        //체크된 체크박스의 개수 
-    var checkLast = '';      //체크된 체크박스 중 마지막 체크박스의 인덱스를 담기위한 변수  
-    var cnt = 0;    
-    var rowid = new Array();   //체크된 체크박스의 모든 value 값을 담는다 
-
-    for(var i=0; i<len; i++){
-
-       if(chk[i].checked == true){ 
-       checkCnt++;        //체크된 체크박스의 개수 
-       checkLast = i;     //체크된 체크박스의 인덱스 
-       } 
-       }  
-      
-    var count=0;
-   for(var i=0; i<len; i++){ 
-   if(chk[i].checked == true){  //체크가 되어있는 값 구분  
-    rowid.push(chk[i].value); 
-   count++;
-   }
-
-   }
    
-   var data="";
-     for(var i=0;i<count;i++){
-        if(i==count-1){
-        data+= rowid[i];
-       
-        }else{
-           
-           data+= rowid[i]+",";
-       
-        }   
-        
-        
-     
-     }
-    alert(data);
-
-
-       alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
-       //ajax 로  보낼데이터를 배열형태로 허용해준당 
-       jQuery.ajaxSettings.traditional = true;
-
-        $.ajax({
-            type: 'POST',
-            url: 'multi_storage.htm',
-            data: { data: data } ,
-            dataType: 'text',
-      
-           success: function() {
-               alert('good');
-            },
-            error: function() {
-               alert('bad');
-            } 
-        });
- 
- 
- 
-
- }
+   
    
 </script>

@@ -24,8 +24,8 @@
 
             <div class="card-header card-header-text"
                data-background-color="rose">
-               <h4 class="card-title">&nbsp; &nbsp;&nbsp;${LectureBoardDTO.cateCode}&nbsp;
-                  &nbsp;&nbsp; | ${LectureBoardDTO.subcateCode}&nbsp; &nbsp;&nbsp;</h4>
+               <h4 class="card-title"> 수업보드 : &nbsp; &nbsp;&nbsp;${LectureBoardDTO.cateCode}&nbsp;
+                  &nbsp;&nbsp; /&nbsp; ${LectureBoardDTO.subcateCode}&nbsp; &nbsp;&nbsp;</h4>
 
             </div>
 
@@ -37,11 +37,10 @@
                            <div id="single-title-wrap">
                               <div id="single-title-block">
 
-
                                  <h1 class="new-single-title">${LectureBoardDTO.lectureTitle}</h1>
 
                                  <div class="single-meta-wrap">
-                                    <div class="single-meta-line"></div>
+                                    <div class="single-meta-line" ></div>
                                     <div class="single-meta">
                                        <span class="sm-dot">·</span> <a>작성일자: ${LectureBoardDTO.lectureDate}</a><span class="sm-dot">·</span> 
                                     </div>
@@ -52,7 +51,7 @@
                               <!-- BuySellAds.com Zone Code -->
                               <div id="bsap_672" class="bsap" data-serve="CA7DP">
 
-                                 <article class="entry-content alert alert" >
+                                 <article class="entry-content alert alert">
                                     <p class="single-first-p">${LectureBoardDTO.lectureContent}</p>
                                     <p class="fixed-empty-p">&nbsp;</p>
 
@@ -73,10 +72,11 @@
                   <br><br><br><br><br><br><br><br><br><br>
                         <br><br><br><br><br><br><br><br><br><br>
 
+         
                </div>
                <!--  row 끝-->
                
-                  <div class="row">
+                        <div class="row">
                      <div class="col-sm-2"></div>
                      <div class="col-sm-2 label-on-left" style="margin-left: -20px; ">첨부 파일</div>
 
@@ -155,11 +155,11 @@
             <br><br><br><br><br><br>
                <div class="td-actions text-center">
     <button type="button" rel="tooltip" class="btn btn-info btn-round"
-               id="list" name="list" onclick="location.href='allboard.htm' ">
+               id="list" name="list" onclick="location.href='catedetails.htm?cateCode=${LectureBoardDTO.cateCode}'">
                <i class="material-icons">list</i>
             </button>
 
-          <a href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}">
+          <a href="totalclassboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}">
             <button type="submit" rel="tooltip"
                class="btn btn-success btn-round edit">
                <i class="material-icons">done</i>

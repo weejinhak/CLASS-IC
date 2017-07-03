@@ -53,6 +53,7 @@ public class BoardClassListService {
       return model;
       
    }
+   
    // 카테고리 select 
    public ModelAndView selectCate(HttpServletRequest request, HttpServletResponse response) { // lectureNo
 
@@ -302,7 +303,8 @@ public class BoardClassListService {
             ArrayList<LectureBoardDTO> board=dao2.totalboardEdit(dto.getLectureNo());
             board.get(0).setClassCode(classCode);
             dao2.deletx(dto2);
-            dao.insertBoardContent(board.get(0));
+            dto.setClassCode(classCode);
+            dao.insertBoardContent(dto);
             dao2.boardMultiSend(dto2);
             
             
@@ -338,5 +340,29 @@ public class BoardClassListService {
 
          return m;
       }
+      
+      // 게시판 글 상세보기
+      public ModelAndView boardContentDetail(HttpServletRequest request, HttpServletResponse response,
+            LectureBoardDTO bvo) { // lectureNo 올걸
+
+         BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+
+         int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));
+         System.out.println("lectureNo : " + lectureNo);
+         LectureBoardDTO blist = bdao.totalBoard_contentview(lectureNo);
+         ArrayList<LectureBoardDTO> bfilelist = bdao.totalBoard_contenFile(lectureNo);
+         ArrayList<LectureBoardDTO> blinklist = bdao.totalBoard_contenLink(lectureNo);
+         System.out.println("가져온 게시판 글번호: " +blist.getLectureNo());
+         System.out.println("은영 상세" + blist);
+         // 리턴 셋팅
+         ModelAndView m = new ModelAndView();
+         m.setViewName("teacher.board_content_view_class");
+         m.addObject("bvo", blist);
+         m.addObject("bfile", bfilelist );
+         m.addObject("blink", blinklist);
+
+         return m;
+      }
+
 
 }
