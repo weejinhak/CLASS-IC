@@ -22,12 +22,13 @@ public class MainService_Teacher {
 		TeacherMainDAO dao = sqlsession.getMapper(TeacherMainDAO.class);
 
 		ClassDTO mainlist = dao.teacherMain((String)session.getAttribute("email"));
-		
+		int mainmembercount=dao.memberCountByTeacher((String)session.getAttribute("email"));
 		System.out.println("3"+(String)session.getAttribute("email"));
 		
 		ModelAndView m = new ModelAndView();
 		m.setViewName("teacher.teacher_main");
 		m.addObject("list", mainlist);
+		m.addObject("membercount",mainmembercount);
 		
 		System.out.println("클래스타이틀 확인 : " + mainlist.getClassTitle());
 		return m;

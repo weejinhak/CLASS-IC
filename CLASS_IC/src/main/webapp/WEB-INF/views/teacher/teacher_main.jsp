@@ -10,7 +10,7 @@
 	rel="stylesheet" />
 <!-- 2017.06.22 최은혜 -->
 
-<%--   <link href="${pageContext.request.contextPath}/resources/assets/css/clock.css" rel="stylesheet" /> --%>
+   <link href="${pageContext.request.contextPath}/resources/assets/css/clock.css" rel="stylesheet" /> 
 
 <div class="content">
 	<div class="container-fluid">
@@ -23,7 +23,7 @@
 						<i class="material-icons">mood</i>
 					</div>
 					<div class="card-content">
-						<p class="category">강좌정보</p>
+						<p class="category">강좌 정보</p>
 						<h3 class="card-title">${sessionScope.classCode}기</h3>
 					</div>
 					<div class="card-footer">
@@ -45,7 +45,7 @@
 					</div>
 					<div class="card-footer">
 						<div class="stats" style="color: black;">
-							<h5>${main.classStart}~ ${main.classEnd}</h5>
+							<h5>${main.classStart} ~ ${main.classEnd}</h5>
 						</div>
 					</div>
 				</div>
@@ -57,7 +57,7 @@
 					</div>
 					<div class="card-content">
 						<p class="category">수강인원</p>
-						<h3 class="card-title">$34,245</h3>
+						<h3 class="card-title">${membercount}명</h3>
 					</div>
 					<div class="card-footer">
 						<div class="stats">
@@ -73,7 +73,9 @@
 					</div>
 					<div class="card-content">
 						<p class="category">현재시간</p>
-
+							<h3 class="card-title">
+							
+							</h3>
 
 					</div>
 					<div class="card-footer">
@@ -268,4 +270,4 @@
 	src="${pageContext.request.contextPath}/resources/assets/js/teacher/teacher_memo.js"></script>
 <!-- 메모 스크립트 -->
 
-<%-- <script src="${pageContext.request.contextPath}/resources/assets/js/clock.js"></script> --%>
+<script src="${pageContext.request.contextPath}/resources/assets/js/clock.js"></script> 

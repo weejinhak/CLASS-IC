@@ -13,4 +13,6 @@ public interface TeacherMainDAO {
 //선생님 메인화면 출력
 public ClassDTO teacherMain(String email);
 
+//선생님 기수에 물려있는 학생들의 수
+public int memberCountByTeacher(String email);
 }
