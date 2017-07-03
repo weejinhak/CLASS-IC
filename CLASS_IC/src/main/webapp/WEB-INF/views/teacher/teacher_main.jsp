@@ -20,7 +20,7 @@
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="card card-stats">
 					<div class="card-header" data-background-color="orange">
-						<i class="material-icons">mood</i>
+						<i class="material-icons">comment</i>
 					</div>
 					<div class="card-content">
 						<p class="category">강좌 정보</p>
@@ -37,7 +37,7 @@
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="card card-stats">
 					<div class="card-header" data-background-color="rose">
-						<i class="material-icons">done</i>
+						<i class="material-icons">access_time</i>
 					</div>
 					<div class="card-content">
 						<p class="category">강좌 날짜</p>
@@ -53,7 +53,7 @@
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="card card-stats">
 					<div class="card-header" data-background-color="green">
-						<i class="material-icons">public</i>
+						<i class="material-icons">people</i>
 					</div>
 					<div class="card-content">
 						<p class="category">수강인원</p>
@@ -61,7 +61,7 @@
 					</div>
 					<div class="card-footer">
 						<div class="stats">
-							<i class="material-icons">date_range</i> Last 24 Hours
+							<h5>&nbsp</h5>
 						</div>
 					</div>
 				</div>
@@ -74,7 +74,11 @@
 					<div class="card-content">
 						<p class="category">현재시간</p>
 							<h3 class="card-title">
-							
+							<div id="clock" class="light">
+		
+				<div class="digits" style="float: left; margin-left: -50px; margin-top: -80px;"></div>
+		
+		</div>
 							</h3>
 
 					</div>
@@ -269,5 +273,6 @@
 <script
 	src="${pageContext.request.contextPath}/resources/assets/js/teacher/teacher_memo.js"></script>
 <!-- 메모 스크립트 -->
-
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/assets/js/clock.js"></script> 
