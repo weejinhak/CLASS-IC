@@ -73,7 +73,7 @@
 					</div>
 					<div class="card-content">
 						<p class="category">현재시간</p>
-				
+
 
 					</div>
 					<div class="card-footer">
