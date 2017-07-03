@@ -202,17 +202,21 @@ public class HomeworkService_student {
 			      
 			      
 			      //수정화면으로 이동
-			      public void homeworkEdit(HttpServletRequest request, HttpServletResponse response,
-				  			Model model){
-			        HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
-			        
-			        HomeworkDTO dto = new HomeworkDTO();
-			        dto.setAssignTitle(request.getParameter(""));
+			      public ModelAndView homeworkEdit(HttpServletRequest request, HttpServletResponse response,
+				  			HomeworkDTO dto){
+			         HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
+			     
+			          
 					HomeworkDTO contentlist = dao.selectContent(dto);
 			
 					System.out.println("수정화면으로 이동 리스트" + contentlist);
 			
-					return "student.homework_edit";
+					ModelAndView m = new ModelAndView();
+					m.setViewName("teacher.homework_edit");
+					m.addObject("list", contentlist);
+			
+					System.out.println("수정화면 모델단" + m);
+					return m;
 			      }
 			      
 			      //수정한 데이터 DB저장

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,10 @@ public class EmailController {
 	
 	  @Autowired
       private SqlSession sqlsession;
+	  
+	  @Autowired
+		private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 		
 	  @RequestMapping(value = "sendEmail" , method =RequestMethod.GET)
 	  public String mailSend(Model model,String email) {
@@ -92,7 +97,9 @@ public class EmailController {
 		  
 		  System.out.println(pwd+","+email+","+code);
           MailDAO maildao = sqlsession.getMapper(MailDAO.class);
-		  maildao.update_Pw(pwd,email,code);
+          String enc_pwd = this.bCryptPasswordEncoder.encode(pwd);
+          System.out.println("비밀번호 재설정: " +enc_pwd );
+		  maildao.update_Pw(enc_pwd,email,code);
 		  
 		  return "common/main";
 		  

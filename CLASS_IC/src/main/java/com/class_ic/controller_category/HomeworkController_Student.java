@@ -139,13 +139,12 @@ public class HomeworkController_Student {
 	         return viewpage;
 	      }
 	      
-	     //과제게시판 수정화면 출력 : 2017.07.01 박소현
+	      //과제게시판 수정화면 출력 : 2017.07.01 박소현
 	      @RequestMapping(value="homeworkEdit.htm",  method=RequestMethod.GET)
-	      public String homeworkEdit(HttpServletRequest request, HttpServletResponse response,HomeworkDTO dto){
-	            HomeworkDTO dto = student.homeworkEdit(request, response, dto);
-	            
+	      public ModelAndView homeworkEdit(HttpServletRequest request, HttpServletResponse response,HomeworkDTO dto){
+	            ModelAndView viewpage = student.homeworkEdit(request, response, dto);
 	         
-	         return "student.homework_edit";
+	         return viewpage;
 	      }
 	      
 	      //과제게시판 수정한 데이터 DB저장 : 2017.07.01 박소현

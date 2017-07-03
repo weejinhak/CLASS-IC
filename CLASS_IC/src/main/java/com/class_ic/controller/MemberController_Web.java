@@ -45,19 +45,31 @@ public class MemberController_Web {
 		
 		return MnV;
 	}
-	
-	//회원 수정 view  페이지
-	@RequestMapping(value="editInfo.htm", method=RequestMethod.GET)
-	public @ResponseBody MemberDTO editMyProfile(HttpSession session, Model m, MemberDTO member){
-	
-		MemberDTO memberinfo = memberservice.getMemberInfo(session);
-		m.addAttribute("myinfo", memberinfo);
-		
-	return member;
-	}
+	//회원별 사진 가져오기 
+	   @RequestMapping(value ="getEditInfo.htm", method = RequestMethod.POST)
+	   public String lectureSelect(HttpSession session,Model model){
+	      try {
+	         System.out.println("사진 가져오기 컨트롤러");
+	         MemberDTO myphoto=memberservice.getMemberInfo(session);   
+	         model.addAttribute("photo", myphoto); 
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }   
+	      return "common/myinfo_photo";
+	   }
+	   
+	   //회원 수정 view  페이지
+	   @RequestMapping(value="editInfo.htm", method=RequestMethod.POST)
+	   public String editMyProfile(HttpSession session, Model m, MemberDTO member){
+	      System.out.println("회원수정위해 정보 가져오기");
+	      MemberDTO memberinfo = memberservice.getMemberInfo(session);
+	      m.addAttribute("myinfo", memberinfo);
+	      
+	      return "common/.myinfo_ajax";
+	   }
 	
 	//회원 수정  값 넘기기
-	@RequestMapping(value="editInfo.htm", method=RequestMethod.POST)
+	@RequestMapping(value="editOk.htm", method=RequestMethod.POST)
 	public @ResponseBody MemberDTO editMyProfile(HttpSession session, MemberDTO member, ModelAndView mv){
 			
 		return member;

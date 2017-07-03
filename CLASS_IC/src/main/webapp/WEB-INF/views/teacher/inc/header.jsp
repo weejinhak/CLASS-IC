@@ -129,7 +129,7 @@
          time = hours+':'+min+':'+sec;
          
 </script>
-
+<script src="${pageContext.request.contextPath}/resources/assets/js/myinfo.js"></script>
 
 
 <nav class="navbar navbar-transparent navbar-absolute">
@@ -282,7 +282,7 @@
 
 
             <li><a href="#pablo" class="dropdown-toggle"
-               data-toggle="dropdown"> <i class="material-icons">brightness_low</i>
+               data-toggle="dropdown" id="myinfo_show"> <i class="material-icons">brightness_low</i>
                   <p class="hidden-lg hidden-md">option</p>
             </a>
 
@@ -298,10 +298,10 @@
                               width="100" height="100">
                         </div>
                      <li>
-                     <br>
+                     <!-- <br>
                          <button class="btn btn-primary btn-raised btn-round" data-toggle="modal" data-target="#memberUpdate" id="myInfo">
                                                   회원정보 수정
-                                </button>
+                                </button> -->
                      </li>
                      <!-- 회원정보 수정 Modal -->
                                             <div class="modal fade" id="memberUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
