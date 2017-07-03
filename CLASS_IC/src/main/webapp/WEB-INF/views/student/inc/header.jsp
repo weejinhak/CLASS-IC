@@ -32,7 +32,7 @@
      //alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
-      wsocket = new WebSocket("ws://192.168.0.155:8090/class_ic/chat-ws.htm?email="+sessionId);
+      wsocket = new WebSocket("ws://172.20.10.9:8090/class_ic/chat-ws.htm?email="+sessionId);
       appendMessage("웹 소켓연결되었습니다.");
       wsocket.onopen = onOpen;
       wsocket.onmessage = onMessage;
@@ -130,7 +130,7 @@
          time = hours+':'+min+':'+sec;
          
 </script>
-
+<script src="${pageContext.request.contextPath}/resources/assets/js/myinfo.js"></script>
 
 
 <nav class="navbar navbar-transparent navbar-absolute">
@@ -283,7 +283,7 @@
 
 
             <li><a href="#pablo" class="dropdown-toggle"
-               data-toggle="dropdown"> <i class="material-icons">brightness_low</i>
+               data-toggle="dropdown" id="myinfo_show"> <i class="material-icons">brightness_low</i>
                   <p class="hidden-lg hidden-md">option</p>
             </a>
 

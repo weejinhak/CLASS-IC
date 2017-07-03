@@ -209,7 +209,7 @@
 												</div>												 
 											</div>
 								<div class="modal-footer text-center">
-									<button type="submit" class="btn btn-success btn-simple" id="addclassbtn" name="addclassbtn" onclick="addClassCode()">만들기</button>
+									<button type="submit" class="btn btn-success btn-simple"  data-dismiss="modal" id="addclassbtn" name="addclassbtn" onclick="addClassCode()">만들기</button>
 									<button type="button" class="btn btn-simple" data-dismiss="modal">취소</button>									
 								</div>
 								

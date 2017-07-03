@@ -364,33 +364,48 @@ public class BoardListService {
 
 
 	   
-	   //링크파일 뷰
-	   public ModelAndView  linkfileview (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){//classcode올걸 
+	   //링크파일 뷰 (강사)
+	   public ModelAndView  linkfileviewByTeacher (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){//classcode올걸 
 
 	      HttpSession session=request.getSession();
 	      String classCode=(String)session.getAttribute("classCode");
 	      System.out.println(classCode);
-	       BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+	      System.out.println("링크컨트롤러");
+	      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 	      
-	       System.out.println("classCode"+classCode); //여기까지 ㅇㅋ
+	      System.out.println("classCode"+classCode); //여기까지 ㅇㅋ
 	       //여기서 오류.. 
-	       ArrayList<LectureBoardDTO>  llist = bdao.linkList(classCode);
-
-	         
+	      ArrayList<LectureBoardDTO>  llist = bdao.linkList(classCode);
 	        
-	        
-	         System.out.println("셀렉리스트 컨트롤러 : " +llist); 
-	         
+	      System.out.println("셀렉리스트 컨트롤러 : " +llist); 
 
-	         mv.setViewName("teacher.link");
-	         mv.addObject("lvo",llist) ;
+	      mv.setViewName("teacher.link");
+	       mv.addObject("lvo",llist) ;
 	    
-	       
-
-	         return mv;
+	       return mv;
 	      //클래스 코드를 받아서 
+	   }
+	   
+	   //링크파일 뷰 (학생)
+	   public ModelAndView  linkfileviewbyStudent (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){//classcode올걸 
+
+	      HttpSession session=request.getSession();
+	      String classCode=(String)session.getAttribute("classCode");
+	      System.out.println(classCode);
+	      System.out.println("링크컨트롤러");
+	      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 	      
-	      
+	      System.out.println("classCode"+classCode); //여기까지 ㅇㅋ
+	       //여기서 오류.. 
+	      ArrayList<LectureBoardDTO>  llist = bdao.linkList(classCode);
+	        
+	      System.out.println("셀렉리스트 컨트롤러 : " +llist); 
+
+	      mv.setViewName("student.link");
+	       mv.addObject("lvo",llist) ;
+	    
+	       return mv;
+	      //클래스 코드를 받아서 
 	   }
 	   
 	   
@@ -414,10 +429,6 @@ public class BoardListService {
 	      bdto.setLinkSrc(linkSrc); 
 	      bdto.setClassCode(classCode);  
 	      bdao.linkInsert(bdto); 
-	      
-	  
-	      
-	      
 	   }
 	   
 	   

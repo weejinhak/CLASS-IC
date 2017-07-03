@@ -214,4 +214,261 @@
         }, 700)
     });
 </script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+// <![CDATA[
+jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실행
+
+   // 정규식을 변수에 할당
+   // 정규식을 직접 작성할 줄 알면 참 좋겠지만
+   // 변수 우측에 할당된 정규식은 검색하면 쉽게 찾을 수 있다 
+   // 이 변수들의 활약상을 기대한다
+   // 변수 이름을 're_'로 정한것은 'Reguar Expression'의 머릿글자
+   var re_id = /^[a-z0-9_-]{2,10}$/; // 아이디 검사식
+   var re_pw = /^(?=.*[a-zA-Z]+)(?=.*[0-9]+).{6,}$/; // 비밀번호 검사식 영문+숫자
+   var re_pw_R = /^(?=.*[a-zA-Z]+)(?=.*[0-9]+).{6,}$/; // 비밀번호 확인 검사식 영문+숫자 
+   var re_mail = /^([\w\.-]+)@([a-z\d\.-]+)\.([a-z\.]{2,6})$/; // 이메일 검사식
+   var re_url = /^(https?:\/\/)?([a-z\d\.-]+)\.([a-z\.]{2,6})([\/\w\.-]*)*\/?$/; // URL 검사식
+   var re_tel = /^(?:(010-\d{4})|(01[1|6|7|8|9]-\d{3,4}))-(\d{4})$/; // 전화번호 검사식 010-9717-7858
+   
+   
+
+   // 선택할 요소를 변수에 할당
+   // 변수에 할당하지 않으면 매번 HTML 요소를 선택해야 하기 때문에 귀찮고 성능에도 좋지 않다
+   // 쉼표를 이용해서 여러 변수를 한 번에 선언할 수 있다
+   // 보기 좋으라고 쉼표 단위로 줄을 바꿨다 
+   var 
+      form = $('.form'), 
+      uid = $('#uid'), 
+      pwd_st = $('#pwd_st'), 
+      pwdconfirm_st = $('#pwdconfirm_st'),
+      email_st = $('#email_st'), 
+      url = $('#url'), 
+      phone_st = $('#phone_st'),
+      //
+      form2 = $('.form2'), 
+      uid2 = $('#uid2'), 
+      pwd_te = $('#pwd_te'), 
+      pwdconfirm_te = $('#pwdconfirm_te'),
+      email_te = $('#email_te'), 
+      url2 = $('#url2'), 
+      phone_te = $('#phone_te');
+      
+   // 선택한 form에 서밋 이벤트가 발생하면 실행한다
+   // if (사용자 입력 값이 정규식 검사에 의해 참이 아니면) {포함한 코드를 실행}
+   // if 조건절 안의 '정규식.test(검사할값)' 형식은 true 또는 false를 반환한다
+   // if 조건절 안의 검사 결과가 '!= true' 참이 아니면 {...} 실행
+   // 사용자 입력 값이 참이 아니면 alert을 띄운다
+   // 사용자 입력 값이 참이 아니면 오류가 발생한 input으로 포커스를 보낸다
+   // 사용자 입력 값이 참이 아니면 form 서밋을 중단한다
+   form.submit( function() {
+      if (re_id.test(uid.val()) != true) { // 아이디 검사
+         alert('[ID 입력 오류] 유효한 ID를 입력해 주세요.');
+         uid.focus();
+         return false;
+      } else if(re_pw.test(upw.val()) != true) { // 비밀번호 검사
+         alert('[PW 입력 오류] 유효한 PW를 입력해 주세요.');
+         upw.focus();
+         return false;
+      } else if(re_mail.test(mail.val()) != true) { // 이메일 검사
+         alert('[Email 입력 오류] 유효한 이메일 주소를 입력해 주세요.');
+         mail.focus();
+         return false;
+      } else if(re_url.test(url.val()) != true) { // URL 검사
+         alert('[Web 입력 오류] 유효한 웹 사이트 주소를 입력해 주세요.');
+         url.focus();
+         return false;
+      } else if(re_tel.test(tel.val()) != true) { // 전화번호 검사
+         alert('[Tel 입력 오류] 유효한 전화번호를 입력해 주세요.');
+         tel.focus();
+         return false;
+      }
+   });
+   
+   // #uid, #upw 인풋에 입력된 값의 길이가 적당한지 알려주려고 한다
+   // #uid, #upw 다음 순서에 경고 텍스트 출력을 위한 빈 strong 요소를 추가한다
+   // 무턱대고 자바스크립트를 이용해서 HTML 삽입하는 것은 좋지 않은 버릇
+   // 그러나 이 경우는 strong 요소가 없어도 누구나 form 핵심 기능을 이용할 수 있으니까 문제 없다
+   $('#uid, #pwd_st ,#pwdconfirm_st, #email_st, #phone_st').after('<strong style="color:#CC3D3D;FONT-SIZE:15px"></strong>');
+   
+   email_st.keyup(function(){
+      var s = $(this).next('strong');
+      if (email_st.val().length == 0) { // 입력 값이 없을 때
+         s.text('');
+      }// strong 요소에 포함된 문자 지움
+      else if( re_mail.test(email_st.val()) != true ){ // 유효하지 않은 문자 입력 시
+         s.text('※Caution!, 이메일형식에 일치하지 않습니다.');
+      
+      }else if( re_mail.test(email_st.val()) == true ){
+         s.text('이메일형식에 적합 합니다.');
+      }
+   });
+   // #uid 인풋에서 onkeyup 이벤트가 발생하면
+   uid.keyup( function() {
+      var s = $(this).next('strong'); // strong 요소를 변수에 할당
+      if (uid.val().length == 0) { // 입력 값이 없을 때
+         s.text(''); // strong 요소에 포함된 문자 지움
+      } else if (uid.val().length < 3) { // 입력 값이 3보다 작을 때
+         s.text('※Caution!,3개보다 긴 비밀번호가 필요합니다.'); // strong 요소에 문자 출력
+      } else if (uid.val().length > 16) { // 입력 값이 16보다 클 때
+         s.text('※Caution! 너무 깁니다.'); // strong 요소에 문자 출력
+      } else if ( re_id.test(uid.val()) != true ) { // 유효하지 않은 문자 입력 시
+         s.text('유효한 문자를 입력해 주세요.'); // strong 요소에 문자 출력
+      } else { // 입력 값이 3 이상 16 이하일 때
+         s.text('correct!'); // strong 요소에 문자 출력
+      }
+   });
+   
+   // #upw 인풋에서 onkeyup 이벤트가 발생하면
+   pwd_st.keyup( function() {
+      var s = $(this).next('strong'); // strong 요소를 변수에 할당
+      if (pwd_st.val().length == 0) { // 입력 값이 없을 때
+         s.text(''); // strong 요소에 포함된 문자 지움
+      } else if (pwd_st.val().length < 6) { // 입력 값이 6보다 작을 때
+         s.text('※Caution!, 6자 이상의 비밀번호 입력하세요'); // strong 요소에 문자 출력
+      } else if (pwd_st.val().length > 18) { // 입력 값이 18보다 클 때
+         s.text('※Caution!, 비밀번호가 너무 깁니다.'); // strong 요소에 문자 출력
+      } else { // 입력 값이 6 이상 18 이하일 때
+         s.text('Correct! 적합합니다.'); // strong 요소에 문자 출력
+      }
+   });
+   
+   pwdconfirm_st.keyup( function() {
+	      var s = $(this).next('strong'); // strong 요소를 변수에 할당
+	      if (pwdconfirm_st.val().length == 0) { // 입력 값이 없을 때
+	         s.text(''); // strong 요소에 포함된 문자 지움
+	      }else if (pwdconfirm_st.val()==pwd_st.val()){
+	         s.text('Correct! 위 비밀번호와 같습니다.');
+	      }else{
+	    	  s.text('※Caution!,위 비밀번호와 다릅니다.');
+	      }
+	   });
+   
+   // #tel 인풋에 onkeydown 이벤트가 발생하면
+   // 하이픈(-) 키가 눌렸는지 확인
+   // 하이픈(-) 키가 눌렸다면 입력 중단
+   phone_st.keyup( function() {
+      
+      var s = $(this).next('strong');
+      if (phone_st.val().length == 0) { // 입력 값이 없을 때
+         s.text('');
+      }// strong 요소에 포함된 문자 지움
+      else if( re_tel.test(phone_st.val()) != true ){ // 유효하지 않은 문자 입력 시
+         s.text('※Please, Confirm your tel number');
+      
+      }else if( re_tel.test(phone_st.val()) == true ){
+         s.text('correct!');
+      }
+      
+      });
+   
+   //FROM2
+   ///////////////////////////////////////////////////////////
+   form2.submit( function() {
+      if (re_id.test(uid2.val()) != true) { // 아이디 검사
+         alert('[ID 입력 오류] 유효한 ID를 입력해 주세요.');
+         uid2.focus();
+         return false;
+      } else if(re_pw.test(upw2.val()) != true) { // 비밀번호 검사
+         alert('[PW 입력 오류] 유효한 PW를 입력해 주세요.');
+         upw2.focus();
+         return false;
+      } else if(re_mail.test(mail2.val()) != true) { // 이메일 검사
+         alert('[Email 입력 오류] 유효한 이메일 주소를 입력해 주세요.');
+         mail2.focus();
+         return false;
+      } else if(re_url.test(url2.val()) != true) { // URL 검사
+         alert('[Web 입력 오류] 유효한 웹 사이트 주소를 입력해 주세요.');
+         url2.focus();
+         return false;
+      } else if(re_tel.test(tel2.val()) != true) { // 전화번호 검사
+         alert('[Tel 입력 오류] 유효한 전화번호를 입력해 주세요.');
+         tel2.focus();
+         return false;
+      }
+   });
+   
+   // #uid, #upw 인풋에 입력된 값의 길이가 적당한지 알려주려고 한다
+   // #uid, #upw 다음 순서에 경고 텍스트 출력을 위한 빈 strong 요소를 추가한다
+   // 무턱대고 자바스크립트를 이용해서 HTML 삽입하는 것은 좋지 않은 버릇
+   // 그러나 이 경우는 strong 요소가 없어도 누구나 form 핵심 기능을 이용할 수 있으니까 문제 없다
+   $('#uid2, #pwd_te ,#pwdconfirm_te, #email_te, #phone_te').after('<strong style="color:#CC3D3D";FONT-SIZE:15px"></strong>');
+   
+   
+   email_te.keyup(function(){
+      var s = $(this).next('strong');
+      if (email_te.val().length == 0) { // 입력 값이 없을 때
+         s.text('');
+      }// strong 요소에 포함된 문자 지움
+      else if( re_mail.test(email_te.val()) != true ){ // 유효하지 않은 문자 입력 시
+         s.text('※Caution!, 이메일형식에 일치하지 않습니다.');
+      
+      }else if( re_mail.test(email_te.val()) == true ){
+         s.text('이메일형식에 적합 합니다.');
+      }
+   });
+   // #uid 인풋에서 onkeyup 이벤트가 발생하면
+   uid2.keyup( function() {
+      var s = $(this).next('strong'); // strong 요소를 변수에 할당
+      if (uid2.val().length == 0) { // 입력 값이 없을 때
+         s.text(''); // strong 요소에 포함된 문자 지움
+      } else if (uid2.val().length < 3) { // 입력 값이 3보다 작을 때
+         s.text('※Please, write more longer'); // strong 요소에 문자 출력
+      } else if (uid2.val().length > 16) { // 입력 값이 16보다 클 때
+         s.text('※Please, write more shorter'); // strong 요소에 문자 출력
+      } else if ( re_id.test(uid2.val()) != true ) { // 유효하지 않은 문자 입력 시
+         s.text('유효한 문자를 입력해 주세요.'); // strong 요소에 문자 출력
+      } else { // 입력 값이 3 이상 16 이하일 때
+         s.text('correct!'); // strong 요소에 문자 출력
+      }
+   });
+   
+   // #upw 인풋에서 onkeyup 이벤트가 발생하면
+   pwd_te.keyup( function() {
+      var s = $(this).next('strong'); // strong 요소를 변수에 할당
+      if (pwd_te.val().length == 0) { // 입력 값이 없을 때
+         s.text(''); // strong 요소에 포함된 문자 지움
+      } else if (pwd_te.val().length < 6) { // 입력 값이 6보다 작을 때
+         s.text('※Caution!, 6자 이상의 비밀번호 입력하세요'); // strong 요소에 문자 출력
+      } else if (pwd_te.val().length > 18) { // 입력 값이 18보다 클 때
+         s.text('※Caution!, 비밀번호가 너무 깁니다.'); // strong 요소에 문자 출력
+      } else { // 입력 값이 6 이상 18 이하일 때
+         s.text('Correct! 적합합니다.'); // strong 요소에 문자 출력
+      }
+   });
+   
+   pwdconfirm_te.keyup( function() {
+	      var s = $(this).next('strong'); // strong 요소를 변수에 할당
+	      if (pwdconfirm_te.val().length == 0) { // 입력 값이 없을 때
+	         s.text(''); // strong 요소에 포함된 문자 지움
+	      }else if (pwdconfirm_te.val()==pwd_te.val()){
+	         s.text('Correct! 위 비밀번호와 같습니다.');
+	      }else{
+	    	  s.text('※Caution!,위 비밀번호와 다릅니다.');
+	      }
+	   });
+   
+   // #tel 인풋에 onkeydown 이벤트가 발생하면
+   // 하이픈(-) 키가 눌렸는지 확인
+   // 하이픈(-) 키가 눌렸다면 입력 중단
+
+   phone_te.keyup( function() {
+      
+      var s = $(this).next('strong');
+      if (phone_te.val().length == 0) { // 입력 값이 없을 때
+         s.text('');
+      }// strong 요소에 포함된 문자 지움
+      else if( re_tel.test(phone_te.val()) != true ){ // 유효하지 않은 문자 입력 시
+         s.text('※Please, Confirm your tel number');
+      
+      }else if( re_tel.test(phone_te.val()) == true ){
+         s.text('correct!');
+      }
+      
+      });
+
+});
+// ]]>
+</script>
+
 </html>

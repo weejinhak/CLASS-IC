@@ -65,7 +65,7 @@
                                 </div>
                             </form>
                              <a href="join.htm">아직 CLASS-IC 회원이 아니신가요?  [회원가입]</a><br/>
-                             <a href="#">비밀번호를 잊어버리셨나요?  [비밀번호 재설정]</a><br/>
+                             <a href="sendEmail">비밀번호를 잊어버리셨나요?  [비밀번호 재설정]</a><br/>
                         </div>
                     </div>
                 </div>
