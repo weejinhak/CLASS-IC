@@ -10,13 +10,13 @@
             </div>
             <div class="logo logo-mini">
                 <a href="${pageContext.request.contextPath}/index.htm" class="simple-text">
-                    Ct
+                   
                 </a>
             </div>
             <div class="sidebar-wrapper">
 			<div class="user">
 				<div class="photo">
-					<img src="../../assets/img/faces/park.jpg" />
+					<img src="${pageContext.request.contextPath}/resources/assets/img/faces/kosta.png" />
 				</div>
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -24,7 +24,7 @@
 					</a>
 					<div class="collapse" id="collapseExample">
 						<ul class="nav">
-							<li><a href="#">나의 정보수정</a></li>
+							
 							<li><a href="${pageContext.request.contextPath}/logout.htm">로그아웃</a></li>
 						</ul>
 					</div>
@@ -74,10 +74,10 @@
 				</li>
 				
 				<li>
-					<a href="linkFile.htm"> <i class="material-icons">playlist_add_check</i>
-							<p>링크게시판</p>
-					</a>
-				</li>
+	               <a href="linkFile.htm"> <i class="material-icons">playlist_add_check</i>
+	                     <p>링크게시판</p>
+	               </a>
+                </li>
 				
 				<li>
 					<a href="memo.htm"> <i class="material-icons">edit</i>

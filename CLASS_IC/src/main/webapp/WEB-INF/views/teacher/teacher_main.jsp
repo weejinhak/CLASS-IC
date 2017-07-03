@@ -42,13 +42,11 @@
 					</div>
 					<div class="card-content">
 						<p class="category">강좌 날짜</p>
-						<%-- <h3 class="card-title">${main.classStart}</h3> --%>
-						<h3 class="card-title">2017/02/02</h3>
+						<h3 class="card-title" style="font-size: 20px">${list.classStart}</h3>
 					</div>
 					<div class="card-footer">
 						<div class="stats" style="color: black;">
-				<%-- 			<h5>${main.classStart}~ ${main.classEnd}</h5> --%>
-							<h5>2017/02/02 ~ 2017/07/06</h5>
+							<h5>${list.classStart}~ ${list.classEnd}</h5>
 						</div>
 					</div>
 				</div>
@@ -61,7 +59,7 @@
 					<div class="card-content">
 						<p class="category">수강인원</p>
 						<%-- <h3 class="card-title">${membercount}명</h3> --%>
-						<h3 class="card-title">7명</h3> 
+						<h3 class="card-title">${membercount}명</h3> 
 					</div>
 					<div class="card-footer">
 						<div class="stats">

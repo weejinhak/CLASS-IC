@@ -16,15 +16,15 @@
             <div class="sidebar-wrapper">
 			<div class="user">
 				<div class="photo">
-					<img src="${pageContext.request.contextPath}/resources/assets/img/faces/kosta.jpg" />
+					<img src="${pageContext.request.contextPath}/resources/assets/img/faces/kosta.png" />
 				</div>
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample" class="collapsed">
-						임경균 <b class="caret"></b>
+						${sessionScope.name }<b class="caret"></b>
 					</a>
 					<div class="collapse" id="collapseExample">
 						<ul class="nav">
-							<li><a href="#">나의 정보수정</a></li>
+							
 							<li><a href="${pageContext.request.contextPath}/logout.htm">로그아웃</a></li>
 						</ul>
 					</div>
@@ -53,7 +53,7 @@
 
 					<a href="allboard.htm"> <i class="material-icons">dashboard</i>
 
-							<p>통합게시판(테스트용)</p>
+							<p>통합게시판</p>
 					</a>
 				</li>
 
@@ -89,16 +89,16 @@
 				</li>
 				<!-- 링크는 메뉴를 통해서 추가해주세요 -->
 				<li>
-					<a href="#"> <i class="material-icons">edit</i>
-							<p>추가링크</p>
-					</a>
-				</li>
+	               <a href="linkFile.htm"> <i class="material-icons">playlist_add_check</i>
+	                     <p>링크게시판</p>
+	               </a>
+                </li>
 				
-				<li>
+				<!-- <li>
 					<a href="#"> <i class="material-icons">toys</i>
 							<p>교실상태</p>
 					</a>
-				</li>
+				</li> -->
 			</ul>
 		</div>
       </div>

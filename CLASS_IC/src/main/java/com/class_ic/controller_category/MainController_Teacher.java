@@ -38,7 +38,6 @@ public class MainController_Teacher {
 		@RequestMapping(value="main.htm", method=RequestMethod.POST)
 		public ModelAndView student(HttpSession session, String classCode, Model model){
 			
-			System.out.println("2"+classCode);
 			
 			session.setAttribute("classCode", classCode);
 			
@@ -114,9 +113,9 @@ public class MainController_Teacher {
 
 //  BoardListService
   //링크 게시판 이동
-  @RequestMapping(value="linkfile.htm", method=RequestMethod.GET)
+  @RequestMapping(value="linkFile.htm", method=RequestMethod.GET)
       public ModelAndView linkfile (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){  
-        ModelAndView viewpage = boardlistservice.linkfileview(request, response, mv); 
+        ModelAndView viewpage = boardlistservice.linkfileviewByTeacher(request, response, mv); 
      return viewpage;
      
      

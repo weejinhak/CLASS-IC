@@ -106,6 +106,7 @@
 <script type="text/javascript">
 	console.log("페이지가 시작2");
 	var sessionId="<%=(String)session.getAttribute("email")%>";
+	var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"
 
 	$.ajax({
 		type : 'POST',
@@ -162,6 +163,9 @@
 		$(document).ready(function() {			
 			console.log(sessionId)
 			console.log(sessionClassCode)
+    		var sessionId="<%=(String)session.getAttribute("email")%>";
+    		 var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"
+
 			
 			$.ajax({
 				type : 'POST',
