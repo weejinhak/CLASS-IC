@@ -25,10 +25,6 @@ public class MessageController {
       ArrayList<MemberDTO> msgmemberlist= new ArrayList<MemberDTO>();
       
       msgmemberlist=messageService.selectSameMemberList(classCode);
-      for (MemberDTO m : msgmemberlist) {
-         System.out.println(m.getEmail());
-         System.out.println(m.getName());
-      }
       
       model.addAttribute("member", msgmemberlist);
    
@@ -45,12 +41,6 @@ public class MessageController {
       
       msgcontentlist=messageService.selectMsgContentList(email);
       
-      for (MessageDTO m : msgcontentlist) {
-         System.out.println(m.getMessageNo());
-         System.out.println(m.getMsContent());
-         System.out.println(m.getEmailS());
-         System.out.println(m.getMsSendTime());
-      }
       
       model.addAttribute("msgcontentlist", msgcontentlist);
    
