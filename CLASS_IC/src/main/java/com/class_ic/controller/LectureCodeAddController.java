@@ -76,7 +76,6 @@ public class LectureCodeAddController {
 			lectureDto.setClassEnd(end);
 			lectureDto.setClassOpenTime(request.getParameter("classopentime"));
 			lectureDto.setClassCloseTime(request.getParameter("classclosetime"));
-			lectureDto.setClassInviteCode(request.getParameter("classinvitecode"));
 			lectureDto.setEmail(request.getParameter("email"));
 			
 			try {
