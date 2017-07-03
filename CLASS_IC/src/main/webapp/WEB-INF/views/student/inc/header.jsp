@@ -209,7 +209,7 @@
                   data-accordion="#accordion">
                   <a class="dropdown-toggle" href="#" data-toggle="dropdown"> <i
                      class="material-icons" style="padding-top: 10px; color: #555555">notifications</i>
-                     <span class="notification" id="alarm">${sessionScope.totalCount}</span>
+                     <span class="notification" id="alarm" style="font-size: 15px">${sessionScope.totalCount}</span>
                      <p class="hidden-lg hidden-md">
                         Notifications <b class="caret"></b>
                      </p>

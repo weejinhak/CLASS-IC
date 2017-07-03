@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
  <!-- 강사 메인 페이지 출력: 2017.07.03 박소현 -->
-<select id="teacherMain"  resultType="com.class_ic.vo.ClassDTO" parameterType="String">
+<select id="teacherMain"  resultType="com.class_ic.vo.ClassDTO" >
 	select * from class where email=#{email}
 </select>
 

@@ -229,7 +229,7 @@
                   data-accordion="#accordion">
                   <a class="dropdown-toggle" href="#" data-toggle="dropdown"> <i
                      class="material-icons" style="padding-top: 10px; color: #555555">notifications</i>
-                     <span class="notification" id="alarm">${sessionScope.totalCount}</span>
+                     <span class="notification" id="alarm" style="font-size: 15px">${sessionScope.totalCount}</span>
                      <p class="hidden-lg hidden-md">
                         Notifications <b class="caret"></b>
                      </p>
@@ -512,12 +512,7 @@
                       
                       
                   </div>
-                  <div class="modal-footer text-center" >
-                     <button type="submit" class="btn btn-success btn-simple" >작성</button>
-                     <button type="button" class="btn btn-simple" data-dismiss="modal">취소
-                        </button>
-                     
-                  </div>
+
                
                </div>
 
@@ -531,7 +526,9 @@
                   
                   
      <script type="text/javascript">
-                 $(document).ready(function() {      
+                 $(document).ready(function() {    
+                	var sessionClassCode="<%=(String)session.getAttribute("classCode")%>"
+ 
                     list();
                     function list() {                         
                        $.ajax({ 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service.BoardListService;
+import com.class_ic.service.HomeworkService;
 import com.class_ic.service_category.MainService_Teacher;
 import com.class_ic.vo.ClassDTO;
 import com.class_ic.vo.LectureBoardDTO;
@@ -35,14 +36,16 @@ public class MainController_Teacher {
 
 	//teacher main POST
 		@RequestMapping(value="main.htm", method=RequestMethod.POST)
-		public String student(HttpSession session, String email, String classCode, Model model){
+		public ModelAndView student(HttpSession session, String classCode, Model model){
+			
+			System.out.println("2"+classCode);
 			
 			session.setAttribute("classCode", classCode);
 			
-			List<ClassDTO> MainList =  mainteacherservice.selectMain(email);
-			model.addAttribute("mainlist", MainList);
+			ModelAndView viewpage = mainteacherservice.selectMain(session);
+					
 			
-          return "teacher.teacher_main";
+			return viewpage;
        }
 
 		

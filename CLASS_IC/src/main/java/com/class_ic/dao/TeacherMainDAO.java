@@ -11,6 +11,6 @@ import com.class_ic.vo.SubCategoryDTO;
 public interface TeacherMainDAO {
 	
 //선생님 메인화면 출력
-public List<ClassDTO> teacherMain(String email);
+public ClassDTO teacherMain(String email);
 
 }
