@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--통합게시판 글쓰기 -->
 <insert id="insertBoardContent" parameterType="com.class_ic.vo.LectureBoardDTO">
 insert into lectureboard(classCode,cateCode,subcateCode,lectureTitle,lectureContent,lectureDate)
-values(#{classCode},#{cateCode},#{subcateCode},#{lectureTitle},#{lectureContent},CURDATE())
+values(#{classCode},#{cateCode},#{subcateCode},#{lectureTitle},#{lectureContent},CURDATE()) 
 </insert>
 
 <!--카테고리 select box  -->
@@ -28,12 +28,12 @@ select * from subcategory where email=#{email}
 <!-- 통합게시판 화면 출력 -->
  <select id="allBoard" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="com.class_ic.vo.SubCategoryDTO">
     select * from lectureboard where cateCode=#{cateCode} and subcateCode=#{subcateCode} and classCode in
-(select classCode from classMember where email=#{email}) 
+(select classCode from classMember where email=#{email}) order by lectureNo desc
  </select> 
  
 <!--통합게시판 수정화면 출력   --> 
 <select id="totalboardEdit" resultType="com.class_ic.vo.LectureBoardDTO" parameterType="Integer">
-   select * from lectureboard where lectureNo=#{lectureNo}
+   select * from lectureboard where lectureNo=#{lectureNo} order by lectureNo desc
 </select>
 
 <!--통합게시판 상세보기 화면 출력   --> 
@@ -78,7 +78,7 @@ WHERE li.lectureNo = #{lectureNo}
 <select id="allList" resultType="com.class_ic.vo.LectureBoardDTO" >
 
 select * from lectureboard where classCode in 
-(select classCode from classMember where email=#{email})
+(select classCode from classMember where email=#{email}) order by lectureNo desc
 
 
 </select>

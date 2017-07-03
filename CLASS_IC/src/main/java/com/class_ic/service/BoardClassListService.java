@@ -143,8 +143,7 @@ public class BoardClassListService {
 		BoardClassDAO classboard=sqlsession.getMapper(BoardClassDAO.class);
 
 		board.insertBoardContent(dto);
-
-		  classboard.boardMultiSend(dto2);
+        classboard.boardMultiSend(dto2);
 			
 		
 /*		  int file_insert = board.insertFile(dto);		
@@ -242,4 +241,61 @@ public class BoardClassListService {
 		return "redirect:allboard.htm";
 
 	}
+	
+    //수업보드 게시판 글 수정시 형상관리.
+		public String totalboardEditOk(LectureBoardDTO dto, HttpServletRequest request) {
+			HttpSession session=request.getSession();
+			String classCode = (String) session.getAttribute("classCode");
+			System.out.println("수정오케이컨트롤러11" + dto);
+			BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
+			BoardClassDAO dao2=sqlsession.getMapper(BoardClassDAO.class);
+			
+			if(dto.getClassCode().equals(classCode)){
+				
+				dao.totalboardEditOk(dto);
+			}else{
+				
+				ClassByLectureDTO dto2=new ClassByLectureDTO();
+				dto2.setClassCode(classCode);
+				dto2.setlectureNo(dto.getLectureNo());
+				ArrayList<LectureBoardDTO> board=dao2.totalboardEdit(dto.getLectureNo());
+				board.get(0).setClassCode(classCode);
+				dao2.deletx(dto2);
+				dao.insertBoardContent(board.get(0));
+				dao2.boardMultiSend(dto2);
+				
+				
+				
+				
+			}
+	
+			System.out.println("classCode 확인"+dto.getClassCode());
+			
+			
+			
+
+			return "redirect:allboard.htm";
+		}
+		
+
+		// 통합게시판 수정화면 처리
+		public ModelAndView totalboardEdit(LectureBoardDTO dto, HttpServletRequest request, int lectureNo) {
+
+			BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+
+			int lectureNo1 = lectureNo;
+			System.out.println("lectureNo 나오냐" + lectureNo);
+
+			
+			ArrayList<LectureBoardDTO> list = bdao.totalboardEdit(lectureNo1);
+			System.out.println(list.size());
+
+			ModelAndView m = new ModelAndView();
+			m.setViewName("teacher.totalLectureclassBoard_Edit");
+			m.addObject("list", list);
+			System.out.println("모델단" + m);
+
+			return m;
+		}
+
 }

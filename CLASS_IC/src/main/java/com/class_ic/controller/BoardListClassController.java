@@ -141,6 +141,23 @@ public class BoardListClassController {
      	 return viewpage;
     }
     
+    //통합게시판 수정화면 처리
+    @RequestMapping(value="teacher/totalclassboardEdit.htm",method = RequestMethod.GET)
+    public ModelAndView  totalboardEdit(LectureBoardDTO dto,HttpServletRequest request,int lectureNo){
+    	  ModelAndView viewpage = boardclasslistservice.totalboardEdit(dto, request, lectureNo);
+          
+          return viewpage;
+           
+    }
+    
+    //수업보드 게시판 글 수정시 형상관리.
+    @RequestMapping(value="teacher/totalclassboardEdit.htm", method = RequestMethod.POST )
+    public String totalboardEditOk(LectureBoardDTO dto, HttpServletRequest request){
+    	String viewpage = boardclasslistservice.totalboardEditOk(dto,request);
+      	 
+      	 return viewpage;
+    }
+    
 }
 
 

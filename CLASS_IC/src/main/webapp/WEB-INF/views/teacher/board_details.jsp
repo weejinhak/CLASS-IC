@@ -8,7 +8,25 @@
 <script type="text/javascript">
 
 $().ready(function() {
+	 
+ 	 $('#add').click(function click() {
 
+ 		 swal({
+             title: '서브 카테고리 생성',
+             text: '통합게시판에서 생성 됩니다.',
+             type: 'warning',
+             showCancelButton: true,
+             confirmButtonText: '통합게시판에서 생성',
+             cancelButtonText: '나중에 생성 할래요 ',
+             confirmButtonClass: "btn btn-info",
+             cancelButtonClass: "btn btn-rose",
+             buttonsStyling: false
+         }).then(function() {
+         location.href="allboard.htm";
+         })
+
+	});
+ 	 
   	 $('.clicksub').click(function click() {
 
   		 var subcateCode=$(this).attr("id");
@@ -31,6 +49,7 @@ $().ready(function() {
 
 	});
   	 
+ 
 
    });
 
@@ -63,7 +82,7 @@ $().ready(function() {
 					<li class="active"><a href="#description-2" role="tab"
 						data-toggle="tab" aria-expanded="false" > <!--                                            <i class="material-icons">exposure_plus_1</i> -->
 							<button class="btn btn-raised btn-round btn-white"
-								data-toggle="modal" data-target="#noticeModal">+</button>
+								id="add">+</button>
 					  <i]></i><br> ADD
 					</a>
 		       
@@ -76,50 +95,6 @@ $().ready(function() {
 	
 	</div>
 
-	<!-- 모달  -->
-	<div class="row">
-		<div class="col-md-12 text-center">
-
-
-			<!-- notice modal -->
-			<div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
-				aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-notice">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">
-								<i class="material-icons">clear</i>
-							</button>
-							<h5 class="modal-title" id="myModalLabel">수업보드 세부 카테고리 추가</h5>
-						</div>
-						<div class="modal-body">
-							<div class="instruction">
-								<div class="row">
-									<div class="col-md-12"> 
-										
-									<input type="text" class="form-control" placeholder="카테고리 이름">
-									</div>
-								 
-								</div>
-								
-							
-							</div>
-							 
-							 
-						</div>
-						<div class="modal-footer text-center">
-							<button type="button" class="btn btn-simple" data-dismiss="modal">Never
-								mind</button>
-							<button type="button" class="btn btn-success btn-simple">Yes</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- end notice modal -->
-
-
-		</div>
-	</div>
+	
 	</div>
 

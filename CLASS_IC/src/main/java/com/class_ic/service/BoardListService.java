@@ -271,6 +271,7 @@ public class BoardListService {
 	public String totalboardEditOk(LectureBoardDTO dto) {
 		System.out.println("수정오케이컨트롤러11" + dto);
 
+		
 		BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
 		dao.totalboardEditOk(dto);
 

@@ -93,13 +93,7 @@
              cancelButtonClass: "btn btn-rose",
              buttonsStyling: false
          }).then(function() {
-           swal({
-             title: '카테고리 생성 완료',
-             text: '카테고리 생성이 완료 되었습니다.',
-             type: 'success',
-             confirmButtonClass: "btn btn-info",
-             buttonsStyling: false
-             })
+         location.href="allboard.htm";
          }, function(dismiss) {
            // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
            if (dismiss === 'cancel') {

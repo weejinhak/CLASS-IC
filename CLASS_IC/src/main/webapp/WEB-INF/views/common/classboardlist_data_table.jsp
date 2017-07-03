@@ -63,7 +63,7 @@
 
 											<td class="text-center">${LectureBoardDTO.lectureDate}</td>
 											<td class="text-center"><a
-												href="totalboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+												href="totalclassboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
 												class="btn btn-simple btn-rose btn-icon edit"><i class="material-icons">border_color</i></a> 
 												
 											</td>

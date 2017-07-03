@@ -26,5 +26,11 @@ public interface BoardClassDAO {
 	// 기수 담기테이블에 insert 
 	public void boardMultiSend(ClassByLectureDTO dto);
 	
+	// 수정화면에 출력
+	public ArrayList<LectureBoardDTO> totalboardEdit(int lectureNo);
+
+
+
+	
 
 }
