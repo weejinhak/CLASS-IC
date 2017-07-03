@@ -1,16 +1,20 @@
 package com.class_ic.controller_category;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service_category.MainService_Teacher;
+import com.class_ic.vo.ClassDTO;
 
 @Controller
 @RequestMapping("teacher")
@@ -21,9 +25,13 @@ public class MainController_Teacher {
 
 	//teacher main POST
 		@RequestMapping(value="main.htm", method=RequestMethod.POST)
-		public String student(HttpSession session, String classCode){
+		public String student(HttpSession session, String email, String classCode, Model model){
+			
 			session.setAttribute("classCode", classCode);
-
+			
+			List<ClassDTO> MainList =  mainteacherservice.selectMain(email);
+			model.addAttribute("mainlist", MainList);
+			
           return "teacher.teacher_main";
        }
 

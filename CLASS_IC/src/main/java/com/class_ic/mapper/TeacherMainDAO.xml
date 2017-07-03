@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+@Project : CLASS-IC
+@File name : TeacherMainDAO.xml
+@Author : 박소현
+@Data : 2017.07.03
+@Desc :
+ -->
+ <mapper namespace="com.class_ic.dao.TeacherMainDAO">
+ 
+
+
+ <!-- 강사 메인 페이지 출력: 2017.07.03 박소현 -->
+<select id="teacherMain"  resultType="com.class_ic.vo.ClassDTO" parameterType="String">
+	select * from class where email=#{email}
+</select>
+
+
+
+</mapper>
+

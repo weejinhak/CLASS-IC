@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.class_ic.vo.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link href="${pageContext.request.contextPath}/resources/assets/css/teachermain_memo.css" rel="stylesheet" />
 <link
 	href="${pageContext.request.contextPath}/resources/assets/css/teacher/teacher_memo.css"
@@ -9,6 +11,7 @@
 <div class="content">
 	<div class="container-fluid">
 		<!-- 내용물  contents  -->
+<%-- 		 <c:forEach var="main" items="${mainlist}" > --%>
 		<div class="row">
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="card card-stats">
@@ -16,13 +19,12 @@
 						<i class="material-icons">mood</i>
 					</div>
 					<div class="card-content">
-						<p class="category">남은 수업일수</p>
-						<h3 class="card-title">D-137</h3>
+						<p class="category">강좌정보</p>
+						<%-- <h3 class="card-title">${sessionScope.classCode} 기 / ${main.classTitle}강좌</h3> --%>
 					</div>
 					<div class="card-footer">
 						<div class="stats">
-							<i class="material-icons text-danger">warning</i> <a
-								href="#pablo">Get More Space...</a>
+					
 						</div>
 					</div>
 				</div>
@@ -33,7 +35,7 @@
 						<i class="material-icons">done</i>
 					</div>
 					<div class="card-content">
-						<p class="category">오늘 출석자</p>
+						<p class="category">강좌 날짜</p>
 						<h3 class="card-title">15/30</h3>
 					</div>
 					<div class="card-footer">
@@ -50,7 +52,7 @@
 						<i class="material-icons">public</i>
 					</div>
 					<div class="card-content">
-						<p class="category">현재 이산화탄소 농도</p>
+						<p class="category">수강인원</p>
 						<h3 class="card-title">$34,245</h3>
 					</div>
 					<div class="card-footer">
@@ -76,6 +78,7 @@
 				</div>
 			</div>
 		</div>
+<%-- 		</c:forEach> --%>
 	</div>
 	<div class="wrapper">
 		<div class="row">
