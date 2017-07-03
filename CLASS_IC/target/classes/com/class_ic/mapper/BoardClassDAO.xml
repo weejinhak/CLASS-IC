@@ -57,4 +57,10 @@ and cateCode=#{cateCode} ORDER BY lectureNo desc limit 4
 delete from classbylecture where classCode=#{classCode} and lectureNo=#{lectureNo}
 </delete>
 
+<select id="selectTeacher" resultType="String" parameterType="String">
+select email from classmember where classCode=#{classCode}
+and email in(select email from ClassicAuthority where authority='ROLE_TEACHER') ;
+
+</select>
+
 </mapper>

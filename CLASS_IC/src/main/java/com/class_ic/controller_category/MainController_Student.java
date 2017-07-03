@@ -34,13 +34,13 @@ public class MainController_Student {
 
 		return "memo.memo";
 	}
-
+/*
 	//boardList 게시판 이동
 	@RequestMapping(value="board.htm", method=RequestMethod.GET)
 	public String board(){
 
 		return "student.board";
-	}
+	}*/
 	//homework_board게시판 이동
 	@RequestMapping(value="homework.htm", method=RequestMethod.GET)
 	public String homework(){
