@@ -26,14 +26,11 @@ public class EmailController {
 		
 	  @RequestMapping(value = "sendEmail" , method =RequestMethod.GET)
 	  public String mailSend(Model model,String email) {
-		  System.out.println("★컨트롤러 접속");
 		  
 		  //임시로 값 줌
 		  //
 		  String code = Integer.toString((int)(Math.random()*100000));
-		  System.out.println("난수값"+code);
 		  
-		  System.out.println(email+code);
 		  
           MailDAO maildao = sqlsession.getMapper(MailDAO.class);
 		  maildao.update_Rand(email,code);
@@ -50,7 +47,7 @@ public class EmailController {
 	  	  String setfrompw  =  "whtjdah7";
 	  	  String tomail  =  email;
 	  	  String title   =  email+" 님의 비밀번호 안내입니다.";  //제목
-	  	  String content = "인증코드 : "+code+"\nPW변경링크:"+link+"\n해당 링크페이지로 이동한후 인증코드를 입력하세요♥"; //내용
+	  	  String content = "인증코드 : "+code+"\n\n인증코드를 입력하여 비밀번호를 변경하세요♥"; //내용
 	      
 	  	  Properties p = new Properties();
 	  	  
