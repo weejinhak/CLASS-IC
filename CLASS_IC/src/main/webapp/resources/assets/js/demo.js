@@ -863,9 +863,13 @@ demo = {
                       success:function(data){
                  
                         var html='';
-                        $.each(data, function(index,item) {
-                        	html+='<a href="">'+item.todayTitle+'</a><br>'
+                        $.each(data, function() {
                         	
+                        	console.log(this.todayTitle);
+                        	console.log(this.lectureNum);
+                        	
+                        	html+='<a href="totalclassBoard_contentview.htm?lectureNo='+this.lectureNum+'">'+this.todayTitle+'</a><br>' 
+                          	
                         }); 
                    
                             
@@ -939,7 +943,7 @@ demo = {
                                    buttonsStyling: false
                                    }).then(function() {
 									
-                                   location.href="test9.htm";
+                                   location.href="calendar.htm";
 								})
                                    
                            }
