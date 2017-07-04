@@ -32,7 +32,7 @@
      //alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
-      wsocket = new WebSocket("ws://172.20.10.9:8090/class_ic/chat-ws.htm?email="+sessionId);
+      wsocket = new WebSocket("ws://192.168.0.3:8090/class_ic/chat-ws.htm?email="+sessionId);
       appendMessage("웹 소켓연결되었습니다.");
       wsocket.onopen = onOpen;
       wsocket.onmessage = onMessage;
@@ -84,7 +84,6 @@
             console.log(data);
             $('#alarm').empty();
             $('#alarm').html(data);
-
          }
       });
 
@@ -240,20 +239,15 @@
             <div class="card card-stats">
                <div class="card-header" data-background-color="orange">
                    <i class="material-icons">email</i> 
-                   <span class="btn btn-just-icon btn-round btn-pinterest" style="font-size:15px ; float: ">
-                                                ${sessionScope.totalCount}
-                         </span>
                </div>
                <div class="card-content">
                   <button class="btn btn-reddit btn-round"  data-toggle="modal" id="receiveRoom"
-                     data-target="#noticeModalp2">
+                     data-target="#noticeModalp">
                             <i class="material-icons">email</i> 쪽지함
                         <div class="ripple-container"></div></button>
                </div>
                <div class="card-footer">
-               <!--    <div class="stats">
-                     <i class="material-icons text-danger">warning</i> <a href="#pablo">Get More Space...</a>
-                  </div> -->
+               
                </div>
             </div>
          </div>
@@ -299,10 +293,10 @@
                               width="100" height="100">
                         </div>
                      <li>
-                     <br>
+                     <!-- <br>
                          <button class="btn btn-primary btn-raised btn-round" data-toggle="modal" data-target="#memberUpdate" id="myInfo">
                                                   회원정보 수정
-                                </button>
+                                </button> -->
                      </li>
                      <!-- 회원정보 수정 Modal -->
                                             <div class="modal fade" id="memberUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -413,7 +407,7 @@
       <div class="col-md-12 text-center">
          <!-- notice modal -->
          
-         <div class="modal fade" id="noticeModalp2" tabindex="-1" role="dialog"
+         <div class="modal fade" id="noticeModalp" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-notice">
          <form action="CalendarInsertOk.htm" method="POST">         
@@ -423,10 +417,15 @@
                   </div>
                   <div class="modal-body">
                    
-                   <div id="messageTable1">
+                   <div id="messageTable">
                 </div>
                       <!-- 주요 내용  -->
                       
+                  </div>
+                  <div class="modal-footer text-center" >
+                     <button type="button" class="btn btn-simple" data-dismiss="modal">취소
+                        </button>
+                     
                   </div>
                
                </div>
@@ -523,7 +522,8 @@
                  
                  
                 $("#receiveRoom").click(function() {
-                  selectMsgContentTable(); 
+                  selectMsgContentTable();
+                  deleteTotalMsgCount();
                   
                });
 
@@ -537,7 +537,7 @@
                      dataType:'html',
                        success : function(data){
                           
-                       $('#messageTable1').html(data);
+                       $('#messageTable').html(data);
 
                        },
                        error:function(request, status, error){
@@ -547,6 +547,24 @@
                   });   
                   
                }
+               
+               function deleteTotalMsgCount(){
+                   var sessionId="<%=(String)session.getAttribute("email")%>";
+
+                   $.ajax({ 
+                      type: 'post',
+                      url: '/class_ic/common/alarmCountUpdate.htm',
+                      data:{email:sessionId},
+                      success : function(data){
+                          $('#alarm').html(data);
+                       },
+                        error:function(request, status, error){
+                           alert("가져오기 실패")
+                        } 
+                        
+                   });   
+                   
+                }
                  
                  
         </script>

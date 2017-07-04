@@ -30,6 +30,9 @@ public interface BoardClassDAO {
    public ArrayList<LectureBoardDTO> totalboardEdit(int lectureNo);
 
 
+   //학생에 맞는 강사님 이메일 찾기
+   
+   public String selectTeacher(String classCode);
 
    
 

@@ -32,7 +32,7 @@
      //alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
-      wsocket = new WebSocket("ws://172.20.10.9:8090/class_ic/chat-ws.htm?email="+sessionId);
+      wsocket = new WebSocket("ws://192.168.0.3:8090/class_ic/chat-ws.htm?email="+sessionId);
       appendMessage("웹 소켓연결되었습니다.");
       wsocket.onopen = onOpen;
       wsocket.onmessage = onMessage;
@@ -84,7 +84,6 @@
             console.log(data);
             $('#alarm').empty();
             $('#alarm').html(data);
-
          }
       });
 
@@ -240,9 +239,6 @@
             <div class="card card-stats">
                <div class="card-header" data-background-color="orange">
                    <i class="material-icons">email</i> 
-                   <span class="btn btn-just-icon btn-round btn-pinterest" style="font-size:15px ; float: ">
-                                                ${sessionScope.totalCount}
-                         </span>
                </div>
                <div class="card-content">
                   <button class="btn btn-reddit btn-round"  data-toggle="modal" id="receiveRoom"
@@ -251,9 +247,7 @@
                         <div class="ripple-container"></div></button>
                </div>
                <div class="card-footer">
-               <!--    <div class="stats">
-                     <i class="material-icons text-danger">warning</i> <a href="#pablo">Get More Space...</a>
-                  </div> -->
+               
                </div>
             </div>
          </div>
@@ -429,7 +423,6 @@
                       
                   </div>
                   <div class="modal-footer text-center" >
-                     <button type="submit" class="btn btn-success btn-simple" >작성</button>
                      <button type="button" class="btn btn-simple" data-dismiss="modal">취소
                         </button>
                      
@@ -529,7 +522,8 @@
                  
                  
                 $("#receiveRoom").click(function() {
-                  selectMsgContentTable(); 
+                  selectMsgContentTable();
+                  deleteTotalMsgCount();
                   
                });
 
@@ -553,6 +547,24 @@
                   });   
                   
                }
+               
+               function deleteTotalMsgCount(){
+                   var sessionId="<%=(String)session.getAttribute("email")%>";
+
+                   $.ajax({ 
+                      type: 'post',
+                      url: '/class_ic/common/alarmCountUpdate.htm',
+                      data:{email:sessionId},
+                      success : function(data){
+                          $('#alarm').html(data);
+                       },
+                        error:function(request, status, error){
+                           alert("가져오기 실패")
+                        } 
+                        
+                   });   
+                   
+                }
                  
                  
         </script>

@@ -35,7 +35,6 @@ public class MainController_Teacher {
 		@RequestMapping(value="main.htm", method=RequestMethod.POST)
 		public ModelAndView student(HttpSession session, String classCode, Model model){
 			
-			System.out.println("2"+classCode);
 			
 			session.setAttribute("classCode", classCode);
 			

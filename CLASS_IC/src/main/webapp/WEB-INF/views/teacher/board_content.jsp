@@ -5,8 +5,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!--에디터 추가부분 -->
-<link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
-
+<%-- <link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" /> --%>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
 <br>
 <br>
 <br>
@@ -253,4 +253,19 @@ function myFunction() {
 
 </div>
 <!--에디터 추가부분 -->
-<script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script> --%>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/lang/summernote-ko-KR.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#content').summernote({
+           dialogsFade: true,
+           height: 600,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true,
+            lang: 'ko-KR',         
+        });
+        
+    });
+  </script>

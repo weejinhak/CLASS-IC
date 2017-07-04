@@ -968,7 +968,7 @@ demo = {
 		});
     },
 
-	showNotification: function(from, align){
+/*	showNotification: function(from, align){
         type = ['','info','success','warning','danger','rose','primary'];
 
         color = Math.floor((Math.random() * 6) + 1);
@@ -985,7 +985,7 @@ demo = {
                 align: align
             }
         });
-	}
+	}*/
 
 }
 

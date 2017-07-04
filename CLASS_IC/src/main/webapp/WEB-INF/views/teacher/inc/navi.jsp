@@ -53,7 +53,7 @@
 
 					<a href="allboard.htm"> <i class="material-icons">dashboard</i>
 
-							<p>통합게시판(테스트용)</p>
+							<p>통합게시판</p>
 					</a>
 				</li>
 
@@ -96,11 +96,11 @@
 				</li>
 
 				
-				<li>
+				<!-- <li>
 					<a href="#"> <i class="material-icons">toys</i>
 							<p>교실상태</p>
 					</a>
-				</li>
+				</li> -->
 			</ul>
 		</div>
       </div>
