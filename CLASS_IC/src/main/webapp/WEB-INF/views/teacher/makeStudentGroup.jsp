@@ -53,7 +53,7 @@
                          </div>
                          
                                <div class="col-md-12 col-md-offset-3"> 
-									    <select multiple size="10" id="from" class="selectName ">
+									    <select multiple size="10" id="from" class="selectName">
 									    </select>
 									 
 									  <div class="controls"> 
