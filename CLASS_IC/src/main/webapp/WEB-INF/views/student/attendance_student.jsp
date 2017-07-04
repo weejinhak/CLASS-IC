@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
- <div class="content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<div class="content">
  	<input type="hidden" value="${sessionScope.classCode }" id="classCode" name="classCode" />
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->

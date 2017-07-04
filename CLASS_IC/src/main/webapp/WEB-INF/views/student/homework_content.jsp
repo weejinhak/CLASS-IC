@@ -37,8 +37,16 @@
                                 			<option disabled="disabled" selected="selected">카테고리 선택</option>
                              			</select>
                          				</div>
-                         					<!-- 제목 -->
-                                            <div class="col-sm-8">
+										<div class="col-sm-3">
+											<!--  셀렉트 박스(조 카테고리 선택) -->
+											<select id="selectTeamList" class="form-control selectTeamList"
+												title="조 선택" name="partyName">
+												<option disabled="disabled" selected="selected" id="op1">조
+													선택</option>
+											</select>
+										</div>
+										<!-- 제목 -->
+                                            <div class="col-sm-6">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
                                                     <input type="text" class="form-control" placeholder="제목을 입력하세요" id="assignTitle" name="assignTitle">
@@ -48,10 +56,10 @@
                                        
                                         <!-- 내용 -->
                                         <div class="row">
-                                        	<div class="col-md-4">
-                                        	<textarea rows="20%" cols="100%" id="assignContent" name="assignContent"></textarea>
+                                        	<div class="col-md-12">
+                                        	<textarea rows="20%" cols="100%" id="assignContent" name="assignContent" class="form-control"></textarea>
                                         	</div>
-                                        </div>
+                                        </div><!-- end row  -->
                                     </div>
                                    </form> 
                                  <!-- 버튼 -->
@@ -77,6 +85,10 @@
 <script type="text/javascript">
 //화면 갱신 시 메인카테고리 출력
 showMainCate();
+
+$("#selectCateList01").change(function(){
+	showTeamList();
+});
 
 //close 버튼 클릭시
 $("#close").click(function() {
@@ -105,7 +117,6 @@ $("#frm").submit(function(event) {
 function showMainCate() {
 	
 		var classCode = "<%=(String)session.getAttribute("classCode")%>";	
-			console.log(email)
 			
 			$.ajax({
 				
@@ -117,7 +128,7 @@ function showMainCate() {
 						
 					$.each(data, function(){
 						$("#selectCateList01").append("<option value='"+this.cateCode+"'>" + this.cateCode + "</option> ");
-                            console.log(this.cateTitle)
+                            console.log(this.cateCode)
 					});
 					
 		   		}, 
@@ -129,6 +140,40 @@ function showMainCate() {
 		   		
 		 });
 } //end showMainCate
+
+//팀명 List
+function showTeamList() {
+	
+	var classCode = "<%=(String)session.getAttribute("classCode")%>";
+	var cateCode = $("#selectCateList01").val();
+			
+			$.ajax({
+				
+				type : "post",
+				url:"selectStudentTeam.htm",
+				data : { "classCode": classCode , "cateCode":cateCode},
+				dataType : 'Json',
+				success : function(data) {
+					
+					 $("#selectTeamList").empty();
+					
+					$.each(data, function(){
+						$("#selectTeamList").append("<option value='"+this.partyName+"'>" + this.partyName + "</option> ");
+                            console.log("partyName: "+this.partyName)
+                           
+					});
+					
+					selectCateCodeList();
+					
+		   		}, 
+		   		
+		   		error:function(request, status, error){
+                    //console.log(error);
+                    alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
+		   		}
+		   		
+		 });
+} //end showTeamList
 
 //function : close버튼 클릭시
 function closeBtn() {

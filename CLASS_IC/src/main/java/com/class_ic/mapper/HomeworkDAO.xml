@@ -47,11 +47,7 @@ where a.classCode=#{classCode} order by field(assignNotice,'true') desc, assignD
 
 <!-- partyName별 출력 : 2017.06.30 위진학-->
 <select id="selectAllByTeacher" parameterType="com.class_ic.vo.HomeworkDTO" resultType="com.class_ic.vo.HomeworkDTO">
-select a.assignNo as assignNo ,a.cateCode as cateCode , a.assignTitle assignTitle, m.name as name, a.assignDate as assignDate
-from 
-groupcategory g inner join assignboard a on g.cateCode=a.cateCode
-inner join member m on m.email = a.email
-where g.partyName=#{partyName} and g.classCode=#{classCode} and g.cateCode=#{cateCode}
+select * from assignboard where classCode=#{classCode}  and cateCode=#{cateCode} and partyName=#{partyName};
 </select>
 
 <!-- 과제게시판 상세보기 / 과제게시판 수정화면 출력: 2017.06.30 박소현 -->
@@ -93,11 +89,7 @@ where a.classCode=#{classCode} order by assignDate desc;
 
 <!-- partyName별 출력 : 학생-->
 <select id="selectAllByStudent" parameterType="com.class_ic.vo.HomeworkDTO" resultType="com.class_ic.vo.HomeworkDTO">
-select a.assignNo as assignNo ,a.cateCode as cateCode , a.assignTitle assignTitle, m.name as name, a.assignDate as assignDate
-from 
-groupcategory g inner join assignboard a on g.cateCode=a.cateCode
-inner join member m on m.email = a.email
-where g.partyName=#{partyName} and g.classCode=#{classCode}
+select * from assignboard where classCode=#{classCode}  and cateCode=#{cateCode} and partyName=#{partyName};
 </select>
 
 <!-- 공지글  등록 : 2017.06.29 최은혜 -->

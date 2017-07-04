@@ -9,6 +9,8 @@ public class StudentGroupDTO {
 	private String groupCode;
 	private String groupName;
 	private String classCode;
+	private String cateCode;
+	private String partyName;
 	
 	public StudentGroupDTO() {}
 
@@ -79,6 +81,24 @@ public class StudentGroupDTO {
 		this.classCode = classCode;
 
 	}
+
+	public String getCateCode() {
+		return cateCode;
+	}
+
+	public void setCateCode(String cateCode) {
+		this.cateCode = cateCode;
+	}
+
+	public String getPartyName() {
+		return partyName;
+	}
+
+	public void setPartyName(String partyName) {
+		this.partyName = partyName;
+	}
+	
+	
 	
 	
 	

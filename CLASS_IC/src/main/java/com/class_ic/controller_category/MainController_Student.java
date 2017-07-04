@@ -62,8 +62,15 @@ public class MainController_Student {
    @RequestMapping(value = "calendar.htm", method = RequestMethod.GET)
    public String calendar() {
 
-      return "student.calendar";
-   }
+		return "student.calendar";
+	}
+	//학생부 게시판 이동
+	@RequestMapping(value = "studentList_student.htm", method = RequestMethod.GET)
+	public String selectStudent() {
+
+		return "student.attendance_student";
+	}
+
 
    // 출석 데이터 테이블
    @RequestMapping("attend.htm")

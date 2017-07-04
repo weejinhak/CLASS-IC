@@ -70,7 +70,7 @@
 				</li>
 				
 				<li>
-					<a href="groupEdit.htm"><i class="material-icons">account_box</i>
+					<a href="makeGroup.htm"><i class="material-icons">account_box</i>
 							<p>조편성</p>
 					</a>
 				</li>

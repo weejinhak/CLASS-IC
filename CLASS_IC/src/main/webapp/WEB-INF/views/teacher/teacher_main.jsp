@@ -31,8 +31,9 @@
 					</div>
 					<div class="card-footer">
 						<div class="stats" style="color: black;">
+
 							<h5>${list.classTitle}</h5> 
-						
+
 
 						</div>
 					</div>
@@ -54,15 +55,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
+			<div class="col-lg-2 col-md-6 col-sm-6">
 				<div class="card card-stats">
 					<div class="card-header" data-background-color="green">
 						<i class="material-icons">people</i>
 					</div>
 					<div class="card-content">
 						<p class="category">수강인원</p>
-						<%-- <h3 class="card-title">${membercount}명</h3> --%>
-						<h3 class="card-title">${membercount}명</h3>
+						<h4 class="card-title">${membercount}명</h4>
 					</div>
 					<div class="card-footer">
 						<div class="stats">
@@ -71,7 +71,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
+			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="card card-stats">
 					<div class="card-header" data-background-color="blue">
 						<i class="fa fa-clock-o"></i>
