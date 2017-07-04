@@ -448,7 +448,7 @@ public class BoardListService {
 	         bdao.deleteLink(Integer.parseInt(array[i]));
 
 	      }
-	      return "redirect:linkfile.htm";
+	      return "redirect:linkFile.htm";
 
 	   }
 
@@ -479,7 +479,7 @@ public class BoardListService {
 	      BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
 	      dao.linkboardEditOk(dto);
 
-	      return "redirect:linkfile.htm";
+	      return "redirect:linkFile.htm";
 	   }
 	   
 	   
