@@ -13,7 +13,7 @@
       <div class="row">
          <div class="col-md-8 col-md-offset-2">
             <h2 class="title text-center">
-               <b>Spring</b>
+               <b>오늘의 강의 목록</b>
             </h2>
             <br>
 
@@ -29,10 +29,10 @@
 
 
                   <!-- 여기두 섭카테에 따라서.. 바뀌게..포문  -->
-                  <li class="active"><a href="#description-1" role="tab"
+              <!--     <li class="active"><a href="#description-1" role="tab"
                      data-toggle="tab" aria-expanded="false"> <i
-                        class="material-icons">reorder</i> 자바
-                  </a></li>
+                        class="material-icons">reorder</i> 
+                  </a></li> -->
 
 
 
