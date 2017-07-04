@@ -26,7 +26,7 @@ import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping(value="teacher", method=RequestMethod.POST)
-public class CalendarController {
+public class CalendarController_Teacher {
    
    @Autowired
    private SqlSession sqlSession;
