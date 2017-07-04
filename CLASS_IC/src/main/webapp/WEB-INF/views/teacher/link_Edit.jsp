@@ -62,7 +62,7 @@
          
          
             <button type="button" rel="tooltip" class="btn btn-info btn-round"
-               id="list" name="list" onclick="location.href='linkfile.htm' ">
+               id="list" name="list" onclick="location.href='linkFile.htm' ">
                <i class="material-icons">list</i>
             </button>
 
@@ -115,7 +115,7 @@ function editOk(){
                 buttonsStyling: false
                 }).then(function() {
                
-                   location.href="linkfile.htm"
+                   location.href="linkFile.htm"
             })
 
         },

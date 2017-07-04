@@ -304,10 +304,10 @@ var data="";
     		
     	
     	}
-      alert(data);
+//       alert(data);
 
 
-   		alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
+//    		alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
    		//ajax 로  보낼데이터를 배열형태로 허용해준당 
    		jQuery.ajaxSettings.traditional = true;
 
@@ -318,10 +318,10 @@ var data="";
    	        dataType: 'text',
         
    	     success: function() {
-             alert('good');
+             alert('오늘의 수업이 담겨졌습니다 ');
           },
           error: function() {
-             alert('bad');
+             alert('오늘의 수업이 안 담겨졌네요 다시 담아주세요');
           } 
    	    });
    

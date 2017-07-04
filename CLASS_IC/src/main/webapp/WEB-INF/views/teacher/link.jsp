@@ -265,7 +265,7 @@ var data="";
                 buttonsStyling: false
                 }).then(function() {
                
-                   location.href="linkfile.htm"
+                   location.href="linkFile.htm"
             })
                 
     

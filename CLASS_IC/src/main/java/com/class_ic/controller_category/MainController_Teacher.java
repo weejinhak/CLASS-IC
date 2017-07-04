@@ -126,7 +126,7 @@ public class MainController_Teacher {
         boardlistservice.linkInsert(request) ;
       
         
-        return "redirect:linkfile.htm";
+        return "redirect:linkFile.htm";
        
     }
     
