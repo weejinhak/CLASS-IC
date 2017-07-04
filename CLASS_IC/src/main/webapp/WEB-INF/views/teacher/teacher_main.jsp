@@ -18,7 +18,7 @@
 <div class="content">
 	<div class="container-fluid">
 		<!-- 내용물  contents  -->
-		<c:set var="main" value="${list}" />
+	
 		<div class="row">
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="card card-stats">
@@ -31,8 +31,8 @@
 					</div>
 					<div class="card-footer">
 						<div class="stats" style="color: black;">
-							<%-- <h5>${main.classTitle}</h5> --%>
-							<h5>자바</h5>
+							<h5>${list.classTitle}</h5> 
+						
 
 						</div>
 					</div>

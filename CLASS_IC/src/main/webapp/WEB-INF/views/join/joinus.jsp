@@ -289,7 +289,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
    // #uid, #upw 다음 순서에 경고 텍스트 출력을 위한 빈 strong 요소를 추가한다
    // 무턱대고 자바스크립트를 이용해서 HTML 삽입하는 것은 좋지 않은 버릇
    // 그러나 이 경우는 strong 요소가 없어도 누구나 form 핵심 기능을 이용할 수 있으니까 문제 없다
-   $('#uid, #pwd_st ,#pwdconfirm_st, #email_st, #phone_st').after('<strong style="color:#CC3D3D;FONT-SIZE:15px"></strong>');
+   $('#uid, #pwd_st ,#pwdconfirm_st, #email_st, #phone_st').after('<strong style="color:#CC3D3D;FONT-SIZE:5px"></strong>');
    
    email_st.keyup(function(){
       var s = $(this).next('strong');
@@ -297,10 +297,10 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
          s.text('');
       }// strong 요소에 포함된 문자 지움
       else if( re_mail.test(email_st.val()) != true ){ // 유효하지 않은 문자 입력 시
-         s.text('※Caution!, 이메일형식에 일치하지 않습니다.');
+         s.text('이메일형식에 일치하지 않습니다.');
       
       }else if( re_mail.test(email_st.val()) == true ){
-         s.text('이메일형식에 적합 합니다.');
+         
       }
    });
    // #uid 인풋에서 onkeyup 이벤트가 발생하면
@@ -344,7 +344,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 	      }
 	   });
    
-   // #tel 인풋에 onkeydown 이벤트가 발생하면
+/*    // #tel 인풋에 onkeydown 이벤트가 발생하면
    // 하이픈(-) 키가 눌렸는지 확인
    // 하이픈(-) 키가 눌렸다면 입력 중단
    phone_st.keyup( function() {
@@ -360,7 +360,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
          s.text('correct!');
       }
       
-      });
+      }); */
    
    //FROM2
    ///////////////////////////////////////////////////////////
@@ -392,24 +392,24 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
    // #uid, #upw 다음 순서에 경고 텍스트 출력을 위한 빈 strong 요소를 추가한다
    // 무턱대고 자바스크립트를 이용해서 HTML 삽입하는 것은 좋지 않은 버릇
    // 그러나 이 경우는 strong 요소가 없어도 누구나 form 핵심 기능을 이용할 수 있으니까 문제 없다
-   $('#uid2, #pwd_te ,#pwdconfirm_te, #email_te, #phone_te').after('<strong style="color:#CC3D3D";FONT-SIZE:15px"></strong>');
+   $('#uid2, #pwd_te ,#pwdconfirm_te, #email_te, #phone_te').after('<font size=1></font>');
    
-   
+ 
    email_te.keyup(function(){
-      var s = $(this).next('strong');
+      var s = $(this).next('font');
       if (email_te.val().length == 0) { // 입력 값이 없을 때
          s.text('');
       }// strong 요소에 포함된 문자 지움
       else if( re_mail.test(email_te.val()) != true ){ // 유효하지 않은 문자 입력 시
-         s.text('※Caution!, 이메일형식에 일치하지 않습니다.');
+         s.html('<br>이메일형식에 일치하지 않습니다.');
       
       }else if( re_mail.test(email_te.val()) == true ){
-         s.text('이메일형식에 적합 합니다.');
+         
       }
    });
    // #uid 인풋에서 onkeyup 이벤트가 발생하면
    uid2.keyup( function() {
-      var s = $(this).next('strong'); // strong 요소를 변수에 할당
+      var s = $(this).next('font'); // strong 요소를 변수에 할당
       if (uid2.val().length == 0) { // 입력 값이 없을 때
          s.text(''); // strong 요소에 포함된 문자 지움
       } else if (uid2.val().length < 3) { // 입력 값이 3보다 작을 때
@@ -422,10 +422,10 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
          s.text('correct!'); // strong 요소에 문자 출력
       }
    });
-   
+/*    
    // #upw 인풋에서 onkeyup 이벤트가 발생하면
    pwd_te.keyup( function() {
-      var s = $(this).next('strong'); // strong 요소를 변수에 할당
+      var s = $(this).next('font'); // strong 요소를 변수에 할당
       if (pwd_te.val().length == 0) { // 입력 값이 없을 때
          s.text(''); // strong 요소에 포함된 문자 지움
       } else if (pwd_te.val().length < 6) { // 입력 값이 6보다 작을 때
@@ -436,9 +436,9 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
          s.text('Correct! 적합합니다.'); // strong 요소에 문자 출력
       }
    });
-   
+    */
    pwdconfirm_te.keyup( function() {
-	      var s = $(this).next('strong'); // strong 요소를 변수에 할당
+	      var s = $(this).next('font'); // strong 요소를 변수에 할당
 	      if (pwdconfirm_te.val().length == 0) { // 입력 값이 없을 때
 	         s.text(''); // strong 요소에 포함된 문자 지움
 	      }else if (pwdconfirm_te.val()==pwd_te.val()){
@@ -454,7 +454,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 
    phone_te.keyup( function() {
       
-      var s = $(this).next('strong');
+      var s = $(this).next('font');
       if (phone_te.val().length == 0) { // 입력 값이 없을 때
          s.text('');
       }// strong 요소에 포함된 문자 지움
