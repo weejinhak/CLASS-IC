@@ -72,14 +72,14 @@ $().ready(function() {
                         color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                     -->
                        <c:forEach var="SubCategoryDTO" items="${sublist}">
-               <li class=""><a href="#description-1" role="tab"
+               <li class="active"><a href="#description-1" role="tab"
                   data-toggle="tab" aria-expanded="false" class="clicksub" id="${SubCategoryDTO.subcateCode}" > 
                   
                   <i class="material-icons">reorder</i> ${SubCategoryDTO.subcateCode}
                </a></li>
                   </c:forEach>
           
-               <li class="active"><a href="#description-2" role="tab"
+               <li class=""><a href="#description-2" role="tab"
                   data-toggle="tab" aria-expanded="false" > <!--                                            <i class="material-icons">exposure_plus_1</i> -->
                      <button class="btn btn-raised btn-round btn-white"
                         id="add">+</button>
@@ -88,12 +88,25 @@ $().ready(function() {
              
                </li>
             </ul>
+               <div class="tab-content">
+               <div class="tab-pane active" id="description-1">     <div class="card">
             <div id="selectdatatable">
    </div>
-         </div>
+   </div></div>
+         </div></div>
 
    
    </div>
 
    
    </div>
+   
+    <script>
+            function confirmGo(m,u) {
+                if ( confirm(m) ) {
+                    window.location = u;
+                }
+            }
+        </script>
+ 
+ 
