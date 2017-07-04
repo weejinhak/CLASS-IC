@@ -29,7 +29,7 @@ import net.sf.json.JSONObject;
 public class CalendarController_Student {
    
    @Autowired
-   private SqlSession sqlSession;
+   private SqlSession sqlSession; 
 
    /*
    @description : 일정 입력에서의 값들을 받아와 DB에 저장
