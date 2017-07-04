@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.class_ic.service.StudentListService;
+import com.class_ic.service.StudentListService_student;
 import com.class_ic.vo.AttandanceDTO;
-import com.class_ic.vo.StudentGroupDTO;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 
 @Controller
-@RequestMapping("teacher")
-public class StudentListController {
+@RequestMapping("student")
+public class StudentListController_student {
 	
 	@Autowired
-	private StudentListService studentListService;
+	private StudentListService_student studentListService;
 	
 	@RequestMapping(value="selectStudent.htm", method=RequestMethod.POST)
 	public void studentList(String classCode,HttpServletResponse response) throws IOException {
@@ -65,39 +65,16 @@ public class StudentListController {
 		String partyName = request.getParameter("partyName");
 		String classCode = request.getParameter("classCode");
 		String name = request.getParameter("selected");
-	
-		//String[] nameArr = name.split(",");
+		
+		String[] nameArr = name.split(",");
 		// " , " 구분된 문자열 분해
 		
 		System.out.println("StudentListController 들어왓당");
 		
-		for(int  i=0; i< name.length()/3; i++){
-		String nameArr =name.substring(name.length()-3, name.length());
 		studentListService.insertTeamStudent(cateCode,partyName,classCode,nameArr);
-		}
 		
 		return "redirect:makeGroup.htm";
 		
 	}
-	
-	@RequestMapping(value="selectStudentTeam.htm", method=RequestMethod.POST)
-	public void studentTeamList(String classCode,String cateCode,String partyName,HttpServletResponse response) throws IOException {
-		
-		List<StudentGroupDTO> studentList = studentListService.selectStudentList(classCode, cateCode, partyName);
-		
-		JSONArray array = new JSONArray();
-		
-		for(int i=0;i<studentList.size();i++){
-			JSONObject obj = new JSONObject();
-			obj.put("name", studentList.get(i).getName());
-			array.add(obj);
-			
-		}
-		
-		response.getWriter().println(array);
-		
-	}
-	
-	
 
 }

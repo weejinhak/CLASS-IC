@@ -59,7 +59,7 @@
 		//메인카테고리
 			function showMainCate() {
 				
-				var classCode = sessionClassCode;	
+				var classCode = "<%=(String)session.getAttribute("classCode")%>";	
 						
 						$.ajax({
 							
@@ -87,7 +87,7 @@
 		//팀명 List
 		function showTeamList() {
 			
-			var classCode = sessionClassCode;
+			var classCode = "<%=(String)session.getAttribute("classCode")%>";
 			var cateCode = $("#selectCateList02").val();
 					
 					$.ajax({
@@ -121,8 +121,8 @@
 		//과제게시판 전체 출력
 		function selectAllList() {
 			
-			var email = sessionId;
-			var classCode = sessionClassCode;
+			var email = "<%=(String)session.getAttribute("email")%>";
+			var classCode = "<%=(String)session.getAttribute("classCode")%>";
 			
 			$.ajax({
 				
@@ -154,14 +154,17 @@
 		  function selectCateCodeList() {
 
 				     var partyName=$('#selectTeamList').val();
-
+					 var classCode = "<%=(String)session.getAttribute("classCode")%>";
+					 var cateCode = $("#selectCateList02").val();
+					 
 				     $.ajax({
 				    	 type : "post",
 				        url:'homeworkSelectList.htm',
 				        data:{
 				         
-				           classcode:sessionClassCode,
-				           partyName:partyName
+				           classCode:classCode,
+				           partyName:partyName,
+				           cateCode : cateCode
 				        },
 				        dataType:'html',
 				        success:function(data){

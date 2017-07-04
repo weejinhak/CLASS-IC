@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.class_ic.service.HomeworkService_student;
+import com.class_ic.service.HomeworkService;
+import com.class_ic.service.StudentListService;
 import com.class_ic.vo.HomeworkDTO;
 
 import net.sf.json.JSONArray;
@@ -30,7 +31,7 @@ import net.sf.json.JSONObject;
 public class HomeworkController_Student {
 	
 	@Autowired
-	private HomeworkService_student student;
+	private HomeworkService homeworkService;
 
 	//과제 게시판 메인 카테고리 출력 : 2017.06.27 최은혜
 	@RequestMapping(value="selectMainCate.htm", method=RequestMethod.POST)
@@ -38,7 +39,7 @@ public class HomeworkController_Student {
 		
 		System.out.println("Homework controller_student email: "+ classCode);
 		
-		List<HomeworkDTO> cateList = student.studentMainCate(classCode);
+		List<HomeworkDTO> cateList = homeworkService.studentMainCate(classCode);
 		
 		JSONArray array = new JSONArray();
 		for(int i=0;i<cateList.size();i++){
@@ -59,7 +60,7 @@ public class HomeworkController_Student {
 			System.out.println("selectStudentTeam.htm controller 들어옴");
 			
 
-			List<HomeworkDTO> teamList = student.studentTeamService(classCode, cateCode);
+			List<HomeworkDTO> teamList = homeworkService.studentTeamService(classCode, cateCode);
 			
 			JSONArray array = new JSONArray();
 			for(int i=0;i<teamList.size();i++){
@@ -89,7 +90,7 @@ public class HomeworkController_Student {
 			
 			System.out.println(email +"/"+classCode+"/"+cateCode+"/"+assignNotice+"/"+assignTitle+"/"+assignContent+"/"+partyName);
 			
-			student.addHomeworkService(email,classCode,cateCode,assignNotice,assignTitle,assignContent,partyName);
+			homeworkService.addHomeworkService(email,classCode,cateCode,assignNotice,assignTitle,assignContent,partyName);
 			
 			return "redirect:homework.htm";
 		}
@@ -107,7 +108,7 @@ public class HomeworkController_Student {
 			
 			System.out.println("Homework controller_Student classCode: "+ classCode);
 			
-			List<HomeworkDTO> AllList = student.selectAllStudent(dto);
+			List<HomeworkDTO> AllList = homeworkService.selectAllStudent(dto);
 			
 			model.addAttribute("homeworkselectlist", AllList);
 			
@@ -122,7 +123,7 @@ public class HomeworkController_Student {
 	         System.out.println(request.getParameter("partyName"));//select태그에서 선택된 서브카테고리
 	         System.out.println(session.getAttribute("classCode"));//세션으로 가지고 다니는 classCode
 	         
-	         List<HomeworkDTO> AllList = student.homeworkSelectListStudent(session,request,model);
+	         List<HomeworkDTO> AllList = homeworkService.homeworkSelectListStudent(session,request,model);
 	         
 	         model.addAttribute("homeworkselectlist", AllList);
 	         
@@ -134,15 +135,15 @@ public class HomeworkController_Student {
 	      @RequestMapping(value="homeworkContent.htm", method=RequestMethod.GET)
 	      public ModelAndView homeworkContent(HttpServletRequest request, HttpServletResponse response,HomeworkDTO dto){
 	         System.out.println("*************상세보기 컨트롤********************88");
-	         ModelAndView viewpage =student.homeworkContent(request, response, dto);
+	         ModelAndView viewpage =homeworkService.homeworkContent(request, response, dto);
 	               
 	         return viewpage;
 	      }
 	      
-	      //과제게시판 수정화면 출력 : 2017.07.01 박소현
+	     //과제게시판 수정화면 출력 : 2017.07.01 박소현
 	      @RequestMapping(value="homeworkEdit.htm",  method=RequestMethod.GET)
 	      public ModelAndView homeworkEdit(HttpServletRequest request, HttpServletResponse response,HomeworkDTO dto){
-	            ModelAndView viewpage = student.homeworkEdit(request, response, dto);
+	            ModelAndView viewpage = homeworkService.homeworkEdit(request, response, dto);
 	         
 	         return viewpage;
 	      }
@@ -150,7 +151,7 @@ public class HomeworkController_Student {
 	      //과제게시판 수정한 데이터 DB저장 : 2017.07.01 박소현
 	      @RequestMapping(value="homeworkEdit.htm",  method=RequestMethod.POST)
 	      public String homeworkEditOk(HomeworkDTO dto){
-	    	  student.homeworkEditOk(dto);
+	         homeworkService.homeworkEditOk(dto);
 	      
 	         return "redirect:homework.htm";
 	      }
@@ -159,7 +160,7 @@ public class HomeworkController_Student {
 	      @RequestMapping(value="homeworkDelete.htm")
 	      public String homeworkDelete(HttpServletRequest request, HttpServletResponse response){
 	        
-	    	  student.homeworkDelete(request, response);
+	    	homeworkService.homeworkDelete(request, response);
 	         
 	          return "redirect:homework.htm";
 	      }

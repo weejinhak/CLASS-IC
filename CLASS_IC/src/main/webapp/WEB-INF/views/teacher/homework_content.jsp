@@ -29,40 +29,46 @@
                                     </div>
                                     <div class="card-content">
                                     	
-                                        <div class="row">
                                         
+                                        <div class="col-md-12">
+                                        <div class="row">
                                         <!-- 카테고리 select box -->
+                                        
                                          <div class="col-sm-3">
 					         			<select  id="selectCateList01" class="form-control selectCateList" title="메인 카테고리 선택해주세요"  name="cateCode">
                                 			<option disabled="disabled" selected="selected">카테고리 선택</option>
                              			</select>
-                         				</div>
+                         				</div><!--  end col-md-2 -->
+                         				
                          					<!-- 제목 -->
                                             <div class="col-sm-8">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
                                                     <input type="text" class="form-control" placeholder="제목을 입력하세요" id="assignTitle" name="assignTitle">
                                                 </div>
-                                            </div>
+                                            </div><!--  end col-md-8 -->
                                             
                                             <!-- 체크박스 -->
                                                 <div class="checkbox checkbox-inline">
                                                     <label>
                                                         <input type="checkbox" name="assignNotice" id="assignNotice" value="true">공지
                                                     </label>
-                                                </div>
-                                        </div>
+                                                </div><!--  end checkbox  -->
+                                            </div><!-- end row  -->   
+                                        
                                        
                                         <!-- 내용 -->
                                         <div class="row">
-                                        	<div class="col-md-4">
-                                        	<textarea rows="20%" cols="100%" id="assignContent" name="assignContent"></textarea>
+                                        	<div class="col-md-12">
+                                        	<textarea rows="20%" cols="100%" id="assignContent" name="assignContent" class="form-control"></textarea>
                                         	</div>
-                                        </div>
-                                    </div>
+                                        </div><!-- end row  -->
+                                       </div><!-- end col-12 -->
+                                   	</div><!-- end card-content -->
                                    </form> 
                                  <!-- 버튼 -->
                                         <div class="row">
+                                        	<div class="col-md-12">
                                         	<div class="td-actions text-center">
 												<button type="button" rel="tooltip"
 													class="btn btn-success btn-round" id="save" name="save">
@@ -72,7 +78,7 @@
 													<i class="material-icons" id="close" name="close">close</i>
 												</button>
 											</div>
-                                        	
+                                        	</div>
                                         </div>
                             </div>
                         </div>
