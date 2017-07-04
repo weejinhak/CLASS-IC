@@ -117,7 +117,7 @@ public class HomeworkService {
 	///////////////////////////////////////////////학생 
 	    //student 메인 카테고리 출력
 			public List<HomeworkDTO> studentMainCate(String classCode) {
-				System.out.println("Homework Service_Student email : "+ classCode);
+				System.out.println("Homework Service_Student classCode : "+ classCode);
 				
 				HomeworkDAO dao = sqlsession.getMapper(HomeworkDAO.class);
 				List<HomeworkDTO> cateList = dao.studentMainCate(classCode);
