@@ -31,8 +31,8 @@
 					</div>
 					<div class="card-footer">
 						<div class="stats" style="color: black;">
-							<%-- <h5>${main.classTitle}</h5> --%>
-							<h5>자바</h5>
+							 <h5>${list.classTitle}</h5> 
+							
 
 						</div>
 					</div>
