@@ -35,10 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-	<!-- 알림 삭제 -->
-	<delete id="deleteAlarm" parameterType="com.class_ic.vo.All_Alarm_DTO">
-		delete total_count from totalcount where ename=#{user_id}
-	</delete>
-
+	<!-- Count Update -->
+	<update id="updateAlarmCount" parameterType="String">
+	  update messagereceive set readState=0 where emailR=#{param1} and readState=1;
+	</update>
 
 </mapper>

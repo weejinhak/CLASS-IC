@@ -66,20 +66,21 @@ public class MemberService_Web {
 			}
 			System.out.println("비밀번호 일치");
 		}else{
-			mv.setViewName("join/login");
+			mv.setViewName("common/main");
 			System.out.println("비밀번호 확인 실패");
 		}
 		return mv;
 	}
 	
 	//for update (get member info)
-	public MemberDTO getMemberInfo(HttpSession session){
-		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
-		String email = (String) session.getAttribute("email");
-		MemberDTO getMember = member_dao.selectOne(email);		
-		
-		return getMember;
-	}
+	   public MemberDTO getMemberInfo(HttpSession session){
+	      MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+	      String email = (String) session.getAttribute("email");
+	      System.out.println("세션은 잘 가져왔나: " +email);
+	      MemberDTO getMember_photo = member_dao.selectOne(email);      
+	      System.out.println(getMember_photo.getPhotoSrc()+"사진 경로 값 가져옴");
+	      return getMember_photo;
+	   }
 	
 	//for update (edit info)
 		public MemberDTO editMemberInfo(HttpSession session, MemberDTO member){

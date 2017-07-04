@@ -1,8 +1,6 @@
 package com.class_ic.controller_category;
 
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,29 +14,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service.BoardListService;
-import com.class_ic.service.HomeworkService;
 import com.class_ic.service_category.MainService_Teacher;
-import com.class_ic.vo.ClassDTO;
 import com.class_ic.vo.LectureBoardDTO;
 
 @Controller
 @RequestMapping("teacher")
 public class MainController_Teacher {
-	   @Autowired
+
+
+	@Autowired	
+	private MainService_Teacher mainteacherservice;	   
+	@Autowired
 	   private BoardListService boardlistservice;
 	   
 	   
-	      @Autowired
-	      private SqlSession sqlsession;
-
-	@Autowired	
-	private MainService_Teacher mainteacherservice;
+    @Autowired
+    private SqlSession sqlsession;
 
 	//teacher main POST
 		@RequestMapping(value="main.htm", method=RequestMethod.POST)
 		public ModelAndView student(HttpSession session, String classCode, Model model){
 			
-			System.out.println("2"+classCode);
 			
 			session.setAttribute("classCode", classCode);
 			
