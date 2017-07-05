@@ -165,55 +165,55 @@ public class CalendarController_Teacher {
    
    @RequestMapping(value="todayclass.htm", method=RequestMethod.POST)
    public void CalendarTodayClass(HttpServletRequest request, 
-		   HttpServletResponse response
-		   ) throws IOException{
-	  
-	   JSONArray todatlist = new JSONArray();
-	   CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);   
-	   String cdate=request.getParameter("clickdate");
-	   System.out.println(cdate);
-	   
-	   String cday=cdate.substring(8,10);
-	   String cmonth=cdate.substring(4,7);
-	   String cyear=cdate.substring(11,15);
-	
-	 
-	   String clickdate="";
-	   String[] monthlist={"Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-	   for(int i=0;i<monthlist.length;i++){
-		
-		   if(cmonth.equals(monthlist[i])){
-		   	   cmonth=String.valueOf(i+1);
-			   System.out.println(i+1);
-			   
-		   }
-		   
-	   }
-	 
-	   cmonth='0'+cmonth;
-	 
-	 clickdate = cyear + "-" + cmonth+"-" + cday;
-			   
-	 System.out.println(clickdate);
-	 
-	 ArrayList<TodayLectureVO> todaylist=calendardao.CalendarTodayClass(clickdate);
+         HttpServletResponse response
+         ) throws IOException{
+     
+      JSONArray todatlist = new JSONArray();
+      CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);   
+      String cdate=request.getParameter("clickdate");
+      System.out.println(cdate);
+      
+      String cday=cdate.substring(8,10);
+      String cmonth=cdate.substring(4,7);
+      String cyear=cdate.substring(11,15);
+   
+    
+      String clickdate="";
+      String[] monthlist={"Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+      for(int i=0;i<monthlist.length;i++){
+      
+         if(cmonth.equals(monthlist[i])){
+               cmonth=String.valueOf(i+1);
+            System.out.println(i+1);
+            
+         }
+         
+      }
+    
+      cmonth='0'+cmonth;
+    
+    clickdate = cyear + "-" + cmonth+"-" + cday;
+            
+    System.out.println(clickdate);
+    
+    ArrayList<TodayLectureVO> todaylist=calendardao.CalendarTodayClass(clickdate);
      JSONArray array= new JSONArray();
-	 for(TodayLectureVO value: todaylist){
-		 JSONObject obj = new JSONObject();
-		 System.out.println("***********************");
-		 System.out.println(value.getLectureNo());
-		 System.out.println(value.getLectureTitle());
-		 System.out.println("***********************");
-	       obj.put("todayTitle", value.getLectureTitle());
-	       obj.put("lectureNum", value.getLectureNo());
-	       array.add(obj);
-	 }
+    for(TodayLectureVO value: todaylist){
+       JSONObject obj = new JSONObject();
+       System.out.println("***********************");
+       System.out.println(value.getLectureNo());
+       System.out.println(value.getLectureTitle());
+       System.out.println("***********************");
+          obj.put("todayTitle", value.getLectureTitle());
+          obj.put("lectureNum", value.getLectureNo());
+          array.add(obj);
+    }
 
 
-	   System.out.println("todayclass.htm 경로");
-	   
-	   response.getWriter().print(array);
-	   
+      System.out.println("todayclass.htm 경로");
+      
+      response.getWriter().print(array);
+      
          }
       
    /*

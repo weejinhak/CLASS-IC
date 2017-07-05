@@ -62,18 +62,7 @@
 							<p>과제게시판</p>
 					</a>
 				</li>
-				
-				<li>
-					<a href="studentList.htm"><i class="material-icons">account_box</i>
-							<p>학생부</p>
-					</a>
-				</li>
-				
-				<li>
-					<a href="makeGroup.htm"><i class="material-icons">account_box</i>
-							<p>조편성</p>
-					</a>
-				</li>
+			
 				
 				<li>
 					<a href="attend.htm"><i class="material-icons">account_box</i>

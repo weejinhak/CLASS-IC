@@ -21,7 +21,7 @@ public class MainService_Teacher {
 	public ModelAndView selectMain(HttpSession session){
 		TeacherMainDAO dao = sqlsession.getMapper(TeacherMainDAO.class);
 
-		ClassDTO mainlist = dao.teacherMain((String)session.getAttribute("email"));
+		ClassDTO mainlist = dao.teacherMain((String)session.getAttribute("email"),(String)session.getAttribute("classCode"));
 		int mainmembercount=dao.memberCountByTeacher((String)session.getAttribute("email"));
 		System.out.println("3"+(String)session.getAttribute("email"));
 		

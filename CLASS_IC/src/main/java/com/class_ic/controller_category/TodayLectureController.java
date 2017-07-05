@@ -94,8 +94,7 @@ public class TodayLectureController{
        System.out.println(array.length);
 
        for(int i=0;i<array.length;i++){
-          System.out.println(array[i]);
-          
+          System.out.println(array[i]);          
           
           bdao.insertTodayLect(Integer.parseInt(array[i]));
           

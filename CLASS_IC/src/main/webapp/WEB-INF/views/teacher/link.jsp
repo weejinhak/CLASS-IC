@@ -93,14 +93,14 @@
                                   <!--  넣어주기 끝-->   
                       
                                      <div align="right">
-                  <button class="btn btn-danger" data-toggle="modal"
+                  <button class="btn btn-info btn-round" data-toggle="modal"
                      data-target="#noticeModal">
                      <span class="btn-label"> <i class="material-icons">check</i>
                      </span>링크 추가
                   </button>
                   
                         <button type="button" id="submitFrm"
-                     class="btn btn-info btn-round" style="margin-left: 20px;"
+                     class="btn btn-danger btn-round" style="margin-left: 20px;"
                      onclick="multi_del()">
                      <i class="material-icons">clear</i>체크 삭제
                   </button>

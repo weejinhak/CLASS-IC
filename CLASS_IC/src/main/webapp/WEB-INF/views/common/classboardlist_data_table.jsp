@@ -93,12 +93,12 @@
                   </button>
                   
                   
-                  		                     			
-							<button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px" onclick="multi_storage()">수업 담기</button>
-					                  			
-					                  			<a href="todayLectureList.htm">
-							<button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px">담은 수업 보기</button>
-												</a>
+                                                      
+           <!--           <button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px" onclick="multi_storage()">수업 담기</button>
+                                          
+                                          <a href="todayLectureList.htm">
+                     <button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px">담은 수업 보기</button>
+                                    </a> -->
                </div>
             </div>
             <!-- end content-->
@@ -258,72 +258,72 @@ var data="";
    function multi_storage()
    {
 
-   	var cnt2 = $("input[name='multy[]']:checked").length;
+      var cnt2 = $("input[name='multy[]']:checked").length;
 
-   	if(cnt2 < 1){
-   		alert(" 게시물을 선택하여 주세요");
-   		return;
-   	}
-   	
-   	var chk = document.getElementsByName("multy[]");
-   	var len = chk.length;    //체크박스의 전체 개수 
-//    	var checkRow = '';      //체크된 체크박스의 value를 담기위한 변수 
-   	var checkCnt = 0;        //체크된 체크박스의 개수 
-   	var checkLast = '';      //체크된 체크박스 중 마지막 체크박스의 인덱스를 담기위한 변수  
-   	var cnt = 0;    
-   	var rowid = new Array();   //체크된 체크박스의 모든 value 값을 담는다 
+      if(cnt2 < 1){
+         alert(" 게시물을 선택하여 주세요");
+         return;
+      }
+      
+      var chk = document.getElementsByName("multy[]");
+      var len = chk.length;    //체크박스의 전체 개수 
+//       var checkRow = '';      //체크된 체크박스의 value를 담기위한 변수 
+      var checkCnt = 0;        //체크된 체크박스의 개수 
+      var checkLast = '';      //체크된 체크박스 중 마지막 체크박스의 인덱스를 담기위한 변수  
+      var cnt = 0;    
+      var rowid = new Array();   //체크된 체크박스의 모든 value 값을 담는다 
 
-   	for(var i=0; i<len; i++){
+      for(var i=0; i<len; i++){
 
-   		if(chk[i].checked == true){ 
-   		checkCnt++;        //체크된 체크박스의 개수 
-   		checkLast = i;     //체크된 체크박스의 인덱스 
-   		} 
-   		}  
-   	  
+         if(chk[i].checked == true){ 
+         checkCnt++;        //체크된 체크박스의 개수 
+         checkLast = i;     //체크된 체크박스의 인덱스 
+         } 
+         }  
+        
       var count=0;
-  	for(var i=0; i<len; i++){ 
-  	if(chk[i].checked == true){  //체크가 되어있는 값 구분  
+     for(var i=0; i<len; i++){ 
+     if(chk[i].checked == true){  //체크가 되어있는 값 구분  
       rowid.push(chk[i].value); 
-  	count++;
-  	}
+     count++;
+     }
 
-  	}
-  	
-  	var data="";
-    	for(var i=0;i<count;i++){
-    		if(i==count-1){
-  	     data+= rowid[i];
-  	    
-    		}else{
-    			
-    		   data+= rowid[i]+",";
-    	  
-    		}	
-    		
-    		
-    	
-    	}
+     }
+     
+     var data="";
+       for(var i=0;i<count;i++){
+          if(i==count-1){
+          data+= rowid[i];
+         
+          }else{
+             
+             data+= rowid[i]+",";
+         
+          }   
+          
+          
+       
+       }
 //       alert(data);
 
 
-//    		alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
-   		//ajax 로  보낼데이터를 배열형태로 허용해준당 
-   		jQuery.ajaxSettings.traditional = true;
+//          alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
+         //ajax 로  보낼데이터를 배열형태로 허용해준당 
+         jQuery.ajaxSettings.traditional = true;
 
-   		 $.ajax({
-   	        type: 'POST',
-   	        url: 'multi_storage.htm',
-   	        data: { data: data } ,
-   	        dataType: 'text',
+          $.ajax({
+              type: 'POST',
+              url: 'multi_storage.htm',
+              data: { data: data } ,
+              dataType: 'text',
         
-   	     success: function() {
+           success: function() {
              alert('오늘의 수업이 담겨졌습니다 ');
           },
           error: function() {
              alert('오늘의 수업이 안 담겨졌네요 다시 담아주세요');
           } 
-   	    });
+          });
    
    
    

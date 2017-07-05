@@ -32,7 +32,7 @@
      //alert(sessionClassCode + " / " + sessionId);
       console.log(sessionId);
       /* alert("소켓연결!"); */
-      wsocket = new WebSocket("ws://192.168.0.3:8090/class_ic/chat-ws.htm?email="+sessionId);
+      wsocket = new WebSocket("ws://192.168.0.151:8080/class_ic/chat-ws.htm?email="+sessionId);
       appendMessage("웹 소켓연결되었습니다.");
       wsocket.onopen = onOpen;
       wsocket.onmessage = onMessage;
@@ -388,16 +388,6 @@
 
          </ul>
 
-         <form class="navbar-form navbar-right" role="search">
-            <div class="form-group form-search is-empty">
-               <input type="text" class="form-control" placeholder="Search">
-               <span class="material-input"></span>
-            </div>
-            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-               <i class="material-icons">search</i>
-               <div class="ripple-container"></div>
-            </button>
-         </form>
       </div>
    </div>
 </nav>
