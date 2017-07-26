@@ -26,8 +26,6 @@ import com.class_ic.dao.LectureAddDAO;
 import com.class_ic.dao.MemberDAO;
 import com.class_ic.vo.MemberDTO;
 
-
-
 /*
 * @Class: MemberController
 * @Date: 2017.06. 16.
@@ -51,8 +49,6 @@ public class MemberController {
 	@ResponseBody
 	public LoginDTO LogIn(@RequestParam("id") String email, @RequestParam("pw") String rawPassword, Principal principal, HttpSession session) {
 		
-		System.out.println(email+"//"+rawPassword);
-		System.out.println("로그인까지는 들어옴");
 		
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		MemberDTO member = member_dao.login(email);
@@ -61,7 +57,6 @@ public class MemberController {
 		LoginDTO ld = new LoginDTO();
 		AttendDAO attendDao= sqlsession.getMapper(AttendDAO.class);
 		ld.setCount(attendDao.login(email));
-		System.out.println(ld);
 		
 		//처리
 		if(result){
@@ -82,28 +77,19 @@ public class MemberController {
 		AttendDAO memberDao = sqlsession.getMapper(AttendDAO.class);
 		LectureAddDAO lecDao= sqlsession.getMapper(LectureAddDAO.class);
 		
-		System.out.println(request.getParameter("qr"));
-		System.out.println(request.getParameter("email"));
-		System.out.println(request.getParameter("time"));
-		System.out.println(request.getParameter("state"));
-		
 		String state=request.getParameter("state");
 		String email=request.getParameter("email");
 		String time=request.getParameter("time");
 		String classCode=request.getParameter("qr");
 		
-	
 		lecDao.inputMyClassCode(email,classCode);
-	
 		
 		//입실일 경우
 		if(state.equals("inClass")){			
-			System.out.println("입실까지 in!");
 			memberDao.attendanceMember(email,time,state);
 		}
 		//퇴실일 경우
 		else{
-			System.out.println("퇴실까지 in!");
 			memberDao.attendanceMember(email,time,state);
 		}	
 		
