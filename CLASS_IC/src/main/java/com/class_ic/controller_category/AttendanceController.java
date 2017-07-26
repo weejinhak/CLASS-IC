@@ -43,6 +43,13 @@ import net.sf.json.JSONObject;
 import com.class_ic.dao.MemberDAO;
 import com.class_ic.service.AttendanceListService;
 
+
+/*
+* @Class: AttendanceController
+* @Date: 2017.07. 26.
+* @Author: 위진학
+* @Desc: 출석현황과 출석 차트에 맞는 값들을 가져오기 위한 Controller
+*/
 @Controller
 public class AttendanceController {
 
@@ -55,18 +62,13 @@ public class AttendanceController {
 	@RequestMapping(value = "student/attendanceTable.htm", method = RequestMethod.POST)
 	public void studentlistPage(Model model, String email, String classcode, HttpServletResponse response)
 			throws Exception {
-		System.out.println("attendanceTable컨트롤러");
 
 		List<AttandanceDTO> memberattendacnelist = attendanceListService.attendanceSelect(email, classcode);
 
 		JSONArray attendanceListArray = new JSONArray();
 
-		System.out.println("********************************************");
-		System.out.println(memberattendacnelist.size());
 		DateFormat transDate = new SimpleDateFormat("yyyy-MM-dd");
 		String attenddate = transDate.format(memberattendacnelist.get(0).getAttendDate());
-		System.out.println(attenddate);
-		System.out.println("********************************************");
 		for (int i = 0; i < memberattendacnelist.size(); i++) {
 			JSONObject obj = new JSONObject();
 			obj.put("attendDate", transDate.format(memberattendacnelist.get(i).getAttendDate()));
@@ -110,7 +112,6 @@ public class AttendanceController {
 	@RequestMapping(value = "student/attendchart.htm", method = RequestMethod.POST)
 	public void chart(String email, String classcode, HttpServletResponse response, HttpServletRequest request)
 			throws Exception {
-		System.out.println("학생용 차트 컨트롤러");
 
 		String[] labels = {"","","",""};
 		int[] series = { 0, 0, 0, 0 };
@@ -170,19 +171,12 @@ public class AttendanceController {
 	@RequestMapping(value = "teacher/attendchart.htm", method = RequestMethod.POST)
 	public void teacherchart(String email, String classcode, HttpServletResponse response, HttpServletRequest request)
 			throws Exception {
-		System.out.println(email + "," + classcode);
-		System.out.println("강사용 차트 출석률 컨트롤러");
-
-		// ArrayList<AttandanceDTO> list =
-		// attendanceListService.selectEachStudent(email, classcode);
 
 		// 출석현황을 담고있는 배열
 		// index [0]출석률, [1]지각률,[2]결석률,[3]조퇴율
-		System.out.println(email + "," + classcode);
 
 		ArrayList<AttandanceDTO> list = attendanceListService.selectEachStudent(email, classcode);
 
-		System.out.println("출석테이블 size:" + list.size());
 		String[] labels = { "", "", "", "" };
 		int[] series = { 0, 0, 0, 0 };
 
@@ -190,7 +184,6 @@ public class AttendanceController {
 		if (list.size() != 0) {
 			attendancetotalcount = list.size();
 		}
-
 		float attendnomalcount = 0;
 		float attendlatecount = 0;
 		float attendabsencecount = 0;
@@ -200,16 +193,12 @@ public class AttendanceController {
 
 			if (eachlist.getAttendState().equals("출석")) {
 				attendnomalcount++;
-				System.out.println(eachlist.getAttendState().equals("출석"));
 			} else if (eachlist.getAttendState().equals("지각")) {
 				attendlatecount++;
-				System.out.println(eachlist.getAttendState().equals("지각"));
 			} else if (eachlist.getAttendState().equals("조퇴")) {
 				attendearlyleavecount++;
-				System.out.println(eachlist.getAttendState().equals("조퇴"));
 			} else if (eachlist.getAttendState().equals("결석")) {
 				attendabsencecount++;
-				System.out.println(eachlist.getAttendState().equals("결석"));
 			} else {
 			}
 
@@ -219,7 +208,6 @@ public class AttendanceController {
 		labels[1]=String.valueOf((int)((attendlatecount / attendancetotalcount) * 100))+"%";
 		labels[2]=String.valueOf((int)((attendabsencecount / attendancetotalcount) * 100))+"%";
 		labels[3]=String.valueOf((int)((attendearlyleavecount / attendancetotalcount) * 100))+"%";
-		System.out.println(labels[0]+","+labels[1]);
 		series[0]=(int)((attendnomalcount / attendancetotalcount) * 100);
 		series[1]=(int)((attendlatecount / attendancetotalcount) * 100);
 		series[2]=(int)((attendabsencecount / attendancetotalcount) * 100);
