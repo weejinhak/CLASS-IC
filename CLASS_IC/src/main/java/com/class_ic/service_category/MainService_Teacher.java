@@ -1,7 +1,5 @@
 package com.class_ic.service_category;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;

@@ -8,8 +8,6 @@ import com.class_ic.vo.MemberDTO;
 
 public interface AttendanceDAO {
 	
-	
-	
 	//attendance 테이블에  insert
 	public void insert(AttandanceDTO dto);
 	

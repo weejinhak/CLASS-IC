@@ -86,7 +86,6 @@ public class AttendanceController {
 	 */
 	@RequestMapping(value = "teacher/attendanceTable.htm", method = RequestMethod.POST)
 	public void teacherlistPage(String email, String classcode, HttpServletResponse response) throws Exception {
-		System.out.println("강사용attendanceTable컨트롤러"+","+"ID:"+email+","+"기수:"+classcode);
 		
 		List<AttandanceListDTO> memberattendacnelist = attendanceListService.attendanceSelectByTeacher(email,
 				classcode);
@@ -123,24 +122,14 @@ public class AttendanceController {
 		float attendabsencecount = attendanceListService.attendAbsenceCount(email, classcode);
 		float attendearlyleavecount = attendanceListService.attendEarlyLeaveCount(email, classcode);
 
-		System.out.println("****차트용 출석률을 위한 숫자들!!!!");
-		System.out.println(attendancetotalcount);
-		System.out.println(attendnomalcount);
-		System.out.println(attendlatecount);
-		System.out.println(attendabsencecount);
-		System.out.println(attendearlyleavecount);
-		System.out.println("************************************");
-
 		if (attendancetotalcount == 0) {
 			System.out.println("데이터 없음.");
 		} else {
 			
-			System.out.println((attendnomalcount*100/attendancetotalcount));
 			labels[0] = String.valueOf((int)((attendnomalcount/ attendancetotalcount) * 100)) + "%";
 			labels[1] = String.valueOf((int)((attendlatecount / attendancetotalcount) * 100)) + "%";
 			labels[2] = String.valueOf((int)((attendabsencecount / attendancetotalcount) * 100)) + "%";
 			labels[3] = String.valueOf((int)((attendearlyleavecount / attendancetotalcount) * 100)) + "%";
-			System.out.println(labels[0]+","+labels[1]);
 			series[0] = (int)((attendnomalcount / attendancetotalcount) * 100);
 			series[1] = (int)((attendlatecount / attendancetotalcount) * 100);
 			series[2] = (int)((attendabsencecount / attendancetotalcount) * 100);
