@@ -41,9 +41,6 @@ public class AlarmController {
 	@Autowired
 	private SqlSession sqlsession;
 
-	@Autowired
-	private MessageService messageService;
-
 	/*
 	 * @description : 보내온 메시지를 Table에 Insert시키기위한 함수
 	 */
@@ -51,13 +48,7 @@ public class AlarmController {
 	public String sendMessage(@RequestParam(value = "sendmessage") String sendmessage, HttpSession session,
 			@RequestParam(value = "remail") String remail) throws ClassNotFoundException, SQLException {
 
-		System.out.println("sendmessage 탐 -> 값은 :  " + sendmessage);
 		All_Alarm_DTO dto = new All_Alarm_DTO();
-
-		System.out.println("********받는사람과 보내는사람 찍어보기************");
-		System.out.println(remail);
-		System.out.println((String) session.getAttribute("email"));
-		System.out.println("********************");
 
 		dto.setEmailS((String) session.getAttribute("email"));// 보내는사람
 		Calendar cal = Calendar.getInstance();
@@ -76,8 +67,6 @@ public class AlarmController {
 			alarm_DAO.insertMessageSend(dto);
 		}
 
-		System.out.println(sendmessage + "insert 완료");
-
 		return "student.student_main";
 
 	}
@@ -89,14 +78,10 @@ public class AlarmController {
 	public String newAlarm(@RequestParam(value = "newAlarm") String newAlarm, HttpSession session)
 			throws ClassNotFoundException, SQLException {
 
-		System.out.println("newAlarm.htm");
-		System.out.println("newAlarm : " + newAlarm);
 
 		AlarmDAO alarm_DAO = sqlsession.getMapper(AlarmDAO.class);
 
 		int totalCount = alarm_DAO.totalCount(newAlarm);
-
-		System.out.println("newAlarm totalcount:" + totalCount);
 
 		session.setAttribute("totalCount", totalCount);
 
@@ -110,7 +95,6 @@ public class AlarmController {
 	@RequestMapping(value = "common/alarmCountUpdate.htm")
 	public String updateAlarm(HttpServletRequest request, HttpSession session,Model model) {
 
-		System.out.println("여기까지 들어오니니니니니?");
 		String email = request.getParameter("email");
 
 		AlarmDAO alarm_DAO = sqlsession.getMapper(AlarmDAO.class);

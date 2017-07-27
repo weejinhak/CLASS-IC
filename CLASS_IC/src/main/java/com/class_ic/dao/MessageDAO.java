@@ -1,3 +1,10 @@
+/*
+* @FileName		:	MessageDAO.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.07.26
+* @Author		:	위진학
+*/
 package com.class_ic.dao;
 
 import java.util.ArrayList;

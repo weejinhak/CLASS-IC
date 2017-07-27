@@ -1,3 +1,10 @@
+/*
+* @FileName		:	AttendanceService.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.07.27
+* @Author		:	위진학
+*/
 package com.class_ic.service;
 
 import java.util.ArrayList;
@@ -32,27 +39,17 @@ public class AttendanceService {
 		
 		for(int i=0;i<memberList.size();i++){
 			
-			System.out.println(memberList.size());
 			//dto.setAttendDate(new Date(2017-12-12)); //sysdate
 			dto.setAttendState("결석"); 
 			email=memberList.get(i).getEmail();
 			
-			System.out.println(email);
 			dto.setClassCode(attendanceDao.selectClassNumber(email)); 
 			dto.setEmail(email); 
 			dto.setInClass(null);
 			dto.setOutClass(null);
 			attendanceDao.insert(dto);
-
-			System.out.println("insert"+i);
-			
 		
 		}
 	}
 	
-	
-	
-		
-	
-
 }

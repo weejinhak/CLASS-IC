@@ -59,15 +59,11 @@ public class MemberService_Web {
 
 			if(memberAuthority.equals("ROLE_TEACHER")){
 				mv.setViewName("common/thsSelect_teacher");
-				System.out.println("강사 로그인 성공");
 			}else{
 				mv.setViewName("common/thsSelect_student");
-				System.out.println("학생 로그인 성공");
 			}
-			System.out.println("비밀번호 일치");
 		}else{
 			mv.setViewName("common/main");
-			System.out.println("비밀번호 확인 실패");
 		}
 		return mv;
 	}

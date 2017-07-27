@@ -30,36 +30,23 @@ public class WebSocketHandler extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 
-		log("접속 성공" + session.getId() + "웹소켓 세션 아이디");
 		String userid = (String) session.getAttributes().get("email");
-
-		System.out.println("userID!!! : " + userid);
-
 		users.put(userid, session);
 		ids.put(session.getId(), userid);
 	}
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		log((String) session.getAttributes().get("userId"));
-
 		users.remove("parammsg");
 	}
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 
-		System.out.println("---------------------------------");
-
-		System.out.println("받은 ID값 : " + message.getPayload());
-
 		String msg = message.getPayload();
 
 		for (WebSocketSession s : users.values()) {
-			System.out.println("--------선택받은사람-----------");
-			System.out.println("아이디>" + msg + "<");
-			System.out.println("---------------------");
-			System.out.println(msg + "에게 메세지 전송!");
+			
 			if (ids.get(s.getId()).equals(msg)) {
 
 				s.sendMessage(message);
@@ -67,7 +54,6 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			} else {
 
 			}
-			log(s.getId() + "에게 메시지 전송");
 		}
 	}
 

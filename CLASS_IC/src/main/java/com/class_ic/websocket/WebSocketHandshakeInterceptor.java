@@ -26,22 +26,15 @@ public class WebSocketHandshakeInterceptor extends HttpSessionHandshakeIntercept
     
         
         ServletServerHttpRequest ssreq = (ServletServerHttpRequest) request;
-        System.out.println("URI:"+request.getURI());
   
         HttpServletRequest req =  ssreq.getServletRequest();
  
-
-        System.out.println("beforehandshake 시작");        
         String email = (String)req.getSession().getAttribute("email");
-        System.out.println(email); 
                 
         //로그인한 사람 아이디 뽑기
 		
         attributes.put("userId",email);  
       
-        System.out.println("인터셉터 id:"+ email);
-
- 
         return super.beforeHandshake(request, response, wsHandler, attributes);
     }
   
@@ -50,8 +43,6 @@ public class WebSocketHandshakeInterceptor extends HttpSessionHandshakeIntercept
             ServerHttpResponse response, WebSocketHandler wsHandler,
             Exception ex) {
     	
-        System.out.println("After Handshake");
-  
         super.afterHandshake(request, response, wsHandler, ex);
     }
     

@@ -26,7 +26,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.class_ic.service.LectureCodeAddService;
 import com.class_ic.vo.LectureDTO;
 
-
 /*
 * @Class: LectureCodeAddController
 * @Date: 2017.06. 18.
@@ -45,18 +44,6 @@ public class LectureCodeAddController {
 	*/
 	@RequestMapping(value = "lecturecodeadd.htm", method = RequestMethod.POST)
 	public String lectureinsert(HttpServletRequest request,Model model){
-		
-		
-		///값이 들어오는지 확인.		
-		System.out.println("lecturecodeadd 컨트롤 탔음");
-		System.out.println(request.getParameter("classcode"));
-		System.out.println(request.getParameter("classtitle"));
-		System.out.println(request.getParameter("classstart"));
-		System.out.println(request.getParameter("classend"));
-		System.out.println(request.getParameter("classopentime"));
-		System.out.println(request.getParameter("classclosetime"));
-		System.out.println(request.getParameter("email"));		
-		///
 		
 		String classstart = request.getParameter("classstart");
 		String classend= request.getParameter("classend");
@@ -100,8 +87,6 @@ public class LectureCodeAddController {
 	@RequestMapping("/createCode.htm")
     public ModelAndView createCode(@RequestParam String content){
 		//ModelAndView 바로 리턴 
-		System.out.println("찍히고 있니??");
-		System.out.println("찍힘");
 		return new ModelAndView("qrcodeview", "content", content);
 	}
 	

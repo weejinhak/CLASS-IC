@@ -71,7 +71,6 @@ public class MainController_Student {
 		return "student.attendance_student";
 	}
 
-
    // 출석 데이터 테이블
    @RequestMapping("attend.htm")
    public String attend() {
