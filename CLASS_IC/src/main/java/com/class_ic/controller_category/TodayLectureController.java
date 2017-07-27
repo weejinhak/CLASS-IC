@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.dao.TodayLectureDAO;
@@ -79,12 +80,13 @@ public class TodayLectureController{
     
    
    
-   @RequestMapping(value="multi_storage.htm" ) 
+   @RequestMapping(value="multi_storage.htm",  method=RequestMethod.POST) 
    public String multi_storage(HttpServletRequest request, HttpServletResponse response ) {
  
 
     String test=request.getParameter("data");
-    System.out.println(test);
+    System.out.println("test넘버 확인" + test);
+    
       TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class); 
     
   

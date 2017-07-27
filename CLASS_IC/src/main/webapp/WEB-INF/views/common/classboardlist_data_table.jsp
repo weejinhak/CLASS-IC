@@ -1,118 +1,121 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="com.class_ic.vo.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.datatables.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/assets/js/jquery.datatables.js"></script>
 
 
-   <div class="row">
+<div class="row">
 
-      <div class="col-md-12">
+	<div class="col-md-12">
 
-         <div class="card">
-         
-            <div class="card-content">
-               <h4 class="card-title">${cateCode}/${subcateCode}</h4>
-               <div class="toolbar">
-                  <!--        Here you can write extra buttons/actions for the toolbar              -->
-               </div>
-               <div class="material-datatables">
+		<div class="card">
 
-              
-                  <div id="list">
-                     <table id="datatables"
-                        class="table table-striped table-no-bordered table-hover"
-                        cellspacing="0" width="100%" style="width: 100%">
-                        <thead>
-                           <tr>
-                              <th class="text-center">check</th>
-                              <th class="text-center">글번호</th>
-                              <th class="text-center">category</th>
-                              <th class="text-center">sub category</th>
-                              <th class="text-center">제목</th>
-                              <th class="text-center">작성날짜</th>
-                              <th class="text-center">Actions</th>
-                           </tr>
-                        </thead>
+			<div class="card-content">
+				<h4 class="card-title">${cateCode}/${subcateCode}</h4>
+				<div class="toolbar">
+					<!--        Here you can write extra buttons/actions for the toolbar              -->
+				</div>
+				<div class="material-datatables">
 
 
-                        <tbody>
-                           <!-- 여기부터 포문  -->
-                           <c:forEach var="LectureBoardDTO" items="${boardlist}">
-                              <tr>
-                                 <td>
-                                    <div class="text-center" style="margin-top: -12px;">
-                                       <div id="">
-                                          <label class="text-center"> <input type="checkbox"
-                                             name="multy[]" value="${LectureBoardDTO.lectureNo}">
-                                             <span class="checkbox-material"></span>
-                                          </label>
-                                       </div>
-                                    </div>
-                                 </td>
+					<div id="list">
+						<table id="datatables"
+							class="table table-striped table-no-bordered table-hover"
+							cellspacing="0" width="100%" style="width: 100%">
+							<thead>
+								<tr>
+									<th class="text-center">check</th>
+									<th class="text-center">글번호</th>
+									<th class="text-center">category</th>
+									<th class="text-center">sub category</th>
+									<th class="text-center">제목</th>
+									<th class="text-center">작성날짜</th>
+									<th class="text-center">Actions</th>
+								</tr>
+							</thead>
 
 
-                                 <td class="text-center" id="lectureNo">${LectureBoardDTO.lectureNo}</td>
-                                 <td class="text-center">${LectureBoardDTO.cateCode}</td>
-                                 <td class="text-center">${LectureBoardDTO.subcateCode}</td>
+							<tbody>
+								<!-- 여기부터 포문  -->
+								<c:forEach var="LectureBoardDTO" items="${boardlist}">
+									<tr>
+										<td>
+											<div class="text-center" style="margin-top: -12px;">
+												<div id="">
+													<label class="text-center"> <input type="checkbox"
+														name="multy[]" value="${LectureBoardDTO.lectureNo}">
+														<span class="checkbox-material"></span>
+													</label>
+												</div>
+											</div>
+										</td>
 
 
-                                 <td class="text-center"><a
-                                    href="totalclassBoard_contentview.htm?lectureNo=${LectureBoardDTO.lectureNo}"
-                                    class="btn btn-simple btn-info btn-icon edit">${LectureBoardDTO.lectureTitle}</a>
-                                 </td>
+										<td class="text-center" id="lectureNo">${LectureBoardDTO.lectureNo}</td>
+										<td class="text-center">${LectureBoardDTO.cateCode}</td>
+										<td class="text-center">${LectureBoardDTO.subcateCode}</td>
 
-                                 <td class="text-center">${LectureBoardDTO.lectureDate}</td>
-                                 <td class="text-center"><a
-                                    href="totalclassboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
-                                    class="btn btn-simple btn-rose btn-icon edit"><i class="material-icons">border_color</i></a> 
-                                    
-                                 </td>
-                              
-                              </tr>
 
-                           </c:forEach>
-                     </table>
-                  </div>
+										<td class="text-center"><a
+											href="totalclassBoard_contentview.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+											class="btn btn-simple btn-info btn-icon edit">${LectureBoardDTO.lectureTitle}</a>
+										</td>
 
-                  <form action="boardcontentclass.htm">
-                  <input type="text" value="${cateCode}" hidden="" name="cateCode">
-                  <input type="text" value="${subcateCode}" hidden="" name="subcateCode">
-                     <button type="submit" id="submitFrm"
-                        class="btn btn-info btn-round"
-                        style=" margin-top: 10px; float: left;">
-                        <i class="material-icons">done</i>글쓰기
-                     </button>
-                  </form>
+										<td class="text-center">${LectureBoardDTO.lectureDate}</td>
+										<td class="text-center"><a
+											href="totalclassboardEdit.htm?lectureNo=${LectureBoardDTO.lectureNo}"
+											class="btn btn-simple btn-rose btn-icon edit"><i
+												class="material-icons">border_color</i></a></td>
 
-            
-                  <button type="button" id="submitFrm"
-                     class="btn btn-info btn-round" style="margin-left: 20px;"
-                     onclick="multi_del()">
-                     <i class="material-icons">clear</i>체크 삭제
-                  </button>
-                  
-                  
-                                                      
-           <!--           <button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px" onclick="multi_storage()">수업 담기</button>
-                                          
-                                          <a href="todayLectureList.htm">
-                     <button type="button" id="submitFrm" class="btn btn-info btn-round" style="margin-left:50px">담은 수업 보기</button>
-                                    </a> -->
-               </div>
-            </div>
-            <!-- end content-->
-         </div>
-         <!--  end card  -->
-      </div>
-      <!-- end col-md-12 -->
-   </div>
-   <!-- end row -->
+									</tr>
+
+								</c:forEach>
+						</table>
+					</div>
+
+					<form action="boardcontentclass.htm">
+						<input type="text" value="${cateCode}" hidden="" name="cateCode">
+						<input type="text" value="${subcateCode}" hidden=""
+							name="subcateCode">
+						<button type="submit" id="submitFrm"
+							class="btn btn-info btn-round"
+							style="margin-top: 10px; float: left;">
+							<i class="material-icons">done</i>글쓰기
+						</button>
+					</form>
+
+
+					<button type="button" id="submitFrm" class="btn btn-info btn-round"
+						style="margin-left: 20px;" onclick="multi_del()">
+						<i class="material-icons">clear</i>체크 삭제
+					</button>
 
 
 
+					<button type="button" id="submitFrm" class="btn btn-info btn-round"
+						style="margin-left: 50px" onclick="multi_storage()">수업 담기</button>
 
-   <script type="text/javascript">
+					<a href="todayLectureList.htm">
+						<button type="button" id="submitFrm"
+							class="btn btn-info btn-round" style="margin-left: 50px">담은
+							수업 보기</button>
+					</a>
+				</div>
+			</div>
+			<!-- end content-->
+		</div>
+		<!--  end card  -->
+	</div>
+	<!-- end col-md-12 -->
+</div>
+<!-- end row -->
+
+
+
+
+<script type="text/javascript">
 
    var email="<%=(String)session.getAttribute("email")%>";
    var cateCode="<%=(String)request.getAttribute("cateCode")%>";
@@ -272,7 +275,9 @@ var data="";
       var checkLast = '';      //체크된 체크박스 중 마지막 체크박스의 인덱스를 담기위한 변수  
       var cnt = 0;    
       var rowid = new Array();   //체크된 체크박스의 모든 value 값을 담는다 
-
+	
+      console.log('lectureNo 확인'+chk);
+      
       for(var i=0; i<len; i++){
 
          if(chk[i].checked == true){ 
@@ -304,7 +309,7 @@ var data="";
           
        
        }
-//       alert(data);
+		   console.log('데이터값 확인 '+data);
 
 
 //          alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
