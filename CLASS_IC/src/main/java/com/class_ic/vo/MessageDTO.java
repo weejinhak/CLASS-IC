@@ -6,7 +6,6 @@ package com.class_ic.vo;
 * @Date          :   2017.07.03
 * @Author      :   위진학
 */
-
 public class MessageDTO {
    
    int messageNo;

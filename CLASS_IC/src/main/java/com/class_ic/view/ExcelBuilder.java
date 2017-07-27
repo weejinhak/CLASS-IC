@@ -1,3 +1,10 @@
+/*
+* @FileName		:	ExcelBuilder.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.18
+* @Author		:	위진학
+*/
 package com.class_ic.view;
 
 import java.text.SimpleDateFormat;
@@ -26,11 +33,9 @@ public class ExcelBuilder extends AbstractXlsView {
 		// get data model which is passed by the Spring container
 		List<AttandanceDTO> attendanceList = (List<AttandanceDTO>) model.get("memberattendacnelist");
 		
-		
 		// create a new Excel sheet
 		HSSFSheet sheet = (HSSFSheet) workbook.createSheet("Java Books");
 		sheet.setDefaultColumnWidth(10);
-		
 		
 		// create style for header cells
 		CellStyle style = workbook.createCellStyle();

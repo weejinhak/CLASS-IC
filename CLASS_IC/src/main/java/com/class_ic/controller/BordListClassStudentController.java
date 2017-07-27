@@ -69,9 +69,6 @@ public class BordListClassStudentController {
 	   
 	   }
 	   
-	   
-	   
-	   
 
 	   //카테고리에서 상세보기 누르면 서브카테고리와 게시글 상세로 들어감
 	   @RequestMapping(value="catedetails.htm", method=RequestMethod.GET)

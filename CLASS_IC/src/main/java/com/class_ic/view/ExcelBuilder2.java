@@ -1,3 +1,10 @@
+/*
+* @FileName		:	ExcelBuilder2.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.18
+* @Author		:	위진학
+*/
 package com.class_ic.view;
 
 import java.text.SimpleDateFormat;

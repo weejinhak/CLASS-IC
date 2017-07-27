@@ -1,7 +1,5 @@
 package com.class_ic.vo;
 
-import java.sql.Date;
-
 public class All_Alarm_DTO {
 	private String emailS;
 	private String emailR;

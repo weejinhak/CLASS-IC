@@ -29,7 +29,6 @@ public class QRCodeView extends AbstractView {
 		// 뷰의 컨텐츠 타입 설정
 		// 이미지로 뿌려야 함.
 		setContentType("image/png; charset=UTF-8");
-		System.out.println("QRCodeView");
 	}
 
 	/*

@@ -23,7 +23,6 @@
 		select classCode from classMember where email=#{email}
 	</select>
 
-
 	<select id="todayAttendaceData" resultType="com.class_ic.vo.AttandanceDTO">
 	select attendNo,inClass,outClass,classCode,email from attendance where attendDate=CURDATE()
 	</select>

@@ -28,7 +28,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(#{emailS},#{messageNo},#{deleteStateS});
 	</insert>
 
-
 	<!-- 알림 total count 가져오기 -->
 	<select id="totalCount" resultType="Integer" parameterType="String">
 		select count(*) as total_count from messagereceive where emailR=#{emailR} and readState=1;
