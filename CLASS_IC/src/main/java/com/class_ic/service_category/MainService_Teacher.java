@@ -19,12 +19,12 @@ public class MainService_Teacher {
 	public ModelAndView selectMain(HttpSession session){
 		TeacherMainDAO dao = sqlsession.getMapper(TeacherMainDAO.class);
 
-		ClassDTO mainlist = dao.teacherMain((String)session.getAttribute("email"),(String)session.getAttribute("classCode"));
-		int mainmembercount=dao.memberCountByTeacher((String)session.getAttribute("email"));
+		ClassDTO mainlist = dao.teacherMain((String)session.getAttribute("classCode"));
+		int mainmembercount=dao.memberCountByTeacher((String)session.getAttribute("classCode"));
 		System.out.println("3"+(String)session.getAttribute("email"));
 		
 		ModelAndView m = new ModelAndView();
-		m.setViewName("teacher.teacher_main");
+		m.setViewName("common/mainBasicInformation");
 		m.addObject("list", mainlist);
 		m.addObject("membercount",mainmembercount);
 		

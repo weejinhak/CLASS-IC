@@ -3,60 +3,35 @@
 <%@ page import="com.class_ic.vo.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="${pageContext.request.contextPath}/resources/assets/css/clock.css"rel="stylesheet" />
-    <link href="${pageContext.request.contextPath}/resources/assets/css/todolist.css" rel="stylesheet" />
+ <link href="${pageContext.request.contextPath}/resources/assets/css/todolist.css" rel="stylesheet" />
+    
+<script type="text/javascript">
+$(document).ready(function() {
+	
+$.ajax({
+	
+	type : 'GET',
+	url : 'basicInformations.htm',
+	dataType : 'html',
+	success : function(data) {
+
+
+	$('#basicinfo').html(data);
+
+	}
+	,error:function(request,status,error){
+        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    }
+
+});
+});
+</script>
     <div class="content">
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
-      	 '<div class="row">
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="card card-stats">
-					<div class="card-header" data-background-color="orange"> 
-						<i class="material-icons">comment</i>
-					</div>
-					<div class="card-content">
-						<p class="category">강좌 정보</p>
-						<h3 class="card-title">151기</h3>
-					</div>
-					<div class="card-footer">
-						<div class="stats" style="color: black;">
-							<h5>자바</h5> 
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="card card-stats">
-					<div class="card-header" data-background-color="rose">
-						<i class="material-icons">access_time</i>
-					</div>
-					<div class="card-content">
-						<p class="category">강좌 날짜</p>
-						<h3 class="card-title" style="font-size: 20px">2017/02/02</h3>
-					</div>
-					<div class="card-footer">
-						<div class="stats" style="color: black;">
-							<h5>2017/02/02~2017/07/06</h5>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="card card-stats">
-					<div class="card-header" data-background-color="green">
-						<i class="material-icons">people</i>
-					</div>
-					<div class="card-content">
-						<p class="category">수강인원</p>
-						<%-- <h3 class="card-title">${membercount}명</h3> --%>
-						<h3 class="card-title">6명</h3>
-					</div>
-					<div class="card-footer">
-						<div class="stats">
-							<h5>&nbsp</h5>
-						</div>
-					</div>
-				</div>
-			</div>
+      	 <div class="row">
+	<div id="basicinfo">
+	</div>
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="card card-stats">
 					<div class="card-header" data-background-color="blue">
@@ -105,6 +80,7 @@
    $(document).ready(function() {
 
 
+
       $.ajax({
          type : "get",
          url : "boardmain.htm",
@@ -115,6 +91,8 @@
       
          }
       });
+      
+      
 
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
@@ -164,6 +142,8 @@
       }
    });
     
+  
+  
 
 
   $(".tdl-content a").bind("click", function(){

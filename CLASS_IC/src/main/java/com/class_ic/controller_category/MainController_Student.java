@@ -12,12 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service.BoardListService;
+import com.class_ic.service_category.MainService_Student;
+import com.class_ic.service_category.MainService_Teacher;
 
 @Controller
 @RequestMapping("student")
 public class MainController_Student {
    @Autowired
    private BoardListService boardlistservice;
+
+	@Autowired	
+	private MainService_Student mainteacherservice;	   
 
    @RequestMapping(value = "main.htm", method = RequestMethod.POST)
    public String student(HttpSession session, String classCode) {
@@ -78,4 +83,16 @@ public class MainController_Student {
       return "student.data_table";
    }
 
+   
+   //메인 상단의 기본 정보를 불러옴
+   @RequestMapping(value="basicInformations.htm", method = RequestMethod.GET )
+   public ModelAndView basicInformations(HttpSession session){
+
+			
+			ModelAndView viewpage = mainteacherservice.selectMains(session);
+					
+         
+         return viewpage;
+   }
+     
 }

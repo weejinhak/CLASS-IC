@@ -25,7 +25,7 @@ public class MainController_Teacher {
 	@Autowired	
 	private MainService_Teacher mainteacherservice;	   
 	@Autowired
-	   private BoardListService boardlistservice;
+    private BoardListService boardlistservice;
 	   
 	   
     @Autowired
@@ -33,15 +33,11 @@ public class MainController_Teacher {
 
 	//teacher main POST
 		@RequestMapping(value="main.htm", method=RequestMethod.POST)
-		public ModelAndView student(HttpSession session, String classCode, Model model){
-			
+		public String student(HttpSession session, String classCode, Model model){
 			
 			session.setAttribute("classCode", classCode);
 			
-			ModelAndView viewpage = mainteacherservice.selectMain(session);
-					
-			
-			return viewpage;
+			return "teacher.teacher_main";
        }
 
 		
@@ -156,6 +152,18 @@ public class MainController_Teacher {
       @RequestMapping(value="linkboardEdit.htm", method = RequestMethod.POST )
       public String linkboardEditOk(LectureBoardDTO dto){
          String viewpage = boardlistservice.linkboardEditOk(dto);
+            
+            return viewpage;
+      }
+        
+    
+      //메인 상단의 기본 정보를 불러옴
+      @RequestMapping(value="basicInformation.htm", method = RequestMethod.GET )
+      public ModelAndView basicInformation(HttpSession session){
+
+			
+			ModelAndView viewpage = mainteacherservice.selectMain(session);
+					
             
             return viewpage;
       }
