@@ -90,13 +90,8 @@
          <div class="col-lg-12 col-md-12">
            		<div class="tdl-holder">
 			<h2>TO DO LIST</h2>
-			<div class="tdl-content">
-				<ul>
-					<c:forEach var="list" items="${list}">
-					<li><label><input type="checkbox"><i></i><span>${list.listContent}</span><a href='#'  id="${list.listNo}">–</a></label></li>
-				
-					</c:forEach>
-				</ul>
+			<div class="tdl-content" id="todoListselect">
+		
 			</div>
 			<input type="text" class="tdl-new" name="listContent" id="listContent" placeholder="해야할 일을 쓰세요" style="color: black;">
 				</div>
@@ -155,6 +150,20 @@
       }
     }
   });
+    
+    
+  $.ajax({
+      type : "get",
+      url : "todoListselect.htm",
+      dataType : 'html',
+      success : function(data) {
+
+
+    	  $("#todoListselect").html(data);
+
+      }
+   });
+    
 
 
   $(".tdl-content a").bind("click", function(){

@@ -1,3 +1,10 @@
+/*
+* @FileName		:	Calendar.DAO.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.26
+* @Author		:   박소현,노지영
+*/
 package com.class_ic.dao;
 
 import java.util.ArrayList;
@@ -5,6 +12,7 @@ import java.util.ArrayList;
 import com.class_ic.vo.CalendarDTO;
 import com.class_ic.vo.TodayClassDTO;
 import com.class_ic.vo.TodayLectureVO;
+
 public interface CalendarDAO {
 
       //일정 등록  완료

@@ -8,6 +8,7 @@ import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,21 @@ import net.sf.json.JSONObject;
 @RequestMapping(value="student")
 public class TodoListController {
    
+	
    @Autowired
    private SqlSession sqlSession;
+   
 
    /*
    @description : TodoList에서의 값들을 받아와 DB에 저장
    */
    @RequestMapping(value="TodoListInsertOk.htm", method=RequestMethod.GET)
    public String TodoListInsertOk(HttpServletRequest request) {
+	   HttpSession session=request.getSession();
+	    String email=(String) session.getAttribute("email");
+	   
+	
+			   
 	   System.out.println("todolist컨트롤 탄다.");
 	   
 	   TodoListDAO todolistdao = sqlSession.getMapper(TodoListDAO.class);
@@ -45,7 +53,8 @@ public class TodoListController {
 	   String listContent = request.getParameter("listContent");
 	   System.out.println("컨트롤에서 list내용 확인 : " + listContent);
 	   
-	   dto.setListContent(listContent);
+	   dto.setTodoList(listContent);
+	   dto.setEmail(email);
 	   
 	   todolistdao.TodoListOk(dto);
 	   
@@ -55,19 +64,22 @@ public class TodoListController {
    /*
    @description : DB에 저장된 일정들을 TodoList에 출력
    */
-   @RequestMapping(value="test14.htm", method=RequestMethod.GET)
+   @RequestMapping(value="todoListselect.htm", method=RequestMethod.GET)
    public ModelAndView ModelAndView (HttpServletRequest request, HttpServletResponse response) {
+	   HttpSession session=request.getSession();
+	    String email=(String) session.getAttribute("email");
+	   
 	   System.out.println("todolist select 컨트롤러 탄다.");
 	   
 	   TodoListDAO todolistdao = sqlSession.getMapper(TodoListDAO.class);
 	   
-	   ArrayList<TodoListDTO> todolist = todolistdao.TodoList();
+	   ArrayList<TodoListDTO> todolist = todolistdao.TodoList(email);
 	   System.out.println("todolist :" + todolist );
 	   
 	   ModelAndView model = new ModelAndView();
 	   
 	   model.addObject("list",todolist);
-	   model.setViewName("student.student_main");
+	   model.setViewName("common/todoList");
 	   
 	   return model;
    }
@@ -78,15 +90,18 @@ public class TodoListController {
    */
    @RequestMapping(value="TodoListDelete.htm", method=RequestMethod.GET)
    public void TodoListDelete(HttpServletRequest request, HttpServletResponse response) throws IOException{
+	   HttpSession session=request.getSession();
+	    String email=(String) session.getAttribute("email");
+	   
 	   System.out.println("todolist 삭제 컨트롤 탄다.");
 	   
 	   TodoListDAO todolistdao = sqlSession.getMapper(TodoListDAO.class);
        TodoListDTO dto = new TodoListDTO();
        
-       	int listNo =Integer.parseInt(request.getParameter("listNo"));
-       	System.out.println("삭제번호 : " + listNo);
+       	int todoNo =Integer.parseInt(request.getParameter("listNo"));
+       	System.out.println("삭제번호 : " + todoNo);
        	
-       	todolistdao.TodoListDelete(listNo);
+       	todolistdao.TodoListDelete(todoNo);
        	
        
    }

@@ -12,16 +12,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="com.class_ic.dao.TodoListDAO">
 
-<select id="TodoList" resultType="com.class_ic.vo.TodoListDTO">
-select * from TodoList order by listNo
+<select id="TodoList" resultType="com.class_ic.vo.TodoListDTO" parameterType="String">
+select * from todo where email=#{email} order by todoNo
 </select>
 
 <insert id="TodoListOk" parameterType="com.class_ic.vo.TodoListDTO">
-insert into TodoList(listNo, listContent) values(#{listNo},#{listContent});
+insert into todo(todoList,email) values(#{todoList},#{email})
 </insert>
 
 <delete id="TodoListDelete">
-delete from TodoLIst where listNo=#{listNo}
+delete from todo where todoNo=#{todoNo}
 </delete>
 
 </mapper>

@@ -22,7 +22,7 @@
 					<div class="card-content">
 						<h4 class="card-title">출석출석</h4>
 						<div class="toolbar">
-							<!--        여기서부터 내가 값을 넣어 바꿀 수 있는 태그              -->
+						<!--        여기서부터 내가 값을 넣어 바꿀 수 있는 태그              -->
 						</div>
 						<div class="material-datatables">
 							<div id="datatables_wrapper"
@@ -76,26 +76,26 @@
 				<!--  end card  -->
 			</div>
 			<!-- end col-md-12 -->
-				<!-- chart Start -->
-			             <div class="col-md-5">
-                            <div class="card">
-                                <div class="card-header card-header-icon" data-background-color="red">
-                                    <i class="material-icons">pie_chart</i>
-                                </div>
-                                <div class="card-content">
-                                    <h4 class="card-title">우리반 출석률</h4>
-                                </div>
-                                <div id="chartPreferences" class="ct-chart"></div>
-                                <div class="card-footer">
-                                    <h6>Legend</h6>
-                                    <i class="fa fa-circle text-info"></i> 출석
-                                    <i class="fa fa-circle text-warning"></i> 결석
-                                    <i class="fa fa-circle text-danger"></i> 지각
-                                    <i class="fa fa-circle text-primary"></i> 조퇴
-                                </div>
-                            </div>
-                        </div> 
-            <!--chart End  -->
+						<!-- chart Start -->
+					             <div class="col-md-5">
+		                            <div class="card">
+		                                <div class="card-header card-header-icon" data-background-color="red">
+		                                    <i class="material-icons">pie_chart</i>
+		                                </div>
+		                                <div class="card-content">
+		                                    <h4 class="card-title">우리반 출석률</h4>
+		                                </div>
+		                                <div id="chartPreferences" class="ct-chart"></div>
+		                                <div class="card-footer">
+		                                    <h6>Legend</h6>
+		                                    <i class="fa fa-circle text-info"></i> 출석
+		                                    <i class="fa fa-circle text-warning"></i> 결석
+		                                    <i class="fa fa-circle text-danger"></i> 지각
+		                                    <i class="fa fa-circle text-primary"></i> 조퇴
+		                                </div>
+		                            </div>
+		                        </div> 
+		                <!--chart End  -->
 		</div>
 		<!-- end row -->
 	</div>
@@ -148,14 +148,8 @@
 			}
 
 		});	
-		
-		
-		
-
 	});
 </script>
-
-
 
 
 <script>

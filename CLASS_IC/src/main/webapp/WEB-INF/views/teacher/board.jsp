@@ -18,18 +18,14 @@
                                     <h4 class="card-title">${SubCategoryDTO.cateCode}</h4>
                           			 <p class="category">${SubCategoryDTO.cateCode}의 게시글을 보시려면 details를 눌러주세요.</p> 
                                 </div>
-                                
                                 <div class="card-content table-responsive" style="height: 260px">
                                     <table class="table table-hover">
-                               
                                         <thead class="text-warning">
-                                            <tr><th>No</th>
+                                             <tr><th>No</th>
                                              <th>Title</th>
-                                            <th>subCategory</th>
-                               
-                    
-                               
-                                        </tr></thead>
+                                             <th>subCategory</th>
+                                             </tr>
+                                        </thead>
                                         <tbody >
                                         	<c:forEach var="LectureBoardDTO" items="${SubCategoryDTO.boardlist}">
                                             <tr>
@@ -43,7 +39,6 @@
                                             </c:forEach>
                                         </tbody>
                                     </table>
-                                  
                                 </div>
                                     <div align="center" style="margin-bottom: 20px"> 
                                           <button type="button" 
@@ -53,9 +48,7 @@
                                                         </button>
                                                         </div>
                             </div>
-                        </div>
-                        
-                    
+                         </div>
                         </c:forEach>
                         <!--  board 추가 아이콘  -->
                       <div class="col-lg-6">

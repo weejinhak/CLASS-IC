@@ -27,40 +27,40 @@
 								class="dataTables_wrapper form-inline dt-bootstrap">
 
 								<div class="row">
-									<div class="col-sm-12">
-										<table id="datatables"
-											class="table table-striped table-no-bordered table-hover dataTable dtr-inline"
-											cellspacing="0" width="100%" style="width: 100%;" role="grid"
-											aria-describedby="datatables_info">
-											<thead>
-												<tr role="row">
-													<th class="sorting" tabindex="0" aria-controls="datatables"
-														rowspan="1" colspan="1" style="width: 98px;">일자</th>
-													<th class="sorting" tabindex="0" aria-controls="datatables"
-														rowspan="1" colspan="1" style="width: 225px;">입실시간</th>
-													<th class="sorting" tabindex="0" aria-controls="datatables"
-														rowspan="1" colspan="1" style="width: 225px;">퇴실시간</th>
-													<th class="sorting" tabindex="0" aria-controls="datatables"
-														rowspan="1" colspan="1" style="width: 114px;">상태</th>
-													<th class="sorting" tabindex="0" aria-controls="datatables"
-														rowspan="1" colspan="1" style="width: 50px;">기수</th>
-												</tr>
-											</thead>
-
-											<tfoot>
-												<tr>
-													<th rowspan="1" colspan="1">일자</th>
-													<th rowspan="1" colspan="1">입실시간</th>
-													<th rowspan="1" colspan="1">퇴실시간</th>
-													<th rowspan="1" colspan="1">상태</th>
-													<th rowspan="1" colspan="1">기수</th>
-												</tr>
-											</tfoot>
-											<tbody class="tbodyappend">
-
-											</tbody>
-										</table>
-									</div>
+										<div class="col-sm-12">
+												<table id="datatables"
+													class="table table-striped table-no-bordered table-hover dataTable dtr-inline"
+													cellspacing="0" width="100%" style="width: 100%;" role="grid"
+													aria-describedby="datatables_info">
+													<thead>
+														<tr role="row">
+															<th class="sorting" tabindex="0" aria-controls="datatables"
+																rowspan="1" colspan="1" style="width: 98px;">일자</th>
+															<th class="sorting" tabindex="0" aria-controls="datatables"
+																rowspan="1" colspan="1" style="width: 225px;">입실시간</th>
+															<th class="sorting" tabindex="0" aria-controls="datatables"
+																rowspan="1" colspan="1" style="width: 225px;">퇴실시간</th>
+															<th class="sorting" tabindex="0" aria-controls="datatables"
+																rowspan="1" colspan="1" style="width: 114px;">상태</th>
+															<th class="sorting" tabindex="0" aria-controls="datatables"
+																rowspan="1" colspan="1" style="width: 50px;">기수</th>
+														</tr>
+													</thead>
+		
+													<tfoot>
+														<tr>
+															<th rowspan="1" colspan="1">일자</th>
+															<th rowspan="1" colspan="1">입실시간</th>
+															<th rowspan="1" colspan="1">퇴실시간</th>
+															<th rowspan="1" colspan="1">상태</th>
+															<th rowspan="1" colspan="1">기수</th>
+														</tr>
+													</tfoot>
+													<tbody class="tbodyappend">
+		
+													</tbody>
+												</table>
+										</div>
 								</div>
 
 							</div>

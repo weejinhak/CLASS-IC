@@ -36,9 +36,7 @@
 
               },
               error:function(request, status, error){
-                    
                       alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error );
-                     
                 }
          });
    });
@@ -81,57 +79,47 @@
 <body>
     <div class="wrapper wrapper-full-page">    
             <div class="full-page login-page" filter-color="black" data-image="${pageContext.request.contextPath}/resources/assets/img/classic_join00.jpg">
-                           <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->           
-              <div class="content">
-                  <div class="col-xs-3"></div>
-                  <div class="col-xs-6">
-                       <button class="btn btn-success" data-toggle="modal" data-target="#noticeModal">
-                           <span class="btn-label"><i class="material-icons">check</i>새로운 기수 만들기</span>
-                             </button>
-                     <div class="row">               
-
-                        <div class="col-md-4">
-                           <div class="card card-chart" data-count="4">
-                              <div class="card-header" data-background-color="red" data-header-animation="true">
-                                 <div align="center">
-                                 <h3 class="card-title" >
-                                    <br>통합 관리
-                                    <br>페이지
-                                 </h3></div>
-                              </div>
-                              <div class="card-content">
-                                 <div class="card-actions">
-                                    <form action="boardcontent.htm" method="POST">
-                                    <button type="submit" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="go!">
-                                       <i class="material-icons">input</i>
-                                    </button>
-                                    </form>
-                                 </div>               
-                                    <br>               
-                                 <p class="category">통합 관리 페이지로 이동.</p>
-                              </div>
-                              <div class="card-footer">
-                                 <div class="stats">
-                                    <i class="material-icons">access_time</i> campaign sent 2 days ago
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        
-                        <div id="lecturelist"></div>
-                        
-                        
-                     </div>
-                     
-                     
-               
-               
-                  </div>
-                  <div class="col-xs-3"></div>
-               
-               </div>
-         </div>
-</div>
+	              <div class="content">
+		                  <div class="col-xs-3"></div>
+			                  <div class="col-xs-6">
+			                       <button class="btn btn-success" data-toggle="modal" data-target="#noticeModal">
+			                           <span class="btn-label"><i class="material-icons">check</i>새로운 기수 만들기</span>
+			                             </button>
+			                        <div class="row">               
+					                        <div class="col-md-4">
+						                           <div class="card card-chart" data-count="4">
+							                              <div class="card-header" data-background-color="red" data-header-animation="true">
+							                                 <div align="center">
+							                                 <h3 class="card-title" >
+							                                    <br>통합 관리
+							                                    <br>페이지
+							                                 </h3></div>
+							                              </div>
+							                              <div class="card-content">
+							                                 <div class="card-actions">
+							                                    <form action="boardcontent.htm" method="POST">
+							                                    <button type="submit" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="go!">
+							                                       <i class="material-icons">input</i>
+							                                    </button>
+							                                    </form>
+							                                 </div>               
+							                                    <br>               
+							                                 <p class="category">통합 관리 페이지로 이동.</p>
+							                              </div>
+							                              <div class="card-footer">
+							                                 <div class="stats">
+							                                    <i class="material-icons">access_time</i> campaign sent 2 days ago
+							                                 </div>
+							                              </div>
+						                           </div>
+					                        </div>
+			                           <div id="lecturelist"></div>
+			                        </div>
+			                  </div>
+		                  <div class="col-xs-3"></div>
+	               </div>
+            </div>
+	</div>
 
             <!-- 모달  -->
    <div class="row">
