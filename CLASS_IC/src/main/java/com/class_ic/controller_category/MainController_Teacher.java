@@ -167,5 +167,39 @@ public class MainController_Teacher {
             
             return viewpage;
       }
-        
+      //오늘의 강의  
+    /*
+  	 * @description : 오늘의 강의 목록 조회
+  	 */ 
+     
+      @RequestMapping(value="todayLectureList.htm", method=RequestMethod.GET)
+      public ModelAndView todayLectureList (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){  
+        ModelAndView viewpage = boardlistservice.todayLectureList(request, response, mv); 
+     return viewpage; 
+     }
+      
+     /*
+  	 * @description : 오늘의 강의 다중 선택 저장
+  	 */
+      
+      @RequestMapping(value="multi_storage.htm" , method=RequestMethod.POST) 
+      public String multi_storage(HttpServletRequest request, HttpServletResponse response ) {
+         String viewpage = boardlistservice.multi_storage(request, response);
+           
+           return viewpage;
+      }
+      
+      /*
+       * @description : 오늘의 강의 삭제
+       */
+      @RequestMapping(value="todayLectureDelete.htm" ) 
+      public String deleteTodayLect(HttpServletRequest request, HttpServletResponse response){ 
+    	    String viewpage = boardlistservice.deleteTodayLect(request, response);
+            
+            return viewpage;
+      
+      }
+      
+      
+      
 }

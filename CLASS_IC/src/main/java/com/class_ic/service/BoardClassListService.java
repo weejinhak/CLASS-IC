@@ -26,13 +26,13 @@ import com.class_ic.vo.SubCategoryDTO;
 /*
 * @Project      :   CLASS-IC
 * @Date          :   2017.07.1
-* @Author      :   노지영
+* @Author      :   노지영  
 */
 
 /*
 * @Class: BoardListController 
 * @Date: 2017.07. 1
-* @Author: 노지영
+* @Author: 노지영  
 * @Desc: 클래스별 게시판의 게시글의 정보의 C.R.U.D 를 담당하는 서비스.
 */
 
@@ -363,6 +363,7 @@ public class BoardClassListService {
 
          return m;
       }
-
+ 
+      
 
 }
