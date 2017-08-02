@@ -21,22 +21,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.vo.MemberDTO;
 import com.class_ic.dao.BoardDAO;
+import com.class_ic.dao.TodayLectureDAO;
 import com.class_ic.dao.BoardDAO;
 import com.class_ic.vo.CategoryDTO;
 import com.class_ic.vo.ClassByLectureDTO;
 import com.class_ic.vo.LectureBoardDTO;
 import com.class_ic.vo.SubCategoryDTO;
+import com.class_ic.vo.TodayLectureVO;
 
 /*
 * @Project      :   CLASS-IC
 * @Date          :   2017.06.27
-* @Author      :   노지영
+* @Author      :   노지영 김은영
 */
 
 /*
 * @Class: BoardListController 
 * @Date: 2017.06. 27
-* @Author: 노지영
+* @Author: 노지영 김은영
 * @Desc: 게시판의 게시글의 정보의 C.R.U.D 를 담당하는 컨트롤러.
 */
 
@@ -481,6 +483,65 @@ public class BoardListService {
 
          return "redirect:linkFile.htm";
       }
+      
+      //오늘의 강의 
+      //오늘의강의 보기 (강사)
+      public ModelAndView  todayLectureList (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){//classcode올걸 
+
+        /* HttpSession session=request.getSession();
+         String classCode=(String)session.getAttribute("classCode");
+         System.out.println(classCode);
+         System.out.println("오늘의강의컨트롤러"); */
+         TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class); 
+         
+//         System.out.println("classCode"+classCode); //여기까지 ㅇㅋ
+          //여기서 오류.. 
+//         ArrayList<LectureBoardDTO>  llist = bdao.linkList(classCode);
+         ArrayList<TodayLectureVO> blist = bdao.todayLectureList();
+          
+         System.out.println("셀렉리스트 컨트롤러 : " +blist); 
+
+         mv.setViewName("teacher.link");
+
+         mv.setViewName("teacher.todayLecture_storage"); 
+          mv.addObject("bvo",blist) ;
+       
+          return mv;
+         //클래스 코드를 받아서 
+      }
+      
+      //오늘의 강의 다중 추가  
+      public String multi_storage(HttpServletRequest request, HttpServletResponse response) {
+         System.out.println("다중 추가 컨트롤러");
+
+         String test = request.getParameter("data");
+
+          TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class); 
+         
+         String[] array = test.split(",");
+
+         for (int i = 0; i < array.length; i++) {
+
+        	 bdao.insertTodayLect(Integer.parseInt(array[i]));
+             
+
+         }
+         return "teacher.board_details_view";
+
+      }
+      
+    //오늘의 강의 삭제 
+      public String deleteTodayLect(HttpServletRequest request, HttpServletResponse response) {
+          System.out.println("totalBoard_delete.htm 컨트롤러 탐 ");
+          int todayNo = Integer.parseInt( request.getParameter("todayNo"));
+          
+          TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class); 
+          
+
+          bdao.deleteTodayLect(todayNo) ;
+          return "redirect:todayLectureList.htm";
+       }
+
       
       
 }
