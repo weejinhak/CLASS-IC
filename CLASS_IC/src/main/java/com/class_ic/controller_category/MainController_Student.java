@@ -1,3 +1,10 @@
+/*
+* @FileName		:	CalendarController_Student.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.06.26
+* @Author		:   박소현,노지영,김은영,최은혜
+*/
 package com.class_ic.controller_category;
 
 import javax.servlet.http.HttpServletRequest;

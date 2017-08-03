@@ -1,3 +1,10 @@
+/*
+* @FileName		:	BoardListService.java
+* @Project      :   CLASS-IC
+* @Date          :   2017.06.27
+* @Author      :   노지영 김은영
+*/
+
 package com.class_ic.service;
 
 import java.io.FileNotFoundException;
@@ -29,11 +36,6 @@ import com.class_ic.vo.LectureBoardDTO;
 import com.class_ic.vo.SubCategoryDTO;
 import com.class_ic.vo.TodayLectureVO;
 
-/*
-* @Project      :   CLASS-IC
-* @Date          :   2017.06.27
-* @Author      :   노지영 김은영
-*/
 
 /*
 * @Class: BoardListController 
