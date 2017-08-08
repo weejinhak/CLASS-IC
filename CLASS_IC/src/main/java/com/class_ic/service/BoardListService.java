@@ -43,444 +43,361 @@ import com.class_ic.vo.SubCategoryDTO;
 @Service
 public class BoardListService {
 
-   @Autowired
-   private SqlSession sqlsession;
-
-   public void boardContentSaveService(HttpServletRequest request, LectureBoardDTO lecture) throws IOException {
-
-/*      //파일 업로드 처리 추가
-      List<CommonsMultipartFile> files = lecture.getFiles();   
-      List<String> filenames = new ArrayList<String>();//파일명만 추출   
-      
-      if(files != null && files.size() > 0){
-         //업로드한 파일이 하나라도 있다면
-         for(CommonsMultipartFile multifile : files){
-            String filename = multifile.getOriginalFilename();
-            String path = request.getServletContext().getRealPath("/resources/upload");
-            String fpath = path + "\\" + filename;
-            System.out.println(filename + "/" + fpath);
-            if(!filename.equals("")){
-               //서버에 파일 쓰기 작업
-               FileOutputStream fs = new FileOutputStream(fpath);
-               fs.write(multifile.getBytes());
-               fs.close();
-            }
-            filenames.add(filename);// 실제 DB insert 할 파일명
-         }
-      }*/
-      //파일 업로드 처리 끝
-
-      System.out.println("boardContentSave 메소드 들어옴.");
-      String title = (String) request.getParameter("title");
-      String content = (String) request.getParameter("content");
-      String cate = (String) request.getParameter("cate");
-      String subcate = (String) request.getParameter("subcate");
-      String classCode = request.getParameter("classCode");
-      System.out.println(title + "," + content + "," + cate + "," + subcate + "/" + classCode);
+	@Autowired
+	private SqlSession sqlsession;
 
-      LectureBoardDTO dto = new LectureBoardDTO();
-      dto.setClassCode(classCode);
-      dto.setCateCode(cate);
-      dto.setSubcateCode(subcate);
-      dto.setLectureContent(content);
-      dto.setLectureTitle(title);
-      // 파일 업로드 추가 부분
-   /*   
-       dto.setFileSrc(filenames.get(0)); */
-      // dto.setFileSrc2(filenames.get(1));
-       
-      // 파일 업로드 추가 부분
-      BoardDAO board = sqlsession.getMapper(BoardDAO.class);
+	public void boardContentSaveService(HttpServletRequest request, LectureBoardDTO lecture) throws IOException {
 
-      board.insertBoardContent(dto);
+		String title = (String) request.getParameter("title");
+		String content = (String) request.getParameter("content");
+		String cate = (String) request.getParameter("cate");
+		String subcate = (String) request.getParameter("subcate");
+		String classCode = request.getParameter("classCode");
 
-      
-/*        int file_insert = board.insertFile(dto);      
-        System.out.println("파일 입력 결과: "+file_insert); */
-      
+		LectureBoardDTO dto = new LectureBoardDTO();
+		dto.setClassCode(classCode);
+		dto.setCateCode(cate);
+		dto.setSubcateCode(subcate);
+		dto.setLectureContent(content);
+		dto.setLectureTitle(title);
+		// 파일 업로드 추가 부분
+		/*
+		 * dto.setFileSrc(filenames.get(0));
+		 */
+		// dto.setFileSrc2(filenames.get(1));
 
-   }
+		// 파일 업로드 추가 부분
+		BoardDAO board = sqlsession.getMapper(BoardDAO.class);
 
-   public String selectCategoryService(Model model, HttpServletRequest request) {
-      System.out.println("selectCategory 메소드 들어옴.");
+		board.insertBoardContent(dto);
 
-      BoardDAO board = sqlsession.getMapper(BoardDAO.class);
-      HttpSession session=request.getSession();
-      String email=(String) session.getAttribute("email");
-      System.out.println("야 임마너"+session.getAttribute("email"));;
-      List<CategoryDTO> totalcate = board.selectCategory(email);
+	}
 
-      System.out.println(totalcate);
+	public String selectCategoryService(Model model, HttpServletRequest request) {
 
-      model.addAttribute("listcategory", totalcate);
+		BoardDAO board = sqlsession.getMapper(BoardDAO.class);
+		HttpSession session = request.getSession();
+		String email = (String) session.getAttribute("email");
+		List<CategoryDTO> totalcate = board.selectCategory(email);
 
-      String viewpage = "common/boardCateList";
+		model.addAttribute("listcategory", totalcate);
 
-      /*
-       * for(String value: totalcate){ System.out.println(value); }
-       */
+		String viewpage = "common/boardCateList";
 
-      return viewpage;
+		return viewpage;
 
-   }
+	}
 
-   public String selectSubCategoryService(Model model, HttpServletRequest request) {
-      System.out.println("selectsubcategory 메소드 들어옴.");
+	public String selectSubCategoryService(Model model, HttpServletRequest request) {
 
-      String cate = request.getParameter("cate");
-      System.out.println(cate);
-      HttpSession session=request.getSession();
-      String email=(String) session.getAttribute("email");
-      BoardDAO board = sqlsession.getMapper(BoardDAO.class);
-      List<SubCategoryDTO> subcate = board.selectSubCategory(email);
+		String cate = request.getParameter("cate");
+		HttpSession session = request.getSession();
+		String email = (String) session.getAttribute("email");
+		BoardDAO board = sqlsession.getMapper(BoardDAO.class);
+		List<SubCategoryDTO> subcate = board.selectSubCategory(email);
 
-      ArrayList<SubCategoryDTO> subcate2 = new ArrayList<SubCategoryDTO>();
-      for (SubCategoryDTO value : subcate) {
-         if (value.getCateCode().equals(cate)) {
-            subcate2.add(value);
-            System.out.println(value.getSubcateCode());
-         }
-      }
+		ArrayList<SubCategoryDTO> subcate2 = new ArrayList<SubCategoryDTO>();
+		for (SubCategoryDTO value : subcate) {
+			if (value.getCateCode().equals(cate)) {
+				subcate2.add(value);
+			}
+		}
 
-      model.addAttribute("subcategory", subcate2);
-      String viewpage = "common/boardSubCateList";
+		model.addAttribute("subcategory", subcate2);
+		String viewpage = "common/boardSubCateList";
 
-      return viewpage;
+		return viewpage;
 
-   }
+	}
 
-   public String selectMember(Model model, HttpServletRequest request, HttpSession session) {
+	public String selectMember(Model model, HttpServletRequest request, HttpSession session) {
 
-      BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
+		BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
 
-      String email = (String) session.getAttribute("email");
+		String email = (String) session.getAttribute("email");
 
-      ArrayList<MemberDTO> memberlist = dao.selectMember(email);
+		ArrayList<MemberDTO> memberlist = dao.selectMember(email);
 
-      System.out.println("memberlist뜨냐?" + memberlist);
-      System.out.println("이메일이다~  " + email);
+		model.addAttribute("memberlist", memberlist);
 
-      model.addAttribute("memberlist", memberlist);
+		String viewpage = "common/boardMemberList";
 
-      String viewpage = "common/boardMemberList";
+		return viewpage;
 
-      return viewpage;
+	}
 
-   }
+	public String boardMultiSend(String lectureNo, String classCode) {
 
-   public String boardMultiSend(String lectureNo, String classCode) {
+		BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
 
-      System.out.println("기수로 보내기 서비스 탄다.");
+		String[] array = lectureNo.split(",");
+		ClassByLectureDTO dto = new ClassByLectureDTO();
+		dto.setClassCode(classCode);
 
-      BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
+		ArrayList<ClassByLectureDTO> list = dao.selectClassByLecture();
 
-      String[] array = lectureNo.split(",");
-      ClassByLectureDTO dto = new ClassByLectureDTO();
-      dto.setClassCode(classCode);
+		boolean exist = false;
+		for (int i = 0; i < array.length; i++) {
 
-      ArrayList<ClassByLectureDTO> list = dao.selectClassByLecture();
+			for (ClassByLectureDTO all : list) {
+				if (all.getlectureNo() == Integer.parseInt(array[i])) {
+					exist = true;
 
-      boolean exist = false;
-      for (int i = 0; i < array.length; i++) {
+				}
+			}
+			if (exist) {
+				break;
+			}
 
-         for (ClassByLectureDTO all : list) {
-            if (all.getlectureNo() == Integer.parseInt(array[i])) {
+			dto.setlectureNo(Integer.parseInt(array[i]));
+			dao.boardMultiSend(dto);
 
-               System.out.println(array[i] + "있음");
-               exist = true;
+		}
 
-            }
-         }
-         if (exist) {
-            break;
-         }
+		String viewpage = "teacher.totalLectureBoard";
+		return viewpage;
 
-         System.out.println(array[i]);
-         dto.setlectureNo(Integer.parseInt(array[i]));
-         dao.boardMultiSend(dto);
+	}
 
-      }
+	// 여기서 부터 합침
+	// 통합게시판 리스트 출력
+	public ModelAndView allBoard(LectureBoardDTO bvo, HttpServletRequest request) {
 
-      String viewpage = "teacher.totalLectureBoard";
-      return viewpage;
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+		HttpSession session = request.getSession();
+		String email = (String) session.getAttribute("email");
+		ArrayList<LectureBoardDTO> blist = bdao.allList(email);
 
-   }
+		// 리턴 셋팅
+		ModelAndView m = new ModelAndView();
+		m.setViewName("teacher.totalLectureBoard");
+		m.addObject("bvo", blist);
 
-   // 여기서 부터 합침
-   // 통합게시판 리스트 출력
-   public ModelAndView allBoard(LectureBoardDTO bvo, HttpServletRequest request) {
+		return m;
+	}
 
-      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
-      HttpSession session=request.getSession();
-      String email=(String) session.getAttribute("email");
-      ArrayList<LectureBoardDTO> blist = bdao.allList(email);
+	// 통합게시판 카테고리,서브카테고리 select box
+	public ModelAndView totalBoard(LectureBoardDTO bvo, HttpServletRequest request) {
 
-      // 리턴 셋팅
-      ModelAndView m = new ModelAndView();
-      m.setViewName("teacher.totalLectureBoard");
-      m.addObject("bvo", blist);
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+		HttpSession session = request.getSession();
+		String email = (String) session.getAttribute("email");
 
-      return m;
-   }
+		String cateCode = request.getParameter("cate");
+		String subcateCode = request.getParameter("subcate");
+		SubCategoryDTO dto = new SubCategoryDTO();
+		dto.setEmail(email);
+		dto.setSubcateCode(subcateCode);
+		dto.setCateCode(cateCode);
 
-   // 통합게시판 카테고리,서브카테고리 select box
-   public ModelAndView totalBoard(LectureBoardDTO bvo, HttpServletRequest request) {
+		ArrayList<LectureBoardDTO> blist = bdao.allBoard(dto);
 
-      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
-      HttpSession session=request.getSession();
-      String email=(String) session.getAttribute("email");
+		// 리턴 셋팅
+		ModelAndView m = new ModelAndView();
+		m.setViewName("teacher.totalLectureBoard");
+		m.addObject("bvo", blist);
 
-      String cateCode = request.getParameter("cate");
-      String subcateCode = request.getParameter("subcate");
-      SubCategoryDTO dto=new SubCategoryDTO();
-      dto.setEmail(email);
-      dto.setSubcateCode(subcateCode);
-      dto.setCateCode(cateCode);
-      
+		return m;
+	}
 
-      ArrayList<LectureBoardDTO> blist = bdao.allBoard(dto);
+	// 통합게시판 수정화면 처리
+	public ModelAndView totalboardEdit(LectureBoardDTO dto, HttpServletRequest request, int lectureNo) {
 
-      // 리턴 셋팅
-      ModelAndView m = new ModelAndView();
-      m.setViewName("teacher.totalLectureBoard");
-      m.addObject("bvo", blist);
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
-      return m;
-   }
+		int lectureNo1 = lectureNo;
 
-   // 통합게시판 수정화면 처리
-   public ModelAndView totalboardEdit(LectureBoardDTO dto, HttpServletRequest request, int lectureNo) {
+		ArrayList<LectureBoardDTO> list = bdao.totalboardEdit(lectureNo1);
 
-      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+		ModelAndView m = new ModelAndView();
+		m.setViewName("teacher.totalLectureBoard_Edit");
+		m.addObject("list", list);
 
-      int lectureNo1 = lectureNo;
-      System.out.println("lectureNo 나오냐" + lectureNo);
+		return m;
+	}
 
-      ArrayList<LectureBoardDTO> list = bdao.totalboardEdit(lectureNo1);
-      System.out.println(list.size());
+	// 통합게시판 수정된 데이터 DB저장
+	public String totalboardEditOk(LectureBoardDTO dto) {
 
-      ModelAndView m = new ModelAndView();
-      m.setViewName("teacher.totalLectureBoard_Edit");
-      m.addObject("list", list);
-      System.out.println("모델단" + m);
+		BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
+		dao.totalboardEditOk(dto);
 
-      return m;
-   }
+		return "redirect:allboard.htm";
+	}
 
-   // 통합게시판 수정된 데이터 DB저장
-   public String totalboardEditOk(LectureBoardDTO dto) {
-      System.out.println("수정오케이컨트롤러11" + dto);
+	// 다중삭제
+	public String multi_del(HttpServletRequest request, HttpServletResponse response) {
 
-      BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
-      dao.totalboardEditOk(dto);
+		String test = request.getParameter("data");
 
-      return "redirect:allboard.htm";
-   }
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
-   // 다중삭제
-   public String multi_del(HttpServletRequest request, HttpServletResponse response) {
-      System.out.println("다중삭제 컨트롤러");
+		String[] array = test.split(",");
 
-      String test = request.getParameter("data");
+		for (int i = 0; i < array.length; i++) {
 
-      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+			// 삭제로 바꿈
+			bdao.deleteLect(Integer.parseInt(array[i]));
 
-      String[] array = test.split(",");
+		}
+		return "redirect:allboard.htm";
 
-      for (int i = 0; i < array.length; i++) {
+	}
 
-         // 삭제로 바꿈
-         bdao.deleteLect(Integer.parseInt(array[i]));
+	// action의 x버튼 누르기 삭제
+	public String delete(HttpServletRequest request, HttpServletResponse response) {
+		int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));
 
-      }
-      return "redirect:allboard.htm";
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
-   }
+		bdao.deleteLect(lectureNo);
 
-   //action의 x버튼 누르기 삭제 
-   public String delete(HttpServletRequest request, HttpServletResponse response) {
-      System.out.println("totalBoard_delete.htm 컨트롤러 탐 ");
-      int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));
+		return "redirect:allboard.htm";
+	}
 
-      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+	// 게시판 글 상세보기
+	public ModelAndView boardContentDetail(HttpServletRequest request, HttpServletResponse response,
+			LectureBoardDTO bvo) { // lectureNo 올걸
 
-      bdao.deleteLect(lectureNo);
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
-      return "redirect:allboard.htm";
-   }
+		int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));
+		LectureBoardDTO blist = bdao.totalBoard_contentview(lectureNo);
+		ArrayList<LectureBoardDTO> bfilelist = bdao.totalBoard_contenFile(lectureNo);
+		ArrayList<LectureBoardDTO> blinklist = bdao.totalBoard_contenLink(lectureNo);
+		// 리턴 셋팅
+		ModelAndView m = new ModelAndView();
+		m.setViewName("teacher.board_content_view");
+		m.addObject("bvo", blist);
+		m.addObject("bfile", bfilelist);
+		m.addObject("blink", blinklist);
 
-   // 게시판 글 상세보기
-   public ModelAndView boardContentDetail(HttpServletRequest request, HttpServletResponse response,
-         LectureBoardDTO bvo) { // lectureNo 올걸
+		return m;
+	}
 
-      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+	// 카테고리 insert
+	public ModelAndView insertCate(HttpServletRequest request, HttpServletResponse response, CategoryDTO dto) { // lectureNo
+		// 올걸
 
-      int lectureNo = Integer.parseInt(request.getParameter("lectureNo"));
-      System.out.println("lectureNo : " + lectureNo);
-      LectureBoardDTO blist = bdao.totalBoard_contentview(lectureNo);
-      ArrayList<LectureBoardDTO> bfilelist = bdao.totalBoard_contenFile(lectureNo);
-      ArrayList<LectureBoardDTO> blinklist = bdao.totalBoard_contenLink(lectureNo);
-      System.out.println("가져온 게시판 글번호: " +blist.getLectureNo());
-      System.out.println("은영 상세" + blist);
-      // 리턴 셋팅
-      ModelAndView m = new ModelAndView();
-      m.setViewName("teacher.board_content_view");
-      m.addObject("bvo", blist);
-      m.addObject("bfile", bfilelist );
-      m.addObject("blink", blinklist);
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
-      return m;
-   }
+		int result = bdao.insertCate(dto);
 
-   // 카테고리 insert
-   public ModelAndView insertCate(HttpServletRequest request, HttpServletResponse response, CategoryDTO dto) { // lectureNo
-                                                                                    // 올걸
+		ModelAndView m = new ModelAndView();
+		m.setViewName("teacher.totalLectureBoard");
 
-      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+		return m;
+	}
 
-      int result = bdao.insertCate(dto);
-      System.out.println("카테고리 insert result :"+result);
+	// 서브 카테고리 insert
+	public ModelAndView insertSubcate(HttpServletRequest request, HttpServletResponse response, SubCategoryDTO dto) { // lectureNo
+		// 올걸
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
-      ModelAndView m = new ModelAndView();
-      m.setViewName("teacher.totalLectureBoard");
+		int result = bdao.insertSubcate(dto);
 
-      return m;
-   }
+		ModelAndView m = new ModelAndView();
+		m.setViewName("teacher.totalLectureBoard");
 
-   // 서브 카테고리 insert
-   public ModelAndView insertSubcate(HttpServletRequest request, HttpServletResponse response, SubCategoryDTO dto) { // lectureNo
-                                                                                          // 올걸
-      BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+		return m;
+	}
 
-      int result = bdao.insertSubcate(dto);
-      System.out.println("서브 카테고리 insert result :"+result);
+	// 링크파일 뷰 (강사)
+	public ModelAndView linkfileviewByTeacher(HttpServletRequest request, HttpServletResponse response,
+			ModelAndView mv) {// classcode올걸
 
-      ModelAndView m = new ModelAndView();
-      m.setViewName("teacher.totalLectureBoard");
+		HttpSession session = request.getSession();
+		String classCode = (String) session.getAttribute("classCode");
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
-      return m;
-   }
-   
+		// 여기서 오류..
+		ArrayList<LectureBoardDTO> llist = bdao.linkList(classCode);
 
+		mv.setViewName("teacher.link");
+		mv.addObject("lvo", llist);
 
-      
-      //링크파일 뷰 (강사)
-      public ModelAndView  linkfileviewByTeacher (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){//classcode올걸 
+		return mv;
+		// 클래스 코드를 받아서
+	}
 
-         HttpSession session=request.getSession();
-         String classCode=(String)session.getAttribute("classCode");
-         System.out.println(classCode);
-         System.out.println("링크컨트롤러");
-         BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
-         
-         System.out.println("classCode"+classCode); //여기까지 ㅇㅋ
-          //여기서 오류.. 
-         ArrayList<LectureBoardDTO>  llist = bdao.linkList(classCode);
-           
-         System.out.println("셀렉리스트 컨트롤러 : " +llist); 
+	// 링크파일 뷰 (학생)
+	public ModelAndView linkfileviewbyStudent(HttpServletRequest request, HttpServletResponse response,
+			ModelAndView mv) {// classcode올걸
 
-         mv.setViewName("teacher.link");
-          mv.addObject("lvo",llist) ;
-       
-          return mv;
-         //클래스 코드를 받아서 
-      }
-      
-      //링크파일 뷰 (학생)
-      public ModelAndView  linkfileviewbyStudent (HttpServletRequest request, HttpServletResponse response, ModelAndView mv){//classcode올걸 
+		HttpSession session = request.getSession();
+		String classCode = (String) session.getAttribute("classCode");
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
-         HttpSession session=request.getSession();
-         String classCode=(String)session.getAttribute("classCode");
-         System.out.println(classCode);
-         System.out.println("링크컨트롤러");
-         BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
-         
-         System.out.println("classCode"+classCode); //여기까지 ㅇㅋ
-          //여기서 오류.. 
-         ArrayList<LectureBoardDTO>  llist = bdao.linkList(classCode);
-           
-         System.out.println("셀렉리스트 컨트롤러 : " +llist); 
+		// 여기서 오류..
+		ArrayList<LectureBoardDTO> llist = bdao.linkList(classCode);
 
-         mv.setViewName("student.link");
-          mv.addObject("lvo",llist) ;
-       
-          return mv;
-         //클래스 코드를 받아서 
-      }
-      
-      
-      //링크 추가 
-      public void linkInsert(HttpServletRequest request ){
-         
-         HttpSession session=request.getSession();
-         String classCode=(String)session.getAttribute("classCode");
-          BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
-          LectureBoardDTO bdto = new  LectureBoardDTO(); 
-          // 링크 제목 
-           String linkTitle = request.getParameter("linkTitle");
-          //링크 주소  
-           String linkSrc = request.getParameter("linkSrc");
-         
-         System.out.println("링크제목 : "+linkTitle);
-         System.out.println("링크 주소: "+linkSrc);
-         System.out.println("링크추가 기수: "+classCode);
-         
-         bdto.setLinkTitle(linkTitle);
-         bdto.setLinkSrc(linkSrc); 
-         bdto.setClassCode(classCode);  
-         bdao.linkInsert(bdto); 
-      }
-      
-      
-      // 링크 다중삭제
-      public String link_multi_del(HttpServletRequest request, HttpServletResponse response) {
-         System.out.println("다중삭제 컨트롤러");
+		mv.setViewName("student.link");
+		mv.addObject("lvo", llist);
 
-         String test = request.getParameter("data");
+		return mv;
+		// 클래스 코드를 받아서
+	}
 
-         BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+	// 링크 추가
+	public void linkInsert(HttpServletRequest request) {
 
-         String[] array = test.split(",");
+		HttpSession session = request.getSession();
+		String classCode = (String) session.getAttribute("classCode");
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+		LectureBoardDTO bdto = new LectureBoardDTO();
+		// 링크 제목
+		String linkTitle = request.getParameter("linkTitle");
+		// 링크 주소
+		String linkSrc = request.getParameter("linkSrc");
 
-         for (int i = 0; i < array.length; i++) {
+		bdto.setLinkTitle(linkTitle);
+		bdto.setLinkSrc(linkSrc);
+		bdto.setClassCode(classCode);
+		bdao.linkInsert(bdto);
+	}
 
-            // 삭제로 바꿈
-            bdao.deleteLink(Integer.parseInt(array[i]));
+	// 링크 다중삭제
+	public String link_multi_del(HttpServletRequest request, HttpServletResponse response) {
 
-         }
-         return "redirect:linkFile.htm";
+		String test = request.getParameter("data");
 
-      }
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
-    
-      // 링크게시판 수정화면 처리
-      public ModelAndView linkboardEdit(LectureBoardDTO dto, HttpServletRequest request, int linkNo) {
+		String[] array = test.split(",");
 
-         BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
+		for (int i = 0; i < array.length; i++) {
 
-         int linkNo1 = linkNo;
-         System.out.println("linkNo 나오냐" + linkNo);
+			// 삭제로 바꿈
+			bdao.deleteLink(Integer.parseInt(array[i]));
 
-         ArrayList<LectureBoardDTO> list = bdao.linkboardEdit(linkNo1);
-         System.out.println(list.size());
+		}
+		return "redirect:linkFile.htm";
 
-         ModelAndView m = new ModelAndView();
-         m.setViewName("teacher.link_Edit");
-         m.addObject("list", list);
-         System.out.println("모델단" + m);
+	}
 
-         return m;
-      }
+	// 링크게시판 수정화면 처리
+	public ModelAndView linkboardEdit(LectureBoardDTO dto, HttpServletRequest request, int linkNo) {
 
-      // 링크게시판 수정된 데이터 DB저장
-      public String linkboardEditOk(LectureBoardDTO dto) {
-         System.out.println("수정오케이컨트롤러11" + dto);
+		BoardDAO bdao = sqlsession.getMapper(BoardDAO.class);
 
-         BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
-         dao.linkboardEditOk(dto);
+		int linkNo1 = linkNo;
 
-         return "redirect:linkFile.htm";
-      }
-      
-      
+		ArrayList<LectureBoardDTO> list = bdao.linkboardEdit(linkNo1);
+
+		ModelAndView m = new ModelAndView();
+		m.setViewName("teacher.link_Edit");
+		m.addObject("list", list);
+
+		return m;
+	}
+
+	// 링크게시판 수정된 데이터 DB저장
+	public String linkboardEditOk(LectureBoardDTO dto) {
+
+		BoardDAO dao = sqlsession.getMapper(BoardDAO.class);
+		dao.linkboardEditOk(dto);
+
+		return "redirect:linkFile.htm";
+	}
+
 }

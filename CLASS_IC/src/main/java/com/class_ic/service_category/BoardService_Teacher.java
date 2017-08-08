@@ -16,24 +16,24 @@ import com.class_ic.vo.LectureBoardDTO;
 
 @Service
 public class BoardService_Teacher {
-	
+
 	@Autowired
 	private SqlSession sqlsession;
-	
-	public String boardWriteServie(LectureBoardDTO board, HttpServletRequest request ) throws IOException{
-	
-		List<CommonsMultipartFile> files = board.getFiles();	
-		List<String> filenames = new ArrayList<String>();//파일명만 추출	
-		
-		if(files != null && files.size() > 0){
-			//업로드한 파일이 하나라도 있다면
-			for(CommonsMultipartFile multifile : files){
+
+	public String boardWriteServie(LectureBoardDTO board, HttpServletRequest request) throws IOException {
+
+		List<CommonsMultipartFile> files = board.getFiles();
+		List<String> filenames = new ArrayList<String>();// 파일명만 추출
+
+		if (files != null && files.size() > 0) {
+			// 업로드한 파일이 하나라도 있다면
+			for (CommonsMultipartFile multifile : files) {
 				String filename = multifile.getOriginalFilename();
 				String path = request.getServletContext().getRealPath("/customer/upload");
 				String fpath = path + "\\" + filename;
-				System.out.println(filename + "/" + fpath);
-				if(!filename.equals("")){
-					//서버에 파일 쓰기 작업
+
+				if (!filename.equals("")) {
+					// 서버에 파일 쓰기 작업
 					FileOutputStream fs = new FileOutputStream(fpath);
 					fs.write(multifile.getBytes());
 					fs.close();
@@ -41,19 +41,13 @@ public class BoardService_Teacher {
 				filenames.add(filename);// 실제 DB insert 할 파일명
 			}
 		}
-		
-		//DB작업
+
+		// DB작업
 		board.setFileSrc(filenames.get(0));
-		//board.setFileSrc2(filenames.get(1));
-		
+
 		LectureBoardDTO lectureboard_dto = sqlsession.getMapper(LectureBoardDTO.class);
-		
-	
-			//lectureboard_dto.insert(n);
-			//lectureboard_dto.
-		
-		
-		return "redirect:notice.htm";	
+
+		return "redirect:notice.htm";
 	}
 
 }
