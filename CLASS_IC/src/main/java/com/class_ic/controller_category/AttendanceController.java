@@ -135,13 +135,6 @@ public class AttendanceController {
 			series[2] = (int)((attendabsencecount / attendancetotalcount) * 100);
 			series[3] = (int)((attendearlyleavecount / attendancetotalcount) * 100);
 
-			for (String v : labels) {
-				System.out.println(v);
-			}
-			for (float b : series) {
-				System.out.println(b);
-			}
-
 		}
 
 		JSONObject obj = new JSONObject();
