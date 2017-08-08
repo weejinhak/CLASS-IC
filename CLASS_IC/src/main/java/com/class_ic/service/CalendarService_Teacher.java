@@ -39,13 +39,13 @@ import net.sf.json.JSONObject;
 
 @Service
 public class CalendarService_Teacher {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
 
-	//일정 입력에서의 값들을 받아와 DB에 저장
+	// 일정 입력에서의 값들을 받아와 DB에 저장
 	public String CalendarInsesrtOk(HttpServletRequest request) {
-		
+
 		CalendarDAO calendarDao = sqlSession.getMapper(CalendarDAO.class);
 		CalendarDTO calendarDto = new CalendarDTO();
 
@@ -53,9 +53,6 @@ public class CalendarService_Teacher {
 		String calStart = request.getParameter("calStart");
 		// 일정 마친 날짜 가져오기
 		String calEnd = request.getParameter("calEnd");
-
-		System.out.println(calStart);
-		System.out.println(calEnd);
 
 		// 제목
 		String calTitle = request.getParameter("calTitle");
@@ -78,11 +75,10 @@ public class CalendarService_Teacher {
 
 		return "teacher.calendar";
 	}
-	
-	
-	//DB에 저장된 일정들을 캘린더에 출력
-	public void CalendarIList(HttpServletRequest request, HttpServletResponse response,
-			CalendarDTO dto2) throws ParseException {
+
+	// DB에 저장된 일정들을 캘린더에 출력
+	public void CalendarIList(HttpServletRequest request, HttpServletResponse response, CalendarDTO dto2)
+			throws ParseException {
 
 		CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);
 		ArrayList<CalendarDTO> calendarlist = calendardao.CalendarList();
@@ -119,17 +115,15 @@ public class CalendarService_Teacher {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	//캘린더 일정 삭제
+
+	// 캘린더 일정 삭제
 	public void calendarEditDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		CalendarDAO calendardao = sqlSession.getMapper(CalendarDAO.class);
 		calendardao.CalendarDelete(id);
 	}
 
-
-	//오늘의 강의
+	// 오늘의 강의
 	public void CalendarTodayClass(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		JSONArray todatlist = new JSONArray();
@@ -161,9 +155,8 @@ public class CalendarService_Teacher {
 		}
 		response.getWriter().print(array);
 	}
-	
-	
-	//DB에 저장된 일정들을 히스토리에 출력
+
+	// DB에 저장된 일정들을 히스토리에 출력
 	public ModelAndView HistoryList(HttpServletRequest request, HttpServletResponse response) {
 
 		CalendarDAO calendartdao = sqlSession.getMapper(CalendarDAO.class);
