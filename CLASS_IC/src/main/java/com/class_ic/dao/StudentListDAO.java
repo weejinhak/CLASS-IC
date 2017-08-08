@@ -16,4 +16,7 @@ public interface StudentListDAO {
 	//편성된 조 출력
 	public List<StudentGroupDTO> selectStudentTeam(StudentGroupDTO dto);
 
+	//기수별 학생 전체 목록(조편성)
+	public List<AttandanceDTO> selectAllStudent(String classCode);
 }
+

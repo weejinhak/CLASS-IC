@@ -6,19 +6,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 학적부 ,입실 체크: 2017.07.02 최은혜 -->
 	<select id="selectStudent" parameterType="String" resultType="com.class_ic.vo.AttandanceDTO">
-	select *
+	select distinct a.email email , m.name name, m.phone phone, m.photoSrc photoSrc, a.inClass inClass
 	from
 	attendance a inner join member m on a.email = m.email
-	where a.classCode=#{classCode};
+    inner join classicauthority c on m.email = c.email
+	where 
+    a.classCode=#{classCode} and
+    c.authority='ROLE_STUDENT';
 	</select>
 
 	<!-- 조 편성 -->
 	<insert id="insertTeamStudent" parameterType="com.class_ic.vo.StudentGroupDTO">
-	insert into studentGroup(name,partyName,classCode,cateCode) values(#{name},#{partyName},#{classCode},#{cateCode});
+	insert into studentGroup(email,partyName,classCode,cateCode) values(#{email},#{partyName},#{classCode},#{cateCode});
 	</insert>
 	
 	<!-- 조 편성 출력 -->
 	<select id="selectStudentTeam" parameterType="com.class_ic.vo.StudentGroupDTO" resultType="com.class_ic.vo.StudentGroupDTO">
-	select * from studentgroup where classCode=#{classCode}  and cateCode=#{cateCode} and partyName=#{partyName};
+	select email from studentgroup where classCode=#{classCode}  and cateCode=#{cateCode} and partyName=#{partyName};
 	</select>
+	
+	<!-- 조편성 - 기수별 전체 학생 목록 -->
+	<select id="selectAllStudent" parameterType="String" resultType="com.class_ic.vo.AttandanceDTO">
+	select distinct a.email email , m.name name
+	from
+	attendance a inner join member m on a.email = m.email
+    inner join classicauthority c on m.email = c.email
+	where 
+    a.classCode=#{classCode} and
+    c.authority='ROLE_STUDENT';
+    </select>
 </mapper>

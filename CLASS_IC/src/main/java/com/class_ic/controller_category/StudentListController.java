@@ -1,3 +1,11 @@
+/*
+* @FileName		:	StudentListController.java
+*
+* @Project		:	CLASS-IC
+* @Date		:	2017.06.15
+* @Author		:	최은혜
+*/
+
 package com.class_ic.controller_category;
 
 import java.io.IOException;
@@ -20,72 +28,84 @@ import com.class_ic.vo.StudentGroupDTO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+/*
+* @Class: StudentListController
+* @Date: 2017.07. 29
+* @Author: 최은혜
+* @Desc: 학적부 페이지 로딩시 학생 리스트 출력, 조 편성 , 조 출력
+*/
+
+
 @Controller
 @RequestMapping("teacher")
 public class StudentListController {
-
+	
 	@Autowired
 	private StudentListService studentListService;
-
-	@RequestMapping(value = "selectStudent.htm", method = RequestMethod.POST)
-	public void studentList(String classCode, HttpServletResponse response) throws IOException {
-
+	
+	//학생리스트 출력
+	@RequestMapping(value="selectStudent.htm", method=RequestMethod.POST)
+	public String studentList(String classCode,HttpServletResponse response, Model model) throws IOException {
+		
 		List<AttandanceDTO> studentList = studentListService.selectStudent(classCode);
-
-		JSONArray array = new JSONArray();
-
-		for (int i = 0; i < studentList.size(); i++) {
-			JSONObject obj = new JSONObject();
-			obj.put("photoSrc", studentList.get(i).getPhotoSrc());
-			obj.put("email", studentList.get(i).getEmail());
-			obj.put("name", studentList.get(i).getName());
-			obj.put("phone", studentList.get(i).getPhone());
-			obj.put("inClass", studentList.get(i).getInClass());
-			obj.put("outClass", studentList.get(i).getOutClass());
-			array.add(obj);
-		}
-
-		response.getWriter().println(array);
-
+		
+		model.addAttribute("studentList", studentList);
+		
+		return "teacher/attendance_check";
+		
 	}
-
-	@RequestMapping(value = "selectAllInsert.htm", method = RequestMethod.POST)
+	
+	//조 등록
+	@RequestMapping(value="selectAllInsert.htm", method=RequestMethod.POST)
 	public String insertTeam(HttpServletRequest request) throws IOException {
-
+		
 		String cateCode = request.getParameter("cateCode");
+		
 		String partyName = request.getParameter("partyName");
+		
 		String classCode = request.getParameter("classCode");
-		String name = request.getParameter("selected");
-
-		// String[] nameArr = name.split(",");
-		// " , " 구분된 문자열 분해
-
-		for (int i = 0; i < name.length() / 3; i++) {
-			String nameArr = name.substring(name.length() - 3, name.length());
-			studentListService.insertTeamStudent(cateCode, partyName, classCode, nameArr);
+		
+		String[] nameArr = request.getParameter("emailsArray").split(",");		
+		
+		for(int  i=0; i< nameArr.length/3; i++){
+		studentListService.insertTeamStudent(cateCode,partyName,classCode,nameArr[i]);
 		}
-
+		
 		return "redirect:makeGroup.htm";
-
+		
 	}
-
-	@RequestMapping(value = "selectStudentTeam.htm", method = RequestMethod.POST)
-	public void studentTeamList(String classCode, String cateCode, String partyName, HttpServletResponse response)
-			throws IOException {
-
+	
+	//등록된 조 출력
+	@RequestMapping(value="selectStudentTeam.htm", method=RequestMethod.POST)
+	public void studentTeamList(String classCode,String cateCode,String partyName,HttpServletResponse response) throws IOException {
+		
 		List<StudentGroupDTO> studentList = studentListService.selectStudentList(classCode, cateCode, partyName);
-
+		
 		JSONArray array = new JSONArray();
-
-		for (int i = 0; i < studentList.size(); i++) {
+		
+		for(int i=0;i<studentList.size();i++){
 			JSONObject obj = new JSONObject();
 			obj.put("name", studentList.get(i).getName());
 			array.add(obj);
-
+			
 		}
-
+		
 		response.getWriter().println(array);
-
+		
 	}
+	
+	//조편성 - 기수별 학생 출력
+	@RequestMapping(value="selectAllStudent.htm", method=RequestMethod.POST)
+	public String SelectStudent(String classCode,HttpServletResponse response, Model model) throws IOException {
+		
+		List<AttandanceDTO> students = studentListService.selectAllStudent(classCode);
+		
+		model.addAttribute("students", students);
+		
+		return "teacher/student_selectList";
+		
+	}
+	
+	
 
 }

@@ -28,7 +28,7 @@ public interface HomeworkDAO {
  	//강사 이메일, 기수 출력
  	public HomeworkDTO teacherClassCode(HomeworkDTO dto);
  	
- 	//과제게시판 상세보기, 과제게시판 수정 화면 출력
+ 	//과제게시판 상세보기, 과제게시판 수정 화면 출력 : 강사
     public HomeworkDTO selectContent(HomeworkDTO dto);
 
     //과제게시판 수정한 데이터 DB저장
@@ -44,7 +44,7 @@ public interface HomeworkDAO {
  	
  	//카테고리 선택시 조 출력
  	public List<HomeworkDTO> selectTeamStudent(HomeworkDTO dto);
- 		
+ 	
  	//과제게시판 전체 출력
  	public List<HomeworkDTO> selectAllStudent(HomeworkDTO dto);
  	

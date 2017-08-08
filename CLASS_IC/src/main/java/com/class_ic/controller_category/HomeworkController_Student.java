@@ -1,4 +1,8 @@
-
+/*@Project : CLASS-IC
+@File name : HomeworkController_teacher.java
+@Author : 최은혜,박소현,위진학
+@Date : 2017.06.15
+*/
 package com.class_ic.controller_category;
 
 import java.io.IOException;
@@ -25,6 +29,13 @@ import com.class_ic.vo.HomeworkDTO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+/*
+* @Class: HomeworkController_Teacher
+* @Date: 2017.07. 29
+* @Author: 최은혜,박소현,위진학
+* @Desc: 과제 게시판 Controller(학생)
+*/
+
 @Controller
 @RequestMapping("student")
 public class HomeworkController_Student {
@@ -32,78 +43,77 @@ public class HomeworkController_Student {
 	@Autowired
 	private HomeworkService homeworkService;
 
-	// 과제 게시판 메인 카테고리 출력 : 2017.06.27 최은혜
-	@RequestMapping(value = "selectMainCate.htm", method = RequestMethod.POST)
-	public void MovePage(String classCode, HttpServletResponse response) throws IOException {
-
-		List<HomeworkDTO> cateList = homeworkService.studentMainCate(classCode);
-
-		JSONArray array = new JSONArray();
-		for (int i = 0; i < cateList.size(); i++) {
-			JSONObject obj = new JSONObject();
-			obj.put("cateCode", cateList.get(i).getCateCode());
-			array.add(obj);
+	//과제 게시판 메인 카테고리 출력 : 2017.06.27 최은혜
+		@RequestMapping(value="selectMainCate.htm", method=RequestMethod.POST)
+		public void MovePage(String classCode, HttpServletResponse response) throws IOException {
+			
+			List<HomeworkDTO> cateList = homeworkService.studentMainCate(classCode);
+			
+			JSONArray array = new JSONArray();
+			for(int i=0;i<cateList.size();i++){
+				JSONObject obj = new JSONObject();
+				obj.put("cateCode", cateList.get(i).getCateCode());
+				array.add(obj);
+			}
+			
+			response.getWriter().println(array);
+			
 		}
+		
+		
+		//카테고리 선택시 조 출력 : 2017.06.29  최은혜
+			@RequestMapping(value="selectStudentTeam.htm", method=RequestMethod.POST)
+			public void MovePage(String classCode, String cateCode,HttpServletResponse response) throws IOException {
 
-		response.getWriter().println(array);
-
-	}
-
-	// 카테고리 선택시 조 출력 : 2017.06.29 최은혜
-	@RequestMapping(value = "selectStudentTeam.htm", method = RequestMethod.POST)
-	public void MovePage(String classCode, String cateCode, HttpServletResponse response) throws IOException {
-
-		List<HomeworkDTO> teamList = homeworkService.studentTeamService(classCode, cateCode);
-
-		JSONArray array = new JSONArray();
-		for (int i = 0; i < teamList.size(); i++) {
-			JSONObject obj = new JSONObject();
-			obj.put("partyName", teamList.get(i).getPartyName());
-			array.add(obj);
-
-		}
-
-		response.getWriter().println(array);
-
-	}
-
-	// 과제 등록 페이지 이동 : 2017.06.29 최은혜
-	@RequestMapping("homeworkPage.htm")
-	public String homeworkNotice(HttpServletRequest request) {
-
-		return "student.homework_content";
-
-	}
-
-	// 과제 등록 : 학생 2017.06.28 최은혜
-	@RequestMapping(value = "addHomework.htm", method = RequestMethod.POST)
-	public String addNotice(String email, String classCode, String cateCode, String assignNotice, String assignTitle,
-			String assignContent, String partyName) {
-
-		homeworkService.addHomeworkService(email, classCode, cateCode, assignNotice, assignTitle, assignContent,
-				partyName);
-
-		return "redirect:homework.htm";
-	}
-
-	// 조 출력
-
-	// 과제 게시판 전체 출력 : 2017.06.30 최은혜
-	@RequestMapping(value = "selectAllListStudent.htm", method = RequestMethod.POST)
-	public String selectAllList(String classCode, String email, HttpServletResponse response, Model model)
-			throws IOException {
-
-		HomeworkDTO dto = new HomeworkDTO();
-		dto.setClassCode(classCode);
-		dto.setEmail(email);
-
-		List<HomeworkDTO> AllList = homeworkService.selectAllStudent(dto);
-
-		model.addAttribute("homeworkselectlist", AllList);
-
-		return "student/homework_partyNameList";
-
-	}
+				List<HomeworkDTO> teamList = homeworkService.studentTeamService(classCode, cateCode);
+				
+				JSONArray array = new JSONArray();
+				for(int i=0;i<teamList.size();i++){
+					JSONObject obj = new JSONObject();
+					obj.put("partyName", teamList.get(i).getPartyName());
+					array.add(obj);
+					
+				}
+				
+				response.getWriter().println(array);
+				
+			}
+			
+			//과제 등록 페이지 이동 : 2017.06.29  최은혜
+			@RequestMapping("homeworkPage.htm")
+			public String homeworkNotice(HttpServletRequest request){
+			
+				return "student.homework_content";
+			
+			}
+			
+			//과제 등록 : 학생  2017.06.28 최은혜
+			@RequestMapping(value="addHomework.htm", method = RequestMethod.POST)
+			public String addNotice(String email,String classCode,String cateCode,String assignNotice,String assignTitle,String assignContent, String partyName) {
+				
+				homeworkService.addHomeworkService(email,classCode,cateCode,assignNotice,assignTitle,assignContent,partyName);
+				
+				return "redirect:homework.htm";
+			}
+			
+			
+			
+			
+			//과제 게시판 전체 출력 : 2017.06.30 최은혜
+			@RequestMapping(value="selectAllListStudent.htm", method=RequestMethod.POST)
+			public String selectAllList(String classCode, String email ,HttpServletResponse response,Model model) throws IOException {
+				
+				HomeworkDTO dto = new HomeworkDTO();
+				dto.setClassCode(classCode);
+				dto.setEmail(email);
+				
+				List<HomeworkDTO> AllList = homeworkService.selectAllStudent(dto);
+				
+				model.addAttribute("homeworkselectlist", AllList);
+				
+				return "student/homework_partyNameList";
+				
+			}
 
 	// 팀별 게시물 출력 : 2017.06.30 위진학
 	@RequestMapping(value = "homeworkSelectList.htm", method = RequestMethod.POST)
