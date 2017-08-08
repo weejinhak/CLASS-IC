@@ -39,7 +39,6 @@ public class AttendanceService {
 		
 		for(int i=0;i<memberList.size();i++){
 			
-			//dto.setAttendDate(new Date(2017-12-12)); //sysdate
 			dto.setAttendState("결석"); 
 			email=memberList.get(i).getEmail();
 			
