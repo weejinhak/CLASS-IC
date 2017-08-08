@@ -15,48 +15,39 @@ import com.class_ic.vo.MemberDTO;
 import com.class_ic.vo.StudentGroupDTO;
 
 @Service
-public class StudentListService_student{
-	
+public class StudentListService_student {
+
 	@Autowired
 	private SqlSession sqlsession;
 
 	/*
 	 * @description : 학적부 학생리스트 출력(강사페이지)
-	 * */
+	 */
 
 	public List<AttandanceDTO> selectStudent(String classCode) {
-		System.out.println("classCode : "+ classCode);
-		
+
 		StudentListDAO dao = sqlsession.getMapper(StudentListDAO.class);
 		List<AttandanceDTO> studentList = dao.selectStudent(classCode);
-		
+
 		return studentList;
 	}
-	
-		//조편성
-		public void insertTeamStudent(String cateCode,String partyName,String classCode,String[] nameArr) {
-			
-			StudentGroupDTO dto = new StudentGroupDTO();
-			
-			for(int i=0;i<nameArr.length;i++){
-				dto = new StudentGroupDTO();
-				dto.setCateCode(cateCode);
-				dto.setPartyName(partyName);
-				dto.setClassCode(classCode);
-				dto.setName(nameArr[i]);
-			}
-			 
-			StudentListDAO dao = sqlsession.getMapper(StudentListDAO.class);
-			int result = dao.insertTeamStudent(dto);
-		
+
+	// 조편성
+	public void insertTeamStudent(String cateCode, String partyName, String classCode, String[] nameArr) {
+
+		StudentGroupDTO dto = new StudentGroupDTO();
+
+		for (int i = 0; i < nameArr.length; i++) {
+			dto = new StudentGroupDTO();
+			dto.setCateCode(cateCode);
+			dto.setPartyName(partyName);
+			dto.setClassCode(classCode);
+			dto.setName(nameArr[i]);
 		}
-	
+
+		StudentListDAO dao = sqlsession.getMapper(StudentListDAO.class);
+		int result = dao.insertTeamStudent(dto);
+
+	}
 
 }
-
-
-
-
-
-
-
