@@ -18,7 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service.JoinService;
 import com.class_ic.vo.MemberDTO;
-
+/*
+* @Class: JoinController
+* @Date: 2017.06.30
+* @Author: 이현정
+* @Desc: 학생과 선생 회원가입 처리
+*/
 @Controller
 public class JoinController {
 	
@@ -35,7 +40,6 @@ public class JoinController {
 	//회원가입 학생
 	@RequestMapping("join_st.htm")
 	public String joinStudent(MemberDTO member, HttpServletRequest request){
-		System.out.println("학생가입 데이터 넘겨받음 이메일: " + member.getEmail());
 		String viewpage = "";
 		try{
 			viewpage = joinservice.join(member, request);

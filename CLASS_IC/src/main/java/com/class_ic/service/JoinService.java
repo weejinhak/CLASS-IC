@@ -25,6 +25,13 @@ import com.class_ic.dao.MemberDAO;
 import com.class_ic.vo.LectureDTO;
 import com.class_ic.vo.MemberDTO;
 
+/*
+* @Class: JoinService
+* @Date: 2017.06. 28
+* @Author: 이현정
+* @Desc: 회원가입 관련 mapper 연동 service
+*/
+
 @Service
 public class JoinService {
 

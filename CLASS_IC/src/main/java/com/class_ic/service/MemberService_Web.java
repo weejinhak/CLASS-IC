@@ -23,6 +23,13 @@ import com.class_ic.dao.AlarmDAO;
 import com.class_ic.dao.MemberDAO;
 import com.class_ic.vo.MemberDTO;
 
+/*
+* @Class: MemberService_Web
+* @Date: 2017.06. 29
+* @Author: 이현정
+* @Desc: 로그인 및 회원정보 관련 mapper 연동 service
+*/
+
 @Service
 public class MemberService_Web {
 

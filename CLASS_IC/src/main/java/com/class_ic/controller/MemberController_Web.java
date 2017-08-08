@@ -22,7 +22,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.class_ic.service.MemberService_Web;
 import com.class_ic.vo.MemberDTO;
-
+/*
+* @Class: MemberController_Web
+* @Date: 2017.06.19
+* @Author: 이현정
+* @Desc: 로그인 및 회원정보 처리 
+*/
 
 @Controller
 public class MemberController_Web {
