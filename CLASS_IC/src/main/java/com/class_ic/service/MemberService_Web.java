@@ -23,23 +23,21 @@ import com.class_ic.dao.AlarmDAO;
 import com.class_ic.dao.MemberDAO;
 import com.class_ic.vo.MemberDTO;
 
-
 @Service
 public class MemberService_Web {
-	
+
 	@Autowired
 	private SqlSession sqlsession;
-	
-	
+
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-	
+
 	/*
-	   @description : longin  마지막 추가수정. 위진학.
-	*/
-	public ModelAndView loginService(HttpSession session,String email, @RequestParam("pwd") String rawPassword, ModelAndView mv){
-		
+	 * @description : longin 마지막 추가수정. 위진학.
+	 */
+	public ModelAndView loginService(HttpSession session, String email, @RequestParam("pwd") String rawPassword,
+			ModelAndView mv) {
+
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		AlarmDAO alarm_DAO = sqlsession.getMapper(AlarmDAO.class);
 
@@ -54,87 +52,78 @@ public class MemberService_Web {
 		session.setAttribute("email", member.getEmail());
 		session.setAttribute("name", member.getName());
 		session.setAttribute("totalCount", totalCount);
-		
-		if(result){
 
-			if(memberAuthority.equals("ROLE_TEACHER")){
+		if (result) {
+
+			if (memberAuthority.equals("ROLE_TEACHER")) {
 				mv.setViewName("common/thsSelect_teacher");
-			}else{
+			} else {
 				mv.setViewName("common/thsSelect_student");
 			}
-		}else{
+		} else {
 			mv.setViewName("common/main");
 		}
 		return mv;
 	}
-	
-	//for update (get member info)
-	   public MemberDTO getMemberInfo(HttpSession session){
-	      MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
-	      String email = (String) session.getAttribute("email");
-	      System.out.println("세션은 잘 가져왔나: " +email);
-	      MemberDTO getMember_photo = member_dao.selectOne(email);      
-	      System.out.println(getMember_photo.getPhotoSrc()+"사진 경로 값 가져옴");
-	      return getMember_photo;
-	   }
-	
-	//for update (edit info)
-		public MemberDTO editMemberInfo(HttpSession session, MemberDTO member){
-			MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
-			String email = (String) session.getAttribute("email");
-			int result= member_dao.modify(member);		
-			MemberDTO getMember = member_dao.selectOne(email);	
-			return getMember;
-		}
-	
-	//delete
-	public int delete(String email){
-		
+
+	// for update (get member info)
+	public MemberDTO getMemberInfo(HttpSession session) {
+		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+		String email = (String) session.getAttribute("email");
+		MemberDTO getMember_photo = member_dao.selectOne(email);
+		return getMember_photo;
+	}
+
+	// for update (edit info)
+	public MemberDTO editMemberInfo(HttpSession session, MemberDTO member) {
+		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+		String email = (String) session.getAttribute("email");
+		int result = member_dao.modify(member);
+		MemberDTO getMember = member_dao.selectOne(email);
+		return getMember;
+	}
+
+	// delete
+	public int delete(String email) {
+
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		int result = member_dao.delete(email);
-		
-		return result ;
+
+		return result;
 	}
-	
-	//memberList
-	public ModelAndView getMember(ModelAndView mv){
+
+	// memberList
+	public ModelAndView getMember(ModelAndView mv) {
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		ArrayList<MemberDTO> memberList = (ArrayList<MemberDTO>) member_dao.selectAll();
 		int member_count = member_dao.selectAllCount();
-		System.out.println("인간 수" + member_count);
 		mv.addObject("member_list", memberList);
 		mv.addObject("member_count", member_count);
 		mv.setViewName("teacher.student_group");
-		return mv ;
+		return mv;
 	}
-	
-	//학생 전체 select
-	public ModelAndView getStudentAll(ModelAndView mv){
+
+	// 학생 전체 select
+	public ModelAndView getStudentAll(ModelAndView mv) {
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
-		
+
 		List<MemberDTO> student_list = member_dao.selectAllStudent();
 		int student_count = member_dao.selectAllStudentCount();
-		System.out.println("학생 수: " +student_count );
 		mv.addObject("student_list", student_list);
 		mv.addObject("student_count", student_count);
 		mv.setViewName("teacher.student_groupping");
 		return mv;
 	}
-	
-	//test
-	public ModelAndView getMemberGp(ModelAndView mv){
+
+	// test
+	public ModelAndView getMemberGp(ModelAndView mv) {
 		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
 		ArrayList<MemberDTO> memberList = (ArrayList<MemberDTO>) member_dao.selectAll();
 		int member_count = member_dao.selectAllCount();
-		System.out.println("인간 수" + member_count);
 		mv.addObject("member_list2", memberList);
 		mv.addObject("member_count2", member_count);
 		mv.setViewName("teacher.final_group");
-		return mv ;
+		return mv;
 	}
-
-
-	
-
 
 }
