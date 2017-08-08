@@ -3,9 +3,9 @@ package com.class_ic.dao;
 import com.class_ic.vo.All_Alarm_DTO;
 
 public interface AlarmDAO {
-	    //알림 해줘야 할것을 넣어주기
-		public int insertAlarm(All_Alarm_DTO dto);
-		//알림 확인할시에 해당 알림 지워주기 
+		
+	    public int insertAlarm(All_Alarm_DTO dto);
+
 		public int updateAlarmCount(String email);
 		
 		public int totalCount(String emailR);
