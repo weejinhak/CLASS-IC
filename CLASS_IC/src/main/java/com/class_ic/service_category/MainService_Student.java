@@ -23,13 +23,10 @@ public class MainService_Student {
 
 		ClassDTO mainlist = dao.teacherMain((String)session.getAttribute("classCode"));
 		int mainmembercount=dao.memberCountByTeacher((String)session.getAttribute("classCode"));
-		System.out.println("3"+(String)session.getAttribute("email"));	
 		ModelAndView m = new ModelAndView();
 		m.setViewName("common/mainBasicInformation");
 		m.addObject("list", mainlist);
 		m.addObject("membercount",mainmembercount);
-
-		System.out.println("클래스타이틀 확인 : " + mainlist.getClassTitle());
 		
 		return m;
 	}
