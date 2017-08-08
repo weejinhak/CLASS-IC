@@ -47,8 +47,6 @@ public class MemoController_teacher {
 			MemoDAO dao = sqlsession.getMapper(MemoDAO.class);
 			
 			int result = dao.insertMemo(vo);
-			System.out.println("insert result: " +result);
-			
 			
 		}
 		
@@ -57,7 +55,6 @@ public class MemoController_teacher {
 		   public void select(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		      
 		      String email= request.getParameter("email");
-		      System.out.println("teacher memo select controller :" +email);
 		      
 		      MemoVO vo = new MemoVO();
 		      vo.setEmail(email);
@@ -82,7 +79,6 @@ public class MemoController_teacher {
 		      ModelAndView view= new ModelAndView();
 		      view.setViewName("teacher.teacher_main");
 		      String email= request.getParameter("email");
-		      System.out.println("controller :" +email);
 		      
 		      MemoVO vo = new MemoVO();
 		      vo.setEmail(email);
@@ -109,9 +105,7 @@ public class MemoController_teacher {
 		      String email= request.getParameter("email");
 		      String memo = request.getParameter("memoNo");
 		      int memoNo = Integer.parseInt(memo);
-		      
-		      System.out.println("단일 select controller :" +email);
-		      
+		      		      
 		      MemoVO vo = new MemoVO();
 		      vo.setEmail(email);
 		      vo.setMemoNo(memoNo);
@@ -130,17 +124,13 @@ public class MemoController_teacher {
 		//글 삭제 : 2017.06.21 최은혜
 		@RequestMapping(value="deleteMemo.htm", method=RequestMethod.POST)
 		public @ResponseBody void delete(@RequestParam(value="email") String email, @RequestParam(value="memoNo") int memoNo) {
-		
-			System.out.println("delete email: "+email);
-			System.out.println("delete memoNo: "+memoNo);
-			
+					
 			MemoVO vo = new MemoVO();
 			vo.setEmail(email);
 			vo.setMemoNo(memoNo);
 			
 			MemoDAO dao = sqlsession.getMapper(MemoDAO.class);
 			int result = dao.deleteMemo(vo);
-			System.out.println("delete result: " +result);
 			
 			
 		}
