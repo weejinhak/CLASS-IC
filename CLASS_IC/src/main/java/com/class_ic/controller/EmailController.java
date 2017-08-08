@@ -1,3 +1,10 @@
+/*
+* @FileName		:	EmailController.java
+* 
+* @Project		:	CLASS-IC
+* @Date		    :	2017.07.16
+* @Author		:	위진학
+*/
 package com.class_ic.controller;
 
 import java.util.Properties;
@@ -16,6 +23,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.class_ic.dao.MailDAO;
 
+
+/*
+* @Class: EmailController
+* @Date: 2017.07.16
+* @Author: 위진학
+* @Desc: 비밀번호 재설정을 위해 메일을 보내는 컨트롤러
+*/
 @Controller
 public class EmailController {
 	
@@ -33,18 +47,16 @@ public class EmailController {
 	  public String mailSend(Model model,String email) {
 		  
 		  //임시로 값 줌
-		  //
 		  String code = Integer.toString((int)(Math.random()*100000));
 		  
 		  
           MailDAO maildao = sqlsession.getMapper(MailDAO.class);
-		  maildao.update_Rand(email,code);
-		  //디비에 저장!
+		  //디비에 저장
+          maildao.update_Rand(email,code);
 		  
 		  boolean chkBoolean = true;
 		  
-		  String link = "www.naver.com?email=hwan@naver.com"; //링크
-		  
+		  String link = "www.naver.com?email=hwan@naver.com"; //링크		  
 	      String id = "5tulips";
 	      String e_mail = "1231tjrghks@gmail.com";
 	      String pw = "1004";
@@ -66,25 +78,19 @@ public class EmailController {
 	      p.put("mail.smtp.debug", "true");
 		  p.put("mail.smtp.starttls.enable","true");
 		  
-//	      p.put("mail.smtp.socketFactory.port", "465");
-//	      p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-//	      p.put("mail.smtp.socketFactory.fallback", "false");
-		  
+	  
 		  try {
 		      MimeMessage message = mailSender.createMimeMessage();
 		      MimeMessageHelper messageHelper 
 		                        = new MimeMessageHelper(message, true, "UTF-8");
 		      
-//		      messageHelper.setFrom(setfrom);  // 보내는사람 생략하거나 하면 정상작동을 안함
 		      messageHelper.setTo(email);     // 받는사람 이메일
 		      messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
 		      messageHelper.setText(content);  // 메일 내용
 		     
 		      mailSender.send(message);
-		      System.out.println("요기22message:"+message);
 		      
 		    } catch(Exception e){
-		      System.out.println("요기22");
 		      
 		      e.getMessage() ;
 		    }
@@ -95,10 +101,8 @@ public class EmailController {
 	  @RequestMapping(value = "updatePW" , method =RequestMethod.POST)
 	  public String updatePW (String pwd,String email,String code) {
 		  
-		  System.out.println(pwd+","+email+","+code);
           MailDAO maildao = sqlsession.getMapper(MailDAO.class);
           String enc_pwd = this.bCryptPasswordEncoder.encode(pwd);
-          System.out.println("비밀번호 재설정: " +enc_pwd );
 		  maildao.update_Pw(enc_pwd,email,code);
 		  
 		  return "common/main";
