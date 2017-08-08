@@ -33,7 +33,6 @@ public class LectureCodeAddService {
 	@description : 기수추가 insert하는 service
 	*/
 	public String addclasscode(LectureDTO lecture) throws Exception {
-		System.out.println("기수추가 서비스 in!");
 		LectureAddDAO lectureDao = sqlsession.getMapper(LectureAddDAO.class);
 
 		String opentime=lecture.getClassOpenTime().substring(0, 4);
@@ -42,9 +41,7 @@ public class LectureCodeAddService {
 
 		String closetime=lecture.getClassCloseTime().substring(0, 4);
 		lecture.setClassOpenTime(opentime+":00");
-		System.out.println(opentime+":00");
 		lecture.setClassCloseTime(closetime+":00");
-		System.out.println(closetime+":00");
 	
 
 		String viewpage = "";
@@ -56,7 +53,6 @@ public class LectureCodeAddService {
 		try {
 			int result = lectureDao.insert(lecture);
 			if (result > 0) {
-				System.out.println("insert 성공");
 
 				//ClassMember에 넣기 
 				lectureDao.inputMyClassCode(email, classCode);
@@ -64,12 +60,10 @@ public class LectureCodeAddService {
 				//viewpage = "redirect:thsSelect_teacher.jsp";
 
 			} else {
-				System.out.println("insert 실패");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			viewpage = "join.joinus";
-			System.out.println("가입실패");
 			throw e;
 		}
 		return viewpage;
@@ -80,7 +74,7 @@ public class LectureCodeAddService {
 	@description : email 맞는 기수 Select 하는 service
 	*/
 	public List<LectureDTO> lecturelistselect(String email) throws Exception {
-			
+
 		LectureAddDAO lectureDao = sqlsession.getMapper(LectureAddDAO.class);
 		List<LectureDTO> lecturelist= lectureDao.getlecture(email);
 		
