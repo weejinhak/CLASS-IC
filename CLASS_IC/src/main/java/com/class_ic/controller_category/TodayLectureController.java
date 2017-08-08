@@ -17,126 +17,61 @@ import com.class_ic.vo.TodayLectureVO;
 
 @Controller
 @RequestMapping("teacher")
-public class TodayLectureController{
-   
+public class TodayLectureController {
 
-   @Autowired
-      SqlSession sqlsession;
-   //teacher main
-   
-//   @RequestMapping("main.htm")
-//   public String teacer(){
-//      System.out.println("teacher common 컨트롤 탐");
-//      return "teacher.main";
-//   }
-//   
-//   
-   
-   
-   //이름 subcate 뭐시기로 변경 
-/*   @RequestMapping("todayclass.htm") 
-   public ModelAndView allBoard(TodayLectureVO bvo){ 
-      
-      TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class);
-      
-      String subcateCode="2-1";
-      ArrayList<TodayLectureVO> blist = bdao.allBoard(subcateCode); 
-      
-      // 리턴 셋팅
-      ModelAndView m = new ModelAndView();
-      m.setViewName("teacher.board_details_view");
-      m.addObject("bvo", blist);  
-      
-      return m;
-        
-   }
- 
-   */
-   
-   //전체 오늘의 목록 조회
+	@Autowired
+	SqlSession sqlsession;
 
-   @RequestMapping("todayLectureList.htm")
-   public ModelAndView todayLectureList(TodayLectureVO bvo){ 
-    
-      TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class); 
-       
-      
-      
-      ArrayList<TodayLectureVO> blist = bdao.todayLectureList();
-      // 리턴 셋팅
-      ModelAndView m = new ModelAndView();
-      m.setViewName("teacher.todayLecture_storage");
-      
-    
-      
-      
-      m.addObject("bvo", blist); 
+	// 전체 오늘의 목록 조회
 
-      return m;
-      
-      
-   }
-   
-    
-   
-   
-   @RequestMapping(value="multi_storage.htm",  method=RequestMethod.POST) 
-   public String multi_storage(HttpServletRequest request, HttpServletResponse response ) {
- 
+	@RequestMapping("todayLectureList.htm")
+	public ModelAndView todayLectureList(TodayLectureVO bvo) {
 
-    String test=request.getParameter("data");
-    System.out.println("test넘버 확인" + test);
-    
-      TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class); 
-    
-  
-    
-       String[] array = test.split(",");
-       
-       System.out.println(array.length);
+		TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class);
 
-       for(int i=0;i<array.length;i++){
-          System.out.println(array[i]);          
-          
-          bdao.insertTodayLect(Integer.parseInt(array[i]));
-          
-       } 
- 
+		ArrayList<TodayLectureVO> blist = bdao.todayLectureList();
+		// 리턴 셋팅
+		ModelAndView m = new ModelAndView();
+		m.setViewName("teacher.todayLecture_storage");
 
-      
-       
-/*   for(String values: rowid){
-      System.out.println(values);
-   }*/
-/*    for(String elem : rowid){
-        System.out.println(elem+"  ");
-}*/
+		m.addObject("bvo", blist);
 
-   return "teacher.board_details_view";
+		return m;
 
-   } 
-   
-   
-   //오늘의 강의 삭제 
+	}
 
-   @RequestMapping(value="todayLectureDelete.htm" ) 
-   public String delete(HttpServletRequest request, HttpServletResponse response){ 
-      
-      
-      System.out.println("todayLectureDelete.htm 컨트롤러 탐 ");
-      int todayNo = Integer.parseInt( request.getParameter("todayNo"));
-      
-      
-      TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class); 
-      
-      bdao.deleteTodayLect(todayNo) ;
+	@RequestMapping(value = "multi_storage.htm", method = RequestMethod.POST)
+	public String multi_storage(HttpServletRequest request, HttpServletResponse response) {
 
-      
+		String test = request.getParameter("data");
 
-      return "redirect:todayLectureList.htm";
- 
-   }
-   
-   
+		TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class);
+
+		String[] array = test.split(",");
+
+		for (int i = 0; i < array.length; i++) {
+
+			bdao.insertTodayLect(Integer.parseInt(array[i]));
+
+		}
+
+		return "teacher.board_details_view";
+
+	}
+
+	// 오늘의 강의 삭제
+
+	@RequestMapping(value = "todayLectureDelete.htm")
+	public String delete(HttpServletRequest request, HttpServletResponse response) {
+
+		int todayNo = Integer.parseInt(request.getParameter("todayNo"));
+
+		TodayLectureDAO bdao = sqlsession.getMapper(TodayLectureDAO.class);
+
+		bdao.deleteTodayLect(todayNo);
+
+		return "redirect:todayLectureList.htm";
+
+	}
 
 }
