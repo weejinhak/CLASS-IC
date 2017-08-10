@@ -14,7 +14,8 @@
 
 <!-- 강사 -->
 <!--에디터 추가부분 -->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
+<!-- 파일 업로드 추가 부분  -->
 
 <!-- 과제 등록 페이지 -->
 <div class="content">
@@ -60,7 +61,7 @@
                                         <!-- 내용 -->
                                         <div class="row">
                                         	<div class="col-md-12">
-                                        	<textarea rows="20%" cols="100%" id="content" name="assignContent" class="form-control"></textarea>
+                                        	<textarea rows="20%" cols="100%" id="assignContent" name="assignContent" class="form-control"></textarea>
                                         	</div>
                                         </div><!-- end row  -->
                                        </div><!-- end col-12 -->
@@ -111,7 +112,7 @@ $("#frm").submit(function(event) {
 	var assignNotice = $("#assignNotice").val();
 	
 	var assignTitle = $("#assignTitle").val();
-	var assignContent = $("#content").val();
+	var assignContent = $("#assignContent").val();
 });
 
 //function : 메인 카테고리 출력
@@ -151,20 +152,5 @@ function closeBtn() {
 
 
 </script>
-
 <!--에디터 추가부분 -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
-<script src="${pageContext.request.contextPath}/resources/assets/js/lang/summernote-ko-KR.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#content').summernote({
-           dialogsFade: true,
-           height: 600,                 // set editor height
-            minHeight: null,             // set minimum height of editor
-            maxHeight: null,             // set maximum height of editor
-            focus: true,
-            lang: 'ko-KR',         
-        });
-        
-    });
-  </script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script>
