@@ -16,7 +16,8 @@
             <div class="sidebar-wrapper">
 			<div class="user">
 				<div class="photo">
-					<img src="${pageContext.request.contextPath}/resources/assets/img/faces/kosta.png" />
+					<img src="${pageContext.request.contextPath}/resources/upload/${sessionScope.photoSrc}" class="img-circle"
+                              width="100" height="100">
 				</div>
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample" class="collapsed">

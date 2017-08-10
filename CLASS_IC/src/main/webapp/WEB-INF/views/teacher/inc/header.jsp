@@ -129,7 +129,7 @@
          time = hours+':'+min+':'+sec;
          
 </script>
-<script src="${pageContext.request.contextPath}/resources/assets/js/myinfo.js"></script>
+
 
 
 <nav class="navbar navbar-transparent navbar-absolute">
@@ -287,9 +287,7 @@
                      <li>
 
                         <div class="photo">
-                           <!-- <img src="../../assets/img/faces/avatar.jpg" class="img-circle"
-                              width="100" height="100"> -->
-                              <img src="${contextPath }/member_img/3.png" class="img-circle"
+                           <img src="${pageContext.request.contextPath}/resources/upload/${sessionScope.photoSrc}" class="img-circle"
                               width="100" height="100">
                         </div>
                      <li>

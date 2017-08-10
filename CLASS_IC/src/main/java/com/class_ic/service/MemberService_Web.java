@@ -58,6 +58,7 @@ public class MemberService_Web {
 		mv.addObject("member", member);
 		session.setAttribute("email", member.getEmail());
 		session.setAttribute("name", member.getName());
+		session.setAttribute("photoSrc", member.getPhotoSrc());
 		session.setAttribute("totalCount", totalCount);
 
 		if (result) {
