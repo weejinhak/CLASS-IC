@@ -55,14 +55,14 @@
                                 <div class="card card-pricing card-raised">
                                     <div class="content">
                                         <h6 class="category">plus category</h6>
-                                        <div class="icon icon-rose">
+<!--                                         <div class="icon icon-rose">
                                             <i class="material-icons">note_add</i>
-                                        </div>
-                                        <h3 class="card-title">board count : ${fn:length(catelist)}</h3>
+                                        </div> -->
+                                        <h3 class="card-title">총 게시물 수 : ${fn:length(catelist)}</h3>
                                         <p class="card-description">
-                                           새로운 게시판을 생성하려면 이곳을 눌러 생성 하십시오!
+                                           새로운 게시판을 생성하려면 아래의 버튼을 눌러주세요.
                                         </p>
-                                        <a href="#pablo" class="btn btn-rose btn-round" onclick="cratecate()">add board<div class="ripple-container"></div></a>
+                                        <a href="#pablo" class="btn btn-rose btn-round" onclick="cratecate()">게시판 만들기<div class="ripple-container"></div></a>
                                     </div>
                                 </div>
                             </div>  
