@@ -35,21 +35,16 @@
                <div class="col_md_login">
                   <div class="cont_ba_opcitiy">
 
-                     <h2>Student</h2>
-                     <p>Sign up as a student.</p>
-                     <button class="btn_login" onclick="cambiar_login()">Sign
-                        up now</button>
+                     <h2>학생</h2>
+                     <p>학생으로 회원가입</p>
+                     <button class="btn_login" onclick="cambiar_login()">회원가입</button>
                   </div>
                </div>
                <div class="col_md_sign_up">
                   <div class="cont_ba_opcitiy">
-                     <h2>Teacher</h2>
-
-
-                     <p>Sign up as a teacher.</p>
-
-                     <button class="btn_sign_up" onclick="cambiar_sign_up()">Sign
-                        up now</button>
+                     <h2>강사</h2>
+                     <p>강사 회원가입</p>
+                     <button class="btn_sign_up" onclick="cambiar_sign_up()">회원가입</button>
                   </div>
                </div>
             </div>
@@ -73,7 +68,7 @@
                <div class="cont_form_login">
                   <a href="#" onclick="ocultar_login_sign_up()"><i
                      class="material-icons">&#xE5C4;</i></a>
-                  <h2>Sign up as a Student</h2>
+                  <h2>학생 회원가입</h2>
                		<!-- 사진 업로드 시작 -->
                      <div id='profile-upload'>
 					 <div class="hvr-profile-img">
@@ -89,15 +84,15 @@
                      <!-- <input type="file" id="photoSrc_st" name="files" aceholder="imgSrc" />  -->
                      
                      <input type="hidden" id="authority_st" name="authority" value="ROLE_STUDENT" />
-                     <button class="btn_login" id="btn_submit_st" type="submit">let's go</button>
+                     <button class="btn_login" id="btn_submit_st" type="submit">가입하기</button>
                </div>
                </form>
 				<!-- student -->
 				<form id="join_teacher" action="${pageContext.request.contextPath}/join_te.htm" method="POST" enctype="multipart/form-data">
                <div class="cont_form_sign_up">
-                  <br> <br> <br> <a href="#"
+                  <a href="#"
                      onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
-                  <h2>Sign up as a Teacher</h2>
+                  <h2>강사 회원가입</h2>
                   <!-- 사진 업로드 시작 -->
                      <div id='profile-upload2'>
 						<div class="hvr-profile-img">
@@ -117,8 +112,7 @@
                      <input
                      type="hidden" id="authority_te" name="authority"
                      value="ROLE_TEACHER" />
-                  <button class="btn_sign_up" id="btn_submit_te" type="submit">Let's
-                     go</button>
+                  <button class="btn_sign_up" id="btn_submit_te" type="submit">가입하기</button>
                   
                </div>
                </form>
@@ -158,26 +152,14 @@
 <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
 <script
    src="${pageContext.request.contextPath}/resources/assets/js/moment.min.js"></script>
-<!--  Charts Plugin -->
-<script
-   src="${pageContext.request.contextPath}/resources/assets/js/chartist.min.js"></script>
 <!--  Plugin for the Wizard -->
 <script
    src="${pageContext.request.contextPath}/resources/assets/js/jquery.bootstrap-wizard.js"></script>
-<!--  Notifications Plugin    -->
-<script
-   src="${pageContext.request.contextPath}/resources/assets/js/bootstrap-notify.js"></script>
+
 <!-- DateTimePicker Plugin -->
 <script
    src="${pageContext.request.contextPath}/resources/assets/js/bootstrap-datetimepicker.js"></script>
-<!-- Vector Map plugin -->
-<script
-   src="${pageContext.request.contextPath}/resources/assets/js/jquery-jvectormap.js"></script>
-<!-- Sliders Plugin -->
-<script
-   src="${pageContext.request.contextPath}/resources/assets/js/nouislider.min.js"></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+
 <!-- Select Plugin -->
 <script
    src="${pageContext.request.contextPath}/resources/assets/js/jquery.select-bootstrap.js"></script>
@@ -187,21 +169,7 @@
 <!-- Sweet Alert 2 plugin -->
 <script
    src="${pageContext.request.contextPath}/resources/assets/js/sweetalert2.js"></script>
-<!--   Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-<script
-   src="${pageContext.request.contextPath}/resources/assets/js/jasny-bootstrap.min.js"></script>
-<!--  Full Calendar Plugin    -->
-<script
-   src="${pageContext.request.contextPath}/resources/assets/js/fullcalendar.min.js"></script>
-<!-- TagsInput Plugin -->
-<script
-   src="${pageContext.request.contextPath}/resources/assets/js/jquery.tagsinput.js"></script>
-<!-- Material Dashboard javascript methods -->
-<script
-   src="${pageContext.request.contextPath}/resources/assets/js/material-dashboard.js"></script>
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script
-   src="${pageContext.request.contextPath}/resources/assets/js/demo.js"></script>
+
 
 
 <script type="text/javascript">
