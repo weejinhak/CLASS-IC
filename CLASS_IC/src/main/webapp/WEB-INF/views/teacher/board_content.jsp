@@ -5,7 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!--에디터 추가부분 -->
-<%-- <link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" /> --%>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
 <br>
 <br>
@@ -184,52 +183,7 @@ function myFunction() {
 					</div>
 				</div>
 			</div>
-			
-			<!-- 파일 첨부  --> 
-            <!--                            첨부 파일 #01
-                                       
-                                    <ul class="mailbox-attachments clearfix">
-                                    
-                                         <li>
-                  <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
-						&nbsp;<input type="file" id="txtFile" name="files[0]" />
-                  <div class="mailbox-attachment-info">  
-                    <a href="#" class="mailbox-attachment-name">
-                    <i class="fa fa-paperclip"></i></a>
-                        <span class="mailbox-attachment-size">
-                          파일 사이즈
-                     
-                        </span>
-                  </div>
-                </li>
-                    
-              </ul>
-              </div>
-                <div class="col-sm-5">
-                      
-                        파일 첨부  
-                                       첨부 파일 #02
-                                       
-                                    <ul class="mailbox-attachments clearfix">
-                                    
-                                         <li>
-                  <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
-						&nbsp;<input type="file" id="txtFile" name="files[1]" />
-                  <div class="mailbox-attachment-info">  
-                    <a href="#" class="mailbox-attachment-name">
-                    <i class="fa fa-paperclip"></i></a>
-                        <span class="mailbox-attachment-size">
-                          파일 사이즈
-                     
-                        </span>
-                  </div>
-                </li>
-                    
-              </ul>
-              </div>
-     </form>
-                    </div>
-			파일 추가 끝 -->
+
 
 			<div class="td-actions text-center">
 	
@@ -253,7 +207,6 @@ function myFunction() {
 
 </div>
 <!--에디터 추가부분 -->
-<%-- <script src="${pageContext.request.contextPath}/resources/assets/js/board_editor.js"></script> --%>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
 <script src="${pageContext.request.contextPath}/resources/assets/js/lang/summernote-ko-KR.js"></script>
 <script>

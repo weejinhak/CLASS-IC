@@ -33,7 +33,7 @@
                                             </div>
                                         </div>
                                         
-                                       파일첨부 기능은 석환상이 나중에 하신다고 해서 비워 놨슴당.
+                                      
                                            
                                        <div class="td-actions text-center">
                                                         <button type="button" rel="tooltip" class="btn btn-info btn-round" data-original-title="" title="">

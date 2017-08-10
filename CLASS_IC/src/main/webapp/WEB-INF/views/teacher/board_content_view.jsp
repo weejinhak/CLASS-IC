@@ -78,53 +78,10 @@
                
                   <div class="row">
                      <div class="col-sm-2"></div>
-                     <div class="col-sm-2 label-on-left" style="margin-left: -20px; ">첨부 파일</div>
+                     <div class="col-sm-2 label-on-left" style="margin-left: -20px; "></div>
 
-                     <%-- <c:set var="file" value="${bfile}" /> --%>
-                     <!-- 파일 첨부  -->
-                     <div class="col-md-4 " style="margin-left: -170px;">
-                        <div class="card">
-                           <div class="card-header"></div>
-                           <div class="card-content ">
-
-                              <!-- 여기 파일 뿌려준다  -->
-                              <c:forEach var="file" items="${bfile}">
-                                 <ul class="mailbox-attachments clearfix">
-
-                                    <li><span class="mailbox-attachment-icon"><i
-                                          class="fa fa-file-pdf-o"></i></span>
-                                       <div class="mailbox-attachment-info">
-                                          <a href="#" class="mailbox-attachment-name"><i
-                                             class="fa fa-paperclip"></i> ${file.fileSrc}</a> <span
-                                             class="mailbox-attachment-size"> 1,245 KB </span>
-                                       </div></li>
-                                    <li><span class="mailbox-attachment-icon"><i
-                                          class="fa fa-file-word-o"></i></span>
-
-                                       <div class="mailbox-attachment-info">
-                                          <a href="#" class="mailbox-attachment-name"><i
-                                             class="fa fa-paperclip"></i> App Description.docx</a> <span
-                                             class="mailbox-attachment-size"> 1,245 KB </span>
-                                       </div></li>
-                                    <li><span class="mailbox-attachment-icon has-img"><img
-                                          src=" " alt="Attachment"></span>
-
-                                       <div class="mailbox-attachment-info">
-                                          <a href="#" class="mailbox-attachment-name"><i
-                                             class="fa fa-camera"></i> photo1.png</a> <span
-                                             class="mailbox-attachment-size"> 2.67 MB </span>
-                                       </div></li>
-                                 </ul>
-
-                              </c:forEach>
-                           </div>
-
-                        </div>
-                        <!--card end  -->
-                     </div>
-                     <!--col-md-5 end   -->
-
-                     <!-- 파일 첨부 끝 -->
+                    
+            
 
                      <!-- 링크  첨부  -->
                      <label class="col-sm-2 ">관련 링크 </label>

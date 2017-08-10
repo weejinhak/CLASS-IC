@@ -2,6 +2,8 @@
    pageEncoding="UTF-8"%>
 <%@ page import="com.class_ic.vo.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<!--에디터 추가부분 -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
 <br>
 <br>
 <br>
@@ -55,7 +57,7 @@
 					<div class="form-group label-floating is-empty">
 						<label class="control-label"></label>
 						<textarea cols="50" style="width: 90%; height: 600px; color: gray"
-							id="lectureContent" name="lectureContent">${list.lectureContent}</textarea>
+							id="content" name="lectureContent">${list.lectureContent}</textarea>
 
 					</div>
 				</div>
@@ -104,7 +106,7 @@ $("#editOk").click(function() {
 
 function editOk(){
 	var lectureTitle =$("#lectureTitle").val();
-	var lectureContent = $("#lectureContent").val();
+	var lectureContent = $("#content").val();
 	var lectureNo = $("#lectureNo").val();
 	var classCode=$('#classCode').val();
 	var cateCode=$('#cateCode').val();
@@ -135,3 +137,20 @@ function editOk(){
 	
 }
 </script>
+
+<!--에디터 추가부분 -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/lang/summernote-ko-KR.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#content').summernote({
+           dialogsFade: true,
+           height: 600,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true,
+            lang: 'ko-KR',         
+        });
+        
+    });
+  </script>

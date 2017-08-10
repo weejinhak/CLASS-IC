@@ -3,7 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- css link -->
-<link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
+<!--에디터 추가부분 -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+
+
 <style>
 .fileDrop {
   width: 25%;
@@ -68,7 +71,7 @@
                                                     <label class="control-label"></label>
                                                     <div class="main">
                                                      <div id="editor_panel"></div>  
-                                                    <textarea id="lectureContent" name="smarteditor" cols="50" style="width: 90%; height: 300px; color: gray"></textarea>
+                                                    <textarea id="content" name="smarteditor" cols="50" style="width: 90%; height: 300px; color: gray"></textarea>
 
                                                     <span class="help-block">과제의 제목을 입력해 주세요.</span>
                                                 <span class="material-input"></span></div>
@@ -176,3 +179,19 @@ $("#registerForm").submit(function(event){
 
 
 </script>
+<!--에디터 추가부분 -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/lang/summernote-ko-KR.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#content').summernote({
+           dialogsFade: true,
+           height: 600,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true,
+            lang: 'ko-KR',         
+        });
+        
+    });
+  </script>
