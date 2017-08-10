@@ -12,6 +12,27 @@
        <div class="container-fluid">
       	 <!-- 내용물  contents  -->
       	 <div class="row">
+      	 
+      	 			<div class="card">
+					<!-- 과제카테고리 / 조  추가-->
+					<div class="col-sm-10 col-md-offset-3">
+					<!-- 셀렉트 박스(메인 카테고리 선택) -->
+					    <div class="col-sm-3">
+					         <select  id="selectCateList01" class="form-control selectCateList" title="메인 카테고리 선택해주세요"  >
+                                		<option disabled="disabled" selected="selected">카테고리 선택</option>
+                             </select>
+                         </div>
+                         <div class="col-sm-3">
+                     <!-- input 박스(조 카테고리 추가) -->
+                             <input type="text" class="form-control" placeholder="조를 입력해주세요" id="partyName"> 
+                         </div>  
+                         <div class="col-sm-3" align="right">
+                         <button type="button" class="btn btn-danger btn-round" id="addCateBtn">조 추가</a></button>
+                         </div>
+                                    
+                         </div><!-- end 과제카테고리 / 조  추가-->
+					</div>
+					
 					<div class="card">
 					<div class="col-lg-8">
 					<!-- 셀렉트 박스(메인 카테고리 선택) -->
@@ -24,7 +45,7 @@
                          <div class="col-sm-3">
                     <!--  셀렉트 박스(조 카테고리 선택) -->
                                 <select id="selectTeamList" class="form-control" title="조 선택" >
-                                	<option disabled="disabled" selected="selected" id="op1">조 선택</option>
+                                	<option selected="selected" class="op1">조 선택</option>
                                 </select>
                          </div>  
                          </div>
@@ -54,12 +75,18 @@ $().ready(function() {
 		$("#selectCateList02").change(function(){
 			showTeamList();
 		});
+		
+		$("#addCateBtn").click(function() {
+			addHomework();
+		});
 
 		$('#selectTeamList').click(function(){
 			selectCateCodeList();
 		});
 		
-		
+		 $('.op').click(function() {
+				selectAllList();
+			});
 		
 		$("#noticeBtn").click(function() {
 			location.href="homeworkNoticePage.htm";
@@ -83,6 +110,8 @@ $().ready(function() {
 									$(".selectCateList").append("<option value='"+this.cateCode+"'>" + this.cateCode + "</option> ");
 								});
 								
+								
+								
 					   		}, 
 					   		
 					   		error:function(request, status, error){
@@ -93,7 +122,38 @@ $().ready(function() {
 					 });
 		} //end showMainCate
 		
+		//조 : 팀명 저장
+		function addHomework() {
+			
+			var email = "<%=(String)session.getAttribute("email")%>";
+			var classCode = "<%=(String)session.getAttribute("classCode")%>";
+			
+			console.log(email)
+			
+			var cateCode = $("#selectCateList01 option:selected").val();
+			var partyName = $("#partyName").val();
+			
+			$.ajax({
+				
+				type : "post",
+				url:"addHomework.htm",
+				data : {"cateCode": cateCode, "partyName":partyName,"email":email,"classCode":classCode},
+				dataType: 'text',
+				success : function(data) {
+						
+						$("#partyName").val("");
+		   		}, 
+		   		
+		   		error:function(request, status, error){
+	                //console.log(error);
+	                alert("code:" + request.status + "\n" + "message:"+ request.responseText + "\n"+ "error: " +error )
+		   		}
+				
+			});
+			
+		}//end addHomework
 		
+		//조 출력
 		function showTeamList() {
 			
 			var email = "<%=(String)session.getAttribute("email")%>";
@@ -113,14 +173,15 @@ $().ready(function() {
 						success : function(data) {
 							
 							 $("#selectTeamList").empty();
-							
+							 
+							 
 							$.each(data, function(){
 								$("#selectTeamList").append("<option value='"+this.partyName+"'>" + this.partyName + "</option> ");
 	                                console.log("partyName: "+this.partyName)
 	                               
 							});
 							
-							selectCateCodeList();
+							//selectCateCodeList();
 							
 				   		}, 
 				   		

@@ -72,7 +72,8 @@
 								onclick="location.href='homework.htm' ">
 								<i class="material-icons">list</i>
 							</button>
-
+							
+							<c:if test="${homework.email == sessionScope.email}">
 							<a href="homeworkEdit.htm?assignNo=${homework.assignNo}
 														&email=<%=(String)session.getAttribute("email")%>
 														&classCode=<%=(String)session.getAttribute("classCode")%>">
@@ -81,7 +82,7 @@
 									<i class="material-icons">done</i>
 								</button>
 							</a>
-							
+							</c:if>
 
 						</div>
 					</div>

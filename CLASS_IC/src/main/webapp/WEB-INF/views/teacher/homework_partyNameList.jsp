@@ -51,12 +51,21 @@
 
 										<td class="text-center" id="assignNo">${homeworklist.assignNo}</td>
 										<td class="text-center">${homeworklist.cateCode}</td>
-
+	
+										<c:choose>
+										<c:when test="${homeworklist.assignNotice == 'true'}">
 										<td class="text-center"><a
-											href="homeworkContent.htm?assignNo=${homeworklist.assignNo}&email=<%=(String)session.getAttribute("email")%>
-																					              &classCode=<%=(String)session.getAttribute("classCode")%>"
+											href="homeworkContent.htm?assignNo=${homeworklist.assignNo}&classCode=<%=(String)session.getAttribute("classCode")%>"
+											class="btn btn-simple btn-info  btn-icon edit" style="color: red; font: bold;">[공지] ${homeworklist.assignTitle}</a></td>
+										</c:when>
+										
+										<c:otherwise>
+										<td class="text-center"><a
+											href="homeworkContent.htm?assignNo=${homeworklist.assignNo}&classCode=<%=(String)session.getAttribute("classCode")%>"
 											class="btn btn-simple btn-info  btn-icon edit">${homeworklist.assignTitle}</a></td>
-
+										</c:otherwise>
+										</c:choose>
+										
 										<td class="text-center">${homeworklist.name}</td>
 										<td class="text-center">${homeworklist.assignDate}</td>
 

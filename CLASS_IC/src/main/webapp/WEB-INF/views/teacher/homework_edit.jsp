@@ -2,6 +2,14 @@
    pageEncoding="UTF-8"%>
 <%@ page import="com.class_ic.vo.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+
+<!-- 
+@Project : CLASS-IC
+@File name : homework_detail_
+@Author : 박소현
+@Data : 2017.07.03
+@Desc :
+ -->
 <br>
 <br>
 <br>

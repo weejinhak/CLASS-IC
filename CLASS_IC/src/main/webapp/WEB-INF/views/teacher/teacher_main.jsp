@@ -74,9 +74,6 @@
 			</div>
 
 		</div>
-		</div>
-		</div>
-		
 		<!-- 메모 리스트 ajax   -->
 		<script type="text/javascript">
 			$(function() {
@@ -122,9 +119,6 @@
 		</script>
 		<!-- end 메모  -->
 
-		<!-- <script
-   src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
- -->
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
 		<script type="text/javascript">

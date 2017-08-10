@@ -1,3 +1,9 @@
+<!--
+	@Project : CLASS-IC
+	@File Name : homework_content.jsp
+	@Author : 최은혜
+	@Date : 2017.06.15
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,12 +17,7 @@
 <link href="${pageContext.request.contextPath}/resources/assets/css/board_editor.css" rel="stylesheet" />
 <!-- 파일 업로드 추가 부분  -->
 
-
-<script type="text/javascript">
-
-	   
-</script>
-
+<!-- 과제 등록 페이지 -->
 <div class="content">
 
 	<div class="col-md-12">

@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.datatables.js"></script>
 
-
 <div class="row">
 
 	<div class="col-md-12">
@@ -41,32 +40,55 @@
 									<tr>
 										<td>
 											<div class="text-center" style="margin-top: -12px;">
+											<c:if test="${homeworklist.email == sessionScope.email }">
 												<label class="text-center"> <input type="checkbox"
 													name="multy[]" value="${homeworklist.assignNo}"> <span
 													class="checkbox-material"></span>
 												</label>
+											</c:if>
 											</div>
 										</td>
 
 
 										<td class="text-center" id="assignNo">${homeworklist.assignNo}</td>
 										<td class="text-center">${homeworklist.cateCode}</td>
-
-										<td class="text-center"><a
-											href="homeworkContent.htm?assignNo=${homeworklist.assignNo}&email=<%=(String)session.getAttribute("email")%>
-																					              &classCode=<%=(String)session.getAttribute("classCode")%>"
-											class="btn btn-simple btn-info  btn-icon edit">${homeworklist.assignTitle}</a></td>
-
+										
+										<c:choose>
+										<c:when test="${homeworklist.assignNotice == 'true'}">
+										<td class="text-center">
+										<a href="homeworkContent.htm?assignNo=${homeworklist.assignNo}&classCode=<%=(String)session.getAttribute("classCode")%>"
+											class="btn btn-simple btn-info  btn-icon edit" style="color: red; font: bold;">[공지] ${homeworklist.assignTitle}</a>
+										</td>
+										</c:when>
+										
+										<c:otherwise>
+										<td class="text-center">
+										<a href="homeworkContent.htm?assignNo=${homeworklist.assignNo}&classCode=<%=(String)session.getAttribute("classCode")%>"
+											class="btn btn-simple btn-info  btn-icon edit">${homeworklist.assignTitle}</a>
+										</td>
+										</c:otherwise>
+										</c:choose>
+										
 										<td class="text-center">${homeworklist.name}</td>
 										<td class="text-center">${homeworklist.assignDate}</td>
-
-
+										
+										<c:choose>
+										<c:when test="${homeworklist.email == sessionScope.email}">
 										<td class="text-center"><a
 											href="homeworkEdit.htm?assignNo=${homeworklist.assignNo}&email=<%=(String)session.getAttribute("email")%>
 																					              &classCode=<%=(String)session.getAttribute("classCode")%>"
 											class="btn btn-simple btn-rose btn-icon edit"><i
-												class="material-icons">border_color</i></a></td>
-
+												class="material-icons">border_color</i></a>
+										</td>
+										</c:when>
+										
+										<c:otherwise>
+										<td class="text-center">
+										
+										</td>
+										</c:otherwise>
+										</c:choose>
+										
 									</tr>
 
 								</c:forEach>

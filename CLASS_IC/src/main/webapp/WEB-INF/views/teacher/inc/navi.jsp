@@ -61,8 +61,14 @@
 					<a href="homework.htm"> <i class="material-icons">playlist_add_check</i>
 							<p>과제게시판</p>
 					</a>
-				</li>
+				</li>		
 			
+				<li>
+					<a href="studentList.htm"><i class="material-icons">account_box</i>
+							<p>학적부</p>
+
+					</a>
+				</li>
 				
 				<li>
 					<a href="attend.htm"><i class="material-icons">account_box</i>
@@ -84,12 +90,6 @@
 					</a>
 				</li>
 
-				
-				<!-- <li>
-					<a href="#"> <i class="material-icons">toys</i>
-							<p>교실상태</p>
-					</a>
-				</li> -->
 			</ul>
 		</div>
       </div>
