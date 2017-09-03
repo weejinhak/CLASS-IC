@@ -185,6 +185,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 // <![CDATA[
+	/*
 jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실행
 
    // 정규식을 변수에 할당
@@ -332,6 +333,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
    
    //FROM2
    ///////////////////////////////////////////////////////////
+   /*
    form2.submit( function() {
       if (re_id.test(uid2.val()) != true) { // 아이디 검사
          alert('[ID 입력 오류] 유효한 ID를 입력해 주세요.');
@@ -355,14 +357,15 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
          return false;
       }
    });
+      */
    
    // #uid, #upw 인풋에 입력된 값의 길이가 적당한지 알려주려고 한다
    // #uid, #upw 다음 순서에 경고 텍스트 출력을 위한 빈 strong 요소를 추가한다
    // 무턱대고 자바스크립트를 이용해서 HTML 삽입하는 것은 좋지 않은 버릇
    // 그러나 이 경우는 strong 요소가 없어도 누구나 form 핵심 기능을 이용할 수 있으니까 문제 없다
-   $('#uid2, #pwd_te ,#pwdconfirm_te, #email_te, #phone_te').after('<font size=1></font>');
+   //$('#uid2, #pwd_te ,#pwdconfirm_te, #email_te, #phone_te').after('<font size=1></font>');
    
- 
+ /*
    email_te.keyup(function(){
       var s = $(this).next('font');
       if (email_te.val().length == 0) { // 입력 값이 없을 때
@@ -375,7 +378,9 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
          
       }
    });
+ */
    // #uid 인풋에서 onkeyup 이벤트가 발생하면
+   /*
    uid2.keyup( function() {
       var s = $(this).next('font'); // strong 요소를 변수에 할당
       if (uid2.val().length == 0) { // 입력 값이 없을 때
@@ -390,6 +395,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
          s.text('correct!'); // strong 요소에 문자 출력
       }
    });
+   */
 /*    
    // #upw 인풋에서 onkeyup 이벤트가 발생하면
    pwd_te.keyup( function() {
@@ -405,6 +411,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
       }
    });
     */
+    /*
    pwdconfirm_te.keyup( function() {
 	      var s = $(this).next('font'); // strong 요소를 변수에 할당
 	      if (pwdconfirm_te.val().length == 0) { // 입력 값이 없을 때
@@ -415,11 +422,13 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 	    	  s.text('※Caution!,위 비밀번호와 다릅니다.');
 	      }
 	   });
+    */
    
    // #tel 인풋에 onkeydown 이벤트가 발생하면
    // 하이픈(-) 키가 눌렸는지 확인
    // 하이픈(-) 키가 눌렸다면 입력 중단
 
+   /*
    phone_te.keyup( function() {
       
       var s = $(this).next('font');
@@ -434,8 +443,10 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
       }
       
       });
+   */
 
-});
+//});
+	
 // ]]>
 </script>
 
