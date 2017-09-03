@@ -8,9 +8,12 @@
 package com.class_ic.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,7 +42,11 @@ public class JoinController {
 	
 	//회원가입 학생
 	@RequestMapping("join_st.htm")
-	public String joinStudent(MemberDTO member, HttpServletRequest request){
+	public String joinStudent(@Valid MemberDTO member, BindingResult result, HttpServletRequest request){
+		
+		if(result.hasErrors()) {
+			return "join/joinus";
+		}
 		String viewpage = "";
 		try{
 			viewpage = joinservice.join(member, request);
@@ -49,6 +56,19 @@ public class JoinController {
 		return viewpage; 
 	}
 	
+	//회원가입 학생 (front-end)
+	/*
+	@RequestMapping("join_st.htm")
+	public String joinStudent(MemberDTO member, HttpServletRequest request){
+		String viewpage = "";
+		try{
+			viewpage = joinservice.join(member, request);
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return viewpage; 
+	}
+	*/
 	//회원가입 선생
 		@RequestMapping("join_te.htm")
 		public String joinTeacher(MemberDTO member ,HttpServletRequest request){

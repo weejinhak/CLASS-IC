@@ -2,15 +2,30 @@ package com.class_ic.vo;
 
 import java.util.List;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class MemberDTO {
 	
+	@Email @NotEmpty
 	private String email; //이메일
+	
+	@NotEmpty @Size(min=3, max=20)
 	private String name; //이름
+	
+	@NotEmpty
 	private String pwd; //비번
+	
+	@NotEmpty
 	private String phone; //전화번호
+	
+	@NotEmpty
 	private String photoSrc; //이미지 주소
+	
+	
 	private String authority;	//security 권한
 	private String classCode; 	//기수
 	private List<CommonsMultipartFile> files;
