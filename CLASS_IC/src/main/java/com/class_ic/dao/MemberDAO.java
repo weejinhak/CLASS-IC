@@ -38,5 +38,8 @@ public interface MemberDAO {
 	
 	//학원 회원 전체 수 확인
 	public int selectAllStudentCount();
+	
+	//중복 이메일 체크
+	public int checkEmail(String email);
 
 }

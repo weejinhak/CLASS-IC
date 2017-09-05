@@ -40,6 +40,14 @@ public class JoinService {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	//이메일 중복 체크
+	public int checkEmail(String email) {
+		int result = 0;
+		MemberDAO member_dao = sqlsession.getMapper(MemberDAO.class);
+		result = member_dao.checkEmail(email);
+		return result;
+	}
 
 	// 회원가입
 	public String join(MemberDTO member, HttpServletRequest request) throws Exception {

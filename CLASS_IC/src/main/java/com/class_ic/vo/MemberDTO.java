@@ -10,19 +10,21 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class MemberDTO {
 	
-	@Email @NotEmpty
+	@Email (message="이메일 형식이 아닙니다")
+	@NotEmpty(message="이메일을 반드시 입력하세요")
 	private String email; //이메일
 	
-	@NotEmpty @Size(min=3, max=20)
+	@Size(min=3, max=20, message="이름은 최소3자이상 최대20자이하 입니다")
+	@NotEmpty (message="반드시 이름을 입력하세요")
 	private String name; //이름
 	
-	@NotEmpty
+	@NotEmpty(message="반드시 패스워드를 입력하세요")
 	private String pwd; //비번
 	
-	@NotEmpty
+	@NotEmpty(message="반드시 핸드폰 번호를 입력하세요")
 	private String phone; //전화번호
 	
-	@NotEmpty
+	@NotEmpty(message="반드시 사진을 올려주세요")
 	private String photoSrc; //이미지 주소
 	
 	

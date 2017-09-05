@@ -35,10 +35,22 @@ public class JoinController {
 	
 	//회원가입 폼
 	@RequestMapping("join.htm")
-	public String join(){
-		
+	public String join(ModelMap model){
+		MemberDTO memberDTO = new MemberDTO();
+		model.addAttribute("memberDTO", memberDTO);
 		return "join/joinus";
 	}
+	
+	//이메일 중복 체크
+	@RequestMapping("check_email")
+	@ResponseBody
+	public int checkEmail (String email) {
+		int result = 0;
+		result = joinservice.checkEmail(email);
+		System.out.println(result);
+		return result;
+	}
+	
 	
 	//회원가입 학생
 	@RequestMapping("join_st.htm")

@@ -22,7 +22,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfd8dc', end
 
 }
 
-
+.help-inline{
+		color: red;
+}
 
 .cont_centrar {
   position: relative;

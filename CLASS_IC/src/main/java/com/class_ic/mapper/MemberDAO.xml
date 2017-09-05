@@ -12,6 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into classicauthority (email, authority) values(#{email}, #{authority})
 </insert>
 
+<select id="checkEmail"  resultType="Integer">
+select count(*) from member where email=#{email}
+</select>
 
 <update id="modify" parameterType="com.class_ic.vo.MemberDTO" >
 	update member set 

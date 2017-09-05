@@ -1,4 +1,4 @@
-<!--
+<%-- <!--
    @Project : CLASS-IC
    @File Name : joinus.jsp
    @Author : 이현정
@@ -36,9 +36,9 @@
 				<label class="col-md-3 control-label" for="email">Email</label>
 				<div class="col-md-7">
 					<form:input type="text"  path="email" id="email" class="form-control input-sm"	/>
-						<div class="error" id="email_error">
+						<br/>
 							<form:errors path="email" class="help-inline"/>
-						</div>
+				
 				</div>
 			</div>
 		</div>
@@ -47,9 +47,9 @@
 				<label class="col-md-3 control-label" for="name">Name</label>
 				<div class="col-md-7">
 					<form:input type="text"  path="name" id="name" class="form-control input-sm"	/>
-					<div class="error">
+					<br/>
 							<form:errors path="name" class="help-inline"/>
-					</div>
+			
 				</div>
 			</div>
 		</div>
@@ -58,27 +58,23 @@
 				<label class="col-md-3 control-label" for="pwd">Password</label>
 				<div class="col-md-7">
 					<form:input type="password"  path="pwd" id="pwd" class="form-control input-sm"	/>
-					<div class="error">
+					<br/>
 							<form:errors path="pwd" class="help-inline"/>
-					</div>
+					
 				</div>
 			</div>
 		</div>
 		
 		<div class="row">
 			<div class="form-actions floatRight">
-				<input type="button" value="회원가입"  id="join_btn" class="btn btn-primary btn-sm" />
+				<input type="submit" value="ok"  class="btn btn-primary btn-sm" />
 			</div>
 		</div>
 		</form:form>
 	</div>
 </body>
 
-
-
-
-
-<%-- <body>
+<body>
 
    <div class="cotn_principal">
       <div class="cont_centrar">
@@ -186,7 +182,7 @@
  <!-- 사진 추가부분 -->
  <script
       src="${pageContext.request.contextPath}/resources/assets/js/photo.js"></script>
-</body> --%>
+</body>
 
 
 <!--   Core JS Files   -->
@@ -510,44 +506,4 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 // ]]>
 </script>
 
-<!-- javascript validation  -->
-<script type="text/javascript">
-
-	function checkValue(){
-		
-		var email = $('#email').val();
-		var regex_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;  
-		if(email=="" || email == null){
-			$('#email_error').html("빈 값은 안됨요");
-		}else{
-			
-			if(!email.match(regex_email)){
-				$('#email_error').html("잘못된 이메일 형식입니다.");
-			}else{
-				//var data = {email:email};
-				$.ajax({
-					type:"POST",
-					url:"${pageContext.request.contextPath}/check_email.htm",
-					data:{email:email},
-					success:function(data){
-						email_data=parseInt(data);
-						if(email_data == 1){
-							console.log(email_data);
-							$('#email_error').html("이미 가입된 이메일입니다.");
-							$('#email').val("");
-						}
-					}
-				});
-			}
-			
-		}
-	}
-	$(document).ready(function(){
-	$('#email').blur(function(){
-		//alert("keyup");
-		checkValue();
-	})
-});
-</script>
-
-</html>
+</html> --%>
