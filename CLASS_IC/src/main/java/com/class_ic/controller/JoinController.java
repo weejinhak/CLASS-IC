@@ -54,11 +54,8 @@ public class JoinController {
 	
 	//회원가입 학생
 	@RequestMapping("join_st.htm")
-	public String joinStudent(@Valid MemberDTO member, BindingResult result, HttpServletRequest request){
+	public String joinStudent(MemberDTO member,  HttpServletRequest request){
 		
-		if(result.hasErrors()) {
-			return "join/joinus";
-		}
 		String viewpage = "";
 		try{
 			viewpage = joinservice.join(member, request);
@@ -68,19 +65,7 @@ public class JoinController {
 		return viewpage; 
 	}
 	
-	//회원가입 학생 (front-end)
-	/*
-	@RequestMapping("join_st.htm")
-	public String joinStudent(MemberDTO member, HttpServletRequest request){
-		String viewpage = "";
-		try{
-			viewpage = joinservice.join(member, request);
-		}catch(Exception e){
-			System.out.println(e.getMessage());
-		}
-		return viewpage; 
-	}
-	*/
+
 	//회원가입 선생
 		@RequestMapping("join_te.htm")
 		public String joinTeacher(MemberDTO member ,HttpServletRequest request){

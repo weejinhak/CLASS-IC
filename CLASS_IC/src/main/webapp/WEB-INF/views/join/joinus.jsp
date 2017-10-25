@@ -7,9 +7,6 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -67,7 +64,6 @@
                      src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d"
                      alt="" />
                </div>
-               
                <form id="join_student" action="${pageContext.request.contextPath}/join_st.htm" method="POST" enctype="multipart/form-data">              		
                <div class="cont_form_login">
                   <a href="#" onclick="ocultar_login_sign_up()"><i
@@ -81,20 +77,15 @@
 					  </div>
                      <!-- 사진 업로드 끝 -->
                      <input type="text" id="email_st" name="email" placeholder="Email" />
-                     <form:errors path="email" />
                      <input type="text" id="name_st" name="name" placeholder="User" /> 
-                     <form:errors path="name" />
                      <input type="password" id="pwd_st" name="pwd" placeholder="Password" /> 
-                     <form:errors path="pwd" />
                      <input type="password" id="pwdconfirm_st" name="pwdconfirm" placeholder="Confirm Password" />
                      <input type="text" id="phone_st" name="phone" placeholder="PhoneNumber" />
-                     <form:errors path="phone" />
                      <!-- <input type="file" id="photoSrc_st" name="files" aceholder="imgSrc" />  -->
                      
                      <input type="hidden" id="authority_st" name="authority" value="ROLE_STUDENT" />
                      <button class="btn_login" id="btn_submit_st" type="submit">가입하기</button>
                </div>
-              
                </form>
 				<!-- student -->
 				<form id="join_teacher" action="${pageContext.request.contextPath}/join_te.htm" method="POST" enctype="multipart/form-data">
@@ -193,15 +184,10 @@
 </script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
- <![CDATA[
-	
-jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실행
 
-   // 정규식을 변수에 할당
-   // 정규식을 직접 작성할 줄 알면 참 좋겠지만
-   // 변수 우측에 할당된 정규식은 검색하면 쉽게 찾을 수 있다 
-   // 이 변수들의 활약상을 기대한다
-   // 변수 이름을 're_'로 정한것은 'Reguar Expression'의 머릿글자
+jQuery( function($) { 
+
+
    var re_id = /^[a-z0-9_-]{2,10}$/; // 아이디 검사식
    var re_pw = /^(?=.*[a-zA-Z]+)(?=.*[0-9]+).{6,}$/; // 비밀번호 검사식 영문+숫자
    var re_pw_R = /^(?=.*[a-zA-Z]+)(?=.*[0-9]+).{6,}$/; // 비밀번호 확인 검사식 영문+숫자 
@@ -210,11 +196,6 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
    var re_tel = /^(?:(010-\d{4})|(01[1|6|7|8|9]-\d{3,4}))-(\d{4})$/; // 전화번호 검사식 010-9717-7858
    
    
-
-   // 선택할 요소를 변수에 할당
-   // 변수에 할당하지 않으면 매번 HTML 요소를 선택해야 하기 때문에 귀찮고 성능에도 좋지 않다
-   // 쉼표를 이용해서 여러 변수를 한 번에 선언할 수 있다
-   // 보기 좋으라고 쉼표 단위로 줄을 바꿨다 
    var 
       form = $('.form'), 
       uid = $('#uid'), 
@@ -232,13 +213,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
       url2 = $('#url2'), 
       phone_te = $('#phone_te');
       
-   // 선택한 form에 서밋 이벤트가 발생하면 실행한다
-   // if (사용자 입력 값이 정규식 검사에 의해 참이 아니면) {포함한 코드를 실행}
-   // if 조건절 안의 '정규식.test(검사할값)' 형식은 true 또는 false를 반환한다
-   // if 조건절 안의 검사 결과가 '!= true' 참이 아니면 {...} 실행
-   // 사용자 입력 값이 참이 아니면 alert을 띄운다
-   // 사용자 입력 값이 참이 아니면 오류가 발생한 input으로 포커스를 보낸다
-   // 사용자 입력 값이 참이 아니면 form 서밋을 중단한다
+
    form.submit( function() {
       if (re_id.test(uid.val()) != true) { // 아이디 검사
          alert('[ID 입력 오류] 유효한 ID를 입력해 주세요.');
@@ -262,11 +237,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
          return false;
       }
    });
-   
-   // #uid, #upw 인풋에 입력된 값의 길이가 적당한지 알려주려고 한다
-   // #uid, #upw 다음 순서에 경고 텍스트 출력을 위한 빈 strong 요소를 추가한다
-   // 무턱대고 자바스크립트를 이용해서 HTML 삽입하는 것은 좋지 않은 버릇
-   // 그러나 이 경우는 strong 요소가 없어도 누구나 form 핵심 기능을 이용할 수 있으니까 문제 없다
+
    $('#uid, #pwd_st ,#pwdconfirm_st, #email_st, #phone_st').after('<strong style="color:#CC3D3D;FONT-SIZE:5px"></strong>');
    
    email_st.keyup(function(){
@@ -322,27 +293,9 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 	      }
 	   });
    
-   // #tel 인풋에 onkeydown 이벤트가 발생하면
-   // 하이픈(-) 키가 눌렸는지 확인
-   // 하이픈(-) 키가 눌렸다면 입력 중단
-   phone_st.keyup( function() {
-      
-      var s = $(this).next('strong');
-      if (phone_st.val().length == 0) { // 입력 값이 없을 때
-         s.text('');
-      }// strong 요소에 포함된 문자 지움
-      else if( re_tel.test(phone_st.val()) != true ){ // 유효하지 않은 문자 입력 시
-         s.text('※Please, Confirm your tel number');
-      
-      }else if( re_tel.test(phone_st.val()) == true ){
-         s.text('correct!');
-      }
-      
-      }); 
-   
+
    //FROM2
    ///////////////////////////////////////////////////////////
-   
    form2.submit( function() {
       if (re_id.test(uid2.val()) != true) { // 아이디 검사
          alert('[ID 입력 오류] 유효한 ID를 입력해 주세요.');
@@ -366,13 +319,9 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
          return false;
       }
    });
-      
    
-   // #uid, #upw 인풋에 입력된 값의 길이가 적당한지 알려주려고 한다
-   // #uid, #upw 다음 순서에 경고 텍스트 출력을 위한 빈 strong 요소를 추가한다
-   // 무턱대고 자바스크립트를 이용해서 HTML 삽입하는 것은 좋지 않은 버릇
-   // 그러나 이 경우는 strong 요소가 없어도 누구나 form 핵심 기능을 이용할 수 있으니까 문제 없다
-   //$('#uid2, #pwd_te ,#pwdconfirm_te, #email_te, #phone_te').after('<font size=1></font>');
+
+   $('#uid2, #pwd_te ,#pwdconfirm_te, #email_te, #phone_te').after('<font size=1></font>');
    
  
    email_te.keyup(function(){
@@ -387,9 +336,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
          
       }
    });
- 
    // #uid 인풋에서 onkeyup 이벤트가 발생하면
-   
    uid2.keyup( function() {
       var s = $(this).next('font'); // strong 요소를 변수에 할당
       if (uid2.val().length == 0) { // 입력 값이 없을 때
@@ -404,23 +351,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
          s.text('correct!'); // strong 요소에 문자 출력
       }
    });
-   
-   
-   // #upw 인풋에서 onkeyup 이벤트가 발생하면
-   pwd_te.keyup( function() {
-      var s = $(this).next('font'); // strong 요소를 변수에 할당
-      if (pwd_te.val().length == 0) { // 입력 값이 없을 때
-         s.text(''); // strong 요소에 포함된 문자 지움
-      } else if (pwd_te.val().length < 6) { // 입력 값이 6보다 작을 때
-         s.text('※Caution!, 6자 이상의 비밀번호 입력하세요'); // strong 요소에 문자 출력
-      } else if (pwd_te.val().length > 18) { // 입력 값이 18보다 클 때
-         s.text('※Caution!, 비밀번호가 너무 깁니다.'); // strong 요소에 문자 출력
-      } else { // 입력 값이 6 이상 18 이하일 때
-         s.text('Correct! 적합합니다.'); // strong 요소에 문자 출력
-      }
-   });
-    
-    
+
    pwdconfirm_te.keyup( function() {
 	      var s = $(this).next('font'); // strong 요소를 변수에 할당
 	      if (pwdconfirm_te.val().length == 0) { // 입력 값이 없을 때
@@ -431,13 +362,8 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 	    	  s.text('※Caution!,위 비밀번호와 다릅니다.');
 	      }
 	   });
-    
-   
-   // #tel 인풋에 onkeydown 이벤트가 발생하면
-   // 하이픈(-) 키가 눌렸는지 확인
-   // 하이픈(-) 키가 눌렸다면 입력 중단
 
-   
+
    phone_te.keyup( function() {
       
       var s = $(this).next('font');
@@ -452,11 +378,9 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
       }
       
       });
-   
 
 });
-	
- ]]>
+
 </script>
 
 </html>
