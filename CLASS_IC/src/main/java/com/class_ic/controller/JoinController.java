@@ -43,10 +43,10 @@ public class JoinController {
 	
 	//이메일 중복 체크
 	@RequestMapping("check_email")
-	@ResponseBody
-	public int checkEmail (String email) {
+	public int checkEmail (String email, HttpServletRequest request) {
 		int result = 0;
-		result = joinservice.checkEmail(email);
+		String email_check= (String) request.getAttribute(email);
+		result = joinservice.checkEmail(email_check);
 		System.out.println(result);
 		return result;
 	}

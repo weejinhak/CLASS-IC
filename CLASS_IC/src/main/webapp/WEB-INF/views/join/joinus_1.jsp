@@ -1,4 +1,4 @@
-<%-- <!--
+<!--
    @Project : CLASS-IC
    @File Name : joinus.jsp
    @Author : 이현정
@@ -29,6 +29,56 @@
 </head>
 
 <body>
+	<div class="form-container">
+		<form:form method="POST" action="${pageContext.request.contextPath}/join_st.htm" commandName="memberDTO" class="form-horizontal">
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="email">Email</label>
+				<div class="col-md-7">
+					<form:input type="text"  path="email" id="email" class="form-control input-sm"	/>
+						<div class="error" id="email_error">
+							<form:errors path="email" class="help-inline"/>
+						</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="name">Name</label>
+				<div class="col-md-7">
+					<form:input type="text"  path="name" id="name" class="form-control input-sm"	/>
+					<div class="error">
+							<form:errors path="name" class="help-inline"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="pwd">Password</label>
+				<div class="col-md-7">
+					<form:input type="password"  path="pwd" id="pwd" class="form-control input-sm"	/>
+					<div class="error">
+							<form:errors path="pwd" class="help-inline"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-actions floatRight">
+				<input type="button" value="회원가입"  id="join_btn" class="btn btn-primary btn-sm" />
+			</div>
+		</div>
+		</form:form>
+	</div>
+</body>
+
+
+
+
+
+<%-- <body>
 
    <div class="cotn_principal">
       <div class="cont_centrar">
@@ -67,8 +117,7 @@
                      src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d"
                      alt="" />
                </div>
-               <form:form  id="join_student" action="${pageContext.request.contextPath}/join_st.htm" method="POST" enctype="multipart/form-data" modelAttribute="member">   
-               <form id="join_student" action="${pageContext.request.contextPath}/join_st.htm" method="POST" enctype="multipart/form-data">              		
+                 <form id="join_student" action="${pageContext.request.contextPath}/join_st.htm" method="POST" enctype="multipart/form-data">              		
                <div class="cont_form_login">
                   <a href="#" onclick="ocultar_login_sign_up()"><i
                      class="material-icons">&#xE5C4;</i></a>
@@ -80,21 +129,21 @@
 					  <i class="material-icons">camera_enhance</i>
 					  </div>
                      <!-- 사진 업로드 끝 -->
-                     <input type="text" id="email_st" name="email" placeholder="Email" />
-                     <form:errors path="email" />
-                     <input type="text" id="name_st" name="name" placeholder="User" /> 
-                     <form:errors path="name" />
+                     <input type="text" name="email"  id="email_st" placeholder="Email"/>
+ 
+                     <input type="text" id="name_st" name="name" placeholder="Name" /> 
+         
                      <input type="password" id="pwd_st" name="pwd" placeholder="Password" /> 
-                     <form:errors path="pwd" />
+            
                      <input type="password" id="pwdconfirm_st" name="pwdconfirm" placeholder="Confirm Password" />
                      <input type="text" id="phone_st" name="phone" placeholder="PhoneNumber" />
-                     <form:errors path="phone" />
+               
                      <!-- <input type="file" id="photoSrc_st" name="files" aceholder="imgSrc" />  -->
                      
                      <input type="hidden" id="authority_st" name="authority" value="ROLE_STUDENT" />
                      <button class="btn_login" id="btn_submit_st" type="submit">가입하기</button>
                </div>
-               </form:form>
+               </form>
                </form>
 				<!-- student -->
 				<form id="join_teacher" action="${pageContext.request.contextPath}/join_te.htm" method="POST" enctype="multipart/form-data">
@@ -137,7 +186,9 @@
  <!-- 사진 추가부분 -->
  <script
       src="${pageContext.request.contextPath}/resources/assets/js/photo.js"></script>
-</body>
+</body> --%>
+
+
 <!--   Core JS Files   -->
 <script
    src="${pageContext.request.contextPath}/resources/assets/js/jquery-3.1.1.min.js"
@@ -459,4 +510,44 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 // ]]>
 </script>
 
-</html> --%>
+<!-- javascript validation  -->
+<script type="text/javascript">
+
+	function checkValue(){
+		
+		var email = $('#email').val();
+		var regex_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;  
+		if(email=="" || email == null){
+			$('#email_error').html("빈 값은 안됨요");
+		}else{
+			
+			if(!email.match(regex_email)){
+				$('#email_error').html("잘못된 이메일 형식입니다.");
+			}else{
+				//var data = {email:email};
+				$.ajax({
+					type:"POST",
+					url:"${pageContext.request.contextPath}/check_email.htm",
+					data:{email:email},
+					success:function(data){
+						email_data=parseInt(data);
+						if(email_data == 1){
+							console.log(email_data);
+							$('#email_error').html("이미 가입된 이메일입니다.");
+							$('#email').val("");
+						}
+					}
+				});
+			}
+			
+		}
+	}
+	
+	$('#email').blur(function(){
+		//alert("keyup");
+		checkValue();
+	})
+
+</script>
+
+</html>
